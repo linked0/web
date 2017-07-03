@@ -10,7 +10,7 @@ This checklist can guide you through your Machine Learning projects. There are e
 8. Launch, monitor, and maintain your system.
 Obviously, you should feel free to adapt this checklist to your needs.
 
-### Frame the Problem and Look at the Big Picture
+### 1. Frame the Problem and Look at the Big Picture
 1. Define the objective in business terms.
 2. How will your solution be used?
 3. What are the current solutions/workarounds (if any)?
@@ -24,7 +24,7 @@ Obviously, you should feel free to adapt this checklist to your needs.
 11. List the assumptions you (or others) have made so far.
 12. Verify assumptions if possible.
 
-### Get the Data
+### 2. Get the Data
 Note: automate as much as possible so you can easily get fresh data.
 1. List the data you need and how much you need.
 2. Find and document where you can get that data.
@@ -38,7 +38,7 @@ Note: automate as much as possible so you can easily get fresh data.
 10. Check the size and type of data (time series, sample, geographical, etc.).
 11. Sample a test set, put it aside, and never look at it (no data snooping!).
 
-### Explore the Data
+### 3. Explore the Data
 Note: try to get insights from a field expert for these steps.
 1. Create a copy of the data for exploration (sampling it down to a manageable size if necessary).
 2. Create a Jupyter notebook to keep a record of your data exploration.
@@ -57,7 +57,7 @@ Note: try to get insights from a field expert for these steps.
 9. Identify extra data that would be useful (go back to “Get the Data”).
 10. Document what you have learned.
 
-### Prepare the Data
+### 4. Prepare the Data
 Notes:
 - Work on copies of the data (keep the original dataset intact).
 - Write functions for all data transformations you apply, for five reasons:
@@ -78,7 +78,7 @@ Notes:
   - Aggregate features into promising new features.
 4. Feature scaling: standardize or normalize features.
 
-### Short-List Promising Models
+### 5. Short-List Promising Models
 Notes:
 - If the data is huge, you may want to sample smaller training sets so you can train many different models in a reasonable time (be aware that this penalizes complex models such as large neural nets or Random Forests).
 - Once again, try to automate these steps as much as possible.
@@ -92,7 +92,7 @@ Notes:
 6. Have one or two more quick iterations of the five previous steps.
 7. Short-list the top three to five most promising models, preferring models that make different types of errors.
 
-### Fine-Tune the System
+### 6. Fine-Tune the System
 Notes:
 - You will want to use as much data as possible for this step, especially as you move toward the end of fine-tuning.
 - As always automate what you can.
@@ -104,7 +104,7 @@ Notes:
 WARNING
 Don’t tweak your model after measuring the generalization error: you would just start overfitting the test set.
 
-### Present Your Solution
+### 7. Present Your Solution
 1. Document what you have done.
 2. Create a nice presentation.
   - Make sure you highlight the big picture first.
@@ -114,7 +114,7 @@ Don’t tweak your model after measuring the generalization error: you would jus
   - List your assumptions and your system’s limitations.
 4. Ensure your key findings are communicated through beautiful visualizations or easy-to-remember statements (e.g., “the median income is the number-one predictor of housing prices”).
 
-### Launch!
+### 8. Launch!
 1. Get your solution ready for production (plug into production data inputs, write unit tests, etc.).
 2. Write monitoring code to check your system’s live performance at regular intervals and trigger alerts when it drops.
   - Beware of slow degradation too: models tend to “rot” as data evolves.
