@@ -98,7 +98,7 @@ Notes:
 - As always automate what you can.
 1. Fine-tune the hyperparameters using cross-validation.
   - Treat your data transformation choices as hyperparameters, especially when you are not sure about them (e.g., should I replace missing values with zero or with the median value? Or just drop the rows?).
-  - Unless there are very few hyperparameter values to explore, prefer random search over grid search. If training is very long, you may prefer a Bayesian optimization approach (e.g., using Gaussian process priors, as described by Jasper Snoek, Hugo Larochelle, and Ryan Adams).1)
+  - Unless there are very few hyperparameter values to explore, prefer random search over grid search. If training is very long, you may prefer a Bayesian optimization approach (e.g., using Gaussian process priors, as described by Jasper Snoek, Hugo Larochelle, and Ryan Adams).<1>
 2. Try Ensemble methods. Combining your best models will often perform better than running them individually.
 3. Once you are confident about your final model, measure its performance on the test set to estimate the generalization error.
 WARNING
@@ -122,4 +122,6 @@ Don’t tweak your model after measuring the generalization error: you would jus
   - Also monitor your inputs’ quality (e.g., a malfunctioning sensor sending random values, or another team’s output becoming stale). This is particularly important for online learning systems.
 3. Retrain your models on a regular basis on fresh data (automate as much as possible).
 
-1) “Practical Bayesian Optimization of Machine Learning Algorithms,” J. Snoek, H. Larochelle, R. Adams (2012).
+<1> “Practical Bayesian Optimization of Machine Learning Algorithms,” J. Snoek, H. Larochelle, R. Adams (2012).
+
+### from Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems 1st Edition(https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291/ref=sr_1_1?s=books&ie=UTF8&qid=1499078407&sr=1-1&keywords=Hands+on)
