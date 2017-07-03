@@ -121,4 +121,5 @@ Don’t tweak your model after measuring the generalization error: you would jus
   - Measuring performance may require a human pipeline (e.g., via a crowdsourcing service).
   - Also monitor your inputs’ quality (e.g., a malfunctioning sensor sending random values, or another team’s output becoming stale). This is particularly important for online learning systems.
 3. Retrain your models on a regular basis on fresh data (automate as much as possible).
+
 1 “Practical Bayesian Optimization of Machine Learning Algorithms,” J. Snoek, H. Larochelle, R. Adams (2012).
