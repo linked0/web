@@ -10,6 +10,7 @@ This checklist can guide you through your Machine Learning projects. There are e
 8. Launch, monitor, and maintain your system.
 Obviously, you should feel free to adapt this checklist to your needs.
 
+
 ### 1. Frame the Problem and Look at the Big Picture
 1. Define the objective in business terms.
 2. How will your solution be used?
@@ -24,8 +25,10 @@ Obviously, you should feel free to adapt this checklist to your needs.
 11. List the assumptions you (or others) have made so far.
 12. Verify assumptions if possible.
 
+
 ### 2. Get the Data
 Note: automate as much as possible so you can easily get fresh data.
+
 1. List the data you need and how much you need.
 2. Find and document where you can get that data.
 3. Check how much space it will take.
@@ -38,8 +41,10 @@ Note: automate as much as possible so you can easily get fresh data.
 10. Check the size and type of data (time series, sample, geographical, etc.).
 11. Sample a test set, put it aside, and never look at it (no data snooping!).
 
+
 ### 3. Explore the Data
 Note: try to get insights from a field expert for these steps.
+
 1. Create a copy of the data for exploration (sampling it down to a manageable size if necessary).
 2. Create a Jupyter notebook to keep a record of your data exploration.
 3. Study each attribute and its characteristics:
@@ -57,6 +62,7 @@ Note: try to get insights from a field expert for these steps.
 9. Identify extra data that would be useful (go back to “Get the Data”).
 10. Document what you have learned.
 
+
 ### 4. Prepare the Data
 Notes:
 - Work on copies of the data (keep the original dataset intact).
@@ -66,6 +72,7 @@ Notes:
   - To clean and prepare the test set
   - To clean and prepare new data instances once your solution is live
   - To make it easy to treat your preparation choices as hyperparameters
+
 1. Data cleaning:
     - Fix or remove outliers (optional).
     - Fill in missing values (e.g., with zero, mean, median…) or drop their rows (or columns).
@@ -78,10 +85,12 @@ Notes:
     - Aggregate features into promising new features.
 4. Feature scaling: standardize or normalize features.
 
+
 ### 5. Short-List Promising Models
 Notes:
 - If the data is huge, you may want to sample smaller training sets so you can train many different models in a reasonable time (be aware that this penalizes complex models such as large neural nets or Random Forests).
 - Once again, try to automate these steps as much as possible.
+
 1. Train many quick and dirty models from different categories (e.g., linear, naive Bayes, SVM, Random Forests, neural net, etc.) using standard parameters.
 2. Measure and compare their performance.
     - For each model, use N-fold cross-validation and compute the mean and standard deviation of the performance measure on the N folds.
@@ -92,17 +101,21 @@ Notes:
 6. Have one or two more quick iterations of the five previous steps.
 7. Short-list the top three to five most promising models, preferring models that make different types of errors.
 
+
 ### 6. Fine-Tune the System
 Notes:
 - You will want to use as much data as possible for this step, especially as you move toward the end of fine-tuning.
 - As always automate what you can.
+
 1. Fine-tune the hyperparameters using cross-validation.
     - Treat your data transformation choices as hyperparameters, especially when you are not sure about them (e.g., should I replace missing values with zero or with the median value? Or just drop the rows?).
     - Unless there are very few hyperparameter values to explore, prefer random search over grid search. If training is very long, you may prefer a Bayesian optimization approach (e.g., using Gaussian process priors, as described by Jasper Snoek, Hugo Larochelle, and Ryan Adams).<1>
 2. Try Ensemble methods. Combining your best models will often perform better than running them individually.
 3. Once you are confident about your final model, measure its performance on the test set to estimate the generalization error.
+
 WARNING
 Don’t tweak your model after measuring the generalization error: you would just start overfitting the test set.
+
 
 ### 7. Present Your Solution
 1. Document what you have done.
@@ -113,6 +126,7 @@ Don’t tweak your model after measuring the generalization error: you would jus
     - Describe what worked and what did not.
     - List your assumptions and your system’s limitations.
 4. Ensure your key findings are communicated through beautiful visualizations or easy-to-remember statements (e.g., “the median income is the number-one predictor of housing prices”).
+
 
 ### 8. Launch!
 1. Get your solution ready for production (plug into production data inputs, write unit tests, etc.).
