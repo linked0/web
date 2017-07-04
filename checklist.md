@@ -124,4 +124,4 @@ Don’t tweak your model after measuring the generalization error: you would jus
 
 <1> “Practical Bayesian Optimization of Machine Learning Algorithms,” J. Snoek, H. Larochelle, R. Adams (2012).
 
-### Appendix B. Machine Learning Project Checklist from [Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems 1st Edition](https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291/ref=sr_1_1?s=books&ie=UTF8&qid=1499078407&sr=1-1&keywords=Hands+on)
+**Appendix B. Machine Learning Project Checklist from [Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems 1st Edition](https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291/ref=sr_1_1?s=books&ie=UTF8&qid=1499078407&sr=1-1&keywords=Hands+on)**
