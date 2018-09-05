@@ -81,6 +81,7 @@ git config --global user.email linked@gmail.com
 git push
 sername for 'https://github.com': linked0@gmail.com
 Password for 'https://linked0@gmail.com@github.com': 
+
 2. Edit
 Visual Studio Code command 실행
 shift-cmd-p -> shell command -> terminal에서 code로 실행
@@ -89,10 +90,12 @@ brew install macvim --override-system-vim
 xcode-select install
 sudo xcode-select --switch /Library/Developer/CommandLineTools
 find ./ -type f > files
+find . -type file -name '*.js' -o -name '*.json' > files
 open -a macvim files
 <ctl-w>f: open in a new window
 <ctl-w>gf: open in a new tab
 <c-w> {H,J,K,L}: move among windows
+
 3. python
 import requests
 res = requests.get('https://api.github.com/some/endpoint', headers={'user-agent': 'my-app/0.0.1'})
