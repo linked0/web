@@ -1,6 +1,6 @@
 <meta charset="utf-8"> 
 
-# 사이트 #
+# Sites #
 ### Work
 ML Gitbooks Edit: bit.ly/2HksKBZ
 ML Gitbooks: https://bit.ly/2HpHlbi
@@ -12,7 +12,7 @@ ML Kevin Murphy: http://bit.ly/2NvrvCl
 Github Web: https://linked0.github.io/web/, http://bit.ly/2wUbXic
 예전 Know 백업: http://bit.ly/2Mfdzrk
 
-### 블록체인
+### Blockchain
 PnT Blockchain 정리:http://bit.ly/2MfVxoU
 Hashing Test: http://bit.ly/2N0Izk7
 Generating Bitcoin Address: https://bitaddress.org
@@ -22,50 +22,50 @@ BlockCypher Block Explorer(Testnet): http://bit.ly/2Qeryky
 비콘위키: 명령어등: http://bit.ly/2oQ9il3
 비트코인 명령어를 실행해볼 수 있음: https://bit.ly/2wvlZp1
 
-### 기타/툴 정리
-복근 운동: http://bit.ly/2NZEmda
-사이트 크런치: http://bit.ly/2wVdqUD
+### Tools
+Exercise: http://bit.ly/2NZEmda
+Site Clunch: http://bit.ly/2wVdqUD
 Game Software: http://bit.ly/2oUEAHC
 http://regexr.com/
 http://jsonviewer.stack.hu/
 Json Viewer: http://rextester.com/
-웹/자바스크립트 테스트: https://bit.ly/2I3kiTr
-Algorithms 세지윅: http://bit.ly/2MelG7v
+Web/JavaScript Test: https://bit.ly/2I3kiTr
+Algorithms : http://bit.ly/2MelG7v
 Colab Welcome: http://bit.ly/2uhAPOG
 Colab play.ipynb: http://bit.ly/2L6tk4p
-RBG 컬러값 피커: http://bit.ly/2QgVP24
+RBG Color Picker: http://bit.ly/2QgVP24
 
-# 명령어 
+# Command
 ### 1. Command
 find . -iname mainview*
 touch -t "201610041200" timestamp
 find . -type f -newer timestamp
 egrep -ilrnH --include=*.java ‘beacon.pntbiz.com’ ./
 
-sudo xcode-select -s /Applications/XCode7.2/Xcode.app/    #이건 커맨드라인에서 먹는 XCode
+sudo xcode-select -s /Applications/XCode7.2/Xcode.app/
 To clear the terminal manually: ⌘+K
 ps aux | grep chrome
 
-파일 전송
-받기: scp carnd@54.249.240.135:/home/abc/index.html ./
-올리기: scp ./index.html carnd@54.249.240.135:/home/abc/index.html
+File Transfer
+Download: scp carnd@54.249.240.135:/home/abc/index.html ./
+Upload: scp ./index.html carnd@54.249.240.135:/home/abc/index.html
 
-폴더 압축
+Zip Foler
 tar --exclude=’./BLE/.git’ -cvzf output_filename.tar.gz folder_name --exclude=’./BLE/.git’
 tar -xvzf xxx.tar.gz
 
-zip 풀기
+zip extract
 sudo apt-get install unzip
 unzip file.zip -d destination_folder
 
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 
-구글 드라이브에 파일 업로드(https://github.com/prasmussen/gdrive)
+File Upload to Google Drive(https://github.com/prasmussen/gdrive)
 poohex id: 0B6E3rj3qrE6NMTRxYU41T1REXzQ
-맥 설치
+Install on Mac
 brew install gdrive
 
-리눅스 설치
+Install on Linux
 cd~
 wget “https://docs.google.com/uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download”
 mv “uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download” gdrive
@@ -74,9 +74,8 @@ sudo install gdrive /usr/local/bin/gdrive
 
 gdrive list
 gdrive upload --parent 1u7Gdc1ieGpNYl8trq2RG84wBAKjVk61P eng-math.pdf (poohfiles에 올리기)
-gdrive download 1pI3oIlne8U--qBmTny0mBvahaiQWVdoY (파일 가져오기, 공유 링크에서 id를 보면 됨)
+gdrive download 1pI3oIlne8U--qBmTny0mBvahaiQWVdoY (Download file, You can find id)
 
-다른 pc에서 작업한 것이면 .gdrive 지우고, 브라우저에서 계정정보 지우기
 Homebrew: ruby -e "$(curl -fsSL https://bit.ly/1LEgSWs)"
 AWS: EC Home -> Launch Instance(파란색버튼) -> Community AMIS에서 CoreOS로 검색 -> PV 선택
 google drive에서 jaylee.per 검색 -> chmod 400 jaylee.pem 
@@ -89,18 +88,16 @@ brew/nvm
 brew upgrade node
 nvm으로 node(nodejs)지우기: nvm uninstall v8.10.0
 
-화면 일부만 선택하여 스크린샷을 찍는 방법
-shift-command-4 키를 누릅니다. …
-
 Go
 godoc fmt Printf
 godoc cmd/fmt
 godoc -http=:8001
 go build aSourceFile.go
 file aSourceFile
-go run aSourceFile.go ← 빌드와 실행까지
+go run aSourceFile.go ← Build and Run
 go get -v github.com/mactsouk/go/simpleGitHub
-소스
+
+Source
 package main 
  
 import ( 
