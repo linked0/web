@@ -1,3 +1,5 @@
+<meta charset="utf-8"> 
+
 # 사이트
 ### Work
 ML Gitbooks Edit: bit.ly/2HksKBZ
