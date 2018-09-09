@@ -10,7 +10,7 @@ Reinforcement Learning Cheatsheet: http://bit.ly/2KQSdE6
 Reinforcement Learning: An Introduction 2nd: http://bit.ly/2wVHn6V
 ML Kevin Murphy: http://bit.ly/2NvrvCl
 Github Web: https://linked0.github.io/web/, http://bit.ly/2wUbXic
-예전 Know 백업: http://bit.ly/2Mfdzrk
+Know Backup: http://bit.ly/2Mfdzrk
 
 ### Blockchain
 PnT Blockchain 정리:http://bit.ly/2MfVxoU
@@ -19,8 +19,8 @@ Generating Bitcoin Address: https://bitaddress.org
 Litecoin Github:  http://bit.ly/2N3LEQM
 Bitcoin Github: https://github.com/bitcoin/bitcoin
 BlockCypher Block Explorer(Testnet): http://bit.ly/2Qeryky
-비콘위키: 명령어등: http://bit.ly/2oQ9il3
-비트코인 명령어를 실행해볼 수 있음: https://bit.ly/2wvlZp1
+Bitcoin Wiki, APIs: http://bit.ly/2oQ9il3
+Test Bitcoin Command: https://bit.ly/2wvlZp1
 
 ### Tools
 Exercise: http://bit.ly/2NZEmda
@@ -43,7 +43,7 @@ find . -type f -newer timestamp
 egrep -ilrnH --include=*.java ‘beacon.pntbiz.com’ ./
 
 sudo xcode-select -s /Applications/XCode7.2/Xcode.app/
-To clear the terminal manually: ⌘+K
+To clear the terminal manually: Cmd + K
 ps aux | grep chrome
 
 File Transfer
@@ -51,10 +51,10 @@ Download: scp carnd@54.249.240.135:/home/abc/index.html ./
 Upload: scp ./index.html carnd@54.249.240.135:/home/abc/index.html
 
 Zip Foler
-tar --exclude=’./BLE/.git’ -cvzf output_filename.tar.gz folder_name --exclude=’./BLE/.git’
+tar --exclude='./BLE/.git' -cvzf output_filename.tar.gz folder_name --exclude='./BLE/.git'
 tar -xvzf xxx.tar.gz
 
-zip extract
+Zip extract
 sudo apt-get install unzip
 unzip file.zip -d destination_folder
 
@@ -67,26 +67,26 @@ brew install gdrive
 
 Install on Linux
 cd~
-wget “https://docs.google.com/uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download”
-mv “uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download” gdrive
+wget "https://docs.google.com/uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download"
+mv "uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download" gdrive
 chmod +x gdrive
 sudo install gdrive /usr/local/bin/gdrive
 
 gdrive list
-gdrive upload --parent 1u7Gdc1ieGpNYl8trq2RG84wBAKjVk61P eng-math.pdf (poohfiles에 올리기)
+gdrive upload --parent 1u7Gdc1ieGpNYl8trq2RG84wBAKjVk61P eng-math.pdf (upload to poohfiles)
 gdrive download 1pI3oIlne8U--qBmTny0mBvahaiQWVdoY (Download file, You can find id)
 
 Homebrew: ruby -e "$(curl -fsSL https://bit.ly/1LEgSWs)"
-AWS: EC Home -> Launch Instance(파란색버튼) -> Community AMIS에서 CoreOS로 검색 -> PV 선택
-google drive에서 jaylee.per 검색 -> chmod 400 jaylee.pem 
-ssh -i ./jaylee.pem core@54.199.65.181 ← CoreOS 인스턴스
-ssh -i jaylee.pem ubuntu@52.192.176.112 ← Ubuntu 인스턴스
+AWS: EC Home -> Launch Instance(Blue Button) -> Select CoreOS on Community AMIS -> Select PV
+google drive Search: jaylee.pem -> chmod 400 jaylee.pem 
+ssh -i ./jaylee.pem core@54.199.65.181 ← CoreOS Instance
+ssh -i jaylee.pem ubuntu@52.192.176.112 ← Ubuntu Instance
 sudo useradd -m linked0 -> sudo passwd linked0
-AWS 설치 관련 Python Microservice Development 문서
+AWS Installatio on Python Microservice Development Document
 
 brew/nvm
 brew upgrade node
-nvm으로 node(nodejs)지우기: nvm uninstall v8.10.0
+nvm node(nodejs) uninstall: nvm uninstall v8.10.0
 
 Go
 godoc fmt Printf
@@ -122,7 +122,7 @@ git rm -r app
 
 수정 원복: git checkout HEAD .
 커밋 제거: git reset HEAD^    // 최종 커밋을 취소. 워킹트리는 보존됨. (커밋은 했으나 push하지 않은 경우 유용)
-푸시 제거 삭제: git reset —soft HEAD^ (커밋하고 푸시까지 된 것 한개만 제거)
+푸시 제거 삭제: git reset -soft HEAD^ (커밋하고 푸시까지 된 것 한개만 제거)
 변경파일 commit에 포함시키기: git add benchmarks.rb
 git config --global user.name "linked0"
 git config --global user.email linked@gmail.com
@@ -149,7 +149,7 @@ import requests
 res = requests.get('https://api.github.com/some/endpoint', headers={'user-agent': 'my-app/0.0.1'})
 res = requests.post('http://redmine.pntbiz.com:13000/projects/indoorplus-lbs-sdk/wiki/IOS_Getting_Started', data = {'username':'hjlee','password':'amadeus0'})
 conda create -n autobuild python=3.6
-conda create -n py3conda python=3.6 anaconda ⇐ 이게 anaconda를 관련 패키지를 다 설치해준다.
+conda create -n py3conda python=3.6 anaconda <=이게 anaconda를 관련 패키지를 다 설치해준다.
 python3 -c 'import numpy as np; np.save("res", "hello"+"\n")'
 python3 -c 'import pyperclip as pc; pc.copy("hello")'
 python3 -c 'import tensorflow; print(tensorflow.__version__)'
