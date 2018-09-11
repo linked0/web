@@ -11,6 +11,7 @@ ML Kevin Murphy: http://bit.ly/2NvrvCl
 Github Web: https://linked0.github.io/web/, http://bit.ly/2wUbXic
 Know Backup: http://bit.ly/2Mfdzrk
 
+##################################################################
 ### Blockchain ###
 PnT Blockchain 정리:http://bit.ly/2MfVxoU
 Hashing Test: http://bit.ly/2N0Izk7
@@ -21,6 +22,7 @@ BlockCypher Block Explorer(Testnet): http://bit.ly/2Qeryky
 Bitcoin Wiki, APIs: http://bit.ly/2oQ9il3
 Test Bitcoin Command: https://bit.ly/2wvlZp1
 
+##################################################################
 ### Tools
 Exercise: http://bit.ly/2NZEmda
 Site Clunch: http://bit.ly/2wVdqUD
@@ -130,6 +132,7 @@ git push
 sername for 'https://github.com': linked0@gmail.com
 Password for 'https://linked0@gmail.com@github.com': 
 
+##################################################################
 ### 2. Edit ###
 Visual Studio Code command 실행
 shift-cmd-p -> shell command -> terminal에서 code로 실행
@@ -144,6 +147,7 @@ open -a macvim files
 <ctl-w>gf: open in a new tab
 <c-w> {H,J,K,L}: move among windows
 
+##################################################################
 ### 3. python ###
 import requests
 res = requests.get('https://api.github.com/some/endpoint', headers={'user-agent': 'my-app/0.0.1'})
@@ -169,9 +173,11 @@ Jupyter Notebook Setting
 %autoreload 2
 %config InlineBackend.figure_format = 'retina'
 
+##################################################################
 ### 4. ML ###
 sudo tensorboard --logdir='my_graph'
 
+##################################################################
 ### 5. Android ###
 Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();
  
