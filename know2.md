@@ -1,6 +1,6 @@
 ##################################################################
 # Sites #
-### Work
+### Work ###
 ML Gitbooks Edit: bit.ly/2HksKBZ
 ML Gitbooks: https://bit.ly/2HpHlbi
 iOS Virtual Beacon: pntbiz.dothome.co.kr
@@ -11,7 +11,7 @@ ML Kevin Murphy: http://bit.ly/2NvrvCl
 Github Web: https://linked0.github.io/web/, http://bit.ly/2wUbXic
 Know Backup: http://bit.ly/2Mfdzrk
 
-### Blockchain
+### Blockchain ###
 PnT Blockchain 정리:http://bit.ly/2MfVxoU
 Hashing Test: http://bit.ly/2N0Izk7
 Generating Bitcoin Address: https://bitaddress.org
@@ -36,7 +36,7 @@ RBG Color Picker: http://bit.ly/2QgVP24
 
 ##################################################################
 # Command
-### 1. Command
+### 1. Command ###
 find . -iname mainview*
 touch -t "201610041200" timestamp
 find . -type f -newer timestamp
@@ -130,7 +130,7 @@ git push
 sername for 'https://github.com': linked0@gmail.com
 Password for 'https://linked0@gmail.com@github.com': 
 
-### 2. Edit
+### 2. Edit ###
 Visual Studio Code command 실행
 shift-cmd-p -> shell command -> terminal에서 code로 실행
 mac vim
@@ -144,7 +144,7 @@ open -a macvim files
 <ctl-w>gf: open in a new tab
 <c-w> {H,J,K,L}: move among windows
 
-### 3. python
+### 3. python ###
 import requests
 res = requests.get('https://api.github.com/some/endpoint', headers={'user-agent': 'my-app/0.0.1'})
 res = requests.post('http://redmine.pntbiz.com:13000/projects/indoorplus-lbs-sdk/wiki/IOS_Getting_Started', data = {'username':'hjlee','password':'amadeus0'})
@@ -169,11 +169,11 @@ Jupyter Notebook Setting
 %autoreload 2
 %config InlineBackend.figure_format = 'retina'
 
-### 4. ML
+### 4. ML ###
 sudo tensorboard --logdir='my_graph'
 
-### 5. Android
+### 5. Android ###
 Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();
  
-### 6. iOS
+### 6. iOS ###
 Assistant Editor: Opt-Cmd-Ret
