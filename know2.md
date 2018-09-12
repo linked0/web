@@ -180,8 +180,17 @@ Jupyter Notebook Setting
 sudo tensorboard --logdir='my_graph'
 
 ##################################################################
-### 5. Android ###
-Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();
+### 5. Cloud ###
+gcloud compute zones list
+gcloud config set compute/zone <zone>
+gcloud compute instances create ubuntu \
+gcloud compute ssh ubuntu
  
-### 6. iOS ###
+##################################################################
+### 6. Android ###
+Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();
+
+##################################################################
+### 7. iOS ###
 Assistant Editor: Opt-Cmd-Ret
+
