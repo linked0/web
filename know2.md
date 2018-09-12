@@ -187,7 +187,7 @@ gcloud compute instances create ubuntu \
 gcloud compute ssh ubuntu
  
 sudo docker images
-sudo docker pull nginx:1.10.0
+sudo docker pull nginx:1.10.0  // download from repository
 
 ##################################################################
 ### 6. Android ###
