@@ -36,6 +36,7 @@ Algorithms : http://bit.ly/2MelG7v
 Colab Welcome: http://bit.ly/2uhAPOG
 Colab play.ipynb: http://bit.ly/2L6tk4p
 RBG Color Picker: http://bit.ly/2QgVP24
+Kubernets cheat sheet: http://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
 
 ##################################################################
 # Command
@@ -188,6 +189,34 @@ gcloud compute ssh ubuntu
  
 sudo docker images
 sudo docker pull nginx:1.10.0  // download from repository
+sudo docker run -d nginx:1.10.0
+sudo docker inspect f86cf066c304 // f86cf066c304는 Container ID
+sudo docker inspect sharp_bartik // sharp_bartik는 Container Name
+
+* Create Docker Image
+wget https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz
+rm -rf /usr/local/bin/go
+sudo tar -C /usr/local -xzf go1.6.2.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=~/go
+mkdir -p $GOPATH/src/github.com/udacity
+cd $GOPATH/src/github.com/udacity
+git clone https://github.com/udacity/ud615.git
+cd ud615/app/monolith
+go get -u
+go build --tags netgo --ldflags '-extldflags "-lm -lstdc++ -static"'
+
+cat Dockerfile
+sudo docker build -t monolith:1.0.0 .
+sudo docker images monolith:1.0.0
+sudo docker run -d monolith:1.0.0
+sudo docker inspect <container name or cid>
+curl <the container IP>
+
+docker tag -h
+sudo docker tag monolith:1.0.0 linked0/monolith:1.0.0  // my account
+sudo docker login  // https://hub.docker.com/register/
+sudo docker push linked0/example-monolith:1.0.0
 
 ##################################################################
 ### 6. Android ###
