@@ -186,6 +186,9 @@ gcloud config set compute/zone <zone>
 gcloud compute instances create ubuntu \
 gcloud compute ssh ubuntu
  
+sudo docker images
+sudo docker pull nginx:1.10.0
+
 ##################################################################
 ### 6. Android ###
 Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();
