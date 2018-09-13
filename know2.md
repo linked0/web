@@ -150,7 +150,7 @@ find . -type file -name '*.js' -o -name '*.json' > files
 open -a macvim files
 <ctl-w>f: open in a new window
 <ctl-w>gf: open in a new tab
-<c-w> {H,J,K,L}: move among windows
+<c-w> {H,J,K,L}: move among windows, or use arrow key
 
 ##################################################################
 ### 3. python ###
