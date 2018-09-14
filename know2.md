@@ -13,10 +13,19 @@ sudo xcode-select -s /Applications/XCode7.2/Xcode.app/
 To clear the terminal manually: Cmd + K
 ps aux | grep chrome
 
-File Transfer
+export PS1="\W \u$ "
+
+Homebrew: ruby -e "$(curl -fsSL https://bit.ly/1LEgSWs)"
+
+brew/nvm
+brew upgrade node
+nvm node(nodejs) uninstall: nvm uninstall v8.10.0
+
+#### File Transfer
 Download: scp carnd@54.249.240.135:/home/abc/index.html ./
 Upload: scp ./index.html carnd@54.249.240.135:/home/abc/index.html
 
+#### Tar & Zip
 Zip Foler
 tar --exclude='./BLE/.git' -cvzf output_filename.tar.gz folder_name --exclude='./BLE/.git'
 tar -xvzf xxx.tar.gz
@@ -27,59 +36,17 @@ unzip file.zip -d destination_folder
 
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 
-File Upload to Google Drive(https://github.com/prasmussen/gdrive)
+#### File Upload to Google Drive(https://github.com/prasmussen/gdrive)
 poohex id: 0B6E3rj3qrE6NMTRxYU41T1REXzQ
 Install on Mac
 brew install gdrive
 
-Install on Linux
+#### Install on Linux
 cd~
 wget "https://docs.google.com/uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download"
 mv "uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download" gdrive
 chmod +x gdrive
 sudo install gdrive /usr/local/bin/gdrive
-
-gdrive list
-gdrive upload --parent 1u7Gdc1ieGpNYl8trq2RG84wBAKjVk61P eng-math.pdf (upload to poohfiles)
-gdrive download 1pI3oIlne8U--qBmTny0mBvahaiQWVdoY (Download file, You can find id)
-
-Homebrew: ruby -e "$(curl -fsSL https://bit.ly/1LEgSWs)"
-AWS: EC Home -> Launch Instance(Blue Button) -> Select CoreOS on Community AMIS -> Select PV
-google drive Search: jaylee.pem -> chmod 400 jaylee.pem 
-ssh -i ./jaylee.pem core@54.199.65.181 ← CoreOS Instance
-ssh -i jaylee.pem ubuntu@52.192.176.112 ← Ubuntu Instance
-sudo useradd -m linked0 -> sudo passwd linked0
-AWS Installatio on Python Microservice Development Document
-
-brew/nvm
-brew upgrade node
-nvm node(nodejs) uninstall: nvm uninstall v8.10.0
-
-#### Go
-godoc fmt Printf
-godoc cmd/fmt
-godoc -http=:8001
-go build aSourceFile.go
-file aSourceFile
-go run aSourceFile.go ← Build and Run
-go get -v github.com/mactsouk/go/simpleGitHub
-
-Source
-package main 
- 
-import ( 
-    "fmt" 
-    _ "os" 
-) 
-
-import ( 
-    "fmt" 
-    "github.com/mactsouk/go/simpleGitHub" 
-) 
- 
-func main() { 
-    fmt.Println("Hello there!") 
-}
 
 #### Git
 Git 새로 만들기 
@@ -171,12 +138,12 @@ Hangul Character
 sudo tensorboard --logdir='my_graph'
 
 ##################################################################
-### 5. Cloud ###
+### 5. Cloud/gdrive ###
 gcloud compute zones list
 gcloud config set compute/zone <zone>
 gcloud compute instances create ubuntu \
 gcloud compute ssh ubuntu
- 
+
 sudo docker images
 sudo docker pull nginx:1.10.0  // download from repository
 sudo docker run -d nginx:1.10.0
@@ -208,9 +175,20 @@ sudo docker tag monolith:1.0.0 linked0/monolith:1.0.0  // my account
 sudo docker login  // https://hub.docker.com/register/
 sudo docker push linked0/example-monolith:1.0.0
 
+#### gdrive list
+gdrive upload --parent 1u7Gdc1ieGpNYl8trq2RG84wBAKjVk61P eng-math.pdf (upload to poohfiles)
+gdrive download 1pI3oIlne8U--qBmTny0mBvahaiQWVdoY (Download file, You can find id)
+
 #### EC2
 sudo ssh -i ~/google/poohfiles/jaylee.pem core@ec2-54-95-222-147.ap-northeast-1.compute.amazonaws.com
 docker run -d -p 80:80 p0bailey/docker-flask 
+
+AWS: EC Home -> Launch Instance(Blue Button) -> Select CoreOS on Community AMIS -> Select PV
+google drive Search: jaylee.pem -> chmod 400 jaylee.pem 
+ssh -i ./jaylee.pem core@54.199.65.181 ← CoreOS Instance
+ssh -i jaylee.pem ubuntu@52.192.176.112 ← Ubuntu Instance
+sudo useradd -m linked0 -> sudo passwd linked0
+AWS Installatio on Python Microservice Development Document
 
 ##################################################################
 ### 6. Android ###
@@ -221,7 +199,33 @@ Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();
 Assistant Editor: Opt-Cmd-Ret
 
 ##################################################################
-### 7. Java/C ###
+### 7. Java/C/Go ###
+#### Go
+godoc fmt Printf
+godoc cmd/fmt
+godoc -http=:8001
+go build aSourceFile.go
+file aSourceFile
+go run aSourceFile.go ← Build and Run
+go get -v github.com/mactsouk/go/simpleGitHub
+
+Source
+package main 
+ 
+import ( 
+    "fmt" 
+    _ "os" 
+) 
+
+import ( 
+    "fmt" 
+    "github.com/mactsouk/go/simpleGitHub" 
+) 
+ 
+func main() { 
+    fmt.Println("Hello there!") 
+}
+
 #### Java
 * Run jar with folder name for class(ex.FirstMDP)
 user$ java -cp ./target/classes:/Users/user/.m2/repository/edu/brown/cs/burlap/burlap/3.0.0/burlap-3.0.0.jar FirstMDP
