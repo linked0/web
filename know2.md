@@ -1,44 +1,4 @@
-##################################################################
-# Sites #
-##################################################################
-### Work ###
-ML Gitbooks Edit: bit.ly/2HksKBZ
-ML Gitbooks: https://bit.ly/2HpHlbi
-iOS Virtual Beacon: pntbiz.dothome.co.kr
-Android Guide: https://bit.ly/2MH6SzY
-Reinforcement Learning Cheatsheet: http://bit.ly/2KQSdE6
-Reinforcement Learning: An Introduction 2nd: http://bit.ly/2wVHn6V
-ML Kevin Murphy: http://bit.ly/2NvrvCl
-Github Web: https://linked0.github.io/web/, http://bit.ly/2wUbXic
-Know Backup: http://bit.ly/2Mfdzrk
 
-##################################################################
-### Blockchain ###
-PnT Blockchain 정리:http://bit.ly/2MfVxoU
-Hashing Test: http://bit.ly/2N0Izk7
-Generating Bitcoin Address: https://bitaddress.org
-Litecoin Github:  http://bit.ly/2N3LEQM
-Bitcoin Github: https://github.com/bitcoin/bitcoin
-BlockCypher Block Explorer(Testnet): http://bit.ly/2Qeryky
-Bitcoin Wiki, APIs: http://bit.ly/2oQ9il3
-Test Bitcoin Command: https://bit.ly/2wvlZp1
-
-##################################################################
-### Tools ###
-Exercise: http://bit.ly/2NZEmda
-Site Clunch: http://bit.ly/2wVdqUD
-Game Software: http://bit.ly/2oUEAHC
-http://regexr.com/
-http://jsonviewer.stack.hu/
-Json Viewer: http://rextester.com/
-Web/JavaScript Test: https://bit.ly/2I3kiTr
-Algorithms : http://bit.ly/2MelG7v
-Colab Welcome: http://bit.ly/2uhAPOG
-Colab play.ipynb: http://bit.ly/2L6tk4p
-RBG Color Picker: http://bit.ly/2QgVP24
-Kubernets cheat sheet: http://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
-
-Postman, Test Web API: https://www.getpostman.com/
 
 ##################################################################
 # Command
@@ -95,7 +55,7 @@ brew/nvm
 brew upgrade node
 nvm node(nodejs) uninstall: nvm uninstall v8.10.0
 
-Go
+#### Go
 godoc fmt Printf
 godoc cmd/fmt
 godoc -http=:8001
@@ -111,12 +71,17 @@ import (
     "fmt" 
     _ "os" 
 ) 
+
+import ( 
+    "fmt" 
+    "github.com/mactsouk/go/simpleGitHub" 
+) 
  
 func main() { 
     fmt.Println("Hello there!") 
 }
 
-Git
+#### Git
 Git 새로 만들기 
 echo "# dlnd-deep-learning" >> README.md
 git init
@@ -152,6 +117,10 @@ open -a macvim files
 <ctl-w>gf: open in a new tab
 <c-w> {H,J,K,L}: move among windows, or use arrow key
 
+set softtabstop=4       ; TAB키를 눌렀을때 몇 칸을 이동?
+set tabstop=4           ; 하나의 TAB을 몇 칸으로 인식? 
+set number		            ;  Line Number
+
 ##################################################################
 ### 3. python ###
 import requests
@@ -171,12 +140,31 @@ cv2로 읽어줘도 됨
 img = cv2.imread('images/space_background.jpg')
 img = cv2.cvtColor(background_image, cv2.COLOR_BGR2RGB)
 Jupyter Notebook Setting
-#플로팅을 하는 하나의 셀마다 써주는게 좋음. 그래야, 계속 실행시켜도 이전 것이 지워짐.
+
+#### 플로팅을 하는 하나의 셀마다 써주는게 좋음. 그래야, 계속 실행시켜도 이전 것이 지워짐.
 %matplotlib inline
 %config InlineBackend.close_figures=False
 %load_ext autoreload			
 %autoreload 2
 %config InlineBackend.figure_format = 'retina'
+
+#### pandas & numpy
+import pandas as pd
+pd.set_option('display.height', 1000)
+pd.set_option('display.max_rows', 500)
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', 150)
+np.set_printoptions(linewidth=1000)
+
+```
+Hangul Character
+# -*- coding: utf-8 -*-
+```
+
+#### Flask
+(py36kaggle) kaggle-web hyunjaelee$ export FLASK_APP=app.py
+(py36kaggle) kaggle-web hyunjaelee$ export FLASK_DEBUG=1
+(py36kaggle) kaggle-web hyunjaelee$ flask run
 
 ##################################################################
 ### 4. ML ###
@@ -195,7 +183,7 @@ sudo docker run -d nginx:1.10.0
 sudo docker inspect f86cf066c304 // f86cf066c304는 Container ID
 sudo docker inspect sharp_bartik // sharp_bartik는 Container Name
 
-* Create Docker Image
+#### Create Docker Image
 wget https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz
 rm -rf /usr/local/bin/go
 sudo tar -C /usr/local -xzf go1.6.2.linux-amd64.tar.gz
@@ -220,6 +208,10 @@ sudo docker tag monolith:1.0.0 linked0/monolith:1.0.0  // my account
 sudo docker login  // https://hub.docker.com/register/
 sudo docker push linked0/example-monolith:1.0.0
 
+#### EC2
+sudo ssh -i ~/google/poohfiles/jaylee.pem core@ec2-54-95-222-147.ap-northeast-1.compute.amazonaws.com
+docker run -d -p 80:80 p0bailey/docker-flask 
+
 ##################################################################
 ### 6. Android ###
 Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();
@@ -228,3 +220,114 @@ Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();
 ### 7. iOS ###
 Assistant Editor: Opt-Cmd-Ret
 
+##################################################################
+### 7. Java/C ###
+#### Java
+* Run jar with folder name for class(ex.FirstMDP)
+user$ java -cp ./target/classes:/Users/user/.m2/repository/edu/brown/cs/burlap/burlap/3.0.0/burlap-3.0.0.jar FirstMDP
+
+* Compile
+javac -cp ./algs4/algs4.jar BinarySearchST.java
+java -cp .:./algs4/algs4.jar BinarySearchST < tinyST.txt
+java -Xmx1024m <- VM의 Heap을 늘려주기
+
+export JCP=".:~/libjava/stdlib.jar:~/libjava/algs4.jar:~/libjava/utils.jar"
+javac -cp $JCP DoublingTest.java 
+
+* Run
+java -jar jython_installer-2.7.0.jar
+
+* Jar Making
+jar -cvmf manifest.txt utils.jar ./utils/*.class
+jar tvf stdlib.jar <- 구조보기 
+
+We first create a text file named Manifest.txt with the following contents:
+Main-Class: MyPackage.MyClass
+
+Warning: The text file must end with a new line or carriage return. The last line will not be parsed properly if it does not end with a new line or carriage return.
+
+* JDK Home
+~ jay$ /usr/libexec/java_home
+/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
+
+#### C
+user$ vi test.cpp
+user$ g++ test.cpp
+user$ a.out
+-bash: a.out: command not found
+user$ ./a.out
+
+##################################################################
+### 8. etc ###
+* Violent Monkey
+YonseiSv
+// ==UserScript==
+// @name YonseiSv
+// @namespace https://wms-sev.iseverance.com
+// @grant none
+// ==/UserScript==
+$(".navbar").height(30);
+$(".navbar-branding").height(30);
+$(".nav").height(30);
+$(".dropdown").height(30);
+$(".dropdown-toggle").height(30);
+
+topBar = document.getElementById("topbar")
+topBar.style.padding = "0px"
+topBar.style.minHeight = "30px"
+
+var utilBtn = document.createElement("BUTTON");        // Create a <button> element
+var t = document.createTextNode("Clear");       // Create a text node
+utilBtn.appendChild(t);                                // Append the text to <button>
+utilBtn.addEventListener("click", function(){
+    pntmap.getObjectManager().findTag('node.beacon', function(marker) { marker.setLabelText(String(marker.getData().get('nodeName'))); } )
+});
+topBar.appendChild(utilBtn);  
+
+
+pntmap.on('vmarker.rightclick', function(evt) {
+alert('hello')
+};);
+
+
+##################################################################
+# Sites #
+##################################################################
+### Work ###
+ML Gitbooks Edit: bit.ly/2HksKBZ
+ML Gitbooks: https://bit.ly/2HpHlbi
+iOS Virtual Beacon: pntbiz.dothome.co.kr
+Android Guide: https://bit.ly/2MH6SzY
+Reinforcement Learning Cheatsheet: http://bit.ly/2KQSdE6
+Reinforcement Learning: An Introduction 2nd: http://bit.ly/2wVHn6V
+ML Kevin Murphy: http://bit.ly/2NvrvCl
+Github Web: https://linked0.github.io/web/, http://bit.ly/2wUbXic
+Know Backup: http://bit.ly/2Mfdzrk
+
+##################################################################
+### Blockchain ###
+PnT Blockchain 정리:http://bit.ly/2MfVxoU
+Hashing Test: http://bit.ly/2N0Izk7
+Generating Bitcoin Address: https://bitaddress.org
+Litecoin Github:  http://bit.ly/2N3LEQM
+Bitcoin Github: https://github.com/bitcoin/bitcoin
+BlockCypher Block Explorer(Testnet): http://bit.ly/2Qeryky
+Bitcoin Wiki, APIs: http://bit.ly/2oQ9il3
+Test Bitcoin Command: https://bit.ly/2wvlZp1
+
+##################################################################
+### Tools ###
+Exercise: http://bit.ly/2NZEmda
+Site Clunch: http://bit.ly/2wVdqUD
+Game Software: http://bit.ly/2oUEAHC
+http://regexr.com/
+http://jsonviewer.stack.hu/
+Json Viewer: http://rextester.com/
+Web/JavaScript Test: https://bit.ly/2I3kiTr
+Algorithms : http://bit.ly/2MelG7v
+Colab Welcome: http://bit.ly/2uhAPOG
+Colab play.ipynb: http://bit.ly/2L6tk4p
+RBG Color Picker: http://bit.ly/2QgVP24
+Kubernets cheat sheet: http://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
+
+Postman, Test Web API: https://www.getpostman.com/
