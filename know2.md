@@ -70,7 +70,7 @@ sername for 'https://github.com': linked0@gmail.com
 Password for 'https://linked0@gmail.com@github.com': 
 
 ##################################################################
-### 2. Edit ###
+### 2. Edit/Vi ###
 Visual Studio Code command 실행
 shift-cmd-p -> shell command -> terminal에서 code로 실행
 mac vim
@@ -79,6 +79,7 @@ xcode-select install
 sudo xcode-select --switch /Library/Developer/CommandLineTools
 find ./ -type f > files
 find . -type file -name '*.js' -o -name '*.json' > files
+find . -type f -not -path './node_modules/*' -not -path './chaindata/*' > files
 open -a macvim files
 <ctl-w>f: open in a new window
 <ctl-w>gf: open in a new tab
