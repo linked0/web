@@ -88,6 +88,7 @@ open -a macvim files
 set softtabstop=4       ; TAB키를 눌렀을때 몇 칸을 이동?
 set tabstop=4           ; 하나의 TAB을 몇 칸으로 인식? 
 set number		            ;  Line Number
+set mouse=a             ; Adjust area with mouse
 
 ##################################################################
 ### 3. python ###
