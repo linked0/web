@@ -85,7 +85,8 @@ open -a macvim files
 <ctl-w>gf: open in a new tab
 <c-w> {H,J,K,L}: move among windows, or use arrow key
 
-:! wc                   ; sh command in vi
+"*yy           ; copt from vi 
+:! wc          ; sh command in vi
 
 set softtabstop=4       ; TAB키를 눌렀을때 몇 칸을 이동?
 set tabstop=4           ; 하나의 TAB을 몇 칸으로 인식? 
