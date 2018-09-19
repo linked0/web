@@ -350,3 +350,4 @@ RBG Color Picker: http://bit.ly/2QgVP24
 Kubernets cheat sheet: http://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
 
 Postman, Test Web API: https://www.getpostman.com/
+ASCII to text converter: www.unit-conversion.info/texttools/ascii/
