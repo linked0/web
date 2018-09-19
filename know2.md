@@ -334,6 +334,12 @@ BlockCypher Block Explorer(Testnet): http://bit.ly/2Qeryky
 Bitcoin Wiki, APIs: http://bit.ly/2oQ9il3
 Test Bitcoin Command: https://bit.ly/2wvlZp1
 
+#### Blockchain Tools used in Udacity Blockchain
+Postman, Test Web API: https://www.getpostman.com/
+ASCII to text converter: www.unit-conversion.info/texttools/ascii/
+Hex encode: www.convertstring.com/EncodeDecode/HexEncode
+Base64 Encode: https://www.base64encode.org
+
 #########################################
 ### Tools ###
 Exercise: http://bit.ly/2NZEmda
@@ -349,8 +355,5 @@ Colab play.ipynb: http://bit.ly/2L6tk4p
 RBG Color Picker: http://bit.ly/2QgVP24
 Kubernets cheat sheet: http://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
 
-Postman, Test Web API: https://www.getpostman.com/
-ASCII to text converter: www.unit-conversion.info/texttools/ascii/
-Hex encode: www.convertstring.com/EncodeDecode/HexEncode
-Base64 Encode: https://www.base64encode.org
+
 
