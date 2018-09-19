@@ -144,7 +144,24 @@ Hangul Character
 sudo tensorboard --logdir='my_graph'
 
 #########################################
-### 5. Cloud/gdrive ###
+### 5. Blockchain ###
+
+#### Encode/Decode
+Encode and Decode Text from Terminal
+String to hex: xxd -p <<< "Blockchain Developer"
+Hex to string: echo 426c6f636b636861696e20446576656c6f7065720a|xxd -r -p
+
+Encode and Decode Text from Terminal Using Files
+Create file: touch hello.txt
+String to Hex: xxd -p hello.txt helloEncoded.txt
+Hex to String: xxd -p -r helloEncoded.txt helloDecoded.txt
+
+Encode and Decode Image from Terminal Using Files
+Image to Hex: xxd -p cat.png cat.txt
+Hex to Image: xxd -p -r cat.txt catDecoded.png
+
+#########################################
+### 6. Cloud/gdrive ###
 gcloud compute zones list
 gcloud config set compute/zone <zone>
 gcloud compute instances create ubuntu \
@@ -202,11 +219,9 @@ sudo useradd -m linked0 -> sudo passwd linked0
 AWS Installatio on Python Microservice Development Document
 
 #########################################
-### 6. Android ###
+### 6. Android/iOS ###
 Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();
 
-#########################################
-### 7. iOS ###
 Assistant Editor: Opt-Cmd-Ret
 
 #########################################
