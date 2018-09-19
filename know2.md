@@ -1,8 +1,9 @@
 
 
-##################################################################
+#########################################
 # Command
-##################################################################
+#########################################
+
 ### 1. Command ###
 find . -iname mainview*
 touch -t "201610041200" timestamp
@@ -69,7 +70,7 @@ git push
 sername for 'https://github.com': linked0@gmail.com
 Password for 'https://linked0@gmail.com@github.com': 
 
-##################################################################
+#########################################
 ### 2. Edit/Vi ###
 Visual Studio Code command 실행
 shift-cmd-p -> shell command -> terminal에서 code로 실행
@@ -93,7 +94,7 @@ set tabstop=4           ; 하나의 TAB을 몇 칸으로 인식?
 set number		            ;  Line Number
 set mouse=a             ; Adjust area with mouse
 
-##################################################################
+#########################################
 ### 3. python ###
 import requests
 res = requests.get('https://api.github.com/some/endpoint', headers={'user-agent': 'my-app/0.0.1'})
@@ -138,11 +139,11 @@ Hangul Character
 (py36kaggle) kaggle-web hyunjaelee$ export FLASK_DEBUG=1
 (py36kaggle) kaggle-web hyunjaelee$ flask run
 
-##################################################################
+#########################################
 ### 4. ML ###
 sudo tensorboard --logdir='my_graph'
 
-##################################################################
+#########################################
 ### 5. Cloud/gdrive ###
 gcloud compute zones list
 gcloud config set compute/zone <zone>
@@ -200,15 +201,15 @@ ssh -i jaylee.pem ubuntu@52.192.176.112 ← Ubuntu Instance
 sudo useradd -m linked0 -> sudo passwd linked0
 AWS Installatio on Python Microservice Development Document
 
-##################################################################
+#########################################
 ### 6. Android ###
 Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();
 
-##################################################################
+#########################################
 ### 7. iOS ###
 Assistant Editor: Opt-Cmd-Ret
 
-##################################################################
+#########################################
 ### 7. Java/C/Go ###
 #### Go
 godoc fmt Printf
@@ -271,7 +272,7 @@ user$ a.out
 -bash: a.out: command not found
 user$ ./a.out
 
-##################################################################
+#########################################
 ### 8. etc ###
 * Violent Monkey
 YonseiSv
@@ -304,10 +305,11 @@ alert('hello')
 };);
 
 
-##################################################################
+#########################################
 # Sites #
+#########################################
 2EPirzQ, 2NuH39j, 2HksKBZ/2HpHlbi, 2CSmksh, 2CUQTgS
-##################################################################
+
 ### Work ###
 Woojin Know: bit.ly/2CSmksh
 ML Gitbooks Edit: bit.ly/2HksKBZ
@@ -320,7 +322,7 @@ ML Kevin Murphy: http://bit.ly/2NvrvCl
 Github Web: https://linked0.github.io/web/, http://bit.ly/2wUbXic
 Know Backup: http://bit.ly/2Mfdzrk
 
-##################################################################
+#########################################
 ### Blockchain ###
 Hyperledger Readthedocs: http://bit.ly/2CUQTgS
 PnT Blockchain: http://bit.ly/2MfVxoU
@@ -332,7 +334,7 @@ BlockCypher Block Explorer(Testnet): http://bit.ly/2Qeryky
 Bitcoin Wiki, APIs: http://bit.ly/2oQ9il3
 Test Bitcoin Command: https://bit.ly/2wvlZp1
 
-##################################################################
+#########################################
 ### Tools ###
 Exercise: http://bit.ly/2NZEmda
 Site Clunch: http://bit.ly/2wVdqUD
