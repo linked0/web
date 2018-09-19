@@ -351,3 +351,6 @@ Kubernets cheat sheet: http://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
 
 Postman, Test Web API: https://www.getpostman.com/
 ASCII to text converter: www.unit-conversion.info/texttools/ascii/
+Hex encode: www.convertstring.com/EncodeDecode/HexEncode
+Base64 Encode: https://www.base64encode.org
+
