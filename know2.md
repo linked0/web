@@ -180,6 +180,11 @@ sudo docker tag monolith:1.0.0 linked0/monolith:1.0.0  // my account
 sudo docker login  // https://hub.docker.com/register/
 sudo docker push linked0/example-monolith:1.0.0
 
+#### Kill & Remove Docker Container
+docker kill $(docker ps -q)
+docker rm $(docker ps -aq)
+docker rmi $(docker images dev-* -q)
+
 #### gdrive list
 gdrive upload --parent 1u7Gdc1ieGpNYl8trq2RG84wBAKjVk61P eng-math.pdf (upload to poohfiles)
 gdrive download 1pI3oIlne8U--qBmTny0mBvahaiQWVdoY (Download file, You can find id)
