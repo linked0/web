@@ -343,6 +343,8 @@ Know Backup: http://bit.ly/2Mfdzrk
 #########################################
 ### Blockchain ###
 Hyperledger Readthedocs: http://bit.ly/2CUQTgS
+IBM Hyperledger Composer: https://bit.ly/2PSqLF8
+
 PnT Blockchain: http://bit.ly/2MfVxoU
 Hashing Test: http://bit.ly/2N0Izk7
 Generating Bitcoin Address: https://bitaddress.org
