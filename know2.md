@@ -95,56 +95,11 @@ set number		            ;  Line Number
 set mouse=a             ; Adjust area with mouse
 
 #########################################
-### 3. python ###
-import requests
-res = requests.get('https://api.github.com/some/endpoint', headers={'user-agent': 'my-app/0.0.1'})
-res = requests.post('http://redmine.pntbiz.com:13000/projects/indoorplus-lbs-sdk/wiki/IOS_Getting_Started', data = {'username':'hjlee','password':'amadeus0'})
-conda create -n autobuild python=3.6
-conda create -n py3conda python=3.6 anaconda <=이게 anaconda를 관련 패키지를 다 설치해준다.
-python3 -c 'import numpy as np; np.save("res", "hello"+"\n")'
-python3 -c 'import pyperclip as pc; pc.copy("hello")'
-python3 -c 'import tensorflow; print(tensorflow.__version__)'
-image show
-import matplotlib.image as mpimg
-sun = mpimg.imread('images/sunflower.jpg')
-plt.imshow(sun)
-gray인 경우, plt.imshow(sun_gray, cmap='gray')
-cv2로 읽어줘도 됨
-img = cv2.imread('images/space_background.jpg')
-img = cv2.cvtColor(background_image, cv2.COLOR_BGR2RGB)
-Jupyter Notebook Setting
-
-#### 플로팅을 하는 하나의 셀마다 써주는게 좋음. 그래야, 계속 실행시켜도 이전 것이 지워짐.
-%matplotlib inline
-%config InlineBackend.close_figures=False
-%load_ext autoreload			
-%autoreload 2
-%config InlineBackend.figure_format = 'retina'
-
-#### pandas & numpy
-import pandas as pd
-pd.set_option('display.height', 1000)
-pd.set_option('display.max_rows', 500)
-pd.set_option('display.max_columns', 500)
-pd.set_option('display.width', 150)
-np.set_printoptions(linewidth=1000)
-
-```
-Hangul Character
-# -*- coding: utf-8 -*-
-```
-
-#### Flask
-(py36kaggle) kaggle-web hyunjaelee$ export FLASK_APP=app.py
-(py36kaggle) kaggle-web hyunjaelee$ export FLASK_DEBUG=1
-(py36kaggle) kaggle-web hyunjaelee$ flask run
-
-#########################################
-### 4. ML ###
+### 3. ML ###
 sudo tensorboard --logdir='my_graph'
 
 #########################################
-### 5. Blockchain ###
+### 4. Blockchain ###
 
 #### Encode/Decode
 Encode and Decode Text from Terminal
@@ -161,7 +116,7 @@ Image to Hex: xxd -p cat.png cat.txt
 Hex to Image: xxd -p -r cat.txt catDecoded.png
 
 #########################################
-### 6. Cloud/gdrive ###
+### 5. Cloud/gdrive ###
 gcloud compute zones list
 gcloud config set compute/zone <zone>
 gcloud compute instances create ubuntu \
@@ -219,13 +174,58 @@ sudo useradd -m linked0 -> sudo passwd linked0
 AWS Installatio on Python Microservice Development Document
 
 #########################################
-### 6. Android/iOS ###
+### 6. python ###
+import requests
+res = requests.get('https://api.github.com/some/endpoint', headers={'user-agent': 'my-app/0.0.1'})
+res = requests.post('http://redmine.pntbiz.com:13000/projects/indoorplus-lbs-sdk/wiki/IOS_Getting_Started', data = {'username':'hjlee','password':'amadeus0'})
+conda create -n autobuild python=3.6
+conda create -n py3conda python=3.6 anaconda <=이게 anaconda를 관련 패키지를 다 설치해준다.
+python3 -c 'import numpy as np; np.save("res", "hello"+"\n")'
+python3 -c 'import pyperclip as pc; pc.copy("hello")'
+python3 -c 'import tensorflow; print(tensorflow.__version__)'
+image show
+import matplotlib.image as mpimg
+sun = mpimg.imread('images/sunflower.jpg')
+plt.imshow(sun)
+gray인 경우, plt.imshow(sun_gray, cmap='gray')
+cv2로 읽어줘도 됨
+img = cv2.imread('images/space_background.jpg')
+img = cv2.cvtColor(background_image, cv2.COLOR_BGR2RGB)
+Jupyter Notebook Setting
+
+#### 플로팅을 하는 하나의 셀마다 써주는게 좋음. 그래야, 계속 실행시켜도 이전 것이 지워짐.
+%matplotlib inline
+%config InlineBackend.close_figures=False
+%load_ext autoreload			
+%autoreload 2
+%config InlineBackend.figure_format = 'retina'
+
+#### pandas & numpy
+import pandas as pd
+pd.set_option('display.height', 1000)
+pd.set_option('display.max_rows', 500)
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', 150)
+np.set_printoptions(linewidth=1000)
+
+```
+Hangul Character
+# -*- coding: utf-8 -*-
+```
+
+#### Flask
+(py36kaggle) kaggle-web hyunjaelee$ export FLASK_APP=app.py
+(py36kaggle) kaggle-web hyunjaelee$ export FLASK_DEBUG=1
+(py36kaggle) kaggle-web hyunjaelee$ flask run
+
+#########################################
+### 7. Android/iOS ###
 Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();
 
 Assistant Editor: Opt-Cmd-Ret
 
 #########################################
-### 7. Java/C/Go ###
+### 8. Java/C/Go ###
 #### Go
 godoc fmt Printf
 godoc cmd/fmt
@@ -288,7 +288,10 @@ user$ a.out
 user$ ./a.out
 
 #########################################
-### 8. etc ###
+### 9. Not Defined ###
+
+#########################################
+### 10. etc ###
 * Violent Monkey
 YonseiSv
 // ==UserScript==
