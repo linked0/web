@@ -358,6 +358,14 @@ Poex.io Demo: http://poex.io/
 Blockchain Explorer: https://www.blockchain.com/explorer
 
 #########################################
+### ML/Data Science ###
+Data is Beautiful: https://www.reddit.com/r/dataisbeautiful/
+Kaggle:https://www.kaggle.com/datasets
+The Pudding:https://pudding.cool/
+FiveThirtyEight:https://fivethirtyeight.com/
+Towards Data Science:https://towardsdatascience.com/
+
+#########################################
 ### Tools ###
 Exercise: http://bit.ly/2NZEmda
 Site Clunch: http://bit.ly/2wVdqUD
