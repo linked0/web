@@ -22,6 +22,10 @@ brew/nvm
 brew upgrade node
 nvm node(nodejs) uninstall: nvm uninstall v8.10.0
 
+#### curl
+curl http://localhost:8999/block/10
+curl -X POST -H "Content-Type: application/json" -d '{"body": "New Test Block 27th September"}' http://localhost:8999/block
+
 #### File Transfer
 Download: scp carnd@54.249.240.135:/home/abc/index.html ./
 Upload: scp ./index.html carnd@54.249.240.135:/home/abc/index.html
