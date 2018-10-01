@@ -163,6 +163,15 @@ docker rm $(docker ps -aq)
 docker rmi $(docker images dev-* -q)
 
 #### gdrive list
+brew install gdrive <-- Mac
+
+cd ~    <-- Linux
+wget http://bit.ly/2zHIlGx
+mv uc\?id\=0B3X9GlR6EmbnWksyTEtCM0VfaFE gdrive
+chmod +x gdrive
+sudo install gdrive /usr/local/bin/gdrive
+gdrive list
+
 gdrive upload --parent 1u7Gdc1ieGpNYl8trq2RG84wBAKjVk61P eng-math.pdf (upload to poohfiles)
 gdrive download 1pI3oIlne8U--qBmTny0mBvahaiQWVdoY (Download file, You can find id)
 
