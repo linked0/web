@@ -1,8 +1,8 @@
 
 
-#########################################
-# Command
-#########################################
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@ Command
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 ### 1. Command ###
 find . -iname mainview*
@@ -76,6 +76,7 @@ Password for 'https://linked0@gmail.com@github.com':
 
 #########################################
 ### 2. Edit/Vi ###
+#########################################
 Visual Studio Code command 실행
 shift-cmd-p -> shell command -> terminal에서 code로 실행
 mac vim
@@ -100,10 +101,12 @@ set mouse=a             ; Adjust area with mouse
 
 #########################################
 ### 3. ML ###
+#########################################
 sudo tensorboard --logdir='my_graph'
 
 #########################################
 ### 4. Blockchain ###
+#########################################
 
 #### Encode/Decode
 Encode and Decode Text from Terminal
@@ -121,6 +124,7 @@ Hex to Image: xxd -p -r cat.txt catDecoded.png
 
 #########################################
 ### 5. Cloud/gdrive ###
+#########################################
 gcloud compute zones list
 gcloud config set compute/zone <zone>
 gcloud compute instances create ubuntu \
@@ -188,6 +192,7 @@ AWS Installatio on Python Microservice Development Document
 
 #########################################
 ### 6. python ###
+#########################################
 import requests
 res = requests.get('https://api.github.com/some/endpoint', headers={'user-agent': 'my-app/0.0.1'})
 res = requests.post('http://redmine.pntbiz.com:13000/projects/indoorplus-lbs-sdk/wiki/IOS_Getting_Started', data = {'username':'hjlee','password':'amadeus0'})
@@ -233,6 +238,7 @@ Hangul Character
 
 #########################################
 ### 7. Android/iOS ###
+#########################################
 Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();
 
 Assistant Editor: Opt-Cmd-Ret
@@ -302,9 +308,11 @@ user$ ./a.out
 
 #########################################
 ### 9. Not Defined ###
+#########################################
 
 #########################################
 ### 10. etc ###
+#########################################
 * Violent Monkey
 YonseiSv
 // ==UserScript==
@@ -336,9 +344,9 @@ alert('hello')
 };);
 
 
-#########################################
-# Sites #
-#########################################
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@ Sites
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 2EPirzQ, 2NuH39j, 2HksKBZ/2HpHlbi, 2CSmksh, 2CUQTgS
 
 ### Work ###
@@ -355,6 +363,7 @@ Know Backup: http://bit.ly/2Mfdzrk
 
 #########################################
 ### Blockchain ###
+#########################################
 Hyperledger Readthedocs: http://bit.ly/2CUQTgS
 IBM Hyperledger Composer: https://bit.ly/2PSqLF8
 IBM Composer Article: ibm.co/2Doj8F4
@@ -378,6 +387,7 @@ Blockchain Explorer: https://www.blockchain.com/explorer
 
 #########################################
 ### ML/Data Science ###
+#########################################
 Data is Beautiful: https://www.reddit.com/r/dataisbeautiful/
 Kaggle:https://www.kaggle.com/datasets
 The Pudding:https://pudding.cool/
@@ -386,6 +396,7 @@ Towards Data Science:https://towardsdatascience.com/
 
 #########################################
 ### Tools ###
+#########################################
 http://regexr.com/
 http://jsonviewer.stack.hu/
 Json Viewer: http://rextester.com/
