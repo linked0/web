@@ -124,9 +124,15 @@ Hex to Image: xxd -p -r cat.txt catDecoded.png
 sudo tensorboard --logdir='my_graph'
 
 #### Google Colaboration ####
-- Colab에 접속해서 바로 Github의 코드를 바로 열 수 있음.
+* Colab에 접속해서 바로 Github의 코드를 바로 열 수 있음.
     - colab.research.google.com에 접속
     - github 탭을 누르기
+    
+* google drive 접속
+from google.colab import drive
+drive.mount('/content/drive')
+!ln -s  'drive/My Drive' mydrive
+!ls mydrive
 
 
 #########################################
