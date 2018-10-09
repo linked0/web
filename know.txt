@@ -101,12 +101,7 @@ set number		            ;  Line Number
 set mouse=a             ; Adjust area with mouse
 
 #########################################
-### 3. ML ###
-#########################################
-sudo tensorboard --logdir='my_graph'
-
-#########################################
-### 4. Blockchain ###
+### 3. Blockchain ###
 #########################################
 
 #### Encode/Decode
@@ -122,6 +117,17 @@ Hex to String: xxd -p -r helloEncoded.txt helloDecoded.txt
 Encode and Decode Image from Terminal Using Files
 Image to Hex: xxd -p cat.png cat.txt
 Hex to Image: xxd -p -r cat.txt catDecoded.png
+
+#########################################
+### 4. ML/Colab ###
+#########################################
+sudo tensorboard --logdir='my_graph'
+
+#### Google Colaboration ####
+- Colab에 접속해서 바로 Github의 코드를 바로 열 수 있음.
+    - colab.research.google.com에 접속
+    - github 탭을 누르기
+
 
 #########################################
 ### 5. Cloud/gdrive ###
