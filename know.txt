@@ -184,7 +184,7 @@ brew install gdrive <-- Mac
 
 cd ~    <-- Linux
 wget http://bit.ly/2zHIlGx
-mv uc\?id\=0B3X9GlR6EmbnWksyTEtCM0VfaFE gdrive
+mv 2zHIlGx gdrive <-- mv uc\?id\=0B3X9GlR6EmbnWksyTEtCM0VfaFE gdrive
 chmod +x gdrive
 sudo install gdrive /usr/local/bin/gdrive
 gdrive list
