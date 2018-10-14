@@ -1,5 +1,8 @@
 ### 중요 ###
-2NuH39j, 2HksKBZ/2HpHlbi, 2CSmksh, 2CUQTgS
+2NuH39j, 2HksKBZ/2HpHlbi
+Woojin know: 2CSmksh
+Hyperledger Readthedocs: 2CUQTgS
+2MfVxoU: PnT Blockchain
 
 #########################################
 ### Work ###
