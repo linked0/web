@@ -319,7 +319,52 @@ user$ ./a.out
 #########################################
 ### 10. etc ###
 #########################################
-* Violent Monkey
+
+#### Sail 설치
+sails new test-project 
+cd test-project 
+sails lift 
+sails generate static 
+sails generate api video
+
+#### Hapi 사용
+'use strict'; 
+ 
+const Hapi=require('hapi'); 
+ 
+// Create a server with a host and port 
+const server=Hapi.server({ 
+    host:'localhost', 
+    port:8000 
+}); 
+ 
+// Add the route 
+server.route({ 
+    method:'GET', 
+    path:'/hello', 
+    handler:function(request,h) { 
+ 
+        return'hello world'; 
+    } 
+}); 
+ 
+// Start the server 
+async function start() { 
+ 
+    try { 
+        await server.start(); 
+    } 
+    catch (err) { 
+        console.log(err); 
+        process.exit(1); 
+    } 
+ 
+    console.log('Server running at:', server.info.uri); 
+}; 
+ 
+start(); 
+
+#### Violent Monkey
 YonseiSv
 // ==UserScript==
 // @name YonseiSv
@@ -348,79 +393,4 @@ topBar.appendChild(utilBtn);
 pntmap.on('vmarker.rightclick', function(evt) {
 alert('hello')
 };);
-
-
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@  Sites
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-2EPirzQ, 2NuH39j, 2HksKBZ/2HpHlbi, 2CSmksh, 2CUQTgS
-
-### Work ###
-Woojin Know: bit.ly/2CSmksh
-ML Gitbooks Edit: bit.ly/2HksKBZ
-ML Gitbooks: https://bit.ly/2HpHlbi
-iOS Virtual Beacon: pntbiz.dothome.co.kr
-Android Guide: https://bit.ly/2MH6SzY
-Reinforcement Learning Cheatsheet: http://bit.ly/2KQSdE6
-Reinforcement Learning: An Introduction 2nd: http://bit.ly/2wVHn6V
-ML Kevin Murphy: http://bit.ly/2NvrvCl
-Github Web: https://linked0.github.io/web/, http://bit.ly/2wUbXic
-Know Backup: http://bit.ly/2Mfdzrk
-
-#########################################
-### Blockchain ###
-#########################################
-Hyperledger Readthedocs: http://bit.ly/2CUQTgS
-IBM Hyperledger Composer: https://bit.ly/2PSqLF8
-IBM Composer Article: ibm.co/2Doj8F4
-
-PnT Blockchain: http://bit.ly/2MfVxoU
-Hashing Test: http://bit.ly/2N0Izk7
-Generating Bitcoin Address: https://bitaddress.org
-Litecoin Github:  http://bit.ly/2N3LEQM
-Bitcoin Github: https://github.com/bitcoin/bitcoin
-BlockCypher Block Explorer(Testnet): http://bit.ly/2Qeryky
-Bitcoin Wiki, APIs: http://bit.ly/2oQ9il3
-Test Bitcoin Command: https://bit.ly/2wvlZp1
-
-#### Blockchain Tools used in Udacity Blockchain
-Postman, Test Web API: https://www.getpostman.com/
-ASCII to text converter: www.unit-conversion.info/texttools/ascii/
-Hex encode: www.convertstring.com/EncodeDecode/HexEncode
-Base64 Encode: https://www.base64encode.org
-Poex.io Demo: http://poex.io/
-Blockchain Explorer: https://www.blockchain.com/explorer
-
-#########################################
-### ML/Data Science ###
-#########################################
-Data is Beautiful: https://www.reddit.com/r/dataisbeautiful/
-Kaggle:https://www.kaggle.com/datasets
-The Pudding:https://pudding.cool/
-FiveThirtyEight:https://fivethirtyeight.com/
-Towards Data Science:https://towardsdatascience.com/
-
-#########################################
-### Tools ###
-#########################################
-http://regexr.com/
-http://jsonviewer.stack.hu/
-Json Viewer: http://rextester.com/
-Postman, Test Web API: https://www.getpostman.com/
-Cucumber: https://cucumber.io/
-
-Exercise: http://bit.ly/2NZEmda
-Site Clunch: http://bit.ly/2wVdqUD
-Game Software: http://bit.ly/2oUEAHC
-
-Web/JavaScript Test: https://bit.ly/2I3kiTr
-Algorithms : http://bit.ly/2MelG7v
-Colab Welcome: http://bit.ly/2uhAPOG
-Colab play.ipynb: http://bit.ly/2L6tk4p
-RBG Color Picker: http://bit.ly/2QgVP24
-Kubernets cheat sheet: http://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
-
 
