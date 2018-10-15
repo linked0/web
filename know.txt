@@ -26,14 +26,19 @@ curl -X POST -H "Content-Type: application/json" -d '{"body": "New Test Block 27
 Download: scp carnd@54.249.240.135:/home/abc/index.html ./
 Upload: scp ./index.html carnd@54.249.240.135:/home/abc/index.html
 
-#### Tar & Zip
+#### Tar
 Zip Foler
 tar --exclude='./BLE/.git' -cvzf output_filename.tar.gz folder_name --exclude='./BLE/.git'
 tar -xvzf xxx.tar.gz
 
-Zip extract
+#### Zip
 sudo apt-get install unzip
-unzip file.zip -d destination_folder
+
+zip 압축 풀기
+unzip happy.zip -d ./target
+
+zip 압축하기 
+zip --exclude \*.git\* -r test.zip ./*
 
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 
