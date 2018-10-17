@@ -1,5 +1,5 @@
 sites.txt: 2EluV7n
-google know: 2EPirzQ
+know2.txt: 2OXGjKX
 
 ### 1. Command ###
 find . -iname mainview*
