@@ -135,6 +135,23 @@ drive.mount('/content/drive')
 !ln -s  'drive/My Drive' mydrive
 !ls mydrive
 
+# file downlaod
+from google.colab import files
+files.download(white_output)
+ 
+# git partially cloning
+repo='cvnd-exercises'
+sub_dir='1_2_Convolutional_Filters_Edge_Detection'
+url='https://github.com/linked0/' + repo + '.git'
+!mkdir $repo
+%cd $repo
+!git init
+!git remote add -f origin $url
+!git config core.sparsecheckout true
+!echo $sub_dir >> .git/info/sparse-checkout
+!git pull --recurse-submodules origin master
+%cd $sub_dir
+!ls
 
 #########################################
 ### 5. Cloud/gdrive ###
