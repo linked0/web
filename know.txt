@@ -190,9 +190,6 @@ chmod +x gdrive
 sudo install gdrive /usr/local/bin/gdrive
 gdrive list
 
-gdrive upload --parent 1u7Gdc1ieGpNYl8trq2RG84wBAKjVk61P eng-math.pdf (upload to poohfiles)
-gdrive download 1pI3oIlne8U--qBmTny0mBvahaiQWVdoY (Download file, You can find id)
-
 #### gdrive window
 Download the Windows version of gdrive from github.
 https://docs.google.com/uc?id=0B3X9GlR6EmbncWNLOS1KYWhLVFE&export=download
@@ -203,13 +200,13 @@ gdrive-windows-x64.exe upload c:\test\backup.zip
  
 
 #### EC2
-sudo ssh -i ~/google/poohfiles/jaylee.pem core@ec2-54-95-222-147.ap-northeast-1.compute.amazonaws.com
+sudo ssh -i xxx.pem core@xx.xx.xx.xx <-- 패스워드 필요없음.
 docker run -d -p 80:80 p0bailey/docker-flask 
 
 AWS: EC Home -> Launch Instance(Blue Button) -> Select CoreOS on Community AMIS -> Select PV
-google drive Search: jaylee.pem -> chmod 400 jaylee.pem 
 ssh -i ./jaylee.pem core@54.199.65.181 ← CoreOS Instance
 ssh -i jaylee.pem ubuntu@52.192.176.112 ← Ubuntu Instance
+
 sudo useradd -m linked0 -> sudo passwd linked0
 AWS Installatio on Python Microservice Development Document
 
