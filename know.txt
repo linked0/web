@@ -188,6 +188,7 @@ wget http://bit.ly/2zHIlGx
 mv 2zHIlGx gdrive <-- mv uc\?id\=0B3X9GlR6EmbnWksyTEtCM0VfaFE gdrive
 chmod +x gdrive
 sudo install gdrive /usr/local/bin/gdrive
+!install gdrive /usr/local/bin/gdrive <-- google colab에서는 이렇게 쓰면 됨.
 gdrive list
 
 #### gdrive window
