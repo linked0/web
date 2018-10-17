@@ -30,7 +30,7 @@ Upload: scp ./index.html carnd@54.249.240.135:/home/abc/index.html
 #### Tar
 Zip Foler
 tar --exclude='./BLE/.git' -cvzf output_filename.tar.gz folder_name --exclude='./BLE/.git'
-tar -xvzf xxx.tar.gz
+tar -xvzf xxx.tar.gz -C ./data <-- data 폴더에 풀고 싶을때.
 
 #### Zip
 sudo apt-get install unzip
