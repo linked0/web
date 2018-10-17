@@ -193,6 +193,15 @@ gdrive list
 gdrive upload --parent 1u7Gdc1ieGpNYl8trq2RG84wBAKjVk61P eng-math.pdf (upload to poohfiles)
 gdrive download 1pI3oIlne8U--qBmTny0mBvahaiQWVdoY (Download file, You can find id)
 
+#### gdrive window
+Download the Windows version of gdrive from github.
+https://docs.google.com/uc?id=0B3X9GlR6EmbncWNLOS1KYWhLVFE&export=download
+
+copy downloads\gdrive-windows-x64.exe c:\windows
+ 
+gdrive-windows-x64.exe upload c:\test\backup.zip
+ 
+
 #### EC2
 sudo ssh -i ~/google/poohfiles/jaylee.pem core@ec2-54-95-222-147.ap-northeast-1.compute.amazonaws.com
 docker run -d -p 80:80 p0bailey/docker-flask 
