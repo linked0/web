@@ -153,6 +153,9 @@ url='https://github.com/linked0/' + repo + '.git'
 %cd $sub_dir
 !ls
 
+# from moviepy.editor import VideoFileClip 사용하기 위해서 패키지 다운로드 
+!pip install -q moviepy
+
 #########################################
 ### 5. Cloud/gdrive ###
 #########################################
