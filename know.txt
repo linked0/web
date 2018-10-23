@@ -76,6 +76,9 @@ git push
 sername for 'https://github.com': linked0@gmail.com
 Password for 'https://linked0@gmail.com@github.com': 
 
+#### Generate Private Key
+openssl ecparam -name secp256k1 -genkey -noout
+
 #########################################
 ### 2. Edit/Vi ###
 #########################################
@@ -118,6 +121,9 @@ Hex to String: xxd -p -r helloEncoded.txt helloDecoded.txt
 Encode and Decode Image from Terminal Using Files
 Image to Hex: xxd -p cat.png cat.txt
 Hex to Image: xxd -p -r cat.txt catDecoded.png
+
+#### Generate Private Key
+openssl ecparam -name secp256k1 -genkey -noout
 
 #########################################
 ### 4. ML/Colab ###
