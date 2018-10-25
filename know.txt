@@ -238,8 +238,21 @@ sudo useradd -m linked0 -> sudo passwd linked0
 AWS Installatio on Python Microservice Development Document
 
 #########################################
-### 6. python ###
+### 6. Python/Jupyter Notebook ###
 #########################################
+
+#### Jupyter Notebook에서 인덴트 바꾸기
+아래 코드를 브라우저 개발자 콘솔에서 실행시키면 됨.
+var cell = Jupyter.notebook.get_selected_cell();
+var config = cell.config;
+var patch = {
+      CodeCell:{
+        cm_config:{indentUnit:2}
+      }
+    }
+config.update(patch)
+
+#### Python 참고 코드 
 import requests
 res = requests.get('https://api.github.com/some/endpoint', headers={'user-agent': 'my-app/0.0.1'})
 res = requests.post('http://redmine.pntbiz.com:13000/projects/indoorplus-lbs-sdk/wiki/IOS_Getting_Started', data = {'username':'hjlee','password':'amadeus0'})
