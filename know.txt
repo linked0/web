@@ -164,6 +164,11 @@ url='https://github.com/linked0/' + repo + '.git'
 # from moviepy.editor import VideoFileClip 사용하기 위해서 패키지 다운로드 
 !pip install -q moviepy
 
+# GPU 사양 확인
+from tensorflow.python.client import device_lib
+device_lib.list_local_devices()
+
+
 #########################################
 ### 5. Cloud/gdrive ###
 #########################################
