@@ -1,9 +1,10 @@
 #########################################
-기타 명령어
+#### 1. 기타 명령어
+#########################################
 jd-gui
 open ~/pooh/dev/jd-gui-osx-1.4.0/JD-GUI.app
 
-#########################################
+####################
 d2j & apktool
 apktool
 apktool 스크립트와 apktool.jar를 한 폴더에 놓고, apktool에 대해서 “chmod +x apktool” 실행
@@ -14,7 +15,7 @@ bin폴더에 없을 경우는 “./apktool”로 실행시켜야 함.
 d2j
 ~/pooh/dev/dex2jar-2.0/d2j-dex2jar.sh BeaconTestApp.apk
 
-#########################################
+####################
 bash_profile
 # added by Anaconda3 4.4.0 installer
 export PATH="/Users/hyunjaelee/anaconda/bin:/Users/hyunjaelee/Library/Android/sdk/platform-tools:/Users/hyunjaelee/pooh/dev/dex2jar-2.0:/Users/hyunjaelee/pooh/dev/jd-gui-osx-1.4.0:$PATH"
@@ -35,7 +36,8 @@ alias JD="open /Users/hyunjaelee/pooh/dev/jd-gui-osx-1.4.0/JD-GUI.app"
 export PS1="\w $ "
 
 #########################################
-파이썬
+#### 2. 파이썬
+#########################################
 # Python Virtual Env
 conda install -n yourenvname [package]
 conda create -n py3conda python=3.6 anaconda ⇐ 이게 anaconda를 관련 패키지를 다 설치해준다.
@@ -91,7 +93,7 @@ At bottom of window, click + to install or - to uninstall.
 - OSD_(FILE|PCS)
 
 #########################################
-#### 맥
+#### 3. 맥
 #########################################
 
 숨김 파일 보기(071-5h)
@@ -118,7 +120,7 @@ Error
 * HOST IDENTIFICATION HAS CHANGED error
 sudo ssh-keygen -R 192.168.0.7
 
-#########################################
+####################
 맥북 설치
 - Homebrew: ruby -e "$(curl -fsSL https://bit.ly/1LEgSWs)"
 - Karabiner-Elements, JDK, Visual Studio Code
@@ -134,7 +136,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 키조합 임포트: https://pqrs.org/osx/karabiner/complex_modifications/
 한영키 설정 방법: http://macnews.tistory.com/5043
 
-#########################################
+####################
 File Download
 Google Drive
 id 부분은 다음 그림 참조
@@ -148,7 +150,7 @@ wget -O ./test.txt "https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=1"
 
 
 #########################################
-#### 프로젝트 관리
+#### 4. 프로젝트 관리
 #########################################
 
 관련 정리 문서: https://docs.google.com/document/d/1Y1BlcpGweRD4ZQuD5yGrR7bzMoH87I2OZSFxv_za7N8/edit
@@ -260,6 +262,11 @@ Character/Object Modeling : Blender
 - 세부 위험요소를 확인하지 않음으로 해서 일정 산정에 문제가 있었음.(암센터 음성안내 관련 공수 산정도 문제가 있을 수 있음)
 
 #########################################
+#### 5. Android
+#########################################
+
+
+####################
 Android-SDK 빌드 에러
 
 lintOptions{
@@ -279,13 +286,13 @@ In the root folder of your project, delete the .gradle folder.
 C:\Users\VipinSaini\AndroidStudioProjects\MyProject\.gradle
 then reboot Android Studio
 
-#########################################
+####################
 Android
 JDK Home
 ~ jay$ /usr/libexec/java_home
 /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
 
-#########################################
+####################
 ADT & 안드로이드 SDK (old version)
 ADT: https://dl-ssl.google.com/android/eclipse/
 
@@ -299,7 +306,7 @@ https://android-studio.en.uptodown.com/windows/old
 
 Adnroid Build Tools: 25.0.0 버전이 가정 적당함.
 
-#########################################
+####################
 Android 로그
 # 아래 로그가 최종 후보
 ^((?!(?:ScanRecord|BluetoothAdapter|Latitude|onReceive|ConnectivityService|NetworkController|BtGatt|BluetoothUtils|PRESENCE_ALERT|SamsungAlarmManager|NetworkIdentity|CompatibilityInfo|audio_|CalcNPosition|scanlist|Battery|PowerUI|BluetoothEventManager|DevicePolicyManagerService|OcrModelUpStIntentOp|ProcessStatsService|NetstatsParser|ViewRootImpl|TextClock|WeatherWidget)).)*$
@@ -321,7 +328,7 @@ public static final String TAG = "GigaTrans-";
 private final static String TAG = Config.TAG + "Main";
 Log.d(TAG, "onResume");
 
-#########################################
+####################
 # 기존 것
 public class DLog {
    private static final boolean isLog = true;
@@ -377,7 +384,7 @@ public class DLog {
    }
 }
 
-#########################################
+####################
 토스트 (Toast)
 public void ShowToast(String str)
 {
@@ -389,7 +396,7 @@ public void ShowToast(String str)
   mToast.show();
 }
 
-#########################################
+####################
 빌드위치 바꾸기 
 root gradle에서...
 allprojects {
@@ -408,7 +415,7 @@ https://stackoverflow.com/questions/34353220/android-studio-please-select-androi
 
 
 #########################################
-iOS
+#### 6. iOS
 #########################################
 iOS 로그
 NSLog(@">>>>>> %s - info:%@", __func__, userInfo);
