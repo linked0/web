@@ -438,3 +438,32 @@ General 탭에서 Automatically manager singing를 uncheck하고, 새로운 Prov
 - Signing 부분 처리
 “Automatically manage sigining” 을 체크하고 Team을 Jimsun Lim(Personal Team)으로 세팅하면 Signing 섹션 상의 에러는 없어짐
 - 빌드시 Signing 관련 에러가 떨어졌으나, 클린빌드해서 문제가 해결됨
+
+
+#########################################
+#### 7. Cloud/Docker
+#########################################
+
+####################
+Docker Swarm
+1. Initialize a swarm (on PC1) 
+docker swarm init
+ 
+2. Get swarm join token (on PC1)
+docker swarm join-token worker <- PC2에서 사용할 내용을 뽑아내는 것이기 때문에 worker을 써야 함.
+﻿
+==> It will output something like this
+docker swarm join --token SWMTKN-1-60vpnn5uieubntz9dfktr2lhl456hdpx8h5d69f9gbmfsu7ymj-cmspzf5s6oontgs5tyo9swmaw 172.22.7.64:2377
+ 
+3. Swam join (on PC2)
+위에서 산출된 내용
+ 
+4. Create a network (on PC1)
+docker network create --attachable --driver overlay my-net
+
+5. Docker leave 
+docker node demote wolf-HP    <- 현재 wolf-HP PC상에 있다고 치면, wolf-HP가 혹시 Leader일수 있으므로 leave가 동작 안할 수 있음.
+PC를 껐다가 다시 켜는 것도 한 방법 
+docker swarm leave --force        <-  현재 PC가 Leader가 아닐때 이걸로 leave.
+docker swarm leave --force     <- 마지막 leader에서 leave.
+
