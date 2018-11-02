@@ -1,29 +1,30 @@
 #########################################
 #### 1. 기타 명령어
 #########################################
-jd-gui
+
+######jd-gui
 open ~/pooh/dev/jd-gui-osx-1.4.0/JD-GUI.app
 
-########## d2j & apktool
+###### d2j & apktool
 apktool
 apktool 스크립트와 apktool.jar를 한 폴더에 놓고, apktool에 대해서 “chmod +x apktool” 실행
 /usr/local/bin으로 이동 되었기 때문에  apktool로 이용가능
 - apktool d [apk경로]
 bin폴더에 없을 경우는 “./apktool”로 실행시켜야 함.
 
-d2j
+###### d2j
 ~/pooh/dev/dex2jar-2.0/d2j-dex2jar.sh BeaconTestApp.apk
 
-########## bash_profile
+###### bash_profile
 # added by Anaconda3 4.4.0 installer
 export PATH="/Users/hyunjaelee/anaconda/bin:/Users/hyunjaelee/Library/Android/sdk/platform-tools:/Users/hyunjaelee/pooh/dev/dex2jar-2.0:/Users/hyunjaelee/pooh/dev/jd-gui-osx-1.4.0:$PATH"
 
-# Command Prompt
+###### Command Prompt
 export PS1="\W \u$ "
 
 alias JD="open /Users/hyunjaelee/pooh/dev/jd-gui-osx-1.4.0/JD-GUI.app"
 
-# command prompt
+###### command prompt
 \d – Current date
 \t – Current time
 \h – Host name
@@ -36,7 +37,7 @@ export PS1="\w $ "
 #########################################
 #### 2. 파이썬
 #########################################
-# Python Virtual Env
+###### Python Virtual Env
 conda install -n yourenvname [package]
 conda create -n py3conda python=3.6 anaconda ⇐ 이게 anaconda를 관련 패키지를 다 설치해준다.
 conda create -n autobuild python=3.6 ⇐ 이것만 해줘도 문제없다.
@@ -118,7 +119,7 @@ Error
 * HOST IDENTIFICATION HAS CHANGED error
 sudo ssh-keygen -R 192.168.0.7
 
-########## 맥북 설치
+###### 맥북 설치
 - Homebrew: ruby -e "$(curl -fsSL https://bit.ly/1LEgSWs)"
 - Karabiner-Elements, JDK, Visual Studio Code
 - Anaconda, Tensorflow, Google Drive
@@ -133,7 +134,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 키조합 임포트: https://pqrs.org/osx/karabiner/complex_modifications/
 한영키 설정 방법: http://macnews.tistory.com/5043
 
-########## File Download
+###### File Download
 Google Drive
 id 부분은 다음 그림 참조
 curl -O -J -L https://drive.google.com/uc?id=0B4fIuYID3dr-aHY2eS1NcHdMeEU
@@ -262,7 +263,7 @@ Character/Object Modeling : Blender
 #########################################
 
 
-########## Android-SDK 빌드 에러
+###### Android-SDK 빌드 에러
 
 lintOptions{
     disable "ResourceType"
@@ -281,12 +282,12 @@ In the root folder of your project, delete the .gradle folder.
 C:\Users\VipinSaini\AndroidStudioProjects\MyProject\.gradle
 then reboot Android Studio
 
-########## Android
+###### Android
 JDK Home
 ~ jay$ /usr/libexec/java_home
 /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
 
-########## ADT & 안드로이드 SDK (old version)
+###### ADT & 안드로이드 SDK (old version)
 ADT: https://dl-ssl.google.com/android/eclipse/
 
 https://dl.google.com/android/installer_r24.4.1-windows.exe
@@ -299,7 +300,7 @@ https://android-studio.en.uptodown.com/windows/old
 
 Adnroid Build Tools: 25.0.0 버전이 가정 적당함.
 
-########## Android 로그
+###### Android 로그
 # 아래 로그가 최종 후보
 ^((?!(?:ScanRecord|BluetoothAdapter|Latitude|onReceive|ConnectivityService|NetworkController|BtGatt|BluetoothUtils|PRESENCE_ALERT|SamsungAlarmManager|NetworkIdentity|CompatibilityInfo|audio_|CalcNPosition|scanlist|Battery|PowerUI|BluetoothEventManager|DevicePolicyManagerService|OcrModelUpStIntentOp|ProcessStatsService|NetstatsParser|ViewRootImpl|TextClock|WeatherWidget)).)*$
 
@@ -320,7 +321,7 @@ public static final String TAG = "GigaTrans-";
 private final static String TAG = Config.TAG + "Main";
 Log.d(TAG, "onResume");
 
-####################
+######
 # 기존 것
 public class DLog {
    private static final boolean isLog = true;
@@ -376,7 +377,7 @@ public class DLog {
    }
 }
 
-########## 토스트 (Toast)
+###### 토스트 (Toast)
 public void ShowToast(String str)
 {
   Log.i("hanwha_sample", str);
@@ -387,7 +388,7 @@ public void ShowToast(String str)
   mToast.show();
 }
 
-########## 빌드위치 바꾸기 
+###### 빌드위치 바꾸기 
 root gradle에서...
 allprojects {
    repositories {
@@ -434,7 +435,7 @@ General 탭에서 Automatically manager singing를 uncheck하고, 새로운 Prov
 #### 7. Cloud/Docker
 #########################################
 
-########## Docker Swarm
+###### Docker Swarm
 1. Initialize a swarm (on PC1) 
 docker swarm init
  
@@ -461,6 +462,9 @@ docker swarm leave --force     <- 마지막 leader에서 leave.
 #### 8. Node.js
 #########################################
 
-########## http-server
+###### 시작
+npm init
+
+###### http-server
 npm install http-server -g
 
