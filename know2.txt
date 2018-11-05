@@ -7,6 +7,7 @@
 #### 7.Cloud/Docker
 #### 8.Node.js
 #### 9.ML(기술/방법론)
+#### 10.기타(엑셀등)
 
 #########################################
 #### 1.기타 명령어
@@ -485,3 +486,126 @@ http-server -a 0.0.0.0 -p 8080
 #########################################
 
 전략: 1080Ti로 샘플정도 트레이닝하고 제대로 트레이닝한다.
+
+
+#########################################
+#### 10.기타(엑셀등)
+#########################################
+
+#### Excel
+Sub KttCalcData()
+
+' 구간행 인덱스 검색
+For i = 1 To 1000
+    If Cells(i, 3).Value = sectPrepare Then
+        prepareIdx = i
+    ElseIf Cells(i, 3).Value = sectEnd Then
+        endIdx = i
+    ElseIf Mid(Cells(i, 3), 1, 7) = sectUrl1 Then
+        If httpIdx = 1 Then
+            url1Idx = i
+            httpIdx = httpIdx + 1
+        ElseIf httpIdx = 5 Then
+            img4Idx = i
+            httpIdx = httpIdx + 1
+        End If
+    ' 망셋업에 대한 정확한 데이터 산출
+    ElseIf Cells(i, 3).Value = sectNapChanged And napChangedIdx = 0 Then
+        napChangedIdx = i
+    ElseIf Cells(i, 3).Value = sectDnsStart And dnsStarIdx = 0 Then
+        dnsStarIdx = i
+    End If
+Next i
+
+Count = 0
+For i = 1 To calcEnd
+    If Cells(i, 3).Value = "ScreenAcquire:End" Then
+        Count = Count + 1
+        Cells(i, 3).Interior.Color = RGB(0, 255, 0)    ElseIf Cells(i, 3).Value = "ScreenRelease:End" Then
+        Count = Count + 1
+        Cells(i, 3).Interior.Color = cellColor
+    ElseIf Cells(i, 3).Value = "Performance(100K):Start" Then
+        prf100KIdx = i
+    ElseIf Cells(i, 3).Value = "File Access Total" Then
+        fileAccIdx = i
+    End If
+Next i
+
+' 배열 선언
+Dim urls(20)
+Index = 0
+For i = 1 To 1000
+    If Mid(Cells(i, 3), 1, 7) = "http://" Then
+        urls(Index) = Cells(i, 3)
+        Index = Index + 1
+    End If
+Next i
+
+End Sub
+
+
+* nxf1 속도 분석
+Sub Btn1_Click()
+startTime = Cells(1, 4)
+
+For i = 2 To 6000
+    time1 = Cells(i - 1, 4)
+    time2 = Cells(i, 4)
+    If Mid(time2, 1, 8) = "--Myriad" Then
+        Exit Sub
+    End If
+   
+    Cells(i, 2).Value = time2 - time1
+   
+    If Mid(Cells(i, 1), 1, 1) = "*" Then
+        Cells(i, 3).Value = time2 - startTime
+        startTime = time2
+    End If
+   
+Next i
+End Sub 
+Python
+- Tkinter was renamed to tkinter from Python 2 to 3
+
+#!/usr/bin/env python3 (for Mac) 
+#!/usr/bin/python2.4 (for Linux)
+ 
+import Tkinter
+
+top = Tkinter.Tk()
+label = Tkinter.Label(top, text = 'Hello World!')
+label.pack()
+Tkinter.mainloop()
+
+# Returns the Pearson correlation coefficient for p1 and p2
+def sim_pearson(prefs,p1,p2):
+  # Get the list of mutually rated items
+  si={}
+  for item in prefs[p1]: 
+    if item in prefs[p2]: si[item]=1
+
+  # if they are no ratings in common, return 0
+  if len(si)==0: return 0
+
+  # Sum calculations
+  n=len(si)
+  
+  # Sums of all the preferences
+  sum1=sum([prefs[p1][it] for it in si])
+  sum2=sum([prefs[p2][it] for it in si])
+  
+  # Sums of the squares
+  sum1Sq=sum([pow(prefs[p1][it],2) for it in si])
+  sum2Sq=sum([pow(prefs[p2][it],2) for it in si])
+  
+  # Sum of the products
+  pSum=sum([prefs[p1][it]*prefs[p2][it] for it in si])
+  
+  # Calculate r (Pearson score)
+  num=pSum-(sum1*sum2/n)
+  den=sqrt( (sum1Sq-pow(sum1,2)/n) * (sum2Sq-pow(sum2,2)/n) )
+  if den==0: return 0
+
+  r=num/den
+
+  return r
