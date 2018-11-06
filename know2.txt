@@ -5,9 +5,9 @@
 #### 5.Android
 #### 6.iOS
 #### 7.Cloud/Docker
-#### 8.Node.js
-#### 9.ML(기술/방법론),Blockchain
-#### 10.기타(엑셀등)
+#### 8.ML(기술/방법론)
+#### 9.Blockchain
+#### 10.기타(엑셀,Node.js)
 
 #########################################
 #### 1.기타 명령어
@@ -470,28 +470,32 @@ docker swarm leave --force     <- 마지막 leader에서 leave.
 
 
 #########################################
-#### 8.Node.js
-#########################################
-
-###### 시작
-npm init
-
-###### http-server
-npm install http-server -g
-http-server -a 0.0.0.0 -p 8080
-
-
-#########################################
-#### 9.ML(기술/방법론),Blockchain
+#### 8.ML(기술/방법론)
 #########################################
 
 전략: 1080Ti로 샘플정도 트레이닝하고 제대로 트레이닝한다.
 
 ganache-cli --mnemonic 'trick core barely fold sample icon display hollow smoke task emotion pepper'
 
+
+
 #########################################
-#### 10.기타(엑셀등)
+#### 9.Blockchain
 #########################################
+
+#### Truffle
+truffle init
+
+#########################################
+#### 10.기타(엑셀,Node.js)
+#########################################
+
+#### Node.js
+npm init
+
+* http-server
+npm install http-server -g
+http-server -a 0.0.0.0 -p 8080
 
 #### Excel
 Sub KttCalcData()
