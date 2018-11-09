@@ -3,6 +3,7 @@ know2.txt: 2OXGjKX
 poex: 2QfeJ9o -> 2Rv5gux
 
 #########################################
+#########################################
 ### 1. Command ###
 #########################################
 find . -iname mainview*
@@ -22,20 +23,20 @@ brew/nvm
 brew upgrade node
 nvm node(nodejs) uninstall: nvm uninstall v8.10.0
 
-#### curl
+######## curl
 curl http://localhost:8999/block/10
 curl -X POST -H "Content-Type: application/json" -d '{"body": "New Test Block 27th September"}' http://localhost:8999/block
 
-#### File Transfer
+######## File Transfer
 Download: scp carnd@54.249.240.135:/home/abc/index.html ./
 Upload: scp ./index.html carnd@54.249.240.135:/home/abc/index.html
 
-#### Tar
+######## Tar
 Zip Foler
 tar --exclude='./BLE/.git' -cvzf output_filename.tar.gz folder_name --exclude='./BLE/.git'
 tar -xvzf xxx.tar.gz -C ./data <-- data 폴더에 풀고 싶을때.
 
-#### Zip
+######## Zip
 sudo apt-get install unzip
 
 zip 압축 풀기
@@ -46,19 +47,19 @@ zip --exclude \*.git\* -r test.zip ./*
 
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 
-#### File Upload to Google Drive(https://github.com/prasmussen/gdrive)
+######## File Upload to Google Drive(https://github.com/prasmussen/gdrive)
 poohex id: 0B6E3rj3qrE6NMTRxYU41T1REXzQ
 Install on Mac
 brew install gdrive
 
-#### Install on Linux
+######## Install on Linux
 cd~
 wget "https://docs.google.com/uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download"
 mv "uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download" gdrive
 chmod +x gdrive
 sudo install gdrive /usr/local/bin/gdrive
 
-#### Git
+######## Git
 Git 새로 만들기 
 echo "# dlnd-deep-learning" >> README.md
 git init
@@ -79,9 +80,10 @@ git push
 sername for 'https://github.com': linked0@gmail.com
 Password for 'https://linked0@gmail.com@github.com': 
 
-#### Generate Private Key
+######## Generate Private Key
 openssl ecparam -name secp256k1 -genkey -noout
 
+#########################################
 #########################################
 ### 2. Edit/Vi ###
 #########################################
@@ -108,10 +110,22 @@ set number		            ;  Line Number
 set mouse=a             ; Adjust area with mouse
 
 #########################################
+#########################################
 ### 3. Blockchain ###
 #########################################
 
-#### Encode/Decode
+######## Ganache
+ganache-cli --mnemonic 'trick core barely fold sample icon display hollow smoke task emotion pepper'
+
+* 실행 
+Private Key 필요
+90,000 ETH
+ganache-cli --account "0x70f1384b24df3d2cdaca7974552ec28f055812ca5e4da7a0ccd0ac0f8a4a9b00,9000000000000000000000"
+
+######## Truffle
+truffle init
+
+######## Encode/Decode
 Encode and Decode Text from Terminal
 String to hex: xxd -p <<< "Blockchain Developer"
 Hex to string: echo 426c6f636b636861696e20446576656c6f7065720a|xxd -r -p
@@ -125,15 +139,29 @@ Encode and Decode Image from Terminal Using Files
 Image to Hex: xxd -p cat.png cat.txt
 Hex to Image: xxd -p -r cat.txt catDecoded.png
 
-#### Generate Private Key
+######## Generate Private Key
 openssl ecparam -name secp256k1 -genkey -noout
 
+######## Geth
+* install Geth (in Mac)
+$ brew tap ethereum/ethereum
+$ brew install ethereum
+or brew upgrade ethereum
+
+다른 OS에 대해서는 https://ethereum.github.io/go-ethereum/downloads/ 에서 다운 받으면 됨.
+
+Sync to the Rinkeby Test Network
+$ geth --rinkeby --syncmode "fast"
+
+#########################################
 #########################################
 ### 4. ML/Colab ###
 #########################################
 sudo tensorboard --logdir='my_graph'
 
-#### Google Colaboration ####
+전략: 1080Ti로 샘플정도 트레이닝하고 제대로 트레이닝한다.
+
+######## Google Colaboration ####
 * Colab에 접속해서 바로 Github의 코드를 바로 열 수 있음.
     - colab.research.google.com에 접속
     - github 탭을 누르기
@@ -144,11 +172,11 @@ drive.mount('/content/drive')
 !ln -s  'drive/My Drive' mydrive
 !ls mydrive
 
-# file downlaod
+######## file downlaod
 from google.colab import files
 files.download(white_output)
  
-# git partially cloning
+######## git partially cloning
 repo='cvnd-exercises'
 sub_dir='1_2_Convolutional_Filters_Edge_Detection'
 url='https://github.com/linked0/' + repo + '.git'
@@ -165,11 +193,11 @@ url='https://github.com/linked0/' + repo + '.git'
 # from moviepy.editor import VideoFileClip 사용하기 위해서 패키지 다운로드 
 !pip install -q moviepy
 
-# GPU 사양 확인
+######## GPU 사양 확인
 from tensorflow.python.client import device_lib
 device_lib.list_local_devices()
 
-
+#########################################
 #########################################
 ### 5. Cloud/gdrive ###
 #########################################
@@ -209,12 +237,12 @@ sudo docker tag monolith:1.0.0 linked0/monolith:1.0.0  // my account
 sudo docker login  // https://hub.docker.com/register/
 sudo docker push linked0/example-monolith:1.0.0
 
-#### Kill & Remove Docker Container
+######## Kill & Remove Docker Container
 docker kill $(docker ps -q)
 docker rm $(docker ps -aq)
 docker rmi $(docker images dev-* -q)
 
-#### gdrive list
+######## gdrive list
 brew install gdrive <-- Mac
 
 cd ~    <-- Linux
@@ -225,7 +253,7 @@ sudo install gdrive /usr/local/bin/gdrive
 !install gdrive /usr/local/bin/gdrive <-- google colab에서는 이렇게 쓰면 됨.
 gdrive list
 
-#### gdrive window
+######## gdrive window
 Download the Windows version of gdrive from github.
 https://docs.google.com/uc?id=0B3X9GlR6EmbncWNLOS1KYWhLVFE&export=download
 
@@ -234,7 +262,7 @@ copy downloads\gdrive-windows-x64.exe c:\windows
 gdrive-windows-x64.exe upload c:\test\backup.zip
  
 
-#### EC2
+######## EC2
 sudo ssh -i xxx.pem ubuntu@xx.xx.xx.xx <-- 패스워드 필요없음.
 docker run -d -p 80:80 p0bailey/docker-flask 
 
@@ -245,11 +273,34 @@ ssh -i jaylee.pem ubuntu@52.192.176.112 ← Ubuntu Instance
 sudo useradd -m linked0 -> sudo passwd linked0
 AWS Installatio on Python Microservice Development Document
 
+######## Docker Swarm
+1. Initialize a swarm (on PC1) 
+docker swarm init
+ 
+2. Get swarm join token (on PC1)
+docker swarm join-token worker <- PC2에서 사용할 내용을 뽑아내는 것이기 때문에 worker을 써야 함.
+﻿
+==> It will output something like this
+docker swarm join --token SWMTKN-1-60vpnn5uieubntz9dfktr2lhl456hdpx8h5d69f9gbmfsu7ymj-cmspzf5s6oontgs5tyo9swmaw 172.22.7.64:2377
+ 
+3. Swam join (on PC2)
+위에서 산출된 내용
+ 
+4. Create a network (on PC1)
+docker network create --attachable --driver overlay my-net
+
+5. Docker leave 
+docker node demote wolf-HP    <- 현재 wolf-HP PC상에 있다고 치면, wolf-HP가 혹시 Leader일수 있으므로 leave가 동작 안할 수 있음.
+PC를 껐다가 다시 켜는 것도 한 방법 
+docker swarm leave --force        <-  현재 PC가 Leader가 아닐때 이걸로 leave.
+docker swarm leave --force     <- 마지막 leader에서 leave.
+
+#########################################
 #########################################
 ### 6. Python/Jupyter Notebook ###
 #########################################
 
-#### Jupyter Notebook에서 인덴트 바꾸기
+######## Jupyter Notebook에서 인덴트 바꾸기
 아래 코드를 브라우저 개발자 콘솔에서 실행시키면 됨.
 var cell = Jupyter.notebook.get_selected_cell();
 var config = cell.config;
@@ -260,7 +311,7 @@ var patch = {
     }
 config.update(patch)
 
-#### Python 참고 코드 
+######## Python 참고 코드 
 import requests
 res = requests.get('https://api.github.com/some/endpoint', headers={'user-agent': 'my-app/0.0.1'})
 res = requests.post('http://redmine.pntbiz.com:13000/projects/indoorplus-lbs-sdk/wiki/IOS_Getting_Started', data = {'username':'hjlee','password':'amadeus0'})
@@ -279,14 +330,14 @@ img = cv2.imread('images/space_background.jpg')
 img = cv2.cvtColor(background_image, cv2.COLOR_BGR2RGB)
 Jupyter Notebook Setting
 
-#### 플로팅을 하는 하나의 셀마다 써주는게 좋음. 그래야, 계속 실행시켜도 이전 것이 지워짐.
+######## 플로팅을 하는 하나의 셀마다 써주는게 좋음. 그래야, 계속 실행시켜도 이전 것이 지워짐.
 %matplotlib inline
 %config InlineBackend.close_figures=False
 %load_ext autoreload			
 %autoreload 2
 %config InlineBackend.figure_format = 'retina'
 
-#### pandas & numpy
+######## pandas & numpy
 import pandas as pd
 pd.set_option('display.height', 1000)
 pd.set_option('display.max_rows', 500)
@@ -299,97 +350,31 @@ Hangul Character
 # -*- coding: utf-8 -*-
 ```
 
-#### Flask
+######## Flask
 (py36kaggle) kaggle-web hyunjaelee$ export FLASK_APP=app.py
 (py36kaggle) kaggle-web hyunjaelee$ export FLASK_DEBUG=1
 (py36kaggle) kaggle-web hyunjaelee$ flask run
 
 #########################################
-### 7. Android/iOS ###
 #########################################
-Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();
-
-Assistant Editor: Opt-Cmd-Ret
-
-#########################################
-### 8. Java/C/Go ###
-#### Go
-godoc fmt Printf
-godoc cmd/fmt
-godoc -http=:8001
-go build aSourceFile.go
-file aSourceFile
-go run aSourceFile.go ← Build and Run
-go get -v github.com/mactsouk/go/simpleGitHub
-
-Source
-package main 
- 
-import ( 
-    "fmt" 
-    _ "os" 
-) 
-
-import ( 
-    "fmt" 
-    "github.com/mactsouk/go/simpleGitHub" 
-) 
- 
-func main() { 
-    fmt.Println("Hello there!") 
-}
-
-#### Java
-* Run jar with folder name for class(ex.FirstMDP)
-user$ java -cp ./target/classes:/Users/user/.m2/repository/edu/brown/cs/burlap/burlap/3.0.0/burlap-3.0.0.jar FirstMDP
-
-* Compile
-javac -cp ./algs4/algs4.jar BinarySearchST.java
-java -cp .:./algs4/algs4.jar BinarySearchST < tinyST.txt
-java -Xmx1024m <- VM의 Heap을 늘려주기
-
-export JCP=".:~/libjava/stdlib.jar:~/libjava/algs4.jar:~/libjava/utils.jar"
-javac -cp $JCP DoublingTest.java 
-
-* Run
-java -jar jython_installer-2.7.0.jar
-
-* Jar Making
-jar -cvmf manifest.txt utils.jar ./utils/*.class
-jar tvf stdlib.jar <- 구조보기 
-
-We first create a text file named Manifest.txt with the following contents:
-Main-Class: MyPackage.MyClass
-
-Warning: The text file must end with a new line or carriage return. The last line will not be parsed properly if it does not end with a new line or carriage return.
-
-* JDK Home
-~ jay$ /usr/libexec/java_home
-/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
-
-#### C
-user$ vi test.cpp
-user$ g++ test.cpp
-user$ a.out
--bash: a.out: command not found
-user$ ./a.out
-
-#########################################
-### 9. Not Defined ###
+### 7. Node.js ###
 #########################################
 
-#########################################
-### 10. etc ###
-#########################################
+######## Node.js
+npm init
 
-#### Sail 설치
+######## http-server
+npm install http-server -g
+http-server -a 0.0.0.0 -p 8080
+
+######## Sail 설치
 sails new test-project 
 cd test-project 
 sails lift 
 sails generate static 
 sails generate api video
 
-#### Hapi 사용
+######## Hapi 사용
 'use strict'; 
  
 const Hapi=require('hapi'); 
@@ -426,7 +411,83 @@ async function start() { 
  
 start(); 
 
-#### Violent Monkey
+#########################################
+#########################################
+### 8. Java/C/Go ###
+#########################################
+
+######## Go
+godoc fmt Printf
+godoc cmd/fmt
+godoc -http=:8001
+go build aSourceFile.go
+file aSourceFile
+go run aSourceFile.go ← Build and Run
+go get -v github.com/mactsouk/go/simpleGitHub
+
+Source
+package main 
+ 
+import ( 
+    "fmt" 
+    _ "os" 
+) 
+
+import ( 
+    "fmt" 
+    "github.com/mactsouk/go/simpleGitHub" 
+) 
+ 
+func main() { 
+    fmt.Println("Hello there!") 
+}
+
+######## Java
+* Run jar with folder name for class(ex.FirstMDP)
+user$ java -cp ./target/classes:/Users/user/.m2/repository/edu/brown/cs/burlap/burlap/3.0.0/burlap-3.0.0.jar FirstMDP
+
+* Compile
+javac -cp ./algs4/algs4.jar BinarySearchST.java
+java -cp .:./algs4/algs4.jar BinarySearchST < tinyST.txt
+java -Xmx1024m <- VM의 Heap을 늘려주기
+
+export JCP=".:~/libjava/stdlib.jar:~/libjava/algs4.jar:~/libjava/utils.jar"
+javac -cp $JCP DoublingTest.java 
+
+* Run
+java -jar jython_installer-2.7.0.jar
+
+* Jar Making
+jar -cvmf manifest.txt utils.jar ./utils/*.class
+jar tvf stdlib.jar <- 구조보기 
+
+We first create a text file named Manifest.txt with the following contents:
+Main-Class: MyPackage.MyClass
+
+Warning: The text file must end with a new line or carriage return. The last line will not be parsed properly if it does not end with a new line or carriage return.
+
+* JDK Home
+~ jay$ /usr/libexec/java_home
+/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
+
+######## C
+user$ vi test.cpp
+user$ g++ test.cpp
+user$ a.out
+-bash: a.out: command not found
+user$ ./a.out
+
+#########################################
+#########################################
+### 9. Not Defined ###
+#########################################
+
+#########################################
+#########################################
+### 10. etc ###
+#########################################
+
+######## Violent Monkey
 YonseiSv
 // ==UserScript==
 // @name YonseiSv
