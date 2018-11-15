@@ -95,7 +95,13 @@ At bottom of window, click + to install or - to uninstall.
 
 * split vertically 세팅 
 
-
+#### Error 1
+[QNSApplication _setup:]: unrecognized selector sent to instance 0x7fc6cc9d16a0
+==> pylab, matplotlib.pyplot, or matplotlib.backends가 임포트 되기 전에 호출되면 됨.
+import matplotlib
+matplotlib.use('Qt5Agg')
+==> Qt5Agg 말고도 다음과 같이 여러개의 설정값이 있음.
+['GTK', 'GTKAgg', 'GTKCairo', 'MacOSX', 'Qt4Agg', 'Qt5Agg', 'TkAgg', 'WX', 'WXAgg', 'GTK3Cairo', 'GTK3Agg', 'WebAgg', 'nbAgg', 'agg', 'cairo', 'gdk', 'pdf', 'pgf', 'ps', 'svg', 'template']
 
 
 #########################################
