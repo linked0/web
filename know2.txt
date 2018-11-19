@@ -162,6 +162,7 @@ wget -O ./test.txt "https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=1"
 #########################################
 #### 4.프로젝트 관리
 #########################################
+(Project Management)
 
 관련 정리 문서: https://docs.google.com/document/d/1Y1BlcpGweRD4ZQuD5yGrR7bzMoH87I2OZSFxv_za7N8/edit
 1. PM
@@ -313,7 +314,7 @@ https://android-studio.en.uptodown.com/windows/old
 
 Adnroid Build Tools: 25.0.0 버전이 가정 적당함.
 
-###### Android 로그
+###### Android 로그(logcat, Logcat)
 # 아래 로그가 최종 후보
 ^((?!(?:ScanRecord|BluetoothAdapter|Latitude|onReceive|ConnectivityService|NetworkController|BtGatt|BluetoothUtils|PRESENCE_ALERT|SamsungAlarmManager|NetworkIdentity|CompatibilityInfo|audio_|CalcNPosition|scanlist|Battery|PowerUI|BluetoothEventManager|DevicePolicyManagerService|OcrModelUpStIntentOp|ProcessStatsService|NetstatsParser|ViewRootImpl|TextClock|WeatherWidget)).)*$
 
