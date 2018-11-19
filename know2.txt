@@ -315,6 +315,7 @@ https://android-studio.en.uptodown.com/windows/old
 Adnroid Build Tools: 25.0.0 버전이 가정 적당함.
 
 ###### Android 로그(logcat, Logcat)
+아래 정규표현식 복사시에 문자열 끝에 스페이스가 붙으면 아무것도 안나옴.
 # 아래 로그가 최종 후보
 ^((?!(?:ScanRecord|BluetoothAdapter|Latitude|onReceive|ConnectivityService|NetworkController|BtGatt|BluetoothUtils|PRESENCE_ALERT|SamsungAlarmManager|NetworkIdentity|CompatibilityInfo|audio_|CalcNPosition|scanlist|Battery|PowerUI|BluetoothEventManager|DevicePolicyManagerService|OcrModelUpStIntentOp|ProcessStatsService|NetstatsParser|ViewRootImpl|TextClock|WeatherWidget)).)*$
 
