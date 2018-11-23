@@ -292,7 +292,13 @@ ssh -i jaylee.pem ubuntu@52.192.176.112 ← Ubuntu Instance
 chmod 400 mykey.pem
 
 * sudo: unable to resolve host ip-172-30-3-65
-127.0.1.1 ip-172-30-3-65 # add this line with "sudo vi /etc/hosts"
+1) https://console.aws.amazon.com/vpc/에서 Amazon VPC 콘솔을 엽니다.
+2) 탐색 창에서 Your VPCs를 선택합니다.
+3) 목록에서 VPC를 선택합니다.
+4) [Summary] 탭의 정보를 검토합니다.
+  - DNS resolution: enabled
+  - DNS hostnames: enabled
+5) 설정을 업데이트하려면 Actions를 선택하고, Edit DNS Resolution 또는 Edit DNS Hostnames를 선택합니다.
 
 sudo useradd -m linked0 -> sudo passwd linked0
 AWS Installatio on Python Microservice Development Document
