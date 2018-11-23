@@ -280,13 +280,16 @@ copy downloads\gdrive-windows-x64.exe c:\windows
 gdrive-windows-x64.exe upload c:\test\backup.zip
  
 
-###### EC2
+###### AWS EC2
 sudo ssh -i xxx.pem ubuntu@xx.xx.xx.xx <-- 패스워드 필요없음.
 docker run -d -p 80:80 p0bailey/docker-flask 
 
 AWS: EC Home -> Launch Instance(Blue Button) -> Select CoreOS on Community AMIS -> Select PV
 ssh -i jaylee.pem core@54.199.65.181 ← CoreOS Instance
 ssh -i jaylee.pem ubuntu@52.192.176.112 ← Ubuntu Instance
+
+* Permissions 0644 for 'pnt-hyperledger.pem' are too open.
+chmod 400 mykey.pem
 
 sudo useradd -m linked0 -> sudo passwd linked0
 AWS Installatio on Python Microservice Development Document
