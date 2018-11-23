@@ -292,7 +292,7 @@ ssh -i jaylee.pem ubuntu@52.192.176.112 ← Ubuntu Instance
 chmod 400 mykey.pem
 
 * sudo: unable to resolve host ip-172-30-3-65
-127.0.1.1 ip-172-30-3-65 # add this line in "/etc/hosts"
+127.0.1.1 ip-172-30-3-65 # add this line with "sudo vi /etc/hosts"
 
 sudo useradd -m linked0 -> sudo passwd linked0
 AWS Installatio on Python Microservice Development Document
