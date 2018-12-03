@@ -1,9 +1,11 @@
 #### 1.기타 명령어
 #### 2.파이썬
 #### 3.맥
-#### 4.프로젝트 관리
-#### 5.Android
-#### 6.iOS
+#### 4.블록체인
+#### 5.ML
+#### 6.프로젝트 관리
+#### 7.Android
+#### 8.iOS
 #### 10.기타(엑셀,Node.js)
 
 #########################################
@@ -158,9 +160,89 @@ Dropbox
 https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=0 ← 파란색 부분만 아래에 삽입
 wget -O ./test.txt "https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=1"
 
+#########################################
+#### 4.Blockchain (블록체인, blockchain)
+#########################################
+* 폴더구조
+    * 프로젝트 폴더
+        * index.html
+        * smart_contracts
+* truffle init 
+    * 다음의 폴더 생성됨
+        * contracts	
+        * migrations
+        * test
+        * truffle-config.js
+        * truffle.js
+* npm init
+    * package.json 생성됨
+* openzeppelin-solidity 인스톨
+    * package.json에 다음 항목 추가됨
+        * "openzeppelin-solidity": "2.0.0-rc.1"
+* StarNotary.sol 작성
+    * 아래의 함수 구현
+        * createStar()
+        * putStarUpForSale()
+        * buyStar()
+        * checkIfStarExist()
+        * mint()
+        * tokenIdToStarInfo()
+        * starsForSale()
+        * approve()
+        * safeTransferFrom()
+        * SetApprovalForAll()
+        * getApproved()
+        * isApprovedForAll()
+        * ownerOf()
+* StarNotaryTest.js 작성 
+    * Contract를 하나 생성
+        * this.contract = await StarNotary.new({from: defaultAccount});
+    * describe와 그 안에 it 명령으로 테스트 진행 
+* Test with Truffle
+    * truffle test (on ganache cli)
+        * smart_contracts 위치에서 실행 
+        * truffle.js를 수정하지 않고 실행하면, 아마도 디폴트로 ganache cli 환경에서 디폴트로 진행
+    * truffle test(on ganache gui)
+        * truffle.js 수정
+        * npm install truffle-hdwallet-provider 실행(python 2.7 환경)
+        * ganache gui 실행(7545포트)
+        * truffe test 실행
+            * truffle compile과 truffle migrate 명령이 자동을 실행됨.
+        * Ganache gui에서 트랜잭션 확인
+* Deploy smart contract on a public test network
+    * Inpura에서 Endpoint 가져오기 
+    * 2_deploy_starnotary.js 작성
+    * truffle.js 수정
+        *  rinkeby 항목에 Endpoint 추가
+        * mnemonic을 내 seed로 설정하기 (metamask 설정에서 볼 수 있음)
+    * truffle deploy --network rinkeby
+        * deploy가 완료되면 Transaction hash를 커맨드 라인 로그에서 확인 가능 
+            * Running migration: 2_deploy_starnotary.js
+            *   Deploying StarNotary...
+            *   ... 0x72ed43e8830d256b0ac53911ec20c714a0f6085cb16427756afdfcbfb1fc6476
+            *   StarNotary: 0x250ab0504fd45dbae2dc7db47135967175631d42
+            * Saving successful migration to network...
+            *   ... 0xa47f449baba0cf3d032f5da3d5f3527615429dadc4e2b3d23f26845f1b73800e
+            * Saving artifacts...
+        * 이것을 etherscan.io에서 확인 
+        * 만약 deploy를 잘못했으면 build 폴더 지우고 다시 진행 
+    * Truffle에서 abi 뽑아내는 방법
+        * npm install -g truffle-export-abi
+        * truffle-export-abi
+        * 
+    * createStar
+        * https://www.myetherwallet.com/#contracts 
+        * Contract Address와 ABI를 복사하면 함수 목록이 나타남.
+        * Wallet Address 는 Metamask로 연결하기 
+    * Test on Web
+        * ABI 복사해 놓아야 함.
+		* http-server를 띄워서 테스트 진행
+			* npm install http-server -g
+			* http-server -a 0.0.0.0 -p 8080
+
 
 #########################################
-#### 4.프로젝트 관리
+#### 6.프로젝트 관리
 #########################################
 (Project Management)
 
@@ -273,7 +355,7 @@ Character/Object Modeling : Blender
 - 세부 위험요소를 확인하지 않음으로 해서 일정 산정에 문제가 있었음.(암센터 음성안내 관련 공수 산정도 문제가 있을 수 있음)
 
 #########################################
-#### 5.Android
+#### 7.Android
 #########################################
 
 
@@ -427,7 +509,7 @@ Assistant Editor: Opt-Cmd-Ret
 - OSD_(FILE|PCS)
 
 #########################################
-#### 6.iOS
+#### 8.iOS
 #########################################
 iOS 로그
 NSLog(@">>>>>> %s - info:%@", __func__, userInfo);
