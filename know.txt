@@ -551,3 +551,4 @@ topBar.appendChild(utilBtn);
 pntmap.on('vmarker.rightclick', function(evt) {
 alert('hello')
 };);
+
