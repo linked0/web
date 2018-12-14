@@ -199,6 +199,7 @@ wget -O ./test.txt "https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=1"
         * this.contract = await StarNotary.new({from: defaultAccount});
     * describe와 그 안에 it 명령으로 테스트 진행 
 * Test with Truffle
+    * 2_deploy_starnotary.js 작성
     * truffle test (on ganache cli)
         * smart_contracts 위치에서 실행 
         * truffle.js를 수정하지 않고 실행하면, 아마도 디폴트로 ganache cli 환경에서 디폴트로 진행
@@ -211,7 +212,6 @@ wget -O ./test.txt "https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=1"
         * Ganache gui에서 트랜잭션 확인
 * Deploy smart contract on a public test network
     * Inpura에서 Endpoint 가져오기 
-    * 2_deploy_starnotary.js 작성
     * truffle.js 수정
         *  rinkeby 항목에 Endpoint 추가
         * mnemonic을 내 seed로 설정하기 (metamask 설정에서 볼 수 있음)
