@@ -49,6 +49,10 @@ curl -X POST \
 ncat -l 9999
 ncat localhost 9999
 
+ncat google.com 80
+GET / HTTP/1.1
+Host: google.com(엔터 두번 치기)
+
 ###### File Transfer
 Download: scp carnd@54.249.240.135:/home/abc/index.html ./
 Upload: scp ./index.html carnd@54.249.240.135:/home/abc/index.html
@@ -70,7 +74,7 @@ zip --exclude \*.git\* -r test.zip ./*
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 
 ###### File Upload to Google Drive(https://github.com/prasmussen/gdrive)
-poohex id: 0B6E3rj3qrE6NMTRxYU41T1REXzQ
+wojin's share: 1UiOnqU2VEs-rjC6iZyo2suLa9r4_9d9T
 Install on Mac
 brew install gdrive
 
