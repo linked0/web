@@ -45,6 +45,10 @@ curl -X POST \
     "address":"19xaiMqayaNrn3x7AjV5cU4Mk5f5prRVpL"
 }'
 
+###### ncat
+ncat -l 9999
+ncat localhost 9999
+
 ###### File Transfer
 Download: scp carnd@54.249.240.135:/home/abc/index.html ./
 Upload: scp ./index.html carnd@54.249.240.135:/home/abc/index.html
