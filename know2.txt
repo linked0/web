@@ -247,6 +247,8 @@ wget -O ./test.txt "https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=1"
 (Project Management)
 
 관련 정리 문서: https://docs.google.com/document/d/1Y1BlcpGweRD4ZQuD5yGrR7bzMoH87I2OZSFxv_za7N8/edit
+웹 개발 절차: 2CafxGJ
+
 1. PM
 1) 기획
   애자일 업무 방식: 개발을 완성하고 제품을 내놓는 게 아니라 개발하는 과정에서 고객들에게 보여주고 끊임없이 피드백을 받아 수정
