@@ -1,6 +1,6 @@
-sites.txt: 2EluV7n
-know2.txt: 2OXGjKX
-poex: 2QfeJ9o -> 2Rv5gux
+sites.txt: bit.ly/2EluV7n
+know2.txt: bit.ly/2OXGjKX
+poex: bit.ly/2QfeJ9o -> bit.ly/2Rv5gux
 
 ### 1.command
 ### 2.vi
