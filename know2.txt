@@ -247,7 +247,7 @@ wget -O ./test.txt "https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=1"
 (Project Management)
 
 관련 정리 문서: https://docs.google.com/document/d/1Y1BlcpGweRD4ZQuD5yGrR7bzMoH87I2OZSFxv_za7N8/edit
-웹 개발 절차: 2CafxGJ
+웹 개발 절차: bit.ly/2CafxGJ
 
 1. PM
 1) 기획
