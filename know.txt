@@ -28,13 +28,7 @@ ps aux | grep chrome
 
 export PS1="\W \u$ "
 
-Homebrew: ruby -e "$(curl -fsSL https://bit.ly/1LEgSWs)"
-
 ###### curl
-curl http://localhost:8999/block/10
-
-curl -X POST -H 'Content-Type: application/json' -d '{"body": "New Test Block 27th September"}' http://localhost:8999/block
-
 curl -X POST \
   http://localhost:8000/api/requestValidation \
   -H 'Content-Type: application/json' \
@@ -100,7 +94,7 @@ git rm -r app
 변경파일 commit에 포함시키기: git add benchmarks.rb
 git config --global user.name "linked0"
 git config --global user.email linked@gmail.com
-git push
+
 sername for 'https://github.com': linked0@gmail.com
 Password for 'https://linked0@gmail.com@github.com': 
 
@@ -113,16 +107,17 @@ openssl ecparam -name secp256k1 -genkey -noout
 #########################################
 Visual Studio Code command 실행
 shift-cmd-p -> shell command -> terminal에서 code로 실행
-mac vim
+
 brew install macvim --override-system-vim
 xcode-select install
 sudo xcode-select --switch /Library/Developer/CommandLineTools
+
 find ./ -type f > files
 find . -type file -name '*.js' -o -name '*.json' > files  //-o는 or를 뜻함
 find . -type f -not -path './node_modules/*' -not -path './chaindata/*' > files
-open -a macvim files
-<ctl-w>f: open in a new window
-<ctl-w>gf: open in a new tab
+
+<c-w>f: open in a new window
+<c-w>gf: open in a new tab
 <c-w> {H,J,K,L}: move among windows, or use arrow key
 
 "*yy           ; copt from vi 
@@ -188,11 +183,7 @@ sudo tensorboard --logdir='my_graph'
 
 전략: 1080Ti로 샘플정도 트레이닝하고 제대로 트레이닝한다.
 
-###### Google Colaboration ####
-* Colab에 접속해서 바로 Github의 코드를 바로 열 수 있음.
-    - colab.research.google.com에 접속
-    - github 탭을 누르기
-    
+###### Google Colaboration ####    
 * google drive 접속
 from google.colab import drive
 drive.mount('/content/drive')
