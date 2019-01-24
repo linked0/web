@@ -78,13 +78,6 @@ chmod +x gdrive
 sudo install gdrive /usr/local/bin/gdrive
 
 ###### Git
-Git 새로 만들기 
-echo "# dlnd-deep-learning" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/linked0/dlnd-deep-learning.git
-git push -u origin master
 지워진 폴더에 대한 스테이징
 git rm -r app
 
@@ -94,9 +87,6 @@ git rm -r app
 변경파일 commit에 포함시키기: git add benchmarks.rb
 git config --global user.name "linked0"
 git config --global user.email linked@gmail.com
-
-sername for 'https://github.com': linked0@gmail.com
-Password for 'https://linked0@gmail.com@github.com': 
 
 ###### Generate Private Key
 openssl ecparam -name secp256k1 -genkey -noout
@@ -230,6 +220,10 @@ var patch = {
       }
     }
 config.update(patch)
+
+###### 특정 python env에 대한 jupyter notebook kernel 만들기
+python -m ipykernel install --user --name drlnd --display-name "drlnd"
+
 
 #########################################
 #########################################
