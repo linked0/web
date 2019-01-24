@@ -5,7 +5,7 @@ poex: bit.ly/2QfeJ9o -> bit.ly/2Rv5gux
 ### 1.command
 ### 2.vi
 ### 3.blockchain
-### 4.ml.colab
+### 4.ml/colab/jupyter
 ### 5.cloud 
 ### 6.python
 ### 7.node.js
@@ -177,7 +177,7 @@ $ geth --rinkeby --syncmode "fast"
 
 #########################################
 #########################################
-### 4.ml.colab ###
+### 4.ml/colab/jupyter ###
 #########################################
 sudo tensorboard --logdir='my_graph'
 
@@ -214,6 +214,22 @@ url='https://github.com/linked0/' + repo + '.git'
 ###### GPU 사양 확인
 from tensorflow.python.client import device_lib
 device_lib.list_local_devices()
+
+###### Jupyter Notebook에서 브라우저 띄우기
+%%HTML
+<button id="launcher">Launch Game Simulator</button>
+<script src="setupLauncher.js"></script>
+
+###### Jupyter Notebook에서 인덴트 바꾸기
+아래 코드를 브라우저 개발자 콘솔에서 실행시키면 됨.
+var cell = Jupyter.notebook.get_selected_cell();
+var config = cell.config;
+var patch = {
+      CodeCell:{
+        cm_config:{indentUnit:2}
+      }
+    }
+config.update(patch)
 
 #########################################
 #########################################
@@ -329,17 +345,6 @@ docker swarm leave --force     <- 마지막 leader에서 leave.
 #########################################
 ### 6.python ###
 #########################################
-
-###### Jupyter Notebook에서 인덴트 바꾸기
-아래 코드를 브라우저 개발자 콘솔에서 실행시키면 됨.
-var cell = Jupyter.notebook.get_selected_cell();
-var config = cell.config;
-var patch = {
-      CodeCell:{
-        cm_config:{indentUnit:2}
-      }
-    }
-config.update(patch)
 
 ###### Python 참고 코드 
 import requests
