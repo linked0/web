@@ -117,6 +117,8 @@ set tabstop=4           ; 하나의 TAB을 몇 칸으로 인식?
 set number		            ;  Line Number
 set mouse=a             ; Adjust area with mouse
 
+mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
+
 #########################################
 #########################################
 ### 3.blockchain ###
