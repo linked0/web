@@ -36,6 +36,8 @@ curl -X POST \
     "address":"19xaiMqayaNrn3x7AjV5cU4Mk5f5prRVpL"
 }'
 
+curl -L google.com // Redirect
+
 ###### ncat
 ncat -l 9999
 ncat localhost 9999
