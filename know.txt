@@ -89,6 +89,11 @@ git rm -r app
 git config --global user.name "linked0"
 git config --global user.email linked@gmail.com
 
+* fork된 리파지토리 새로운 원본 커밋 가져오고, 머지하기
+git fetch upstream
+git checkout master       // Check out your fork's local master branch.
+git merge upstream/master
+
 ###### Generate Private Key
 openssl ecparam -name secp256k1 -genkey -noout
 
