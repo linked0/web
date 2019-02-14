@@ -8,7 +8,7 @@ know2.txt: bit.ly/2OXGjKX
 ### 5.cloud 
 ### 6.python
 ### 7.node.js
-### 8.java/c/go
+### 8.java/c/go/android/ios
 ### 9.web
 ### 10.etc
 
@@ -447,7 +447,7 @@ start(); 
 
 #########################################
 #########################################
-### 8.java/c/go ###
+### 8.java/c/go/android/ios ###
 #########################################
 
 ###### Go
@@ -510,6 +510,12 @@ user$ g++ test.cpp
 user$ a.out
 -bash: a.out: command not found
 user$ ./a.out
+
+###### Android
+* 커맨드 창에서 android 명령 
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
 
 #########################################
 #########################################
