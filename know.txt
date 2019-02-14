@@ -243,6 +243,11 @@ sudo docker run -d nginx:1.10.0
 sudo docker inspect f86cf066c304 // f86cf066c304는 Container ID
 sudo docker inspect sharp_bartik // sharp_bartik는 Container Name
 
+###### AWS 타임존 변경
+1) $ tzselect
+2) .profile에 다음을 추가하고 재로그인
+TZ='Asia/Seoul'; export TZ
+
 ###### Create Docker Image
 wget https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz
 rm -rf /usr/local/bin/go
