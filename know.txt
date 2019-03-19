@@ -1,5 +1,7 @@
 sites.txt: bit.ly/2EluV7n
 know2.txt: bit.ly/2OXGjKX
+Google 기술문서: goo.gl/B2Drsz
+
 
 ### 1.command
 ### 2.vi
