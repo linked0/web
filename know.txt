@@ -1,16 +1,17 @@
-sites.txt: 2EluV7n
-know2.txt: 2OXGjKX
-poex: 2QfeJ9o -> 2Rv5gux
+sites.txt: bit.ly/2EluV7n
+know2.txt: bit.ly/2OXGjKX
+Google 기술문서: goo.gl/B2Drsz
+
 
 ### 1.command
 ### 2.vi
 ### 3.blockchain
-### 4.ml.colab
+### 4.ml/colab/jupyter
 ### 5.cloud 
 ### 6.python
 ### 7.node.js
-### 8.java/c/go
-### 9.not-defined
+### 8.java/c/go/android/ios
+### 9.web
 ### 10.etc
 
 #########################################
@@ -20,7 +21,7 @@ poex: 2QfeJ9o -> 2Rv5gux
 find . -iname mainview*
 touch -t "201610041200" timestamp
 find . -type f -newer timestamp
-egrep -ilrnH --include=*.java ‘beacon.pntbiz.com’ ./
+egrep -irnH --include=*.java ‘beacon.pntbiz.com’ ./
 
 sudo xcode-select -s /Applications/XCode7.2/Xcode.app/
 To clear the terminal manually: Cmd + K
@@ -28,15 +29,7 @@ ps aux | grep chrome
 
 export PS1="\W \u$ "
 
-Homebrew: ruby -e "$(curl -fsSL https://bit.ly/1LEgSWs)"
-
-brew/nvm
-brew upgrade node
-nvm node(nodejs) uninstall: nvm uninstall v8.10.0
-
 ###### curl
-curl http://localhost:8999/block/10
-curl -X POST -H "Content-Type: application/json" -d '{"body": "New Test Block 27th September"}' http://localhost:8999/block
 curl -X POST \
   http://localhost:8000/api/requestValidation \
   -H 'Content-Type: application/json' \
@@ -44,6 +37,16 @@ curl -X POST \
   -d '{
     "address":"19xaiMqayaNrn3x7AjV5cU4Mk5f5prRVpL"
 }'
+
+curl -L bit.ly/2C19vd0 // Redirect
+
+###### ncat
+ncat -l 9999
+ncat localhost 9999
+
+ncat google.com 80
+GET / HTTP/1.1
+Host: google.com(엔터 두번 치기)
 
 ###### File Transfer
 Download: scp carnd@54.249.240.135:/home/abc/index.html ./
@@ -66,7 +69,7 @@ zip --exclude \*.git\* -r test.zip ./*
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 
 ###### File Upload to Google Drive(https://github.com/prasmussen/gdrive)
-poohex id: 0B6E3rj3qrE6NMTRxYU41T1REXzQ
+wojin's share: 1UiOnqU2VEs-rjC6iZyo2suLa9r4_9d9T
 Install on Mac
 brew install gdrive
 
@@ -78,13 +81,6 @@ chmod +x gdrive
 sudo install gdrive /usr/local/bin/gdrive
 
 ###### Git
-Git 새로 만들기 
-echo "# dlnd-deep-learning" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/linked0/dlnd-deep-learning.git
-git push -u origin master
 지워진 폴더에 대한 스테이징
 git rm -r app
 
@@ -94,9 +90,11 @@ git rm -r app
 변경파일 commit에 포함시키기: git add benchmarks.rb
 git config --global user.name "linked0"
 git config --global user.email linked@gmail.com
-git push
-sername for 'https://github.com': linked0@gmail.com
-Password for 'https://linked0@gmail.com@github.com': 
+
+* fork된 리파지토리 새로운 원본 커밋 가져오고, 머지하기
+git fetch upstream
+git checkout master       // Check out your fork's local master branch.
+git merge upstream/master
 
 ###### Generate Private Key
 openssl ecparam -name secp256k1 -genkey -noout
@@ -107,16 +105,17 @@ openssl ecparam -name secp256k1 -genkey -noout
 #########################################
 Visual Studio Code command 실행
 shift-cmd-p -> shell command -> terminal에서 code로 실행
-mac vim
+
 brew install macvim --override-system-vim
 xcode-select install
 sudo xcode-select --switch /Library/Developer/CommandLineTools
+
 find ./ -type f > files
-find . -type file -name '*.js' -o -name '*.json' > files
+find . -type file -name '*.js' -o -name '*.json' > files  //-o는 or를 뜻함
 find . -type f -not -path './node_modules/*' -not -path './chaindata/*' > files
-open -a macvim files
-<ctl-w>f: open in a new window
-<ctl-w>gf: open in a new tab
+
+<c-w>f: open in a new window
+<c-w>gf: open in a new tab
 <c-w> {H,J,K,L}: move among windows, or use arrow key
 
 "*yy           ; copt from vi 
@@ -126,6 +125,8 @@ set softtabstop=4       ; TAB키를 눌렀을때 몇 칸을 이동?
 set tabstop=4           ; 하나의 TAB을 몇 칸으로 인식? 
 set number		            ;  Line Number
 set mouse=a             ; Adjust area with mouse
+
+mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 
 #########################################
 #########################################
@@ -176,17 +177,13 @@ $ geth --rinkeby --syncmode "fast"
 
 #########################################
 #########################################
-### 4.ml.colab ###
+### 4.ml/colab/jupyter ###
 #########################################
 sudo tensorboard --logdir='my_graph'
 
 전략: 1080Ti로 샘플정도 트레이닝하고 제대로 트레이닝한다.
 
-###### Google Colaboration ####
-* Colab에 접속해서 바로 Github의 코드를 바로 열 수 있음.
-    - colab.research.google.com에 접속
-    - github 탭을 누르기
-    
+###### Google Colaboration ####    
 * google drive 접속
 from google.colab import drive
 drive.mount('/content/drive')
@@ -218,6 +215,26 @@ url='https://github.com/linked0/' + repo + '.git'
 from tensorflow.python.client import device_lib
 device_lib.list_local_devices()
 
+###### Jupyter Notebook에서 브라우저 띄우기
+%%HTML
+<button id="launcher">Launch Game Simulator</button>
+<script src="setupLauncher.js"></script>
+
+###### Jupyter Notebook에서 인덴트 바꾸기
+아래 코드를 브라우저 개발자 콘솔에서 실행시키면 됨.
+var cell = Jupyter.notebook.get_selected_cell();
+var config = cell.config;
+var patch = {
+      CodeCell:{
+        cm_config:{indentUnit:2}
+      }
+    }
+config.update(patch)
+
+###### 특정 python env에 대한 jupyter notebook kernel 만들기
+python -m ipykernel install --user --name drlnd --display-name "drlnd"
+
+
 #########################################
 #########################################
 ### 5.cloud ###
@@ -232,6 +249,11 @@ sudo docker pull nginx:1.10.0  // download from repository
 sudo docker run -d nginx:1.10.0
 sudo docker inspect f86cf066c304 // f86cf066c304는 Container ID
 sudo docker inspect sharp_bartik // sharp_bartik는 Container Name
+
+###### AWS 타임존 변경
+1) $ tzselect
+2) .profile에 다음을 추가하고 재로그인
+TZ='Asia/Seoul'; export TZ
 
 ###### Create Docker Image
 wget https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz
@@ -332,17 +354,6 @@ docker swarm leave --force     <- 마지막 leader에서 leave.
 #########################################
 ### 6.python ###
 #########################################
-
-###### Jupyter Notebook에서 인덴트 바꾸기
-아래 코드를 브라우저 개발자 콘솔에서 실행시키면 됨.
-var cell = Jupyter.notebook.get_selected_cell();
-var config = cell.config;
-var patch = {
-      CodeCell:{
-        cm_config:{indentUnit:2}
-      }
-    }
-config.update(patch)
 
 ###### Python 참고 코드 
 import requests
@@ -448,7 +459,7 @@ start(); 
 
 #########################################
 #########################################
-### 8.java/c/go ###
+### 8.java/c/go/android/ios ###
 #########################################
 
 ###### Go
@@ -512,10 +523,25 @@ user$ a.out
 -bash: a.out: command not found
 user$ ./a.out
 
+###### Android
+* 커맨드 창에서 android 명령 
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+
+* Android 로그 설정
+<option 1>
+^((?!(?:ScanRecord|BluetoothAdapter|Latitude|onReceive|ConnectivityService|NetworkController|BtGatt|BluetoothUtils)).)*$
+ 
+<option 2>
+^((?!(?:ScanRecord|BluetoothAdapter|Latitude|onReceive|ConnectivityService|NetworkController|BtGatt|BluetoothUtils|PRESENCE_ALERT|SamsungAlarmManager|NetworkIdentity|CompatibilityInfo|audio_|CalcNPosition|scanlist|PowerUI|BluetoothEventManager|DevicePolicyManagerService|OcrModelUpStIntentOp|ProcessStatsService|NetstatsParser|SQLiteDatabase|SQLiteOpenHelper|Finsky|Zygote|LocSvc_|dalvikvm)).)*$
+
+
 #########################################
 #########################################
-### 9.not-defined ###
+### 9.web ###
 #########################################
+chrome://inspect//#devices
 
 #########################################
 #########################################

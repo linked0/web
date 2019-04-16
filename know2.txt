@@ -199,6 +199,7 @@ wget -O ./test.txt "https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=1"
         * this.contract = await StarNotary.new({from: defaultAccount});
     * describe와 그 안에 it 명령으로 테스트 진행 
 * Test with Truffle
+    * 2_deploy_starnotary.js 작성
     * truffle test (on ganache cli)
         * smart_contracts 위치에서 실행 
         * truffle.js를 수정하지 않고 실행하면, 아마도 디폴트로 ganache cli 환경에서 디폴트로 진행
@@ -211,7 +212,6 @@ wget -O ./test.txt "https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=1"
         * Ganache gui에서 트랜잭션 확인
 * Deploy smart contract on a public test network
     * Inpura에서 Endpoint 가져오기 
-    * 2_deploy_starnotary.js 작성
     * truffle.js 수정
         *  rinkeby 항목에 Endpoint 추가
         * mnemonic을 내 seed로 설정하기 (metamask 설정에서 볼 수 있음)
@@ -247,6 +247,8 @@ wget -O ./test.txt "https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=1"
 (Project Management)
 
 관련 정리 문서: https://docs.google.com/document/d/1Y1BlcpGweRD4ZQuD5yGrR7bzMoH87I2OZSFxv_za7N8/edit
+웹 개발 절차: bit.ly/2CafxGJ
+
 1. PM
 1) 기획
   애자일 업무 방식: 개발을 완성하고 제품을 내놓는 게 아니라 개발하는 과정에서 고객들에게 보여주고 끊임없이 피드백을 받아 수정
