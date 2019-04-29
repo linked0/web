@@ -33,6 +33,8 @@ ps aux | grep chrome
 export PS1="\W \u$ "
 
 ###### curl
+curl -L bit.ly/2C19vd0 // Redirect
+
 작은 따옴표 안에서는 역슬래시를 쓸 필요가 없다. ^^
 curl -X POST http://211.253.31.20:49080/bccard/bccard/queryOrder \
 -H 'Content-Type: application/json' \
@@ -51,17 +53,7 @@ curl -X POST http://211.253.31.20:49080/bccard/bccard/queryOrder \
       "orderChannel" : "콜센터", 
       "orderItems" :  "[{\"itemName\" : \"5만원권\",\"itemCount\" : 10,\"itemPrice\": 50000, \"itemCode\" : \"G5\"},{\"itemName\" : \"10만원권\",\"itemCount\" : 2,\"itemPrice\": 100000,\"itemCode\" : \"G10\"}]"
     }
-}' 
-
-curl -X POST \
-  http://localhost:8000/api/requestValidation \
-  -H 'Content-Type: application/json' \
-  -H 'cache-control: no-cache' \
-  -d '{
-    "address":"19xaiMqayaNrn3x7AjV5cU4Mk5f5prRVpL"
 }'
-
-curl -L bit.ly/2C19vd0 // Redirect
 
 ###### ncat
 ncat -l 9999
