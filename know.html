@@ -10,7 +10,7 @@
 ### 2.project-management
 ### 3.blockchain
 ### 4.ml/colab/jupyter
-### 5.cloud 
+### 5.cloud/docker
 ### 6.python
 ### 7.node.js --> 7.2.web
 ### 8.android --> 8.2.ios
@@ -265,46 +265,12 @@ gcloud config set compute/zone <zone>
 gcloud compute instances create ubuntu \
 gcloud compute ssh ubuntu
 
-sudo docker images
-sudo docker pull nginx:1.10.0  // download from repository
-sudo docker run -d nginx:1.10.0
-sudo docker inspect f86cf066c304 // f86cf066c304는 Container ID
-sudo docker inspect sharp_bartik // sharp_bartik는 Container Name
-
 ###### AWS 타임존 변경
 1) $ tzselect
 2) .profile에 다음을 추가하고 재로그인
 TZ='Asia/Seoul'; export TZ
 
-###### Create Docker Image
-wget https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz
-rm -rf /usr/local/bin/go
-sudo tar -C /usr/local -xzf go1.6.2.linux-amd64.tar.gz
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=~/go
-mkdir -p $GOPATH/src/github.com/udacity
-cd $GOPATH/src/github.com/udacity
-git clone https://github.com/udacity/ud615.git
-cd ud615/app/monolith
-go get -u
-go build --tags netgo --ldflags '-extldflags "-lm -lstdc++ -static"'
 
-cat Dockerfile
-sudo docker build -t monolith:1.0.0 .
-sudo docker images monolith:1.0.0
-sudo docker run -d monolith:1.0.0
-sudo docker inspect <container name or cid>
-curl <the container IP>
-
-docker tag -h
-sudo docker tag monolith:1.0.0 linked0/monolith:1.0.0  // my account
-sudo docker login  // https://hub.docker.com/register/
-sudo docker push linked0/example-monolith:1.0.0
-
-###### Kill & Remove Docker Container
-docker kill $(docker ps -q)
-docker rm $(docker ps -aq)
-docker rmi $(docker images dev-* -q)
 
 ###### gdrive list
 brew install gdrive <-- Mac
@@ -349,27 +315,7 @@ chmod 400 mykey.pem
 sudo useradd -m linked0 -> sudo passwd linked0
 AWS Installatio on Python Microservice Development Document
 
-###### Docker Swarm
-1. Initialize a swarm (on PC1) 
-docker swarm init
- 
-2. Get swarm join token (on PC1)
-docker swarm join-token worker <- PC2에서 사용할 내용을 뽑아내는 것이기 때문에 worker을 써야 함.
-﻿
-==> It will output something like this
-docker swarm join --token SWMTKN-1-60vpnn5uieubntz9dfktr2lhl456hdpx8h5d69f9gbmfsu7ymj-cmspzf5s6oontgs5tyo9swmaw 172.22.7.64:2377
- 
-3. Swam join (on PC2)
-위에서 산출된 내용
- 
-4. Create a network (on PC1)
-docker network create --attachable --driver overlay my-net
 
-5. Docker leave 
-docker node demote wolf-HP    <- 현재 wolf-HP PC상에 있다고 치면, wolf-HP가 혹시 Leader일수 있으므로 leave가 동작 안할 수 있음.
-PC를 껐다가 다시 켜는 것도 한 방법 
-docker swarm leave --force        <-  현재 PC가 Leader가 아닐때 이걸로 leave.
-docker swarm leave --force     <- 마지막 leader에서 leave.
 
 #########################################
 #########################################
@@ -578,35 +524,7 @@ user$ ./a.out
 ### 10.etc ###
 #########################################
 
-###### Violent Monkey
-YonseiSv
-// ==UserScript==
-// @name YonseiSv
-// @namespace https://wms-sev.iseverance.com
-// @grant none
-// ==/UserScript==
-$(".navbar").height(30);
-$(".navbar-branding").height(30);
-$(".nav").height(30);
-$(".dropdown").height(30);
-$(".dropdown-toggle").height(30);
 
-topBar = document.getElementById("topbar")
-topBar.style.padding = "0px"
-topBar.style.minHeight = "30px"
-
-var utilBtn = document.createElement("BUTTON");        // Create a <button> element
-var t = document.createTextNode("Clear");       // Create a text node
-utilBtn.appendChild(t);                                // Append the text to <button>
-utilBtn.addEventListener("click", function(){
-    pntmap.getObjectManager().findTag('node.beacon', function(marker) { marker.setLabelText(String(marker.getData().get('nodeName'))); } )
-});
-topBar.appendChild(utilBtn);  
-
-
-pntmap.on('vmarker.rightclick', function(evt) {
-alert('hello')
-};);
 </pre>
 </body>
 </html>
