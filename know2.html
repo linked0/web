@@ -1,18 +1,21 @@
 <html>
 <body>
 <pre>
-#### 1.기타 명령어
-#### 2.파이썬
-#### 3.맥
-#### 4.블록체인
-#### 5.ML
-#### 6.프로젝트 관리
-#### 7.Android
-#### 8.iOS
-#### 10.기타(엑셀,Node.js)
+### 1.command --> 1.2.vi --> 1.3.mac
+### 2.project-management
+### 3.blockchain
+### 4.ml/colab/jupyter
+### 5.cloud 
+### 6.python
+### 7.node.js --> 7.2.web
+### 8.android
+### 8.2.ios
+### 9.java/c/go
+### 10.etc
 
 #########################################
-#### 1.기타 명령어
+#########################################
+#### 1.command
 #########################################
 
 ######jd-gui
@@ -48,69 +51,16 @@ alias JD="open /Users/hyunjaelee/pooh/dev/jd-gui-osx-1.4.0/JD-GUI.app"
 export PS1="\w $ "
 
 #########################################
-#### 2.파이썬
 #########################################
-###### Python Virtual Env
-conda install -n yourenvname [package]
-conda create -n py3conda python=3.6 anaconda ⇐ 이게 anaconda를 관련 패키지를 다 설치해준다.
-conda create -n autobuild python=3.6 ⇐ 이것만 해줘도 문제없다.
-source activate py3conda
-virtualenv를 사용하는 이유는 패키지 환경을 유지하기 위해서이다.
-    * pip freeze > requirements.txt
-    * pip install -r requirements.txt
- /Users/user/anaconda/lib/python2.7/site-packages
-info --envs ⇐ env 리스팅
-conda env remove --name myenv
+#### 1.2.vi
+#########################################
 
 
-* 이슈
-현재 py36에서는 잘되는데, kaggle36에서는 segmentation fault발생(conda create -n yourenvname python=x.x anaconda로 생성된 것임), 170904
-
-* 관련 명령어
-conda env list
-
-
-# pip upgrade & 버전 지정
-sudo pip install --upgrade numpy
-sudo conda install pandas=0.19.2
-
-# 기타
-lim x^2/(1-cos(x)) as x -> 0.001+
-
-# ipython notebook
-%matplotlib inline
-%load_ext autoreload
-%autoreload 2
-%config InlineBackend.figure_format = 'retina'
-
-plt.show()를 실행해야 반영됨 
-
-# ipython
-%run ./my_script.py
-Pycharm
-
-# 인터프리터 세팅
-Go to File > Default Settings
-In left sidebar, click Default Project > Project Interpreter
-At bottom of window, click + to install or - to uninstall.
-
-# import시 참조 오류 나는 것
-- app_ml 폴더에서 오른쪽 버튼
-- Mark Directory AS → Source Root
-
-* split vertically 세팅 
-
-#### Error 1
-[QNSApplication _setup:]: unrecognized selector sent to instance 0x7fc6cc9d16a0
-==> pylab, matplotlib.pyplot, or matplotlib.backends가 임포트 되기 전에 호출되면 됨.
-import matplotlib
-matplotlib.use('Qt5Agg')
-==> Qt5Agg 말고도 다음과 같이 여러개의 설정값이 있음.
-['GTK', 'GTKAgg', 'GTKCairo', 'MacOSX', 'Qt4Agg', 'Qt5Agg', 'TkAgg', 'WX', 'WXAgg', 'GTK3Cairo', 'GTK3Agg', 'WebAgg', 'nbAgg', 'agg', 'cairo', 'gdk', 'pdf', 'pgf', 'ps', 'svg', 'template']
 
 
 #########################################
-#### 3.맥
+#########################################
+#### 1.3.mac
 #########################################
 
 숨김 파일 보기(071-5h)
@@ -164,88 +114,8 @@ https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=0 ← 파란색 부분만 �
 wget -O ./test.txt "https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=1"
 
 #########################################
-#### 4.Blockchain (블록체인, blockchain)
 #########################################
-* 폴더구조
-    * 프로젝트 폴더
-        * index.html
-        * smart_contracts
-* truffle init 
-    * 다음의 폴더 생성됨
-        * contracts	
-        * migrations
-        * test
-        * truffle-config.js
-        * truffle.js
-* npm init
-    * package.json 생성됨
-* openzeppelin-solidity 인스톨
-    * package.json에 다음 항목 추가됨
-        * "openzeppelin-solidity": "2.0.0-rc.1"
-* StarNotary.sol 작성
-    * 아래의 함수 구현
-        * createStar()
-        * putStarUpForSale()
-        * buyStar()
-        * checkIfStarExist()
-        * mint()
-        * tokenIdToStarInfo()
-        * starsForSale()
-        * approve()
-        * safeTransferFrom()
-        * SetApprovalForAll()
-        * getApproved()
-        * isApprovedForAll()
-        * ownerOf()
-* StarNotaryTest.js 작성 
-    * Contract를 하나 생성
-        * this.contract = await StarNotary.new({from: defaultAccount});
-    * describe와 그 안에 it 명령으로 테스트 진행 
-* Test with Truffle
-    * 2_deploy_starnotary.js 작성
-    * truffle test (on ganache cli)
-        * smart_contracts 위치에서 실행 
-        * truffle.js를 수정하지 않고 실행하면, 아마도 디폴트로 ganache cli 환경에서 디폴트로 진행
-    * truffle test(on ganache gui)
-        * truffle.js 수정
-        * npm install truffle-hdwallet-provider 실행(python 2.7 환경)
-        * ganache gui 실행(7545포트)
-        * truffe test 실행
-            * truffle compile과 truffle migrate 명령이 자동을 실행됨.
-        * Ganache gui에서 트랜잭션 확인
-* Deploy smart contract on a public test network
-    * Inpura에서 Endpoint 가져오기 
-    * truffle.js 수정
-        *  rinkeby 항목에 Endpoint 추가
-        * mnemonic을 내 seed로 설정하기 (metamask 설정에서 볼 수 있음)
-    * truffle deploy --network rinkeby
-        * deploy가 완료되면 Transaction hash를 커맨드 라인 로그에서 확인 가능 
-            * Running migration: 2_deploy_starnotary.js
-            *   Deploying StarNotary...
-            *   ... 0x72ed43e8830d256b0ac53911ec20c714a0f6085cb16427756afdfcbfb1fc6476
-            *   StarNotary: 0x250ab0504fd45dbae2dc7db47135967175631d42
-            * Saving successful migration to network...
-            *   ... 0xa47f449baba0cf3d032f5da3d5f3527615429dadc4e2b3d23f26845f1b73800e
-            * Saving artifacts...
-        * 이것을 etherscan.io에서 확인 
-        * 만약 deploy를 잘못했으면 build 폴더 지우고 다시 진행 
-    * Truffle에서 abi 뽑아내는 방법
-        * npm install -g truffle-export-abi
-        * truffle-export-abi
-        * 
-    * createStar
-        * https://www.myetherwallet.com/#contracts 
-        * Contract Address와 ABI를 복사하면 함수 목록이 나타남.
-        * Wallet Address 는 Metamask로 연결하기 
-    * Test on Web
-        * ABI 복사해 놓아야 함.
-		* http-server를 띄워서 테스트 진행
-			* npm install http-server -g
-			* http-server -a 0.0.0.0 -p 8080
-
-
-#########################################
-#### 6.프로젝트 관리
+#### 2.project-management
 #########################################
 (Project Management)
 
@@ -360,7 +230,179 @@ Character/Object Modeling : Blender
 - 세부 위험요소를 확인하지 않음으로 해서 일정 산정에 문제가 있었음.(암센터 음성안내 관련 공수 산정도 문제가 있을 수 있음)
 
 #########################################
-#### 7.Android
+#########################################
+#### 3.blockchain
+#########################################
+* 폴더구조
+    * 프로젝트 폴더
+        * index.html
+        * smart_contracts
+* truffle init 
+    * 다음의 폴더 생성됨
+        * contracts	
+        * migrations
+        * test
+        * truffle-config.js
+        * truffle.js
+* npm init
+    * package.json 생성됨
+* openzeppelin-solidity 인스톨
+    * package.json에 다음 항목 추가됨
+        * "openzeppelin-solidity": "2.0.0-rc.1"
+* StarNotary.sol 작성
+    * 아래의 함수 구현
+        * createStar()
+        * putStarUpForSale()
+        * buyStar()
+        * checkIfStarExist()
+        * mint()
+        * tokenIdToStarInfo()
+        * starsForSale()
+        * approve()
+        * safeTransferFrom()
+        * SetApprovalForAll()
+        * getApproved()
+        * isApprovedForAll()
+        * ownerOf()
+* StarNotaryTest.js 작성 
+    * Contract를 하나 생성
+        * this.contract = await StarNotary.new({from: defaultAccount});
+    * describe와 그 안에 it 명령으로 테스트 진행 
+* Test with Truffle
+    * 2_deploy_starnotary.js 작성
+    * truffle test (on ganache cli)
+        * smart_contracts 위치에서 실행 
+        * truffle.js를 수정하지 않고 실행하면, 아마도 디폴트로 ganache cli 환경에서 디폴트로 진행
+    * truffle test(on ganache gui)
+        * truffle.js 수정
+        * npm install truffle-hdwallet-provider 실행(python 2.7 환경)
+        * ganache gui 실행(7545포트)
+        * truffe test 실행
+            * truffle compile과 truffle migrate 명령이 자동을 실행됨.
+        * Ganache gui에서 트랜잭션 확인
+* Deploy smart contract on a public test network
+    * Inpura에서 Endpoint 가져오기 
+    * truffle.js 수정
+        *  rinkeby 항목에 Endpoint 추가
+        * mnemonic을 내 seed로 설정하기 (metamask 설정에서 볼 수 있음)
+    * truffle deploy --network rinkeby
+        * deploy가 완료되면 Transaction hash를 커맨드 라인 로그에서 확인 가능 
+            * Running migration: 2_deploy_starnotary.js
+            *   Deploying StarNotary...
+            *   ... 0x72ed43e8830d256b0ac53911ec20c714a0f6085cb16427756afdfcbfb1fc6476
+            *   StarNotary: 0x250ab0504fd45dbae2dc7db47135967175631d42
+            * Saving successful migration to network...
+            *   ... 0xa47f449baba0cf3d032f5da3d5f3527615429dadc4e2b3d23f26845f1b73800e
+            * Saving artifacts...
+        * 이것을 etherscan.io에서 확인 
+        * 만약 deploy를 잘못했으면 build 폴더 지우고 다시 진행 
+    * Truffle에서 abi 뽑아내는 방법
+        * npm install -g truffle-export-abi
+        * truffle-export-abi
+        * 
+    * createStar
+        * https://www.myetherwallet.com/#contracts 
+        * Contract Address와 ABI를 복사하면 함수 목록이 나타남.
+        * Wallet Address 는 Metamask로 연결하기 
+    * Test on Web
+        * ABI 복사해 놓아야 함.
+		* http-server를 띄워서 테스트 진행
+			* npm install http-server -g
+			* http-server -a 0.0.0.0 -p 8080
+
+
+
+#########################################
+#########################################
+#### 4.ml/colab/juypter
+#########################################
+
+
+#########################################
+#########################################
+#### 5.cloud
+#########################################
+
+
+
+#########################################
+#########################################
+#### 6.python
+#########################################
+
+###### Python Virtual Env
+conda install -n yourenvname [package]
+conda create -n py3conda python=3.6 anaconda ⇐ 이게 anaconda를 관련 패키지를 다 설치해준다.
+conda create -n autobuild python=3.6 ⇐ 이것만 해줘도 문제없다.
+source activate py3conda
+virtualenv를 사용하는 이유는 패키지 환경을 유지하기 위해서이다.
+    * pip freeze > requirements.txt
+    * pip install -r requirements.txt
+ /Users/user/anaconda/lib/python2.7/site-packages
+info --envs ⇐ env 리스팅
+conda env remove --name myenv
+
+
+* 이슈
+현재 py36에서는 잘되는데, kaggle36에서는 segmentation fault발생(conda create -n yourenvname python=x.x anaconda로 생성된 것임), 170904
+
+* 관련 명령어
+conda env list
+
+
+# pip upgrade & 버전 지정
+sudo pip install --upgrade numpy
+sudo conda install pandas=0.19.2
+
+# 기타
+lim x^2/(1-cos(x)) as x -> 0.001+
+
+# ipython notebook
+%matplotlib inline
+%load_ext autoreload
+%autoreload 2
+%config InlineBackend.figure_format = 'retina'
+
+plt.show()를 실행해야 반영됨 
+
+# ipython
+%run ./my_script.py
+Pycharm
+
+# 인터프리터 세팅
+Go to File > Default Settings
+In left sidebar, click Default Project > Project Interpreter
+At bottom of window, click + to install or - to uninstall.
+
+# import시 참조 오류 나는 것
+- app_ml 폴더에서 오른쪽 버튼
+- Mark Directory AS → Source Root
+
+* split vertically 세팅 
+
+#### Error 1
+[QNSApplication _setup:]: unrecognized selector sent to instance 0x7fc6cc9d16a0
+==> pylab, matplotlib.pyplot, or matplotlib.backends가 임포트 되기 전에 호출되면 됨.
+import matplotlib
+matplotlib.use('Qt5Agg')
+==> Qt5Agg 말고도 다음과 같이 여러개의 설정값이 있음.
+['GTK', 'GTKAgg', 'GTKCairo', 'MacOSX', 'Qt4Agg', 'Qt5Agg', 'TkAgg', 'WX', 'WXAgg', 'GTK3Cairo', 'GTK3Agg', 'WebAgg', 'nbAgg', 'agg', 'cairo', 'gdk', 'pdf', 'pgf', 'ps', 'svg', 'template']
+
+
+#########################################
+#########################################
+#### 7.node
+#########################################
+
+#########################################
+#########################################
+#### 7.2.web ###
+#########################################
+
+
+#########################################
+#########################################
+#### 8.android
 #########################################
 
 
@@ -514,7 +556,8 @@ Assistant Editor: Opt-Cmd-Ret
 - OSD_(FILE|PCS)
 
 #########################################
-#### 8.iOS
+#########################################
+#### 8.2.ios
 #########################################
 iOS 로그
 NSLog(@">>>>>> %s - info:%@", __func__, userInfo);
@@ -538,9 +581,15 @@ General 탭에서 Automatically manager singing를 uncheck하고, 새로운 Prov
 “Automatically manage sigining” 을 체크하고 Team을 Jimsun Lim(Personal Team)으로 세팅하면 Signing 섹션 상의 에러는 없어짐
 - 빌드시 Signing 관련 에러가 떨어졌으나, 클린빌드해서 문제가 해결됨
 
+#########################################
+#########################################
+### 9.java/c/go ###
+#########################################
+
 
 #########################################
-#### 10.기타(엑셀)
+#########################################
+### 10.etc ###
 #########################################
 
 #### Excel
