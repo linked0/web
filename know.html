@@ -95,7 +95,7 @@ mv "uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download" gdrive
 chmod +x gdrive
 sudo install gdrive /usr/local/bin/gdrive
 
-###### Git
+##### Git
 지워진 폴더에 대한 스테이징
 git rm -r app
 
@@ -111,20 +111,22 @@ git fetch upstream
 git checkout master       // Check out your fork's local master branch.
 git merge upstream/master
 
-###### Generate Private Key
+##### Generate Private Key
 openssl ecparam -name secp256k1 -genkey -noout
+
+##### Visual Studio Code
+Visual Studio Code command 실행
+shift-cmd-p -> shell command -> terminal에서 code로 실행
+
+##### Mac XCode
+brew install macvim --override-system-vim
+xcode-select install
+sudo xcode-select --switch /Library/Developer/CommandLineTools
 
 #########################################
 #########################################
 ### 1.2.vi ###
 #########################################
-Visual Studio Code command 실행
-shift-cmd-p -> shell command -> terminal에서 code로 실행
-
-brew install macvim --override-system-vim
-xcode-select install
-sudo xcode-select --switch /Library/Developer/CommandLineTools
-
 find ./ -type f > files
 find . -type f -not -path '*/vendor/*' > files // 모든 vendor 폴더는 제외함
 find . -type file -name '*.js' -o -name '*.json' > files  //-o는 or를 뜻함
@@ -141,6 +143,8 @@ set softtabstop=4       ; TAB키를 눌렀을때 몇 칸을 이동?
 set tabstop=4           ; 하나의 TAB을 몇 칸으로 인식? 
 set number		            ;  Line Number
 set mouse=a             ; Adjust area with mouse
+
+:shell 혹은 :sh를 이용해서 shell(:12)로 빠져나갈 수 있다. exit 혹은 Ctrl+D를 이용해서 vim으로 되돌아올 수 있다.
 
 mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 
