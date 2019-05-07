@@ -64,7 +64,7 @@ GET / HTTP/1.1
 Host: google.com(엔터 두번 치기)
 
 ###### File Transfer
-Download: scp carnd@54.249.240.135:/home/abc/index.html ./
+Download: scp -i pooh-seoul.pem carnd@54.249.240.135:/home/abc/index.html ./
 Upload: scp -i pooh-seoul.pem ./index.html carnd@54.249.240.135:/home/abc/index.html
 
 ###### Tar
