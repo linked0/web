@@ -69,9 +69,9 @@ Upload: scp -i pooh-seoul.pem ./index.html carnd@54.249.240.135:/home/abc/index.
 
 ###### Tar
 Zip Foler
-tar --exclude='node_modules' -cvzf bccard.tar.gz bccard <-- 하위 폴더들에서 node_modules를 모두 제외시키기
+tar --exclude='node_modules' -cvzf bccard.tar.gz bccard    //하위 폴더들에서 node_modules를 모두 제외시키기
 tar --exclude='./BLE/.git' -cvzf output_filename.tar.gz folder_name --exclude='./BLE/.git'
-tar -xvzf xxx.tar.gz -C ./data <-- data 폴더에 풀고 싶을때.
+tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
 
 ###### Zip
 sudo apt-get install unzip
