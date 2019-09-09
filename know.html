@@ -33,6 +33,10 @@ ps aux | grep chrome
 
 export PS1="\W \u$ "
 
+hgrep() {
+	grep -irnH --include=*.$1 "$2" ./  
+}
+
 ###### curl
 curl -L bit.ly/2C19vd0 // Redirect
 
