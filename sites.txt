@@ -3,7 +3,6 @@ bit.ly/2NuH39j, bit.ly/2HksKBZ, bit.ly/2HpHlbi
 Woojin know: bit.ly/2CSmksh
 Hyperledger Readthedocs: bit.ly/2CUQTgS
 My Blockchain Gitbook: bit.ly/2m6cJ99
-PnT Blockchain: bit.ly/2MfVxoU
 
 #########################################
 ### Work ###
@@ -78,3 +77,8 @@ Colab Welcome: http://bit.ly/2uhAPOG
 Colab play.ipynb: http://bit.ly/2L6tk4p
 RBG Color Picker: http://bit.ly/2QgVP24
 Kubernets cheat sheet: http://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
+
+#########################################
+### Old ###
+#########################################
+PnT Blockchain: bit.ly/2MfVxoU
