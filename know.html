@@ -143,14 +143,9 @@ find . -type f -not -path '*/vendor/*' > files // 모든 vendor 폴더는 제외
 find . -type file -name '*.js' -o -name '*.json' > files  //-o는 or를 뜻함
 find . -type f -not -path './node_modules/*' -not -path './chaindata/*' > files
 
-<c-w>f: open in a new window
-<c-w>gf: open in a new tab
-<c-w> {H,J,K,L}: move among windows, or use arrow key
-
-CTRL-W h 왼쪽 창으로 커서 이동 
-CTRL-W j 아래쪽 창으로 커서 이동
-CTRL-W k 위쪽 창으로 커서 이동
-CTRL-W l 오른쪽 창으로 커서 이동
+CTRL-W f: open in a new window
+CTRL-W gf: open in a new tab
+CTRL-W {H,J,K,L}: move among windows, or use arrow key
 CTRL-W w 창을 순차적으로 이동
 CTRL-W t 최상위 창으로 이동
 CTRL-W b 최하위 창으로 이동
