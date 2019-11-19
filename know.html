@@ -141,7 +141,6 @@ sudo xcode-select --switch /Library/Developer/CommandLineTools
 ### 2.vi ###
 ##################################################################################
 find ./ -type f > files
-find . -type f -not -path '*/vendor/*' > files // 모든 vendor 폴더는 제외함
 find . -type file -name '*.js' -o -name '*.json' > files  //-o는 or를 뜻함
 find . -type f -not -path './node_modules/*' -not -path './chaindata/*' > files
 
