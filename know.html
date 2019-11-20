@@ -170,6 +170,25 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 * 한글 깨지는 문제
 set enc=utf-8
 
+###### vimrc
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim' "required
+Plugin 'tpope/vim-fugitive' "required 
+call vundle#end()
+filetype plugin indent on " Put your non-Plugin stuff after this line
+:w
+:source %
+:PluginInstall
+syntax enable #syntax highlighting
+set nu # add line numbers
+set smartindent # make smart indent
+set tabstop=4 # tab width as 4 (default 8)
+set shiftwidth=4
+set expandtab
+
 ##################################################################################
 #### 3.project-management
 ##################################################################################
