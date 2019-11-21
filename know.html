@@ -25,7 +25,7 @@
 find . -iname mainview*
 touch -t "201610041200" timestamp
 find . -type f -newer timestamp
-egrep -irnH --include=*.java ‘beacon.pntbiz.com’ ./
+egrep -irnH --include=*.java --exclude-dir=submodules ‘beacon.pntbiz.com’ ./
 
 sudo xcode-select -s /Applications/XCode7.2/Xcode.app/
 To clear the terminal manually: Cmd + K
@@ -105,10 +105,6 @@ sudo install gdrive /usr/local/bin/gdrive
 지워진 폴더에 대한 스테이징
 git rm -r app
 
-수정 원복: git checkout HEAD .
-커밋 제거: git reset HEAD^    // 최종 커밋을 취소. 워킹트리는 보존됨. (커밋은 했으나 push하지 않은 경우 유용)
-푸시 제거 삭제: git reset -soft HEAD^ (커밋하고 푸시까지 된 것 한개만 제거)
-변경파일 commit에 포함시키기: git add benchmarks.rb
 git config --global user.name "linked0"
 git config --global user.email linked@gmail.com
 
