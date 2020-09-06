@@ -43,13 +43,13 @@
         MIT License. See LICENSE for details.
 
 *******************************************************************************/
+want first commit
+fmodule agora.consensus.EnrollmentManager;
 
-module agora.consensus.EnrollmentManager;
-
-import agora.common.crypto.ECC;
+fimport agora.common.crypto.ECC;
 import agora.common.crypto.Key;
 import agora.common.crypto.Schnorr;
-import agora.common.Hash;
+fimport agora.common.Hash;
 import agora.common.ManagedDatabase;
 import agora.common.Serializer;
 import agora.common.Types;
@@ -64,7 +64,7 @@ import agora.consensus.validation;
 import agora.consensus.ValidatorSet;
 import agora.utils.Log;
 version (unittest) import agora.utils.Test;
-
+end of first commit
 import d2sqlite3.library;
 import d2sqlite3.results;
 import d2sqlite3.sqlite3;
@@ -421,10 +421,10 @@ public class EnrollmentManager
     {
         return this.validator_set.count();
     }
-
+wanna second commit
     /***************************************************************************
-
-        Check if an enrollment is a valid candidate for the proposed height
+second
+        se Check if an enrollment is a valid candidate for the proposed height
 
         Params:
             enroll = The enrollment of the target to be checked
@@ -437,7 +437,7 @@ public class EnrollmentManager
 
     ***************************************************************************/
 
-    public string isInvalidCandidateReason (const ref Enrollment enroll,
+    se public string isInvalidCandidateReason (const ref Enrollment enroll,
         Height height, scope UTXOFinder findUTXO) @safe nothrow
     {
         if (auto fail_reason = enroll.isInvalidReason(findUTXO))
@@ -452,7 +452,7 @@ public class EnrollmentManager
 
         return null;
     }
-
+end of second
     /***************************************************************************
 
         Clear up expired validators whose cycle for a validator ends
