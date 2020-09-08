@@ -1,0 +1,800 @@
+<html>
+<body>
+<pre>
+### 1.command --> 1.2.vi --> 1.3.mac
+### 2.project-management
+### 3.blockchain
+### 4.ml/colab/jupyter
+### 5.cloud/docker
+### 6.python
+### 7.node.js --> 7.2.web
+### 8.android --> 8.2.ios
+### 9.java/c/go
+### 10.etc
+
+#########################################
+#########################################
+#### 1.command
+#########################################
+
+######jd-gui
+open ~/pooh/dev/jd-gui-osx-1.4.0/JD-GUI.app
+
+###### d2j & apktool
+apktool
+apktool 스크립트와 apktool.jar를 한 폴더에 놓고, apktool에 대해서 “chmod +x apktool” 실행
+/usr/local/bin으로 이동 되었기 때문에  apktool로 이용가능
+- apktool d [apk경로]
+bin폴더에 없을 경우는 “./apktool”로 실행시켜야 함.
+
+###### d2j
+~/pooh/dev/dex2jar-2.0/d2j-dex2jar.sh BeaconTestApp.apk
+
+###### bash_profile
+# added by Anaconda3 4.4.0 installer
+export PATH="/Users/hyunjaelee/anaconda/bin:/Users/hyunjaelee/Library/Android/sdk/platform-tools:/Users/hyunjaelee/pooh/dev/dex2jar-2.0:/Users/hyunjaelee/pooh/dev/jd-gui-osx-1.4.0:$PATH"
+
+###### Command Prompt
+export PS1="\W \u$ "
+
+alias JD="open /Users/hyunjaelee/pooh/dev/jd-gui-osx-1.4.0/JD-GUI.app"
+
+###### command prompt
+\d – Current date
+\t – Current time
+\h – Host name
+\# – Command number
+\u – User name
+\W – Current working directory (ie: Desktop/)
+\w – Current working directory with full path (ie: /Users/Admin/Desktop/)
+export PS1="\w $ "
+
+#########################################
+#########################################
+#### 1.2.vi
+#########################################
+
+
+
+
+#########################################
+#########################################
+#### 1.3.mac
+#########################################
+
+숨김 파일 보기(071-5h)
+Finder 또는 데스크탑에서 shift +command + . 키를 누르면 해당 폴더에 숨겨진 파일과 하위 폴더가 스르륵 나타납니다. 그리고 다시 해당 키 조합을 누르면 사라집니다.
+
+잠금화면 설정 
+환경설정 - 키보드 - 터치바 사용자화 - '화면잠금'
+
+잠자기 또는 화면보호기에서 깨어날때 암호 설정 하기 
+우선, 시스템환경설정에서 ‘보안 및 개인정보’ 에 들어가 잠자기 또는  화면보호기에서 컴퓨터를 깨우려면 암호를 입력해야 되도록 설정한다
+ 
+화면 일부만 선택하여 스크린샷을 찍는 방법
+shift-command-4 키를 누릅니다. ...
+스크린샷을 찍으려는 위치로 십자선 포인터를 이동한 다음 드래그하여 영역을 선택합니다. ...
+원하는 영역을 선택한 후 마우스나 트랙패드 버튼을 놓습니다. ...
+데스크탑에서 .png 파일로 된 스크린샷을 찾습니다.
+데스크탑 이동
+"fn" + "F11"
+
+ECS kaggle-web
+http://ecs-first-run-alb-195006892.ap-northeast-1.elb.amazonaws.com/\
+
+Error
+* HOST IDENTIFICATION HAS CHANGED error
+sudo ssh-keygen -R 192.168.0.7
+
+###### 맥북 설치
+- Homebrew: ruby -e "$(curl -fsSL https://bit.ly/1LEgSWs)"
+- Karabiner-Elements, JDK, Visual Studio Code
+- Anaconda, Tensorflow, Google Drive
+- Android Studio, XCode, Office, Chrome/Firefox, Source Tree
+- Mini Calendar, Kakao Talk, Monosnap, PaintBrush
+
+# install Homebrew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# Karabiner Element
+다운로드: https://pqrs.org/latest/karabiner-elements-latest.dmg
+키조합 임포트: https://pqrs.org/osx/karabiner/complex_modifications/, Vi Mode, left_control + hjkl. shift/option/command + arrow working.
+한영키 설정 방법: http://macnews.tistory.com/5043
+
+###### File Download
+Google Drive
+id 부분은 다음 그림 참조
+curl -O -J -L https://drive.google.com/uc?id=0B4fIuYID3dr-aHY2eS1NcHdMeEU
+가끔 안되는 파일은 github poohlarge2에서 하는수밖에는 없다.
+
+Dropbox
+빨간색 부분을 해당 링크로 교체하고 파일명도 바꿔준다.
+https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=0 ← 파란색 부분만 아래에 삽입
+wget -O ./test.txt "https://www.dropbox.com/s/kbl9xuj4j7q9sp0/train.p?dl=1"
+
+#########################################
+#########################################
+#### 2.project-management
+#########################################
+(Project Management)
+
+관련 정리 문서: https://docs.google.com/document/d/1Y1BlcpGweRD4ZQuD5yGrR7bzMoH87I2OZSFxv_za7N8/edit
+웹 개발 절차: bit.ly/2CafxGJ
+
+1. PM
+1) 기획
+  애자일 업무 방식: 개발을 완성하고 제품을 내놓는 게 아니라 개발하는 과정에서 고객들에게 보여주고 끊임없이 피드백을 받아 수정
+2) UI 플로우 설계, 기술 분석, 위험 분석
+  Google 문서로 공유, 메인 작업자가 있고 댓글 기능으로 협업
+  위험 분석은 상상력이 필요한 부분
+  필요 문서: UI 시나리오, 기술 설계서
+3) 프로토타이핑
+  기본 앱의 틀이 마련되어 있어야 함. (Android Studio의 갤러리에서 선택)
+4) UI Design
+  하나의 보편 단말을 기준으로 pixel값을 정의 하고, 그것에 맞게 dpi가 정해진 디자인 가이드 문서가 필요하다.
+  이미지는 HDPI:240dpi, XHDPI:320dpi, XXHDPI:480dpi, XXXHDPI:640dpi중에서 고해상도와 저해상도 하나씩 있으면 될 것으로 보임.
+  가장 기본이 되는 XXXHDPI를 기준으로 작업하면 안드로이드가 알아서 줄여준다.
+  저해상도, 중해상도, 고해상도 이미지를 따로 가지는게 좋다.(참고: http://leipiel.tistory.com/7)
+5) 일정 산정
+  WBS 과정 필요
+6) UI 디자인 및 조정
+7) 개발 - 일반
+  중요 내용부터 1차로 개발 진행하고 UI 가이드 및 시나리오를 수정하고 다시 개발 진행
+  내용이 큰 수정에 대해서 브랜치를 따서 작업한다. (브랜치를 따서 개발을 진행하면 이력이 묶이는 효과가 있다.)
+  기본 라이브러리는 가지고 있어야 함.
+  나머지 중요한 사항은 코딩 패턴 참고
+  개발은 반복적으로(iterative): 일차로 커메라가 되고, 포커스 잡고, 셔터음이 들리는 등→ 프리뷰의 사이즈 고민하는 등
+8) 개발 - 안드로이드 
+  Android Layout 원칙
+    각각의 연속되는 뷰는 마진에 대해서 나눠가는게 좋다.
+    키노트로 대략의 레이아웃을 그리는게 좋다(어떤 좋은 툴이 있을까?)
+    layout_height는 wrap_content가 최고다. layout_weight는 주는 것이 좋다.
+9) 검증
+10) 빌드
+  개발용 PC와 빌드용 PC는 따로 가지고 있는 것이 좋다(신라 m2빌드시)
+11) 지속적인 업데이트/문서관리/이슈관리
+  이슈관리: 깃헙, 레드마인, 만티스
+  문서관리
+  지속적으로 업데이트
+  지속적인 마일스톤 설정
+  항상 말도 안되는 것이라도 위험요소를 파악해야함.
+
+2. 개발 & 코딩 패턴
+Principles of work
+  항상 토스트로 띄우자.
+  UnitTest는 매주 중요 - DLND Gradient 구현 경험을 살리자.
+  안드로이드 앱 개발시에 항상 https://developer.android.com/guide/부터 들러서 확인, 글로벌 SaaS Camera Activity 개발시 알게된 것
+  그냥 외우는 것보다 이해를 하면 쉬워진다. 그게 어렵다. (Confusion Matrix)
+  google colab에서 !echo "hello" >> README 쓰면 됨.
+
+모든 public 함수에는 다음의 코멘트를 추가한다.
+  /**
+  * 해당 id의 비컨을 Presence map에 추가한다.
+  * @param id 추가할 비컨의 id(UUID_MAJOR_MINOR)
+  * @param x 추가할 비컨의 위도
+  * @param y 추가할 비컨의 경도
+  * @param rssi_weight 추가할 비컨의 경도
+  * @return 추가된 비컨의 id
+  */
+디버깅코드는 라인수까지 나타나도록 한다.
+  이유: 디버깅시에 해당 함수를 콜한 위치를 알면 시간이 단축된다. 
+  예시: 문과장 코드 확인 필요
+중복되는 코드가 없도록 한다.
+  이유: 중복되는 코드가 있으면 하나가 바뀌면 모두 바뀌어야 한다. 그러나가 하나로 놓치면 오동작 상황이 발생한다.
+  예시: iOS setAgreement 통신 코드
+불필요한 코드는 없도록 한다.
+   이유: 코드 분석이나 나중에 수정시 혼란을 초래한다. 
+  예시: iOS setAgreement 통신 코드
+상속시 코드는 공통코드만 Parent에 놓고 나머지는 Child에 놓는다.
+  추가적으로 static 함수를 Parent에 놓는다.
+절대 데이터 없이 함수만 존재하는 클래스는 만들지 말아야 한다. 만들어야 한다면 Util클래스 정도
+  이유는 어떤 데이터에 대해서 flow가 이미 클래스로 존재하는데 또 다른 플로우가 존재하면서 코드가 불분명해진다.
+공통적으로 나오는 스크링은 static 변수로 만든다.
+  PMD 돌리면 “Avoid Duplicate Literals” 에러 떨어짐
+if 안에, else없이 중복되는 if를 쓰지 마라.
+  PMD 돌리면 “Collapsible If Statements” 에러 떨어짐
+throws Exception와 catch (Exception e) 중에 하나만 써라
+  PMD 돌리면 “Signature Declare Throws Exception” 에러 떨어짐
+instanceof 연산자를 사용할 경우, null 체크할 필요 없음
+  if (context != null & context instanceof Activity)
+  PMD에서 Simplify Conditional 에러 떨어짐
+interface 선언내의 함수에 public붙이지 마라.
+생성자에서 Override 함수를 호출하지 마라.
+  Overridable method called during object construction PMD 에러 발생
+
+3. 툴의 사용
+이슈 트래킹: Redmin
+형상관리: Github, 이슈 관리도 가능, Mantis도 필요없음
+이슈 공유: Trello, 일정공유가 좋음, slack은 후보
+문서/파일 공유: Google Drive
+UML/디자인툴: Draw.io
+API 문서: ReadTheDocs, Gitbook, Swagger.io
+앱 공유: Dothome, Postman
+Character/Object Modeling : Blender
+
+4. 업무 주도성
+회의시간에 무엇을 논의할 것인가? 어떻게 전달할 것인가? 결과를 어떻게 책임질 것인가? 생각 못하는 부분은 없는가?
+중요한 것은 나의 논리의 무결성이 아니라 올바른 방향으로 나아가는 것.
+
+5. 일정 산정 프로세스
+- 주차장 시나리오 개발건의 진행을 확인하고 문제점을 확인하여 실수가 반복되지 않도록 한다.
+
+* 진행 상황
+- 11/14(화): 주차장 시나리오 확정, POI 이슈가 확인됨(각 기둥마다 POI를 설정할 것인가 등등)
+- 11/17(금): 컨텐츠 설정이 안되는 이슈가 있었음, ACTION_CONTENT에 대한 정보를 전달하지 않아서 YT씨가 혼란을 겪음
+- 11/20(월): 주차장의 비콘 마이너번호 설정에 대해서 정책이 없었음
+	-- 동일 콘텐츠가 여러 비콘에 설정되어 있을 경우 동일한 콘텐츠 이벤트가 발생하는 지에 대한 확인이 없었음.
+* 문제점
+- 기본적인 코드 검토에 대해서 WBS방식으로 접근하지 못했음. 일단 시간을 내야했고, 예상 문제를 분할해서 점검했어야 했음.
+- 세부 위험요소를 확인하지 않음으로 해서 일정 산정에 문제가 있었음.(암센터 음성안내 관련 공수 산정도 문제가 있을 수 있음)
+
+#########################################
+#########################################
+#### 3.blockchain
+#########################################
+* 폴더구조
+    * 프로젝트 폴더
+        * index.html
+        * smart_contracts
+* truffle init 
+    * 다음의 폴더 생성됨
+        * contracts	
+        * migrations
+        * test
+        * truffle-config.js
+        * truffle.js
+* npm init
+    * package.json 생성됨
+* openzeppelin-solidity 인스톨
+    * package.json에 다음 항목 추가됨
+        * "openzeppelin-solidity": "2.0.0-rc.1"
+* StarNotary.sol 작성
+    * 아래의 함수 구현
+        * createStar()
+        * putStarUpForSale()
+        * buyStar()
+        * checkIfStarExist()
+        * mint()
+        * tokenIdToStarInfo()
+        * starsForSale()
+        * approve()
+        * safeTransferFrom()
+        * SetApprovalForAll()
+        * getApproved()
+        * isApprovedForAll()
+        * ownerOf()
+* StarNotaryTest.js 작성 
+    * Contract를 하나 생성
+        * this.contract = await StarNotary.new({from: defaultAccount});
+    * describe와 그 안에 it 명령으로 테스트 진행 
+* Test with Truffle
+    * 2_deploy_starnotary.js 작성
+    * truffle test (on ganache cli)
+        * smart_contracts 위치에서 실행 
+        * truffle.js를 수정하지 않고 실행하면, 아마도 디폴트로 ganache cli 환경에서 디폴트로 진행
+    * truffle test(on ganache gui)
+        * truffle.js 수정
+        * npm install truffle-hdwallet-provider 실행(python 2.7 환경)
+        * ganache gui 실행(7545포트)
+        * truffe test 실행
+            * truffle compile과 truffle migrate 명령이 자동을 실행됨.
+        * Ganache gui에서 트랜잭션 확인
+* Deploy smart contract on a public test network
+    * Inpura에서 Endpoint 가져오기 
+    * truffle.js 수정
+        *  rinkeby 항목에 Endpoint 추가
+        * mnemonic을 내 seed로 설정하기 (metamask 설정에서 볼 수 있음)
+    * truffle deploy --network rinkeby
+        * deploy가 완료되면 Transaction hash를 커맨드 라인 로그에서 확인 가능 
+            * Running migration: 2_deploy_starnotary.js
+            *   Deploying StarNotary...
+            *   ... 0x72ed43e8830d256b0ac53911ec20c714a0f6085cb16427756afdfcbfb1fc6476
+            *   StarNotary: 0x250ab0504fd45dbae2dc7db47135967175631d42
+            * Saving successful migration to network...
+            *   ... 0xa47f449baba0cf3d032f5da3d5f3527615429dadc4e2b3d23f26845f1b73800e
+            * Saving artifacts...
+        * 이것을 etherscan.io에서 확인 
+        * 만약 deploy를 잘못했으면 build 폴더 지우고 다시 진행 
+    * Truffle에서 abi 뽑아내는 방법
+        * npm install -g truffle-export-abi
+        * truffle-export-abi
+        * 
+    * createStar
+        * https://www.myetherwallet.com/#contracts 
+        * Contract Address와 ABI를 복사하면 함수 목록이 나타남.
+        * Wallet Address 는 Metamask로 연결하기 
+    * Test on Web
+        * ABI 복사해 놓아야 함.
+		* http-server를 띄워서 테스트 진행
+			* npm install http-server -g
+			* http-server -a 0.0.0.0 -p 8080
+
+
+
+#########################################
+#########################################
+#### 4.ml/colab/juypter
+#########################################
+
+
+#########################################
+#########################################
+#### 5.cloud/docker
+#########################################
+
+##### Docker
+sudo docker images
+sudo docker pull nginx:1.10.0  // download from repository
+sudo docker run -d nginx:1.10.0
+sudo docker inspect f86cf066c304 // f86cf066c304는 Container ID
+sudo docker inspect sharp_bartik // sharp_bartik는 Container Name
+
+###### Create Docker Image
+wget https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz
+rm -rf /usr/local/bin/go
+sudo tar -C /usr/local -xzf go1.6.2.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=~/go
+mkdir -p $GOPATH/src/github.com/udacity
+cd $GOPATH/src/github.com/udacity
+git clone https://github.com/udacity/ud615.git
+cd ud615/app/monolith
+go get -u
+go build --tags netgo --ldflags '-extldflags "-lm -lstdc++ -static"'
+
+cat Dockerfile
+sudo docker build -t monolith:1.0.0 .
+sudo docker images monolith:1.0.0
+sudo docker run -d monolith:1.0.0
+sudo docker inspect <container name or cid>
+curl <the container IP>
+
+docker tag -h
+sudo docker tag monolith:1.0.0 linked0/monolith:1.0.0  // my account
+sudo docker login  // https://hub.docker.com/register/
+sudo docker push linked0/example-monolith:1.0.0
+
+###### Kill & Remove Docker Container
+docker kill $(docker ps -q)
+docker rm $(docker ps -aq)
+docker rmi $(docker images dev-* -q)
+
+###### Docker Swarm
+1. Initialize a swarm (on PC1) 
+docker swarm init
+ 
+2. Get swarm join token (on PC1)
+docker swarm join-token worker <- PC2에서 사용할 내용을 뽑아내는 것이기 때문에 worker을 써야 함.
+﻿
+==> It will output something like this
+docker swarm join --token SWMTKN-1-60vpnn5uieubntz9dfktr2lhl456hdpx8h5d69f9gbmfsu7ymj-cmspzf5s6oontgs5tyo9swmaw 172.22.7.64:2377
+ 
+3. Swam join (on PC2)
+위에서 산출된 내용
+ 
+4. Create a network (on PC1)
+docker network create --attachable --driver overlay my-net
+
+5. Docker leave 
+docker node demote wolf-HP    <- 현재 wolf-HP PC상에 있다고 치면, wolf-HP가 혹시 Leader일수 있으므로 leave가 동작 안할 수 있음.
+PC를 껐다가 다시 켜는 것도 한 방법 
+docker swarm leave --force        <-  현재 PC가 Leader가 아닐때 이걸로 leave.
+docker swarm leave --force     <- 마지막 leader에서 leave.
+
+#########################################
+#########################################
+#### 6.python
+#########################################
+
+###### Python Virtual Env
+conda install -n yourenvname [package]
+conda create -n py3conda python=3.6 anaconda ⇐ 이게 anaconda를 관련 패키지를 다 설치해준다.
+conda create -n autobuild python=3.6 ⇐ 이것만 해줘도 문제없다.
+source activate py3conda
+virtualenv를 사용하는 이유는 패키지 환경을 유지하기 위해서이다.
+    * pip freeze > requirements.txt
+    * pip install -r requirements.txt
+ /Users/user/anaconda/lib/python2.7/site-packages
+info --envs ⇐ env 리스팅
+conda env remove --name myenv
+
+
+* 이슈
+현재 py36에서는 잘되는데, kaggle36에서는 segmentation fault발생(conda create -n yourenvname python=x.x anaconda로 생성된 것임), 170904
+
+* 관련 명령어
+conda env list
+
+
+# pip upgrade & 버전 지정
+sudo pip install --upgrade numpy
+sudo conda install pandas=0.19.2
+
+# 기타
+lim x^2/(1-cos(x)) as x -> 0.001+
+
+# ipython notebook
+%matplotlib inline
+%load_ext autoreload
+%autoreload 2
+%config InlineBackend.figure_format = 'retina'
+
+plt.show()를 실행해야 반영됨 
+
+# ipython
+%run ./my_script.py
+Pycharm
+
+# 인터프리터 세팅
+Go to File > Default Settings
+In left sidebar, click Default Project > Project Interpreter
+At bottom of window, click + to install or - to uninstall.
+
+# import시 참조 오류 나는 것
+- app_ml 폴더에서 오른쪽 버튼
+- Mark Directory AS → Source Root
+
+* split vertically 세팅 
+
+#### Error 1
+[QNSApplication _setup:]: unrecognized selector sent to instance 0x7fc6cc9d16a0
+==> pylab, matplotlib.pyplot, or matplotlib.backends가 임포트 되기 전에 호출되면 됨.
+import matplotlib
+matplotlib.use('Qt5Agg')
+==> Qt5Agg 말고도 다음과 같이 여러개의 설정값이 있음.
+['GTK', 'GTKAgg', 'GTKCairo', 'MacOSX', 'Qt4Agg', 'Qt5Agg', 'TkAgg', 'WX', 'WXAgg', 'GTK3Cairo', 'GTK3Agg', 'WebAgg', 'nbAgg', 'agg', 'cairo', 'gdk', 'pdf', 'pgf', 'ps', 'svg', 'template']
+
+
+#########################################
+#########################################
+#### 7.node
+#########################################
+
+#########################################
+#########################################
+#### 7.2.web ###
+#########################################
+
+
+#########################################
+#########################################
+#### 8.android
+#########################################
+
+
+###### Android-SDK 빌드 에러
+
+lintOptions{
+    disable "ResourceType"
+}
+
+WifiManager manager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+
+ 
+NullPointerException (no error message)
+Here is a screen shot of my android studio:
+Help me regarding this what to do now.
+
+⇒ 
+
+In the root folder of your project, delete the .gradle folder.
+C:\Users\VipinSaini\AndroidStudioProjects\MyProject\.gradle
+then reboot Android Studio
+
+###### Android
+JDK Home
+~ jay$ /usr/libexec/java_home
+/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
+
+###### ADT & 안드로이드 SDK (old version)
+ADT: https://dl-ssl.google.com/android/eclipse/
+
+https://dl.google.com/android/installer_r24.4.1-windows.exe
+https://dl.google.com/android/android-sdk_r24.4.1-windows.zip
+https://dl.google.com/android/android-sdk_r24.4.1-macosx.zip
+https://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
+
+old version(windows)
+https://android-studio.en.uptodown.com/windows/old
+
+Adnroid Build Tools: 25.0.0 버전이 가정 적당함.
+
+###### Android 로그(logcat, Logcat)
+아래 정규표현식 복사시에 문자열 끝에 스페이스가 붙으면 아무것도 안나옴.
+# 아래 로그가 최종 후보
+^((?!(?:ScanRecord|BluetoothAdapter|Latitude|onReceive|ConnectivityService|NetworkController|BtGatt|BluetoothUtils|PRESENCE_ALERT|SamsungAlarmManager|NetworkIdentity|CompatibilityInfo|audio_|CalcNPosition|scanlist|Battery|PowerUI|BluetoothEventManager|DevicePolicyManagerService|OcrModelUpStIntentOp|ProcessStatsService|NetstatsParser|ViewRootImpl|TextClock|WeatherWidget)).)*$
+
+^((?!(?:NetworkIdentity)).)*$
+
+^((?!(?:ScanRecord|BluetoothAdapter|Latitude|onReceive|ConnectivityService|NetworkController|BtGatt|BluetoothUtils|PRESENCE_ALERT|SamsungAlarmManager|NetworkIdentity|CompatibilityInfo|audio_|CalcNPosition|scanlist|Battery|PowerUI|BluetoothEventManager)).)*$
+
+
+
+(com.dbs.mcare.severance.dev1) [IDEVW]\/(?!(ScanRecord|kalman|PnTSample|PnTBleService: Latitude|BluetoothAdapter|BluetoothLeScanner)).+
+
+
+# GigaGenie 번역앱 참고
+* Config.java
+public static final String TAG = "GigaTrans-";
+
+* SimpleActivity.java
+private final static String TAG = Config.TAG + "Main";
+Log.d(TAG, "onResume");
+
+######
+# 기존 것
+public class DLog {
+   private static final boolean isLog = true;
+   private static final boolean isMethodInfo = false;
+  
+   public static final void e(String TAG, String msg) {
+       if (msg == null) msg = "null";
+       if (isLog) {
+           String message = (isMethodInfo) ? ("[" + methodInfo() + "] " + msg) : msg;
+           Log.e(TAG, message);
+       }
+   }
+
+   public static final void d(String TAG, String msg) {
+       if (msg == null) msg = "null";
+       if (isLog) {
+           String message = (isMethodInfo) ? ("[" + methodInfo() + "] " + msg) : msg;
+           Log.d(TAG, message);
+       }
+   }
+
+   public static final void i(String TAG, String msg) {
+       if (msg == null) msg = "null";
+       if (isLog) {
+           String message = (isMethodInfo) ? ("[" + methodInfo() + "] " + msg) : msg;
+           Log.i(TAG, message);
+       }
+   }
+
+   public static final void v(String TAG, String msg) {
+       if (isLog) {
+           String message = (isMethodInfo) ? ("[" + methodInfo() + "] " + msg) : msg;
+           Log.v(TAG, message);
+       }
+   }
+
+   public static final void w(String TAG, String msg) {
+       if (msg == null) msg = "null";
+       if (isLog) {
+           String message = (isMethodInfo) ? ("[" + methodInfo() + "] " + msg) : msg;
+           Log.d(TAG, message);
+       }
+   }
+
+   private static String methodInfo() {
+       StackTraceElement ste = Thread.currentThread().getStackTrace()[4];
+       StringBuilder sb = new StringBuilder();
+       sb.append(ste.getFileName());
+       sb.append("/");
+       sb.append(ste.getMethodName());
+       return sb.toString();
+
+   }
+}
+
+###### 토스트 (Toast)
+public void ShowToast(String str)
+{
+  Log.i("hanwha_sample", str);
+  if(mToast != null)
+     mToast.cancel();
+
+  mToast = Toast.makeText(this, str, Toast.LENGTH_SHORT);
+  mToast.show();
+}
+
+###### 빌드위치 바꾸기 
+root gradle에서...
+allprojects {
+   repositories {
+       jcenter()
+   }
+
+   buildDir = "/Users/hyunjaelee/work/build/${rootProject.name}/${project.name}"
+}
+
+안드로이드 스튜디오 윈도우
+- 드라이버를 깔아야 LogCat에서 볼 수 있음.
+
+AS 3.0 “Plase select Android SDK”
+https://stackoverflow.com/questions/34353220/android-studio-please-select-android-sdk
+
+Toast.makeText(SplashActivity.this, msg, Toast.LENGTH_SHORT).show();
+
+Assistant Editor: Opt-Cmd-Ret
+
+# LogCat화면 
+- OSD_(FILE|PCS)
+
+#########################################
+#########################################
+#### 8.2.ios
+#########################################
+iOS 로그
+NSLog(@">>>>>> %s - info:%@", __func__, userInfo);
+
+Error
+# ld: warning: Auto-Linking supplied '/Users/hyunjaelee/Library/Developer/Xcode/DerivedData/yonseisv-debkgertqwuhhjfiovglbavpebad/Build/Products/Debug-iphoneos/PnTBleMap.framework/PnTBleMap', framework linker option at /Users/hyunjaelee/Library/Developer/Xcode/DerivedData/yonseisv-debkgertqwuhhjfiovglbavpebad/Build/Products/Debug-iphoneos/PnTBleMap.framework/PnTBleMap is not a dylib
+
+=> This error is almost always produced by not having the binary linked to the library (In this case it would be the Crashlytics.framework):
+“Build Phases” 탭에서 Link the Framework 하면됨.
+
+pragma
+#pragma mark -
+#pragma mark UITableView Delegate
+
+에러 처리
+# provisioning profile이 expire되었을 경우
+General 탭에서 Automatically manager singing를 uncheck하고, 새로운 Provisioning profile을 import한다. 
+
+# 샘플앱 빌드시
+- Signing 부분 처리
+“Automatically manage sigining” 을 체크하고 Team을 Jimsun Lim(Personal Team)으로 세팅하면 Signing 섹션 상의 에러는 없어짐
+- 빌드시 Signing 관련 에러가 떨어졌으나, 클린빌드해서 문제가 해결됨
+
+#########################################
+#########################################
+### 9.java/c/go ###
+#########################################
+
+
+#########################################
+#########################################
+### 10.etc ###
+#########################################
+
+###### Violent Monkey
+YonseiSv
+// ==UserScript==
+// @name YonseiSv
+// @namespace https://wms-sev.iseverance.com
+// @grant none
+// ==/UserScript==
+$(".navbar").height(30);
+$(".navbar-branding").height(30);
+$(".nav").height(30);
+$(".dropdown").height(30);
+$(".dropdown-toggle").height(30);
+
+topBar = document.getElementById("topbar")
+topBar.style.padding = "0px"
+topBar.style.minHeight = "30px"
+
+var utilBtn = document.createElement("BUTTON");        // Create a <button> element
+var t = document.createTextNode("Clear");       // Create a text node
+utilBtn.appendChild(t);                                // Append the text to <button>
+utilBtn.addEventListener("click", function(){
+    pntmap.getObjectManager().findTag('node.beacon', function(marker) { marker.setLabelText(String(marker.getData().get('nodeName'))); } )
+});
+topBar.appendChild(utilBtn);  
+
+
+pntmap.on('vmarker.rightclick', function(evt) {
+alert('hello')
+};);
+
+##### Excel
+Sub KttCalcData()
+
+' 구간행 인덱스 검색
+For i = 1 To 1000
+    If Cells(i, 3).Value = sectPrepare Then
+        prepareIdx = i
+    ElseIf Cells(i, 3).Value = sectEnd Then
+        endIdx = i
+    ElseIf Mid(Cells(i, 3), 1, 7) = sectUrl1 Then
+        If httpIdx = 1 Then
+            url1Idx = i
+            httpIdx = httpIdx + 1
+        ElseIf httpIdx = 5 Then
+            img4Idx = i
+            httpIdx = httpIdx + 1
+        End If
+    ' 망셋업에 대한 정확한 데이터 산출
+    ElseIf Cells(i, 3).Value = sectNapChanged And napChangedIdx = 0 Then
+        napChangedIdx = i
+    ElseIf Cells(i, 3).Value = sectDnsStart And dnsStarIdx = 0 Then
+        dnsStarIdx = i
+    End If
+Next i
+
+Count = 0
+For i = 1 To calcEnd
+    If Cells(i, 3).Value = "ScreenAcquire:End" Then
+        Count = Count + 1
+        Cells(i, 3).Interior.Color = RGB(0, 255, 0)    ElseIf Cells(i, 3).Value = "ScreenRelease:End" Then
+        Count = Count + 1
+        Cells(i, 3).Interior.Color = cellColor
+    ElseIf Cells(i, 3).Value = "Performance(100K):Start" Then
+        prf100KIdx = i
+    ElseIf Cells(i, 3).Value = "File Access Total" Then
+        fileAccIdx = i
+    End If
+Next i
+
+' 배열 선언
+Dim urls(20)
+Index = 0
+For i = 1 To 1000
+    If Mid(Cells(i, 3), 1, 7) = "http://" Then
+        urls(Index) = Cells(i, 3)
+        Index = Index + 1
+    End If
+Next i
+
+End Sub
+
+
+* nxf1 속도 분석
+Sub Btn1_Click()
+startTime = Cells(1, 4)
+
+For i = 2 To 6000
+    time1 = Cells(i - 1, 4)
+    time2 = Cells(i, 4)
+    If Mid(time2, 1, 8) = "--Myriad" Then
+        Exit Sub
+    End If
+   
+    Cells(i, 2).Value = time2 - time1
+   
+    If Mid(Cells(i, 1), 1, 1) = "*" Then
+        Cells(i, 3).Value = time2 - startTime
+        startTime = time2
+    End If
+   
+Next i
+End Sub 
+Python
+- Tkinter was renamed to tkinter from Python 2 to 3
+
+#!/usr/bin/env python3 (for Mac) 
+#!/usr/bin/python2.4 (for Linux)
+ 
+import Tkinter
+
+top = Tkinter.Tk()
+label = Tkinter.Label(top, text = 'Hello World!')
+label.pack()
+Tkinter.mainloop()
+
+# Returns the Pearson correlation coefficient for p1 and p2
+def sim_pearson(prefs,p1,p2):
+  # Get the list of mutually rated items
+  si={}
+  for item in prefs[p1]: 
+    if item in prefs[p2]: si[item]=1
+
+  # if they are no ratings in common, return 0
+  if len(si)==0: return 0
+
+  # Sum calculations
+  n=len(si)
+  
+  # Sums of all the preferences
+  sum1=sum([prefs[p1][it] for it in si])
+  sum2=sum([prefs[p2][it] for it in si])
+  
+  # Sums of the squares
+  sum1Sq=sum([pow(prefs[p1][it],2) for it in si])
+  sum2Sq=sum([pow(prefs[p2][it],2) for it in si])
+  
+  # Sum of the products
+  pSum=sum([prefs[p1][it]*prefs[p2][it] for it in si])
+  
+  # Calculate r (Pearson score)
+  num=pSum-(sum1*sum2/n)
+  den=sqrt( (sum1Sq-pow(sum1,2)/n) * (sum2Sq-pow(sum2,2)/n) )
+  if den==0: return 0
+
+  r=num/den
+
+  return r
+</pre>
+</body>
+</html>
