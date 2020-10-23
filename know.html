@@ -505,23 +505,6 @@ mv "uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download" gdrive
 chmod +x gdrive
 sudo install gdrive /usr/local/bin/gdrive
 
-##### Git
-지워진 폴더에 대한 스테이징
-git rm -r app
-
-git config --global user.name "linked0"
-git config --global user.email linked@gmail.com
-
-* fork된 리파지토리 새로운 원본 커밋 가져오고, 머지하기
-git fetch upstream
-git checkout master       // Check out your fork's local master branch.
-git merge upstream/master
-
-* git: a609fc322322a12a34cd216a32e5902578af1469
-
-* 모든 프로젝트에 gitignore 적용시키기
-git config --global core.excludesfile ~/.gitignore_global
-
 ##### Generate Private Key
 openssl ecparam -name secp256k1 -genkey -noout
 
@@ -554,8 +537,6 @@ git fetch upstream
 git checkout master       // Check out your fork's local master branch.
 git merge upstream/master
 
-* git: a609fc322322a12a34cd216a32e5902578af1469
-
 * 모든 프로젝트에 gitignore 적용시키기
 git config --global core.excludesfile ~/.gitignore_global
 
@@ -564,6 +545,9 @@ git stash save "my_stash"
 git stash list 	// This will list down all your stashes.
 git stash pop stash@{n}	 // To apply a stash and remove it from the stash stack, type:
 git stash apply stash@{n}  // To apply a stash and keep it in the stash stack, type:
+
+* branch 이름 변경
+git branch -m old_branch_name new_branch_name
 
 * 파일 하나를 커밋 전으로 리셋 시키기.
 git checkout HEAD~1 -- source/agora/test/EnrollmentManager.d
@@ -581,8 +565,6 @@ git reset HEAD~1 source/agora/consensus/PreImage.d // rebase중인 commit이 HEA
 
 * 팀원들 깃헙
 git remote add drey git@github.com:AndrejMitrovic/agora.git
-git remote add mathias git@github.com:Geod24/agora.git
-git remote add michael git@github.com:MukeunKim/agora.git
 
 ##### Gist
 brew install gist
