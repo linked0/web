@@ -340,13 +340,13 @@ Warning: The text file must end with a new line or carriage return. The last lin
 ~ jay$ /usr/libexec/java_home
 /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
 
-###### C
-user$ vi test.cpp
-user$ g++ test.cpp
-user$ a.out
--bash: a.out: command not found
+###### C++
+// tests.cpp에 main() 함수가 있고, stdlib를 사용하는 경우
+user$ ls
+ bech32.cpp      bech32.h        segwit_addr.cpp segwit_addr.h   tests.cpp
+user$ g++ -std=c++11 *.cpp
+user$ chmod 755 a.out
 user$ ./a.out
-
 
 ###### Dlang
 dlang.org에서 컴파일러 다운로드
