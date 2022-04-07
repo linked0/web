@@ -434,7 +434,11 @@ set mouse=a
 
 $ alias aws="ssh -i ~/pooh/pooh-seoul.pem ubuntu@15.165.168.51" # 커맨드창에서 alias 
 
-cp -rT source ~/temp/new_source <== source를 다른 위치에 new_source라는 이름으로 복사
+# source를 다른 위치에 new_source라는 이름으로 복사(두가지 방법)
+cp -a source ~/temp/new_source
+cp -rT source ~/temp/new_source
+
+
 find . -iname mainview*
 touch -t "201610041200" timestamp
 find . -type f -newer timestamp
