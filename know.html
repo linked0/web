@@ -74,6 +74,10 @@ gdrive-windows-x64.exe upload c:\test\backup.zip
 sudo ssh -i xxx.pem ubuntu@xx.xx.xx.xx <-- 패스워드 필요없음.
 docker run -d -p 80:80 p0bailey/docker-flask 
 
+# AWS에서 파일 전송 
+* Receive: scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt .
+* Send: scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
+
 AWS: EC Home -> Launch Instance(Blue Button) -> Select CoreOS on Community AMIS -> Select PV
 ssh -i jaylee.pem core@54.199.65.181 ← CoreOS Instance
 ssh -i jaylee.pem ubuntu@52.192.176.112 ← Ubuntu Instance
