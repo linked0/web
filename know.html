@@ -4,39 +4,25 @@
 <a href="http://bit.ly/2EluV7n"> sites.txt </a><br>
 <a href="http://bit.ly/2PmH3XE"> know.html</a><br>
 <a href="http://bit.ly/2ZY033D"> know2.html = know-sub.html </a><br>
+<a href="https://linked0.github.io/web/know-bak.html"> know-bak.html </a><br>
 <a href="http://goo.gl/B2Drsz"> gdrive 기술문서 </a><br>
 <a href="http://bit.ly/2HKEsmS"> colab aplay </a><br>
 
 <h2>Memo</h2><pre><h3>
-
-* 2b39b2f6 - Apply UTXO to white list (61 minutes ago) <Hyunjae Lee>
-* d04a0ebd - Change buildQuorumConfig (61 minutes ago) <Hyunjae Lee>
-* a8247d11 - Registry with UTXO instead of PublicKey (61 minutes ago) <Hyunjae Lee>
-
 	
 </h3><pre>
+
+
 ##################################################################################
-##################################################################################
-##################################################################################
-##################################################################################
+#### 1.project-management ########################################################
 ##################################################################################
 
 ##################################################################################
-##################################################################################
-#### 1.project-management
-##################################################################################
+### 2.etc ########################################################################
 ##################################################################################
 
 ##################################################################################
-##################################################################################
-### 2.etc ###
-##################################################################################
-##################################################################################
-
-##################################################################################
-##################################################################################
-### 3.cloud/docker ###
-##################################################################################
+### 3.cloud/docker ###############################################################
 ##################################################################################
 gcloud compute zones list
 gcloud config set compute/zone <zone>
@@ -54,25 +40,6 @@ ctrl a+d	// exit
 screen -r agora	// attach
 screen -ls	// list
 
-###### gdrive list
-brew install gdrive <-- Mac
-
-cd ~    <-- Linux
-wget http://bit.ly/2zHIlGx
-mv 2zHIlGx gdrive <-- mv uc\?id\=0B3X9GlR6EmbnWksyTEtCM0VfaFE gdrive
-chmod +x gdrive
-sudo install gdrive /usr/local/bin/gdrive
-!install gdrive /usr/local/bin/gdrive <-- google colab에서는 이렇게 쓰면 됨.
-gdrive list
-
-###### gdrive window
-Download the Windows version of gdrive from github.
-https://docs.google.com/uc?id=0B3X9GlR6EmbncWNLOS1KYWhLVFE&export=download
-
-copy downloads\gdrive-windows-x64.exe c:\windows
- 
-gdrive-windows-x64.exe upload c:\test\backup.zip
- 
 
 ###### AWS EC2
 sudo ssh -i xxx.pem ubuntu@xx.xx.xx.xx <-- 패스워드 필요없음.
@@ -103,9 +70,7 @@ AWS Installatio on Python Microservice Development Document
 
 
 ##################################################################################
-##################################################################################
-### 4.python ###
-##################################################################################
+### 4.python #####################################################################
 ##################################################################################
 
 ###### Python 참고 코드 
@@ -179,78 +144,22 @@ labels = list(map(lambda x:x[:-1].upper(),g.readlines()))
 g.close()
 
 ##################################################################################
+### 5.node.js ####################################################################
 ##################################################################################
-### 5.node.js/web/android ###
-##################################################################################
-##################################################################################
-
-###### Node.js
-npm init
 
 ###### http-server
 npm install http-server -g
 http-server -a 0.0.0.0 -p 8080
 
-###### Sail 설치
-sails new test-project 
-cd test-project 
-sails lift 
-sails generate static 
-sails generate api video
-
-###### Hapi 사용
-'use strict'; 
- 
-const Hapi=require('hapi'); 
- 
-// Create a server with a host and port 
-const server=Hapi.server({ 
-    host:'localhost', 
-    port:8000 
-}); 
- 
-// Add the route 
-server.route({ 
-    method:'GET', 
-    path:'/hello', 
-    handler:function(request,h) { 
- 
-        return'hello world'; 
-    } 
-}); 
- 
-// Start the server 
-async function start() { 
- 
-    try { 
-        await server.start(); 
-    } 
-    catch (err) { 
-        console.log(err); 
-        process.exit(1); 
-    } 
- 
-    console.log('Server running at:', server.info.uri); 
-}; 
- 
-start(); 
-
-### debugging in chrome browser
-chrome://inspect//#devices
-
-
-* 커맨드 창에서 android 명령 
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$ANDROID_HOME/tools:$PATH
-export PATH=$ANDROID_HOME/platform-tools:$PATH
-
-* Android 로그 설정
-https://medium.com/@vlonjatgashi/how-to-filter-out-android-logcat-logs-66945a4a0e0a
+# mocha test 설정
+"test": "mocha --exit -r ts-node/register tests/**/*.test.ts",
+"start": "ts-node src/main.ts",
+"tsc": "tsc",
+"lint": "tslint --config tslint.json \"{src,tests}/**/*.ts\"",
+"lint-fix": "tslint --fix --config tslint.json \"{src,tests}/**/*.ts\""
 
 ##################################################################################
-##################################################################################
-### 6.blockchain ###
-##################################################################################
+### 6.blockchain #################################################################
 ##################################################################################
 
 ###### Ganache
@@ -267,20 +176,6 @@ mkdir myProject
 cd myProject
 truffle init
 
-###### Encode/Decode
-Encode and Decode Text from Terminal
-String to hex: xxd -p <<< "Blockchain Developer"
-Hex to string: echo 426c6f636b636861696e20446576656c6f7065720a|xxd -r -p
-
-Encode and Decode Text from Terminal Using Files
-Create file: touch hello.txt
-String to Hex: xxd -p hello.txt helloEncoded.txt
-Hex to String: xxd -p -r helloEncoded.txt helloDecoded.txt
-
-Encode and Decode Image from Terminal Using Files
-Image to Hex: xxd -p cat.png cat.txt
-Hex to Image: xxd -p -r cat.txt catDecoded.png
-
 ###### Generate Private Key
 openssl ecparam -name secp256k1 -genkey -noout
 
@@ -296,9 +191,7 @@ Sync to the Rinkeby Test Network
 $ geth --rinkeby --syncmode "fast"
 
 ##################################################################################
-##################################################################################
 ### 7.java/c/go/d ###
-##################################################################################
 ##################################################################################
 
 ###### Go
@@ -363,23 +256,8 @@ user$ g++ -std=c++11 *.cpp
 user$ chmod 755 a.out
 user$ ./a.out
 
-###### Dlang
-dlang.org에서 컴파일러 다운로드
-run.dlang.io에서 웹 IDE
-
-dmd hello.d  // 컴파일
-dmd -run hello.d // 컴파일하고 실행
-./hello // 컴파일한 실행 파일 실행
-
-Learning D github: https://github.com/mdparker/LearningD
-
-* 프로젝트 초기 셋업
-dub init MovieMan // 이 명령을 쓰면 MovieMan 폴더가 생김.
-
-##################################################################################
 ##################################################################################
 ### 8.vi ###
-##################################################################################
 ##################################################################################
 
 find ./ -type f > files
@@ -438,9 +316,7 @@ set incsearch
 set mouse=a
 
 ##################################################################################
-##################################################################################
 ### 9.command ###
-##################################################################################
 ##################################################################################
 
 $ alias aws="ssh -i ~/pooh/pooh-seoul.pem ubuntu@15.165.168.51" # 커맨드창에서 alias 
@@ -498,9 +374,6 @@ ncat google.com 80
 GET / HTTP/1.1
 Host: google.com(엔터 두번 치기)
 
-###### File Transfer
-Download: scp -i pooh-seoul.pem carnd@54.249.240.135:/home/abc/index.html ./
-Upload: scp -i pooh-seoul.pem ./index.html carnd@54.249.240.135:/home/abc/index.html
 
 ###### Tar
 Zip Foler
@@ -546,9 +419,7 @@ xcode-select install
 sudo xcode-select --switch /Library/Developer/CommandLineTools
 
 ##################################################################################
-##################################################################################
 10. Dev.: Agora & Github & 맥 설치 & VS Code
-##################################################################################
 ##################################################################################
 
 ###### 맥 설치시 필요한 
@@ -649,7 +520,7 @@ git checkout origin/v0.x.x
 ### 2.etc
 ### 3.cloud/docker
 ### 4.python
-### 5.node.js/web/android
+### 5.node.js
 ### 6.blockchain
 ### 7.java/c/go/d
 ### 8.vi --> 1.3.mac
