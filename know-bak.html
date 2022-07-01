@@ -1,6 +1,7 @@
 <html>
 <body>
 <pre>
+### 0.backup
 ### 1.command --> 1.2.vi --> 1.3.mac
 ### 2.project-management
 ### 3.blockchain
@@ -11,6 +12,113 @@
 ### 8.android --> 8.2.ios
 ### 9.java/c/go
 ### 10.etc
+
+#########################################
+#########################################
+#### 0.backup
+#########################################
+
+###### Dlang
+dlang.org에서 컴파일러 다운로드
+run.dlang.io에서 웹 IDE
+
+dmd hello.d  // 컴파일
+dmd -run hello.d // 컴파일하고 실행
+./hello // 컴파일한 실행 파일 실행
+
+Learning D github: https://github.com/mdparker/LearningD
+
+* 프로젝트 초기 셋업
+dub init MovieMan // 이 명령을 쓰면 MovieMan 폴더가 생김.
+
+###### gdrive list
+brew install gdrive <-- Mac
+
+cd ~    <-- Linux
+wget http://bit.ly/2zHIlGx
+mv 2zHIlGx gdrive <-- mv uc\?id\=0B3X9GlR6EmbnWksyTEtCM0VfaFE gdrive
+chmod +x gdrive
+sudo install gdrive /usr/local/bin/gdrive
+!install gdrive /usr/local/bin/gdrive <-- google colab에서는 이렇게 쓰면 됨.
+gdrive list
+
+
+###### gdrive window
+Download the Windows version of gdrive from github.
+https://docs.google.com/uc?id=0B3X9GlR6EmbncWNLOS1KYWhLVFE&export=download
+
+copy downloads\gdrive-windows-x64.exe c:\windows
+ 
+gdrive-windows-x64.exe upload c:\test\backup.zip
+
+###### Encode/Decode
+Encode and Decode Text from Terminal
+String to hex: xxd -p <<< "Blockchain Developer"
+Hex to string: echo 426c6f636b636861696e20446576656c6f7065720a|xxd -r -p
+
+Encode and Decode Text from Terminal Using Files
+Create file: touch hello.txt
+String to Hex: xxd -p hello.txt helloEncoded.txt
+Hex to String: xxd -p -r helloEncoded.txt helloDecoded.txt
+
+Encode and Decode Image from Terminal Using Files
+Image to Hex: xxd -p cat.png cat.txt
+Hex to Image: xxd -p -r cat.txt catDecoded.png
+
+### debugging in chrome browser
+chrome://inspect//#devices
+
+* 커맨드 창에서 android 명령 
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+
+* Android 로그 설정
+https://medium.com/@vlonjatgashi/how-to-filter-out-android-logcat-logs-66945a4a0e0a
+
+###### Sail 설치
+sails new test-project 
+cd test-project 
+sails lift 
+sails generate static 
+sails generate api video
+
+###### Hapi 사용
+'use strict'; 
+ 
+const Hapi=require('hapi'); 
+ 
+// Create a server with a host and port 
+const server=Hapi.server({ 
+    host:'localhost', 
+    port:8000 
+}); 
+ 
+// Add the route 
+server.route({ 
+    method:'GET', 
+    path:'/hello', 
+    handler:function(request,h) { 
+ 
+        return'hello world'; 
+    } 
+}); 
+ 
+// Start the server 
+async function start() { 
+ 
+    try { 
+        await server.start(); 
+    } 
+    catch (err) { 
+        console.log(err); 
+        process.exit(1); 
+    } 
+ 
+    console.log('Server running at:', server.info.uri); 
+}; 
+ 
+start(); 
 
 #########################################
 #########################################
