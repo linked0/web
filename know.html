@@ -492,17 +492,38 @@ cd ../../
 [commit]
     template = /Users/jaylee/.stCommitMsg
 [alias]
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-\
-commit
-    pff = "!f() { git pull --ff-only upstream $(git rev-parse --symbolic-full-name HEAD); }; f"
-    rb = "!f() { git rebase -i HEAD~$1; }; f"
-    ru = "remote update -p"
-    st = status
-    ci = commit
-    br = branch
-    co = checkout
+	co = checkout
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%\
+Creset' --abbrev-commit
+	pff = "!f() { REMOTE=$(git remote|grep -E '^upstream$'); git pull --ff-only ${REMOTE:-origin} $(git rev-parse --s\
+ymbolic-full-name HEAD); }; f"
+	rb  = "!f() { git rebase -i HEAD~$1; }; f"
+	ru  = "remote update -p"
+	br = branch
+	ci = commit
+	unstage = reset HEAD --
+	st = status
+	recentb = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(align:20)(%(color:green)%(committerdate:relative)%(color:reset))%(end) %(align:30)%(color:yellow)%(refname:short)%(color:reset)%(end) - %(color:red)%(object\
+name:short)%(color:reset) - %(contents:subject)'
 [push]
 	default = current
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[delta]
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = Solarized (light)
+    navigate = true
+    line-numbers = true
+
+[interactive]
+    diffFilter = delta --color-only
+    
 
 ###### submodule 업데이트방법
 - 이거하고 나서 git submodule update --init하면 자꾸 리셋되는 걸 보면 확실히 agora에는 적용 안되었던 듯
