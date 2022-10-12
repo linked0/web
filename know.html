@@ -330,6 +330,9 @@ cp -rT source ~/temp/new_source
 find . -iname mainview*
 touch -t "201610041200" timestamp
 find . -type f -newer timestamp
+
+# 아래에서 include는 안먹음. 
+egrep -irnH  '41ca2B12b3692Dfd1Ab8328aD8b810efE1ec2F8B' ./
 egrep -irnH --include=\*.{java,cpp,h} --exclude-dir=.svn ‘beacon.pntbiz.com’ ./ <== {}안에 띄어쓰기 안됨
 egrep -irnH --include=\*.cpp --exclude-dir=.svn ‘beacon.pntbiz.com’ ./		<== 한종류 패턴
 egrep -irnH --exclude-dir=.svn ‘beacon.pntbiz.com’ ./				<== 전체 파일 
