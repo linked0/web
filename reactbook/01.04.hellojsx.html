@@ -12,74 +12,95 @@
     <script src="react/react-dom.js"></script>
     <script src="react/babel.js"></script>
     <script type="text/babel">
-        const MyComponent = function() {
-  return React.createElement('span', null, 'I am so custom');
-};
+      const MyComponent = function() {
+        return React.createElement('span', null, 'I am so custom');
+      };
 
-class MyComponent8 extends React.Component {
-  render() {
-    return (
-      <span>My name is <em>{this.props.name}</em>,
-      the {this.props.job}</span>
-    );
-  }
-}
-MyComponent8.defaultProps = {
-  job: 'Blockchain developer',
-};
+      class MyComponent8 extends React.Component {
+        render() {
+          return (
+            <span>My name is <em>{this.props.name}</em>,
+            the {this.props.job}</span>
+          );
+        }
+      }
+
+      MyComponent8.defaultProps = {
+        job: 'Blockchain developer',
+      };
+
+        ReactDOM.render(
+          <MyComponent8 name="Jay" />,
+          document.getElementById('app')
+      );
+
+      class TextAreaCounter extends React.Component {
+          render() {
+            const text = this.props.text;
+            return (
+              <div>
+                <textarea defaultValue={text}/>
+                <h3>{text.length}</h3>
+              </div>
+            );
+          }
+        }
+      TextAreaCounter.defaultProps = {
+        text: 'Count me as I type',
+      };
+
+      class TextAreaCounter2 extends React.Component {
+        constructor() {
+          super();
+          this.state = {};
+        }
+
+        onTextChange(event) {
+          this.setState({
+            text: event.target.value,
+          });
+        }
+
+        render() {
+          const text = 'text' in this.state ? this.state.text : this.props.text;
+          return (
+            <div>
+              <textarea
+                value={text}
+                onChange={event => this.onTextChange(event)}
+              />
+              <h3>{text.length}</h3>
+            </div>
+          );
+        }
+
+        componentDidMount() {
+          console.log("componentDidMount");
+        }
+
+        componentWillUnmount() {
+          console.log("componentWillUnmount");
+        }
+
+        componentDidUpdate(prevProps, prevState, snapshot) {
+          console.log('componentDidUpdate   ', prevProps, prevState, snapshot);
+        }
+
+        getSnapshotBeforeUpdate(prevProps, prevState) {
+          console.log('getSanpshotBeforeUpdate   ', prevProps, prevState);
+          return 'hello';
+        }
+
+        shouldComponentUpdate(newProps, newState) {
+          console.log('shouldComponentUpdate   ', newProps, newState);
+          return true;
+        }
+      }
 
       ReactDOM.render(
-        <MyComponent8 name="Jay" />,
+        <TextAreaCounter2 text="Bob" />,
         document.getElementById('app')
-    );
-
-    class TextAreaCounter extends React.Component {
-  render() {
-    const text = this.props.text;
-    return (
-      <div>
-        <textarea defaultValue={text}/>
-        <h3>{text.length}</h3>
-      </div>
-    );
-  }
-}
-TextAreaCounter.defaultProps = {
-  text: 'Count me as I type',
-};
-
-class TextAreaCounter2 extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-
-  onTextChange(event) {
-  this.setState({
-    text: event.target.value,
-  });
-}
-
-  render() {
-  const text = 'text' in this.state ? this.state.text : this.props.text;
-  return (
-    <div>
-      <textarea
-        value={text}
-        onChange={event => this.onTextChange(event)}
-      />
-      <h3>{text.length}</h3>
-    </div>
-  );
-}
-}
-
-    ReactDOM.render(
-  <TextAreaCounter2 text="Bob" />,
-  document.getElementById('app')
-);
-
-
+      );
     </script>
   </body>
 </html>
