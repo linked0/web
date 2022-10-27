@@ -19,23 +19,63 @@ const HelloWorld = () => {
 
   //called only once
   useEffect(async () => {
-    
+      const message = await loadCurrentMessage();
+      setMessage(message);
+      addSmartContractListener();
+
+      const {address, status} = await getCurrentWalletConnected();
+      setWallet(address)
+      setStatus(status);
+
+      addWalletListener();
   }, []);
 
   function addSmartContractListener() { //TODO: implement
-    
+      helloWorldContract.events.UpdatedMessages({}, (error, data) => {
+         if (error) {
+             setStatus("😥 " + error.message);
+         } else {
+             setMessage(data.returnValues[1]);
+             setNewMessage("");
+             setStatus("🎉 Your message has been updated!");
+         }
+      });
   }
 
   function addWalletListener() { //TODO: implement
-    
+      if (window.ethereum) {
+          window.ethereum.on("accountsChanged", (accounts) => {
+              if (accounts.length > 0) {
+                  setWallet(accounts[0]);
+                  setStatus("👆🏽 Write a message in the text-field above.");
+              } else {
+                  setWallet("");
+                  setStatus("🦊 Connect to Metamask using the top right button.");
+              }
+          })
+      } else {
+          setStatus(
+              <p>
+                  {" "}
+                  🦊{" "}
+                  <a target="_blank" href={`https://metamask.io/download.html`}>
+                      You must install Metamask, a virtual Ethereum wallet, in your
+                      browser.
+                  </a>
+              </p>
+          );
+      }
   }
 
   const connectWalletPressed = async () => { //TODO: implement
-    
+      const walletResponse = await connectWallet();
+      setStatus(walletResponse.status);
+      setWallet(walletResponse.address);
   };
 
   const onUpdatePressed = async () => { //TODO: implement
-    
+      const { status } = await updateMessage(walletAddress, newMessage);
+      setStatus(status);
   };
 
   //the UI of our component
