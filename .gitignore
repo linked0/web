@@ -1,0 +1,13 @@
+node_modules
+.env
+.env.example
+coverage
+coverage.json
+typechain-types
+
+#Hardhat files
+cache
+artifacts
+
+.idea
+.DS_Store
