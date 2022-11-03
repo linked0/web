@@ -1,0 +1,27 @@
+{
+    "name" : "Smesh",
+    "description": "Smesh is a hero who fights for justice in Splash World.",
+    "image" : "https://ipfs.io/ipfs/QmdbfZaXffcT1k6FErkXxucCc9s5Facxc6vhpD2ZZSmn3S",
+    "attributes": [
+        {
+            "trait_type": "Strength",
+            "value": 6,
+            "max_value": 10
+        },
+        {
+            "trait_type": "Speed",
+            "value": 8,
+            "max_value": 9
+        },
+        {
+            "trait_type": "Jump",
+            "value": 11,
+            "max_value": 11
+        },
+        {
+            "trait_type": "Intelligence",
+            "value": 5,
+            "max_value": 8
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    "name" : "Splash",
+    "description": " Splash is a hero who fights to save the princess in a castle.",
+    "image" : "https://ipfs.io/ipfs/QmWJGC4deAo3H6hTBKzXGG2QfnebAu6f4iQTE2CsJBibjw",
+    "attributes": [
+        {
+            "trait_type": "Strength",
+            "value": 7,
+            "max_value": 10
+        },
+        {
+            "trait_type": "Speed",
+            "value": 9,
+            "max_value": 10
+        },
+        {
+            "trait_type": "Jump",
+            "value": 10,
+            "max_value": 10
+        },
+        {
+            "trait_type": "Intelligence",
+            "value": 6,
+            "max_value": 10
+        }
+    ]
+}
