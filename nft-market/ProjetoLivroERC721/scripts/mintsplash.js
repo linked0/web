@@ -12,7 +12,7 @@ const contractInterface = contract.abi;
 let provider = ethers.provider;
 
 //Define o URI dos metadados do NFT, que estão no arquivo Splash.json no Pinata.
-const tokenURI = "https://ipfs.io/ipfs/QmXeKHxP9C6Er3pSUGRoErU2dSTZxXRcBeaRP5NWYbk9Pa";
+const tokenURI = "https://ipfs.io/ipfs/QmPeEEaa6w1YVVTdRkn4YAmt4TeVnmckfD2c9xGMJpEGFE";
 //Obtém a chave privada do endereço do dono do contrato, que está no arquivo .env 
 const privateKey = `0x${process.env.PRIVATE_KEY}`;
 //Define que o endereço referente à chave privada informada poderá executar e assinar transações referentes ao NFT
@@ -25,7 +25,7 @@ const signer = wallet.connect(provider);
 //Define que a variável nft poderá ser usada como representante para chamar funções do contrato usando javascript
 //'0x2233Ec5C6041583B14A457B484D79068D46d258A' é o contrato da coleção de NFT SplashWorld
 const nft = new ethers.Contract(
-  '0x2233Ec5C6041583B14A457B484D79068D46d258A',
+  '0x07F009af17fce066232af2d0EDF27B076aBDD333',
   contractInterface,
   signer
 );
