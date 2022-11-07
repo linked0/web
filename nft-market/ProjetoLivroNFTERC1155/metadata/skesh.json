@@ -1,11 +1,11 @@
 {
     "name" : "Skesh",
     "description": "Skesh is a valiant warrior who seeks justice for the poor",
-    "image" : "https://ipfs.io/ipfs/QmWS7AZaZzw4gYKqVu3CFEvYs3ryp7NEgmapR2KBc7QZkW",
+    "image" : "https://ipfs.io/ipfs/QmZL4qcunbJnNSJzjHKufvAqfE2ktXcZNuRchUU93bn6NB",
     "attributes": [
         {
             "trait_type": "Strength",
-            "value": 9,
+            "value": 10,
             "max_value": 10
         },
         {
@@ -20,7 +20,7 @@
         },
         {
             "trait_type": "Intelligence",
-            "value": 7,
+            "value": 10,
             "max_value": 10
         },
         {

@@ -7,7 +7,7 @@ const contractInterface = contract.abi;
 
 let provider = ethers.provider;
 
-const tokenURI = "https://ipfs.io/ipfs/QmYJf3FmFPyZHo8MbbySs6CZLjYh3gGBtjVKt46wbX196h";
+const tokenURI = "https://ipfs.io/ipfs/QmY7XYLRN2scvW7PnTHqXTA8JbqQvjWwQCc9KaNqJDWyQn";
 const quantidade = 5;
 const privateKey = `0x${process.env.PRIVATE_KEY}`;
 const wallet = new ethers.Wallet(privateKey);
@@ -16,7 +16,7 @@ wallet.provider = provider;
 const signer = wallet.connect(provider);
 
 const nft = new ethers.Contract(
-  '0x69E13d6baa1e85A7F6cE1296543e965C0C14Ba7b',
+  '0xd4F8306739008eBF4f66f1cD6bD58dA0380C461C',
   contractInterface,
   signer
 );
