@@ -11,7 +11,7 @@ async function main() {
   const splashWorld = await SplashWorld.deploy(
     "SplashWorldCollection", 
     "SWCO",
-    "https://ipfs.io/ipfs/QmXkpyVusFZPs4nMZK26FnewBo3sQVZoqgUUoNHuBeeFDr/"
+    "https://ipfs.io/ipfs/QmStVc3jmFa7Ck4BzzrRpyXN8QUtWj5cetEndVhnFr5eQp/"
     );
   //Implanta o contrato na blockchain definida no arquivo hardhat.config.js
   await splashWorld.deployed();

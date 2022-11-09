@@ -17,5 +17,9 @@ module.exports = {
       url: process.env.MUMBAI_RPC,
       accounts: [ process.env.PRIVATE_KEY ]
     },
+    goerli: {
+      url: process.env.GOERLI_RPC,
+      accounts: [ process.env.PRIVATE_KEY ]
+    },
   }
 };
