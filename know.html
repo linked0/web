@@ -185,13 +185,16 @@ sudo xcode-select -s /Applications/XCode7.2/Xcode.app/
 To clear the terminal manually: Cmd + K
 ps aux | grep chrome
 
+# .bash_profile
 export PS1="\W \u$ "
 
 hgrep() {
 	grep -irnH --include=*.$1 "$2" ./  
 }
 
+alias hello='echo Hi!Jay~'
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
+
 
 
 ###### Tar
