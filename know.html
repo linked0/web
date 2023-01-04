@@ -1,14 +1,60 @@
 <html>
 <body>
-	
-
-
 <h2>Memo</h2><pre><h3>
 	
 </h3><pre>
 ##################################################################################
-### 3.cloud/docker ###############################################################
+### A.gitconfig ###
+##################################################################################
+[user]
+	email = linked0@gmail.com
+	name = Hyunjae Lee
+[core]
+	excludesfile = /Users/jaylee/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+    template = /Users/jaylee/.stCommitMsg
+[alias]
+	co = checkout
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%\
+Creset' --abbrev-commit
+	pff = "!f() { REMOTE=$(git remote|grep -E '^upstream$'); git pull --ff-only ${REMOTE:-origin} $(git rev-parse --s\
+ymbolic-full-name HEAD); }; f"
+	rb  = "!f() { git rebase -i HEAD~$1; }; f"
+	ru  = "remote update -p"
+	br = branch
+	ci = commit
+	unstage = reset HEAD --
+	st = status
+	recentb = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(align:20)(%(color:green)%(committerdate:relative)%(color:reset))%(end) %(align:30)%(color:yellow)%(refname:short)%(color:reset)%(end) - %(color:red)%(object\
+name:short)%(color:reset) - %(contents:subject)'
+[push]
+	default = current
 
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[delta]
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = Solarized (light)
+    navigate = true
+    line-numbers = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+##################################################################################
+### B. cloud/docker ###############################################################
+##################################################################################
 ###### AWS 타임존 변경
 1) $ tzselect
 2) .profile에 다음을 추가하고 재로그인
@@ -31,8 +77,8 @@ docker run -d -p 80:80 p0bailey/docker-flask
 
 
 ##################################################################################
-### 8.vi ###
-
+### C.vi ###
+##################################################################################
 find ./ -type f > files
 find . -type file -name '*.js' -o -name '*.json' > files  //-o는 or를 뜻함
 find . -type f -not -path './node_modules/*' -not -path './chaindata/*' > files
@@ -80,7 +126,37 @@ set incsearch
 set mouse=a
 
 ##################################################################################
-### 9.command/git ###
+### D.command/git ###
+##################################################################################
+- git reset --hard michael/add-npm-script-prettier
+	git remote update 한번 해줘야 함.
+	해당 브랜치로 들어가서 최신 버전으로 갱신하기 
+- git pull <remote> <remote branch>
+	로컬의 수정을 반영하기
+	ex) git pull zero commons-budget-contract
+- git rebase 도중 파일 제거하기
+	git rm --cached <file>  
+- git rebase 도중 stage된 파일 리셋하기
+	git reset HEAD~1 -- package.json
+- revert
+	# This will create three separate revert commits:
+		§ git revert a867b4af 25eee4ca 0766c053
+	# It also takes ranges. This will revert the last two commits:
+		§ git revert HEAD~2..HEAD
+	#Similarly, you can revert a range of commits using commit hashes (non inclusive of first hash):
+		§ git revert 0d1d7fc..a867b4a
+- 슬랙 연동: /github subscribe zeroone-boa/validators reviews comments
+	이것도 방법, 위의 것과 비교 필요: /github subscribe bosagora/boa-space-seaport-js issues pulls commits releases deployments reviews comments
+- git clone시 폴더명 지정
+	git clone git@github.com:whatever folder-name
+- Fatal: Not possible to fast-forward, aborting
+	git pull --rebase.
+- Merge pull request 발생하지 않도록 Full Requests 설정
+	Repository Setting -> Pull Requests
+		§ Uncheck: "Allow merge commits", "Allow squash merging" 
+		
+##################################################################################
+### E.command ###
 ##################################################################################
 
 ##### Generate Private Key
@@ -128,37 +204,8 @@ tar --exclude='./BLE/.git' -cvzf output_filename.tar.gz folder_name --exclude='.
 tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
 
 
-###### Git
-- git reset --hard michael/add-npm-script-prettier
-	git remote update 한번 해줘야 함.
-	해당 브랜치로 들어가서 최신 버전으로 갱신하기 
-- git pull <remote> <remote branch>
-	로컬의 수정을 반영하기
-	ex) git pull zero commons-budget-contract
-- git rebase 도중 파일 제거하기
-	git rm --cached <file>  
-- git rebase 도중 stage된 파일 리셋하기
-	git reset HEAD~1 -- package.json
-- revert
-	# This will create three separate revert commits:
-		§ git revert a867b4af 25eee4ca 0766c053
-	# It also takes ranges. This will revert the last two commits:
-		§ git revert HEAD~2..HEAD
-	#Similarly, you can revert a range of commits using commit hashes (non inclusive of first hash):
-		§ git revert 0d1d7fc..a867b4a
-- 슬랙 연동: /github subscribe zeroone-boa/validators reviews comments
-	이것도 방법, 위의 것과 비교 필요: /github subscribe bosagora/boa-space-seaport-js issues pulls commits releases deployments reviews comments
-- git clone시 폴더명 지정
-	git clone git@github.com:whatever folder-name
-- Fatal: Not possible to fast-forward, aborting
-	git pull --rebase.
-- Merge pull request 발생하지 않도록 Full Requests 설정
-	Repository Setting -> Pull Requests
-		§ Uncheck: "Allow merge commits", "Allow squash merging" 
-
+# Contents
+A.gitconfig -- B.cloud/docker -- C.vi -- D.command/git -- E.command
 
 <a href="http://bit.ly/2PmH3XE"> know.html</a><br>
-
-</pre>
-</body>
-</html>
+</pre></body></html>
