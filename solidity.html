@@ -1,0 +1,58 @@
+<html>
+<body>
+<h2>Memo</h2><pre><h3>
+	
+</h3><pre>
+# Predicted Address
+contract C {
+        functioncreateDSalted(bytes32 salt, uint arg) public {
+            // This complicated expression just tells you how the address
+	// can be pre-computed. It is just there for illustration.
+	// You actually only need ``new D{salt: salt}(arg)``.
+	address predictedAddress = address(uint160(uint(keccak256(abi.encodePacked(
+                bytes1(0xff),
+                address(this),
+                salt,
+                keccak256(abi.encodePacked(
+                    type(D).creationCode,
+                    abi.encode(arg)
+                ))
+            )))));
+
+            D d = newD{salt: salt}(arg);
+            require(address(d) == predictedAddress);
+        }
+    }
+	}
+
+
+# 컨트랙트 사이즈
+	1. npm install --dev hardhat-contract-sizer
+	2. hardhat.config.ts에 다음 라인 추가
+		○ import "hardhat-contract-sizer";
+	3. npx hardhat size-contracts
+
+# 옛날 방식
+solc-select install 0.8.0
+
+truffle-config.js
+module.exports = {
+  networks: {
+    development: {
+      host: "127.0.0.1",
+      port: 8545,
+      network_id: "*" // Match any network id
+    }
+  },
+  compilers: {
+    solc: {
+      version: "^0.8.0"
+    }
+  }
+};
+
+data = fs.readFileSync('/Users/hyunjaelee/work/commons-budget-contract/build/contracts/VoteraVote.json');
+obj = JSON.parse(data);
+size = Buffer.byteLength(obj.deployedBytecode) / 2;
+
+</pre></body></html>
