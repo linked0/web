@@ -1,22 +1,233 @@
 <html>
 <body>
-<pre>
-### 0.backup
-### 1.command --> 1.2.vi --> 1.3.mac
-### 2.project-management
-### 3.blockchain
-### 4.ml/colab/jupyter
-### 5.cloud/docker
-### 6.python
-### 7.node.js --> 7.2.web
-### 8.android --> 8.2.ios
-### 9.java/c/go
-### 10.etc
+<h3> This is Garbage 
+- 참고로 여기 엑셀 예제도 있음.    
+</h3>
 
-#########################################
-#########################################
-#### 0.backup
-#########################################
+<pre>
+
+
+##################################################################################
+### 3.cloud/docker ###############################################################
+##################################################################################
+gcloud compute zones list
+gcloud config set compute/zone <zone>
+gcloud compute instances create ubuntu \
+gcloud compute ssh ubuntu
+
+###### AWS 타임존 변경
+1) $ tzselect
+2) .profile에 다음을 추가하고 재로그인
+TZ='Asia/Seoul'; export TZ
+
+###### screen 사용법
+screen -S agora 
+ctrl a+d	// exit
+screen -r agora	// attach
+screen -ls	// list
+
+
+###### AWS EC2
+sudo ssh -i xxx.pem ubuntu@xx.xx.xx.xx <-- 패스워드 필요없음.
+docker run -d -p 80:80 p0bailey/docker-flask 
+
+# AWS에서 파일 전송 
+* Receive: scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt .
+* Send: scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
+
+AWS: EC Home -> Launch Instance(Blue Button) -> Select CoreOS on Community AMIS -> Select PV
+ssh -i jaylee.pem core@54.199.65.181 ← CoreOS Instance
+ssh -i jaylee.pem ubuntu@52.192.176.112 ← Ubuntu Instance
+
+* Permissions 0644 for 'pnt-hyperledger.pem' are too open.
+chmod 400 mykey.pem
+
+* sudo: unable to resolve host ip-172-30-3-65
+1) https://console.aws.amazon.com/vpc/에서 Amazon VPC 콘솔을 엽니다.
+2) 탐색 창에서 Your VPCs를 선택합니다.
+3) 목록에서 VPC를 선택합니다.
+4) [Summary] 탭의 정보를 검토합니다.
+    - DNS resolution: enabled
+    - DNS hostnames: enabled
+5) 설정을 업데이트하려면 Actions를 선택하고, Edit DNS Resolution 또는 Edit DNS Hostnames를 선택합니다.
+
+sudo useradd -m linked0 -> sudo passwd linked0
+AWS Installatio on Python Microservice Development Document
+
+
+##################################################################################
+### 8.vi ###
+##################################################################################
+
+find ./ -type f > files
+find . -type file -name '*.js' -o -name '*.json' > files  //-o는 or를 뜻함
+find . -type f -not -path './node_modules/*' -not -path './chaindata/*' > files
+
+CTRL-W f: open in a new window
+CTRL-W gf: open in a new tab
+CTRL-W {H,J,K,L}: move among windows, or use arrow key
+CTRL-W w 창을 순차적으로 이동
+CTRL-W t 최상위 창으로 이동
+CTRL-W b 최하위 창으로 이동
+
+g t: Next tab, 그냥 에디터에서 g와 t를 치면 됨
+g T: Prior tab
+nnn g t: Numbered tab, nnn은 숫자를 나타냄, 1일수도 있고, 12일수도 있음.
+
+"*yy           ; copt from vi 
+:! wc          ; sh command in vi
+
+set softtabstop=4       ; TAB키를 눌렀을때 몇 칸을 이동?
+set tabstop=4           ; 하나의 TAB을 몇 칸으로 인식? 
+set number		            ;  Line Number
+set mouse=a             ; Adjust area with mouse
+
+:shell 혹은 :sh를 이용해서 shell(:12)로 빠져나갈 수 있다. exit 혹은 Ctrl+D를 이용해서 vim으로 되돌아올 수 있다.
+:! # 마지막 커맨드의 결과보기 
+
+mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
+
+# Move cursor to end of file in vim
+:$
+
+* 한글 깨지는 문제
+set enc=utf-8
+
+###### vimrc (~/.vimrc)
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim' "required
+Plugin 'tpope/vim-fugitive' "required 
+call vundle#end()
+filetype plugin indent on " Put your non-Plugin stuff after this line
+:w
+:source %
+:PluginInstall
+syntax enable " syntax highlighting
+set nu " add line numbers
+set smartindent " make smart indent
+set tabstop=4 " tab width as 4 (default 8)
+set shiftwidth=4
+set expandtab " spaces for tab
+set incsearch
+set mouse=a
+
+##################################################################################
+### 9.command ###
+##################################################################################
+
+$ alias aws="ssh -i ~/pooh/pooh-seoul.pem ubuntu@15.165.168.51" # 커맨드창에서 alias 
+
+# source를 다른 위치에 new_source라는 이름으로 복사(두가지 방법)
+cp -a source ~/temp/new_source
+cp -rT source ~/temp/new_source
+
+
+find . -iname mainview*
+touch -t "201610041200" timestamp
+find . -type f -newer timestamp
+
+# 아래에서 include는 안먹음. 
+egrep -irnH  '41ca2B12b3692Dfd1Ab8328aD8b810efE1ec2F8B' ./
+egrep -irnH --include=\*.{java,cpp,h} --exclude-dir=.svn ‘beacon.pntbiz.com’ ./ <== {}안에 띄어쓰기 안됨
+egrep -irnH --include=\*.cpp --exclude-dir=.svn ‘beacon.pntbiz.com’ ./		<== 한종류 패턴
+egrep -irnH --exclude-dir=.svn ‘beacon.pntbiz.com’ ./				<== 전체 파일 
+
+sudo xcode-select -s /Applications/XCode7.2/Xcode.app/
+To clear the terminal manually: Cmd + K
+ps aux | grep chrome
+
+export PS1="\W \u$ "
+
+hgrep() {
+    grep -irnH --include=*.$1 "$2" ./  
+}
+
+###### curl
+curl -L bit.ly/2C19vd0 // Redirect
+
+작은 따옴표 안에서는 역슬래시를 쓸 필요가 없다. ^^
+curl -X POST http://211.253.31.20:49080/bccard/bccard/queryOrder \
+-H 'Content-Type: application/json' \
+-H 'cache-control: no-cache' \
+-d '{
+    "svc_id" : "bccard",
+    "cb_id":"TestCallbackID",
+    "query_ty":"invoke",
+    "params" : 
+    { 
+        "orderID" : "7000312909", 
+        "customerID" : "2423656830", 
+        "partnerID" : "3001", 
+        "orderCode" : "001", 
+        "orderStartDate" : "2019-04-15T18:25:43+09:00", 
+        "orderChannel" : "콜센터", 
+        "orderItems" :  "[{\"itemName\" : \"5만원권\",\"itemCount\" : 10,\"itemPrice\": 50000, \"itemCode\" : \"G5\"},{\"itemName\" : \"10만원권\",\"itemCount\" : 2,\"itemPrice\": 100000,\"itemCode\" : \"G10\"}]"
+    }
+}'
+
+###### ncat
+ncat -l 9999
+ncat localhost 9999
+
+ncat google.com 80
+GET / HTTP/1.1
+Host: google.com(엔터 두번 치기)
+
+
+###### Tar
+Zip Foler
+tar --exclude='node_modules' -cvzf bccard.tar.gz bccard    //하위 폴더들에서 node_modules를 모두 제외시키기
+tar --exclude='./BLE/.git' -cvzf output_filename.tar.gz folder_name --exclude='./BLE/.git'
+tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
+
+###### Zip
+sudo apt-get install unzip
+
+zip 압축 풀기
+unzip happy.zip -d ./target
+
+zip 압축하기 
+zip --exclude \*.git\* -r test.zip ./*
+
+echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
+
+###### File Upload to Google Drive(https://github.com/prasmussen/gdrive)
+wojin's share: 1UiOnqU2VEs-rjC6iZyo2suLa9r4_9d9T
+Install on Mac
+brew install gdrive
+
+###### Install on Linux
+cd~
+wget "https://docs.google.com/uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download"
+mv "uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download" gdrive
+chmod +x gdrive
+sudo install gdrive /usr/local/bin/gdrive
+
+##### Generate Private Key
+openssl ecparam -name secp256k1 -genkey -noout
+
+##### Visual Studio Code
+Visual Studio Code command 실행
+shift-cmd-p -> shell command -> terminal에서 code로 실행
+
+##### Mac XCode
+brew install macvim --override-system-vim
+
+https://developer.apple.com/download/more/?=command%20line%20tools 에서 다운로드 필요
+xcode-select install
+sudo xcode-select --switch /Library/Developer/CommandLineTools
+
+<a href="http://bit.ly/2EluV7n"> sites.txt </a><br>
+<a href="http://bit.ly/2PmH3XE"> know.html</a><br>
+<a href="http://bit.ly/2ZY033D"> know2.html = know-sub.html </a><br>
+<a href="https://linked0.github.io/web/know-bak.html"> know-bak.html </a><br>
+<a href="http://goo.gl/B2Drsz"> gdrive 기술문서 </a><br>
+<a href="http://bit.ly/2HKEsmS"> colab aplay </a><br>
+<a href="https://github.com/linked0/web/blob/master/know.html"> web/know github </a><br>
+
 
 ###### Dlang
 dlang.org에서 컴파일러 다운로드

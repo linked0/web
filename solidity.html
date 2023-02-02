@@ -2,7 +2,9 @@
 <body>
 <h2>Memo</h2><pre><h3>
 	
-</h3><pre>
+</h3>
+<h4>
+<pre>
 # Predicted Address
 contract C {
         functioncreateDSalted(bytes32 salt, uint arg) public {
@@ -55,4 +57,142 @@ data = fs.readFileSync('/Users/hyunjaelee/work/commons-budget-contract/build/con
 obj = JSON.parse(data);
 size = Buffer.byteLength(obj.deployedBytecode) / 2;
 
+
+########################################################
+# Errors
+
+1. Error: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation underflowed or overflowed outside of an unchecked block)
+	a. 연산이 음수가 될 때, 찬반표 계산시 발생
+2.  Error: cannot estimate gas; transaction may fail or may require manual gas limit (error="Error: VM Exception while processing transaction: reverted with reason string 'E004'", tx={"data":"0x1e28886e3a38e54d9c9b01a63cae0476c624f670359871e7b1463a777cba3247240e31fd76129d005b6f526cbaaf1e1e37494d8091c109bfcf47881a612190af683c1e27000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000412dcb94cce59dd93b63aae7cedc6f7f0b64083b6a29b6f8ce403b2b8f862d8a5a17a797b880310346766ca58d2b9a01b4060b3bfcd7ad02c9aec7da9cd41f77431b00000000000000000000000000000000000000000000000000000000000000","to":{},"from":"0x0e1eE98EDF5BDbc5caaFed491526A0Cd3eD31fad","type":2,"maxFeePerGas":{"type":"BigNumber","hex":"0xa650c80c"},"maxPriorityFeePerGas":{"type":"BigNumber","hex":"0x9502f900"},"nonce":{},"gasLimit":{},"chainId":{}}, code=UNPREDICTABLE_GAS_LIMIT, version=abstract-signer/5.5.0)
+3. Error: cannot estimate gas; transaction may fail or may require manual gas limit [ See: https://links.ethers.org/v5-errors-UNPREDICTABLE_GAS_LIMIT ] (error={"reason":"VM Exception while processing transaction: reverted with reason string 'E000'","code":"UNPREDICTABLE_GAS_LIMIT","method":"estimateGas","transaction":{"from":"0x3287f4b4953471234DbeAFf7d2F9EA58dFedD7fd","maxPriorityFeePerGas":{"type":"BigNumber","hex":"0x59682f00"},"maxFeePerGas":{"type":"BigNumber","hex":"0xa80d7dfe"},"to":"0xeEdC2Ac65dF232AB6d229EBD4E3F564e194ffe7D","value":{"type":"BigNumber","hex":"0x056bc75e2d63100000"},
+	a. 이코드에서 발생 "IVoteraVote(voteAddress).init("
+	b. 이 함수를 CommonsBudget에서 호출되어야하는데, CommonsStorage에서 호출되어서 initVote에서 문제가 발생.
+4. AssertionError: Expected transaction to be reverted with E001, but other exception was thrown: RangeError: Maximum call stack size exceeded
+	a. typechain 모듈 업그레이드
+	b. 이 커밋 참조
+5. TypeError: Cannot read property 'eth' of undefined [closed]
+	○ 이 코드 실행시 발생
+		§ hre.web3.eth.accounts.decrypt(data,"boa2022!@");
+	○ 다음 설치 필요
+		§ npm install -s web3
+		§ npm install -s @nomiclabs/hardhat-web3
+	○ hardhat.config.ts에서 다음 추가
+		§ import"@nomiclabs/hardhat-web3";
+	○ 결국 hardhat과 web3를 연결하는 작업이 필요함.
+6. HardhatError: HH103: Account 0x3e29aefa7af16625691a9fca4a7fff0624aabc6f is not managed by the node you are connected to.
+	○ hardhat.config.ts의 getAccounts함수에 해당 계좌를 추가해야함.
+		§ accounts:[process.env.ADMIN_KEY||"",process.env.VOTE_KEY||"",process.env.USER_KEY||"",process.env.MANAGER_KEY||""],
+
+7. docker: Got permission denied while trying to connect to the Docker daemon socket
+	○ 이건 screen에 들어가서 실행해줘야 함.
+1.Create the docker group if it does not exist
+$ sudo groupadd docker
+2.Add your user to the docker group.
+$ sudo usermod -aG docker $USER
+3.Run the following command or Logout and login again and run (that doesn't work you may need to reboot your machine first)
+$ newgrp docker
+
+8. Authority노드를 실행시킬때, block number가 늘어나지 않을때
+	○ run_node를 통해서 실행시키면 다음과 같은 내부 IP에 대한 로그가 나와도 문제는 아님.
+		○ self=enode://6d59a1ce195d9251e8f5234b3dbd486cf15eeac6cb8199898af3e11b9b7f5c54e334317d1cc3ab8077360383bc08b8aa93299ccb169b55dbea59414847dbce2d@127.0.0.1:30303
+	○ run_node 스크립트에 bootnode 항목에 들어가는 enode의 IP값이 맞아야 함.
+	○ static_node.json에 enode 정보를 정확히 써줘야 함.
+	○ Node1에 외부 IP를 할당했을때 재부팅 필요함.
+	○ 싱크하는데 시간이 좀 걸림.
+9. Merge pull request #1 from linked0/initial-code
+	® 두번째 커밋은 <Hyunjae Lee>이고, 세번째 커밋은 <Jay>로 되어 있음.
+10. 이미 임포트된 계정이 있는데 다시 임포트를 하려고할 때 에러가 뜨는데 관련 설명
+	• Imported Accounts are accounts you import using a private key string or a private key JSON file, and were not created with the same Secret Recovery Phrase as your wallet and accounts. For this reason, these accounts will not appear automatically when you restore your MetaMask account with your Secret Recovery Phrase. The data associated with your MetaMask Secret Recovery Phrase cannot be added or extended to the imported account.
+	
+11. An unexpected error occurred:
+Error: Cannot find module './IERC165__factory'
+• 해결: typechain-types와 artifacts 폴더 삭제
+• 상세 내용
+Require stack:
+- /Users/hyunjaelee/work/commons-budget-contract/typechain-types/factories/@openzeppelin/contracts/utils/introspection/index.ts
+- /Users/hyunjaelee/work/commons-budget-contract/typechain-types/factories/@openzeppelin/contracts/utils/index.ts
+- /Users/hyunjaelee/work/commons-budget-contract/typechain-types/factories/@openzeppelin/contracts/index.ts
+- /Users/hyunjaelee/work/commons-budget-contract/typechain-types/factories/@openzeppelin/index.ts
+- /Users/hyunjaelee/work/commons-budget-contract/typechain-types/factories/index.ts
+- /Users/hyunjaelee/work/commons-budget-contract/typechain-types/index.ts
+- /Users/hyunjaelee/work/commons-budget-contract/test/VoteHelper.ts
+- /Users/hyunjaelee/work/commons-budget-contract/test/AdminAction.test.ts
+- /Users/hyunjaelee/work/commons-budget-contract/node_modules/hardhat/node_modules/mocha/lib/mocha.js
+- /Users/hyunjaelee/work/commons-budget-contract/node_modules/hardhat/node_modules/mocha/index.js
+- /Users/hyunjaelee/work/commons-budget-contract/node_modules/hardhat/builtin-tasks/test.js
+- /Users/hyunjaelee/work/commons-budget-contract/node_modules/hardhat/internal/core/tasks/builtin-tasks.js
+- /Users/hyunjaelee/work/commons-budget-contract/node_modules/hardhat/internal/core/config/config-loading.js
+- /Users/hyunjaelee/work/commons-budget-contract/node_modules/hardhat/internal/cli/cli.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._resolveFilename.sharedData.moduleResolveFilenameHook.installedValue [as _resolveFilename] (/Users/hyunjaelee/work/commons-budget-contract/node_modules/@cspotcode/source-map-support/source-map-support.js:679:30)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (/Users/hyunjaelee/work/commons-budget-contract/typechain-types/factories/@openzeppelin/contracts/utils/introspection/index.ts:4:1)
+    at Module._compile (node:internal/modules/cjs/loader:1105:14)
+    at Module.m._compile (/Users/hyunjaelee/work/commons-budget-contract/node_modules/ts-node/src/index.ts:1459:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1159:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/hyunjaelee/work/commons-budget-contract/node_modules/ts-node/src/index.ts:1462:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/hyunjaelee/work/commons-budget-contract/typechain-types/factories/@openzeppelin/contracts/utils/introspection/index.ts',
+    '/Users/hyunjaelee/work/commons-budget-contract/typechain-types/factories/@openzeppelin/contracts/utils/index.ts',
+    '/Users/hyunjaelee/work/commons-budget-contract/typechain-types/factories/@openzeppelin/contracts/index.ts',
+    '/Users/hyunjaelee/work/commons-budget-contract/typechain-types/factories/@openzeppelin/index.ts',
+    '/Users/hyunjaelee/work/commons-budget-contract/typechain-types/factories/index.ts',
+    '/Users/hyunjaelee/work/commons-budget-contract/typechain-types/index.ts',
+    '/Users/hyunjaelee/work/commons-budget-contract/test/VoteHelper.ts',
+    '/Users/hyunjaelee/work/commons-budget-contract/test/AdminAction.test.ts',
+    '/Users/hyunjaelee/work/commons-budget-contract/node_modules/hardhat/node_modules/mocha/lib/mocha.js',
+    '/Users/hyunjaelee/work/commons-budget-contract/node_modules/hardhat/node_modules/mocha/index.js',
+    '/Users/hyunjaelee/work/commons-budget-contract/node_modules/hardhat/builtin-tasks/test.js',
+    '/Users/hyunjaelee/work/commons-budget-contract/node_modules/hardhat/internal/core/tasks/builtin-tasks.js',
+    '/Users/hyunjaelee/work/commons-budget-contract/node_modules/hardhat/internal/core/config/config-loading.js',
+    '/Users/hyunjaelee/work/commons-budget-contract/node_modules/hardhat/internal/cli/cli.js'
+  ]
+}
+
+
+12.  Unexpected end of JSON input 에러
+* npx hardhat run scripts/deploy.ts --network devnet 실행시 발생
+* 해결방법: 그냥 폴더 자체를 지우고, git clone으로 소스를 다시 받음
+	- artifacts를 지워도 안되었음.
+	- 깨끗한 상태에서 잘되는 걸 보니, 리파지토리와 같이 파일이 정리된 상태이면 잘 될 것 같음.
+* 에러 내용
+An unexpected error occurred:
+
+SyntaxError: /Users/hyunjaelee/work/commons-budget-contract/artifacts/@openzeppelin/contracts/utils/Context.sol/Context.dbg.json: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at /Users/hyunjaelee/work/commons-budget-contract/node_modules/jsonfile/index.js:33:18
+    at /Users/hyunjaelee/work/commons-budget-contract/node_modules/graceful-fs/graceful-fs.js:123:16
+    at FSReqCallback.readFileAfterClose [as oncomplete] (node:internal/fs/read_file_context:68:3)
+
+13. HardhatError: HH103: Account 0x3e29aefa7af16625691a9fca4a7fff0624aabc6f is not managed by the node you are connected to.
+* 발생시점: npx hardhat run scripts/set_owner.ts --network testnet
+* 해결: hardhat.config.ts에서만 세팅한 계정만 사용할 수 있음.
+
+14. TypeError: Cannot read properties of undefined (reading 'sourceName')
+* 발생시점: `yarn test`로 fulfillOrder 테스트
+* 해결: yarn add --dev hardhat@ir
+* 에러 상세내용
+/Users/hyunjaelee/work/seaport/node_modules/hardhat/internal/hardhat-network/stack-traces/solidity-errors.js:111
+    return new SolidityCallSite(sourceReference.sourceName, sourceReference.contract, sourceReference.function !== undefined
+                                                ^
+TypeError: Cannot read properties of undefined (reading 'sourceName')
+(Use `node --trace-uncaught ...` to show where the exception was thrown)
+error Command failed with exit code 7.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+
+15. <UnrecognizedContract>.<unknown> 
+	• Seaport 테스트 코드 작성시 문제 생김
+	• 테스트코드에서 컨트랙트 함수 호출시 signer로 connect해야하는데 그냥 wallet으로 connect 함
+	• Hardhat 네트워크에서 사용할 계정은 hardhat.config.ts의 getAccount함수에서 추가하면 됨.
+
+16. Uncaught ReferenceError: Buffer is not defined
+	a. 여기 스텍오버플로우 참조
+	import{ Buffer} from'buffer';
+	// @ts-ignorewindow.Buffer= Buffer;
+	
+</h4>
 </pre></body></html>
