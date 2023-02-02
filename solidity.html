@@ -5,6 +5,32 @@
 </h3>
 <h4>
 <pre>
+########################################################
+# Codes
+########################################################
+
+# sendTransaction - hardhat 테스트 코드
+const encodedData = feeCollectorContract.interface.encodeFunctionData(
+  "unwrapAndWithdraw",
+  [
+    feeAdmin.address.toString(),
+    wboaContract.address,
+    BigNumber.from("10")
+  ]
+);
+const result = await ownerSigner.sendTransaction({
+  to: proxyContract.address,
+  data: encodedData
+});
+
+- 관련 사이트
+https://ethereum.stackexchange.com/questions/54845/calling-contract-function-via-web3-eth-sendtransaction-doesnt-work
+https://stackoverflow.com/questions/72584559/how-to-test-the-solidity-fallback-function-via-hardhat
+https://github.com/ethers-io/ethers.js/issues/478
+https://ethereum.stackexchange.com/questions/114146/how-do-i-manually-encode-and-send-transaction-data
+https://github.com/ethers-io/ethers.js/issues/3522
+
+
 # Predicted Address
 contract C {
         functioncreateDSalted(bytes32 salt, uint arg) public {
@@ -60,6 +86,7 @@ size = Buffer.byteLength(obj.deployedBytecode) / 2;
 
 ########################################################
 # Errors
+########################################################
 
 1. Error: VM Exception while processing transaction: reverted with panic code 0x11 (Arithmetic operation underflowed or overflowed outside of an unchecked block)
 	a. 연산이 음수가 될 때, 찬반표 계산시 발생
