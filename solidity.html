@@ -8,6 +8,42 @@
 
 # delegatecall
 <a href="https://medium.com/coinmonks/delegatecall-calling-another-contract-function-in-solidity-b579f804178c">Medium delegatecall</a>
+<a hare="https://kristaps.me/blog/solidity-delegatecall-proxy-pattern/">Preventing Vulnerabilities in Solidity - Delegate Call</a>
+pragma solidity ^0.8.0;
+
+import "hardhat/console.sol";
+
+contract Executor {
+  uint256 public luckyNumber;
+  address public sender;
+  uint256 public value;
+
+  function setLuckyNumber(uint256 _luckyNumber) public payable {
+    luckyNumber = _luckyNumber;
+    sender = msg.sender;
+    value = msg.value;
+  }
+
+  function showNumber() public {
+    console.log("luckeyNumber:", luckyNumber);
+  }
+}
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+import "hardhat/console.sol";
+contract Caller {
+  function setLuckyNumber(address executor, uint256 _luckyNumber) public payable {
+    (bool success, bytes memory data) = executor.delegatecall(
+      abi.encodeWithSignature("setLuckyNumber(uint256)", _luckyNumber)
+    );
+  }
+  function showNumber(address executor) public {
+    (bool success, bytes memory data) = executor.delegatecall(
+      abi.encodeWithSignature("showNumber()")
+    );
+  }
+}
 
 # Transaction의 형태
 transaction: {
