@@ -9,6 +9,11 @@
 # delegatecall
 <a href="https://medium.com/coinmonks/delegatecall-calling-another-contract-function-in-solidity-b579f804178c">Medium delegatecall</a>
 <a href="https://kristaps.me/blog/solidity-delegatecall-proxy-pattern/">Preventing Vulnerabilities in Solidity - Delegate Call</a>
+<a href="https://ethereum.stackexchange.com/questions/90917/delegate-call-msg-sender-wrong-value">Stackexchange</a>
+<a href="https://docs.soliditylang.org/en/v0.8.17/internals/layout_in_storage.html">Solidity storage</a>
+<a href="https://betterprogramming.pub/all-about-solidity-data-locations-part-i-storage-e50604bfc1ad">Storage slot in Inheritance</a>
+
+
 pragma solidity ^0.8.0;
 
 import "hardhat/console.sol";
@@ -44,6 +49,9 @@ contract Caller {
     );
   }
 }
+
+# static call
+staticcall works in a similar way as a normal call (without any value (sending eth) as this would change state). But when staticcall is used, the EVM has a STATIC flag set to true. Then, if any state modification is attempted, an exception is thrown. Once the staticcall returns, the flag is turned off.
 
 # Transaction의 형태
 transaction: {
