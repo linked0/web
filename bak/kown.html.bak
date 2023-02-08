@@ -1,0 +1,652 @@
+🦁web/know.html  백업
+
+<html>
+<body>
+	
+<a href="http://bit.ly/2EluV7n"> sites.txt </a><br>
+<a href="http://bit.ly/2PmH3XE"> know.html</a><br>
+<a href="http://bit.ly/2ZY033D"> know2.html = know-sub.html </a><br>
+<a href="http://goo.gl/B2Drsz"> gdrive 기술문서 </a><br>
+<a href="http://bit.ly/2HKEsmS"> colab aplay </a><br>
+
+<h2>Memo</h2><pre><h3>
+
+* 2b39b2f6 - Apply UTXO to white list (61 minutes ago) <Hyunjae Lee>
+* d04a0ebd - Change buildQuorumConfig (61 minutes ago) <Hyunjae Lee>
+* a8247d11 - Registry with UTXO instead of PublicKey (61 minutes ago) <Hyunjae Lee>
+
+	
+</h3><pre>
+##################################################################################
+##################################################################################
+##################################################################################
+##################################################################################
+##################################################################################
+
+##################################################################################
+##################################################################################
+#### 1.project-management
+##################################################################################
+##################################################################################
+
+##################################################################################
+##################################################################################
+### 2.etc ###
+##################################################################################
+##################################################################################
+
+##################################################################################
+##################################################################################
+### 3.cloud/docker ###
+##################################################################################
+##################################################################################
+gcloud compute zones list
+gcloud config set compute/zone <zone>
+gcloud compute instances create ubuntu \
+gcloud compute ssh ubuntu
+
+###### AWS 타임존 변경
+1) $ tzselect
+2) .profile에 다음을 추가하고 재로그인
+TZ='Asia/Seoul'; export TZ
+
+
+
+###### gdrive list
+brew install gdrive <-- Mac
+
+cd ~    <-- Linux
+wget http://bit.ly/2zHIlGx
+mv 2zHIlGx gdrive <-- mv uc\?id\=0B3X9GlR6EmbnWksyTEtCM0VfaFE gdrive
+chmod +x gdrive
+sudo install gdrive /usr/local/bin/gdrive
+!install gdrive /usr/local/bin/gdrive <-- google colab에서는 이렇게 쓰면 됨.
+gdrive list
+
+###### gdrive window
+Download the Windows version of gdrive from github.
+https://docs.google.com/uc?id=0B3X9GlR6EmbncWNLOS1KYWhLVFE&export=download
+
+copy downloads\gdrive-windows-x64.exe c:\windows
+ 
+gdrive-windows-x64.exe upload c:\test\backup.zip
+ 
+
+###### AWS EC2
+sudo ssh -i xxx.pem ubuntu@xx.xx.xx.xx <-- 패스워드 필요없음.
+docker run -d -p 80:80 p0bailey/docker-flask 
+
+AWS: EC Home -> Launch Instance(Blue Button) -> Select CoreOS on Community AMIS -> Select PV
+ssh -i jaylee.pem core@54.199.65.181 ← CoreOS Instance
+ssh -i jaylee.pem ubuntu@52.192.176.112 ← Ubuntu Instance
+
+* Permissions 0644 for 'pnt-hyperledger.pem' are too open.
+chmod 400 mykey.pem
+
+* sudo: unable to resolve host ip-172-30-3-65
+1) https://console.aws.amazon.com/vpc/에서 Amazon VPC 콘솔을 엽니다.
+2) 탐색 창에서 Your VPCs를 선택합니다.
+3) 목록에서 VPC를 선택합니다.
+4) [Summary] 탭의 정보를 검토합니다.
+  - DNS resolution: enabled
+  - DNS hostnames: enabled
+5) 설정을 업데이트하려면 Actions를 선택하고, Edit DNS Resolution 또는 Edit DNS Hostnames를 선택합니다.
+
+sudo useradd -m linked0 -> sudo passwd linked0
+AWS Installatio on Python Microservice Development Document
+
+
+##################################################################################
+##################################################################################
+### 4.python ###
+##################################################################################
+##################################################################################
+
+###### Python 참고 코드 
+import requests
+res = requests.get('https://api.github.com/some/endpoint', headers={'user-agent': 'my-app/0.0.1'})
+res = requests.post('http://redmine.pntbiz.com:13000/projects/indoorplus-lbs-sdk/wiki/IOS_Getting_Started', data = {'username':'hjlee','password':'amadeus0'})
+conda create -n autobuild python=3.6
+conda create -n py3conda python=3.6 anaconda <=이게 anaconda를 관련 패키지를 다 설치해준다.
+python3 -c 'import numpy as np; np.save("res", "hello"+"\n")'
+python3 -c 'import pyperclip as pc; pc.copy("hello")'
+python3 -c 'import tensorflow; print(tensorflow.__version__)'
+image show
+import matplotlib.image as mpimg
+sun = mpimg.imread('images/sunflower.jpg')
+plt.imshow(sun)
+gray인 경우, plt.imshow(sun_gray, cmap='gray')
+cv2로 읽어줘도 됨
+img = cv2.imread('images/space_background.jpg')
+img = cv2.cvtColor(background_image, cv2.COLOR_BGR2RGB)
+Jupyter Notebook Setting
+
+###### 플로팅을 하는 하나의 셀마다 써주는게 좋음. 그래야, 계속 실행시켜도 이전 것이 지워짐.
+%matplotlib inline
+%config InlineBackend.close_figures=False
+%load_ext autoreload			
+%autoreload 2
+%config InlineBackend.figure_format = 'retina'
+
+###### pandas
+import pandas as pd
+pd.set_option('display.height', 1000)
+pd.set_option('display.max_rows', 500)
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', 150)
+
+###### numpy
+np.set_printoptions(linewidth=1000)
+
+```
+Hangul Character
+# -*- coding: utf-8 -*-
+```
+
+###### 정산 urllib POST
+from urllib.request import urlopen, Request
+from urllib.parse import urlencode
+import json
+url = 'http://130.1.3.85:8880/bccard/order/queryOrder'
+values = {'svc_id': 'bccard', 'params': {'orderID': '001-2014-09-30-1234567890'}, 'query_ty': 'query', 'cb_id': 'CB1111223'}
+params = json.dumps(values).encode('utf8')
+headers = {'Content-Type': 'application/json'}
+req = Request(url, data=params, headers=headers)
+res = urlopen(req)
+print(res.read()).decode('utf8')
+
+###### Flask
+(py36kaggle) kaggle-web hyunjaelee$ export FLASK_APP=app.py
+(py36kaggle) kaggle-web hyunjaelee$ export FLASK_DEBUG=1
+(py36kaggle) kaggle-web hyunjaelee$ flask run
+
+###### map 함수
+def pretty_print_review_and_label(i):
+    print(labels[i] + "\t:\t" + reviews[i][:80] + "...")
+
+g = open('reviews.txt','r') # What we know!
+reviews = list(map(lambda x:x[:-1],g.readlines()))
+g.close()
+
+g = open('labels.txt','r') # What we WANT to know!
+labels = list(map(lambda x:x[:-1].upper(),g.readlines()))
+g.close()
+
+##################################################################################
+##################################################################################
+### 5.node.js/web/android ###
+##################################################################################
+##################################################################################
+
+###### Node.js
+npm init
+
+###### http-server
+npm install http-server -g
+http-server -a 0.0.0.0 -p 8080
+
+###### Sail 설치
+sails new test-project 
+cd test-project 
+sails lift 
+sails generate static 
+sails generate api video
+
+###### Hapi 사용
+'use strict'; 
+ 
+const Hapi=require('hapi'); 
+ 
+// Create a server with a host and port 
+const server=Hapi.server({ 
+    host:'localhost', 
+    port:8000 
+}); 
+ 
+// Add the route 
+server.route({ 
+    method:'GET', 
+    path:'/hello', 
+    handler:function(request,h) { 
+ 
+        return'hello world'; 
+    } 
+}); 
+ 
+// Start the server 
+async function start() { 
+ 
+    try { 
+        await server.start(); 
+    } 
+    catch (err) { 
+        console.log(err); 
+        process.exit(1); 
+    } 
+ 
+    console.log('Server running at:', server.info.uri); 
+}; 
+ 
+start(); 
+
+### debugging in chrome browser
+chrome://inspect//#devices
+
+
+* 커맨드 창에서 android 명령 
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+
+* Android 로그 설정
+https://medium.com/@vlonjatgashi/how-to-filter-out-android-logcat-logs-66945a4a0e0a
+
+##################################################################################
+##################################################################################
+### 6.blockchain ###
+##################################################################################
+##################################################################################
+
+###### Ganache
+ganache-cli --mnemonic 'trick core barely fold sample icon display hollow smoke task emotion pepper'
+
+* 실행 
+Private Key 필요
+90,000 ETH
+ganache-cli --account "0x70f1384b24df3d2cdaca7974552ec28f055812ca5e4da7a0ccd0ac0f8a4a9b00,9000000000000000000000"
+
+###### Truffle
+npm install truffle -g
+mkdir myProject
+cd myProject
+truffle init
+
+###### Encode/Decode
+Encode and Decode Text from Terminal
+String to hex: xxd -p <<< "Blockchain Developer"
+Hex to string: echo 426c6f636b636861696e20446576656c6f7065720a|xxd -r -p
+
+Encode and Decode Text from Terminal Using Files
+Create file: touch hello.txt
+String to Hex: xxd -p hello.txt helloEncoded.txt
+Hex to String: xxd -p -r helloEncoded.txt helloDecoded.txt
+
+Encode and Decode Image from Terminal Using Files
+Image to Hex: xxd -p cat.png cat.txt
+Hex to Image: xxd -p -r cat.txt catDecoded.png
+
+###### Generate Private Key
+openssl ecparam -name secp256k1 -genkey -noout
+
+###### Geth
+* install Geth (in Mac)
+$ brew tap ethereum/ethereum
+$ brew install ethereum
+or brew upgrade ethereum
+
+다른 OS에 대해서는 https://ethereum.github.io/go-ethereum/downloads/ 에서 다운 받으면 됨.
+
+Sync to the Rinkeby Test Network
+$ geth --rinkeby --syncmode "fast"
+
+##################################################################################
+##################################################################################
+### 7.java/c/go/d ###
+##################################################################################
+##################################################################################
+
+###### Go
+godoc fmt Printf
+godoc cmd/fmt
+godoc -http=:8001
+go build aSourceFile.go
+file aSourceFile
+go run aSourceFile.go ← Build and Run
+go get -v github.com/mactsouk/go/simpleGitHub
+
+Source
+package main 
+ 
+import ( 
+    "fmt" 
+    _ "os" 
+) 
+
+import ( 
+    "fmt" 
+    "github.com/mactsouk/go/simpleGitHub" 
+) 
+ 
+func main() { 
+    fmt.Println("Hello there!") 
+}
+
+###### Java
+* Run jar with folder name for class(ex.FirstMDP)
+user$ java -cp ./target/classes:/Users/user/.m2/repository/edu/brown/cs/burlap/burlap/3.0.0/burlap-3.0.0.jar FirstMDP
+
+* Compile
+javac -cp ./algs4/algs4.jar BinarySearchST.java
+java -cp .:./algs4/algs4.jar BinarySearchST < tinyST.txt
+java -Xmx1024m <- VM의 Heap을 늘려주기
+
+export JCP=".:~/libjava/stdlib.jar:~/libjava/algs4.jar:~/libjava/utils.jar"
+javac -cp $JCP DoublingTest.java 
+
+* Run
+java -jar jython_installer-2.7.0.jar
+
+* Jar Making
+jar -cvmf manifest.txt utils.jar ./utils/*.class
+jar tvf stdlib.jar <- 구조보기 
+
+We first create a text file named Manifest.txt with the following contents:
+Main-Class: MyPackage.MyClass
+
+Warning: The text file must end with a new line or carriage return. The last line will not be parsed properly if it does not end with a new line or carriage return.
+
+* JDK Home
+~ jay$ /usr/libexec/java_home
+/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home
+
+###### C++
+// tests.cpp에 main() 함수가 있고, stdlib를 사용하는 경우
+user$ ls
+ bech32.cpp      bech32.h        segwit_addr.cpp segwit_addr.h   tests.cpp
+user$ g++ -std=c++11 *.cpp
+user$ chmod 755 a.out
+user$ ./a.out
+
+###### Dlang
+dlang.org에서 컴파일러 다운로드
+run.dlang.io에서 웹 IDE
+
+dmd hello.d  // 컴파일
+dmd -run hello.d // 컴파일하고 실행
+./hello // 컴파일한 실행 파일 실행
+
+Learning D github: https://github.com/mdparker/LearningD
+
+* 프로젝트 초기 셋업
+dub init MovieMan // 이 명령을 쓰면 MovieMan 폴더가 생김.
+
+##################################################################################
+##################################################################################
+### 8.vi ###
+##################################################################################
+##################################################################################
+
+find ./ -type f > files
+find . -type file -name '*.js' -o -name '*.json' > files  //-o는 or를 뜻함
+find . -type f -not -path './node_modules/*' -not -path './chaindata/*' > files
+
+CTRL-W f: open in a new window
+CTRL-W gf: open in a new tab
+CTRL-W {H,J,K,L}: move among windows, or use arrow key
+CTRL-W w 창을 순차적으로 이동
+CTRL-W t 최상위 창으로 이동
+CTRL-W b 최하위 창으로 이동
+
+g t: Next tab, 그냥 에디터에서 g와 t를 치면 됨
+g T: Prior tab
+nnn g t: Numbered tab, nnn은 숫자를 나타냄, 1일수도 있고, 12일수도 있음.
+
+"*yy           ; copt from vi 
+:! wc          ; sh command in vi
+
+set softtabstop=4       ; TAB키를 눌렀을때 몇 칸을 이동?
+set tabstop=4           ; 하나의 TAB을 몇 칸으로 인식? 
+set number		            ;  Line Number
+set mouse=a             ; Adjust area with mouse
+
+:shell 혹은 :sh를 이용해서 shell(:12)로 빠져나갈 수 있다. exit 혹은 Ctrl+D를 이용해서 vim으로 되돌아올 수 있다.
+:! # 마지막 커맨드의 결과보기 
+
+mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
+
+* 한글 깨지는 문제
+set enc=utf-8
+
+###### vimrc (~/.vimrc)
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim' "required
+Plugin 'tpope/vim-fugitive' "required 
+call vundle#end()
+filetype plugin indent on " Put your non-Plugin stuff after this line
+:w
+:source %
+:PluginInstall
+syntax enable " syntax highlighting
+set nu " add line numbers
+set smartindent " make smart indent
+set tabstop=4 " tab width as 4 (default 8)
+set shiftwidth=4
+set expandtab " spaces for tab
+set incsearch
+set mouse=a
+
+##################################################################################
+##################################################################################
+### 9.command ###
+##################################################################################
+##################################################################################
+
+$ alias aws="ssh -i ~/pooh/pooh-seoul.pem ubuntu@15.165.168.51" # 커맨드창에서 alias 
+
+# source를 다른 위치에 new_source라는 이름으로 복사(두가지 방법)
+cp -a source ~/temp/new_source
+cp -rT source ~/temp/new_source
+
+
+find . -iname mainview*
+touch -t "201610041200" timestamp
+find . -type f -newer timestamp
+egrep -irnH --include=\*.{java,cpp,h} --exclude-dir=.svn ‘beacon.pntbiz.com’ ./ <== {}안에 띄어쓰기 안됨
+egrep -irnH --include=\*.cpp --exclude-dir=.svn ‘beacon.pntbiz.com’ ./		<== 한종류 패턴
+egrep -irnH --exclude-dir=.svn ‘beacon.pntbiz.com’ ./				<== 전체 파일 
+
+sudo xcode-select -s /Applications/XCode7.2/Xcode.app/
+To clear the terminal manually: Cmd + K
+ps aux | grep chrome
+
+export PS1="\W \u$ "
+
+hgrep() {
+	grep -irnH --include=*.$1 "$2" ./  
+}
+
+###### curl
+curl -L bit.ly/2C19vd0 // Redirect
+
+작은 따옴표 안에서는 역슬래시를 쓸 필요가 없다. ^^
+curl -X POST http://211.253.31.20:49080/bccard/bccard/queryOrder \
+-H 'Content-Type: application/json' \
+-H 'cache-control: no-cache' \
+-d '{
+  "svc_id" : "bccard",
+  "cb_id":"TestCallbackID",
+  "query_ty":"invoke",
+  "params" : 
+    { 
+      "orderID" : "7000312909", 
+      "customerID" : "2423656830", 
+      "partnerID" : "3001", 
+      "orderCode" : "001", 
+      "orderStartDate" : "2019-04-15T18:25:43+09:00", 
+      "orderChannel" : "콜센터", 
+      "orderItems" :  "[{\"itemName\" : \"5만원권\",\"itemCount\" : 10,\"itemPrice\": 50000, \"itemCode\" : \"G5\"},{\"itemName\" : \"10만원권\",\"itemCount\" : 2,\"itemPrice\": 100000,\"itemCode\" : \"G10\"}]"
+    }
+}'
+
+###### ncat
+ncat -l 9999
+ncat localhost 9999
+
+ncat google.com 80
+GET / HTTP/1.1
+Host: google.com(엔터 두번 치기)
+
+###### File Transfer
+Download: scp -i pooh-seoul.pem carnd@54.249.240.135:~/abc/index.html ./
+Upload: scp -i pooh-seoul.pem ./index.html carnd@54.249.240.135:~/abc/index.html
+
+###### Tar
+Zip Foler
+tar --exclude='node_modules' -cvzf bccard.tar.gz bccard    //하위 폴더들에서 node_modules를 모두 제외시키기
+tar --exclude='./BLE/.git' -cvzf output_filename.tar.gz folder_name --exclude='./BLE/.git'
+tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
+
+###### Zip
+sudo apt-get install unzip
+
+zip 압축 풀기
+unzip happy.zip -d ./target
+
+zip 압축하기 
+zip --exclude \*.git\* -r test.zip ./*
+
+echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
+
+###### File Upload to Google Drive(https://github.com/prasmussen/gdrive)
+wojin's share: 1UiOnqU2VEs-rjC6iZyo2suLa9r4_9d9T
+Install on Mac
+brew install gdrive
+
+###### Install on Linux
+cd~
+wget "https://docs.google.com/uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download"
+mv "uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download" gdrive
+chmod +x gdrive
+sudo install gdrive /usr/local/bin/gdrive
+
+##### Generate Private Key
+openssl ecparam -name secp256k1 -genkey -noout
+
+##### Visual Studio Code
+Visual Studio Code command 실행
+shift-cmd-p -> shell command -> terminal에서 code로 실행
+
+##### Mac XCode
+brew install macvim --override-system-vim
+
+https://developer.apple.com/download/more/?=command%20line%20tools 에서 다운로드 필요
+xcode-select install
+sudo xcode-select --switch /Library/Developer/CommandLineTools
+
+##################################################################################
+##################################################################################
+10. Dev.: Agora & Github & 맥 설치 & VS Code
+##################################################################################
+##################################################################################
+
+###### 맥 설치시 필요한 
+1. ITerm, OhMyZh 설치
+2. Whale, VS Code, D Extension: serve-d, code-d
+3. VS Code에서 마우스 오른쪽 버튼: “Go to definition” 하면 인덱싱 함.
+4. Karabiner 설치: Control+hjkl 엘레멘트 설치
+
+
+###### git 일반
+지워진 폴더에 대한 스테이징
+git rm -r app
+
+git config --global user.name "linked0"
+git config --global user.email linked@gmail.com
+
+* fork된 리파지토리 새로운 원본 커밋 가져오고, 머지하기
+git fetch upstream
+git checkout master       // Check out your fork's local master branch.
+git merge upstream/master
+
+* 모든 프로젝트에 gitignore 적용시키기
+git config --global core.excludesfile ~/.gitignore_global
+
+* stash 이용 방법
+git stash save "my_stash"
+git stash list 	// This will list down all your stashes.
+git stash pop stash@{n}	 // To apply a stash and remove it from the stash stack, type:
+git stash apply stash@{n}  // To apply a stash and keep it in the stash stack, type:
+
+* branch 이름 변경
+git branch -m old_branch_name new_branch_name
+
+* 파일 하나를 커밋 전으로 리셋 시키기.
+git checkout HEAD~1 -- source/agora/test/EnrollmentManager.d
+
+* 팀원 브랜치를 최신버전으로 갱신하기
+git reset --hard mathias/restart-node-issue906
+
+* 특정 커밋에 잘못 올린 파일을 제거하기
+git rebase -i HEAD~2
+git reset --soft HEAD^
+git commit으로 커밋을 새로 생성함, 기존 커밋은 이미 없어진 상태
+
+* rebase 과정중에 특정 파일을 unstage 시키기
+git reset HEAD~1 source/agora/consensus/PreImage.d // rebase중인 commit이 HEAD가 된다.
+
+* 팀원, Upstream 깃헙 세팅
+git remote add drey git@github.com:AndrejMitrovic/agora.git
+git remote add upstream git@github.com:bosagora/agora.git
+
+##### Gist
+brew install gist
+gist --login
+gist -d "test dub.json" dub.json
+cd ../../
+
+###### .gitconfig
+[user]
+	email = linked0@gmail.com
+	name = Hyunjae Lee
+[core]
+	excludesfile = /Users/jaylee/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+    template = /Users/jaylee/.stCommitMsg
+[alias]
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-\
+commit
+    pff = "!f() { git pull --ff-only upstream $(git rev-parse --symbolic-full-name HEAD); }; f"
+    rb = "!f() { git rebase -i HEAD~$1; }; f"
+    ru = "remote update -p"
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+[push]
+	default = current
+
+###### submodule 업데이트방법
+- 이거하고 나서 git submodule update --init하면 자꾸 리셋되는 걸 보면 확실히 agora에는 적용 안되었던 듯
+cd submodules/localrest
+git fetch
+git checkout origin/v0.x.x
+
+###### "code ."으로 VS Code 실행시키기
+1) Command Palette (Ctrl + Shift + P)를 열고
+2) 'shell command'를 입력하여
+3) Shell Command: Install 'code' command in PATH command를 클릭한다.
+
+
+### 1.project-management
+### 2.etc
+### 3.cloud/docker
+### 4.python
+### 5.node.js/web/android
+### 6.blockchain
+### 7.java/c/go/d
+### 8.vi --> 1.3.mac
+### 9.command
+### 10. Dev.: Agora & Github & 맥 설치 & VS Code
+
+</pre>
+</body>
+</html>
