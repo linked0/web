@@ -14,6 +14,33 @@
 ########################################################
 # Codes
 ########################################################
+# 노드 운영 - Timeout 에러
+- 2023.02.20 TextNet에 발생함
+- TestNet RPC 접속시에 `UND_ERR_CONNECT_TIMEOUT`에러 발생
+- RPC를 다른 노드에 붙이고, 문제가 된 노드의 데이터를 초기화하고 다시 싱크 맞춤
+
+# hardhat 프로젝트 개발시 참고
+- https://hardhat.org/migrate-from-waffle
+
+# 개념
+- const receipt = await (await tx).wait();
+	§ tx는 sendTransaction()에서 리턴한 Promise이다.
+
+# Solidity version
+· 가장 확실한 형태
+  ○ pragma solidity >=0.8.0 <=0.8.10;
+· pragma solidity ^0.5.2;
+  ○ 0.5.2 이전 버전 컴파일러로는 컴파일 안됨
+  ○ 0.6.0 으로 시작되는 버전에는 컴파일 암됨 (^가 그런 의미임)
+
+# harthat 프로젝트 만들기
+In our case we created the folder named ProjetoLivroNFTERC1155OZ. 
+1) Start npm in standard mode npm init -y 
+2) Install the hardhat npm install --save-dev hardhat 
+3) Install OpenZeppelin smart contracts npm install @openzeppelin/contracts 
+4) Install required modules and dependencies. npm install --save-dev @nomiclabs/hardhat-waffle npm install --save-dev "@nomiclabs/hardhat-ethers@^2.0.0" "ethereum- waffle@^3.4.0" "ethers@^5.0.0" 
+5) Install the dotenv module npm install dotenv 
+6) Start the hardhat npx hardhat
 
 # delegatecall 관하여
 <a href="https://medium.com/coinmonks/delegatecall-calling-another-contract-function-in-solidity-b579f804178c">Medium delegatecall</a>
