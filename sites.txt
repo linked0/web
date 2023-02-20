@@ -4,6 +4,13 @@ Woojin know: bit.ly/2CSmksh
 Hyperledger Readthedocs: bit.ly/2CUQTgS
 My Blockchain Gitbook: bit.ly/2m6cJ99
 
+
+#########################################
+### NewComer ###
+#########################################
+JS Beautify: https://www.prettifyjs.net/
+DNS Propagation Checker
+
 #########################################
 ### Work ###
 #########################################

@@ -12,7 +12,7 @@
 <a href="http://remix.ethereum.org/">Remix online</a>
 
 ##################################################################################
-### 0<a href="http://bit.ly/2ZY033D">.</a>New Comer ###
+### 0<a href="http://bit.ly/2ZY033D">.</a>New Comer/기타/Shortcut###
 ##################################################################################
 # command
 	- cmd space: Launchpad
@@ -23,19 +23,6 @@
 		○   nodemon index.js
 	- npm install @types/pg
 	- 맥에서 숨김 파일: cmd + shift + .
-
-# screen
-	- 실행: screen -S el
-	- screen -S 23536 -X quit
-		○ exit: ctrl + a, d
-
-# nvm install
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-. ~/.nvm/nvm.sh <-- nvm 활성화
-
-# node3에 들어가서 postgresql 도커 접속방법
-sudo docker exec -it ec22f5036e09 bash
-psql -d db -U postgres -W
 
 # Contract Size
 https://ethereum.stackexchange.com/questions/31515/how-to-check-the-size-of-a-contract-in-solidity
@@ -49,18 +36,6 @@ We can create a Conduit with the create_conduit.ts script and get the address of
 	• github subscribe
 		○ /github subscribe  bosagora/boa-space-contracts issues pulls commits releases deployments reviews comments
 
-—————————————————————————————
-# Hardhat & Typescript
-	• Hardhat 프로젝트 만들기
-		○ npm init
-		○ npm install --save-dev hardhat
-		○ npx hardhat
-	• Prettier 적용
-		○ package.json의 "scripts" 섹션에 다음을 추가
-			§ "prettier": "node_modules/.bin/prettier --write --config .prettierrc 'contracts/**/*.sol' 'test/**/*.ts' 'utils/**/*.ts' 'scripts/**/*.ts'",
-	• Hardhat console.log
-		○ import "hardhat/console.sol";
-—————————————————————————————
 Shortcuts
 	• Option F12
 	• Navigate: Option Cmd Left/Right 
@@ -81,72 +56,36 @@ Shortcuts
     * 유통량: https://api.bosplatformfoundation.io/boa_circulating_supply
     * 총발행량: https://api.bosplatformfoundation.io/boa_supply
 
-—————————————————————————————
-@ AWS etc
-# IP
-15.165.133.105 
-13.124.201.231
-
-# 오류
-*  WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
-    * 아래와 같이 수정
-    *  Add correct host key in /Users/hyunjaelee/.ssh/known_hosts to get rid of this message.
-
-# public key 확인 및 깃헙에 추가하기
-- cat .ssh/id_rsa_linked0.pub
-- 계정의 세팅으로 들어가면 “SSH and GPG keys”에 집어넣으면 됨.
-- git clone할 때 sudo를 넣어야 “Load key … : Permission denied” 에러가 발생하지 않음.
-- “git clone https://github.com/linked0/agora.git” 이건 잘되는 ssh로 받을때 안됨
-
-# 접속
-ssh -i "pooh-seoul.pem" ubuntu@ec2-52-79-227-164.ap-northeast-2.compute.amazonaws.com
-
-# AWS에서 파일 전송 
-* 가져오기
-    * scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt .
-* 보내기
-    * scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
-———————————————————————————————————
-@ AWS ELB 세팅
-# Load Balancer 
-	- Mappings는 모든 존으로
-	- Security Group은 AgoraDevNet_ELB
-	- 리스너 지정: Target Group지정
-	- 나중에 80에 대해서 443으로 Redirect
-
-# Target Group
-	- Basic configuration: Instances
-	- Protocol/Port 지정
-	- Protocol version: HTTP1
-	- Health checks는 그대로 두면 됨.
-
-———————————————————————————————————
-@ 노트
-- Get Lens 써보기
-- Maximize Active Pane: shift + cmd + enter
-- Command 창: cmd + j
-- 탭 좌우 이동: cmd + shift + [ or ]
-- “//“로 시작되는 라인 찾을때: “^\/\/“
-- Focus editor 1 : cmd + 1
-- ctrl - / ctrl shift -: go back/forward
-- ./build/agora -c devel/config-single.yaml
-- 경로복사: option + cmd + c
-- Focus terminal: ctrl + `
-
-———————————————————————————————————
-@ Sites
-	- JS Beautify: https://www.prettifyjs.net/
-	- DNS Propagation Checker
 
 
 ##################################################################################
-### A<a href="http://bit.ly/2ZY033D">.</a>Node JS###
+### A<a href="http://bit.ly/2ZY033D">.</a>Node JS/TypeScript/Hardhat/Screen###
 ##################################################################################
 ### localhost 실행하기
 npx hardhat node
 
 ### localhost 배포하기g
 npx hardhat run scripts/deploy.ts --network localhost
+
+# Hardhat & Typescript
+	• Hardhat 프로젝트 만들기
+		○ npm init
+		○ npm install --save-dev hardhat
+		○ npx hardhat
+	• Prettier 적용
+		○ package.json의 "scripts" 섹션에 다음을 추가
+			§ "prettier": "node_modules/.bin/prettier --write --config .prettierrc 'contracts/**/*.sol' 'test/**/*.ts' 'utils/**/*.ts' 'scripts/**/*.ts'",
+	• Hardhat console.log
+		○ import "hardhat/console.sol";
+
+# nvm install
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh <-- nvm 활성화
+
+# screen
+	- 실행: screen -S el
+	- screen -S 23536 -X quit
+		○ exit: ctrl + a, d
 
 ##################################################################################
 ### A<a href="http://bit.ly/2ZY033D">.</a>gitconfig ###
@@ -200,6 +139,50 @@ name:short)%(color:reset) - %(contents:subject)'
 ##################################################################################
 ### B.cloud/docker ###############################################################
 ##################################################################################
+
+# node3에 들어가서 postgresql 도커 접속방법
+sudo docker exec -it ec22f5036e09 bash
+psql -d db -U postgres -W
+
+# AWS etc
+# IP
+15.165.133.105 
+13.124.201.231
+
+# 오류
+*  WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+    * 아래와 같이 수정
+    *  Add correct host key in /Users/hyunjaelee/.ssh/known_hosts to get rid of this message.
+
+# public key 확인 및 깃헙에 추가하기
+- cat .ssh/id_rsa_linked0.pub
+- 계정의 세팅으로 들어가면 “SSH and GPG keys”에 집어넣으면 됨.
+- git clone할 때 sudo를 넣어야 “Load key … : Permission denied” 에러가 발생하지 않음.
+- “git clone https://github.com/linked0/agora.git” 이건 잘되는 ssh로 받을때 안됨
+
+# 접속
+ssh -i "pooh-seoul.pem" ubuntu@ec2-52-79-227-164.ap-northeast-2.compute.amazonaws.com
+
+# AWS에서 파일 전송 
+* 가져오기
+    * scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt .
+* 보내기
+    * scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
+———————————————————————————————————
+@ AWS ELB 세팅
+# Load Balancer 
+	- Mappings는 모든 존으로
+	- Security Group은 AgoraDevNet_ELB
+	- 리스너 지정: Target Group지정
+	- 나중에 80에 대해서 443으로 Redirect
+
+# Target Group
+	- Basic configuration: Instances
+	- Protocol/Port 지정
+	- Protocol version: HTTP1
+	- Health checks는 그대로 두면 됨.
+
+
 ###### AWS 타임존 변경
 1) $ tzselect
 2) .profile에 다음을 추가하고 재로그인
@@ -308,6 +291,18 @@ git config alias.acp '! git commit -a -m "commit" && git push'
 ##################################################################################
 ### E.command ###
 ##################################################################################
+
+##### NewComer
+- Get Lens 써보기
+- Maximize Active Pane: shift + cmd + enter
+- Command 창: cmd + j
+- 탭 좌우 이동: cmd + shift + [ or ]
+- “//“로 시작되는 라인 찾을때: “^\/\/“
+- Focus editor 1 : cmd + 1
+- ctrl - / ctrl shift -: go back/forward
+- ./build/agora -c devel/config-single.yaml
+- 경로복사: option + cmd + c
+- Focus terminal: ctrl + `
 
 ##### Generate Private Key
 openssl ecparam -name secp256k1 -genkey -noout
