@@ -1,6 +1,6 @@
 <html>
 <body>
-<h2>Memo</h2>
+<h2>Solidity</h2>
 
 <a href="https://linked0.github.io/web/solidity.html">solidity.html</a><br>
 <a href="https://linked0.github.io/web/know-bak.html">know-bak.html</a><br>
@@ -331,4 +331,14 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
 17. Error HH700: Artifact for contract "hardhat/console.sol:console" not found. 
   * npx hardhat clean 실행
 	
+18. TestNet에서 Contract 배포시 UND_ERR_CONNECT_TIMEOUT이 발생
+  * 다음과 같이 처리됨
+  * RPC를 다른 노드에 붙임
+  * 문제가 생긴 노드를 트랜잭션 풀을 날려버림
+
+19. TestNet에서 Contract 배포 스크립트 실행시 다음 프롬프트로 안 떨어지고 먹통]
+  * Nonce값이 꼬여서 그렇게 됨
+  * Nonce값이 꼬인 이유는 내 개인 프로젝트인 web2/nft-market에서 NonceManager를 사용하지 않아서 생긴 문제
+  * 일단 문제가 생긴 계정(즉 Contract를 배포하던 주소)에서 네이티브 토큰을 보내기 몇번하면 됨.
+
 </pre></body></html>
