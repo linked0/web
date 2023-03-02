@@ -202,6 +202,17 @@ data = fs.readFileSync('/Users/hyunjaelee/work/commons-budget-contract/build/con
 obj = JSON.parse(data);
 size = Buffer.byteLength(obj.deployedBytecode) / 2;
 
+# Nonce 오류 관련해서 헨리님이 얘기해준것
+private async resetTransactionCount() {
+  this.manager_signer.setTransactionCount(await this.manager_signer.getTransactionCount());
+}
+3:42
+nonce-manager.ts
+setTransactionCount(transactionCount: ethers.BigNumberish | Promise<ethers.BigNumberish>): void {
+  this._initialPromise = Promise.resolve(transactionCount).then((nonce) => {
+      return ethers.BigNumber.from(nonce).toNumber();
+  });
+  this._deltaCount = 0;
 
 ########################################################
 # Errors
