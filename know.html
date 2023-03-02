@@ -12,7 +12,7 @@
 <a href="http://remix.ethereum.org/">Remix online</a>
 
 ##################################################################################
-### 0<a href="http://bit.ly/2ZY033D">.</a>New Comer/기타/Shortcut###
+### <a href="http://bit.ly/2ZY033D">.</a>New Comer/기타/Shortcut###
 ##################################################################################
 # command
 	- cmd space: Launchpad
@@ -59,7 +59,7 @@ Shortcuts
 
 
 ##################################################################################
-### A<a href="http://bit.ly/2ZY033D">.</a>Node JS/TypeScript/Hardhat/Screen###
+### <a href="http://bit.ly/2ZY033D">.</a>Node JS/TypeScript/Hardhat/Screen###
 ##################################################################################
 ### E: econ0019@journals.kr
 
@@ -94,8 +94,48 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
 
 ##################################################################################
-### A<a href="http://bit.ly/2ZY033D">.</a>gitconfig ###
+### <a href="http://bit.ly/2ZY033D">.</a> Git & gitconfig ###
 ##################################################################################
+- git reset --hard michael/add-npm-script-prettier
+	git remote update 한번 해줘야 함.
+	해당 브랜치로 들어가서 최신 버전으로 갱신하기 
+- git pull <remote> <remote branch>
+	로컬의 수정을 반영하기
+	ex) git pull zero commons-budget-contract
+- git rebase 도중 파일 제거하기
+	git rm --cached <file>  
+- git rebase 도중 stage된 파일 리셋하기
+	git reset HEAD~1 -- package.json
+- revert
+	# This will create three separate revert commits:
+		§ git revert a867b4af 25eee4ca 0766c053
+	# It also takes ranges. This will revert the last two commits:
+		§ git revert HEAD~2..HEAD
+	# Similarly, you can revert a range of commits using commit hashes (non inclusive of first hash):
+		§ git revert 0d1d7fc..a867b4a
+- 슬랙 연동: /github subscribe zeroone-boa/validators reviews comments
+	이것도 방법, 위의 것과 비교 필요: /github subscribe bosagora/boa-space-seaport-js issues pulls commits releases deployments reviews comments
+- git clone시 폴더명 지정
+	git clone git@github.com:whatever folder-name
+- Fatal: Not possible to fast-forward, aborting
+	git pull --rebase.
+- Merge pull request 발생하지 않도록 Full Requests 설정
+	Repository Setting -> Pull Requests
+		§ Uncheck: "Allow merge commits", "Allow squash merging" 
+- git diff --name-only HEAD~1 HEAD~2
+
+- 단번에 add & commit & push
+git config alias.acp '! git commit -a -m "commit" && git push'
+그리고 나서 git acp 하면됨
+
+## private repo clone
+- $ key-gen
+- $ eval "$(ssh-agent -s)"
+- $ ss-add .ssh/id_rsa_graph_node
+- id_rsa_graph_node.pub를 cat해서 리파지토리 Setting -> Deploy keys에 추가
+- git clone git@github.com:bosagora/boa-space-graph-node.git
+
+## gitconfig
 [user]
 	email = linked0@gmail.com
 	name = Hyunjae Lee
@@ -143,8 +183,12 @@ name:short)%(color:reset) - %(contents:subject)'
     diffFilter = delta --color-only
 
 ##################################################################################
-### B.cloud/docker ###############################################################
+### cloud/docker ###############################################################
 ##################################################################################
+
+# AWS에 Load Balancer 추가시 
+• Certifacate Manager를 통해서 도메인 추가
+	- "Create records in Route 53" 해줘야 함.
 
 # node3에 들어가서 postgresql 도커 접속방법
 sudo docker exec -it ec22f5036e09 bash
@@ -211,7 +255,7 @@ docker run -d -p 80:80 p0bailey/docker-flask
 
 
 ##################################################################################
-### C.vi ###
+### vi ###
 ##################################################################################
 find ./ -type f > files
 find . -type file -name '*.js' -o -name '*.json' > files  //-o는 or를 뜻함
@@ -260,42 +304,7 @@ set incsearch
 set mouse=a
 
 ##################################################################################
-### D.Git ###
-##################################################################################
-- git reset --hard michael/add-npm-script-prettier
-	git remote update 한번 해줘야 함.
-	해당 브랜치로 들어가서 최신 버전으로 갱신하기 
-- git pull <remote> <remote branch>
-	로컬의 수정을 반영하기
-	ex) git pull zero commons-budget-contract
-- git rebase 도중 파일 제거하기
-	git rm --cached <file>  
-- git rebase 도중 stage된 파일 리셋하기
-	git reset HEAD~1 -- package.json
-- revert
-	# This will create three separate revert commits:
-		§ git revert a867b4af 25eee4ca 0766c053
-	# It also takes ranges. This will revert the last two commits:
-		§ git revert HEAD~2..HEAD
-	# Similarly, you can revert a range of commits using commit hashes (non inclusive of first hash):
-		§ git revert 0d1d7fc..a867b4a
-- 슬랙 연동: /github subscribe zeroone-boa/validators reviews comments
-	이것도 방법, 위의 것과 비교 필요: /github subscribe bosagora/boa-space-seaport-js issues pulls commits releases deployments reviews comments
-- git clone시 폴더명 지정
-	git clone git@github.com:whatever folder-name
-- Fatal: Not possible to fast-forward, aborting
-	git pull --rebase.
-- Merge pull request 발생하지 않도록 Full Requests 설정
-	Repository Setting -> Pull Requests
-		§ Uncheck: "Allow merge commits", "Allow squash merging" 
-- git diff --name-only HEAD~1 HEAD~2
-
-- 단번에 add & commit & push
-git config alias.acp '! git commit -a -m "commit" && git push'
-그리고 나서 git acp 하면됨
-
-##################################################################################
-### E.command ###
+### command ###
 ##################################################################################
 
 ##### NewComer
