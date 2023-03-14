@@ -12,6 +12,56 @@
 
 <pre>
 ########################################################
+# ToDo
+########################################################
+# boa-space-contracts conduit 관련 assembly 코드 (#conduit.spec.ts)
+- conduit.spec.ts 아래 코드에서 에러남
+  it.only("Reverts when attempting to execute transfers on a conduit when not called from a channel", async () => {
+    const expectedRevertReason =
+      getCustomRevertSelector("ChannelClosed(address)") +
+      owner.address.slice(2).padStart(64, "0").toLowerCase();
+
+    const tx = await conduitOne.connect(owner).populateTransaction.execute([]);
+    const returnData = await provider.call(tx);
+    expect(returnData).to.equal(expectedRevertReason);
+
+    await expect(conduitOne.connect(owner).execute([])).to.be.reverted;
+  });
+
+- Conduit.sol
+modifier onlyOpenChannel() {
+        console.log("onlyOpenChannel");
+        // Utilize assembly to access channel storage mapping directly.
+        assembly {
+            // Write the caller to scratch space.
+            mstore(ChannelKey_channel_ptr, caller())
+
+            // Write the storage slot for _channels to scratch space.
+            mstore(ChannelKey_slot_ptr, _channels.slot)
+
+            // Derive the position in storage of _channels[msg.sender]
+            // and check if the stored value is zero.
+            if iszero(
+                sload(keccak256(ChannelKey_channel_ptr, ChannelKey_length))
+            ) {
+                // The caller is not an open channel; revert with
+                // ChannelClosed(caller). First, set error signature in memory.
+                mstore(ChannelClosed_error_ptr, ChannelClosed_error_signature)
+
+                // Next, set the caller as the argument.
+                mstore(ChannelClosed_channel_ptr, caller())
+
+                // Finally, revert, returning full custom error with argument.
+                revert(ChannelClosed_error_ptr, ChannelClosed_error_length)
+            }
+        }
+
+        console.log("onlyOpenChannel return");
+        // Continue with function execution.
+        _;
+    }
+
+########################################################
 # Codes
 ########################################################
 # Subgraph 개발시 걸린 시간: 딱 10일
