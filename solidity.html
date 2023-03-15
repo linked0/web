@@ -64,6 +64,23 @@ modifier onlyOpenChannel() {
 ########################################################
 # Codes
 ########################################################
+# Agora Locanet 실행
+- 사용자 root 폴더에 git@github.com:bosagora/agoranet.git 소스 다운로드(clone)
+- cd ~/agoranet/michal/
+- docker 실행
+- cmd/el/init_node 1 실행
+	- sudo가 들어가 있어서 개인 PC 암호가 필요함.
+- cmd/el/run_node 1
+	- LOCALNET_URL=http://127.0.0.1:8545
+· chain id: 34559
+· Admin에 돈을 넣어주기
+	- 방법: 돈을 이미 가지고 있는 키를 주신다고 함.
+	- 0xb16ae920b229e39555024802925f663071625a998cb1c0ecf88878841fa748e6
+· CommonsBudget 배포
+· config/el/genesis_bosagora.json에 다음과 값 세팅
+	- bosagoraBlock: 커먼스 버짓 발행의 시작될 블럭, 배포된 블럭의 20~30개 이후 적당.
+	- commonsBudget: 배포된 CommonsBudget Address
+
 # Subgraph 개발시 걸린 시간: 딱 10일
 개요: 문서 파악이 3일, 테스트가 4일, 실제 개발: 3일
 Post Mortem
