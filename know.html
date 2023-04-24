@@ -60,6 +60,20 @@ Shortcuts
     * 총발행량: https://api.bosplatformfoundation.io/boa_supply
 
 
+### Mac Spotlight에서 특정 애플리케이션 찾지 못할 때
+First, turn off Spotlight:
+sudo mdutil -a -i off
+
+Next, unload the metadata file that controls Spotlight's index:
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
+여기서 에러날 수 있음 그냥 무시하고 다음으로 넘어감.
+
+The following command re-loads the index:
+sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
+
+Finally, turn Spotlight back on:
+sudo mdutil -a -i on
+
 
 ##################################################################################
 <a href="http://bit.ly/2ZY033D">.</a>Node JS/TypeScript/Hardhat/Screen
