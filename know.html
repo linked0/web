@@ -149,6 +149,9 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 git config alias.acp '! git commit -a -m "commit" && git push'
 그리고 나서 git acp 하면됨
 
+- git log with graph
+git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%an%C(reset)%C(bold yellow)%d%C(reset) %C(dim white)- %s%C(reset)' --all
+
 ## private repo clone
 - $ key-gen
 - $ eval "$(ssh-agent -s)"
