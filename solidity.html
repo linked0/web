@@ -459,4 +459,30 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
   * Nonce값이 꼬인 이유는 내 개인 프로젝트인 web2/nft-market에서 NonceManager를 사용하지 않아서 생긴 문제
   * 일단 문제가 생긴 계정(즉 Contract를 배포하던 주소)에서 네이티브 토큰을 보내기 몇번하면 됨.
 
+20. npm ERR! code EINTEGRITY
+  * npm ERR! sha1-UzRK2xRhehP26N0s4okF0cC6MhU=sha512-XWwnNNFCuuSQ0m3r3C4LE3EiORltHd9M05pq6FOlVeiophzRbMo50Sbz1ehl8K3Z+jw9+vmgnXefY1hz8X+2wA== integrity checksum failed when using sha1: wanted sha1-UzRK2xRhehP26N0s4okF0cC6MhU=sha512-XWwnNNFCuuSQ0m3r3C4LE3EiORltHd9M05pq6FOlVeiophzRbMo50Sbz1ehl8K3Z+jw9+vmgnXefY1hz8X+2wA== but got sha512-XWwnNNFCuuSQ0m3r3C4LE3EiORltHd9M05pq6FOlVeiophzRbMo50Sbz1ehl8K3Z+jw9+vmgnXefY1hz8X+2wA== sha1-UzRK2xRhehP26N0s4okF0cC6MhU=. (42300 bytes)
+  * yarn install을 써야하는 곳에서 npm install을 썼을때 나타남
+
+21. Error: error:0308010C:digital envelope routines::unsupported
+  * 에러 내용
+$ hardhat compile --config ./hardhat.config.ts
+An unexpected error occurred:
+
+Error: error:0308010C:digital envelope routines::unsupported
+    at new Hash (node:internal/crypto/hash:67:19)
+    at createHash (node:crypto:133:10)
+    at ripemd160 (/Users/hyunjaelee/work/pooh-land/node_modules/@ethersproject/sha2/src.ts/sha2.ts:14:29)
+    at new HDNode (/Users/hyunjaelee/work/pooh-land/node_modules/@ethersproject/hdnode/src.ts/index.ts:115:67)
+    at Function.HDNode._fromSeed (/Users/hyunjaelee/work/pooh-land/node_modules/@ethersproject/hdnode/src.ts/index.ts:258:16)
+    at Function.HDNode.fromMnemonic (/Users/hyunjaelee/work/pooh-land/node_modules/@ethersproject/hdnode/src.ts/index.ts:269:23)
+    at Function.Wallet.fromMnemonic (/Users/hyunjaelee/work/pooh-land/node_modules/@ethersproject/wallet/src.ts/index.ts:192:34)
+    at Function.Wallet.createRandom (/Users/hyunjaelee/work/pooh-land/node_modules/@ethersproject/wallet/src.ts/index.ts:177:23)
+    at getAccounts (/Users/hyunjaelee/work/pooh-land/hardhat.config.ts:35:26)
+    at Object.<anonymous> (/Users/hyunjaelee/work/pooh-land/hardhat.config.ts:116:17) {
+  opensslErrorStack: [ 'error:03000086:digital envelope routines::initialization error' ],
+  library: 'digital envelope routines',
+  reason: 'unsupported',
+  code: 'ERR_OSSL_EVP_UNSUPPORTED'
+  * node 버전 16을 사용해야하는데 18을 사용할때 문제 발생함.
+
 </pre></body></html>
