@@ -271,15 +271,6 @@ ssh -i "pooh-seoul.pem" ubuntu@ec2-52-79-227-164.ap-northeast-2.compute.amazonaw
 2) .profile에 다음을 추가하고 재로그인
 TZ='Asia/Seoul'; export TZ
 
-###### AWS EC2
-sudo ssh -i xxx.pem ubuntu@xx.xx.xx.xx <-- 패스워드 필요없음.
-docker run -d -p 80:80 p0bailey/docker-flask 
-
-# AWS에서 파일 전송 
-* Receive: scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt .
-* Send: scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
-
-
 ##################################################################################
 vi
 ##################################################################################
@@ -339,7 +330,7 @@ xcode-select —-install
 brew cask install iterm2
 brew install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-upgrade_oh_my_zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 ##### NewComer
 - Get Lens 써보기
