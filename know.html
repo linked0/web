@@ -18,14 +18,14 @@ New<a href="http://bit.ly/2ZY033D">.</a> Comer/기타/Shortcut
 - bit.ly/357Is0p : Memo
 
 # command
-	- cmd space: Launchpad
-	- brew install truffle (npm install -g truffle 대신), ganache도 마찬가지
-	- npx hardhat compile --force: typechain 폴더가 없을때
-	- npm run test
-	- elephantsql.com
-		○   nodemon index.js
-	- npm install @types/pg
-	- 맥에서 숨김 파일: cmd + shift + .
+- cmd space: Launchpad
+- brew install truffle (npm install -g truffle 대신), ganache도 마찬가지
+- npx hardhat compile --force: typechain 폴더가 없을때
+- npm run test
+- elephantsql.com
+	○   nodemon index.js
+- npm install @types/pg
+- 맥에서 숨김 파일: cmd + shift + .
 
 # Contract Size
 https://ethereum.stackexchange.com/questions/31515/how-to-check-the-size-of-a-contract-in-solidity
@@ -36,15 +36,15 @@ We can create a Conduit with the create_conduit.ts script and get the address of
 
 —————————————————————————————
 # Slack
-	• github subscribe
-		○ /github subscribe  bosagora/boa-space-contracts issues pulls commits releases deployments reviews comments
+• github subscribe
+	○ /github subscribe  bosagora/boa-space-contracts issues pulls commits releases deployments reviews comments
 
 Shortcuts
-	• Option F12
-	• Navigate: Option Cmd Left/Right 
-	• To copy the formatting of selected text:
-		○ Press Ctrl + Alt + c (Windows or Chrome OS) or ⌘ + Option + c (Mac).
-		○ Press Ctrl + Alt + v (Windows or Chrome OS) or ⌘ + Option + v (Mac).
+• Option F12
+• Navigate: Option Cmd Left/Right 
+• To copy the formatting of selected text:
+	○ Press Ctrl + Alt + c (Windows or Chrome OS) or ⌘ + Option + c (Mac).
+	○ Press Ctrl + Alt + v (Windows or Chrome OS) or ⌘ + Option + v (Mac).
 
 —————————————————————————————
 @ 문제 상황 처리
@@ -89,28 +89,19 @@ npx hardhat node
 npx hardhat run scripts/deploy.ts --network localhost
 
 # Hardhat & Typescript
-	• Hardhat 프로젝트 만들기
-		○ npm init
-		○ npm install --save-dev hardhat
-		○ npx hardhat
-	• Prettier 적용
-		○ package.json의 "scripts" 섹션에 다음을 추가
-			§ "prettier": "node_modules/.bin/prettier --write --config .prettierrc 'contracts/**/*.sol' 'test/**/*.ts' 'utils/**/*.ts' 'scripts/**/*.ts'",
-	• Hardhat console.log
-		○ import "hardhat/console.sol";
+• Hardhat 프로젝트 만들기
+	○ npm init
+	○ npm install --save-dev hardhat
+	○ npx hardhat
+• Prettier 적용
+	○ package.json의 "scripts" 섹션에 다음을 추가
+		§ "prettier": "node_modules/.bin/prettier --write --config .prettierrc 'contracts/**/*.sol' 'test/**/*.ts' 'utils/**/*.ts' 'scripts/**/*.ts'",
+• Hardhat console.log
+	○ import "hardhat/console.sol";
 
 # nvm install
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 . ~/.nvm/nvm.sh <-- nvm 활성화
-
-# screen
-	• 실행: screen -S el
-	• screen -S 23536 -X quit
-	• exit: ctrl + a, d
-	• screen -ls
-	• screen -r el
-	* screen -r -d 17288 <-- attatch되어 있는 것 detach시키기
-
 
 ##################################################################################
 <a href="http://bit.ly/2ZY033D">.</a> Git & gitconfig
@@ -174,7 +165,7 @@ git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
-    template = /Users/jaylee/.stCommitMsg
+	template = /Users/jaylee/.stCommitMsg
 [alias]
 	co = checkout
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%\
@@ -191,20 +182,17 @@ ymbolic-full-name HEAD); }; f"
 name:short)%(color:reset) - %(contents:subject)'
 [push]
 	default = current
-
 [pager]
     diff = delta
     log = delta
     reflog = delta
     show = delta
-
 [delta]
     plus-style = "syntax #012800"
     minus-style = "syntax #340001"
     syntax-theme = Solarized (light)
     navigate = true
     line-numbers = true
-
 [interactive]
     diffFilter = delta --color-only
     
@@ -223,11 +211,6 @@ cloud/docker
 # node3에 들어가서 postgresql 도커 접속방법
 sudo docker exec -it ec22f5036e09 bash
 psql -d db -U postgres -W
-
-# AWS etc
-# IP
-15.165.133.105 
-13.124.201.231
 
 # 오류
 *  WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
