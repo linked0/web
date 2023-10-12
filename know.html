@@ -14,12 +14,12 @@
 ##################################################################################
 L, Ryusaki
 ##################################################################################
-1> command
+1. command
 
-1  여러 sub directory에 node_modules를 제거함.
+1)  여러 sub directory에 node_modules를 제거함.
 tar --exclude='*/node_modules' --exclude='.git' -cvzf ~/temp/pooh-tools.tar.gz .
 
-2 VSCode Command Palette 를 열어줍니다. [⇧⌘P ]
+2) VSCode Command Palette 를 열어줍니다. [⇧⌘P ]
 Shell command
 back: ctrl - , forward: shift ctrl -
 
@@ -27,35 +27,35 @@ back: ctrl - , forward: shift ctrl -
 - shift cmd n - cmd shift /: open project 
 - ctrl `: goto terminal 
 
-3 screen -X -S session_id quit
+3) screen -X -S session_id quit
 - ctrl a+d	// exit
 - screen -S 23536 -X quit
 - screen -r -d 17288 <-- attatch되어 있는 것 detach
 
-4 opt cmd b - Bookmark
+4) opt cmd b - Bookmark
 
-6 최신버전으로 리셋하기
+5) 최신버전으로 리셋하기
 실수로 origin의 main에 push해도 upstream에 merge가능
 
-7 ssh-keygen -t rsa
+6) ssh-keygen -t rsa
 
-9 solidiy
+7) solidiy
 import "hardhat/console.sol";
 npx hardhat compile
 
-10 const tx = await factoryInstance.setFeeTo(process.env.FEE_TO); 
+8) const tx = await factoryInstance.setFeeTo(process.env.FEE_TO); 
 const receipt = await (await tx).wait();
 
-11. brew install golang
+9) brew install golang
 PATH=$PATH:$HOME/go/bin
 go install github.com/protolambda/zcli@latest
 zcli --help
 alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
 
-12. docker
+10). docker
 - docker attach <image_name>
 
-13 docker ps | grep 5432
+11) docker ps | grep 5432
 
 - 파일의 권한도 github으로 등록된다. run_node 실행권한
 
@@ -65,12 +65,12 @@ git restore --staged .
 - 수호는 블록체인 생태계를 활성화하고 연결하기 위하여 Bridge, DEX와 같은 Dapp 프로덕트를 개발하고 있습니다.
 
 —————————————————————————————
-2> NodeJs 프로젝트
+2. NodeJs 프로젝트
 - npm init -y
 - touch index.js
 
 —————————————————————————————	
-3> TypeScript 프로젝트 
+3. TypeScript 프로젝트 
 - npm install -g typescript
 - npm init -y
 - npx tsc --init
@@ -85,8 +85,9 @@ git restore --staged .
 - touch src/index.ts
 - yarn build
 - yarn start
+
 —————————————————————————————
-4> Hardhat은 기존 프로젝트에서는 안됨.
+4. Hardhat은 기존 프로젝트에서는 안됨.
 yarn init -y (=npm init -y)
 yarn add --dev hardhat
 npx hardhat
@@ -102,7 +103,7 @@ yarn add dotenv
 alchemy keyless 설명에 alchemy web3 설치방법.
 그리고, 요새는 type-chains폴더 안쓰는 것 같음.
 —————————————————————————————
-5>  python 프로그램
+5.  python 프로그램
 python -m venv venv
 source venv/bin/activate
 
@@ -123,24 +124,39 @@ setup(
     python_requires=">=3.8,<4",
 )
 python ./staking_deposit/deposit.py "$@"를 사용가능.
+
 —————————————————————————————
-6> Colab 이용하기
+6. Colab 이용하기
+
 —————————————————————————————
-7> Remix이용하기/로컬네트워크 이용하기
+7. Remix이용하기/로컬네트워크 이용하기
 yarn hardhat node 
+
 —————————————————————————————
-8> PostMan, CURL이용하기
+8. PostMan, CURL이용하기
+
 —————————————————————————————
-9>  EL
+9.  EL
 - ./init pow 1 & ./enode pow el1
 - ./init pow 2 & ./enode pow el2
+
 —————————————————————————————
-10>  CL
--1. 블럭해시과 genesis time(date +%s)을 chain-config 반영하고 eth2-testnet-genesis 실행
--2. staking-deposit-cli로 wallet 만들기
--3. 첫번째 cnode 실행하고 enr 알아내서 bootstrap-node 
--4. 나머지 cl 실행시키기
--5. keys & validators
+10.  CL
+1. 블럭해시과 genesis time(date +%s)을 chain-config 반영하고 eth2-testnet-genesis 실행
+- gen_genesis
+- zcli pretty bellatrix  BeaconState genesis.ssz > parsedState.json로 Validators Root 가져오기
+- settings.py에 GENESIS_VALIDATORS_ROOT에 추가, 근데 이건 거의 안 바뀜.
+2. staking-deposit-cli로 wallet 만들기
+- sudo ./deposit.sh install, 만약 longinterpr.h 에러 발생하면 아래 실행
+  - python3.10 -m venv py310
+  - source py310/bin/activate
+- ./deposit.sh existing-mnemonic
+3. 첫번째 cnode 실행하고 enr 알아내서 bootstrap-node 
+- cl은 el과 연동되므로 init할 필요 없음
+- poohprysm 루트폴더의 cnode로 실행.
+4. 나머지 cl 실행시키기
+5. keys & validators
+- poohprysm 루트폴더에서 찾아야 함.
 
 ##################################################################################
 New<a href="http://bit.ly/2ZY033D">.</a> Comer/기타/Shortcut
