@@ -8,6 +8,7 @@
 
 <a href="https://linked0.github.io/web/karabiner.json">karabiner.json</a><br>
 <a href="https://linked0.github.io/web/gitconfig.html">gitconfig</a><br>
+<a href="https://linked0.github.io/web/l.html">L, Ryusaki</a><br>
 
 <a href="http://bit.ly/2EluV7n">sites.txt</a><br>
 <a href="http://goo.gl/B2Drsz">gdrive 기술문서</a><br>
@@ -15,6 +16,43 @@
 <a href="https://github.com/linked0/web/blob/master/know.html">web/know github </a><br>
 <a href="http://remix.ethereum.org/">Remix online</a>
 
+	
+##################################################################################
+L <a href="http://bit.ly/2ZY033D">,</a> Mac Setting
+##################################################################################
+	
+0) .ssh 복사
+1) brew/zsh/iterm2/karabiner install
+xcode-select —-install | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+brew install --cask iterm2 | brew install zsh | brew install karabiner-elements
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" |
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+echo $SHELL <== 이걸로 쉘 확인
+
+karabiner는 option+hjkl가 디폴트로 있음.
+
+2) npm yarn docker install
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+npm install -g yarn
+brew install cask docker
+brew install cask docker-compose
+https://www.docker.com/products/docker-desktop/ 도커 Desktop (linked0/**)
+
+3) rust/postgresql install
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cargo install sqlx-cli
+
+brew update
+brew install postgresql
+brew services start postgresql
+psql postgres <== 접속해볼 수 있음.
+
+4) Whale, Miro, onenote, Visual Studio
+Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
+	
 ##################################################################################
 L <a href="http://bit.ly/2ZY033D">,</a> Ryusaki
 ##################################################################################
