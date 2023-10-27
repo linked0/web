@@ -1,1 +1,166 @@
 
+<html>
+<body>
+<h2>Memo</h2>
+
+<pre>
+  <a href="https://linked0.github.io/web/know.html">Know Main</a><br>
+<a href="https://linked0.github.io/web/solidity.html">solidity.html, https://bit.ly/47DUb2v </a><br>
+<a href="https://linked0.github.io/web/know-bak.html">know-bak.html, https://bit.ly/3Oqhxjf </a><br>
+
+<a href="https://linked0.github.io/web/karabiner.json">karabiner.json</a><br>
+<a href="https://linked0.github.io/web/gitconfig.html">gitconfig</a><br>
+<a href="https://linked0.github.io/web/l.html">L, Ryusaki</a><br>
+	
+##################################################################################
+L <a href="http://bit.ly/2ZY033D">,</a> Ryusaki
+##################################################################################
+1. command
+
+1)  여러 sub directory에 node_modules를 제거함.
+tar --exclude='*/node_modules' --exclude='.git' -cvzf ~/temp/pooh-tools.tar.gz .
+
+2) VSCode Command Palette 를 열어줍니다. [⇧⌘P ]
+Shell command
+back: ctrl - , forward: shift ctrl -
+
+- ctrl tab: recent files
+- shift cmd n - cmd shift /: open project 
+- ctrl `: goto terminal 
+- Cmd+Shift+]: Move to previous terminal
+- Cmd+shift+[: Move to next terminal
+
+3) screen -X -S session_id quit
+- ctrl a+d	// exit
+- screen -S el -X quit
+- screen -r -d 17288 <-- attatch되어 있는 것 detach
+
+4) opt cmd b - Bookmark
+
+5) 최신버전으로 리셋하기
+실수로 origin의 main에 push해도 upstream에 merge가능
+
+6) ssh-keygen -t rsa
+
+7) solidiy
+import "hardhat/console.sol";
+npx hardhat compile
+
+8) const tx = await factoryInstance.setFeeTo(process.env.FEE_TO); 
+const receipt = await (await tx).wait();
+
+9) brew install golang
+PATH=$PATH:$HOME/go/bin
+go install github.com/protolambda/zcli@latest
+zcli --help
+alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
+
+10). docker
+- docker attach <image_name>
+
+11) docker ps | grep 5432
+
+- 파일의 권한도 github으로 등록된다. run_node 실행권한
+
+- To restore the entire staging area to the HEAD commit, you can run the following command:
+git restore --staged .
+
+- 수호는 블록체인 생태계를 활성화하고 연결하기 위하여 Bridge, DEX와 같은 Dapp 프로덕트를 개발하고 있습니다.
+
+—————————————————————————————
+2. NodeJs 프로젝트
+- npm init -y
+- touch index.js
+
+—————————————————————————————	
+3. TypeScript 프로젝트 
+- npm install -g typescript
+- npm init -y
+- npx tsc --init
+- package.json --> CoPilot이 다 해줌
+  "build": "tsc",
+  "start": "node dist/index.js"
+- tsconfig.json
+  "outDir": "./dist",  
+  "include": ["./scripts", "./test", "./typechain"],
+  "files": ["./hardhat.config.ts"]
+- mkdir src
+- touch src/index.ts
+- yarn build
+- yarn start
+
+—————————————————————————————
+4. Hardhat은 기존 프로젝트에서는 안됨.
+yarn init -y (=npm init -y)
+yarn add --dev hardhat
+npx hardhat
+yarn add @openzeppelin/contracts
+
+
+아래 두개는 같이 쓰면 안됨.
+import "@nomicfoundation/hardhat-toolbox";
+import "@nomiclabs/hardhat-waffle"; // 이것만써.
+
+yarn add dotenv
+
+alchemy keyless 설명에 alchemy web3 설치방법.
+그리고, 요새는 type-chains폴더 안쓰는 것 같음.
+—————————————————————————————
+5.  python 프로그램
+python -m venv venv
+source venv/bin/activate
+
+if __name__ == "__main__":
+    hello_world()
+
+pip install requests
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+==> setup.py를 이용하는 것도 필요.
+from setuptools import find_packages, setup
+setup(
+    name="staking_deposit",
+    version='2.5.2',
+    py_modules=["staking_deposit"],
+    packages=find_packages(exclude=('tests', 'docs')),
+    python_requires=">=3.8,<4",
+)
+python ./staking_deposit/deposit.py "$@"를 사용가능.
+
+—————————————————————————————
+6. Colab 이용하기
+
+—————————————————————————————
+7. Remix이용하기/로컬네트워크 이용하기
+yarn hardhat node 
+
+—————————————————————————————
+8. PostMan, CURL이용하기
+
+—————————————————————————————
+9.  EL
+- ./init pow 1 & ./enode pow el1
+- ./init pow 2 & ./enode pow el2
+
+—————————————————————————————
+10.  CL
+1. 블럭해시과 genesis time(date +%s)을 chain-config 반영하고 eth2-testnet-genesis 실행
+- gen_genesis
+- zcli pretty bellatrix  BeaconState genesis.ssz > parsedState.json로 Validators Root 가져오기
+- settings.py에 GENESIS_VALIDATORS_ROOT에 추가, 근데 이건 거의 안 바뀜.
+2. staking-deposit-cli로 wallet 만들기
+- sudo ./deposit.sh install, 만약 longinterpr.h 에러 발생하면 아래 실행
+  - python3.10 -m venv py310
+  - source py310/bin/activate
+- ./deposit.sh existing-mnemonic
+3. 첫번째 cnode 실행하고 enr 알아내서 bootstrap-node 
+- cl은 el과 연동되므로 init할 필요 없음
+- poohprysm 루트폴더의 cnode로 실행.
+4. 나머지 cl 실행시키기
+5. keys & validators
+- poohprysm 루트폴더에서 찾아야 함.
+      
+</pre>
+</body>
+</html>
