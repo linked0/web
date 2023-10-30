@@ -168,6 +168,11 @@ find . -type d -name 'temp' -exec rm -rf {} +
 
 —————————————————————————————
 10.  EL/CL
+[geth compile]
+brew install golang
+go run build/ci.go install -static ./cmd/geth
+
+- ./init local 1 & ./enode pow el1
 - ./init pow 1 & ./enode pow el1
 - ./init pow 2 & ./enode pow el2
 
