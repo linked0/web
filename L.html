@@ -15,73 +15,23 @@
 ##################################################################################
 L <a href="http://bit.ly/2ZY033D">,</a> Ryusaki
 ##################################################################################
-1. command
+L & Watari
 
-1)  여러 sub directory에 node_modules를 제거함.
-tar --exclude='*/node_modules' --exclude='.git' -cvzf ~/temp/pooh-tools.tar.gz .
+1. Nodejs/TypsScript
 
-2) VSCode Command Palette 를 열어줍니다. [⇧⌘P ]
-Shell command
-back: ctrl - , forward: shift ctrl -
-
-- ctrl tab: recent files
-- shift cmd n - cmd shift /: open project 
-- ctrl `: goto terminal 
-- Cmd+Shift+]: Move to previous terminal
-- Cmd+shift+[: Move to next terminal
-
-3) screen -X -S session_id quit
-- ctrl a+d	// exit
-- screen -S el -X quit
-- screen -r -d 17288 <-- attatch되어 있는 것 detach
-
-4) opt cmd b - Bookmark
-
-5) 최신버전으로 리셋하기
-실수로 origin의 main에 push해도 upstream에 merge가능
-
-6) ssh-keygen -t rsa
-
-7) solidiy
-import "hardhat/console.sol";
-npx hardhat compile
-
-8) const tx = await factoryInstance.setFeeTo(process.env.FEE_TO); 
-const receipt = await (await tx).wait();
-
-9) brew install golang
-PATH=$PATH:$HOME/go/bin
-go install github.com/protolambda/zcli@latest
-zcli --help
-alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
-
-10). docker
-- docker attach <image_name>
-
-11) docker ps | grep 5432
-
-- 파일의 권한도 github으로 등록된다. run_node 실행권한
-
-- To restore the entire staging area to the HEAD commit, you can run the following command:
-git restore --staged .
-
-- 수호는 블록체인 생태계를 활성화하고 연결하기 위하여 Bridge, DEX와 같은 Dapp 프로덕트를 개발하고 있습니다.
-
-—————————————————————————————
-2. NodeJs 프로젝트
+NodeJs 프로젝트
 - npm init -y
 - touch index.js
 
-—————————————————————————————	
-3. TypeScript 프로젝트 
+TypeScript 프로젝트
 - npm install -g typescript
 - npm init -y
 - npx tsc --init
 - package.json --> CoPilot이 다 해줌
-  "build": "tsc",
+ "build": "tsc",
   "start": "node dist/index.js"
 - tsconfig.json
-  "outDir": "./dist",  
+  "outDir": "./dist",
   "include": ["./scripts", "./test", "./typechain"],
   "files": ["./hardhat.config.ts"]
 - mkdir src
@@ -90,28 +40,54 @@ git restore --staged .
 - yarn start
 
 —————————————————————————————
-4. Hardhat은 기존 프로젝트에서는 안됨.
+2. Hardhat은 기존 프로젝트에서는 안됨.
 yarn init -y (=npm init -y)
 yarn add --dev hardhat
 npx hardhat
-yarn add @openzeppelin/contracts
 
+--------
+yarn add @openzeppelin/contracts
 
 아래 두개는 같이 쓰면 안됨.
 import "@nomicfoundation/hardhat-toolbox";
 import "@nomiclabs/hardhat-waffle"; // 이것만써.
 
 yarn add dotenv
-
 alchemy keyless 설명에 alchemy web3 설치방법.
-그리고, 요새는 type-chains폴더 안쓰는 것 같음.
+
+yarn hardhat node (chain id: 31337)
+yarn hardhat run ./scripts/send-raw-tx.ts --network hardhat
+
 —————————————————————————————
-5.  python 프로그램
+3.
+solidiy
+import "hardhat/console.sol";
+npx hardhat compile
+
+const tx = await factoryInstance.setFeeTo(process.env.FEE_TO);
+const receipt = await (await tx).wait();
+
+—————————————————————————————
+4. Go/Rust
+Homebrew rust와 rustup로 설치된 것과 연동안됨. 따라서 아래와 같이 지우기
+brew uninstall rust
+
+그리고 rustc 이용
+rustup install nightly-2023-07-21
+rustup default nightly-2023-07-21
+
+—————————————————————————————
+5.  python 프로그램/Colab
 python -m venv venv
 source venv/bin/activate
+code script.py
 
+def hello_world():
+ print("Hello World")
 if __name__ == "__main__":
-    hello_world()
+  hello_world()
+
+python script.py
 
 pip install requests
 pip freeze > requirements.txt
@@ -129,22 +105,72 @@ setup(
 python ./staking_deposit/deposit.py "$@"를 사용가능.
 
 —————————————————————————————
-6. Colab 이용하기
+6. docker
+- docker attach
+
+docker ps | grep 5432
+
+- 파일의 권한도 github으로 등록된다. run_node 실행권한
+
+- To restore the entire staging area to the HEAD commit, you can run the following command:
+git restore --staged .
+
+- 수호는 블록체인 생태계를 활성화하고 연결하기 위하여 Bridge, DEX와 같은 Dapp 프로덕트를 개발하고 있습니다.
+—————————————————————————————
+7. VSCode
+Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
+back: ctrl - , forward: shift ctrl -
+
+- ctrl tab: recent files
+- shift cmd n - cmd shift /: open project
+- ctrl `: goto terminal
+- Cmd+Shift+]: Move to previous terminal
+- Cmd+shift+[: Move to next terminal
+
+Bigger Font: cmd + "+"
+
+# Iterm2
+Next split: cmd + ]
+—————————————————————————————
+8. vi
+
+find . -type f -not -path .*/node_modules/* -not -path .*/.git/* -not -path .*/venv/* > files
+open file: ctrl w, ctrl f
+
+
+egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
+tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
+tar -xvzf xxx.tar.gz -C ./data
+
 
 —————————————————————————————
-7. Remix이용하기/로컬네트워크 이용하기
-yarn hardhat node 
+9> Command
+여러 sub directory에 node_modules를 제거함.
+tar --exclude='*/node_modules' --exclude='.git' -cvzf ~/temp/pooh-tools.tar.gz .
+opt cmd b - Bookmark
+
+ssh-keygen -t rsa
+
+screen -X -S session_id quit
+- ctrl a+d // exit
+- screen -S el -X quit
+- screen -r -d 17288 <-- attatch되어 있는 것 detach
+
+brew install golang
+PATH=$PATH:$HOME/go/bin
+go install github.com/protolambda/zcli@latest
+zcli --help
+alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
+
+하위 동일 폴더 지우기
+find . -type d -name 'temp' -exec rm -rf {} +
+
 
 —————————————————————————————
-8. PostMan, CURL이용하기
-
-—————————————————————————————
-9.  EL
+10.  EL/CL
 - ./init pow 1 & ./enode pow el1
 - ./init pow 2 & ./enode pow el2
 
-—————————————————————————————
-10.  CL
 1. 블럭해시과 genesis time(date +%s)을 chain-config 반영하고 eth2-testnet-genesis 실행
 - gen_genesis
 - zcli pretty bellatrix  BeaconState genesis.ssz > parsedState.json로 Validators Root 가져오기
@@ -154,11 +180,11 @@ yarn hardhat node
   - python3.10 -m venv py310
   - source py310/bin/activate
 - ./deposit.sh existing-mnemonic
-3. 첫번째 cnode 실행하고 enr 알아내서 bootstrap-node 
+3. 첫번째 cnode 실행하고 enr 알아내서 bootstrap-node
 - cl은 el과 연동되므로 init할 필요 없음
 - poohprysm 루트폴더의 cnode로 실행.
 4. 나머지 cl 실행시키기
-5. keys & validators
+5. keys &validators
 - poohprysm 루트폴더에서 찾아야 함.
       
 </pre>
