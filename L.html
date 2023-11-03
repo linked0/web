@@ -40,7 +40,8 @@ TypeScript 프로젝트
 - yarn start
 
 —————————————————————————————
-2. Hardhat은 기존 프로젝트에서는 안됨.
+2. Hardhat / solidity
+Hardhat은 기존 프로젝트에서는 안됨.
 yarn init -y (=npm init -y)
 yarn add --dev hardhat
 npx hardhat
@@ -58,8 +59,7 @@ alchemy keyless 설명에 alchemy web3 설치방법.
 yarn hardhat node (chain id: 31337)
 yarn hardhat run ./scripts/send-raw-tx.ts --network hardhat
 
-—————————————————————————————
-3.
+--------
 solidiy
 import "hardhat/console.sol";
 npx hardhat compile
@@ -67,6 +67,19 @@ npx hardhat compile
 const tx = await factoryInstance.setFeeTo(process.env.FEE_TO);
 const receipt = await (await tx).wait();
 
+—————————————————————————————
+3. docker
+- docker attach
+
+docker ps | grep 5432
+
+- 파일의 권한도 github으로 등록된다. run_node 실행권한
+
+- To restore the entire staging area to the HEAD commit, you can run the following command:
+git restore --staged .
+
+- 수호는 블록체인 생태계를 활성화하고 연결하기 위하여 Bridge, DEX와 같은 Dapp 프로덕트를 개발하고 있습니다.
+	
 —————————————————————————————
 4. Go/Rust
 Homebrew rust와 rustup로 설치된 것과 연동안됨. 따라서 아래와 같이 지우기
@@ -104,70 +117,9 @@ setup(
 )
 python ./staking_deposit/deposit.py "$@"를 사용가능.
 
-—————————————————————————————
-6. docker
-- docker attach
-
-docker ps | grep 5432
-
-- 파일의 권한도 github으로 등록된다. run_node 실행권한
-
-- To restore the entire staging area to the HEAD commit, you can run the following command:
-git restore --staged .
-
-- 수호는 블록체인 생태계를 활성화하고 연결하기 위하여 Bridge, DEX와 같은 Dapp 프로덕트를 개발하고 있습니다.
-—————————————————————————————
-7. VSCode
-Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
-back: ctrl - , forward: shift ctrl -
-
-- ctrl tab: recent files
-- shift cmd n - cmd shift /: open project
-- ctrl `: goto terminal
-- Cmd+Shift+]: Move to previous terminal
-- Cmd+shift+[: Move to next terminal
-
-Bigger Font: cmd + "+"
-
-# Iterm2
-Next split: cmd + ]
-—————————————————————————————
-8. vi
-
-find . -type f -not -path .*/node_modules/* -not -path .*/.git/* -not -path .*/venv/* > files
-open file: ctrl w, ctrl f
-
-
-egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
-tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
-tar -xvzf xxx.tar.gz -C ./data
-
 
 —————————————————————————————
-9> Command
-여러 sub directory에 node_modules를 제거함.
-tar --exclude='*/node_modules' --exclude='.git' -cvzf ~/temp/pooh-tools.tar.gz .
-opt cmd b - Bookmark
-
-ssh-keygen -t rsa
-
-screen -X -S session_id quit
-- ctrl a+d // exit
-- screen -S el -X quit
-- screen -r -d 17288 <-- attatch되어 있는 것 detach
-
-brew install golang
-PATH=$PATH:$HOME/go/bin
-go install github.com/protolambda/zcli@latest
-zcli --help
-alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
-
-하위 동일 폴더 지우기
-find . -type d -name 'temp' -exec rm -rf {} +
-
-
-—————————————————————————————
-10.  EL/CL
+6.  EL/CL
 [geth compile]
 brew install golang
 go run build/ci.go install -static ./cmd/geth
@@ -191,7 +143,60 @@ go run build/ci.go install -static ./cmd/geth
 4. 나머지 cl 실행시키기
 5. keys &validators
 - poohprysm 루트폴더에서 찾아야 함.
-      
+
+	    
+—————————————————————————————
+7. IDE [VSCode/Iterms/vi]
+Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
+back: ctrl - , forward: shift ctrl -
+
+- ctrl tab: recent files
+- shift cmd n - cmd shift /: open project
+- ctrl `: goto terminal
+- Cmd+Shift+]: Move to previous terminal
+- Cmd+shift+[: Move to next terminal
+
+Bigger Font: cmd + "+"
+
+# Iterm2
+Next split: cmd + ]
+
+# VIM
+find . -type f -not -path .*/node_modules/* -not -path .*/.git/* -not -path .*/venv/* > files
+open file: ctrl w, ctrl f
+—————————————————————————————
+7. Command
+
+egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
+tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
+tar -xvzf xxx.tar.gz -C ./data
+
+--------
+
+여러 sub directory에 node_modules를 제거함.
+tar --exclude='*/node_modules' --exclude='.git' -cvzf ~/temp/pooh-tools.tar.gz .
+opt cmd b - Bookmark
+
+ssh-keygen -t rsa
+
+screen -X -S session_id quit
+- ctrl a+d // exit
+- screen -S el -X quit
+- screen -r -d 17288 <-- attatch되어 있는 것 detach
+
+brew install golang
+PATH=$PATH:$HOME/go/bin
+go install github.com/protolambda/zcli@latest
+zcli --help
+alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
+
+하위 동일 폴더 지우기
+find . -type d -name 'temp' -exec rm -rf {} +
+
+
+—————————————————————————————
+8. Foundry
+
 </pre>
 </body>
 </html>
