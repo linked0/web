@@ -7,3 +7,6 @@
 [submodule "web2"]
 	path = web2
 	url = https://github.com/linked0/web2.git
+[submodule "dao-budget-contracts"]
+	path = dao-budget-contracts
+	url = git@github.com:poohgithub/dao-budget-contracts
