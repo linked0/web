@@ -4,3 +4,6 @@
 [submodule "dao-budget-contracts"]
 	path = dao-budget-contracts
 	url = git@github.com:poohgithub/dao-budget-contracts
+[submodule "kaggle2"]
+	path = kaggle2
+	url = https://github.com/linked0/kaggle2
