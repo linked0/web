@@ -366,11 +366,19 @@ Zip Foler
 tar --exclude='node_modules' -cvzf bccard.tar.gz bccard    //하위 폴더들에서 node_modules를 모두 제외시키기
 tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
 
-###### Snippet
+###### Git submodule add 
 git submodule add https://github.com/example/lib.git external/lib
 git submodule update --init
-git rm --cached path_to_submodule & rm -rf .git/modules/path_to_submodule & Edit .gitmodules
-------
+
+###### Git submodule remove
+git rm --cached path_to_submodule
+Edit .gitmodules File
+Edit .git/config File
+rm -rf .git/modules/path_to_submodule
+git commit -am "Removed submodule"
+git push
+
+###### Snippet
 tar --exclude='.git' --exclude='node_modules' -cvzf
 
 </pre></body></html>
