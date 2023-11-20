@@ -1,9 +1,3 @@
-[submodule "poohcode"]
-	path = poohcode
-	url = https://github.com/poohgithub/poohcode.git
-[submodule "web"]
-	path = web
-	url = https://github.com/linked0/web2.git
 [submodule "web2"]
 	path = web2
 	url = https://github.com/linked0/web2.git
