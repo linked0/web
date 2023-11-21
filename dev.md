@@ -63,3 +63,12 @@ This refers to the block time, the time interval between consecutive blocks. In 
 - "epoch":
 The epoch length, set here as 30000, is significant in Clique PoA. An epoch is a period after which the list of authorized signers can be updated. In Clique, every epoch blocks, a special block called the epoch transition block is generated, which contains the list of authorized signers for the next epoch. The number 30000 means that every 30,000 blocks, the network has an opportunity to update the list of signers.
 
+## Node workspaces
+##### Structure and Configuration
+- Workspace Root: A single workspace has a root directory, usually with a package.json file that includes a workspaces field.
+- Sub-packages: Inside the root, there are subdirectories for each workspace, each with its own package.json file.
+- Shared Configuration: Dependencies and scripts can be shared across workspaces, which is especially useful for common configurations and shared libraries.
+
+###### Reference Project
+[poohgithub zksync-era](https://github.com/poohgithub/zksync-era)
+[mater-labs pymaster-examples](https://github.com/matter-labs/paymaster-examples)
