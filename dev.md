@@ -18,12 +18,13 @@
   - [Node workspaces](#node-workspaces)
   - [TypsScript/Nodejs](#typsscriptnodejs)
   - [Hardhat / solidity](#hardhat--solidity)
-  - [docker/npm/aws](#dockernpmaws)
-  - [EL/CL](#elcl)
+  - [Docker](#docker)
+  - [npm](#npm)
   - [python](#python)
   - [Rust](#rust)
   - [Prettier 적용](#prettier-적용)
 - [Project](#project)
+  - [poohnet (EL/CL)](#poohnet-elcl)
   - [zksync](#zksync)
   - [Foundry](#foundry)
 - [AWS](#aws)
@@ -316,8 +317,26 @@ const tx = await factoryInstance.setFeeTo(process.env.FEE_TO);
 const receipt = await (await tx).wait();
 
 
-## docker/npm/aws
-😈 docker
+## Docker
+
+😈 Docker Image 만들기
+1. https://github.com/poohgithub/poohgeth/blob/master/Dockerfile 참고
+2. docker build -t poohgeth .
+3. docker 실행 (optional)
+docker run -p 3000:3000 my-app-image
+4. docker login
+5. tag
+   docker tag local-image-name linked/poohnet-pow:v1.0
+6. push
+   docker push linked/poohnet-pow:v1.0
+7. pull 
+   docker pull linked/poohnet-pow:v1.0
+8. run using docker-compose
+https://github.com/poohgithub/poohgeth/blob/master/poohnet/docker-compose-node.yml 참조
+docker compose -f docker-compose-node.yml up el1 -d
+
+
+😈 기타
 - docker attach
 
 - docker ps | grep 5432
@@ -328,39 +347,10 @@ const receipt = await (await tx).wait();
 git restore --staged .
 
 - 수호는 블록체인 생태계를 활성화하고 연결하기 위하여 Bridge, DEX와 같은 Dapp 프로덕트를 개발하고 있습니다.
-
-😈 npm
+  
+## npm
 npm login
 npm publish --access public
-
-
-## EL/CL
-😈 geth compile
-brew install golang
-go run build/ci.go install -static ./cmd/geth or make geth
-sudo cp ./build/bin/geth /usr/local/bin/geth
-
-😈 EL
-- ./init local 1 & ./enode pow el1
-- ./init pow 1 & ./enode pow el1
-- ./init pow 2 & ./enode pow el2
-
-😈 CL
-1. 블럭해시과 genesis time(date +%s)을 chain-config 반영하고 eth2-testnet-genesis 실행
-    - gen_genesis
-    - zcli pretty bellatrix  BeaconState genesis.ssz > parsedState.json로 Validators Root 가져오기
-    - settings.py에 GENESIS_VALIDATORS_ROOT에 추가, 근데 이건 거의 안 바뀜.
-2. staking-deposit-cli로 wallet 만들기
-    - sudo ./deposit.sh install, 만약 longinterpr.h 에러 발생하면 아래 실행
-        - python3.10 -m venv py310
-        - source py310/bin/activate
-    - ./deposit.sh existing-mnemonic
-3. 첫번째 cnode 실행하고 enr 알아내서 bootstrap-node
-    - cl은 el과 연동되므로 init할 필요 없음
-    - poohprysm 루트폴더의 cnode로 실행.
-4. 나머지 cl 실행시키기
-5. keys &validators 실행
-    - poohprysm 루트폴더에서 찾아야 함.
 
 
 ## python
@@ -424,6 +414,34 @@ package.json의 "scripts" 섹션에 다음을 추가
 
 # Project
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+## poohnet (EL/CL)
+😈 geth compile
+brew install golang
+go run build/ci.go install -static ./cmd/geth or make geth
+sudo cp ./build/bin/geth /usr/local/bin/geth
+
+😈 EL
+- ./init local 1 & ./enode pow el1
+- ./init pow 1 & ./enode pow el1
+- ./init pow 2 & ./enode pow el2
+
+😈 CL
+1. 블럭해시과 genesis time(date +%s)을 chain-config 반영하고 eth2-testnet-genesis 실행
+    - gen_genesis
+    - zcli pretty bellatrix  BeaconState genesis.ssz > parsedState.json로 Validators Root 가져오기
+    - settings.py에 GENESIS_VALIDATORS_ROOT에 추가, 근데 이건 거의 안 바뀜.
+2. staking-deposit-cli로 wallet 만들기
+    - sudo ./deposit.sh install, 만약 longinterpr.h 에러 발생하면 아래 실행
+        - python3.10 -m venv py310
+        - source py310/bin/activate
+    - ./deposit.sh existing-mnemonic
+3. 첫번째 cnode 실행하고 enr 알아내서 bootstrap-node
+    - cl은 el과 연동되므로 init할 필요 없음
+    - poohprysm 루트폴더의 cnode로 실행.
+4. 나머지 cl 실행시키기
+5. keys &validators 실행
+    - poohprysm 루트폴더에서 찾아야 함.
+    - 
 ## zksync
 local-setup에서 clear-sql.sh와 start-sql.sh
 localentry.sh 실행
