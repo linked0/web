@@ -15,6 +15,19 @@
 <a href="http://bit.ly/2HKEsmS">colab aplay</a><br>
 <a href="https://github.com/linked0/web/blob/master/know.html">web/know github </a><br>
 <a href="http://remix.ethereum.org/">Remix online</a>
+   
+##################################################################################
+New<a href="http://bit.ly/2ZY033D">.</a> Comer/기타/Shortcut
+##################################################################################
+- bit.ly/44TH7Ua : Memo Pub
+- bit.ly/357Is0p : Memo
 
+###### Tar
+Zip Foler
+tar --exclude='node_modules' -cvzf bccard.tar.gz bccard    //하위 폴더들에서 node_modules를 모두 제외시키기
+tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
+
+###### Snippet
+tar --exclude='.git' --exclude='node_modules' -cvzf
 
 </pre></body></html>

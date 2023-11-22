@@ -1,33 +1,86 @@
 
-Table of Contents
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 - [IDE](#ide)
-    - [Mac](#mac)
-    - [VSCode](#vscode)
-    - [Iterm2](#iterm2)
-    - [VIM](#vim)
-    - [Command](#command)
-    - [Finder](#finder)
-    - [Git Submodule](#git-submodule)
+  - [Mac Setting](#mac-setting)
+  - [VSCode](#vscode)
+  - [Iterm2](#iterm2)
+  - [VIM](#vim)
+  - [Command](#command)
+  - [Finder](#finder)
+- [Workspace](#workspace)
+  - [Slack](#slack)
+- [Blockchain](#blockchain)
+  - [localnet 실행하기](#localnet-실행하기)
+  - [BOA 유통량 API](#boa-유통량-api)
 - [Dev](#dev)
-    - [create2](#create2-함수)
-    - [clique](#clique-in-genesisjson)
-    - [nodejs workspaces](#node-workspaces)
-    - [Typescript](#typsscriptnodejs)
-    - [Solidity](#solidiy)
-    - [Docker/NPM/AWS](#dockernpmaws)
-    - [python](#python)
-    - [rust](#rust)
-    - [Foundry](#foundry)
-- [Projects](#projects)
-    - [zksync](#zksync)
-    - [poohnet](#poohnet)
-        - [EL/CL](#elcl)
-- [Konw]
+  - [create2 함수](#create2-함수)
+  - [clique in genesis.json](#clique-in-genesisjson)
+  - [Node workspaces](#node-workspaces)
+  - [TypsScript/Nodejs](#typsscriptnodejs)
+  - [Hardhat / solidity](#hardhat--solidity)
+  - [docker/npm/aws](#dockernpmaws)
+  - [EL/CL](#elcl)
+  - [python](#python)
+  - [Rust](#rust)
+  - [Prettier 적용](#prettier-적용)
+- [Project](#project)
+  - [zksync](#zksync)
+  - [Foundry](#foundry)
+- [AWS](#aws)
+  - [AWS에 Load Balancer 추가시](#aws에-load-balancer-추가시)
+  - [node3에 들어가서 postgresql 도커 접속방법](#node3에-들어가서-postgresql-도커-접속방법)
+  - [WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!](#warning-remote-host-identification-has-changed)
+  - [public key 확인 및 깃헙에 추가하기](#public-key-확인-및-깃헙에-추가하기)
+  - [접속](#접속)
+  - [AWS에서 파일 전송](#aws에서-파일-전송)
+  - [Load Balancer](#load-balancer)
+  - [URL로 접근이 안되는 문제](#url로-접근이-안되는-문제)
+  - [Target Group](#target-group)
+  - [AWS 타임존 변경](#aws-타임존-변경)
+- [Node Errors](#node-errors)
+  - [an issue with fsevents](#an-issue-with-fsevents)
+  - [로컬 링크 만들기](#로컬-링크-만들기)
+  - [NPM publish 에러](#npm-publish-에러)
+- [Smart Contract Errors](#smart-contract-errors)
+  - [트랜잭션 취소하는 방법](#트랜잭션-취소하는-방법)
+  - [Nonce 얻어내기](#nonce-얻어내기)
+  - [Type error: Cannot find module '../typechain-types' or its corresponding type declarations.](#type-error-cannot-find-module-typechain-types-or-its-corresponding-type-declarations)
+  - [Error: network does not support ENS](#error-network-does-not-support-ens)
+  - [L1-governance 배포 에러](#l1-governance-배포-에러)
+  - [wait 함수의 인자](#wait-함수의-인자)
+  - [Contract Size](#contract-size)
+    - [Exceeds Gas Limit 에러](#exceeds-gas-limit-에러)
+- [Github Errors](#github-errors)
+  - [github 계정 꼬였을때](#github-계정-꼬였을때)
+  - [error: cannot run delta: No such file or directory](#error-cannot-run-delta-no-such-file-or-directory)
+  - [기타 정리](#기타-정리)
+- [Dev Errors](#dev-errors)
+  - [failed to compute cache key: "/target/debug/zksync\_server" not found: not found](#failed-to-compute-cache-key-targetdebugzksync_server-not-found-not-found)
+- [Mac Errors](#mac-errors)
+  - [MacVim을 Spotlight에서 보도록 하기](#macvim을-spotlight에서-보도록-하기)
+  - [Mac Spotlight에서 특정 애플리케이션 찾지 못할 때](#mac-spotlight에서-특정-애플리케이션-찾지-못할-때)
+  - [Mac에서 Sublime Text를 커맨트창에서 실행시키기](#mac에서-sublime-text를-커맨트창에서-실행시키기)
+- [vi](#vi)
+  - [basics](#basics)
+  - [Move cursor to end of file in vim](#move-cursor-to-end-of-file-in-vim)
+  - [vimrc (~/.vimrc)](#vimrc-vimrc)
+- [Know](#know)
+  - [Memo Google Docs](#memo-google-docs)
+  - [예상치 못한 컴파일 에러가 나올때](#예상치-못한-컴파일-에러가-나올때)
+  - [기본준비](#기본준비)
+  - [Generate Private Key](#generate-private-key)
+  - [Mac XCode](#mac-xcode)
+  - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
+  - [텍스트 찾기](#텍스트-찾기)
+  - [.bash\_profile](#bash_profile)
+  - [Git submodule](#git-submodule)
+  - [Tar](#tar)
 
 # IDE
-## Mac
-##### 1) .ssh 복사
-##### 2) brew/zsh/iterm2/karabiner install
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+## Mac Setting
+😈 1) .ssh 복사
+😈 2) brew/zsh/iterm2/karabiner install
 ```
 xcode-select —-install | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install --cask iterm2 | brew install zsh | brew install karabiner-elements
@@ -39,14 +92,14 @@ echo $SHELL <== 이걸로 쉘 확인
 
 karabiner는 option+hjkl가 디폴트로 있음.
 
-##### 3) npm yarn docker install
+😈 3) npm yarn docker install
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 npm install -g yarn
 brew install cask docker
 brew install cask docker-compose
 ```
-###### nvm install
+😈 nvm install
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 source ~/.nvm/nvm.sh
@@ -54,7 +107,7 @@ source ~/.nvm/nvm.sh
 
 https://www.docker.com/products/docker-desktop/ 도커 Desktop (linked0/**)
 
-##### 4) rust/postgresql install
+😈 4) rust/postgresql install
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install sqlx-cli
@@ -66,19 +119,21 @@ brew services start postgresql
 ```
 psql postgres <== 접속해볼 수 있음.
 
-##### 5) Whale, Miro, onenote, Visual Studio
+😈 5) Whale, Miro, onenote, Visual Studio
 Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
+
+😈 6) 기타
+- Markdown All in One: 마크다운 컨텐트 만들어주는 VSCode 플러그인
 
 ##  VSCode
-Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
-back: ctrl - , forward: shift ctrl -
-
+- Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
+- back: ctrl - , forward: shift ctrl -
 - ctrl tab: recent files
 - shift cmd n - cmd shift /: open project
 - ctrl `: goto terminal
 - Cmd+Shift+]: Move to previous terminal
 - Cmd+shift+[: Move to next terminal
-= ctrl shift ₩ : new terminal
+- ctrl shift ₩ : new terminal
 
 Bigger Font: cmd + "+"
 
@@ -117,29 +172,29 @@ find . -type d -name 'temp' -exec rm -rf {} +
 ## Finder
 = hidden files: Command + Shift + . (period key)
 
-## Git submodule
+# Workspace
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
-##### Git submodule add 
-git submodule add https://github.com/example/lib.git external/lib
-git submodule update --init
-
-##### Git submodule remove
-git rm --cached path_to_submodule
-Edit .gitmodules File
-Edit .git/config File
-rm -rf .git/modules/path_to_submodule
-git commit -am "Removed submodule"
-git push
-
-##### Git submodule update
-git submodule update --remote
-
-##### 하나만 다운로드 할때
-git submodule update --init --recursive web2 
+## Slack
+😈 github subscribe
+```
+/github subscribe  bosagora/boa-space-contracts issues pulls commits releases deployments reviews comments
+```
 
 --------
+# Blockchain
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+## localnet 실행하기
+npx hardhat node
 
+## BOA 유통량 API
+- 유통량: https://api.bosplatformfoundation.io/boa_circulating_supply
+- 총발행량: https://api.bosplatformfoundation.io/boa_supply
+
+--------
 # Dev
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+
 ## create2 함수
 아래 함수는 UniswapV2Factory에서 사용되는 코드임
 
@@ -198,22 +253,22 @@ This refers to the block time, the time interval between consecutive blocks. In 
 The epoch length, set here as 30000, is significant in Clique PoA. An epoch is a period after which the list of authorized signers can be updated. In Clique, every epoch blocks, a special block called the epoch transition block is generated, which contains the list of authorized signers for the next epoch. The number 30000 means that every 30,000 blocks, the network has an opportunity to update the list of signers.
 
 ## Node workspaces
-##### Structure and Configuration
+😈 Structure and Configuration
 - Workspace Root: A single workspace has a root directory, usually with a package.json file that includes a workspaces field.
 - Sub-packages: Inside the root, there are subdirectories for each workspace, each with its own package.json file.
 - Shared Configuration: Dependencies and scripts can be shared across workspaces, which is especially useful for common configurations and shared libraries.
 
-###### Reference Project
+😈 Reference Project
 - [poohgithub zksync-era](https://github.com/poohgithub/zksync-era)
 - [mater-labs pymaster-examples](https://github.com/matter-labs/paymaster-examples)
 
 ## TypsScript/Nodejs
 
-##### NodeJs 프로젝트
+😈 NodeJs 프로젝트
 - npm init -y
 - touch index.js
 
-##### TypeScript 프로젝트
+😈 TypeScript 프로젝트
 - npm install -g typescript
 - npm init -y
 - npx tsc --init
@@ -229,7 +284,7 @@ The epoch length, set here as 30000, is significant in Clique PoA. An epoch is a
 - yarn build
 - yarn start
 
-###### yarn
+😈 yarn
 yarn add --dev 
 
 ## Hardhat / solidity
@@ -251,7 +306,7 @@ yarn hardhat node (chain id: 31337)
 yarn hardhat run ./scripts/send-raw-tx.ts --network hardhat
 
 --------
-##### solidiy
+😈 solidiy
 import "hardhat/console.sol";
 npx hardhat compile
 
@@ -260,7 +315,7 @@ const receipt = await (await tx).wait();
 
 
 ## docker/npm/aws
-##### docker
+😈 docker
 - docker attach
 
 - docker ps | grep 5432
@@ -272,23 +327,23 @@ git restore --staged .
 
 - 수호는 블록체인 생태계를 활성화하고 연결하기 위하여 Bridge, DEX와 같은 Dapp 프로덕트를 개발하고 있습니다.
 
-##### npm
+😈 npm
 npm login
 npm publish --access public
 
 
 ## EL/CL
-##### geth compile
+😈 geth compile
 brew install golang
 go run build/ci.go install -static ./cmd/geth or make geth
 sudo cp ./build/bin/geth /usr/local/bin/geth
 
-##### EL
+😈 EL
 - ./init local 1 & ./enode pow el1
 - ./init pow 1 & ./enode pow el1
 - ./init pow 2 & ./enode pow el2
 
-##### CL
+😈 CL
 1. 블럭해시과 genesis time(date +%s)을 chain-config 반영하고 eth2-testnet-genesis 실행
     - gen_genesis
     - zcli pretty bellatrix  BeaconState genesis.ssz > parsedState.json로 Validators Root 가져오기
@@ -338,10 +393,10 @@ python ./staking_deposit/deposit.py "$@"를 사용가능.
 
 다 끝나면 deactivate
 
-##### colab
+😈 colab
 import matplotlib.pyplot as plt
 
-##### VS Code
+😈 VS Code
 - Open the Command Palette (⇧⌘P), start typing the Python: Create Environment
 - 다른 프로젝트(예: poohcode)의 하위 프로젝트라면 .venv 폴더 복사
 - source ./venv/bin/activate
@@ -357,12 +412,16 @@ brew uninstall rust
 rustup install nightly-2023-07-21
 rustup default nightly-2023-07-21
 
+## Prettier 적용
+package.json의 "scripts" 섹션에 다음을 추가
+```
+"prettier": "node_modules/.bin/prettier --write --config .prettierrc 'contracts/**/*.sol' 'test/**/*.ts' 'utils/**/*.ts' 'scripts/**/*.ts'",
+```
+
 --------
 
 # Project
-## poohnet
-###### el/cl
-
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 ## zksync
 local-setup에서 clear-sql.sh와 start-sql.sh
 localentry.sh 실행
@@ -371,82 +430,236 @@ greeter-example에서 deploy-test와 greet-test진행
 ## Foundry
 
 -------
-# Know
-###### command
-- cmd space: Launchpad
-- brew install truffle (npm install -g truffle 대신), ganache도 마찬가지
-- npx hardhat compile --force: typechain 폴더가 없을때
-- npm run test
-- elephantsql.com
-	○   nodemon index.js
-- npm install @types/pg
-- 맥에서 숨김 파일: cmd + shift + .
+# AWS
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
-###### Contract Size
+## AWS에 Load Balancer 추가시 
+• Certifacate Manager를 통해서 도메인 추가
+	- "Create records in Route 53" 해줘야 함.
+
+## node3에 들어가서 postgresql 도커 접속방법
+sudo docker exec -it ec22f5036e09 bash
+psql -d db -U postgres -W
+
+## WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+* 아래와 같이 수정
+*  Add correct host key in /Users/hyunjaelee/.ssh/known_hosts to get rid of this message.
+
+## public key 확인 및 깃헙에 추가하기
+- cat .ssh/id_rsa_linked0.pub
+- 계정의 세팅으로 들어가면 “SSH and GPG keys”에 집어넣으면 됨.
+- git clone할 때 sudo를 넣어야 “Load key … : Permission denied” 에러가 발생하지 않음.
+- “git clone https://github.com/linked0/agora.git” 이건 잘되는 ssh로 받을때 안됨
+
+## 접속
+ssh -i "pooh-seoul.pem" ubuntu@ec2-52-79-227-164.ap-northeast-2.compute.amazonaws.com
+
+## AWS에서 파일 전송 
+* 가져오기
+    * scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt .
+* 보내기
+    * scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
+
+## Load Balancer 
+	- Mappings는 모든 존으로
+	- Security Group은 AgoraDevNet_ELB
+	- 리스너 지정: Target Group지정
+	- 나중에 80에 대해서 443으로 Redirect
+
+## URL로 접근이 안되는 문제
+- 실패상황황인데, CNAME과 A 설정만 맞으면 될 것 같음 (230303)
+
+## Target Group
+	- Basic configuration: Instances
+	- Protocol/Port 지정
+	- Protocol version: HTTP1
+	- Health checks는 그대로 두면 됨.
+
+
+## AWS 타임존 변경
+1) $ tzselect
+2) .profile에 다음을 추가하고 재로그인
+TZ='Asia/Seoul'; export TZ
+
+-------
+# Node Errors
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+
+## an issue with fsevents
+
+warning Error running install script for optional dependency: "/Users/hyunjaelee/node_modules/@remix-project/remixd/node_modules/fsevents: Command failed.
+Exit code: 1
+Command: node install.js
+Arguments: 
+Directory: /Users/hyunjaelee/node_modules/@remix-project/remixd/node_modules/fsevents
+Output:
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: spawn node-gyp ENOENT
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:485:16)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+Emitted 'error' event on ChildProcess instance at:
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:291:12)
+    at onErrorNT (node:internal/child_process:485:16)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'spawn node-gyp',
+success Saved lockfile.
+warning No license field
+success Saved 568 new dependencies.
+
+= 해결
+1> Add this to your package.json file, then re-run yarn (or yarn install):
+
+"resolutions": {
+  "fsevents": "1.2.9"
+}
+2> 이렇게 하면 node-gyp가 설치됨
+3> 그러고나서 위의 resolutions 부분을 제거하고 다시 yarn을 실행해서 fsevents를 최선으로 재설치
+4> 안 그러면 "Typeerror: fsevents.watch is not a function" 발생할 수 있음.
+
+
+## 로컬 링크 만들기
+	- yarn add /Users/hyunjaelee/work/hardhat-zksync/packages/hardhat-zksync-deploy
+
+## NPM publish 에러
+npm notice Publishing to https://registry.npmjs.org/
+This operation requires a one-time password.
+Enter OTP: 978999
+npm ERR! code E402
+npm ERR! 402 Payment Required - PUT https://registry.npmjs.org/@poohnet%2fpooh-swap-v2-core - You must sign up for private packages
+
+npm ERR! A complete log of this run can be found in:
+
+= 해결
+npm public --access public을 사용해야 함.
+
+-------
+# Smart Contract Errors
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+
+## 트랜잭션 취소하는 방법
+- https://support.metamask.io/hc/en-us/articles/360015489251-How-to-speed-up-or-cancel-a-pending-transaction
+- MetaMask의 설정의 고급에 들어가서 "활동 및 논스 데이터 지우기"
+
+## Nonce 얻어내기
+- docker exec -it pow-node geth attach data/geth.ipc
+- eth.getTransactionCount("0x8B595d325485a0Ca9d41908cAbF265E23C172847")
+- 여기서 나타나는 Nonce를 트랙잭션에서 사용하는 것임.
+- 다른 방법
+    - const nonce = await provider.getTransactionCount(admin.address);
+
+## Type error: Cannot find module '../typechain-types' or its corresponding type declarations.
+그냥 typechain-types 폴더를 쓰지 않기로 함 
+
+## Error: network does not support ENS
+- 다음과 같이 VAULT_CONTRACT 주소 잘못됨, 즉, 0x가 두번 쓰이고 있었음.
+    - VAULT_CONTRACT=0x0x7f28F281d57AC7d99A8C2FAd2d37271c2c9c67D6
+		
+		
+## L1-governance 배포 에러
+L1-governance git:(main) ✗ yarn hardhat run --network localnet ./scripts/deploy.ts 
+yarn run v1.22.19
+warning package.json: No license field
+$ /Users/hyunjaelee/work/tutorials/L1-governance/node_modules/.bin/hardhat run --network localnet ./scripts/deploy.ts
+TypeError: (0 , ethers_1.getAddress) is not a function
+
+* 다음의 세단계 필요
+- yarn add --dev hardhat @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers
+- const deployed = await contract.waitForDeployment();
+- console.log(`Governance contract was successfully deployed at ${await deployed.getAddress()}`);
+
+* 원인
+- ethers 버전이 6으로 업그레이드되면서 함수명이 바뀌었음
+- 참고 문서 여기
+
+	• 기타
+		○ 0xAe9Bc22B80D98aD3350a35118F723d36d8E4e141
+
+## wait 함수의 인자
+The wait() function of ContractTransaction takes a single optional argument, which is the timeout in blocks. The default timeout is 10 blocks. This means that the wait() function will block for up to 10 blocks before throwing an error if the transaction has not been confirmed.
+You can increase the timeout period by passing a higher number to the wait() function. For example, the following code will block for up to 20 blocks before throwing an error:
+
+## Contract Size
 https://ethereum.stackexchange.com/questions/31515/how-to-check-the-size-of-a-contract-in-solidity
 
+### Exceeds Gas Limit 에러
+- Genesis.json에서 gasLimit를 에러 내용의 
+- 에러내용 "gasLimit: BigNumber { _hex: '0x989680', _isBigNumber: true }" 만큼으로 늘려줌.
+```
+Error: Error: processing response error (body="{\"jsonrpc\":\"2.0\",\"id\":151,\"error\":{\"code\":-32000,\"message\":\"exceeds block gas limit\"}}\n", error={"code":-32000}, requestBody="{\"method\":\"eth_sendRawTransaction\",\"params\":[\"0x02f90fd382300d0284461bffd584461bffd58398968094572b9410d9a14fa729f3af92cb83a07aaa472de080b90f644af63f020000000000000000000000000000000000000000000000000000000000000040fe07c7c6f88cdf003f00c1e47076de3576e136c7114496823271143b3d46e97e0000000000000000000000000000000000000000000000000000000000000ef9608060405234801561001057600080fd5b50610ed9806100206000396000f3fe6080604052600436106100f35760003560e01c80634d2301cc1161008a578063a8b0574e11610059578063a8b0574e1461025a578063bce38bd714610275578063c3077fa914610288578063ee82ac5e1461029b57600080fd5b80634d2301cc146101ec57806372425d9d1461022157806382ad56cb1461023457806386d516e81461024757600080fd5b80633408e470116100c65780633408e47014610191578063399542e9146101a45780633e64a696146101c657806342cbb15c146101d957600080fd5b80630f28c97d146100f8578063174dea711461011a578063252dba421461013a57806327e86d6e1461015b575b600080fd5b34801561010457600080fd5b50425b6040519081526020015b60405180910390f35b61012d610128366004610a85565b6102ba565b6040516101119190610bb7565b61014d610148366004610a85565b6104ef565b604051610111929190610bd1565b34801561016757600080fd5b50437fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0140610107565b34801561019d57600080fd5b5046610107565b6101b76101b2366004610c59565b610690565b60405161011193929190610cb3565b3480156101d257600080fd5b5048610107565b3480156101e557600080fd5b5043610107565b3480156101f857600080fd5b50610107610207366004610cdb565b73ffffffffffffffffffffffffffffffffffffffff163190565b34801561022d57600080fd5b5044610107565b61012d610242366004610a85565b6106ab565b34801561025357600080fd5b5045610107565b34801561026657600080fd5b50604051418152602001610111565b61012d610283366004610c59565b61085a565b6101b7610296366004610a85565b610a1a565b3480156102a757600080fd5b506101076102b6366004610d11565b4090565b60606000828067ffffffffffffffff8111156102d8576102d8610d2a565b60405190808252806020026020018201604052801561031e57816020015b6040805180820190915260008152606060208201528152602001906001900390816102f65790505b5092503660005b8281101561047757600085828151811061034157610341610d59565b6020026020010151905087878381811061035d5761035d610d59565b905060200281019061036f9190610d88565b6040810135958601959093506103886020850185610cdb565b73ffffffffffffffffffffffffffffffffffffffff16816103ac6060870187610dc6565b6040516103ba929190610e2b565b60006040518083038185875af1925050503d80600081146103f7576040519150601f19603f3d011682016040523d82523d6000602084013e6103fc565b606091505b50602080850191909152901515808452908501351761046d577f08c379a000000000000000000000000000000000000000000000000000000000600052602060045260176024527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060445260846000fd5b5050600101610325565b508234146104e6576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601a60248201527f4d756c746963616c6c333a2076616c7565206d69736d6174636800000000000060448201526064015b60405180910390fd5b50505092915050565b436060828067ffffffffffffffff81111561050c5761050c610d2a565b60405190808252806020026020018201604052801561053f57816020015b606081526020019060019003908161052a5790505b5091503660005b8281101561068657600087878381811061056257610562610d59565b90506020028101906105749190610e3b565b92506105836020840184610cdb565b73ffffffffffffffffffffffffffffffffffffffff166105a66020850185610dc6565b6040516105b4929190610e2b565b6000604051808303816000865af19150503d80600081146105f1576040519150601f19603f3d011682016040523d82523d6000602084013e6105f6565b606091505b5086848151811061060957610609610d59565b602090810291909101015290508061067d576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601760248201527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060448201526064016104dd565b50600101610546565b5050509250929050565b43804060606106a086868661085a565b905093509350939050565b6060818067ffffffffffffffff8111156106c7576106c7610d2a565b60405190808252806020026020018201604052801561070d57816020015b6040805180820190915260008152606060208201528152602001906001900390816106e55790505b5091503660005b828110156104e657600084828151811061073057610730610d59565b6020026020010151905086868381811061074c5761074c610d59565b905060200281019061075e9190610e6f565b925061076d6020840184610cdb565b73ffffffffffffffffffffffffffffffffffffffff166107906040850185610dc6565b60405161079e929190610e2b565b6000604051808303816000865af19150503d80600081146107db576040519150601f19603f3d011682016040523d82523d6000602084013e6107e0565b606091505b506020808401919091529015158083529084013517610851577f08c379a000000000000000000000000000000000000000000000000000000000600052602060045260176024527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060445260646000fd5b50600101610714565b6060818067ffffffffffffffff81111561087657610876610d2a565b6040519080825280602002602001820160405280156108bc57816020015b6040805180820190915260008152606060208201528152602001906001900390816108945790505b5091503660005b82811015610a105760008482815181106108df576108df610d59565b602002602001015190508686838181106108fb576108fb610d59565b905060200281019061090d9190610e3b565b925061091c6020840184610cdb565b73ffffffffffffffffffffffffffffffffffffffff1661093f6020850185610dc6565b60405161094d929190610e2b565b6000604051808303816000865af19150503d806000811461098a576040519150601f19603f3d011682016040523d82523d6000602084013e61098f565b606091505b506020830152151581528715610a07578051610a07576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601760248201527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060448201526064016104dd565b506001016108c3565b5050509392505050565b6000806060610a2b60018686610690565b919790965090945092505050565b60008083601f840112610a4b57600080fd5b50813567ffffffffffffffff811115610a6357600080fd5b6020830191508360208260051b8501011115610a7e57600080fd5b9250929050565b60008060208385031215610a9857600080fd5b823567ffffffffffffffff811115610aaf57600080fd5b610abb85828601610a39565b90969095509350505050565b6000815180845260005b81811015610aed57602081850181015186830182015201610ad1565b5060006020828601015260207fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0601f83011685010191505092915050565b600082825180855260208086019550808260051b84010181860160005b84811015610baa578583037fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe001895281518051151584528401516040858501819052610b9681860183610ac7565b9a86019a9450505090830190600101610b48565b5090979650505050505050565b602081526000610bca6020830184610b2b565b9392505050565b600060408201848352602060408185015281855180845260608601915060608160051b870101935082870160005b82811015610c4b577fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa0888703018452610c39868351610ac7565b95509284019290840190600101610bff565b509398975050505050505050565b600080600060408486031215610c6e57600080fd5b83358015158114610c7e57600080fd5b9250602084013567ffffffffffffffff811115610c9a57600080fd5b610ca686828701610a39565b9497909650939450505050565b838152826020820152606060408201526000610cd26060830184610b2b565b95945050505050565b600060208284031215610ced57600080fd5b813573ffffffffffffffffffffffffffffffffffffffff81168114610bca57600080fd5b600060208284031215610d2357600080fd5b5035919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b600082357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff81833603018112610dbc57600080fd5b9190910192915050565b60008083357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe1843603018112610dfb57600080fd5b83018035915067ffffffffffffffff821115610e1657600080fd5b602001915036819003821315610a7e57600080fd5b8183823760009101908152919050565b600082357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc1833603018112610dbc57600080fd5b600082357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa1833603018112610dbc57600080fdfea2646970667358221220eca0cb14f4322010c8eb410ba0738474f94c966328e9db21a580ada159aa6c8564736f6c6343000811003300000000000000c080a086a949d9a5e6c0fca3315b4363c12e9a3953b20445bf0fbe3f659212e7792c92a02e2e4680f844eab38c40aa61874bc199fc45d96ac3d91fe668039df54e060786\"],\"id\":151,\"jsonrpc\":\"2.0\"}", requestMethod="POST", url="http://localhost:8545", code=SERVER_ERROR, version=web/5.7.1)
+    at Logger.makeError (/Users/hyunjaelee/work/zksync-era/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
+    at Logger.throwError (/Users/hyunjaelee/work/zksync-era/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
+    at /Users/hyunjaelee/work/zksync-era/node_modules/@ethersproject/web/src.ts/index.ts:341:28
+    at step (/Users/hyunjaelee/work/zksync-era/node_modules/@ethersproject/web/lib/index.js:33:23)
+    at Object.next (/Users/hyunjaelee/work/zksync-era/node_modules/@ethersproject/web/lib/index.js:14:53)
+    at fulfilled (/Users/hyunjaelee/work/zksync-era/node_modules/@ethersproject/web/lib/index.js:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  reason: 'processing response error',
+  code: 'SERVER_ERROR',
+  body: '{"jsonrpc":"2.0","id":151,"error":{"code":-32000,"message":"exceeds block gas limit"}}\n',
+  error: Error: exceeds block gas limit
+      at getResult (/Users/hyunjaelee/work/zksync-era/node_modules/@ethersproject/providers/src.ts/json-rpc-provider.ts:142:28)
+      at processJsonFunc (/Users/hyunjaelee/work/zksync-era/node_modules/@ethersproject/web/src.ts/index.ts:383:22)
+      at /Users/hyunjaelee/work/zksync-era/node_modules/@ethersproject/web/src.ts/index.ts:320:42
+      at step (/Users/hyunjaelee/work/zksync-era/node_modules/@ethersproject/web/lib/index.js:33:23)
+      at Object.next (/Users/hyunjaelee/work/zksync-era/node_modules/@ethersproject/web/lib/index.js:14:53)
+      at fulfilled (/Users/hyunjaelee/work/zksync-era/node_modules/@ethersproject/web/lib/index.js:5:58)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+    code: -32000,
+    data: undefined
+  },
+  requestBody: '{"method":"eth_sendRawTransaction","params":["0x02f90fd382300d0284461bffd584461bffd58398968094572b9410d9a14fa729f3af92cb83a07aaa472de080b90f644af63f020000000000000000000000000000000000000000000000000000000000000040fe07c7c6f88cdf003f00c1e47076de3576e136c7114496823271143b3d46e97e0000000000000000000000000000000000000000000000000000000000000ef9608060405234801561001057600080fd5b50610ed9806100206000396000f3fe6080604052600436106100f35760003560e01c80634d2301cc1161008a578063a8b0574e11610059578063a8b0574e1461025a578063bce38bd714610275578063c3077fa914610288578063ee82ac5e1461029b57600080fd5b80634d2301cc146101ec57806372425d9d1461022157806382ad56cb1461023457806386d516e81461024757600080fd5b80633408e470116100c65780633408e47014610191578063399542e9146101a45780633e64a696146101c657806342cbb15c146101d957600080fd5b80630f28c97d146100f8578063174dea711461011a578063252dba421461013a57806327e86d6e1461015b575b600080fd5b34801561010457600080fd5b50425b6040519081526020015b60405180910390f35b61012d610128366004610a85565b6102ba565b6040516101119190610bb7565b61014d610148366004610a85565b6104ef565b604051610111929190610bd1565b34801561016757600080fd5b50437fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0140610107565b34801561019d57600080fd5b5046610107565b6101b76101b2366004610c59565b610690565b60405161011193929190610cb3565b3480156101d257600080fd5b5048610107565b3480156101e557600080fd5b5043610107565b3480156101f857600080fd5b50610107610207366004610cdb565b73ffffffffffffffffffffffffffffffffffffffff163190565b34801561022d57600080fd5b5044610107565b61012d610242366004610a85565b6106ab565b34801561025357600080fd5b5045610107565b34801561026657600080fd5b50604051418152602001610111565b61012d610283366004610c59565b61085a565b6101b7610296366004610a85565b610a1a565b3480156102a757600080fd5b506101076102b6366004610d11565b4090565b60606000828067ffffffffffffffff8111156102d8576102d8610d2a565b60405190808252806020026020018201604052801561031e57816020015b6040805180820190915260008152606060208201528152602001906001900390816102f65790505b5092503660005b8281101561047757600085828151811061034157610341610d59565b6020026020010151905087878381811061035d5761035d610d59565b905060200281019061036f9190610d88565b6040810135958601959093506103886020850185610cdb565b73ffffffffffffffffffffffffffffffffffffffff16816103ac6060870187610dc6565b6040516103ba929190610e2b565b60006040518083038185875af1925050503d80600081146103f7576040519150601f19603f3d011682016040523d82523d6000602084013e6103fc565b606091505b50602080850191909152901515808452908501351761046d577f08c379a000000000000000000000000000000000000000000000000000000000600052602060045260176024527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060445260846000fd5b5050600101610325565b508234146104e6576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601a60248201527f4d756c746963616c6c333a2076616c7565206d69736d6174636800000000000060448201526064015b60405180910390fd5b50505092915050565b436060828067ffffffffffffffff81111561050c5761050c610d2a565b60405190808252806020026020018201604052801561053f57816020015b606081526020019060019003908161052a5790505b5091503660005b8281101561068657600087878381811061056257610562610d59565b90506020028101906105749190610e3b565b92506105836020840184610cdb565b73ffffffffffffffffffffffffffffffffffffffff166105a66020850185610dc6565b6040516105b4929190610e2b565b6000604051808303816000865af19150503d80600081146105f1576040519150601f19603f3d011682016040523d82523d6000602084013e6105f6565b606091505b5086848151811061060957610609610d59565b602090810291909101015290508061067d576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601760248201527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060448201526064016104dd565b50600101610546565b5050509250929050565b43804060606106a086868661085a565b905093509350939050565b6060818067ffffffffffffffff8111156106c7576106c7610d2a565b60405190808252806020026020018201604052801561070d57816020015b6040805180820190915260008152606060208201528152602001906001900390816106e55790505b5091503660005b828110156104e657600084828151811061073057610730610d59565b6020026020010151905086868381811061074c5761074c610d59565b905060200281019061075e9190610e6f565b925061076d6020840184610cdb565b73ffffffffffffffffffffffffffffffffffffffff166107906040850185610dc6565b60405161079e929190610e2b565b6000604051808303816000865af19150503d80600081146107db576040519150601f19603f3d011682016040523d82523d6000602084013e6107e0565b606091505b506020808401919091529015158083529084013517610851577f08c379a000000000000000000000000000000000000000000000000000000000600052602060045260176024527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060445260646000fd5b50600101610714565b6060818067ffffffffffffffff81111561087657610876610d2a565b6040519080825280602002602001820160405280156108bc57816020015b6040805180820190915260008152606060208201528152602001906001900390816108945790505b5091503660005b82811015610a105760008482815181106108df576108df610d59565b602002602001015190508686838181106108fb576108fb610d59565b905060200281019061090d9190610e3b565b925061091c6020840184610cdb565b73ffffffffffffffffffffffffffffffffffffffff1661093f6020850185610dc6565b60405161094d929190610e2b565b6000604051808303816000865af19150503d806000811461098a576040519150601f19603f3d011682016040523d82523d6000602084013e61098f565b606091505b506020830152151581528715610a07578051610a07576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601760248201527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060448201526064016104dd565b506001016108c3565b5050509392505050565b6000806060610a2b60018686610690565b919790965090945092505050565b60008083601f840112610a4b57600080fd5b50813567ffffffffffffffff811115610a6357600080fd5b6020830191508360208260051b8501011115610a7e57600080fd5b9250929050565b60008060208385031215610a9857600080fd5b823567ffffffffffffffff811115610aaf57600080fd5b610abb85828601610a39565b90969095509350505050565b6000815180845260005b81811015610aed57602081850181015186830182015201610ad1565b5060006020828601015260207fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0601f83011685010191505092915050565b600082825180855260208086019550808260051b84010181860160005b84811015610baa578583037fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe001895281518051151584528401516040858501819052610b9681860183610ac7565b9a86019a9450505090830190600101610b48565b5090979650505050505050565b602081526000610bca6020830184610b2b565b9392505050565b600060408201848352602060408185015281855180845260608601915060608160051b870101935082870160005b82811015610c4b577fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa0888703018452610c39868351610ac7565b95509284019290840190600101610bff565b509398975050505050505050565b600080600060408486031215610c6e57600080fd5b83358015158114610c7e57600080fd5b9250602084013567ffffffffffffffff811115610c9a57600080fd5b610ca686828701610a39565b9497909650939450505050565b838152826020820152606060408201526000610cd26060830184610b2b565b95945050505050565b600060208284031215610ced57600080fd5b813573ffffffffffffffffffffffffffffffffffffffff81168114610bca57600080fd5b600060208284031215610d2357600080fd5b5035919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b600082357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff81833603018112610dbc57600080fd5b9190910192915050565b60008083357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe1843603018112610dfb57600080fd5b83018035915067ffffffffffffffff821115610e1657600080fd5b602001915036819003821315610a7e57600080fd5b8183823760009101908152919050565b600082357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc1833603018112610dbc57600080fd5b600082357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa1833603018112610dbc57600080fdfea2646970667358221220eca0cb14f4322010c8eb410ba0738474f94c966328e9db21a580ada159aa6c8564736f6c6343000811003300000000000000c080a086a949d9a5e6c0fca3315b4363c12e9a3953b20445bf0fbe3f659212e7792c92a02e2e4680f844eab38c40aa61874bc199fc45d96ac3d91fe668039df54e060786"],"id":151,"jsonrpc":"2.0"}',
+  requestMethod: 'POST',
+  url: 'http://localhost:8545',
+  transaction: {
+    type: 2,
+    chainId: 12301,
+    nonce: 2,
+    maxPriorityFeePerGas: BigNumber { _hex: '0x461bffd5', _isBigNumber: true },
+    maxFeePerGas: BigNumber { _hex: '0x461bffd5', _isBigNumber: true },
+    gasPrice: null,
+    gasLimit: BigNumber { _hex: '0x989680', _isBigNumber: true },
+    to: '0x572b9410D9a14Fa729F3af92cB83A07aaA472dE0',
+    value: BigNumber { _hex: '0x00', _isBigNumber: true },
+    data: '0x4af63f020000000000000000000000000000000000000000000000000000000000000040fe07c7c6f88cdf003f00c1e47076de3576e136c7114496823271143b3d46e97e0000000000000000000000000000000000000000000000000000000000000ef9608060405234801561001057600080fd5b50610ed9806100206000396000f3fe6080604052600436106100f35760003560e01c80634d2301cc1161008a578063a8b0574e11610059578063a8b0574e1461025a578063bce38bd714610275578063c3077fa914610288578063ee82ac5e1461029b57600080fd5b80634d2301cc146101ec57806372425d9d1461022157806382ad56cb1461023457806386d516e81461024757600080fd5b80633408e470116100c65780633408e47014610191578063399542e9146101a45780633e64a696146101c657806342cbb15c146101d957600080fd5b80630f28c97d146100f8578063174dea711461011a578063252dba421461013a57806327e86d6e1461015b575b600080fd5b34801561010457600080fd5b50425b6040519081526020015b60405180910390f35b61012d610128366004610a85565b6102ba565b6040516101119190610bb7565b61014d610148366004610a85565b6104ef565b604051610111929190610bd1565b34801561016757600080fd5b50437fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0140610107565b34801561019d57600080fd5b5046610107565b6101b76101b2366004610c59565b610690565b60405161011193929190610cb3565b3480156101d257600080fd5b5048610107565b3480156101e557600080fd5b5043610107565b3480156101f857600080fd5b50610107610207366004610cdb565b73ffffffffffffffffffffffffffffffffffffffff163190565b34801561022d57600080fd5b5044610107565b61012d610242366004610a85565b6106ab565b34801561025357600080fd5b5045610107565b34801561026657600080fd5b50604051418152602001610111565b61012d610283366004610c59565b61085a565b6101b7610296366004610a85565b610a1a565b3480156102a757600080fd5b506101076102b6366004610d11565b4090565b60606000828067ffffffffffffffff8111156102d8576102d8610d2a565b60405190808252806020026020018201604052801561031e57816020015b6040805180820190915260008152606060208201528152602001906001900390816102f65790505b5092503660005b8281101561047757600085828151811061034157610341610d59565b6020026020010151905087878381811061035d5761035d610d59565b905060200281019061036f9190610d88565b6040810135958601959093506103886020850185610cdb565b73ffffffffffffffffffffffffffffffffffffffff16816103ac6060870187610dc6565b6040516103ba929190610e2b565b60006040518083038185875af1925050503d80600081146103f7576040519150601f19603f3d011682016040523d82523d6000602084013e6103fc565b606091505b50602080850191909152901515808452908501351761046d577f08c379a000000000000000000000000000000000000000000000000000000000600052602060045260176024527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060445260846000fd5b5050600101610325565b508234146104e6576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601a60248201527f4d756c746963616c6c333a2076616c7565206d69736d6174636800000000000060448201526064015b60405180910390fd5b50505092915050565b436060828067ffffffffffffffff81111561050c5761050c610d2a565b60405190808252806020026020018201604052801561053f57816020015b606081526020019060019003908161052a5790505b5091503660005b8281101561068657600087878381811061056257610562610d59565b90506020028101906105749190610e3b565b92506105836020840184610cdb565b73ffffffffffffffffffffffffffffffffffffffff166105a66020850185610dc6565b6040516105b4929190610e2b565b6000604051808303816000865af19150503d80600081146105f1576040519150601f19603f3d011682016040523d82523d6000602084013e6105f6565b606091505b5086848151811061060957610609610d59565b602090810291909101015290508061067d576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601760248201527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060448201526064016104dd565b50600101610546565b5050509250929050565b43804060606106a086868661085a565b905093509350939050565b6060818067ffffffffffffffff8111156106c7576106c7610d2a565b60405190808252806020026020018201604052801561070d57816020015b6040805180820190915260008152606060208201528152602001906001900390816106e55790505b5091503660005b828110156104e657600084828151811061073057610730610d59565b6020026020010151905086868381811061074c5761074c610d59565b905060200281019061075e9190610e6f565b925061076d6020840184610cdb565b73ffffffffffffffffffffffffffffffffffffffff166107906040850185610dc6565b60405161079e929190610e2b565b6000604051808303816000865af19150503d80600081146107db576040519150601f19603f3d011682016040523d82523d6000602084013e6107e0565b606091505b506020808401919091529015158083529084013517610851577f08c379a000000000000000000000000000000000000000000000000000000000600052602060045260176024527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060445260646000fd5b50600101610714565b6060818067ffffffffffffffff81111561087657610876610d2a565b6040519080825280602002602001820160405280156108bc57816020015b6040805180820190915260008152606060208201528152602001906001900390816108945790505b5091503660005b82811015610a105760008482815181106108df576108df610d59565b602002602001015190508686838181106108fb576108fb610d59565b905060200281019061090d9190610e3b565b925061091c6020840184610cdb565b73ffffffffffffffffffffffffffffffffffffffff1661093f6020850185610dc6565b60405161094d929190610e2b565b6000604051808303816000865af19150503d806000811461098a576040519150601f19603f3d011682016040523d82523d6000602084013e61098f565b606091505b506020830152151581528715610a07578051610a07576040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601760248201527f4d756c746963616c6c333a2063616c6c206661696c656400000000000000000060448201526064016104dd565b506001016108c3565b5050509392505050565b6000806060610a2b60018686610690565b919790965090945092505050565b60008083601f840112610a4b57600080fd5b50813567ffffffffffffffff811115610a6357600080fd5b6020830191508360208260051b8501011115610a7e57600080fd5b9250929050565b60008060208385031215610a9857600080fd5b823567ffffffffffffffff811115610aaf57600080fd5b610abb85828601610a39565b90969095509350505050565b6000815180845260005b81811015610aed57602081850181015186830182015201610ad1565b5060006020828601015260207fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0601f83011685010191505092915050565b600082825180855260208086019550808260051b84010181860160005b84811015610baa578583037fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe001895281518051151584528401516040858501819052610b9681860183610ac7565b9a86019a9450505090830190600101610b48565b5090979650505050505050565b602081526000610bca6020830184610b2b565b9392505050565b600060408201848352602060408185015281855180845260608601915060608160051b870101935082870160005b82811015610c4b577fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa0888703018452610c39868351610ac7565b95509284019290840190600101610bff565b509398975050505050505050565b600080600060408486031215610c6e57600080fd5b83358015158114610c7e57600080fd5b9250602084013567ffffffffffffffff811115610c9a57600080fd5b610ca686828701610a39565b9497909650939450505050565b838152826020820152606060408201526000610cd26060830184610b2b565b95945050505050565b600060208284031215610ced57600080fd5b813573ffffffffffffffffffffffffffffffffffffffff81168114610bca57600080fd5b600060208284031215610d2357600080fd5b5035919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052603260045260246000fd5b600082357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff81833603018112610dbc57600080fd5b9190910192915050565b60008083357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe1843603018112610dfb57600080fd5b83018035915067ffffffffffffffff821115610e1657600080fd5b602001915036819003821315610a7e57600080fd5b8183823760009101908152919050565b600082357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc1833603018112610dbc57600080fd5b600082357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffa1833603018112610dbc57600080fdfea2646970667358221220eca0cb14f4322010c8eb410ba0738474f94c966328e9db21a580ada159aa6c8564736f6c6343000811003300000000000000',
+    accessList: [],
+    hash: '0x7893259b825674bcb88e9fe491b4390d5f70b8a807cdc57169470db07f431c6c',
+    v: 0,
+    r: '0x86a949d9a5e6c0fca3315b4363c12e9a3953b20445bf0fbe3f659212e7792c92',
+    s: '0x2e2e4680f844eab38c40aa61874bc199fc45d96ac3d91fe668039df54e060786',
+    from: '0x52312AD6f01657413b2eaE9287f6B9ADaD93D5FE',
+    confirmations: 0
+  },
+  transactionHash: '0x7893259b825674bcb88e9fe491b4390d5f70b8a807cdc57169470db07f431c6c'
+}
+error Command failed with exit code 1.
+```
 
-These scripts are used to create a Conduit whose address should be assigned to SharedStorefrontLazyMintAdapter contract.
-We can create a Conduit with the create_conduit.ts script and get the address of the Conduit with the get_conduit script. There's some error in creating a Conduit with ConduitCreator so we will use the ConduitController contract for a while.
+-------
+# Github Errors
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
-—————————————————————————————
-##### Slack
-• github subscribe
-	○ /github subscribe  bosagora/boa-space-contracts issues pulls commits releases deployments reviews comments
+## github 계정 꼬였을때
+ERROR: Permission to poohgithub/poohnet-pow.git denied to jay-hyunjaelee.
+fatal: Could not read from remote repository.
 
-Shortcuts
-• Option F12
-• Navigate: Option Cmd Left/Right 
-• To copy the formatting of selected text:
-	○ Press Ctrl + Alt + c (Windows or Chrome OS) or ⌘ + Option + c (Mac).
-	○ Press Ctrl + Alt + v (Windows or Chrome OS) or ⌘ + Option + v (Mac).
+Please make sure you have the correct access rights
+and the repository exists.
 
-—————————————————————————————
-##### 문제 상황 처리
-예상치 못한 컴파일 에러가 나올때
-- brew update && brew upgrade
+- ~/.gitconfig에 emial 설정 에서 equal sign 양 옆의 스페이스 없애기
+- 재부팅하기 
 
-* 기본준비
-    * Calendar 추가(Dev Team)
-    * 스타일가이드: https://github.com/bpfkorea/agora/blob/v0.x.x/doc/Style.md, 상세한 설명 필요
-
-* APIs
-    * 유통량: https://api.bosplatformfoundation.io/boa_circulating_supply
-    * 총발행량: https://api.bosplatformfoundation.io/boa_supply
+## error: cannot run delta: No such file or directory
+- git lg 실행시 발생
+- brew install git-delta.
 
 
-##### Mac Spotlight에서 특정 애플리케이션 찾지 못할 때
-First, turn off Spotlight:
-sudo mdutil -a -i off
-
-Next, unload the metadata file that controls Spotlight's index:
-sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
-여기서 에러날 수 있음 그냥 무시하고 다음으로 넘어감.
-
-The following command re-loads the index:
-sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
-
-Finally, turn Spotlight back on:
-sudo mdutil -a -i on
-
-##### Mac에서 Sublime Text를 커맨트창에서 실행시키기
-ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
-
-##### localhost 실행하기
-npx hardhat node
-
-##### localhost 배포하기
-npx hardhat run scripts/deploy.ts --network localhost
-
-##### Prettier 적용
-	○ package.json의 "scripts" 섹션에 다음을 추가
-		§ "prettier": "node_modules/.bin/prettier --write --config .prettierrc 'contracts/**/*.sol' 'test/**/*.ts' 'utils/**/*.ts' 'scripts/**/*.ts'",
-
-
-
-##################################################################################
-<a href="http://bit.ly/2ZY033D">.</a> Git & gitconfig
-##################################################################################
+## 기타 정리
 - git reset --hard michael/add-npm-script-prettier
 	git remote update 한번 해줘야 함.
 	해당 브랜치로 들어가서 최신 버전으로 갱신하기 
@@ -458,11 +671,11 @@ npx hardhat run scripts/deploy.ts --network localhost
 - git rebase 도중 stage된 파일 리셋하기
 	git reset HEAD~1 -- package.json
 - revert
-	# This will create three separate revert commits:
+	※ This will create three separate revert commits:
 		§ git revert a867b4af 25eee4ca 0766c053
-	# It also takes ranges. This will revert the last two commits:
+	※ It also takes ranges. This will revert the last two commits:
 		§ git revert HEAD~2..HEAD
-	# Similarly, you can revert a range of commits using commit hashes (non inclusive of first hash):
+	※ Similarly, you can revert a range of commits using commit hashes (non inclusive of first hash):
 		§ git revert 0d1d7fc..a867b4a
 - 슬랙 연동: /github subscribe zeroone-boa/validators reviews comments
 	이것도 방법, 위의 것과 비교 필요: /github subscribe bosagora/boa-space-seaport-js issues pulls commits releases deployments reviews comments
@@ -486,74 +699,72 @@ git config alias.acp '! git commit -a -m "commit" && git push'
 - git log with graph
 git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%an%C(reset)%C(bold yellow)%d%C(reset) %C(dim white)- %s%C(reset)' --all
 
-## private repo clone
+😈 private repo clone
 - $ key-gen
 - $ eval "$(ssh-agent -s)"
 - $ ss-add .ssh/id_rsa_graph_node
 - id_rsa_graph_node.pub를 cat해서 리파지토리 Setting -> Deploy keys에 추가
 - git clone git@github.com:bosagora/boa-space-graph-node.git
     
-## Organization만들고, 포크하기 (fork)
+😈 Organization만들고, 포크하기 (fork)
 - poohgithub organization에서 Setting->Members privileges->Allow forking of private repositories.
 
 
-##################################################################################
-cloud/docker
-##################################################################################
+-------
+# Dev Errors
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
-# AWS에 Load Balancer 추가시 
-• Certifacate Manager를 통해서 도메인 추가
-	- "Create records in Route 53" 해줘야 함.
+## failed to compute cache key: "/target/debug/zksync_server" not found: not found
+Error: Child process exited with code 1
 
-# node3에 들어가서 postgresql 도커 접속방법
-sudo docker exec -it ec22f5036e09 bash
-psql -d db -U postgres -W
+==> .dockerignore에서 포함되어 있는 것은 아닌지 확인 필요
+==> 만약 로컬 시스템에서 복사되는 것이라면 원래 없는 것일 수도 있음. 예를 들어 컴파일을 해야 나오는 파일이던가 하면 그런일이 발생
 
-# 오류
-*  WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
-    * 아래와 같이 수정
-    *  Add correct host key in /Users/hyunjaelee/.ssh/known_hosts to get rid of this message.
+-------
+# Mac Errors
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
-# public key 확인 및 깃헙에 추가하기
-- cat .ssh/id_rsa_linked0.pub
-- 계정의 세팅으로 들어가면 “SSH and GPG keys”에 집어넣으면 됨.
-- git clone할 때 sudo를 넣어야 “Load key … : Permission denied” 에러가 발생하지 않음.
-- “git clone https://github.com/linked0/agora.git” 이건 잘되는 ssh로 받을때 안됨
+## MacVim을 Spotlight에서 보도록 하기
+For those with Yosemite and MacVim from homebrew not showing up in Spotlight, using an alias works.
 
-# 접속
-ssh -i "pooh-seoul.pem" ubuntu@ec2-52-79-227-164.ap-northeast-2.compute.amazonaws.com
+(Be sure to delete any MacVim that is already in /Applications.)
 
-# AWS에서 파일 전송 
-* 가져오기
-    * scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt .
-* 보내기
-    * scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
-———————————————————————————————————
-@ AWS ELB 세팅
-# Load Balancer 
-	- Mappings는 모든 존으로
-	- Security Group은 AgoraDevNet_ELB
-	- 리스너 지정: Target Group지정
-	- 나중에 80에 대해서 443으로 Redirect
+From the Terminal:
 
-# URL로 접근이 안되는 문제
-- 실패상황황인데, CNAME과 A 설정만 맞으면 될 것 같음 (230303)
+Uninstall existing: brew uninstall macvim
+Install latest: brew install macvim
+Open directory in Finder. Ex: open /usr/local/Cellar/macvim/7.3-64
+In Finder, right-click on the MacVim.app icon and select "Make Alias".
+Copy the alias you just created to the /Applications folder.
+Spotlight will index the MacVim alias.
 
-# Target Group
-	- Basic configuration: Instances
-	- Protocol/Port 지정
-	- Protocol version: HTTP1
-	- Health checks는 그대로 두면 됨.
+Source: https://github.com/Homebrew/homebrew/issues/8970#issuecomment-4262695
 
 
-###### AWS 타임존 변경
-1) $ tzselect
-2) .profile에 다음을 추가하고 재로그인
-TZ='Asia/Seoul'; export TZ
+## Mac Spotlight에서 특정 애플리케이션 찾지 못할 때
+First, turn off Spotlight:
+sudo mdutil -a -i off
 
-##################################################################################
-vi
-##################################################################################
+Next, unload the metadata file that controls Spotlight's index:
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
+여기서 에러날 수 있음 그냥 무시하고 다음으로 넘어감.
+
+The following command re-loads the index:
+sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
+
+Finally, turn Spotlight back on:
+sudo mdutil -a -i on
+
+## Mac에서 Sublime Text를 커맨트창에서 실행시키기
+```
+ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+```
+
+-------
+# vi
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+
+## basics
 find ./ -type f > files
 find . -type file -name '*.js' -o -name '*.json' > files  //-o는 or를 뜻함
 find . -type f -not -path './node_modules/*' -not -path './chaindata/*' > files
@@ -570,13 +781,15 @@ nnn g t: Numbered tab, nnn은 숫자를 나타냄, 1일수도 있고, 12일수�
 
 mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 
-# Move cursor to end of file in vim
+## Move cursor to end of file in vim
+```
 :$
+```
 
 * 한글 깨지는 문제
 set enc=utf-8
 
-###### vimrc (~/.vimrc)
+## vimrc (~/.vimrc)
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -600,56 +813,48 @@ set expandtab " spaces for tab
 set incsearch
 set mouse=a
 
-##################################################################################
-command
-##################################################################################
 
-##### zsh
-xcode-select —-install
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew cask install iterm2
-brew install zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-##### NewComer
-- Get Lens 써보기
-- Maximize Active Pane: shift + cmd + enter
-- Command 창: cmd + j
-- 탭 좌우 이동: cmd + shift + [ or ]
-- “//“로 시작되는 라인 찾을때: “^\/\/“
-- Focus editor 1 : cmd + 1
-- ctrl - / ctrl shift -: go back/forward
-- ./build/agora -c devel/config-single.yaml
-- 경로복사: option + cmd + c
-- Focus terminal: ctrl + `
+-------
+# Know
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
-##### Generate Private Key
+## Memo Google Docs
+- bit.ly/44TH7Ua : Memo Pub
+- bit.ly/357Is0p : Memo
+
+## 예상치 못한 컴파일 에러가 나올때
+- brew update && brew upgrade
+
+## 기본준비
+- Calendar 추가(Dev Team)
+- 스타일가이드: https://github.com/bpfkorea/agora/blob/v0.x.x/doc/Style.md, 상세한 설명 필요
+
+## Generate Private Key
 openssl ecparam -name secp256k1 -genkey -noout
 
-##### Mac XCode
+## Mac XCode
 brew install macvim --override-system-vim
 
 https://developer.apple.com/download/more/?=command%20line%20tools 에서 다운로드 필요
 xcode-select install
 sudo xcode-select --switch /Library/Developer/CommandLineTools
 
-
-# source를 다른 위치에 new_source라는 이름으로 복사(두가지 방법)
+## source를 다른 위치에 new_source라는 이름으로 복사(두가지 방법)
 cp -a source ~/temp/new_source
 
 find . -iname mainview*
 touch -t "201610041200" timestamp
 find . -type f -newer timestamp
 
-# 텍스트 찾기
+## 텍스트 찾기
 egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
 
 sudo xcode-select -s /Applications/XCode7.2/Xcode.app/
 To clear the terminal manually: Cmd + K
 ps aux | grep chrome
 
-# .bash_profile
+## .bash_profile
 export PS1="\W \u$ "
 
 hgrep() {
@@ -658,3 +863,30 @@ hgrep() {
 
 alias hello='echo Hi!Jay~'
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
+
+## Git submodule
+
+😈 Git submodule add 
+git submodule add https://github.com/example/lib.git external/lib
+git submodule update --init
+
+😈 Git submodule remove
+git rm --cached path_to_submodule
+Edit .gitmodules File
+Edit .git/config File
+rm -rf .git/modules/path_to_submodule
+git commit -am "Removed submodule"
+git push
+
+😈 Git submodule update
+git submodule update --remote
+
+😈 하나만 다운로드 할때
+git submodule update --init --recursive web2 
+
+## Tar
+Zip Foler
+tar --exclude='node_modules' -cvzf bccard.tar.gz bccard    //하위 폴더들에서 node_modules를 모두 제외시키기
+tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
+
+tar --exclude='.git' --exclude='node_modules' -cvzf
