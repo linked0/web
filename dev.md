@@ -1,6 +1,7 @@
 
 Table of Contents
 - [IDE](#ide)
+    - [Mac](#mac)
     - [VSCode](#vscode)
     - [Iterm2](#iterm2)
     - [VIM](#vim)
@@ -22,6 +23,44 @@ Table of Contents
         - [EL/CL](#elcl)
 
 # IDE
+## Mac
+##### 1) .ssh 복사
+##### 2) brew/zsh/iterm2/karabiner install
+```
+xcode-select —-install | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew install --cask iterm2 | brew install zsh | brew install karabiner-elements
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+
+echo $SHELL <== 이걸로 쉘 확인
+
+karabiner는 option+hjkl가 디폴트로 있음.
+
+##### 3) npm yarn docker install
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+npm install -g yarn
+brew install cask docker
+brew install cask docker-compose
+```
+https://www.docker.com/products/docker-desktop/ 도커 Desktop (linked0/**)
+
+##### 4) rust/postgresql install
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cargo install sqlx-cli
+```
+```
+brew update
+brew install postgresql
+brew services start postgresql
+```
+psql postgres <== 접속해볼 수 있음.
+
+##### 5) Whale, Miro, onenote, Visual Studio
+Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
+
 ##  VSCode
 Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 back: ctrl - , forward: shift ctrl -
@@ -59,7 +98,7 @@ screen -X -S session_id quit
 - screen -r -d 17288 <-- attatch되어 있는 것 detach
 
 brew install golang
-PATH=$PATH:$HOME/go/bin
+`PATH=$PATH:$HOME/go/bin`
 go install github.com/protolambda/zcli@latest
 zcli --help
 alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
