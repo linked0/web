@@ -16,3 +16,6 @@
 [submodule "poohgeth"]
 	path = poohgeth
 	url = https://github.com/poohgithub/poohgeth
+[submodule "poohprysm"]
+	path = poohprysm
+	url = https://github.com/poohgithub/poohprysm
