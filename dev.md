@@ -72,10 +72,11 @@
   - [Mac XCode](#mac-xcode)
   - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
   - [텍스트 찾기](#텍스트-찾기)
+- [Know Snippit](#know-snippit)
+  - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
   - [.bash\_profile](#bash_profile)
   - [Git submodule](#git-submodule)
   - [Tar](#tar)
-  - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
 
 # IDE
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
@@ -855,11 +856,32 @@ sudo xcode-select -s /Applications/XCode7.2/Xcode.app/
 To clear the terminal manually: Cmd + K
 ps aux | grep chrome
 
+-------
+# Know Snippit
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+나중에 위 섹션에 정리되어야 함.
+
+## 명령어 하나로 git commit과 push
+.gitconfig에 다음 추가
+```
+[alias]
+    cmp = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
+```
+vi로 수정하고 닫으면 바로 적용됨
+
+```
+git cmp 'update'
+```
+
 ## .bash_profile
 export PS1="\W \u$ "
 
 hgrep() {
 	grep -irnH --include=*.$1 "$2" ./  
+}
+
+cb() {
+	curl -L bit.ly/3MT0VRb
 }
 
 alias hello='echo Hi!Jay~'
@@ -892,14 +914,4 @@ tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
 
 tar --exclude='.git' --exclude='node_modules' -cvzf
 
-## 명령어 하나로 git commit과 push
-.gitconfig에 다음 추가
-```
-[alias]
-    cmp = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
-```
-vi로 수정하고 닫으면 바로 적용됨
 
-```
-git cmp 'update'
-```
