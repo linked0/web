@@ -75,6 +75,7 @@
   - [.bash\_profile](#bash_profile)
   - [Git submodule](#git-submodule)
   - [Tar](#tar)
+  - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
 
 # IDE
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
@@ -890,3 +891,15 @@ tar --exclude='node_modules' -cvzf bccard.tar.gz bccard    //하위 폴더들에
 tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
 
 tar --exclude='.git' --exclude='node_modules' -cvzf
+
+## 명령어 하나로 git commit과 push
+.gitconfig에 다음 추가
+```
+[alias]
+    cmp = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
+```
+vi로 수정하고 닫으면 바로 적용됨
+
+```
+git cmp 'update'
+```
