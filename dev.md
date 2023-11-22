@@ -51,7 +51,7 @@
   - [wait 함수의 인자](#wait-함수의-인자)
   - [Contract Size](#contract-size)
     - [Exceeds Gas Limit 에러](#exceeds-gas-limit-에러)
-- [Github Errors](#github-errors)
+- [Github](#github)
   - [github 계정 꼬였을때](#github-계정-꼬였을때)
   - [error: cannot run delta: No such file or directory](#error-cannot-run-delta-no-such-file-or-directory)
   - [기타 정리](#기타-정리)
@@ -73,7 +73,7 @@
   - [Mac XCode](#mac-xcode)
   - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
   - [텍스트 찾기](#텍스트-찾기)
-- [Know Snippit](#know-snippit)
+- [자주 사용](#자주-사용)
   - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
   - [.bash\_profile](#bash_profile)
   - [Git submodule](#git-submodule)
@@ -661,7 +661,7 @@ error Command failed with exit code 1.
 ```
 
 -------
-# Github Errors
+# Github
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
 ## github 계정 꼬였을때
@@ -875,7 +875,7 @@ To clear the terminal manually: Cmd + K
 ps aux | grep chrome
 
 -------
-# Know Snippit
+# 자주 사용
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 나중에 위 섹션에 정리되어야 함.
 
