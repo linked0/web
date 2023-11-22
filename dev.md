@@ -82,12 +82,12 @@
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 ## Mac Setting
 😈 1) .ssh 복사
+iCloud/pooh/ssh.tar
 😈 2) brew/zsh/iterm2/karabiner install
 ```
 xcode-select —-install | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install --cask iterm2 | brew install zsh | brew install karabiner-elements
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 echo $SHELL <== 이걸로 쉘 확인
