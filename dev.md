@@ -2,18 +2,20 @@
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 - [IDE](#ide)
   - [Mac Setting](#mac-setting)
-  - [VSCode](#vscode)
-  - [iterm2](#iterm2)
+  - [VSCode 단축키](#vscode-단축키)
+  - [iterm2 단축키](#iterm2-단축키)
   - [Command](#command)
   - [Screen](#screen)
   - [Finder](#finder)
+- [ChatGPT-Bard-Google](#chatgpt-bard-google)
+  - [패키지 상세 정보가 필요할때](#패키지-상세-정보가-필요할때)
+  - [에러가 날때 이런식으로 물어보면 됨](#에러가-날때-이런식으로-물어보면-됨)
 - [Workspace](#workspace)
-  - [Slack](#slack)
 - [Blockchain](#blockchain)
   - [localnet 실행하기](#localnet-실행하기)
   - [clique in genesis.json](#clique-in-genesisjson)
   - [BOA 유통량 API](#boa-유통량-api)
-- [Dev](#dev)
+- [Dev Settings](#dev-settings)
   - [Node workspaces](#node-workspaces)
   - [TypsScript/Nodejs](#typsscriptnodejs)
   - [Hardhat / solidity](#hardhat--solidity)
@@ -26,22 +28,14 @@
   - [poohnet (EL/CL)](#poohnet-elcl)
   - [zksync](#zksync)
   - [Foundry](#foundry)
-- [AWS](#aws)
-  - [AWS에 Load Balancer 추가시](#aws에-load-balancer-추가시)
-  - [node3에 들어가서 postgresql 도커 접속방법](#node3에-들어가서-postgresql-도커-접속방법)
-  - [WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!](#warning-remote-host-identification-has-changed)
-  - [public key 확인 및 깃헙에 추가하기](#public-key-확인-및-깃헙에-추가하기)
-  - [접속](#접속)
-  - [AWS에서 파일 전송](#aws에서-파일-전송)
-  - [Load Balancer](#load-balancer)
-  - [URL로 접근이 안되는 문제](#url로-접근이-안되는-문제)
-  - [Target Group](#target-group)
-  - [AWS 타임존 변경](#aws-타임존-변경)
-- [Node Errors](#node-errors)
+- [NodeJS/TypeScript](#nodejstypescript)
+  - [Event 인자들중 하나만 체크](#event-인자들중-하나만-체크)
+  - [anyValue function](#anyvalue-function)
   - [an issue with fsevents](#an-issue-with-fsevents)
   - [로컬 링크 만들기](#로컬-링크-만들기)
   - [NPM publish 에러](#npm-publish-에러)
-- [Smart Contract](#smart-contract)
+- [Smart Contract/Hardhat](#smart-contracthardhat)
+  - [Hardhat config defaultNetwork](#hardhat-config-defaultnetwork)
   - [create2 함수](#create2-함수)
   - [트랜잭션 취소하는 방법](#트랜잭션-취소하는-방법)
   - [Nonce 얻어내기](#nonce-얻어내기)
@@ -51,6 +45,7 @@
   - [wait 함수의 인자](#wait-함수의-인자)
   - [Contract Size](#contract-size)
   - [Exceeds Gas Limit 에러](#exceeds-gas-limit-에러)
+  - [hardhat-gas-reporter](#hardhat-gas-reporter)
 - [Github](#github)
   - [github 계정 꼬였을때](#github-계정-꼬였을때)
   - [error: cannot run delta: No such file or directory](#error-cannot-run-delta-no-such-file-or-directory)
@@ -70,6 +65,17 @@
   - [Move cursor to end of file in vim](#move-cursor-to-end-of-file-in-vim)
   - [한글 깨지는 문제](#한글-깨지는-문제)
   - [vimrc (~/.vimrc)](#vimrc-vimrc)
+- [AWS](#aws)
+  - [AWS에 Load Balancer 추가시](#aws에-load-balancer-추가시)
+  - [node3에 들어가서 postgresql 도커 접속방법](#node3에-들어가서-postgresql-도커-접속방법)
+  - [WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!](#warning-remote-host-identification-has-changed)
+  - [public key 확인 및 깃헙에 추가하기](#public-key-확인-및-깃헙에-추가하기)
+  - [접속](#접속)
+  - [AWS에서 파일 전송](#aws에서-파일-전송)
+  - [Load Balancer](#load-balancer)
+  - [URL로 접근이 안되는 문제](#url로-접근이-안되는-문제)
+  - [Target Group](#target-group)
+  - [AWS 타임존 변경](#aws-타임존-변경)
 - [Know](#know)
   - [Memo Google Docs](#memo-google-docs)
   - [예상치 못한 컴파일 에러가 나올때](#예상치-못한-컴파일-에러가-나올때)
@@ -132,7 +138,7 @@ Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 😈 6) 기타
 - Markdown All in One: 마크다운 컨텐트 만들어주는 VSCode 플러그인
 
-###  VSCode
+###  VSCode 단축키
 - Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 - back: ctrl - , forward: shift ctrl -
 - ctrl tab: recent files
@@ -144,7 +150,7 @@ Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 
 Bigger Font: cmd + "+"
 
-### iterm2
+### iterm2 단축키
 Next split: cmd + ]
 
 ### Command
@@ -177,10 +183,21 @@ screen -X -S session_id quit
 ### Finder
 = hidden files: Command + Shift + . (period key)
 
+------
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+## ChatGPT-Bard-Google
+
+### 패키지 상세 정보가 필요할때
+Where can I find the details of the "ethers" package?
+
+### 에러가 날때 이런식으로 물어보면 됨
+The error outputs from the line "const utils_1 = require('ethers/utils');" :
+ at Function.Module._resolveFilename (node:internal/modules/cjs/loader:1028:15) at Function.Module._load (node:internal/modules/cjs/loader:873:27) at Module.require (node:internal/modules/cjs/loader:1100:19)     at require (node:internal/modules/cjs/helpers:119:18)     at Object.<anonymous> (/Users/hyunjaelee/work/pooh-swap-contracts/test/shared/utilities.js:40:17)     at Module._compile (node:internal/modules/cjs/loader:1198:14)     at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)     at Module.load (node:internal/modules/cjs/loader:1076:32)     at Function.Module._load (node:internal/modules/cjs/loader:911:12)     at Module.require (node:internal/modules/cjs/loader:1100:19) {   code: 'MODULE_NOT_FOUND',
+
+------
 ## Workspace
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
-### Slack
 😈 github subscribe
 ```
 /github subscribe  bosagora/boa-space-contracts issues pulls commits releases deployments reviews comments
@@ -239,7 +256,7 @@ The epoch length, set here as 30000, is significant in Clique PoA. An epoch is a
 - 총발행량: https://api.bosplatformfoundation.io/boa_supply
 
 --------
-## Dev
+## Dev Settings
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
 
@@ -449,69 +466,40 @@ greeter-example에서 deploy-test와 greet-test진행
 
 ### Foundry
 
--------
-## AWS
-🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
-
-### AWS에 Load Balancer 추가시 
-• Certifacate Manager를 통해서 도메인 추가
-	- "Create records in Route 53" 해줘야 함.
-
-### node3에 들어가서 postgresql 도커 접속방법
-sudo docker exec -it ec22f5036e09 bash
-psql -d db -U postgres -W
-
-### WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
-Add correct host key in /Users/hyunjaelee/.ssh/known_hosts to get rid of this message.
-
-### public key 확인 및 깃헙에 추가하기
-- `cat .ssh/id_rsa_linked0.pub`
-- 계정의 세팅으로 들어가면 `SSH and GPG keys`에 집어넣으면 됨.
-- git clone할 때 sudo를 넣어야 `Load key … : Permission denied` 에러가 발생하지 않음.
-- `git clone https://github.com/linked0/agora.git` 이건 잘되는 ssh로 받을때 안됨
-
-### 접속
-```
-ssh -i "pooh-seoul.pem" ubuntu@ec2-52-79-227-164.ap-northeast-2.compute.amazonaws.com
-```
-
-### AWS에서 파일 전송 
-* 가져오기
-```
-scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt .
-```
-* 보내기
-```
-scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
-```
-
-### Load Balancer 
-- Mappings는 모든 존으로
-- Security Group은 AgoraDevNet_ELB
-- 리스너 지정: Target Group지정
-- 나중에 80에 대해서 443으로 Redirect
-
-### URL로 접근이 안되는 문제
-- 실패상황황인데, CNAME과 A 설정만 맞으면 될 것 같음 (230303)
-
-### Target Group
-- Basic configuration: Instances
-- Protocol/Port 지정
-- Protocol version: HTTP1
-- Health checks는 그대로 두면 됨.
-
-### AWS 타임존 변경
-```shell
-$tzselect
-```
-.profile에 다음을 추가하고 재로그인
-```
-TZ='Asia/Seoul'; export TZ
-```
 
 -------
-## Node Errors
+## NodeJS/TypeScript
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+
+### Event 인자들중 하나만 체크
+```
+await expect(lock.withdraw())
+    .to.emit(lock, "Withdrawal")
+    .withArgs(lockedAmount, anyValue);
+```
+위 코드를 아래와 같이 변경. anyValue가 제대로 동작 안함.
+```
+const tx = await lock.withdraw();
+const receipt = await tx.wait();
+// Find the Withdrawal event in the transaction receipt
+const withdrawalEvent = receipt.events.find((e: any) => e.event === "Withdrawal");
+
+// Check if the Withdrawal event was emitted
+expect(withdrawalEvent, "Withdrawal event should be emitted").to.not.be.undefined;
+
+// Check only the first argument of the Withdrawal event
+expect(withdrawalEvent.args[0]).to.equal(lockedAmount);
+```
+
+### anyValue function
+import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
+wait expect(lock.withdraw())
+          .to.emit(lock, "Withdrawal")
+          .withArgs(lockedAmount, anyValue); // We accept any value as `when` arg
+  :error occured like this, 
+AssertionError: Expected 1732243098 to equal function anyValue() {
+    return true;
+}, but they have different lengths
 
 ### an issue with fsevents
 ```
@@ -568,8 +556,11 @@ npm ERR! A complete log of this run can be found in:
 npm public --access public을 사용해야 함.
 
 -------
-## Smart Contract
+## Smart Contract/Hardhat
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+
+### Hardhat config defaultNetwork
+참고: https://github.com/poohgithub/zksync-era/blob/main/poohnet/paymaster-examples/contracts/hardhat.config.ts
 
 ### create2 함수
 아래 함수는 UniswapV2Factory에서 사용되는 코드임
@@ -693,6 +684,10 @@ Error: Error: processing response error (body="{\"jsonrpc\":\"2.0\",\"id\":151,\
 }
 error Command failed with exit code 1.
 ```
+
+### hardhat-gas-reporter
+hardhat.config.ts 참고: https://github.com/poohgithub/zksync-era/blob/main/poohnet/paymaster-examples/contracts/hardhat.config.ts
+
 
 -------
 ## Github
@@ -880,6 +875,66 @@ set expandtab " spaces for tab
 set incsearch
 set mouse=a
 
+-------
+
+## AWS
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+
+### AWS에 Load Balancer 추가시 
+• Certifacate Manager를 통해서 도메인 추가
+	- "Create records in Route 53" 해줘야 함.
+
+### node3에 들어가서 postgresql 도커 접속방법
+sudo docker exec -it ec22f5036e09 bash
+psql -d db -U postgres -W
+
+### WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+Add correct host key in /Users/hyunjaelee/.ssh/known_hosts to get rid of this message.
+
+### public key 확인 및 깃헙에 추가하기
+- `cat .ssh/id_rsa_linked0.pub`
+- 계정의 세팅으로 들어가면 `SSH and GPG keys`에 집어넣으면 됨.
+- git clone할 때 sudo를 넣어야 `Load key … : Permission denied` 에러가 발생하지 않음.
+- `git clone https://github.com/linked0/agora.git` 이건 잘되는 ssh로 받을때 안됨
+
+### 접속
+```
+ssh -i "pooh-seoul.pem" ubuntu@ec2-52-79-227-164.ap-northeast-2.compute.amazonaws.com
+```
+
+### AWS에서 파일 전송 
+* 가져오기
+```
+scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt .
+```
+* 보내기
+```
+scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
+```
+
+### Load Balancer 
+- Mappings는 모든 존으로
+- Security Group은 AgoraDevNet_ELB
+- 리스너 지정: Target Group지정
+- 나중에 80에 대해서 443으로 Redirect
+
+### URL로 접근이 안되는 문제
+- 실패상황황인데, CNAME과 A 설정만 맞으면 될 것 같음 (230303)
+
+### Target Group
+- Basic configuration: Instances
+- Protocol/Port 지정
+- Protocol version: HTTP1
+- Health checks는 그대로 두면 됨.
+
+### AWS 타임존 변경
+```shell
+$tzselect
+```
+.profile에 다음을 추가하고 재로그인
+```
+TZ='Asia/Seoul'; export TZ
+```
 -------
 ## Know
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
