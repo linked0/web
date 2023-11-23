@@ -68,11 +68,11 @@
   - [files 파일 만들기](#files-파일-만들기)
   - [basics](#basics)
   - [Move cursor to end of file in vim](#move-cursor-to-end-of-file-in-vim)
+  - [한글 깨지는 문제](#한글-깨지는-문제)
   - [vimrc (~/.vimrc)](#vimrc-vimrc)
 - [Know](#know)
   - [Memo Google Docs](#memo-google-docs)
   - [예상치 못한 컴파일 에러가 나올때](#예상치-못한-컴파일-에러가-나올때)
-  - [기본준비](#기본준비)
   - [Generate Private Key](#generate-private-key)
   - [Mac XCode](#mac-xcode)
   - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
@@ -80,8 +80,8 @@
 - [자주 사용](#자주-사용)
   - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
   - [.bash\_profile](#bash_profile)
-  - [Git submodule](#git-submodule)
-  - [Tar](#tar)
+  - [git submodule](#git-submodule)
+  - [tar](#tar)
 
 ## IDE
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
@@ -193,6 +193,10 @@ screen -X -S session_id quit
 ```
 /github subscribe bosagora/boa-space-seaport-js issues pulls commits releases deployments reviews comments
 ```
+
+😈 Calendar 추가(Dev Team)
+😈 스타일가이드: https://github.com/bpfkorea/agora/blob/v0.x.x/doc/Style.md, 상세한 설명 필요
+
 
 --------
 ## Blockchain
@@ -458,51 +462,59 @@ sudo docker exec -it ec22f5036e09 bash
 psql -d db -U postgres -W
 
 ### WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
-* 아래와 같이 수정
-*  Add correct host key in /Users/hyunjaelee/.ssh/known_hosts to get rid of this message.
+Add correct host key in /Users/hyunjaelee/.ssh/known_hosts to get rid of this message.
 
 ### public key 확인 및 깃헙에 추가하기
-- cat .ssh/id_rsa_linked0.pub
-- 계정의 세팅으로 들어가면 “SSH and GPG keys”에 집어넣으면 됨.
-- git clone할 때 sudo를 넣어야 “Load key … : Permission denied” 에러가 발생하지 않음.
-- “git clone https://github.com/linked0/agora.git” 이건 잘되는 ssh로 받을때 안됨
+- `cat .ssh/id_rsa_linked0.pub`
+- 계정의 세팅으로 들어가면 `SSH and GPG keys`에 집어넣으면 됨.
+- git clone할 때 sudo를 넣어야 `Load key … : Permission denied` 에러가 발생하지 않음.
+- `git clone https://github.com/linked0/agora.git` 이건 잘되는 ssh로 받을때 안됨
 
 ### 접속
+```
 ssh -i "pooh-seoul.pem" ubuntu@ec2-52-79-227-164.ap-northeast-2.compute.amazonaws.com
+```
 
 ### AWS에서 파일 전송 
 * 가져오기
-    * scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt .
+```
+scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt .
+```
 * 보내기
-    * scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
+```
+scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
+```
 
 ### Load Balancer 
-	- Mappings는 모든 존으로
-	- Security Group은 AgoraDevNet_ELB
-	- 리스너 지정: Target Group지정
-	- 나중에 80에 대해서 443으로 Redirect
+- Mappings는 모든 존으로
+- Security Group은 AgoraDevNet_ELB
+- 리스너 지정: Target Group지정
+- 나중에 80에 대해서 443으로 Redirect
 
 ### URL로 접근이 안되는 문제
 - 실패상황황인데, CNAME과 A 설정만 맞으면 될 것 같음 (230303)
 
 ### Target Group
-	- Basic configuration: Instances
-	- Protocol/Port 지정
-	- Protocol version: HTTP1
-	- Health checks는 그대로 두면 됨.
-
+- Basic configuration: Instances
+- Protocol/Port 지정
+- Protocol version: HTTP1
+- Health checks는 그대로 두면 됨.
 
 ### AWS 타임존 변경
-1) $ tzselect
-2) .profile에 다음을 추가하고 재로그인
+```shell
+$tzselect
+```
+.profile에 다음을 추가하고 재로그인
+```
 TZ='Asia/Seoul'; export TZ
+```
 
 -------
 ## Node Errors
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
 ### an issue with fsevents
-
+```
 warning Error running install script for optional dependency: "/Users/hyunjaelee/node_modules/@remix-project/remixd/node_modules/fsevents: Command failed.
 Exit code: 1
 Command: node install.js
@@ -527,22 +539,23 @@ Emitted 'error' event on ChildProcess instance at:
 success Saved lockfile.
 warning No license field
 success Saved 568 new dependencies.
+```
 
-= 해결
-1> Add this to your package.json file, then re-run yarn (or yarn install):
-
+🏆 해결
+1. Add this to your package.json file, then re-run yarn (or yarn install):
 "resolutions": {
   "fsevents": "1.2.9"
 }
-2> 이렇게 하면 node-gyp가 설치됨
-3> 그러고나서 위의 resolutions 부분을 제거하고 다시 yarn을 실행해서 fsevents를 최선으로 재설치
-4> 안 그러면 "Typeerror: fsevents.watch is not a function" 발생할 수 있음.
+2. 이렇게 하면 node-gyp가 설치됨
+3. 그러고나서 위의 resolutions 부분을 제거하고 다시 yarn을 실행해서 fsevents를 최선으로 재설치
+4. 안 그러면 "Typeerror: fsevents.watch is not a function" 발생할 수 있음.
 
 
 ### 로컬 링크 만들기
 	- yarn add /Users/hyunjaelee/work/hardhat-zksync/packages/hardhat-zksync-deploy
 
 ### NPM publish 에러
+```
 npm notice Publishing to https://registry.npmjs.org/
 This operation requires a one-time password.
 Enter OTP: 978999
@@ -550,8 +563,8 @@ npm ERR! code E402
 npm ERR! 402 Payment Required - PUT https://registry.npmjs.org/@poohnet%2fpooh-swap-v2-core - You must sign up for private packages
 
 npm ERR! A complete log of this run can be found in:
-
-= 해결
+```
+🏆 해결
 npm public --access public을 사용해야 함.
 
 -------
@@ -599,28 +612,27 @@ In your code, salt is generated from the hash of two token addresses, which help
 그냥 typechain-types 폴더를 쓰지 않기로 함 
 
 ### Error: network does not support ENS
-- 다음과 같이 VAULT_CONTRACT 주소 잘못됨, 즉, 0x가 두번 쓰이고 있었음.
-    - VAULT_CONTRACT=0x0x7f28F281d57AC7d99A8C2FAd2d37271c2c9c67D6
-		
+다음과 같이 VAULT_CONTRACT 주소 잘못됨, 즉, 0x가 두번 쓰이고 있었음.
+VAULT_CONTRACT=0x0x7f28F281d57AC7d99A8C2FAd2d37271c2c9c67D6		
 		
 ### L1-governance 배포 에러
+```
 L1-governance git:(main) ✗ yarn hardhat run --network localnet ./scripts/deploy.ts 
 yarn run v1.22.19
 warning package.json: No license field
 $ /Users/hyunjaelee/work/tutorials/L1-governance/node_modules/.bin/hardhat run --network localnet ./scripts/deploy.ts
 TypeError: (0 , ethers_1.getAddress) is not a function
+```
 
-* 다음의 세단계 필요
-- yarn add --dev hardhat @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers
-- const deployed = await contract.waitForDeployment();
-- console.log(`Governance contract was successfully deployed at ${await deployed.getAddress()}`);
+🏆 다음의 세단계 필요
+1. yarn add --dev hardhat @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers
+2. const deployed = await contract.waitForDeployment();
+3. console.log(`Governance contract was successfully deployed at ${await deployed.getAddress()}`);
 
-* 원인
+🏆 원인
 - ethers 버전이 6으로 업그레이드되면서 함수명이 바뀌었음
-- 참고 문서 여기
-
-	• 기타
-		○ 0xAe9Bc22B80D98aD3350a35118F723d36d8E4e141
+- 기타
+  - 0xAe9Bc22B80D98aD3350a35118F723d36d8E4e141
 
 ### wait 함수의 인자
 The wait() function of ContractTransaction takes a single optional argument, which is the timeout in blocks. The default timeout is 10 blocks. This means that the wait() function will block for up to 10 blocks before throwing an error if the transaction has not been confirmed.
@@ -755,7 +767,7 @@ git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%
 - git clone git@github.com:bosagora/boa-space-graph-node.git
     
 😈 Organization만들고, 포크하기 (fork)
-- poohgithub organization에서 Setting->Members privileges->Allow forking of private repositories.
+poohgithub organization에서 Setting->Members privileges->Allow forking of private repositories.
 
 
 -------
@@ -765,8 +777,9 @@ git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%
 ### failed to compute cache key: "/target/debug/zksync_server" not found: not found
 Error: Child process exited with code 1
 
-==> .dockerignore에서 포함되어 있는 것은 아닌지 확인 필요
-==> 만약 로컬 시스템에서 복사되는 것이라면 원래 없는 것일 수도 있음. 예를 들어 컴파일을 해야 나오는 파일이던가 하면 그런일이 발생
+🏆 해결
+- .dockerignore에서 포함되어 있는 것은 아닌지 확인 필요
+- 만약 로컬 시스템에서 복사되는 것이라면 원래 없는 것일 수도 있음. 예를 들어 컴파일을 해야 나오는 파일이던가 하면 그런일이 발생
 
 -------
 ## Mac
@@ -840,7 +853,7 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 :$
 ```
 
-* 한글 깨지는 문제
+### 한글 깨지는 문제
 set enc=utf-8
 
 ### vimrc (~/.vimrc)
@@ -867,8 +880,6 @@ set expandtab " spaces for tab
 set incsearch
 set mouse=a
 
-
-
 -------
 ## Know
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
@@ -879,10 +890,6 @@ set mouse=a
 
 ### 예상치 못한 컴파일 에러가 나올때
 - brew update && brew upgrade
-
-### 기본준비
-- Calendar 추가(Dev Team)
-- 스타일가이드: https://github.com/bpfkorea/agora/blob/v0.x.x/doc/Style.md, 상세한 설명 필요
 
 ### Generate Private Key
 openssl ecparam -name secp256k1 -genkey -noout
@@ -945,14 +952,14 @@ cb() {
 alias hello='echo Hi!Jay~'
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 
-### Git submodule
+### git submodule
 
-😈 Git submodule add 
+😈 git submodule add 
 ```
 git submodule add https://github.com/example/lib.git external/lib
 git submodule update --init
 ```
-😈 Git submodule remove
+😈 git submodule remove
 ```
 git rm --cached path_to_submodule
 Edit .gitmodules File
@@ -961,7 +968,7 @@ rm -rf .git/modules/path_to_submodule
 git commit -am "Removed submodule"
 git push
 ```
-😈 Git submodule update
+😈 git submodule update
 ```
 git submodule update --remote
 ```
@@ -969,11 +976,10 @@ git submodule update --remote
 ```
 git submodule update --init --recursive web2 
 ```
-### Tar
+
+### tar
 Zip Foler
 tar --exclude='node_modules' -cvzf bccard.tar.gz bccard    //하위 폴더들에서 node_modules를 모두 제외시키기
 tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
 
 tar --exclude='.git' --exclude='node_modules' -cvzf
-
-
