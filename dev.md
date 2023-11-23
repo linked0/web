@@ -84,10 +84,10 @@
   - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
   - [텍스트 찾기](#텍스트-찾기)
 - [자주 사용](#자주-사용)
-  - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
-  - [.bash\_profile](#bash_profile)
-  - [git submodule](#git-submodule)
-  - [tar](#tar)
+  - [🌸명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
+  - [🚘.bash\_profile](#bash_profile)
+  - [🌟git submodule](#git-submodule)
+  - [🌼tar](#tar)
 
 ## IDE
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
@@ -972,10 +972,10 @@ ps aux | grep chrome
 
 -------
 ## 자주 사용
-🏓🦋🏓🦋🏓🦋🏓🦋🏓🦋🏓🦋🏓🦋🏓🦋🏓🦋🏓🦋
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 나중에 위 섹션에 정리되어야 함.
 
-### 명령어 하나로 git commit과 push
+### 🌸명령어 하나로 git commit과 push
 .gitconfig에 다음 추가하고 vi종료하면 바로 적용됨
 ```
 [alias]
@@ -993,7 +993,7 @@ git config alias.acp '! git commit -a -m "commit" && git push'
 
 
 
-### .bash_profile
+### 🚘.bash_profile
 export PS1="\W \u$ "
 
 hgrep() {
@@ -1007,7 +1007,7 @@ cb() {
 alias hello='echo Hi!Jay~'
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 
-### git submodule
+### 🌟git submodule
 
 😈 git submodule add 
 ```
@@ -1032,7 +1032,7 @@ git submodule update --remote
 git submodule update --init --recursive web2 
 ```
 
-### tar
+### 🌼tar
 Zip Foler
 tar --exclude='node_modules' -cvzf bccard.tar.gz bccard    //하위 폴더들에서 node_modules를 모두 제외시키기
 tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
