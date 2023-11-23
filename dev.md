@@ -4,8 +4,8 @@
   - [Mac Setting](#mac-setting)
   - [VSCode](#vscode)
   - [iterm2](#iterm2)
-  - [VIM](#vim)
   - [Command](#command)
+  - [Screen](#screen)
   - [Finder](#finder)
 - [Workspace](#workspace)
   - [Slack](#slack)
@@ -54,6 +54,9 @@
 - [Github](#github)
   - [github 계정 꼬였을때](#github-계정-꼬였을때)
   - [error: cannot run delta: No such file or directory](#error-cannot-run-delta-no-such-file-or-directory)
+  - [git submodule update 에러 발생시](#git-submodule-update-에러-발생시)
+  - [내가 올린 브랜치에 대해서 자동으로 PR추천을 할수 있도록 하기.](#내가-올린-브랜치에-대해서-자동으로-pr추천을-할수-있도록-하기)
+  - [Merge pull request 발생하지 않도록 Full Requests 설정](#merge-pull-request-발생하지-않도록-full-requests-설정)
   - [기타 정리](#기타-정리)
 - [Dev Errors](#dev-errors)
   - [failed to compute cache key: "/target/debug/zksync\_server" not found: not found](#failed-to-compute-cache-key-targetdebugzksync_server-not-found-not-found)
@@ -62,6 +65,7 @@
   - [Mac Spotlight에서 특정 애플리케이션 찾지 못할 때](#mac-spotlight에서-특정-애플리케이션-찾지-못할-때)
   - [Mac에서 Sublime Text를 커맨트창에서 실행시키기](#mac에서-sublime-text를-커맨트창에서-실행시키기)
 - [vi](#vi)
+  - [files 파일 만들기](#files-파일-만들기)
   - [basics](#basics)
   - [Move cursor to end of file in vim](#move-cursor-to-end-of-file-in-vim)
   - [vimrc (~/.vimrc)](#vimrc-vimrc)
@@ -143,10 +147,6 @@ Bigger Font: cmd + "+"
 ### iterm2
 Next split: cmd + ]
 
-### VIM
-find . -type f -not -path .*/node_modules/* -not -path .*/.git/* -not -path .*/venv/* > files
-open file: ctrl w, ctrl f
-
 ### Command
 egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
 tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
@@ -158,13 +158,9 @@ opt cmd b - Bookmark
 
 ssh-keygen -t rsa
 
-screen -X -S session_id quit
-- ctrl a+d // exit
-- screen -S el -X quit
-- screen -r -d 17288 <-- attatch되어 있는 것 detach
-
 brew install golang
 `PATH=$PATH:$HOME/go/bin`
+
 go install github.com/protolambda/zcli@latest
 zcli --help
 alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
@@ -172,6 +168,12 @@ alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
 하위 동일 폴더 지우기
 find . -type d -name 'temp' -exec rm -rf {} +
 
+### Screen
+screen -X -S session_id quit
+- ctrl a+d // exit
+- screen -S el -X quit
+- screen -r -d 17288 <-- attatch되어 있는 것 detach
+  
 ### Finder
 = hidden files: Command + Shift + . (period key)
 
@@ -182,6 +184,14 @@ find . -type d -name 'temp' -exec rm -rf {} +
 😈 github subscribe
 ```
 /github subscribe  bosagora/boa-space-contracts issues pulls commits releases deployments reviews comments
+```
+
+```
+/github subscribe zeroone-boa/validators reviews comments
+```
+이것도 방법, 위의 것과 비교 필요: 
+```
+/github subscribe bosagora/boa-space-seaport-js issues pulls commits releases deployments reviews comments
 ```
 
 --------
@@ -691,6 +701,25 @@ and the repository exists.
 - brew install git-delta.
 
 
+### git submodule update 에러 발생시 
+```
+git rm --cached path_to_submodule
+Edit .gitmodules File
+Edit .git/config File
+rm -rf .git/modules/path_to_submodule
+git commit -am "Removed submodule"
+git push
+```
+
+### 내가 올린 브랜치에 대해서 자동으로 PR추천을 할수 있도록 하기.
+- Organization의 해당 리파지토리로 이동
+- Settings -> General 이동
+- Always suggest updating pull request branches 를
+ 
+### Merge pull request 발생하지 않도록 Full Requests 설정
+- Repository Setting -> Pull Requests
+  - Uncheck: "Allow merge commits", "Allow squash merging" 
+
 ### 기타 정리
 - git reset --hard michael/add-npm-script-prettier
 	git remote update 한번 해줘야 함.
@@ -709,25 +738,12 @@ and the repository exists.
 		§ git revert HEAD~2..HEAD
 	※ Similarly, you can revert a range of commits using commit hashes (non inclusive of first hash):
 		§ git revert 0d1d7fc..a867b4a
-- 슬랙 연동: /github subscribe zeroone-boa/validators reviews comments
-	이것도 방법, 위의 것과 비교 필요: /github subscribe bosagora/boa-space-seaport-js issues pulls commits releases deployments reviews comments
 - git clone시 폴더명 지정
 	git clone git@github.com:whatever folder-name
 - Fatal: Not possible to fast-forward, aborting
 	git pull --rebase.
-- Merge pull request 발생하지 않도록 Full Requests 설정
-	Repository Setting -> Pull Requests
-		§ Uncheck: "Allow merge commits", "Allow squash merging" 
-- 내가 올린 브랜치에 대해서 자동으로 PR추천을 할수 있도록 하기.
-	- Organization의 해당 리파지토리로 이동
-	- Settings -> General 이동
-	- Always suggest updating pull request branches 를 
+
 - git diff --name-only HEAD~1 HEAD~2
-
-- 단번에 add & commit & push
-git config alias.acp '! git commit -a -m "commit" && git push'
-그리고 나서 git acp 하면됨
-
 - git log with graph
 git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%an%C(reset)%C(bold yellow)%d%C(reset) %C(dim white)- %s%C(reset)' --all
 
@@ -796,10 +812,16 @@ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/loca
 ## vi
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
-### basics
+### files 파일 만들기
+find . -type f -not -path .*/node_modules/* -not -path .*/.git/* -not -path .*/venv/* > files
+
 find ./ -type f > files
 find . -type file -name '*.js' -o -name '*.json' > files  //-o는 or를 뜻함
 find . -type f -not -path './node_modules/*' -not -path './chaindata/*' > files
+
+open file: ctrl w, ctrl f
+
+### basics
 
 g t: Next tab, 그냥 에디터에서 g와 t를 치면 됨
 g T: Prior tab
@@ -892,16 +914,22 @@ ps aux | grep chrome
 나중에 위 섹션에 정리되어야 함.
 
 ### 명령어 하나로 git commit과 push
-.gitconfig에 다음 추가
+.gitconfig에 다음 추가하고 vi종료하면 바로 적용됨
 ```
 [alias]
     cmp = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
 ```
-vi로 수정하고 닫으면 바로 적용됨
-
 ```
 git cmp 'update'
 ```
+
+아래도 방법
+```
+git config alias.acp '! git commit -a -m "commit" && git push'
+그리고 나서 git acp 하면됨
+```
+
+
 
 ### .bash_profile
 export PS1="\W \u$ "
