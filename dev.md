@@ -11,10 +11,9 @@
   - [Slack](#slack)
 - [Blockchain](#blockchain)
   - [localnet 실행하기](#localnet-실행하기)
+  - [clique in genesis.json](#clique-in-genesisjson)
   - [BOA 유통량 API](#boa-유통량-api)
 - [Dev](#dev)
-  - [create2 함수](#create2-함수)
-  - [clique in genesis.json](#clique-in-genesisjson)
   - [Node workspaces](#node-workspaces)
   - [TypsScript/Nodejs](#typsscriptnodejs)
   - [Hardhat / solidity](#hardhat--solidity)
@@ -42,9 +41,10 @@
   - [an issue with fsevents](#an-issue-with-fsevents)
   - [로컬 링크 만들기](#로컬-링크-만들기)
   - [NPM publish 에러](#npm-publish-에러)
-- [Smart Contract Errors](#smart-contract-errors)
+- [Smart Contract](#smart-contract)
+  - [create2 함수](#create2-함수)
   - [트랜잭션 취소하는 방법](#트랜잭션-취소하는-방법)
-- [Nonce 얻어내기](#nonce-얻어내기)
+  - [Nonce 얻어내기](#nonce-얻어내기)
   - [Type error: Cannot find module '../typechain-types' or its corresponding type declarations.](#type-error-cannot-find-module-typechain-types-or-its-corresponding-type-declarations)
   - [Error: network does not support ENS](#error-network-does-not-support-ens)
   - [L1-governance 배포 에러](#l1-governance-배포-에러)
@@ -56,7 +56,7 @@
   - [error: cannot run delta: No such file or directory](#error-cannot-run-delta-no-such-file-or-directory)
   - [기타 정리](#기타-정리)
 - [Dev Errors](#dev-errors)
-- [failed to compute cache key: "/target/debug/zksync\_server" not found: not found](#failed-to-compute-cache-key-targetdebugzksync_server-not-found-not-found)
+  - [failed to compute cache key: "/target/debug/zksync\_server" not found: not found](#failed-to-compute-cache-key-targetdebugzksync_server-not-found-not-found)
 - [Mac](#mac)
   - [MacVim을 Spotlight에서 보도록 하기](#macvim을-spotlight에서-보도록-하기)
   - [Mac Spotlight에서 특정 애플리케이션 찾지 못할 때](#mac-spotlight에서-특정-애플리케이션-찾지-못할-때)
@@ -190,41 +190,6 @@ find . -type d -name 'temp' -exec rm -rf {} +
 ### localnet 실행하기
 npx hardhat node
 
-### BOA 유통량 API
-- 유통량: https://api.bosplatformfoundation.io/boa_circulating_supply
-- 총발행량: https://api.bosplatformfoundation.io/boa_supply
-
---------
-## Dev
-🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
-
-### create2 함수
-아래 함수는 UniswapV2Factory에서 사용되는 코드임
-
-```solidity
-bytes memory bytecode = type(UniswapV2Pair).creationCode;
-bytes32 salt = keccak256(abi.encodePacked(token0, token1));
-assembly {
-    pair := create2(0, add(bytecode, 32), mload(bytecode), salt)
-}
-```
-
-Unlike create, which generates the contract address based on the address of the creator and how many contracts it has created (nonce), create2 generates the address using the creator's address, a provided salt, and the hash of the initialization code. This allows for predictable computation of the contract's address before the contract is actually deployed.
-
-- Endowment (0): This is the amount of Ether, in wei, that is sent to the new contract upon creation. In this case, it's set to 0, meaning no Ether is sent.
-
-- Memory Start (add(bytecode, 32)):
-bytecode is the initialization code for the contract you want to create. In Solidity, contract bytecode is often stored in an array, and this array includes a 32-byte length prefix.
-add(bytecode, 32) calculates the starting point of the actual bytecode, skipping the first 32 bytes which represent the length of the bytecode. This is necessary because create2 requires a pointer to the start of the actual code, not the length prefix.
-Size of Code (mload(bytecode)):
-
-- mload(bytecode) is used to load the first 32 bytes of bytecode, which, as mentioned, contain its size. This tells create2 how much of the memory starting from add(bytecode, 32) it should read and use as the initialization code.
-Salt (salt):
-
-- The salt is a 32-byte value that you provide. It's part of the formula used to calculate the address of the new contract.
-In your code, salt is generated from the hash of two token addresses, which helps ensure that each pair of tokens gets a unique contract address.
-
-
 ### clique in genesis.json
 ```json
 {
@@ -254,6 +219,16 @@ This refers to the block time, the time interval between consecutive blocks. In 
 
 - "epoch":
 The epoch length, set here as 30000, is significant in Clique PoA. An epoch is a period after which the list of authorized signers can be updated. In Clique, every epoch blocks, a special block called the epoch transition block is generated, which contains the list of authorized signers for the next epoch. The number 30000 means that every 30,000 blocks, the network has an opportunity to update the list of signers.
+
+### BOA 유통량 API
+- 유통량: https://api.bosplatformfoundation.io/boa_circulating_supply
+- 총발행량: https://api.bosplatformfoundation.io/boa_supply
+
+--------
+## Dev
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+
+
 
 ### Node workspaces
 😈 Structure and Configuration
@@ -570,14 +545,40 @@ npm ERR! A complete log of this run can be found in:
 npm public --access public을 사용해야 함.
 
 -------
-## Smart Contract Errors
+## Smart Contract
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+
+### create2 함수
+아래 함수는 UniswapV2Factory에서 사용되는 코드임
+
+```solidity
+bytes memory bytecode = type(UniswapV2Pair).creationCode;
+bytes32 salt = keccak256(abi.encodePacked(token0, token1));
+assembly {
+    pair := create2(0, add(bytecode, 32), mload(bytecode), salt)
+}
+```
+
+Unlike create, which generates the contract address based on the address of the creator and how many contracts it has created (nonce), create2 generates the address using the creator's address, a provided salt, and the hash of the initialization code. This allows for predictable computation of the contract's address before the contract is actually deployed.
+
+- Endowment (0): This is the amount of Ether, in wei, that is sent to the new contract upon creation. In this case, it's set to 0, meaning no Ether is sent.
+
+- Memory Start (add(bytecode, 32)):
+bytecode is the initialization code for the contract you want to create. In Solidity, contract bytecode is often stored in an array, and this array includes a 32-byte length prefix.
+add(bytecode, 32) calculates the starting point of the actual bytecode, skipping the first 32 bytes which represent the length of the bytecode. This is necessary because create2 requires a pointer to the start of the actual code, not the length prefix.
+Size of Code (mload(bytecode)):
+
+- mload(bytecode) is used to load the first 32 bytes of bytecode, which, as mentioned, contain its size. This tells create2 how much of the memory starting from add(bytecode, 32) it should read and use as the initialization code.
+Salt (salt):
+
+- The salt is a 32-byte value that you provide. It's part of the formula used to calculate the address of the new contract.
+In your code, salt is generated from the hash of two token addresses, which helps ensure that each pair of tokens gets a unique contract address.
 
 ### 트랜잭션 취소하는 방법
 - https://support.metamask.io/hc/en-us/articles/360015489251-How-to-speed-up-or-cancel-a-pending-transaction
 - MetaMask의 설정의 고급에 들어가서 "활동 및 논스 데이터 지우기"
 
-## Nonce 얻어내기
+### Nonce 얻어내기
 - docker exec -it pow-node geth attach data/geth.ipc
 - eth.getTransactionCount("0x8B595d325485a0Ca9d41908cAbF265E23C172847")
 - 여기서 나타나는 Nonce를 트랙잭션에서 사용하는 것임.
@@ -745,7 +746,7 @@ git log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%
 ## Dev Errors
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
-## failed to compute cache key: "/target/debug/zksync_server" not found: not found
+### failed to compute cache key: "/target/debug/zksync_server" not found: not found
 Error: Child process exited with code 1
 
 ==> .dockerignore에서 포함되어 있는 것은 아닌지 확인 필요
@@ -887,7 +888,7 @@ ps aux | grep chrome
 
 -------
 ## 자주 사용
-🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+🏓🦋🏓🦋🏓🦋🏓🦋🏓🦋🏓🦋🏓🦋🏓🦋🏓🦋🏓🦋
 나중에 위 섹션에 정리되어야 함.
 
 ### 명령어 하나로 git commit과 push
@@ -919,23 +920,27 @@ echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 ### Git submodule
 
 😈 Git submodule add 
+```
 git submodule add https://github.com/example/lib.git external/lib
 git submodule update --init
-
+```
 😈 Git submodule remove
+```
 git rm --cached path_to_submodule
 Edit .gitmodules File
 Edit .git/config File
 rm -rf .git/modules/path_to_submodule
 git commit -am "Removed submodule"
 git push
-
+```
 😈 Git submodule update
+```
 git submodule update --remote
-
+```
 😈 하나만 다운로드 할때
+```
 git submodule update --init --recursive web2 
-
+```
 ### Tar
 Zip Foler
 tar --exclude='node_modules' -cvzf bccard.tar.gz bccard    //하위 폴더들에서 node_modules를 모두 제외시키기
