@@ -66,6 +66,7 @@
   - [한글 깨지는 문제](#한글-깨지는-문제)
   - [vimrc (~/.vimrc)](#vimrc-vimrc)
 - [AWS](#aws)
+  - [AWS 가격표](#aws-가격표)
   - [AWS에 Load Balancer 추가시](#aws에-load-balancer-추가시)
   - [node3에 들어가서 postgresql 도커 접속방법](#node3에-들어가서-postgresql-도커-접속방법)
   - [WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!](#warning-remote-host-identification-has-changed)
@@ -879,6 +880,15 @@ set mouse=a
 
 ## AWS
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+
+### AWS 가격표
+참고: https://aws.amazon.com/ec2/pricing/on-demand/
+
+| name    | hourly | vCPU | Memory | Storage   | Network performance |
+|----------|----------|--|---------|------------|----------|
+|t3.small	|$0.026	  |2 |2 GiB	    |EBS    |Up to 5 Gigabit
+|t3.medium	|$0.052	  |2 |4 GiB	    |EBS    |Up to 5 Gigabit
+|t3.large	|$0.104	  |2 |8 GiB	    |EBS    |Up to 5 Gigabit
 
 ### AWS에 Load Balancer 추가시 
 • Certifacate Manager를 통해서 도메인 추가
