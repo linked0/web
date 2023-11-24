@@ -1,6 +1,5 @@
 node_modules
 .env
-.env.example
 coverage
 coverage.json
 typechain-types
@@ -11,3 +10,6 @@ artifacts
 
 .idea
 .DS_Store
+
+# python
+.venv
