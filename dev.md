@@ -138,6 +138,7 @@ Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 
 😈 6) 기타
 - Markdown All in One: 마크다운 컨텐트 만들어주는 VSCode 플러그인
+- 마지막 데스크탑은 타이핑, 킨들, 교보문고 앱 띄워놓기 
 
 ###  VSCode 단축키
 - Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
