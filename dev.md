@@ -85,10 +85,10 @@
   - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
   - [텍스트 찾기](#텍스트-찾기)
 - [자주 사용](#자주-사용)
-  - [🌸명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
-  - [🚘.bash\_profile](#bash_profile)
-  - [🌟git submodule](#git-submodule)
-  - [🌼tar](#tar)
+  - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
+  - [.bash\_profile](#bash_profile)
+  - [git submodule](#git-submodule)
+  - [tar](#tar)
 
 ## IDE
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
@@ -140,6 +140,7 @@ Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 - Markdown All in One: 마크다운 컨텐트 만들어주는 VSCode 플러그인
 - 마지막 데스크탑은 타이핑, 킨들, 교보문고 앱 띄워놓기 
 
+---
 ###  VSCode 단축키
 - Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 - back: ctrl - , forward: shift ctrl -
@@ -150,11 +151,13 @@ Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 - Cmd+shift+[: Move to next terminal
 - ctrl shift ₩ : new terminal
 
-Bigger Font: cmd + "+"
+- Bigger Font: cmd + "+"
 
+---
 ### iterm2 단축키
-Next split: cmd + ]
+- Next split: cmd + ]
 
+---
 ### Command
 egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
 tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
@@ -176,12 +179,14 @@ alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
 하위 동일 폴더 지우기
 find . -type d -name 'temp' -exec rm -rf {} +
 
+---
 ### Screen
 screen -X -S session_id quit
 - ctrl a+d // exit
 - screen -S el -X quit
 - screen -r -d 17288 <-- attatch되어 있는 것 detach
-  
+
+---
 ### Finder
 = hidden files: Command + Shift + . (period key)
 
@@ -189,9 +194,11 @@ screen -X -S session_id quit
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 ## ChatGPT-Bard-Google
 
+---
 ### 패키지 상세 정보가 필요할때
 Where can I find the details of the "ethers" package?
 
+---
 ### 에러가 날때 이런식으로 물어보면 됨
 The error outputs from the line "const utils_1 = require('ethers/utils');" :
  at Function.Module._resolveFilename (node:internal/modules/cjs/loader:1028:15) at Function.Module._load (node:internal/modules/cjs/loader:873:27) at Module.require (node:internal/modules/cjs/loader:1100:19)     at require (node:internal/modules/cjs/helpers:119:18)     at Object.<anonymous> (/Users/hyunjaelee/work/pooh-swap-contracts/test/shared/utilities.js:40:17)     at Module._compile (node:internal/modules/cjs/loader:1198:14)     at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)     at Module.load (node:internal/modules/cjs/loader:1076:32)     at Function.Module._load (node:internal/modules/cjs/loader:911:12)     at Module.require (node:internal/modules/cjs/loader:1100:19) {   code: 'MODULE_NOT_FOUND',
@@ -223,6 +230,7 @@ The error outputs from the line "const utils_1 = require('ethers/utils');" :
 ### localnet 실행하기
 npx hardhat node
 
+---
 ### clique in genesis.json
 ```json
 {
@@ -253,6 +261,7 @@ This refers to the block time, the time interval between consecutive blocks. In 
 - "epoch":
 The epoch length, set here as 30000, is significant in Clique PoA. An epoch is a period after which the list of authorized signers can be updated. In Clique, every epoch blocks, a special block called the epoch transition block is generated, which contains the list of authorized signers for the next epoch. The number 30000 means that every 30,000 blocks, the network has an opportunity to update the list of signers.
 
+---
 ### BOA 유통량 API
 - 유통량: https://api.bosplatformfoundation.io/boa_circulating_supply
 - 총발행량: https://api.bosplatformfoundation.io/boa_supply
@@ -262,7 +271,7 @@ The epoch length, set here as 30000, is significant in Clique PoA. An epoch is a
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
 
-
+---
 ### Node workspaces
 😈 Structure and Configuration
 - Workspace Root: A single workspace has a root directory, usually with a package.json file that includes a workspaces field.
@@ -273,6 +282,7 @@ The epoch length, set here as 30000, is significant in Clique PoA. An epoch is a
 - [poohgithub zksync-era](https://github.com/poohgithub/zksync-era)
 - [mater-labs pymaster-examples](https://github.com/matter-labs/paymaster-examples)
 
+---
 ### TypsScript/Nodejs
 
 😈 NodeJs 프로젝트
@@ -298,6 +308,7 @@ The epoch length, set here as 30000, is significant in Clique PoA. An epoch is a
 😈 yarn
 yarn add --dev 
 
+---
 ### Hardhat / solidity
 Hardhat은 기존 프로젝트에서는 안됨.
 yarn init -y (=npm init -y)
@@ -324,7 +335,7 @@ npx hardhat compile
 const tx = await factoryInstance.setFeeTo(process.env.FEE_TO);
 const receipt = await (await tx).wait();
 
-
+---
 ### Docker
 
 😈 Docker Image 만들기
@@ -355,12 +366,13 @@ docker compose -f docker-compose-node.yml up el1 -d
 git restore --staged .
 
 - 수호는 블록체인 생태계를 활성화하고 연결하기 위하여 Bridge, DEX와 같은 Dapp 프로덕트를 개발하고 있습니다.
-  
+
+---
 ### NPM
 npm login
 npm publish --access public
 
-
+---
 ### Python
 😈 venv 설정하고 간단한 프로그램 실행
 python -m venv venv
@@ -415,6 +427,7 @@ import matplotlib.pyplot as plt
 - pip3 freeze > requirements.txt <== venv를 빠져나오고 해야함.
 - python hello.py
 
+---
 ### Rust
 Homebrew rust와 rustup로 설치된 것과 연동안됨. 따라서 아래와 같이 지우기
 brew uninstall rust
@@ -423,6 +436,7 @@ brew uninstall rust
 rustup install nightly-2023-07-21
 rustup default nightly-2023-07-21
 
+---
 ### Prettier 적용
 package.json의 "scripts" 섹션에 다음을 추가
 ```
@@ -460,18 +474,21 @@ sudo cp ./build/bin/geth /usr/local/bin/geth
 4. 나머지 cl 실행시키기
 5. keys &validators 실행
     - poohprysm 루트폴더에서 찾아야 함.
-    - 
+  
+---
 ### zksync
 local-setup에서 clear-sql.sh와 start-sql.sh
 localentry.sh 실행
 greeter-example에서 deploy-test와 greet-test진행
 
+---
 ### Foundry
 
 -------
 ## NodeJS/TypeScript
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
+---
 ### Event 인자들중 하나만 체크
 ```
 await expect(lock.withdraw())
@@ -492,6 +509,7 @@ expect(withdrawalEvent, "Withdrawal event should be emitted").to.not.be.undefine
 expect(withdrawalEvent.args[0]).to.equal(lockedAmount);
 ```
 
+---
 ### anyValue function
 import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 wait expect(lock.withdraw())
@@ -502,6 +520,7 @@ AssertionError: Expected 1732243098 to equal function anyValue() {
     return true;
 }, but they have different lengths
 
+---
 ### an issue with fsevents
 ```
 warning Error running install script for optional dependency: "/Users/hyunjaelee/node_modules/@remix-project/remixd/node_modules/fsevents: Command failed.
@@ -540,9 +559,11 @@ success Saved 568 new dependencies.
 4. 안 그러면 "Typeerror: fsevents.watch is not a function" 발생할 수 있음.
 
 
+---
 ### 로컬 링크 만들기
 	- yarn add /Users/hyunjaelee/work/hardhat-zksync/packages/hardhat-zksync-deploy
 
+---
 ### NPM publish 에러
 ```
 npm notice Publishing to https://registry.npmjs.org/
@@ -560,9 +581,11 @@ npm public --access public을 사용해야 함.
 ## Smart Contract/Hardhat
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
+---
 ### Hardhat config defaultNetwork
 참고: https://github.com/poohgithub/zksync-era/blob/main/poohnet/paymaster-examples/contracts/hardhat.config.ts
 
+---
 ### create2 함수
 아래 함수는 UniswapV2Factory에서 사용되는 코드임
 
@@ -589,10 +612,12 @@ Salt (salt):
 - The salt is a 32-byte value that you provide. It's part of the formula used to calculate the address of the new contract.
 In your code, salt is generated from the hash of two token addresses, which helps ensure that each pair of tokens gets a unique contract address.
 
+---
 ### 트랜잭션 취소하는 방법
 - https://support.metamask.io/hc/en-us/articles/360015489251-How-to-speed-up-or-cancel-a-pending-transaction
 - MetaMask의 설정의 고급에 들어가서 "활동 및 논스 데이터 지우기"
 
+---
 ### Nonce 얻어내기
 - docker exec -it pow-node geth attach data/geth.ipc
 - eth.getTransactionCount("0x8B595d325485a0Ca9d41908cAbF265E23C172847")
@@ -600,13 +625,16 @@ In your code, salt is generated from the hash of two token addresses, which help
 - 다른 방법
     - const nonce = await provider.getTransactionCount(admin.address);
 
+---
 ### Type error: Cannot find module '../typechain-types' or its corresponding type declarations.
 그냥 typechain-types 폴더를 쓰지 않기로 함 
 
+---
 ### Error: network does not support ENS
 다음과 같이 VAULT_CONTRACT 주소 잘못됨, 즉, 0x가 두번 쓰이고 있었음.
 VAULT_CONTRACT=0x0x7f28F281d57AC7d99A8C2FAd2d37271c2c9c67D6		
-		
+
+---
 ### L1-governance 배포 에러
 ```
 L1-governance git:(main) ✗ yarn hardhat run --network localnet ./scripts/deploy.ts 
@@ -704,11 +732,12 @@ and the repository exists.
 - ~/.gitconfig에 emial 설정 에서 equal sign 양 옆의 스페이스 없애기
 - 재부팅하기 
 
+---
 ### error: cannot run delta: No such file or directory
 - git lg 실행시 발생
 - brew install git-delta.
 
-
+---
 ### git submodule update 에러 발생시 
 ```
 git rm --cached path_to_submodule
@@ -719,15 +748,18 @@ git commit -am "Removed submodule"
 git push
 ```
 
+---
 ### 내가 올린 브랜치에 대해서 자동으로 PR추천을 할수 있도록 하기.
 - Organization의 해당 리파지토리로 이동
 - Settings -> General 이동
 - Always suggest updating pull request branches 를
- 
+
+--- 
 ### Merge pull request 발생하지 않도록 Full Requests 설정
 - Repository Setting -> Pull Requests
   - Uncheck: "Allow merge commits", "Allow squash merging" 
 
+---
 ### 기타 정리
 - git reset --hard michael/add-npm-script-prettier
 	git remote update 한번 해줘야 함.
@@ -797,7 +829,7 @@ Spotlight will index the MacVim alias.
 
 Source: https://github.com/Homebrew/homebrew/issues/8970#issuecomment-4262695
 
-
+---
 ### Mac Spotlight에서 특정 애플리케이션 찾지 못할 때
 First, turn off Spotlight:
 sudo mdutil -a -i off
@@ -812,6 +844,7 @@ sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plis
 Finally, turn Spotlight back on:
 sudo mdutil -a -i on
 
+---
 ### Mac에서 Sublime Text를 커맨트창에서 실행시키기
 ```
 ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
@@ -830,6 +863,7 @@ find . -type f -not -path './node_modules/*' -not -path './chaindata/*' > files
 
 open file: ctrl w, ctrl f
 
+---
 ### basics
 
 g t: Next tab, 그냥 에디터에서 g와 t를 치면 됨
@@ -844,14 +878,17 @@ nnn g t: Numbered tab, nnn은 숫자를 나타냄, 1일수도 있고, 12일수�
 
 mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 
+---
 ### Move cursor to end of file in vim
 ```
 :$
 ```
 
+---
 ### 한글 깨지는 문제
 set enc=utf-8
 
+---
 ### vimrc (~/.vimrc)
 set nocompatible
 filetype off
@@ -881,6 +918,7 @@ set mouse=a
 ## AWS
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
+---
 ### AWS 가격표
 참고: https://aws.amazon.com/ec2/pricing/on-demand/
 
@@ -890,28 +928,34 @@ set mouse=a
 |t3.medium	|$0.052	  |2 |4 GiB	    |EBS    |Up to 5 Gigabit
 |t3.large	|$0.104	  |2 |8 GiB	    |EBS    |Up to 5 Gigabit
 
+---
 ### AWS에 Load Balancer 추가시 
 • Certifacate Manager를 통해서 도메인 추가
 	- "Create records in Route 53" 해줘야 함.
 
+---
 ### node3에 들어가서 postgresql 도커 접속방법
 sudo docker exec -it ec22f5036e09 bash
 psql -d db -U postgres -W
 
+---
 ### WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
 Add correct host key in /Users/hyunjaelee/.ssh/known_hosts to get rid of this message.
 
+---
 ### public key 확인 및 깃헙에 추가하기
 - `cat .ssh/id_rsa_linked0.pub`
 - 계정의 세팅으로 들어가면 `SSH and GPG keys`에 집어넣으면 됨.
 - git clone할 때 sudo를 넣어야 `Load key … : Permission denied` 에러가 발생하지 않음.
 - `git clone https://github.com/linked0/agora.git` 이건 잘되는 ssh로 받을때 안됨
 
+---
 ### 접속
 ```
 ssh -i "pooh-seoul.pem" ubuntu@ec2-52-79-227-164.ap-northeast-2.compute.amazonaws.com
 ```
 
+---
 ### AWS에서 파일 전송 
 * 가져오기
 ```
@@ -922,21 +966,25 @@ scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.ama
 scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
 ```
 
+---
 ### Load Balancer 
 - Mappings는 모든 존으로
 - Security Group은 AgoraDevNet_ELB
 - 리스너 지정: Target Group지정
 - 나중에 80에 대해서 443으로 Redirect
 
+---
 ### URL로 접근이 안되는 문제
 - 실패상황황인데, CNAME과 A 설정만 맞으면 될 것 같음 (230303)
 
+---
 ### Target Group
 - Basic configuration: Instances
 - Protocol/Port 지정
 - Protocol version: HTTP1
 - Health checks는 그대로 두면 됨.
 
+---
 ### AWS 타임존 변경
 ```shell
 $tzselect
@@ -985,7 +1033,7 @@ ps aux | grep chrome
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 나중에 위 섹션에 정리되어야 함.
 
-### 🌸명령어 하나로 git commit과 push
+### 명령어 하나로 git commit과 push
 .gitconfig에 다음 추가하고 vi종료하면 바로 적용됨
 ```
 [alias]
@@ -1002,8 +1050,8 @@ git config alias.acp '! git commit -a -m "commit" && git push'
 ```
 
 
-
-### 🚘.bash_profile
+---
+### .bash_profile
 export PS1="\W \u$ "
 
 hgrep() {
@@ -1017,7 +1065,8 @@ cb() {
 alias hello='echo Hi!Jay~'
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 
-### 🌟git submodule
+---
+### git submodule
 
 😈 git submodule add 
 ```
@@ -1042,7 +1091,8 @@ git submodule update --remote
 git submodule update --init --recursive web2 
 ```
 
-### 🌼tar
+---
+### tar
 Zip Foler
 tar --exclude='node_modules' -cvzf bccard.tar.gz bccard    //하위 폴더들에서 node_modules를 모두 제외시키기
 tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
