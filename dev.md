@@ -12,7 +12,8 @@
   - [에러가 날때 이런식으로 물어보면 됨](#에러가-날때-이런식으로-물어보면-됨)
 - [Workspace](#workspace)
 - [Blockchain](#blockchain)
-  - [localnet 실행하기](#localnet-실행하기)
+  - [hardhat localnet 실행하기](#hardhat-localnet-실행하기)
+  - [ganache localnet 실행하기](#ganache-localnet-실행하기)
   - [clique in genesis.json](#clique-in-genesisjson)
   - [BOA 유통량 API](#boa-유통량-api)
 - [Dev Settings](#dev-settings)
@@ -230,8 +231,12 @@ The error outputs from the line "const utils_1 = require('ethers/utils');" :
 --------
 ## Blockchain
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
-### localnet 실행하기
+### hardhat localnet 실행하기
 npx hardhat node
+
+### ganache localnet 실행하기
+npm install -g ganache-cli
+ganache-cli
 
 ---
 ### clique in genesis.json
