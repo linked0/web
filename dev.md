@@ -34,6 +34,7 @@
   - [an issue with fsevents](#an-issue-with-fsevents)
   - [로컬 링크 만들기](#로컬-링크-만들기)
   - [NPM publish 에러](#npm-publish-에러)
+  - [error work/polymath-core/node\_modules/sha3: Command failed.](#error-workpolymath-corenode_modulessha3-command-failed)
 - [Smart Contract/Hardhat](#smart-contracthardhat)
   - [Hardhat config defaultNetwork](#hardhat-config-defaultnetwork)
   - [create2 함수](#create2-함수)
@@ -578,6 +579,116 @@ npm ERR! A complete log of this run can be found in:
 ```
 🏆 해결
 npm public --access public을 사용해야 함.
+
+
+### error work/polymath-core/node_modules/sha3: Command failed.
+```
+error /Users/hyunjaelee/work/polymath-core/node_modules/sha3: Command failed.
+Exit code: 1
+Command: node-gyp rebuild
+Arguments: 
+Directory: /Users/hyunjaelee/work/polymath-core/node_modules/sha3
+Output:
+gyp info it worked if it ends with ok
+gyp info using node-gyp@10.0.1
+gyp info using node@21.2.0 | darwin | x64
+gyp info find Python using Python version 3.9.6 found at "/Library/Developer/CommandLineTools/usr/bin/python3"
+
+gyp http GET https://nodejs.org/download/release/v21.2.0/node-v21.2.0-headers.tar.gz
+gyp http 200 https://nodejs.org/download/release/v21.2.0/node-v21.2.0-headers.tar.gz
+gyp http GET https://nodejs.org/download/release/v21.2.0/SHASUMS256.txt
+gyp http 200 https://nodejs.org/download/release/v21.2.0/SHASUMS256.txt
+gyp info spawn /Library/Developer/CommandLineTools/usr/bin/python3
+gyp info spawn args [
+gyp info spawn args '/usr/local/Cellar/node/21.2.0/libexec/lib/node_modules/npm/node_modules/node-gyp/gyp/gyp_main.py',
+gyp info spawn args 'binding.gyp',
+gyp info spawn args '-f',
+gyp info spawn args 'make',
+gyp info spawn args '-I',
+gyp info spawn args '/Users/hyunjaelee/work/polymath-core/node_modules/sha3/build/config.gypi',
+gyp info spawn args '-I',
+gyp info spawn args '/usr/local/Cellar/node/21.2.0/libexec/lib/node_modules/npm/node_modules/node-gyp/addon.gypi',
+gyp info spawn args '-I',
+gyp info spawn args '/Users/hyunjaelee/Library/Caches/node-gyp/21.2.0/include/node/common.gypi',
+gyp info spawn args '-Dlibrary=shared_library',
+gyp info spawn args '-Dvisibility=default',
+gyp info spawn args '-Dnode_root_dir=/Users/hyunjaelee/Library/Caches/node-gyp/21.2.0',
+gyp info spawn args '-Dnode_gyp_dir=/usr/local/Cellar/node/21.2.0/libexec/lib/node_modules/npm/node_modules/node-gyp',
+gyp info spawn args '-Dnode_lib_file=/Users/hyunjaelee/Library/Caches/node-gyp/21.2.0/<(target_arch)/node.lib',
+gyp info spawn args '-Dmodule_root_dir=/Users/hyunjaelee/work/polymath-core/node_modules/sha3',
+gyp info spawn args '-Dnode_engine=v8',
+gyp info spawn args '--depth=.',
+gyp info spawn args '--no-parallel',
+gyp info spawn args '--generator-output',
+gyp info spawn args 'build',
+gyp info spawn args '-Goutput_dir=.'
+gyp info spawn args ]
+gyp info spawn make
+gyp info spawn args [ 'BUILDTYPE=Release', '-C', 'build' ]
+  CXX(target) Release/obj.target/sha3/src/addon.o
+In file included from ../src/addon.cpp:4:
+In file included from ../node_modules/nan/nan.h:173:
+../node_modules/nan/nan_callbacks.h:55:23: error: no member named 'AccessorSignature' in namespace 'v8'
+typedef v8::Local<v8::AccessorSignature> Sig;
+                  ~~~~^
+In file included from ../src/addon.cpp:4:
+../node_modules/nan/nan.h:615:39: warning: 'IdleNotificationDeadline' is deprecated: Use MemoryPressureNotification() to influence the GC schedule. [-Wdeprecated-declarations]
+    return v8::Isolate::GetCurrent()->IdleNotificationDeadline(
+                                      ^
+/Users/hyunjaelee/Library/Caches/node-gyp/21.2.0/include/node/v8-isolate.h:1339:3: note: 'IdleNotificationDeadline' has been explicitly marked deprecated here
+  V8_DEPRECATE_SOON(
+  ^
+/Users/hyunjaelee/Library/Caches/node-gyp/21.2.0/include/node/v8config.h:551:39: note: expanded from macro 'V8_DEPRECATE_SOON'
+# define V8_DEPRECATE_SOON(message) [[deprecated(message)]]
+                                      ^
+In file included from ../src/addon.cpp:4:
+../node_modules/nan/nan.h:2470:8: error: no matching member function for call to 'SetAccessor'
+  tpl->SetAccessor(
+  ~~~~~^~~~~~~~~~~
+/Users/hyunjaelee/Library/Caches/node-gyp/21.2.0/include/node/v8-template.h:816:8: note: candidate function not viable: no known conversion from 'imp::Sig' (aka 'int') to 'SideEffectType' for 7th argument
+  void SetAccessor(
+       ^
+/Users/hyunjaelee/Library/Caches/node-gyp/21.2.0/include/node/v8-template.h:809:8: note: candidate function not viable: no known conversion from 'imp::NativeGetter' (aka 'void (*)(v8::Local<v8::Name>, const v8::PropertyCallbackInfo<v8::Value> &)') to 'AccessorGetterCallback' (aka 'void (*)(Local<String>, const PropertyCallbackInfo<Value> &)') for 2nd argument
+  void SetAccessor(
+       ^
+In file included from ../src/addon.cpp:4:
+In file included from ../node_modules/nan/nan.h:2818:
+../node_modules/nan/nan_typedarray_contents.h:34:43: error: no member named 'GetContents' in 'v8::ArrayBuffer'
+      data   = static_cast<char*>(buffer->GetContents().Data()) + byte_offset;
+                                  ~~~~~~~~^
+In file included from ../src/addon.cpp:9:
+In file included from ../src/KeccakNISTInterface.h:17:
+../src/KeccakSponge.h:23:9: warning: 'ALIGN' macro redefined [-Wmacro-redefined]
+#define ALIGN __attribute__ ((aligned(32)))
+        ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/i386/param.h:85:9: note: previous definition is here
+#define ALIGN(p)        __DARWIN_ALIGN(p)
+        ^
+In file included from ../src/addon.cpp:1:
+In file included from /Users/hyunjaelee/Library/Caches/node-gyp/21.2.0/include/node/node.h:73:
+In file included from /Users/hyunjaelee/Library/Caches/node-gyp/21.2.0/include/node/v8.h:24:
+In file included from /Users/hyunjaelee/Library/Caches/node-gyp/21.2.0/include/node/v8-array-buffer.h:12:
+/Users/hyunjaelee/Library/Caches/node-gyp/21.2.0/include/node/v8-local-handle.h:253:5: error: static assertion failed due to requirement 'std::is_base_of<v8::Value, v8::Data>::value': type check
+    static_assert(std::is_base_of<T, S>::value, "type check");
+    ^             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../node_modules/nan/nan_callbacks_12_inl.h:175:20: note: in instantiation of function template specialization 'v8::Local<v8::Value>::Local<v8::Data>' requested here
+      cbinfo(info, obj->GetInternalField(kDataIndex));
+                   ^
+2 warnings and 4 errors generated.
+make: *** [Release/obj.target/sha3/src/addon.o] Error 1
+gyp ERR! build error 
+gyp ERR! stack Error: `make` failed with exit code: 2
+gyp ERR! stack at ChildProcess.<anonymous> (/usr/local/Cellar/node/21.2.0/libexec/lib/node_modules/npm/node_modules/node-gyp/lib/build.js:209:23)
+gyp ERR! System Darwin 23.0.0
+gyp ERR! command "/usr/local/Cellar/node/21.2.0/bin/node" "/usr/local/Cellar/node/21.2.0/libexec/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /Users/hyunjaelee/work/polymath-core/node_modules/sha3
+```
+
+🏆 해결
+Node 16 버전을 사용함으로써 해결
+```
+nvm use 16 
+```
 
 -------
 ## Smart Contract/Hardhat
