@@ -235,9 +235,15 @@ The error outputs from the line "const utils_1 = require('ethers/utils');" :
 npx hardhat node
 
 ### ganache localnet 실행하기
+```
 npm install -g ganache-cli
 ganache-cli
+```
 
+gaslimit을 주고 싶을때
+```
+ganache-cli -l 7900000
+```
 ---
 ### clique in genesis.json
 ```json
