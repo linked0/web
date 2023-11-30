@@ -325,22 +325,28 @@ yarn add --dev
 ---
 ### Hardhat / solidity
 Hardhat은 기존 프로젝트에서는 안됨.
+```
 yarn init -y (=npm init -y)
 yarn add --dev hardhat
 npx hardhat
 
 yarn add @openzeppelin/contracts
+```
 
 아래 두개는 같이 쓰면 안됨.
+```
 import "@nomicfoundation/hardhat-toolbox";
 import "@nomiclabs/hardhat-waffle"; // 이것만써.
-
+```
+```
 yarn add dotenv
-alchemy keyless 설명에 alchemy web3 설치방법.
+```
 
+alchemy keyless 설명에 alchemy web3 설치방법.
+```
 yarn hardhat node (chain id: 31337)
 yarn hardhat run ./scripts/send-raw-tx.ts --network hardhat
-
+```
 --------
 😈 solidiy
 import "hardhat/console.sol";
