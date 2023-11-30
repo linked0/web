@@ -304,7 +304,7 @@ The epoch length, set here as 30000, is significant in Clique PoA. An epoch is a
 - touch index.js
 
 😈 TypeScript 프로젝트
-- npm install -g typescript
+- npm install -g typescript (or yarn global add typescript)
 - npm init -y
 - npx tsc --init
 - package.json --> CoPilot이 다 해줌
