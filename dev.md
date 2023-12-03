@@ -5,11 +5,6 @@
 ------
 - [IDE](#ide)
   - [Mac Setting](#mac-setting)
-  - [VSCode 단축키](#vscode-단축키)
-  - [iterm2 단축키](#iterm2-단축키)
-  - [Command](#command)
-  - [Screen](#screen)
-  - [Finder](#finder)
 - [ChatGPT-Bard-Google](#chatgpt-bard-google)
   - [패키지 상세 정보가 필요할때](#패키지-상세-정보가-필요할때)
   - [에러가 날때 이런식으로 물어보면 됨](#에러가-날때-이런식으로-물어보면-됨)
@@ -89,11 +84,15 @@
   - [Mac XCode](#mac-xcode)
   - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
   - [텍스트 찾기](#텍스트-찾기)
-- [자주 사용](#자주-사용)
+- [단축키](#단축키)
+  - [iterm2 단축키](#iterm2-단축키)
+  - [Command](#command)
+  - [Screen](#screen)
+  - [Finder](#finder)
   - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
   - [.bash\_profile](#bash_profile)
   - [git submodule](#git-submodule)
-  - [VSCode 단축키](#vscode-단축키-1)
+  - [VSCode 단축키](#vscode-단축키)
   - [tar](#tar)
 
 ## IDE
@@ -148,55 +147,6 @@ Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 - 마지막 데스크탑은 타이핑, 킨들, 교보문고 앱 띄워놓기 
 - 아이패드 & OneNote 회의 필기
 
----
-###  VSCode 단축키
-- Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
-- back: ctrl - , forward: shift ctrl -
-- ctrl tab: recent files
-- shift cmd n - cmd shift /: open project
-- ctrl `: goto terminal
-- Cmd+Shift+]: Move to previous terminal
-- Cmd+shift+[: Move to next terminal
-- ctrl shift ₩ : new terminal
-
-- Bigger Font: cmd + "+"
-  
----
-### iterm2 단축키
-- Next split: cmd + ]
-
----
-### Command
-egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
-tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
-tar -xvzf xxx.tar.gz -C ./data
-
-여러 sub directory에 node_modules를 제거함.
-tar --exclude='*/node_modules' --exclude='.git' -cvzf ~/temp/pooh-tools.tar.gz .
-opt cmd b - Bookmark
-
-ssh-keygen -t rsa
-
-brew install golang
-`PATH=$PATH:$HOME/go/bin`
-
-go install github.com/protolambda/zcli@latest
-zcli --help
-alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
-
-하위 동일 폴더 지우기
-find . -type d -name 'temp' -exec rm -rf {} +
-
----
-### Screen
-screen -X -S session_id quit
-- ctrl a+d // exit
-- screen -S el -X quit
-- screen -r -d 17288 <-- attatch되어 있는 것 detach
-
----
-### Finder
-= hidden files: Command + Shift + . (period key)
 
 ------
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
@@ -1129,6 +1079,7 @@ TZ='Asia/Seoul'; export TZ
 ```
 -------
 ## Know
+ 
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
 ### Memo Google Docs
@@ -1163,10 +1114,47 @@ To clear the terminal manually: Cmd + K
 ps aux | grep chrome
 
 -------
-## 자주 사용
+## 단축키
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
-나중에 위 섹션에 정리되어야 함.
 
+
+### iterm2 단축키
+- Next split: cmd + ]
+
+---
+### Command
+egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
+tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
+tar -xvzf xxx.tar.gz -C ./data
+
+여러 sub directory에 node_modules를 제거함.
+tar --exclude='*/node_modules' --exclude='.git' -cvzf ~/temp/pooh-tools.tar.gz .
+opt cmd b - Bookmark
+
+ssh-keygen -t rsa
+
+brew install golang
+`PATH=$PATH:$HOME/go/bin`
+
+go install github.com/protolambda/zcli@latest
+zcli --help
+alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
+
+하위 동일 폴더 지우기
+find . -type d -name 'temp' -exec rm -rf {} +
+
+---
+### Screen
+screen -X -S session_id quit
+- ctrl a+d // exit
+- screen -S el -X quit
+- screen -r -d 17288 <-- attatch되어 있는 것 detach
+
+---
+### Finder
+- hidden files: Command + Shift + . (period key)
+
+---
 ### 명령어 하나로 git commit과 push
 .gitconfig에 다음 추가하고 vi종료하면 바로 적용됨
 ```
