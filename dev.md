@@ -1,5 +1,8 @@
 
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+- https://bit.ly/3MT0VRb
+- https://bit.ly/3MVG5AN
+------
 - [IDE](#ide)
   - [Mac Setting](#mac-setting)
   - [VSCode 단축키](#vscode-단축키)
@@ -90,6 +93,7 @@
   - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
   - [.bash\_profile](#bash_profile)
   - [git submodule](#git-submodule)
+  - [VSCode 단축키](#vscode-단축키-1)
   - [tar](#tar)
 
 ## IDE
@@ -156,7 +160,7 @@ Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 - ctrl shift ₩ : new terminal
 
 - Bigger Font: cmd + "+"
-
+  
 ---
 ### iterm2 단축키
 - Next split: cmd + ]
@@ -1220,6 +1224,18 @@ git submodule update --remote
 ```
 git submodule update --init --recursive web2 
 ```
+---
+###  VSCode 단축키
+- Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
+- back: ctrl - , forward: shift ctrl -
+- ctrl tab: recent files
+- shift cmd n - cmd shift /: open project
+- ctrl `: goto terminal
+- Cmd+Shift+]: Move to previous terminal
+- Cmd+shift+[: Move to next terminal
+- ctrl shift ₩ : new terminal
+
+- Bigger Font: cmd + "+"
 
 ---
 ### tar
@@ -1228,3 +1244,8 @@ tar --exclude='node_modules' -cvzf bccard.tar.gz bccard    //하위 폴더들에
 tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
 
 tar --exclude='.git' --exclude='node_modules' -cvzf
+
+
+---
+- https://bit.ly/3MT0VRb
+- https://bit.ly/3MVG5AN
