@@ -19,3 +19,9 @@
 [submodule "poohprysm"]
 	path = poohprysm
 	url = https://github.com/poohgithub/poohprysm
+[submodule "pooh-land"]
+	path = pooh-land
+	url = https://github.com/poohgithub/pooh-land
+[submodule "pooh-swap-v2-core"]
+	path = pooh-swap-v2-core
+	url = https://github.com/poohgithub/pooh-swap-v2-core
