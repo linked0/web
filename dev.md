@@ -551,7 +551,7 @@ npm ERR! A complete log of this run can be found in:
 🏆 해결
 npm public --access public을 사용해야 함.
 
-### error work/polymath-core/node_modules/sha3: Command failed.
+### /bin/sh: python: command not found
 ```
 gyp info spawn args [ 'BUILDTYPE=Release', '-C', 'build' ]
   ACTION deps_sqlite3_gyp_action_before_build_target_unpack_sqlite_dep Release/obj/gen/sqlite-autoconf-3310100/sqlite3.c
