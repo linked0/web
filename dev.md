@@ -3,6 +3,8 @@
 - https://bit.ly/3MT0VRb
 - https://bit.ly/3MVG5AN
 ------
+- [Projects Summary](#projects-summary)
+  - [Keyless2](#keyless2)
 - [IDE](#ide)
   - [Mac Setting](#mac-setting)
 - [ChatGPT-Bard-Google](#chatgpt-bard-google)
@@ -96,6 +98,13 @@
   - [VSCode 단축키](#vscode-단축키)
   - [tar](#tar)
 
+## Projects Summary
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+### Keyless2
+- hardhat-deploy
+- .env.sample
+
+------
 ## IDE
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 ### Mac Setting
@@ -187,7 +196,16 @@ The error outputs from the line "const utils_1 = require('ethers/utils');" :
 ## Blockchain
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 ### hardhat localnet 실행하기
-npx hardhat node
+
+```
+yarn hardhat node (chain id: 31337)
+yarn hardhat run ./scripts/send-raw-tx.ts --network hardhat
+```
+
+Ethereum mainnet fork된 로컬 네트워크를 실행
+```
+yarn hardhat node --fork https://eth-mainnet.g.alchemy.com/v2/<key>
+```
 
 ### ganache localnet 실행하기
 ```
@@ -297,17 +315,6 @@ import "@nomiclabs/hardhat-waffle"; // 이것만써.
 기타
 ```
 yarn add @openzeppelin/contracts
-```
-
-alchemy keyless 설명에 alchemy web3 설치방법.
-```
-yarn hardhat node (chain id: 31337)
-yarn hardhat run ./scripts/send-raw-tx.ts --network hardhat
-```
-
-Ethereum mainnet fork된 로컬 네트워크를 실행
-```
-yarn hardhat node --fork https://eth-mainnet.g.alchemy.com/v2/<key>
 ```
 
 --------
