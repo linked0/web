@@ -8,7 +8,7 @@
 - [ChatGPT-Bard-Google](#chatgpt-bard-google)
   - [패키지 상세 정보가 필요할때](#패키지-상세-정보가-필요할때)
   - [에러가 날때 이런식으로 물어보면 됨](#에러가-날때-이런식으로-물어보면-됨)
-- [Workspace](#workspace)
+- [Slack](#slack)
 - [Blockchain](#blockchain)
   - [hardhat localnet 실행하기](#hardhat-localnet-실행하기)
   - [ganache localnet 실행하기](#ganache-localnet-실행하기)
@@ -33,6 +33,7 @@
   - [an issue with fsevents](#an-issue-with-fsevents)
   - [로컬 링크 만들기](#로컬-링크-만들기)
   - [NPM publish 에러](#npm-publish-에러)
+  - [/bin/sh: python: command not found](#binsh-python-command-not-found)
   - [error work/polymath-core/node\_modules/sha3: Command failed.](#error-workpolymath-corenode_modulessha3-command-failed)
 - [Smart Contract/Hardhat](#smart-contracthardhat)
   - [Hardhat config defaultNetwork](#hardhat-config-defaultnetwork)
@@ -162,7 +163,7 @@ The error outputs from the line "const utils_1 = require('ethers/utils');" :
  at Function.Module._resolveFilename (node:internal/modules/cjs/loader:1028:15) at Function.Module._load (node:internal/modules/cjs/loader:873:27) at Module.require (node:internal/modules/cjs/loader:1100:19)     at require (node:internal/modules/cjs/helpers:119:18)     at Object.<anonymous> (/Users/hyunjaelee/work/pooh-swap-contracts/test/shared/utilities.js:40:17)     at Module._compile (node:internal/modules/cjs/loader:1198:14)     at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)     at Module.load (node:internal/modules/cjs/loader:1076:32)     at Function.Module._load (node:internal/modules/cjs/loader:911:12)     at Module.require (node:internal/modules/cjs/loader:1100:19) {   code: 'MODULE_NOT_FOUND',
 
 ------
-## Workspace
+## Slack
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
 😈 github subscribe
@@ -301,6 +302,12 @@ alchemy keyless 설명에 alchemy web3 설치방법.
 yarn hardhat node (chain id: 31337)
 yarn hardhat run ./scripts/send-raw-tx.ts --network hardhat
 ```
+
+Ethereum mainnet fork된 로컬 네트워크를 실행
+```
+yarn hardhat node --fork https://eth-mainnet.g.alchemy.com/v2/<key>
+```
+
 --------
 😈 solidiy
 import "hardhat/console.sol";
