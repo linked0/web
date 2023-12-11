@@ -285,7 +285,8 @@ yarn init -y (=npm init -y)
 yarn add --dev hardhat
 npx hardhat
 
-yarn add @openzeppelin/contracts
+yarn add -D hardhat-deploy
+yarn add -D dotenv
 ```
 
 아래 두개는 같이 쓰면 안됨.
@@ -293,8 +294,9 @@ yarn add @openzeppelin/contracts
 import "@nomicfoundation/hardhat-toolbox";
 import "@nomiclabs/hardhat-waffle"; // 이것만써.
 ```
+기타
 ```
-yarn add dotenv
+yarn add @openzeppelin/contracts
 ```
 
 alchemy keyless 설명에 alchemy web3 설치방법.
