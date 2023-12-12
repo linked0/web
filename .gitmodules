@@ -28,3 +28,6 @@
 [submodule "ondo-v1"]
 	path = ondo-v1
 	url = https://github.com/poohgithub/ondo-v1.git
+[submodule "pooh-land-js"]
+	path = pooh-land-js
+	url = https://github.com/poohgithub/pooh-land-js
