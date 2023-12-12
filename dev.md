@@ -2,6 +2,7 @@
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 - https://bit.ly/3MT0VRb
 - https://bit.ly/3MVG5AN
+- [solidity.html](./solidity.html)
 ------
 - [Projects Summary](#projects-summary)
   - [Keyless2](#keyless2)
@@ -92,8 +93,10 @@
   - [Command](#command)
   - [Screen](#screen)
   - [Finder](#finder)
+- [자주 사용](#자주-사용)
   - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
   - [.bash\_profile](#bash_profile)
+  - [code](#code)
   - [git submodule](#git-submodule)
   - [VSCode 단축키](#vscode-단축키)
   - [tar](#tar)
@@ -1317,6 +1320,10 @@ screen -X -S session_id quit
 ### Finder
 - hidden files: Command + Shift + . (period key)
 
+-------
+## 자주 사용
+🌼😈🌸🌼😈🌸🌼😈🌸🌼😈🌸🌼😈🌸🌼😈🌸🌼😈🌸😈
+
 ---
 ### 명령어 하나로 git commit과 push
 .gitconfig에 다음 추가하고 vi종료하면 바로 적용됨
@@ -1334,7 +1341,6 @@ git config alias.acp '! git commit -a -m "commit" && git push'
 그리고 나서 git acp 하면됨
 ```
 
-
 ---
 ### .bash_profile
 export PS1="\W \u$ "
@@ -1349,6 +1355,10 @@ cb() {
 
 alias hello='echo Hi!Jay~'
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
+
+---
+### code
+// SPDX-License-Identifier: UNLICENSED
 
 ---
 ### git submodule
