@@ -25,3 +25,6 @@
 [submodule "pooh-swap-v2-core"]
 	path = pooh-swap-v2-core
 	url = https://github.com/poohgithub/pooh-swap-v2-core
+[submodule "ondo-v1"]
+	path = ondo-v1
+	url = https://github.com/poohgithub/ondo-v1.git
