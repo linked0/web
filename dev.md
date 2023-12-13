@@ -93,12 +93,12 @@
   - [Command](#command)
   - [Screen](#screen)
   - [Finder](#finder)
+  - [VSCode 단축키](#vscode-단축키)
 - [자주 사용](#자주-사용)
   - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
   - [.bash\_profile](#bash_profile)
   - [code](#code)
   - [git submodule](#git-submodule)
-  - [VSCode 단축키](#vscode-단축키)
   - [tar](#tar)
 
 ## Projects Summary
@@ -1320,6 +1320,19 @@ screen -X -S session_id quit
 ### Finder
 - hidden files: Command + Shift + . (period key)
 
+---
+###  VSCode 단축키
+- Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
+- back: ctrl - , forward: shift ctrl -
+- ctrl tab: recent files
+- shift cmd n - cmd shift /: open project
+- ctrl `: goto terminal
+- Cmd+Shift+]: Move to previous terminal
+- Cmd+shift+[: Move to next terminal
+- ctrl shift ₩ : new terminal
+
+- Bigger Font: cmd + "+"
+  
 -------
 ## 자주 사용
 🌼😈🌸🌼😈🌸🌼😈🌸🌼😈🌸🌼😈🌸🌼😈🌸🌼😈🌸😈
@@ -1385,19 +1398,6 @@ git submodule update --remote
 ```
 git submodule update --init --recursive web2 
 ```
----
-###  VSCode 단축키
-- Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
-- back: ctrl - , forward: shift ctrl -
-- ctrl tab: recent files
-- shift cmd n - cmd shift /: open project
-- ctrl `: goto terminal
-- Cmd+Shift+]: Move to previous terminal
-- Cmd+shift+[: Move to next terminal
-- ctrl shift ₩ : new terminal
-
-- Bigger Font: cmd + "+"
-
 ---
 ### tar
 Zip Foler
