@@ -31,3 +31,9 @@
 [submodule "pooh-land-js"]
 	path = pooh-land-js
 	url = https://github.com/poohgithub/pooh-land-js
+[submodule "keyless2/pooh-swap-lib"]
+	path = keyless2/pooh-swap-lib
+	url = https://github.com/poohgithub/pooh-swap-lib
+[submodule "keyless2/pooh-swap-v2-periphery"]
+	path = keyless2/pooh-swap-v2-periphery
+	url = https://github.com/poohgithub/pooh-swap-v2-periphery
