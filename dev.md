@@ -6,12 +6,11 @@
 ------
 - [Projects Summary](#projects-summary)
   - [Keyless2](#keyless2)
-- [IDE](#ide)
+- [Work/Dev](#workdev)
   - [Mac Setting](#mac-setting)
-- [ChatGPT-Bard-Google](#chatgpt-bard-google)
-  - [패키지 상세 정보가 필요할때](#패키지-상세-정보가-필요할때)
-  - [에러가 날때 이런식으로 물어보면 됨](#에러가-날때-이런식으로-물어보면-됨)
-- [Slack](#slack)
+  - [ChatGPT - 패키지 상세 정보가 필요할때](#chatgpt---패키지-상세-정보가-필요할때)
+  - [ChatGPT - 에러가 날때 이런식으로 물어보면 됨](#chatgpt---에러가-날때-이런식으로-물어보면-됨)
+  - [Slack](#slack)
 - [Blockchain](#blockchain)
   - [hardhat localnet 실행하기](#hardhat-localnet-실행하기)
   - [ganache localnet 실행하기](#ganache-localnet-실행하기)
@@ -108,7 +107,7 @@
 - .env.sample
 
 ------
-## IDE
+## Work/Dev
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 ### Mac Setting
 😈 1) .ssh 복사
@@ -152,31 +151,26 @@ brew services start postgresql
 psql postgres <== 접속해볼 수 있음.
 
 😈 5) Whale, Miro, onenote, Visual Studio
-Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
+- Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
+- Markdown All in One 플러그인: 마크다운 컨텐트 만들어주는 VSCode 
+- Solidity 플러그인
 
 😈 6) 기타
-- Markdown All in One: 마크다운 컨텐트 만들어주는 VSCode 플러그인
 - 노트북 첫번째 데스크탑에는 web 프로젝트
 - 마지막 데스크탑은 타이핑, 킨들, 교보문고 앱 띄워놓기 
 - 아이패드 & OneNote 회의 필기
 
-
-------
-🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
-## ChatGPT-Bard-Google
-
 ---
-### 패키지 상세 정보가 필요할때
+### ChatGPT - 패키지 상세 정보가 필요할때
 Where can I find the details of the "ethers" package?
 
 ---
-### 에러가 날때 이런식으로 물어보면 됨
+### ChatGPT - 에러가 날때 이런식으로 물어보면 됨
 The error outputs from the line "const utils_1 = require('ethers/utils');" :
  at Function.Module._resolveFilename (node:internal/modules/cjs/loader:1028:15) at Function.Module._load (node:internal/modules/cjs/loader:873:27) at Module.require (node:internal/modules/cjs/loader:1100:19)     at require (node:internal/modules/cjs/helpers:119:18)     at Object.<anonymous> (/Users/hyunjaelee/work/pooh-swap-contracts/test/shared/utilities.js:40:17)     at Module._compile (node:internal/modules/cjs/loader:1198:14)     at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)     at Module.load (node:internal/modules/cjs/loader:1076:32)     at Function.Module._load (node:internal/modules/cjs/loader:911:12)     at Module.require (node:internal/modules/cjs/loader:1100:19) {   code: 'MODULE_NOT_FOUND',
 
 ------
-## Slack
-🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+### Slack
 
 😈 github subscribe
 ```
