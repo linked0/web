@@ -5,7 +5,8 @@
 - [solidity.html](./solidity.html)
 ------
 - [Projects Summary](#projects-summary)
-  - [Keyless2](#keyless2)
+  - [keyless2](#keyless2)
+  - [ondo-v1](#ondo-v1)
 - [Work/Dev](#workdev)
   - [Mac Setting](#mac-setting)
   - [ChatGPT - 패키지 상세 정보가 필요할때](#chatgpt---패키지-상세-정보가-필요할때)
@@ -102,9 +103,12 @@
 
 ## Projects Summary
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
-### Keyless2
+### keyless2
 - hardhat-deploy
 - .env.sample
+
+### ondo-v1
+- "local-node": "export BLOCKCHAIN='ethereum' && export POOH='JAY' && hardhat node",
 
 ------
 ## Work/Dev
