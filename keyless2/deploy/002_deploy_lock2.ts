@@ -9,12 +9,12 @@ const deployBase: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
   const { deployer } = await getNamedAccounts();
   const address = getAddress(hre);
 
-  await deploy("Lock2", {
+  const deployContract = await deploy("Lock2", {
     from: deployer,
     args: [deployer, deployer, address.assets.weth],
     log: true,
   });
-  const registry = await ethers.getContract("Registry");
+  const lock2 = await ethers.getContract("Lock2");
 };
 
 export default deployBase;

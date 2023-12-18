@@ -12,3 +12,9 @@ REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.ts
 ```
+
+## History
+#### Dec 18, 2023
+- ./deploy/002_deploy_lock2.ts를 일단 컴파일되게 처리함.
+  - hardhat.config.ts에 `import "hardhat-deploy"` 추가하니까 컴파일 잘 됨.
+  - ethers와 hardhat과 "@typechain/ethers-v5"관계 정리 필요.
