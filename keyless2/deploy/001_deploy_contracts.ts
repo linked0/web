@@ -6,8 +6,5 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {};
 export default func;
 func.tags = ["softlaunch"];
 func.dependencies = [
-  "Base",
-  "UniswapStrategy",
-  "SushiswapStrategy",
-  "AlchemixStrategy",
+  "Lock2",
 ];

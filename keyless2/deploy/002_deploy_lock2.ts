@@ -1,21 +1,26 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import { ethers } from "hardhat";
-import { getAddress } from "../scripts/utils/helpers";
+import {
+  time,
+  loadFixture,
+} from "@nomicfoundation/hardhat-toolbox/network-helpers";
 
-const deployBase: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
+const deployLock2: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
   const { deployments, getNamedAccounts } = hre;
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
-  const address = getAddress(hre);
+  console.log("###### deployer:", deployer)
 
-  const deployContract = await deploy("Lock2", {
+  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
+  const unlockTime = (await time.latest()) + ONE_YEAR_IN_SECS;
+
+  await deploy("Lock2", {
     from: deployer,
-    args: [deployer, deployer, address.assets.weth],
+    args: [unlockTime],
     log: true,
   });
-  const lock2 = await ethers.getContract("Lock2");
 };
 
-export default deployBase;
-deployBase.tags = ["Base"];
+export default deployLock2;
+deployLock2.tags = ["Lock2"];

@@ -1,6 +1,6 @@
-import { ethers } from "ethers";
+import { ethers } from "hardhat";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
-import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/dist/src/signers";
+import { SignerWithAddress } from "@nomicfoundation/hardhat-ethers/dist/src/signers";
 import * as allAddresses from "./addresses";
 
 export const getVaultId = (
