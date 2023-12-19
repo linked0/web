@@ -3,6 +3,8 @@
 - https://bit.ly/3MT0VRb
 - https://bit.ly/3MVG5AN
 - [solidity html](./solidity.html)
+- Basic Information
+  - 엔드포인트는 Alchemy 사용 (https://dashboard.alchemy.com/)
 ------
 - [Projects Summary](#projects-summary)
   - [keyless2](#keyless2)

@@ -26,4 +26,15 @@ describe("Lock2", function () {
   it("Get unlockTime", async function () {
     console.log("unlockTime:", await lock2.unlockTime());
   });
+
+  it("keccak256", async function () {
+    // Convert the string to a format compatible with BytesLike
+    const data = ethers.toUtf8Bytes("isValidSignature(bytes32,bytes)");
+
+    // Calculate the hash
+    const hash = ethers.keccak256(data);
+
+    console.log("hash:", hash);
+
+  });
 });
