@@ -31,6 +31,10 @@
   "scripts": {
     "test": "hardhat test",
     "test:export": "export BLOCKCHAIN='ethereum' && export FORK_FROM_BLOCK_NUMBER=13537712 && export CHAIN_ID=1 && hardhat test",
-    "build": "hardhat compile"
+    "build": "hardhat compile",
+    "lint": "pretty-quick --pattern '**/*.*(sol|json|js|ts)' --verbose",
+    "lint:check": "prettier --check **/*.sol **/*.json **/*.ts **/*.js --ignore-path=.gitignore",
+    "lint:fix-all": "prettier --write **/*.sol **/*.json **/*.ts **/*.js --ignore-path=.gitignore",
+    "lint:fix": "pretty-quick --pattern '**/*.*(sol|json|js|ts)' --staged --ignore-path=.gitignore --verbose"
   }
 }
