@@ -2,10 +2,11 @@
 pragma solidity ^0.8.9;
 
 // Uncomment this line to use console.log
-// import "hardhat/console.sol";
+import "hardhat/console.sol";
 
 contract Lock {
     uint public unlockTime;
+    uint public value = 1;
     address payable public owner;
 
     event Withdrawal(uint amount, uint when);
@@ -30,5 +31,11 @@ contract Lock {
         emit Withdrawal(address(this).balance, block.timestamp);
 
         owner.transfer(address(this).balance);
+    }
+
+    function add() public {
+        console.log("Value in Lock is %o", value);
+        value += 1;
+        console.log("Value2 in Lock is %o", value);
     }
 }

@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/hyunjaelee/.nvm/versions/node/v16.20.2/bin/node /Users/hyunjaelee/.nvm/versions/node/v16.20.2/bin/yarn test
+  /Users/hyunjaelee/.nvm/versions/node/v16.20.2/bin/node /Users/hyunjaelee/.nvm/versions/node/v16.20.2/bin/yarn add @typechain-v6
 
 PATH: 
   /Users/hyunjaelee/.nvm/versions/node/v16.20.2/bin:/Users/hyunjaelee/bin:/usr/local/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/hyunjaelee/.nvm/versions/node/v16.20.2/bin:/Users/hyunjaelee/bin:/Users/hyunjaelee/.cargo/bin
@@ -14,12 +14,17 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/hyunjaelee/work/web/keyless2/package.json: Unexpected token } in JSON at position 990
-      at JSON.parse (<anonymous>)
-      at /Users/hyunjaelee/.nvm/versions/node/v16.20.2/lib/node_modules/yarn/lib/cli.js:1629:59
-      at Generator.next (<anonymous>)
-      at step (/Users/hyunjaelee/.nvm/versions/node/v16.20.2/lib/node_modules/yarn/lib/cli.js:310:30)
-      at /Users/hyunjaelee/.nvm/versions/node/v16.20.2/lib/node_modules/yarn/lib/cli.js:321:13
+  Error: https://registry.yarnpkg.com/@typechain-v6: Request "https://registry.yarnpkg.com/@typechain-v6" returned a 405
+      at Request.params.callback [as _callback] (/Users/hyunjaelee/.nvm/versions/node/v16.20.2/lib/node_modules/yarn/lib/cli.js:66154:18)
+      at Request.self.callback (/Users/hyunjaelee/.nvm/versions/node/v16.20.2/lib/node_modules/yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (/Users/hyunjaelee/.nvm/versions/node/v16.20.2/lib/node_modules/yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (/Users/hyunjaelee/.nvm/versions/node/v16.20.2/lib/node_modules/yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1358:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {
@@ -33,7 +38,8 @@ npm manifest:
       "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
       "@nomicfoundation/hardhat-toolbox": "^4.0.0",
       "@nomicfoundation/hardhat-verify": "^2.0.0",
-      "@typechain/ethers-v6": "^0.5.0",
+      "@openzeppelin/contracts": "^5.0.1",
+      "@typechain/ethers-v5": "^7.1.2",
       "@typechain/hardhat": "^9.0.0",
       "@types/chai": "^4.2.0",
       "@types/mocha": ">=9.1.0",
@@ -51,7 +57,9 @@ npm manifest:
     },
     "dependencies": {},
     "scripts": {
-      "test": "export BLOCKCHAIN='ethereum' && export FORK_FROM_BLOCK_NUMBER=13537712 && export CHAIN_ID=1 && hardhat test",
+      "test": "hardhat test",
+      "test:export": "export BLOCKCHAIN='ethereum' && export FORK_FROM_BLOCK_NUMBER=13537712 && export CHAIN_ID=1 && hardhat test",
+      "build": "hardhat compile"
     }
   }
 
@@ -801,6 +809,11 @@ Lockfile:
       "@nomicfoundation/solidity-analyzer-win32-ia32-msvc" "0.1.1"
       "@nomicfoundation/solidity-analyzer-win32-x64-msvc" "0.1.1"
   
+  "@openzeppelin/contracts@^5.0.1":
+    version "5.0.1"
+    resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-5.0.1.tgz#93da90fc209a0a4ff09c1deb037fbb35e4020890"
+    integrity sha512-yQJaT5HDp9hYOOp4jTYxMsR02gdFZFXhewX5HW9Jo4fsqSVqqyIO/xTHdWDaKX5a3pv1txmf076Lziz+sO7L1w==
+  
   "@scure/base@~1.1.0":
     version "1.1.3"
     resolved "https://registry.yarnpkg.com/@scure/base/-/base-1.1.3.tgz#8584115565228290a6c6c4961973e0903bb3df2f"
@@ -942,10 +955,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.4.tgz#0b92dcc0cc1c81f6f306a381f28e31b1a56536e9"
     integrity sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==
   
-  "@typechain/ethers-v6@^0.5.0":
-    version "0.5.1"
-    resolved "https://registry.yarnpkg.com/@typechain/ethers-v6/-/ethers-v6-0.5.1.tgz#42fe214a19a8b687086c93189b301e2b878797ea"
-    integrity sha512-F+GklO8jBWlsaVV+9oHaPh5NJdd6rAKN4tklGfInX1Q7h0xPgVLP39Jl3eCulPB5qexI71ZFHwbljx4ZXNfouA==
+  "@typechain/ethers-v5@^7.1.2":
+    version "7.2.0"
+    resolved "https://registry.yarnpkg.com/@typechain/ethers-v5/-/ethers-v5-7.2.0.tgz#d559cffe0efe6bdbc20e644b817f6fa8add5e8f8"
+    integrity sha512-jfcmlTvaaJjng63QsT49MT6R1HFhtO/TBMWbyzPFSzMmVIqb2tL6prnKBs4ZJrSvmgIXWy+ttSjpaxCTq8D/Tw==
     dependencies:
       lodash "^4.17.15"
       ts-essentials "^7.0.1"
