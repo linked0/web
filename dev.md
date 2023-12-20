@@ -3,8 +3,7 @@
 - https://bit.ly/3MT0VRb
 - https://bit.ly/3MVG5AN
 - [solidity html](./solidity.html)
-- Basic Information
-  - 엔드포인트는 Alchemy 사용 (https://dashboard.alchemy.com/)
+
 ------
 - [Projects Summary](#projects-summary)
   - [keyless2](#keyless2)
@@ -19,6 +18,7 @@
   - [ganache localnet 실행하기](#ganache-localnet-실행하기)
   - [clique in genesis.json](#clique-in-genesisjson)
   - [BOA 유통량 API](#boa-유통량-api)
+  - [이더리엄 Endpoint](#이더리엄-endpoint)
 - [Dev Settings](#dev-settings)
   - [Node workspaces](#node-workspaces)
   - [TypsScript/Nodejs](#typsscriptnodejs)
@@ -257,6 +257,10 @@ The epoch length, set here as 30000, is significant in Clique PoA. An epoch is a
 - 유통량: https://api.bosplatformfoundation.io/boa_circulating_supply
 - 총발행량: https://api.bosplatformfoundation.io/boa_supply
 
+---
+### 이더리엄 Endpoint
+- Alchemy 사용 (https://dashboard.alchemy.com/)
+  
 --------
 ## Dev Settings
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
