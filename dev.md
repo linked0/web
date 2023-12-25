@@ -93,7 +93,6 @@
 - [단축키](#단축키)
   - [iterm2 단축키](#iterm2-단축키)
   - [Command](#command)
-  - [Screen](#screen)
   - [Finder](#finder)
   - [VSCode 단축키](#vscode-단축키)
 - [자주 사용](#자주-사용)
@@ -101,6 +100,7 @@
   - [.bash\_profile](#bash_profile)
   - [code](#code)
   - [git submodule](#git-submodule)
+  - [Screen](#screen)
   - [tar](#tar)
 
 ## Projects Summary
@@ -1316,13 +1316,6 @@ alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
 find . -type d -name 'temp' -exec rm -rf {} +
 
 ---
-### Screen
-screen -X -S session_id quit
-- ctrl a+d // exit
-- screen -S el -X quit
-- screen -r -d 17288 <-- attatch되어 있는 것 detach
-
----
 ### Finder
 - hidden files: Command + Shift + . (period key)
 
@@ -1404,6 +1397,14 @@ git submodule update --remote
 ```
 git submodule update --init --recursive web2 
 ```
+
+---
+### Screen
+screen -X -S session_id quit
+- ctrl a+d // exit
+- screen -S el -X quit
+- screen -r -d 17288 <-- attatch되어 있는 것 detach
+
 ---
 ### tar
 Zip Foler
