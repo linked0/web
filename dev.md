@@ -6,6 +6,7 @@
 
 ------
 - [Projects Summary](#projects-summary)
+  - [poohnet testnet admin](#poohnet-testnet-admin)
   - [keyless2](#keyless2)
   - [ondo-v1](#ondo-v1)
 - [Work/Dev](#workdev)
@@ -104,6 +105,10 @@
 
 ## Projects Summary
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+### poohnet testnet admin
+a86418c9c008cf3ef8ea3bc07a01e023d390bc114e9bdcca73d72aba53e6d430
+0xE9CB8430C3c1765016A453Cf99542B575E87bAcF
+
 ### keyless2
 - hardhat-deploy
 - .env.sample
