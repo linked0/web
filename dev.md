@@ -1400,9 +1400,9 @@ git submodule update --init --recursive web2
 
 ---
 ### Screen
-screen -X -S session_id quit
+- screen -X -S el1 quit
+- screen -ls // ls
 - ctrl a+d // exit
-- screen -S el -X quit
 - screen -r -d 17288 <-- attatch되어 있는 것 detach
 
 ---
