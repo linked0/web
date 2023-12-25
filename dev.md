@@ -1399,7 +1399,8 @@ git submodule update --init --recursive web2
 ---
 ### Docker
 - docker exec -it pow-node geth attach http://localhost:8545
-
+- docker logs pow-node // enode 알아낼때 사용할 수 있음
+  
 ---
 ### Screen
 - screen -ls // ls
