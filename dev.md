@@ -89,18 +89,17 @@
   - [Generate Private Key](#generate-private-key)
   - [Mac XCode](#mac-xcode)
   - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
-  - [텍스트 찾기](#텍스트-찾기)
 - [단축키](#단축키)
   - [iterm2 단축키](#iterm2-단축키)
   - [Command](#command)
   - [Finder](#finder)
   - [VSCode 단축키](#vscode-단축키)
-- [자주 사용](#자주-사용)
   - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
   - [.bash\_profile](#bash_profile)
   - [code](#code)
   - [git submodule](#git-submodule)
   - [Screen](#screen)
+  - [텍스트 찾기](#텍스트-찾기)
   - [tar](#tar)
 
 ## Projects Summary
@@ -1278,9 +1277,6 @@ find . -iname mainview*
 touch -t "201610041200" timestamp
 find . -type f -newer timestamp
 
-### 텍스트 찾기
-egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
-
 sudo xcode-select -s /Applications/XCode7.2/Xcode.app/
 To clear the terminal manually: Cmd + K
 ps aux | grep chrome
@@ -1331,10 +1327,7 @@ find . -type d -name 'temp' -exec rm -rf {} +
 - ctrl shift ₩ : new terminal
 
 - Bigger Font: cmd + "+"
-  
--------
-## 자주 사용
-🌼😈🌸🌼😈🌸🌼😈🌸🌼😈🌸🌼😈🌸🌼😈🌸🌼😈🌸😈
+
 
 ---
 ### 명령어 하나로 git commit과 push
@@ -1404,6 +1397,10 @@ git submodule update --init --recursive web2
 - ctrl a+d // exit
 - screen -S el1  -X quit
 - screen -r -d 17288 <-- attatch되어 있는 것 detach
+
+---
+### 텍스트 찾기
+egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
 
 ---
 ### tar
