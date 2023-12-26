@@ -67,6 +67,7 @@
   - [Mac Spotlight에서 특정 애플리케이션 찾지 못할 때](#mac-spotlight에서-특정-애플리케이션-찾지-못할-때)
   - [Mac에서 Sublime Text를 커맨트창에서 실행시키기](#mac에서-sublime-text를-커맨트창에서-실행시키기)
 - [vi](#vi)
+  - [줄번호](#줄번호)
   - [files 파일 만들기](#files-파일-만들기)
   - [basics](#basics)
   - [Move cursor to end of file in vim](#move-cursor-to-end-of-file-in-vim)
@@ -1114,6 +1115,18 @@ ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/loca
 -------
 ## vi
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+
+### 줄번호
+```
+:set number
+:set nu
+```
+
+없애기는 아래와 같이
+```
+:set number!
+:set nu!
+```
 
 ### files 파일 만들기
 find . -type f -not -path .*/node_modules/* -not -path .*/.git/* -not -path .*/venv/* > files
