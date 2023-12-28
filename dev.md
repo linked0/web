@@ -155,6 +155,11 @@ cb() {
 ```
 ZSH_THEME="robbyrussell"
 ```
+
+finder 열고 다음 실행하면 숨김 파일 보임
+```
+Command + Shift + .
+```
 ##### npm yarn docker install
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
