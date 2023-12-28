@@ -12,7 +12,7 @@
 - [Work/Dev](#workdev)
   - [Mac Setting](#mac-setting)
       - [.ssh 복사](#ssh-복사)
-      - [brew/zsh/iterm2/karabiner install](#brewzshiterm2karabiner-install)
+      - [xcode command/brew/zsh/iterm2/karabiner install](#xcode-commandbrewzshiterm2karabiner-install)
       - [npm yarn docker install](#npm-yarn-docker-install)
       - [nvm install](#nvm-install)
       - [rust/postgresql install](#rustpostgresql-install)
@@ -132,17 +132,29 @@
 ### Mac Setting
 ##### .ssh 복사
 iCloud/pooh/ssh.tar
-##### brew/zsh/iterm2/karabiner install
+
+##### xcode command/brew/zsh/iterm2/karabiner install
 ```
-xcode-select —-install | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+xcode-select —-install
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install --cask iterm2 | brew install zsh | brew install karabiner-elements
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-echo $SHELL <== 이걸로 쉘 확인
+karanbiner 설치 및 karabiner.json
+iterm2 - Preferences - Profiles - Silence bell
+gitconfig.html의 내용은 .gitconfig에 복사
 
-karabiner는 option+hjkl가 디폴트로 있음.
-
+echo $SHELL로 쉘 확인하고 아래 .zshrc에 복사
+```
+cb() {
+	curl -L bit.ly/3MT0VRb
+}
+```
+.zshrc에 테마 찾아서 복사
+```
+ZSH_THEME="robbyrussell"
+```
 ##### npm yarn docker install
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
@@ -178,7 +190,6 @@ psql postgres <== 접속해볼 수 있음.
 ##### 기타
 - 맥 메인 모니터 설정 및 Dock 사이즈 조정
 - 데스크탑 및 Dock: Mission Control - Spaces를 최근 사용내역에 따라 자동으로 재정렬
-- iterm2 - Preferences - Profiles - Silence bell
 
 ---
 ### ChatGPT - 패키지 상세 정보가 필요할때
