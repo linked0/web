@@ -11,6 +11,13 @@
   - [ondo-v1](#ondo-v1)
 - [Work/Dev](#workdev)
   - [Mac Setting](#mac-setting)
+      - [.ssh 복사](#ssh-복사)
+      - [brew/zsh/iterm2/karabiner install](#brewzshiterm2karabiner-install)
+      - [npm yarn docker install](#npm-yarn-docker-install)
+      - [nvm install](#nvm-install)
+      - [rust/postgresql install](#rustpostgresql-install)
+      - [Whale, Miro, onenote, Visual Studio](#whale-miro-onenote-visual-studio)
+      - [기타](#기타)
   - [ChatGPT - 패키지 상세 정보가 필요할때](#chatgpt---패키지-상세-정보가-필요할때)
   - [ChatGPT - 에러가 날때 이런식으로 물어보면 됨](#chatgpt---에러가-날때-이런식으로-물어보면-됨)
   - [Slack](#slack)
@@ -123,9 +130,9 @@
 ## Work/Dev
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 ### Mac Setting
-😈 1) .ssh 복사
+##### .ssh 복사
 iCloud/pooh/ssh.tar
-😈 2) brew/zsh/iterm2/karabiner install
+##### brew/zsh/iterm2/karabiner install
 ```
 xcode-select —-install | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install --cask iterm2 | brew install zsh | brew install karabiner-elements
@@ -136,14 +143,14 @@ echo $SHELL <== 이걸로 쉘 확인
 
 karabiner는 option+hjkl가 디폴트로 있음.
 
-😈 3) npm yarn docker install
+##### npm yarn docker install
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 npm install -g yarn
 brew install cask docker
 brew install cask docker-compose
 ```
-😈 nvm install
+##### nvm install
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 source ~/.nvm/nvm.sh
@@ -151,7 +158,7 @@ source ~/.nvm/nvm.sh
 
 https://www.docker.com/products/docker-desktop/ 도커 Desktop (linked0/**)
 
-😈 4) rust/postgresql install
+##### rust/postgresql install
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install sqlx-cli
@@ -163,17 +170,15 @@ brew services start postgresql
 ```
 psql postgres <== 접속해볼 수 있음.
 
-😈 5) Whale, Miro, onenote, Visual Studio
+##### Whale, Miro, onenote, Visual Studio
 - Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 - Markdown All in One 플러그인: 마크다운 컨텐트 만들어주는 VSCode 
 - Solidity 플러그인
 
-😈 6) 기타
-- 노트북 첫번째 데스크탑에는 web 프로젝트
+##### 기타
 - 맥 메인 모니터 설정 및 Dock 사이즈 조정
-- 마지막 데스크탑은 타이핑, 킨들, 교보문고 앱 띄워놓기 
 - 데스크탑 및 Dock: Mission Control - Spaces를 최근 사용내역에 따라 자동으로 재정렬
-- 필기는 다이어리: 아이패드 & OneNote 회의 필기 
+- iterm2 - Preferences - Profiles - Silence bell
 
 ---
 ### ChatGPT - 패키지 상세 정보가 필요할때
