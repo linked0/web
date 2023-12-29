@@ -195,6 +195,7 @@ psql postgres <== 접속해볼 수 있음.
 ##### 기타
 - 맥 메인 모니터 설정 및 Dock 사이즈 조정
 - 데스크탑 및 Dock: Mission Control - Spaces를 최근 사용내역에 따라 자동으로 재정렬
+- 휴지통 컵
 
 ---
 ### ChatGPT - 패키지 상세 정보가 필요할때
