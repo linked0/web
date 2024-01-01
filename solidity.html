@@ -492,4 +492,35 @@ To github.com:jiyoungminjung/pooh-land-js.git
 error: failed to push some refs to 'git@github.com:jiyoungminjung/pooh-land-js.git'
 * 해결
   - jiyoungminjung의 계정 setting에서 SSH key를 등록함.
+
+23. BigInt 인식 못하는 문제
+const swapTestCases: BigInt[][] = [
+   [1, 5, 10, '1662497915624478906'],
+   [1, 10, 5, '453305446940074565'],
+
+
+   [2, 5, 10, '2851015155847869602'],
+   [2, 10, 5, '831248957812239453'],
+
+
+   [1, 10, 10, '906610893880149131'],
+   [1, 100, 100, '987158034397061298'],
+   [1, 1000, 1000, '996006981039903216']
+ ].map(a => a.map(n => (typeof n === 'string' ? BigInt(n) : BigInt(n * 10 ** 18))));
+ swapTestCases.forEach((swapTestCase, i) => {
+   it(`getInputPrices:${i}`, async () => {
+     const swapAmount = BigInt(swapTestCase[0].toString());
+     const token0Amount = BigInt(swapTestCase[1].toString());
+     const token1Amount = BigInt(swapTestCase[2].toString());
+     const expectedOutputAmount = BigInt(swapTestCase[3].toString());
+     await addLiquidity(token0Amount, token1Amount);
+     await token0.transfer(pair.target, swapAmount);
+     await expect(pair.swap(0, expectedOutputAmount + 1n, admin.address, '0x', overrides)).to.be.revertedWith('UniswapV2: K');
+     await pair.swap(0, expectedOutputAmount, admin.address, '0x', overrides);
+
+
+   });
+ });
+
+ 
 </pre></body></html>
