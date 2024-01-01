@@ -142,8 +142,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ```
 
 karanbiner 설치 및 karabiner.json
-iterm2 - Preferences - Profiles - Silence bell
-gitconfig.html의 내용은 .gitconfig에 복사
+- iterm2 - Preferences - Profiles - Silence bell
+- [gitconfig html](./gitconfig.html) 내용은 .gitconfig에 복사 & `git init`
 
 echo $SHELL로 쉘 확인하고 아래 .zshrc에 복사
 ```
