@@ -190,7 +190,7 @@ psql postgres <== 접속해볼 수 있음.
 ##### Whale, Miro, onenote, Visual Studio
 - Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 - Markdown All in One 플러그인: 마크다운 컨텐트 만들어주는 VSCode 
-- Solidity 플러그인
+- VS Code 플러그인 : Solidity/Go/rust-analyzer, Live Preview, Github Copilot, Markdown All in One
 
 ##### 기타
 - 맥 메인 모니터 설정 및 Dock 사이즈 조정
