@@ -40,3 +40,6 @@
 [submodule "ondo-v1-linked0"]
 	path = ondo-v1-linked0
 	url = https://github.com/linked0/ondo-v1.git
+[submodule "pooh-swap-v2-periphery"]
+	path = pooh-swap-v2-periphery
+	url = https://github.com/poohgithub/pooh-swap-v2-periphery
