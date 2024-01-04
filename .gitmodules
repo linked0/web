@@ -43,3 +43,6 @@
 [submodule "pooh-swap-v2-periphery"]
 	path = pooh-swap-v2-periphery
 	url = https://github.com/poohgithub/pooh-swap-v2-periphery
+[submodule "argent-contracts"]
+	path = argent-contracts
+	url = https://github.com/linked0/argent-contracts.git

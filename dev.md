@@ -145,10 +145,24 @@ karanbiner 설치 및 karabiner.json
 - iterm2 - Preferences - Profiles - Silence bell
 - [gitconfig html](./gitconfig.html) 내용은 .gitconfig에 복사 & `git init`
 
+awscli 설치 및 aws configure
+
+[aws cli](https://awscli.amazonaws.com/AWSCLIV2.pkg)
+
+```
+$ aws configure
+AWS Access Key ID: 맥 메모에 있음
+AWS Secret Access Key : 맥 메모에 있음.
+Default region name [None]: ap-northeast-2
+Default output format [None]:
+```
+
 echo $SHELL로 쉘 확인하고 아래 .zshrc에 복사
 ```
 alias cb="curl -L bit.ly/3MT0VRb"
 alias poo="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
+alias ecstart="aws ec2 start-instances --instance-ids i-02c89e86234e05850"
+alias ecstop="aws ec2 stop-instances --instance-ids i-02c89e86234e05850"
 ```
 .zshrc에 테마 찾아서 복사
 ```
