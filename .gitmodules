@@ -46,3 +46,6 @@
 [submodule "argent-contracts"]
 	path = argent-contracts
 	url = https://github.com/linked0/argent-contracts.git
+[submodule "erc6900-impl"]
+	path = erc6900-impl
+	url = https://github.com/linked0/reference-implementation.git
