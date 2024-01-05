@@ -49,3 +49,6 @@
 [submodule "erc6900-impl"]
 	path = erc6900-impl
 	url = https://github.com/linked0/reference-implementation.git
+[submodule "solidstate-solidity"]
+	path = solidstate-solidity
+	url = https://github.com/linked0/solidstate-solidity.git
