@@ -176,6 +176,7 @@ Default output format [None]:
 
 echo $SHELL로 쉘 확인하고 아래 .zshrc에 복사
 ```
+alias key="cd ~/work/web/keyless2"
 alias cb="curl -L bit.ly/3MT0VRb"
 alias poo="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
 alias ecstart="aws ec2 start-instances --instance-ids i-02c89e86234e05850"
