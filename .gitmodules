@@ -52,3 +52,6 @@
 [submodule "solidstate-solidity"]
 	path = solidstate-solidity
 	url = https://github.com/linked0/solidstate-solidity.git
+[submodule "pooh-swap-v2-hardhat"]
+	path = pooh-swap-v2-hardhat
+	url = https://github.com/linked0/pooh-swap-v2-hardhat.git
