@@ -54,6 +54,7 @@
   - [트랜잭션 취소하는 방법](#트랜잭션-취소하는-방법)
   - [Nonce 얻어내기](#nonce-얻어내기)
   - [Type error: Cannot find module '../typechain-types' or its corresponding type declarations.](#type-error-cannot-find-module-typechain-types-or-its-corresponding-type-declarations)
+  - [Error HH412: Invalid import](#error-hh412-invalid-import)
   - [Error: network does not support ENS](#error-network-does-not-support-ens)
   - [L1-governance 배포 에러](#l1-governance-배포-에러)
   - [wait 함수의 인자](#wait-함수의-인자)
@@ -945,6 +946,16 @@ In your code, salt is generated from the hash of two token addresses, which help
 ---
 ### Type error: Cannot find module '../typechain-types' or its corresponding type declarations.
 그냥 typechain-types 폴더를 쓰지 않기로 함 
+
+---
+### Error HH412: Invalid import
+
+```
+Error HH412: Invalid import @poohnet/pooh-swap-v2-core/contracts/interfaces/IUniswapV2Factory.sol from contracts/periphery/UniswapV2Router01.sol. Trying to import file using the own package's name.
+```
+
+- import 대상인 @poohnet/pooh-swap-v2-core과 package.json의 name이 동일해서 생긴 문제
+- chatGPT에게 물어서 해결됨. 
 
 ---
 ### Error: network does not support ENS
