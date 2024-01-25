@@ -2,94 +2,96 @@
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 - https://bit.ly/3MT0VRb
 - https://bit.ly/3MVG5AN
-- [solidkty markdown](./solidity.md)
+- [solidity markdown](./solidity.md)
 
 ------
-- [Projects Summary](#projects-summary)
-  - [Project Analysis](#project-analysis)
-      - [문서 확인: 2일](#문서-확인-2일)
-      - [테스트 코드 분석: 3일](#테스트-코드-분석-3일)
-  - [poohnet testnet admin](#poohnet-testnet-admin)
-  - [keyless2](#keyless2)
-  - [ondo-v1](#ondo-v1)
-  - [poohnet (EL/CL) 실행하기](#poohnet-elcl-실행하기)
-  - [zksync](#zksync)
-- [Work/Dev](#workdev)
-  - [Mac Setting](#mac-setting)
-      - [.ssh 복사](#ssh-복사)
-      - [xcode command/brew/zsh/iterm2/karabiner install](#xcode-commandbrewzshiterm2karabiner-install)
-      - [npm yarn docker install](#npm-yarn-docker-install)
-      - [nvm install](#nvm-install)
-      - [rust/postgresql install](#rustpostgresql-install)
-      - [Whale, Miro, onenote, Visual Studio, Intellij](#whale-miro-onenote-visual-studio-intellij)
-      - [기타](#기타)
-  - [ChatGPT - 패키지 상세 정보가 필요할때](#chatgpt---패키지-상세-정보가-필요할때)
-  - [ChatGPT - 에러가 날때 이런식으로 물어보면 됨](#chatgpt---에러가-날때-이런식으로-물어보면-됨)
-  - [Slack](#slack)
-- [Blockchain](#blockchain)
-  - [hardhat localnet 실행하기](#hardhat-localnet-실행하기)
-  - [ganache localnet 실행하기](#ganache-localnet-실행하기)
-  - [clique in genesis.json](#clique-in-genesisjson)
-  - [BOA 유통량 API](#boa-유통량-api)
-  - [이더리엄 Endpoint](#이더리엄-endpoint)
-- [Dev Settings](#dev-settings)
-  - [Node workspaces](#node-workspaces)
-  - [TypsScript/Nodejs](#typsscriptnodejs)
-  - [Hardhat / solidity](#hardhat--solidity)
-  - [Docker](#docker)
-  - [NPM](#npm)
-  - [Python](#python)
-  - [Rust](#rust)
-  - [Prettier 적용](#prettier-적용)
-- [Github](#github)
-  - [github 계정 꼬였을때](#github-계정-꼬였을때)
-  - [error: cannot run delta: No such file or directory](#error-cannot-run-delta-no-such-file-or-directory)
-  - [git submodule update 에러 발생시](#git-submodule-update-에러-발생시)
-  - [내가 올린 브랜치에 대해서 자동으로 PR추천을 할수 있도록 하기.](#내가-올린-브랜치에-대해서-자동으로-pr추천을-할수-있도록-하기)
-  - [Merge pull request 발생하지 않도록 Full Requests 설정](#merge-pull-request-발생하지-않도록-full-requests-설정)
-  - [기타 정리](#기타-정리)
-- [Mac](#mac)
-  - [MacVim을 Spotlight에서 보도록 하기](#macvim을-spotlight에서-보도록-하기)
-  - [Mac Spotlight에서 특정 애플리케이션 찾지 못할 때](#mac-spotlight에서-특정-애플리케이션-찾지-못할-때)
-  - [Mac에서 Sublime Text를 커맨트창에서 실행시키기](#mac에서-sublime-text를-커맨트창에서-실행시키기)
-- [vi](#vi)
-  - [줄번호](#줄번호)
-  - [files 파일 만들기](#files-파일-만들기)
-  - [basics](#basics)
-  - [Move cursor to end of file in vim](#move-cursor-to-end-of-file-in-vim)
-  - [한글 깨지는 문제](#한글-깨지는-문제)
-  - [vimrc (~/.vimrc)](#vimrc-vimrc)
-- [AWS](#aws)
-  - [AWS 가격표](#aws-가격표)
-  - [AWS에 Load Balancer 추가시](#aws에-load-balancer-추가시)
-  - [node3에 들어가서 postgresql 도커 접속방법](#node3에-들어가서-postgresql-도커-접속방법)
-  - [WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!](#warning-remote-host-identification-has-changed)
-  - [public key 확인 및 깃헙에 추가하기](#public-key-확인-및-깃헙에-추가하기)
-  - [접속](#접속)
-  - [AWS에서 파일 전송](#aws에서-파일-전송)
-  - [Load Balancer](#load-balancer)
-  - [URL로 접근이 안되는 문제](#url로-접근이-안되는-문제)
-  - [Target Group](#target-group)
-  - [AWS 타임존 변경](#aws-타임존-변경)
-- [Know](#know)
-  - [Memo Google Docs](#memo-google-docs)
-  - [예상치 못한 컴파일 에러가 나올때](#예상치-못한-컴파일-에러가-나올때)
-  - [Generate Private Key](#generate-private-key)
-  - [Mac XCode](#mac-xcode)
-  - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
-- [단축키](#단축키)
-  - [iterm2 단축키](#iterm2-단축키)
-  - [Command](#command)
-  - [Finder](#finder)
-  - [VSCode 단축키](#vscode-단축키)
-  - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
-  - [.bash\_profile](#bash_profile)
-  - [code](#code)
-  - [git submodule](#git-submodule)
-  - [Docker](#docker-1)
-  - [Screen](#screen)
-  - [텍스트 찾기](#텍스트-찾기)
-  - [tar](#tar)
+<!-- TOC -->
+  * [Projects Summary](#projects-summary)
+    * [Project Analysis](#project-analysis)
+        * [문서 확인: 2일](#문서-확인-2일)
+        * [테스트 코드 분석: 3일](#테스트-코드-분석-3일)
+    * [poohnet testnet admin](#poohnet-testnet-admin)
+    * [keyless2](#keyless2)
+    * [ondo-v1](#ondo-v1)
+    * [poohnet (EL/CL) 실행하기](#poohnet-elcl-실행하기)
+    * [zksync](#zksync)
+  * [Work/Dev](#workdev)
+    * [Mac Setting](#mac-setting)
+        * [.ssh 복사](#ssh-복사)
+        * [xcode command/brew/zsh/iterm2/karabiner install](#xcode-commandbrewzshiterm2karabiner-install)
+        * [npm yarn docker install](#npm-yarn-docker-install)
+        * [nvm install](#nvm-install)
+        * [rust/postgresql install](#rustpostgresql-install)
+        * [Whale, Miro, onenote, Visual Studio, Intellij](#whale-miro-onenote-visual-studio-intellij)
+        * [기타](#기타)
+    * [Slack](#slack)
+  * [Blockchain](#blockchain)
+    * [hardhat localnet 실행하기](#hardhat-localnet-실행하기)
+    * [ganache localnet 실행하기](#ganache-localnet-실행하기)
+    * [clique in genesis.json](#clique-in-genesisjson)
+    * [BOA 유통량 API](#boa-유통량-api)
+    * [이더리엄 Endpoint](#이더리엄-endpoint)
+  * [Dev Settings](#dev-settings)
+    * [Node workspaces](#node-workspaces)
+    * [TypsScript/Nodejs](#typsscriptnodejs)
+    * [Hardhat / solidity](#hardhat--solidity)
+    * [Docker](#docker)
+    * [NPM](#npm)
+    * [Python](#python)
+    * [Rust](#rust)
+    * [Prettier 적용](#prettier-적용)
+  * [Github](#github)
+    * [github 계정 꼬였을때](#github-계정-꼬였을때)
+    * [error: cannot run delta: No such file or directory](#error-cannot-run-delta-no-such-file-or-directory)
+    * [git submodule update 에러 발생시](#git-submodule-update-에러-발생시-)
+    * [내가 올린 브랜치에 대해서 자동으로 PR추천을 할수 있도록 하기.](#내가-올린-브랜치에-대해서-자동으로-pr추천을-할수-있도록-하기)
+    * [Merge pull request 발생하지 않도록 Full Requests 설정](#merge-pull-request-발생하지-않도록-full-requests-설정)
+    * [기타 정리](#기타-정리)
+  * [Mac](#mac)
+    * [MacVim을 Spotlight에서 보도록 하기](#macvim을-spotlight에서-보도록-하기)
+    * [Mac Spotlight에서 특정 애플리케이션 찾지 못할 때](#mac-spotlight에서-특정-애플리케이션-찾지-못할-때)
+    * [Mac에서 Sublime Text를 커맨트창에서 실행시키기](#mac에서-sublime-text를-커맨트창에서-실행시키기)
+  * [vi](#vi)
+    * [줄번호](#줄번호)
+    * [files 파일 만들기](#files-파일-만들기)
+    * [basics](#basics)
+    * [Move cursor to end of file in vim](#move-cursor-to-end-of-file-in-vim)
+    * [한글 깨지는 문제](#한글-깨지는-문제)
+    * [vimrc (~/.vimrc)](#vimrc-vimrc)
+  * [AWS](#aws)
+    * [AWS 가격표](#aws-가격표)
+    * [AWS에 Load Balancer 추가시](#aws에-load-balancer-추가시-)
+    * [node3에 들어가서 postgresql 도커 접속방법](#node3에-들어가서-postgresql-도커-접속방법)
+    * [WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!](#warning-remote-host-identification-has-changed)
+    * [public key 확인 및 깃헙에 추가하기](#public-key-확인-및-깃헙에-추가하기)
+    * [접속](#접속)
+    * [AWS에서 파일 전송](#aws에서-파일-전송-)
+    * [Load Balancer](#load-balancer-)
+    * [URL로 접근이 안되는 문제](#url로-접근이-안되는-문제)
+    * [Target Group](#target-group)
+    * [AWS 타임존 변경](#aws-타임존-변경)
+  * [Know](#know)
+    * [Memo Google Docs](#memo-google-docs)
+    * [예상치 못한 컴파일 에러가 나올때](#예상치-못한-컴파일-에러가-나올때)
+    * [Generate Private Key](#generate-private-key)
+    * [Mac XCode](#mac-xcode)
+    * [source를 다른 위치에 new_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
+  * [단축키](#단축키)
+    * [iterm2 단축키](#iterm2-단축키)
+    * [Command](#command)
+    * [Finder](#finder)
+    * [VSCode](#vscode)
+    * [IDEA](#idea)
+    * [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
+    * [.bash_profile](#bash_profile)
+    * [code](#code)
+    * [git submodule](#git-submodule)
+    * [Docker](#docker-1)
+    * [Screen](#screen)
+    * [텍스트 찾기](#텍스트-찾기)
+    * [tar](#tar)
+  * [---](#---)
+<!-- TOC -->
 
 ## Projects Summary
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
@@ -243,15 +245,6 @@ psql postgres <== 접속해볼 수 있음.
 - 맥 메인 모니터 설정 및 Dock 사이즈 조정
 - 데스크탑 및 Dock: Mission Control - Spaces를 최근 사용내역에 따라 자동으로 재정렬
 - 휴지통 컵
-
----
-### ChatGPT - 패키지 상세 정보가 필요할때
-Where can I find the details of the "ethers" package?
-
----
-### ChatGPT - 에러가 날때 이런식으로 물어보면 됨
-The error outputs from the line "const utils_1 = require('ethers/utils');" :
- at Function.Module._resolveFilename (node:internal/modules/cjs/loader:1028:15) at Function.Module._load (node:internal/modules/cjs/loader:873:27) at Module.require (node:internal/modules/cjs/loader:1100:19)     at require (node:internal/modules/cjs/helpers:119:18)     at Object.<anonymous> (/Users/hyunjaelee/work/pooh-swap-contracts/test/shared/utilities.js:40:17)     at Module._compile (node:internal/modules/cjs/loader:1198:14)     at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)     at Module.load (node:internal/modules/cjs/loader:1076:32)     at Function.Module._load (node:internal/modules/cjs/loader:911:12)     at Module.require (node:internal/modules/cjs/loader:1100:19) {   code: 'MODULE_NOT_FOUND',
 
 ------
 ### Slack
@@ -872,7 +865,7 @@ find . -type d -name 'temp' -exec rm -rf {} +
 - hidden files: Command + Shift + . (period key)
 
 ---
-###  VSCode 단축키
+###  VSCode
 - Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 - back: ctrl - , forward: shift ctrl -
 - ctrl tab: recent files
@@ -884,6 +877,16 @@ find . -type d -name 'temp' -exec rm -rf {} +
 
 - Bigger Font: cmd + "+"
 
+---
+###  IDEA
+- Update TOC
+```angular2html
+mouse right click -> insert... -> update TOC
+```
+- Goto section
+```
+TOC에서 CMD 버튼 누르고 "#..." 항목 누르기
+```
 
 ---
 ### 명령어 하나로 git commit과 push
