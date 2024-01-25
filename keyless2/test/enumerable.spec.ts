@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 import {HardhatEthersSigner} from "@nomicfoundation/hardhat-ethers/signers";
 import { expect } from "chai";
-describe.only("Enumerable", async function () {
+describe("Enumerable", async function () {
    before (async function () {
 
    });

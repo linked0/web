@@ -5,12 +5,13 @@ import {
 import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import { expect } from "chai";
 import { deployments, ethers } from "hardhat";
-import { Lock2 } from "../typechain-types";
+import {DMSToken, Lock2} from "../typechain-types";
 import { sign } from "crypto";
 import { SignerWithAddress } from "@nomicfoundation/hardhat-ethers/signers";
 
-describe("Lock2", function () {
+describe.only("Lock2", function () {
   let lock2: Lock2;
+  let dmsToken: DMSToken;
   let signers: SignerWithAddress[];
   let accounts: string[];
 
@@ -20,7 +21,10 @@ describe("Lock2", function () {
     await deployments.fixture("Lock2");
     const deploy = await deployments.get("Lock2");
     lock2 = await ethers.getContractAt("Lock2", deploy.address);
+    const dmsTokenDeploy = await deployments.get("DMSToken");
+    dmsToken = await ethers.getContractAt("DMSToken", dmsTokenDeploy.address);
     console.log("lock2:", lock2.target);
+    console.log("dmsToken:", dmsToken.target);
   });
 
   it("Get unlockTime", async function () {
@@ -36,5 +40,10 @@ describe("Lock2", function () {
 
     console.log("hash:", hash);
 
+  });
+
+  it("getBalance", async function () {
+    console.log("balance:", await dmsToken.balanceOf(accounts[1]));
+    // TODO: add expect test code
   });
 });
