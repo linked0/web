@@ -55,3 +55,6 @@
 [submodule "pooh-swap-v2-hardhat"]
 	path = pooh-swap-v2-hardhat
 	url = https://github.com/linked0/pooh-swap-v2-hardhat.git
+[submodule "account-abstraction"]
+	path = account-abstraction
+	url = https://github.com/linked0/account-abstraction.git
