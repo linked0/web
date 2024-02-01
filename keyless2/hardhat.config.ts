@@ -16,11 +16,47 @@ dotenv.config({ path: ".env" });
 // });
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.20",
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.23",
+        settings: {
+          optimizer: { enabled: true, runs: 1000000 }
+        }
+      },
+    ],
+    overrides: {
+      "contracts/Create2Factory.sol": {
+        version: "0.7.0",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1000000,
+          },
+        },
+      },
+      'contracts/Test.sol': {
+        version: "0.8.23",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1000000,
+          },
+        },
+      },
+    },
+  },
   networks: {
     hardhat: {
       accounts: { mnemonic: process.env.MNEMONIC },
     },
+    testnet: {
+      url: process.env.TESTNET_URL,
+      accounts: [process.env.ADMIN_KEY],
+      chainId: parseInt(process.env.TESTNET_CHAIN_ID),
+      gas: 2100000,
+      gasPrice: 8000000000
+   },
   },
   namedAccounts: {
     deployer: 0,
