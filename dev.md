@@ -841,8 +841,7 @@ yarn init -y (=npm init -y)
 yarn add --dev hardhat
 npx hardhat
 
-yarn add -D hardhat-deploy
-yarn add -D dotenv
+yarn add -D dotenv @nomicfoundation/hardhat-toolbox hardhat-deploy @openzeppelin/contracts "@nomicfoundation/hardhat-chai-matchers@^2.0.0" "@nomicfoundation/hardhat-ethers@^3.0.0" "@nomicfoundation/hardhat-network-helpers@^1.0.0" "@nomicfoundation/hardhat-verify@^2.0.0" "@typechain/ethers-v6@^0.5.0" "@typechain/hardhat@^9.0.0" "@types/chai@^4.2.0" "@types/mocha@>=9.1.0" "chai@^4.2.0" "hardhat-gas-reporter@^1.0.8" "solidity-coverage@^0.8.1" "typechain@^8.3.0"
 ```
 
 ### iterm2 단축키
