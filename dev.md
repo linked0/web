@@ -912,12 +912,10 @@ hgrep() {
 	grep -irnH --include=*.$1 "$2" ./  
 }
 
-cb() {
-	curl -L bit.ly/3MT0VRb
-}
-
 alias hello='echo Hi!Jay~'
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
+
+echo 'alias cb="curl -L bit.ly/3MT0VRb"' >> ~/.zshrc
 
 ---
 ### code
@@ -972,8 +970,6 @@ tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
 
 tar --exclude='.git' --exclude='node_modules' -cvzf
 
-
----
 ---
 - https://bit.ly/3MT0VRb
 - https://bit.ly/3MVG5AN
