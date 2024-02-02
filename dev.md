@@ -913,6 +913,7 @@ hgrep() {
 }
 
 alias cb="curl -L bit.ly/3MT0VRb"
+alias zz=". ~/.zshrc'
 
 
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
