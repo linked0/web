@@ -921,6 +921,21 @@ export PS1="\W \u$ "
 hgrep() {
 	grep -irnH --include=*.$1 "$2" ./  
 }
+op() {
+	code ~/work/web/example/$1
+}
+opp() {
+	code ~/work/web/example/package.json
+}
+oph() {
+	code ~/work/web/example/hardhat.config.ts
+}
+opo() {
+	code ~/work/web/example/contract/Ondo.sol
+}
+opt() {
+	code ~/work/web/example/test/ondo.spec.ts
+}
 
 alias cb="curl -L bit.ly/3MT0VRb"
 alias zz=". ~/.zshrc'
