@@ -912,9 +912,10 @@ hgrep() {
 	grep -irnH --include=*.$1 "$2" ./  
 }
 
-alias hello='echo Hi!Jay~'
-echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
+alias cb="curl -L bit.ly/3MT0VRb"
 
+
+echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 echo 'alias cb="curl -L bit.ly/3MT0VRb"' >> ~/.zshrc
 
 ---
