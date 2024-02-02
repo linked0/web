@@ -77,6 +77,7 @@
   - [Mac XCode](#mac-xcode)
   - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
 - [단축키](#단축키)
+  - [hardhat 프로젝트 만들기](#hardhat-프로젝트-만들기)
   - [iterm2 단축키](#iterm2-단축키)
   - [Command](#command)
   - [Finder](#finder)
@@ -922,19 +923,19 @@ hgrep() {
 	grep -irnH --include=*.$1 "$2" ./  
 }
 op() {
-	code ~/work/web/example/$1
+	code ~/work/web/ex/$1
 }
 opp() {
-	code ~/work/web/example/package.json
+	code ~/work/web/ex/package.json
 }
 oph() {
-	code ~/work/web/example/hardhat.config.ts
+	code ~/work/web/ex/hardhat.config.ts
 }
 opo() {
-	code ~/work/web/example/contract/Ondo.sol
+	code ~/work/web/ex/contract/Ondo.sol
 }
 opt() {
-	code ~/work/web/example/test/ondo.spec.ts
+	code ~/work/web/ex/test/ondo.spec.ts
 }
 
 alias cb="curl -L bit.ly/3MT0VRb"
