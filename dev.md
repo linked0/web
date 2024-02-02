@@ -834,6 +834,17 @@ ps aux | grep chrome
 
 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
 
+### hardhat 프로젝트 만들기 
+Hardhat은 기존 프로젝트에서는 안됨.
+```
+yarn init -y (=npm init -y)
+yarn add --dev hardhat
+npx hardhat
+
+yarn add -D hardhat-deploy
+yarn add -D dotenv
+```
+
 ### iterm2 단축키
 - Next split: cmd + ]
 
