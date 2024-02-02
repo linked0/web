@@ -923,7 +923,7 @@ hgrep() {
 	grep -irnH --include=*.$1 "$2" ./  
 }
 op() {
-	code ~/work/web/ex/$1
+	code ~/work/web/$1
 }
 opp() {
 	code ~/work/web/ex/package.json
@@ -936,6 +936,12 @@ opo() {
 }
 opt() {
 	code ~/work/web/ex/test/ondo.spec.ts
+}
+opd() {
+	code ~/work/web/ex/dev.md
+}
+opz() {
+  code ~/.zshrc
 }
 
 alias cb="curl -L bit.ly/3MT0VRb"
