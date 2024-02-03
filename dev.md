@@ -1,4 +1,3 @@
-
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 - https://bit.ly/3MT0VRb
 - https://bit.ly/3MVG5AN
@@ -103,8 +102,8 @@
   - 개괄적인 정보를 위해서 **구글링해서 찾아보기**
 3. 홈페이지에서 찾은 doc 문서 보기
 4. github repo 찾아서 기본 보기
-4. discord 들어가보기
-5. 진행 상황을 구글 Docs에 정리
+5. discord 들어가보기
+6. 진행 상황을 구글 Docs에 정리
   - 필요하면 다이어리도 활용
   - 코드에 대해서는 Miro에 정리
 
@@ -919,33 +918,46 @@ git config alias.acp '! git commit -a -m "commit" && git push'
 ### .bash_profile
 export PS1="\W \u$ "
 
+export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
+
 hgrep() {
 	grep -irnH --include=*.$1 "$2" ./  
 }
 op() {
-	code ~/work/web/$1
+	code ./$1
 }
-opp() {
-	code ~/work/web/ex/package.json
+ope() {
+  code ~/work/web/$1
 }
-oph() {
-	code ~/work/web/ex/hardhat.config.ts
+ip() {
+	idea ./$1
 }
-opo() {
-	code ~/work/web/ex/contract/Ondo.sol
-}
-opt() {
-	code ~/work/web/ex/test/ondo.spec.ts
-}
-opd() {
-	code ~/work/web/ex/dev.md
-}
-opz() {
-  code ~/.zshrc
+ipe() {
+  idea ~/work/web/$1
 }
 
+alias opp='code ./package.json'
+alias oph='code ./hardhat.config.ts'
+alias opz='code ~/.zshrc'
+alias oped='code ~/work/web/dev.md'
+alias opep='code ~/work/web/ex/package.json'
+alias opeh='code ~/work/web/ex/hardhat.config.ts'
+alias opeo='code ~/work/web/ex/contract/Ondo.sol'
+alias opet='code ~/work/web/ex/test/ondo.spec.ts'
+
+alias ipp='idea ./package.json'
+alias iph='idea ./hardhat.config.ts'
+alias ipz='idea ~/.zshrc'
+alias iped='idea ~/work/web/dev.md'
+alias ipep='idea ~/work/web/ex/package.json'
+alias ipeh='idea ~/work/web/ex/hardhat.config.ts'
+alias ipeo='idea ~/work/web/ex/contract/Ondo.sol'
+alias ipet='idea ~/work/web/ex/test/ondo.spec.ts'
+
 alias cb="curl -L bit.ly/3MT0VRb"
-alias zz=". ~/.zshrc'
+alias cbb="open https://bit.ly/3MVG5AN"
+alias zz='. ~/.zshrc'
+
 
 
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
@@ -1008,4 +1020,5 @@ tar --exclude='.git' --exclude='node_modules' -cvzf
 - https://bit.ly/3MT0VRb
 - https://bit.ly/3MVG5AN
 - [solidkty markdown](./solidity.md)
+
 
