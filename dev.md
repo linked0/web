@@ -841,7 +841,7 @@ yarn init -y (=npm init -y)
 yarn add --dev hardhat
 npx hardhat
 
-yarn add -D dotenv @nomicfoundation/hardhat-toolbox hardhat-deploy @openzeppelin/contracts "@nomicfoundation/hardhat-chai-matchers@^2.0.0" "@nomicfoundation/hardhat-ethers@^3.0.0" "@nomicfoundation/hardhat-network-helpers@^1.0.0" "@nomicfoundation/hardhat-verify@^2.0.0" "@typechain/ethers-v6@^0.5.0" "@typechain/hardhat@^9.0.0" "@types/chai@^4.2.0" "@types/mocha@>=9.1.0" "chai@^4.2.0" "hardhat-gas-reporter@^1.0.8" "solidity-coverage@^0.8.1" "typechain@^8.3.0" 
+yarn add -D dotenv ethers @nomicfoundation/hardhat-toolbox hardhat-deploy @openzeppelin/contracts "@nomicfoundation/hardhat-chai-matchers@^2.0.0" "@nomicfoundation/hardhat-ethers@^3.0.0" "@nomicfoundation/hardhat-network-helpers@^1.0.0" "@nomicfoundation/hardhat-verify@^2.0.0" "@typechain/ethers-v6@^0.5.0" "@typechain/hardhat@^9.0.0" "@types/chai@^4.2.0" "@types/mocha@>=9.1.0" "chai@^4.2.0" "hardhat-gas-reporter@^1.0.8" "solidity-coverage@^0.8.1" "typechain@^8.3.0" 
 ```
 
 ### iterm2 단축키
@@ -888,14 +888,17 @@ find . -type d -name 'temp' -exec rm -rf {} +
 
 ---
 ###  IDEA
-- Update TOC
+* Update TOC
 ```angular2html
 mouse right click -> insert... -> update TOC
 ```
-- Goto section
+* Goto section
 ```
 TOC에서 CMD 버튼 누르고 "#..." 항목 누르기
 ```
+* 모듈 추가
+
+File -> New -> Module from Existing Sources
 
 ---
 ### 명령어 하나로 git commit과 push
