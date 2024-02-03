@@ -841,7 +841,7 @@ yarn init -y (=npm init -y)
 yarn add --dev hardhat
 npx hardhat
 
-yarn add -D dotenv @nomicfoundation/hardhat-toolbox hardhat-deploy @openzeppelin/contracts "@nomicfoundation/hardhat-chai-matchers@^2.0.0" "@nomicfoundation/hardhat-ethers@^3.0.0" "@nomicfoundation/hardhat-network-helpers@^1.0.0" "@nomicfoundation/hardhat-verify@^2.0.0" "@typechain/ethers-v6@^0.5.0" "@typechain/hardhat@^9.0.0" "@types/chai@^4.2.0" "@types/mocha@>=9.1.0" "chai@^4.2.0" "hardhat-gas-reporter@^1.0.8" "solidity-coverage@^0.8.1" "typechain@^8.3.0"
+yarn add -D dotenv @nomicfoundation/hardhat-toolbox hardhat-deploy @openzeppelin/contracts "@nomicfoundation/hardhat-chai-matchers@^2.0.0" "@nomicfoundation/hardhat-ethers@^3.0.0" "@nomicfoundation/hardhat-network-helpers@^1.0.0" "@nomicfoundation/hardhat-verify@^2.0.0" "@typechain/ethers-v6@^0.5.0" "@typechain/hardhat@^9.0.0" "@types/chai@^4.2.0" "@types/mocha@>=9.1.0" "chai@^4.2.0" "hardhat-gas-reporter@^1.0.8" "solidity-coverage@^0.8.1" "typechain@^8.3.0" 
 ```
 
 ### iterm2 단축키
@@ -924,35 +924,39 @@ hgrep() {
 	grep -irnH --include=*.$1 "$2" ./  
 }
 op() {
+  code ~/work/web/ex/$1
+}
+oc() {
 	code ./$1
 }
-ope() {
-  code ~/work/web/$1
-}
 ip() {
+  idea ~/work/web/ex/$1
+}
+ic() {
 	idea ./$1
 }
-ipe() {
-  idea ~/work/web/$1
-}
 
-alias opp='code ./package.json'
-alias oph='code ./hardhat.config.ts'
 alias opz='code ~/.zshrc'
-alias oped='code ~/work/web/dev.md'
-alias opep='code ~/work/web/ex/package.json'
-alias opeh='code ~/work/web/ex/hardhat.config.ts'
-alias opeo='code ~/work/web/ex/contract/Ondo.sol'
-alias opet='code ~/work/web/ex/test/ondo.spec.ts'
+alias opd='code ~/work/web/dev.md'
+alias opp='code ~/work/web/ex/package.json'
+alias oph='code ~/work/web/ex/hardhat.config.ts'
+alias opo='code ~/work/web/ex/contracts/Ondo.sol'
+alias opt='code ~/work/web/ex/test/ondo.spec.ts'
+alias ocp='code ./package.json'
+alias och='code ./hardhat.config.ts'
 
-alias ipp='idea ./package.json'
-alias iph='idea ./hardhat.config.ts'
 alias ipz='idea ~/.zshrc'
-alias iped='idea ~/work/web/dev.md'
-alias ipep='idea ~/work/web/ex/package.json'
-alias ipeh='idea ~/work/web/ex/hardhat.config.ts'
-alias ipeo='idea ~/work/web/ex/contract/Ondo.sol'
-alias ipet='idea ~/work/web/ex/test/ondo.spec.ts'
+alias ipd='idea ~/work/web/dev.md'
+alias ipp='idea ~/work/web/ex/package.json'
+alias iph='idea ~/work/web/ex/hardhat.config.ts'
+alias ipo='idea ~/work/web/ex/contracts/Ondo.sol'
+alias ipt='idea ~/work/web/ex/test/ondo.spec.ts'
+alias icp='idea ./package.json'
+alias ich='idea ./hardhat.config.ts'
+
+alias lsc='ls -al ~/work/web/ex/contracts'
+alias lss='ls -al ~/work/web/ex/scripts'
+alias lst='ls -al ~/work/web/ex/test'
 
 alias cb="curl -L bit.ly/3MT0VRb"
 alias cbb="open https://bit.ly/3MVG5AN"
