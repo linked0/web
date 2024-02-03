@@ -929,11 +929,30 @@ hgrep() {
 op() {
   code ~/work/web/ex/$1
 }
+opcc() {
+  code ~/work/web/ex/contracts/$1
+}
+opss() {
+  code ~/work/web/ex/scripts/$1
+}
+optt() {
+  code ~/work/web/ex/test/$1
+}
 oc() {
 	code ./$1
 }
+
 ip() {
   idea ~/work/web/ex/$1
+}
+ipcc() {
+  code ~/work/web/ex/contracts/$1
+}
+ipss() {
+  code ~/work/web/ex/scripts/$1
+}
+iptt() {
+  code ~/work/web/ex/test/$1
 }
 ic() {
 	idea ./$1
