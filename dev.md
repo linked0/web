@@ -925,9 +925,6 @@ hgrep() {
 opf() {
   code ~/work/web/ex/$1
 }
-ocf() {
-  code ./$1
-}
 opcc() {
   code ~/work/web/ex/contracts/$1
 }
@@ -939,9 +936,6 @@ optt() {
 }
 ipf() {
   idea ~/work/web/ex/$1
-}
-icf() {
-  idea ./$1
 }
 ipcc() {
   code ~/work/web/ex/contracts/$1
@@ -975,6 +969,7 @@ alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
 alias lst='ls -al ~/work/web/ex/test'
 
+alias ccc='cat ~/.zshrc'
 alias zzz='. ~/.zshrc'
 alias exx='cd ~/work/web/ex'
 alias cb="curl -L bit.ly/3MT0VRb"
