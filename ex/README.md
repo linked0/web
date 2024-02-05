@@ -18,3 +18,7 @@ npx hardhat run scripts/deploy.ts
 - ./deploy/002_deploy_lock2.ts를 일단 컴파일되게 처리함.
   - hardhat.config.ts에 `import "hardhat-deploy"` 추가하니까 컴파일 잘 됨.
   - ethers와 hardhat과 "@typechain/ethers-v5"관계 정리 필요.
+
+#### Feb 5, 2024 
+- scripts/deploy-lock-with-factory.ts에 Create2Factory 이용한 Lock 생성 코드 작업 시작
+  - hardhat node를 로컬에 실행시켜서 진행함.

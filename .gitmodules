@@ -58,3 +58,6 @@
 [submodule "account-abstraction"]
 	path = account-abstraction
 	url = https://github.com/linked0/account-abstraction.git
+[submodule "pooh-erc20"]
+	path = pooh-erc20
+	url = https://github.com/linked0/pooh-erc20
