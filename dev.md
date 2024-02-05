@@ -176,7 +176,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 karanbiner 설치 및 karabiner.json
 - iterm2 - Preferences - Profiles - Silence bell
-- [gitconfig html](./gitconfig.html) 내용은 .gitconfig에 복사 & `git init`
+- [gitconfig html](sub/gitconfig.htmlml) 내용은 .gitconfig에 복사 & `git init`
 
 awscli 설치 및 aws configure
 
@@ -192,11 +192,7 @@ Default output format [None]:
 
 echo $SHELL로 쉘 확인하고 아래 .zshrc에 복사
 ```
-alias key="cd ~/work/web/ke yless2"
-alias cb="curl -L bit.ly/3MT0VRb"
-alias poo="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
-alias ecstart="aws ec2 start-instances --instance-ids i-02c89e86234e05850"
-alias ecstop="aws ec2 stop-instances --instance-ids i-02c89e86234e05850"
+`단축키` 부분으로 이동
 ```
 .zshrc에 테마 찾아서 복사
 ```
@@ -239,7 +235,7 @@ psql postgres <== 접속해볼 수 있음.
 - Markdown All in One 플러그인: 마크다운 컨텐트 만들어주는 VSCode 
 - VS Code 플러그인 : Solidity/Go/rust-analyzer, Live Preview, Github Copilot, Markdown All in One
 - IntelliJ Copilot 플러그인: cmd + shift + a 눌러서 plugins 검색하고 설치
-
+- idea 명령어 세팅: export PATH=$PATH:'/Applications/IntelliJ IDEA.app/Contents/MacOS'
 ##### 기타
 - 맥 메인 모니터 설정 및 Dock 사이즈 조정
 - 데스크탑 및 Dock: Mission Control - Spaces를 최근 사용내역에 따라 자동으로 재정렬
@@ -926,8 +922,11 @@ export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
 hgrep() {
 	grep -irnH --include=*.$1 "$2" ./  
 }
-op() {
+opf() {
   code ~/work/web/ex/$1
+}
+ocf() {
+  code ./$1
 }
 opcc() {
   code ~/work/web/ex/contracts/$1
@@ -938,12 +937,11 @@ opss() {
 optt() {
   code ~/work/web/ex/test/$1
 }
-oc() {
-	code ./$1
-}
-
-ip() {
+ipf() {
   idea ~/work/web/ex/$1
+}
+icf() {
+  idea ./$1
 }
 ipcc() {
   code ~/work/web/ex/contracts/$1
@@ -953,9 +951,6 @@ ipss() {
 }
 iptt() {
   code ~/work/web/ex/test/$1
-}
-ic() {
-	idea ./$1
 }
 
 alias opz='code ~/.zshrc'
@@ -980,10 +975,13 @@ alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
 alias lst='ls -al ~/work/web/ex/test'
 
+alias zzz='. ~/.zshrc'
+alias exx='cd ~/work/web/ex'
 alias cb="curl -L bit.ly/3MT0VRb"
 alias cbb="open https://bit.ly/3MVG5AN"
-alias zz='. ~/.zshrc'
-
+alias poo="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
+alias ecstart="aws ec2 start-instances --instance-ids i-02c89e86234e05850"
+alias ecstop="aws ec2 stop-instances --instance-ids i-02c89e86234e05850"
 
 
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
