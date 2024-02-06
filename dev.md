@@ -21,6 +21,7 @@
       - [npm yarn docker install](#npm-yarn-docker-install)
       - [nvm install](#nvm-install)
       - [rust/postgresql install](#rustpostgresql-install)
+      - [MySql Server 설치](#mysql-server-설치)
       - [Whale, Miro, onenote, Visual Studio, Intellij](#whale-miro-onenote-visual-studio-intellij)
       - [기타](#기타)
   - [Slack](#slack)
@@ -929,59 +930,58 @@ export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
 hgrep() {
 	grep -irnH --include=*.$1 "$2" ./  
 }
-oo() {
+pp() {
   code ./$1
 }
 ii() {
   idea ./$1
 }
-
-opf() {
+ppff() {
   code ~/work/web/ex/$1
 }
-opcc() {
+ppcc() {
   code ~/work/web/ex/contracts/$1
 }
-opss() {
+ppss() {
   code ~/work/web/ex/scripts/$1
 }
-optt() {
+pptt() {
   code ~/work/web/ex/test/$1
 }
-ipf() {
+iiff() {
   idea ~/work/web/ex/$1
 }
-ipcc() {
+iicc() {
   code ~/work/web/ex/contracts/$1
 }
-ipss() {
+iiss() {
   code ~/work/web/ex/scripts/$1
 }
-iptt() {
+iitt() {
   code ~/work/web/ex/test/$1
 }
 
-alias opz='code ~/.zshrc'
-alias opd='code ~/work/web/dev.md'
-alias opp='code ~/work/web/ex/package.json'
-alias oph='code ~/work/web/ex/hardhat.config.ts'
-alias ope='code ~/work/web/ex/.env'
-alias opo='code ~/work/web/ex/contracts/Ondo.sol'
-alias opt='code ~/work/web/ex/test/ondo.spec.ts'
-alias ocp='code ./package.json'
-alias och='code ./hardhat.config.ts'
-alias oce='code ./.env'
+alias ppz='code ~/.zshrc'
+alias ppd='code ~/work/web/dev.md'
+alias ppp='code ~/work/web/ex/package.json'
+alias pph='code ~/work/web/ex/hardhat.config.ts'
+alias ppe='code ~/work/web/ex/.env'
+alias ppo='code ~/work/web/ex/contracts/Ondo.sol'
+alias ppt='code ~/work/web/ex/test/ondo.spec.ts'
+alias ccp='code ./package.json'
+alias cch='code ./hardhat.config.ts'
+alias cce='code ./.env'
 
-alias ipz='idea ~/.zshrc'
-alias ipd='idea ~/work/web/dev.md'
-alias ipp='idea ~/work/web/ex/package.json'
-alias iph='idea ~/work/web/ex/hardhat.config.ts'
-alias ipe='idea ~/work/web/ex/.env'
-alias ipo='idea ~/work/web/ex/contracts/Ondo.sol'
-alias ipt='idea ~/work/web/ex/test/ondo.spec.ts'
-alias icp='idea ./package.json'
-alias ich='idea ./hardhat.config.ts'
-alias ice='idea ./.env'
+alias iiz='idea ~/.zshrc'
+alias iid='idea ~/work/web/dev.md'
+alias iip='idea ~/work/web/ex/package.json'
+alias iih='idea ~/work/web/ex/hardhat.config.ts'
+alias iie='idea ~/work/web/ex/.env'
+alias iio='idea ~/work/web/ex/contracts/Ondo.sol'
+alias iit='idea ~/work/web/ex/test/ondo.spec.ts'
+alias rrp='idea ./package.json'
+alias rrh='idea ./hardhat.config.ts'
+alias rre='idea ./.env'
 
 alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
@@ -989,9 +989,10 @@ alias lst='ls -al ~/work/web/ex/test'
 
 alias ccc='cat ~/.zshrc'
 alias zzz='. ~/.zshrc'
-alias exx='cd ~/work/web/ex'
 alias viz='vim ~/.zshrc'
 alias vid='vim ~/work/web/dev.md'
+alias web='cd ~/work/web'
+alias exx='cd ~/work/web/ex'
 
 alias cb="curl -L bit.ly/3MT0VRb"
 alias cbb="open https://bit.ly/3MVG5AN"
