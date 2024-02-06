@@ -230,6 +230,12 @@ brew services start postgresql
 ```
 psql postgres <== 접속해볼 수 있음.
 
+##### MySql Server 설치
+- https://dev.mysql.com/downloads/mysql/ 이동
+- 버전에 맞게 ARM이나 X86 버전 설치
+- 예) macOS 14 (ARM, 64-bit), DMG Archive 이나 macOS 14 (x86, 64-bit), DMG Archive
+
+
 ##### Whale, Miro, onenote, Visual Studio, Intellij
 - Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 - Markdown All in One 플러그인: 마크다운 컨텐트 만들어주는 VSCode 
