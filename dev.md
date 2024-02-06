@@ -915,6 +915,7 @@ git config alias.acp '! git commit -a -m "commit" && git push'
 
 ---
 ### .bash_profile
+```
 export PS1="\W \u$ "
 
 export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
@@ -951,19 +952,23 @@ alias opz='code ~/.zshrc'
 alias opd='code ~/work/web/dev.md'
 alias opp='code ~/work/web/ex/package.json'
 alias oph='code ~/work/web/ex/hardhat.config.ts'
+alias ope='code ~/work/web/ex/.env'
 alias opo='code ~/work/web/ex/contracts/Ondo.sol'
 alias opt='code ~/work/web/ex/test/ondo.spec.ts'
 alias ocp='code ./package.json'
 alias och='code ./hardhat.config.ts'
+alias oce='code ./.env'
 
 alias ipz='idea ~/.zshrc'
 alias ipd='idea ~/work/web/dev.md'
 alias ipp='idea ~/work/web/ex/package.json'
 alias iph='idea ~/work/web/ex/hardhat.config.ts'
+alias ipe='idea ~/work/web/ex/.env'
 alias ipo='idea ~/work/web/ex/contracts/Ondo.sol'
 alias ipt='idea ~/work/web/ex/test/ondo.spec.ts'
 alias icp='idea ./package.json'
 alias ich='idea ./hardhat.config.ts'
+alias ice='idea ./.env'
 
 alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
@@ -981,7 +986,7 @@ alias ecstop="aws ec2 stop-instances --instance-ids i-02c89e86234e05850"
 
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 echo 'alias cb="curl -L bit.ly/3MT0VRb"' >> ~/.zshrc
-
+```
 ---
 ### code
 // SPDX-License-Identifier: UNLICENSED
