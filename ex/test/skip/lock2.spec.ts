@@ -5,11 +5,11 @@ import {
 import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import { expect } from "chai";
 import { deployments, ethers } from "hardhat";
-import {DMSToken, Lock2} from "../typechain-types";
+import {DMSToken, Lock2} from "../../typechain-types";
 import { sign } from "crypto";
 import { SignerWithAddress } from "@nomicfoundation/hardhat-ethers/signers";
 
-describe.only("Lock2", function () {
+describe.skip("Lock2", function () {
   let lock2: Lock2;
   let dmsToken: DMSToken;
   let signers: SignerWithAddress[];

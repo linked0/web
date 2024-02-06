@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
-import "./Lock.sol";
+import "./old/Lock.sol";
 import "@openzeppelin/contracts/proxy/Clones.sol";
 
 // Uncomment this line to use console.log
