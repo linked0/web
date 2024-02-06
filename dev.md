@@ -923,6 +923,13 @@ export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
 hgrep() {
 	grep -irnH --include=*.$1 "$2" ./  
 }
+oo() {
+  code ./$1
+}
+ii() {
+  idea ./$1
+}
+
 opf() {
   code ~/work/web/ex/$1
 }
