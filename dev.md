@@ -978,6 +978,7 @@ alias ccc='cat ~/.zshrc'
 alias zzz='. ~/.zshrc'
 alias exx='cd ~/work/web/ex'
 alias viz='vim ~/.zshrc'
+alias vid='vim ~/work/web/dev.md'
 
 alias cb="curl -L bit.ly/3MT0VRb"
 alias cbb="open https://bit.ly/3MVG5AN"
