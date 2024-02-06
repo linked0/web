@@ -952,13 +952,13 @@ iiff() {
   idea ~/work/web/ex/$1
 }
 iicc() {
-  code ~/work/web/ex/contracts/$1
+  idea ~/work/web/ex/contracts/$1
 }
 iiss() {
-  code ~/work/web/ex/scripts/$1
+  idea ~/work/web/ex/scripts/$1
 }
 iitt() {
-  code ~/work/web/ex/test/$1
+  idea ~/work/web/ex/test/$1
 }
 
 alias ppz='code ~/.zshrc'
