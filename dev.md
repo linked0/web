@@ -977,12 +977,11 @@ alias lst='ls -al ~/work/web/ex/test'
 alias ccc='cat ~/.zshrc'
 alias zzz='. ~/.zshrc'
 alias exx='cd ~/work/web/ex'
+alias viz='vim ~/.zshrc'
+
 alias cb="curl -L bit.ly/3MT0VRb"
 alias cbb="open https://bit.ly/3MVG5AN"
 alias poo="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
-alias ecstart="aws ec2 start-instances --instance-ids i-02c89e86234e05850"
-alias ecstop="aws ec2 stop-instances --instance-ids i-02c89e86234e05850"
-
 
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 echo 'alias cb="curl -L bit.ly/3MT0VRb"' >> ~/.zshrc
