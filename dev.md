@@ -1031,6 +1031,10 @@ git submodule update --remote
 git submodule update --init --recursive web2 
 ```
 ---
+### Block projects
+Sepolia: 579fca7e3f10489b83c047f5cc17bec5
+
+---
 ### Docker
 - docker exec -it pow-node geth attach http://localhost:8545
 - docker logs pow-node // enode 알아낼때 사용할 수 있음
