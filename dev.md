@@ -903,6 +903,11 @@ TOC에서 CMD 버튼 누르고 "#..." 항목 누르기
 
 File -> New -> Module from Existing Sources
 
+* Word Wrap
+```
+View -> Active Editor -> Use Soft Wraps
+```
+
 ---
 ### 명령어 하나로 git commit과 push
 .gitconfig에 다음 추가하고 vi종료하면 바로 적용됨

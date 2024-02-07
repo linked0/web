@@ -39,6 +39,7 @@
     "deploy-factory:test": "hardhat run --network testnet scripts/deploy-factory.ts",
     "deploy-lock-factory:test": "hardhat run --network testnet scripts/deploy-lock3-with-factory.ts",
     "deploy-factory-simple:test": "hardhat run --network testnet scripts/deploy-factory-simple.ts",
+    "decrypt": "hardhat run utils/private-from-keystore.ts",
     "lint": "pretty-quick --pattern '**/*.*(sol|json|js|ts)' --verbose",
     "lint:check": "prettier --check **/*.sol **/*.json **/*.ts **/*.js --ignore-path=.gitignore",
     "lint:fix-all": "prettier --write **/*.sol **/*.json **/*.ts **/*.js --ignore-path=.gitignore",
