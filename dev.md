@@ -1033,7 +1033,8 @@ git submodule update --init --recursive web2
 ---
 ### Block projects
 Sepolia: 579fca7e3f10489b83c047f5cc17bec5
-Jay Test: 7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23
+Jay Test: 0x58984b2bf6f0f3de4f38290ed3c541ac27bac384b378073ab133af8b314a1887
+Pooh Admin: 0x7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23
 
 ---
 ### Docker
