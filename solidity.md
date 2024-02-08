@@ -28,6 +28,8 @@
   - [Contract Size](#contract-size)
   - [Exceeds Gas Limit 에러](#exceeds-gas-limit-에러)
   - [hardhat-gas-reporter](#hardhat-gas-reporter)
+- [Git](#git)
+  - [error: cannot run delta: No such file or directory](#error-cannot-run-delta-no-such-file-or-directory)
 - [Dev Errors](#dev-errors)
   - [failed to compute cache key: "/target/debug/zksync\_server" not found: not found](#failed-to-compute-cache-key-targetdebugzksync_server-not-found-not-found)
 - [Errors](#errors)
@@ -568,6 +570,17 @@ error Command failed with exit code 1.
 
 ### hardhat-gas-reporter
 hardhat.config.ts 참고: https://github.com/poohgithub/zksync-era/blob/main/poohnet/paymaster-examples/contracts/hardhat.config.ts
+
+-------
+## Git
+🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+
+### error: cannot run delta: No such file or directory
+
+🏆 해결
+```
+brew install git-delta
+```
 
 -------
 ## Dev Errors

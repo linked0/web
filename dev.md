@@ -87,10 +87,11 @@
   - [.bash\_profile](#bash_profile)
   - [code](#code)
   - [git submodule](#git-submodule)
+  - [Block projects](#block-projects)
   - [Docker](#docker-1)
   - [Screen](#screen)
   - [텍스트 찾기](#텍스트-찾기)
-  - [tar](#tar)
+  - [zip](#zip)
 <!-- TOC -->
 
 ## Projects Summary
@@ -1058,12 +1059,10 @@ Jay Test: 0x7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23
 egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
 
 ---
-### tar
-Zip Foler
-tar --exclude='node_modules' -cvzf bccard.tar.gz bccard    //하위 폴더들에서 node_modules를 모두 제외시키기
-tar -xvzf xxx.tar.gz -C ./data     //data 폴더에 풀고 싶을때.
+### zip
+zip -r ~/temp/my-archive.zip . -x '*.git*' -x '*node_modules*'
+unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
 
-tar --exclude='.git' --exclude='node_modules' -cvzf
 
 ---
 - https://bit.ly/3MT0VRb
