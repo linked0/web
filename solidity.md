@@ -30,6 +30,7 @@
   - [hardhat-gas-reporter](#hardhat-gas-reporter)
 - [Git](#git)
   - [error: cannot run delta: No such file or directory](#error-cannot-run-delta-no-such-file-or-directory)
+  - [fatal: Not possible to fast-forward, aborting.](#fatal-not-possible-to-fast-forward-aborting)
 - [Dev Errors](#dev-errors)
   - [failed to compute cache key: "/target/debug/zksync\_server" not found: not found](#failed-to-compute-cache-key-targetdebugzksync_server-not-found-not-found)
 - [Errors](#errors)
@@ -581,7 +582,14 @@ hardhat.config.ts 참고: https://github.com/poohgithub/zksync-era/blob/main/poo
 ```
 brew install git-delta
 ```
+-------
+### fatal: Not possible to fast-forward, aborting.
 
+🏆 해결
+```
+git fetch origin
+git rebase origin/main
+```
 -------
 ## Dev Errors
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
