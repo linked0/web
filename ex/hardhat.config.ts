@@ -57,6 +57,11 @@ const config: HardhatUserConfig = {
       gas: 2100000,
       gasPrice: 8000000000
    },
+   sepolia: {
+    url: process.env.SEPOLIA_URL || "",
+    chainId: 11155111,
+    accounts: [process.env.ADMIN_KEY]
+},
   },
   namedAccounts: {
     deployer: 0,

@@ -3,6 +3,9 @@ import { zeroPadValue, hexlify, toBeHex, keccak256, concat } from "ethers";
 import { TransactionRequest } from '@ethersproject/abstract-provider'
 
 async function main() {
+    const signer = await ethers.provider.getSigner();
+    console.log("Signer address:", await signer.getAddress());
+
     const create2Factory = await ethers.getContractAt("Create2Factory", process.env.CREATE2FACTORY_ADDRESS);
     // print transaction of factory deployment
     console.log("Create2Factory deployed to:", create2Factory.target);
@@ -10,17 +13,44 @@ async function main() {
     // deploy lock contract with create2Factory
     const initCode = await (await ethers.getContractFactory("Lock3")).getDeployTransaction(1);
     
-    // console.log('@@@ initCode:', initCode)
-    
     let initCodeStr: string = "";
     if (typeof initCode !== 'string') {
         // eslint-disable-next-line @typescript-eslint/no-base-to-string
         initCodeStr = (initCode as TransactionRequest).data!.toString()
         // console.log('@@@ initCodeStr:', initCodeStr)
     }
-
-    const addr = getDeployedAddress(initCodeStr, 9999);
+    const addr = getDeployedAddress(initCodeStr, 3);
     console.log("SimpleStorage deployed to:", addr);
+
+    const deployTx = {
+      to: process.env.CREATE2FACTORY_ADDRESS,
+      data: initCodeStr
+    }
+
+    // let gasLimit = await signer.estimateGas(deployTx);
+
+    // manual estimation (its bit larger: we don't know actual deployed code size)
+    // if (gasLimit === undefined) {
+    //   gasLimit = arrayify(initCodeStr)
+    //     .map(x => x === 0 ? 4 : 16)
+    //     .reduce((sum, x) => sum + x) +
+    //     200 * initCode.length / 2 + // actual is usually somewhat smaller (only deposited code, not entire constructor)
+    //     6 * Math.ceil(initCode.length / 64) + // hash price. very minor compared to deposit costs
+    //     32000 +
+    //     21000
+
+    //   // deployer requires some extra gas
+    //   gasLimit = Math.floor(gasLimit * 64 / 63)
+    // }
+
+    const gasLimit = 1000000;
+    console.log("Gas estimate:", gasLimit.toString());
+
+    const ret = await signer.sendTransaction({ ...deployTx, gasLimit })
+    await ret.wait()
+    if (await ethers.provider.getCode(addr).then(code => code.length) === 2) {
+      throw new Error('failed to deploy')
+    }
   }
 
   function getDeployedAddress (initCode: string, salt: number): string {
