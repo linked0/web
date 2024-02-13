@@ -13,7 +13,7 @@ async function main() {
 
     // poohprysm/poohnet/pooh-deposit-cli/validator_keys의 voter-keystore 파일을 이용하여 private key를 얻는다.
     const keystoreJson ="{\"address\": \"284126bcf634f08df00fb40b3d55bc1b63103804\", \"crypto\": {\"cipher\": \"aes-128-ctr\", \"cipherparams\": {\"iv\": \"a70f29bed0f5b10a4a249e89095b46eb\"}, \"ciphertext\": \"603ab4ae0d73ad2ead029eacfd64b9b14aa4459885ad2b25cf5c58a0dc6db2c5\", \"kdf\": \"pbkdf2\", \"kdfparams\": {\"c\": 1000000, \"dklen\": 32, \"prf\": \"hmac-sha256\", \"salt\": \"7937b7e18016ad339ae344d08c1967f9\"}, \"mac\": \"8a53021682733fbdb518f28975b8d6dd30b4b52375c439d7c902e85d862e98b0\"}, \"id\": \"2d2e7b26-2efd-466c-812c-ac19873f4b1a\", \"version\": 3}";
-    // const password = "boa2020!@";
+    // const password = "boa2019!@";
     const password = "pooh2023!@";
 
     try {
