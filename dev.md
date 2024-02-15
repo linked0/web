@@ -942,52 +942,55 @@ pp() {
 ii() {
   idea ./$1
 }
-ppff() {
+rrff() {
   code ~/work/web/ex/$1
 }
-ppcc() {
+rrcc() {
   code ~/work/web/ex/contracts/$1
 }
-ppss() {
+rrss() {
   code ~/work/web/ex/scripts/$1
 }
-pptt() {
+rrtt() {
   code ~/work/web/ex/test/$1
 }
-iiff() {
+jjff() {
   idea ~/work/web/ex/$1
 }
-iicc() {
+jjcc() {
   idea ~/work/web/ex/contracts/$1
 }
-iiss() {
+jjss() {
   idea ~/work/web/ex/scripts/$1
 }
-iitt() {
+jjtt() {
   idea ~/work/web/ex/test/$1
 }
 
 alias ppz='code ~/.zshrc'
-alias ppd='code ~/work/web/dev.md'
-alias ppp='code ~/work/web/ex/package.json'
-alias pph='code ~/work/web/ex/hardhat.config.ts'
-alias ppe='code ~/work/web/ex/.env'
-alias ppo='code ~/work/web/ex/contracts/Ondo.sol'
-alias ppt='code ~/work/web/ex/test/ondo.spec.ts'
-alias ccp='code ./package.json'
-alias cch='code ./hardhat.config.ts'
-alias cce='code ./.env'
+alias ppp='code ./package.json'
+alias pph='code ./hardhat.config.ts'
+alias ppe='code ./.env'
+
+alias rrd='code ~/work/web/dev.md'
+alias rrp='code ~/work/web/ex/package.json'
+alias rrh='code ~/work/web/ex/hardhat.config.ts'
+alias rre='code ~/work/web/ex/.env'
+alias rro='code ~/work/web/ex/contracts/Ondo.sol'
+alias rrt='code ~/work/web/ex/test/ondo.spec.ts'
 
 alias iiz='idea ~/.zshrc'
-alias iid='idea ~/work/web/dev.md'
-alias iip='idea ~/work/web/ex/package.json'
-alias iih='idea ~/work/web/ex/hardhat.config.ts'
-alias iie='idea ~/work/web/ex/.env'
-alias iio='idea ~/work/web/ex/contracts/Ondo.sol'
-alias iit='idea ~/work/web/ex/test/ondo.spec.ts'
-alias rrp='idea ./package.json'
-alias rrh='idea ./hardhat.config.ts'
-alias rre='idea ./.env'
+alias iip='idea ./package.json'
+alias iih='idea ./hardhat.config.ts'
+alias iie='idea ./.env'
+
+alias jjd='idea ~/work/web/dev.md'
+alias jjp='idea ~/work/web/ex/package.json'
+alias jjh='idea ~/work/web/ex/hardhat.config.ts'
+alias jje='idea ~/work/web/ex/.env'
+alias jjo='idea ~/work/web/ex/contracts/Ondo.sol'
+alias jjt='idea ~/work/web/ex/test/ondo.spec.ts'
+
 
 alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
