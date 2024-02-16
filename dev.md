@@ -945,13 +945,13 @@ ii() {
 rrff() {
   code ~/work/web/ex/$1
 }
-rrcc() {
+qqcc() {
   code ~/work/web/ex/contracts/$1
 }
-rrss() {
+qqss() {
   code ~/work/web/ex/scripts/$1
 }
-rrtt() {
+qtt() {
   code ~/work/web/ex/test/$1
 }
 jjff() {
@@ -971,18 +971,20 @@ alias ppz='code ~/.zshrc'
 alias ppp='code ./package.json'
 alias pph='code ./hardhat.config.ts'
 alias ppe='code ./.env'
+alias ppm='code ./README.md'
 
-alias rrd='code ~/work/web/dev.md'
-alias rrp='code ~/work/web/ex/package.json'
-alias rrh='code ~/work/web/ex/hardhat.config.ts'
-alias rre='code ~/work/web/ex/.env'
-alias rro='code ~/work/web/ex/contracts/Ondo.sol'
-alias rrt='code ~/work/web/ex/test/ondo.spec.ts'
+alias qqd='code ~/work/web/dev.md'
+alias qqp='code ~/work/web/ex/package.json'
+alias qqh='code ~/work/web/ex/hardhat.config.ts'
+alias qqe='code ~/work/web/ex/.env'
+alias qqo='code ~/work/web/ex/contracts/Ondo.sol'
+alias qqt='code ~/work/web/ex/test/ondo.spec.ts'
 
 alias iiz='idea ~/.zshrc'
 alias iip='idea ./package.json'
 alias iih='idea ./hardhat.config.ts'
 alias iie='idea ./.env'
+alias iim='idea ./README.md'
 
 alias jjd='idea ~/work/web/dev.md'
 alias jjp='idea ~/work/web/ex/package.json'
@@ -990,7 +992,6 @@ alias jjh='idea ~/work/web/ex/hardhat.config.ts'
 alias jje='idea ~/work/web/ex/.env'
 alias jjo='idea ~/work/web/ex/contracts/Ondo.sol'
 alias jjt='idea ~/work/web/ex/test/ondo.spec.ts'
-
 
 alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
