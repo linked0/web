@@ -234,9 +234,11 @@ psql postgres <== 접속해볼 수 있음.
 
 ##### MySql Server 설치
 - https://dev.mysql.com/downloads/mysql/ 이동
-- 버전에 맞게 ARM이나 X86 버전 설치
+- 버전에 맞게 ARM이나 X86 버전 설치 
 - 예) macOS 14 (ARM, 64-bit), DMG Archive 이나 macOS 14 (x86, 64-bit), DMG Archive
-
+- MySQL Workbench도 설치
+- 초기화: 시스템 메뉴 -> 설정 -> 왼쪽 하단의 MySQL 클릭해서 들어가서 "Initialize Database" 클릭
+- 암호는 alfred0!@
 
 ##### Whale, Miro, onenote, Visual Studio, Intellij
 - Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
