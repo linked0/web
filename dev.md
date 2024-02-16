@@ -942,30 +942,6 @@ pp() {
 ii() {
   idea ./$1
 }
-rrff() {
-  code ~/work/web/ex/$1
-}
-qqcc() {
-  code ~/work/web/ex/contracts/$1
-}
-qqss() {
-  code ~/work/web/ex/scripts/$1
-}
-qtt() {
-  code ~/work/web/ex/test/$1
-}
-jjff() {
-  idea ~/work/web/ex/$1
-}
-jjcc() {
-  idea ~/work/web/ex/contracts/$1
-}
-jjss() {
-  idea ~/work/web/ex/scripts/$1
-}
-jjtt() {
-  idea ~/work/web/ex/test/$1
-}
 
 alias ppz='code ~/.zshrc'
 alias ppp='code ./package.json'
