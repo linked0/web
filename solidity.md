@@ -12,6 +12,7 @@
   - [anyValue function](#anyvalue-function)
   - [an issue with fsevents](#an-issue-with-fsevents)
   - [로컬 링크 만들기](#로컬-링크-만들기)
+  - [npm module upgrade](#npm-module-upgrade)
   - [NPM publish 에러](#npm-publish-에러)
   - [/bin/sh: python: command not found](#binsh-python-command-not-found)
   - [error work/polymath-core/node\_modules/sha3: Command failed.](#error-workpolymath-corenode_modulessha3-command-failed)
@@ -150,6 +151,10 @@ success Saved 568 new dependencies.
 ---
 ### 로컬 링크 만들기
 	- yarn add /Users/hyunjaelee/work/hardhat-zksync/packages/hardhat-zksync-deploy
+
+---
+### npm module upgrade
+yarn upgrade hardhat-change-network
 
 ---
 ### NPM publish 에러
