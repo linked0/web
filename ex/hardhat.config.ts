@@ -36,7 +36,7 @@ const config: HardhatUserConfig = {
         },
       },
       'contracts/Test.sol': {
-        version: "0.8.23",
+        version: "0.8.19",
         settings: {
           optimizer: {
             enabled: true,

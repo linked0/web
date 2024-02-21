@@ -17,8 +17,9 @@ async function main() {
     if (typeof initCode !== 'string') {
         // eslint-disable-next-line @typescript-eslint/no-base-to-string
         initCodeStr = (initCode as TransactionRequest).data!.toString()
-        // console.log('@@@ initCodeStr:', initCodeStr)
+        console.log('@@@ initCodeStr:', initCodeStr)
     }
+    initCodeStr = "6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212205c308266d3e1e69ef40d52cec3a293b9f93f5962c0b39b8e9bf06874cf47522e64736f6c63430008130033";
     const addr = getDeployedAddress(initCodeStr, 3);
     console.log("SimpleStorage deployed to:", addr);
 
