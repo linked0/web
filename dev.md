@@ -41,6 +41,7 @@
   - [Rust](#rust)
   - [Prettier 적용](#prettier-적용)
 - [Github](#github)
+  - [fast-forward 문제](#fast-forward-문제)
   - [github 계정 꼬였을때](#github-계정-꼬였을때)
   - [error: cannot run delta: No such file or directory](#error-cannot-run-delta-no-such-file-or-directory)
   - [git submodule update 에러 발생시](#git-submodule-update-에러-발생시)
@@ -520,6 +521,24 @@ package.json의 "scripts" 섹션에 다음을 추가
 ## Github
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
+### fast-forward 문제
+- push 하려고 할때 아래와 같은 문제 발생 --> github remote의 브랜치가 더 최신버전일때 발생
+```
+$ account-abstraction git:(test-flow) ✗ git push
+To github.com:linked0/account-abstraction
+ ! [rejected]        test-flow -> test-flow (non-fast-forward)
+error: failed to push some refs to 'github.com:linked0/account-abstraction'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+- 이럴 경우는 다음의 단계를 거침
+  - git pull origin test-flow하고 나서
+  - git rebase --skip 해서 날려버릴 수 있음.
+- 하지만, push하려고 했던 내용이 날라가 버리므로 그것을 백업할 필요는 있음
+  - TODO: 이방법은 곧 정리해서 올리기
+---
 ### github 계정 꼬였을때
 ERROR: Permission to poohgithub/poohnet-pow.git denied to jay-hyunjaelee.
 fatal: Could not read from remote repository.
@@ -945,6 +964,7 @@ ii() {
   idea ./$1
 }
 
+alias ppd='code ~/work/web/dev.md'
 alias ppz='code ~/.zshrc'
 alias ppp='code ./package.json'
 alias pph='code ./hardhat.config.ts'
@@ -958,6 +978,7 @@ alias qqe='code ~/work/web/ex/.env'
 alias qqo='code ~/work/web/ex/contracts/Ondo.sol'
 alias qqt='code ~/work/web/ex/test/ondo.spec.ts'
 
+alias iid='idea ~/work/web/dev.md'
 alias iiz='idea ~/.zshrc'
 alias iip='idea ./package.json'
 alias iih='idea ./hardhat.config.ts'
