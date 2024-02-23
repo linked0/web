@@ -42,6 +42,7 @@
   - [Prettier 적용](#prettier-적용)
 - [Github](#github)
   - [fast-forward 문제](#fast-forward-문제)
+  - [로컬의 커밋을 날려먹었을때](#로컬의-커밋을-날려먹었을때)
   - [github 계정 꼬였을때](#github-계정-꼬였을때)
   - [error: cannot run delta: No such file or directory](#error-cannot-run-delta-no-such-file-or-directory)
   - [git submodule update 에러 발생시](#git-submodule-update-에러-발생시)
@@ -534,10 +535,45 @@ hint: 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ```
 - 이럴 경우는 다음의 단계를 거침
-  - git pull origin test-flow하고 나서
-  - git rebase --skip 해서 날려버릴 수 있음.
-- 하지만, push하려고 했던 내용이 날라가 버리므로 그것을 백업할 필요는 있음
-  - TODO: 이방법은 곧 정리해서 올리기
+  - git fetch origin
+  - git reset --hard HEAD~1 
+  - git rebase origin/pooh-version
+  - git reflog : 추가로 푸시하려고 했던 커밋을 찾아내기
+  - git cherry-pick <커밋아이디> : 추가하려고 했던 커밋 아이디를 체리픽
+- 상세 설명
+  - 현재 리모트 기준으로 HEAD + 1 까지 진행된 상태에서, 로컬의 HEAD와 리모트의 HEAD가 불일치된 상태
+  - 그런데, 그 불일치 상태에서 추가적인 commit이 진행된 상태에서 push를 하려고 해서 문제 발생
+  - 따라서, HEAD~1까지 되돌린후에 리모트의 HEAD를 적용한 후에,
+  - 현재의 commit을 적용해야하는 것임
+
+---
+### 로컬의 커밋을 날려먹었을때
+`git reflog`를 사용하면 커밋 아이디를 확인할수 있음
+`git cherry-pick`를 이용하여 가져오면 됨.
+```
+$ git reflog
+8fd79d7 (HEAD -> pooh-version, origin/pooh-version) HEAD@{0}: cherry-pick: fixup;
+bc5852b HEAD@{1}: rebase (finish): returning to refs/heads/pooh-version
+bc5852b HEAD@{2}: rebase (start): checkout origin/pooh-version
+28fbb3b (origin/main, origin/HEAD, main) HEAD@{3}: reset: moving to HEAD~1
+bc5852b HEAD@{4}: reset: moving to HEAD
+bc5852b HEAD@{5}: reset: moving to HEAD
+bc5852b HEAD@{6}: reset: moving to origin/pooh-version
+28fbb3b (origin/main, origin/HEAD, main) HEAD@{7}: reset: moving to HEAD
+28fbb3b (origin/main, origin/HEAD, main) HEAD@{8}: reset: moving to HEAD~2
+37017b9 HEAD@{9}: rebase (finish): returning to refs/heads/pooh-version
+37017b9 HEAD@{10}: rebase (reword): fixup
+b3d7c55 HEAD@{11}: rebase: fast-forward
+6443037 HEAD@{12}: rebase (start): checkout HEAD~2
+b3d7c55 HEAD@{13}: commit: fixup;
+6443037 HEAD@{14}: reset: moving to HEAD
+6443037 HEAD@{15}: reset: moving to HEAD~1
+2d482e7 HEAD@{16}: cherry-pick: fixup
+6443037 HEAD@{17}: reset: moving to HEAD~1
+dd83300 HEAD@{18}: reset: moving to HEAD
+dd83300 HEAD@{19}: commit: fixup
+6443037 HEAD@{20}: reset: moving to HEAD
+```
 ---
 ### github 계정 꼬였을때
 ERROR: Permission to poohgithub/poohnet-pow.git denied to jay-hyunjaelee.
