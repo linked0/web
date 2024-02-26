@@ -525,7 +525,7 @@ package.json의 "scripts" 섹션에 다음을 추가
 ### fast-forward 문제
 - push 하려고 할때 아래와 같은 문제 발생 --> github remote의 브랜치가 더 최신버전일때 발생
 ```
-$ account-abstraction git:(test-flow) ✗ git push
+$ account-abstraction git:(test-flow) ✗ git push -f
 To github.com:linked0/account-abstraction
  ! [rejected]        test-flow -> test-flow (non-fast-forward)
 error: failed to push some refs to 'github.com:linked0/account-abstraction'
