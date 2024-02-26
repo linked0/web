@@ -78,13 +78,14 @@
   - [Mac XCode](#mac-xcode)
   - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
 - [단축키](#단축키)
+- [🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟](#)
+  - [IDEA](#idea)
   - [.bash\_profile](#bash_profile)
   - [hardhat 프로젝트 만들기](#hardhat-프로젝트-만들기)
   - [iterm2 단축키](#iterm2-단축키)
   - [Command](#command)
   - [Finder](#finder)
   - [VSCode](#vscode)
-  - [IDEA](#idea)
   - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
   - [poohnet (EL/CL) 실행하기](#poohnet-elcl-실행하기)
   - [code](#code)
@@ -865,6 +866,24 @@ ps aux | grep chrome
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
 
 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
+---
+###  IDEA
+* Update TOC
+```angular2html
+mouse right click -> insert... -> update TOC
+```
+* Goto section
+```
+TOC에서 CMD 버튼 누르고 "#..." 항목 누르기
+```
+* 모듈 추가
+
+File -> New -> Module from Existing Sources
+
+* Word Wrap
+```
+View -> Active Editor -> Use Soft Wraps
+```
 
 ---
 ### .bash_profile
@@ -982,26 +1001,12 @@ find . -type d -name 'temp' -exec rm -rf {} +
 - ctrl shift ₩ : new terminal
 
 - Bigger Font: cmd + "+"
-
----
-###  IDEA
-* Update TOC
-```angular2html
-mouse right click -> insert... -> update TOC
+- Chagte tabstop for typescript
 ```
-* Goto section
+Open the Command Palette (⇧ ⌘ P).
+Type and select: Preferences: Configure Language Specific Settings...
+Select a programming language (for example TypeScript).
 ```
-TOC에서 CMD 버튼 누르고 "#..." 항목 누르기
-```
-* 모듈 추가
-
-File -> New -> Module from Existing Sources
-
-* Word Wrap
-```
-View -> Active Editor -> Use Soft Wraps
-```
-
 ---
 ### 명령어 하나로 git commit과 push
 .gitconfig에 다음 추가하고 vi종료하면 바로 적용됨
