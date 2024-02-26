@@ -12,7 +12,6 @@
   - [poohnet testnet admin](#poohnet-testnet-admin)
   - [keyless2](#keyless2)
   - [ondo-v1](#ondo-v1)
-  - [poohnet (EL/CL) 실행하기](#poohnet-elcl-실행하기)
   - [zksync](#zksync)
 - [Work/Dev](#workdev)
   - [Mac Setting](#mac-setting)
@@ -79,6 +78,7 @@
   - [Mac XCode](#mac-xcode)
   - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
 - [단축키](#단축키)
+  - [.bash\_profile](#bash_profile)
   - [hardhat 프로젝트 만들기](#hardhat-프로젝트-만들기)
   - [iterm2 단축키](#iterm2-단축키)
   - [Command](#command)
@@ -86,7 +86,7 @@
   - [VSCode](#vscode)
   - [IDEA](#idea)
   - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
-  - [.bash\_profile](#bash_profile)
+  - [poohnet (EL/CL) 실행하기](#poohnet-elcl-실행하기)
   - [code](#code)
   - [git submodule](#git-submodule)
   - [Block projects](#block-projects)
@@ -126,35 +126,6 @@
 
 ### ondo-v1
 - "local-node": "export BLOCKCHAIN='ethereum' && export POOH='JAY' && hardhat node",
-
-### poohnet (EL/CL) 실행하기
-😈 geth compile
-```
-brew install golang
-go run build/ci.go install -static ./cmd/geth or make geth
-sudo cp ./build/bin/geth /usr/local/bin/geth
-```
-😈 EL
-- ./init local 1 & ./enode pow el1
-- ./init pow 1 & ./enode pow el1
-- ./init pow 2 & ./enode pow el2
-
-😈 CL
-1. 블럭해시과 genesis time(date +%s)을 chain-config 반영하고 eth2-testnet-genesis 실행
-    - gen_genesis
-    - zcli pretty bellatrix  BeaconState genesis.ssz > parsedState.json로 Validators Root 가져오기
-    - settings.py에 GENESIS_VALIDATORS_ROOT에 추가, 근데 이건 거의 안 바뀜.
-2. staking-deposit-cli로 wallet 만들기
-    - sudo ./deposit.sh install, 만약 longinterpr.h 에러 발생하면 아래 실행
-        - python3.10 -m venv py310
-        - source py310/bin/activate
-    - ./deposit.sh existing-mnemonic
-3. 첫번째 cnode 실행하고 enr 알아내서 bootstrap-node
-    - cl은 el과 연동되므로 init할 필요 없음
-    - poohprysm 루트폴더의 cnode로 실행.
-4. 나머지 cl 실행시키기
-5. keys &validators 실행
-    - poohprysm 루트폴더에서 찾아야 함.
   
 ---
 ### zksync
@@ -895,6 +866,71 @@ ps aux | grep chrome
 
 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
 
+---
+### .bash_profile
+```
+export PS1="\W \u$ "
+
+export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
+
+hgrep() {
+	grep -irnH --include=*.$1 "$2" ./  
+}
+pp() {
+  code ./$1
+}
+ii() {
+  idea ./$1
+}
+
+alias ppd='code ~/work/web/dev.md'
+alias ppz='code ~/.zshrc'
+alias ppp='code ./package.json'
+alias pph='code ./hardhat.config.ts'
+alias ppe='code ./.env'
+alias ppm='code ./README.md'
+
+alias qqd='code ~/work/web/dev.md'
+alias qqp='code ~/work/web/ex/package.json'
+alias qqh='code ~/work/web/ex/hardhat.config.ts'
+alias qqe='code ~/work/web/ex/.env'
+alias qqo='code ~/work/web/ex/contracts/Ondo.sol'
+alias qqt='code ~/work/web/ex/test/ondo.spec.ts'
+
+alias iid='idea ~/work/web/dev.md'
+alias iiz='idea ~/.zshrc'
+alias iip='idea ./package.json'
+alias iih='idea ./hardhat.config.ts'
+alias iie='idea ./.env'
+alias iim='idea ./README.md'
+
+alias jjd='idea ~/work/web/dev.md'
+alias jjp='idea ~/work/web/ex/package.json'
+alias jjh='idea ~/work/web/ex/hardhat.config.ts'
+alias jje='idea ~/work/web/ex/.env'
+alias jjo='idea ~/work/web/ex/contracts/Ondo.sol'
+alias jjt='idea ~/work/web/ex/test/ondo.spec.ts'
+
+alias lsc='ls -al ~/work/web/ex/contracts'
+alias lss='ls -al ~/work/web/ex/scripts'
+alias lst='ls -al ~/work/web/ex/test'
+
+alias ccc='cat ~/.zshrc'
+alias zzz='. ~/.zshrc'
+alias viz='vim ~/.zshrc'
+alias vid='vim ~/work/web/dev.md'
+alias web='cd ~/work/web'
+alias exx='cd ~/work/web/ex'
+
+alias cb="curl -L bit.ly/3MT0VRb"
+alias cbb="open https://bit.ly/3MVG5AN"
+alias poo="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
+
+echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
+echo 'alias cb="curl -L bit.ly/3MT0VRb"' >> ~/.zshrc
+```
+
+
 ### hardhat 프로젝트 만들기 
 Hardhat은 기존 프로젝트에서는 안됨.
 ```
@@ -983,68 +1019,44 @@ git config alias.acp '! git commit -a -m "commit" && git push'
 그리고 나서 git acp 하면됨
 ```
 
----
-### .bash_profile
+### poohnet (EL/CL) 실행하기
+😈 geth compile
 ```
-export PS1="\W \u$ "
+brew install golang
+go run build/ci.go install -static ./cmd/geth or make geth
+sudo cp ./build/bin/geth /usr/local/bin/geth
+```
+😈 EL
+- ./init local 1 & ./enode pow el1
+- ./init pow 1 & ./enode pow el1
+- ./init pow 2 & ./enode pow el2
 
-export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
+😈 CL
+1. 블럭해시과 genesis time(date +%s)을 chain-config 반영하고 eth2-testnet-genesis 실행
+    - gen_genesis
+    - zcli pretty bellatrix  BeaconState genesis.ssz > parsedState.json로 Validators Root 가져오기
+    - settings.py에 GENESIS_VALIDATORS_ROOT에 추가, 근데 이건 거의 안 바뀜.
+2. staking-deposit-cli로 wallet 만들기
+    - sudo ./deposit.sh install, 만약 longinterpr.h 에러 발생하면 아래 실행
+        - python3.10 -m venv py310
+        - source py310/bin/activate
+    - ./deposit.sh existing-mnemonic
+3. 첫번째 cnode 실행하고 enr 알아내서 bootstrap-node
+    - cl은 el과 연동되므로 init할 필요 없음
+    - poohprysm 루트폴더의 cnode로 실행.
+4. 나머지 cl 실행시키기
+5. keys &validators 실행
+    - poohprysm 루트폴더에서 찾아야 함.
 
-hgrep() {
-	grep -irnH --include=*.$1 "$2" ./  
-}
-pp() {
-  code ./$1
-}
-ii() {
-  idea ./$1
-}
+😈 
+- 그냥 로컬로 실행할때
+```
+poohgeth/poohnet$ ./enode-config
+```
 
-alias ppd='code ~/work/web/dev.md'
-alias ppz='code ~/.zshrc'
-alias ppp='code ./package.json'
-alias pph='code ./hardhat.config.ts'
-alias ppe='code ./.env'
-alias ppm='code ./README.md'
-
-alias qqd='code ~/work/web/dev.md'
-alias qqp='code ~/work/web/ex/package.json'
-alias qqh='code ~/work/web/ex/hardhat.config.ts'
-alias qqe='code ~/work/web/ex/.env'
-alias qqo='code ~/work/web/ex/contracts/Ondo.sol'
-alias qqt='code ~/work/web/ex/test/ondo.spec.ts'
-
-alias iid='idea ~/work/web/dev.md'
-alias iiz='idea ~/.zshrc'
-alias iip='idea ./package.json'
-alias iih='idea ./hardhat.config.ts'
-alias iie='idea ./.env'
-alias iim='idea ./README.md'
-
-alias jjd='idea ~/work/web/dev.md'
-alias jjp='idea ~/work/web/ex/package.json'
-alias jjh='idea ~/work/web/ex/hardhat.config.ts'
-alias jje='idea ~/work/web/ex/.env'
-alias jjo='idea ~/work/web/ex/contracts/Ondo.sol'
-alias jjt='idea ~/work/web/ex/test/ondo.spec.ts'
-
-alias lsc='ls -al ~/work/web/ex/contracts'
-alias lss='ls -al ~/work/web/ex/scripts'
-alias lst='ls -al ~/work/web/ex/test'
-
-alias ccc='cat ~/.zshrc'
-alias zzz='. ~/.zshrc'
-alias viz='vim ~/.zshrc'
-alias vid='vim ~/work/web/dev.md'
-alias web='cd ~/work/web'
-alias exx='cd ~/work/web/ex'
-
-alias cb="curl -L bit.ly/3MT0VRb"
-alias cbb="open https://bit.ly/3MVG5AN"
-alias poo="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
-
-echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
-echo 'alias cb="curl -L bit.ly/3MT0VRb"' >> ~/.zshrc
+- 간단하게 testnet으로 실행할때
+```
+poohgeth/poohnet$ ./enode pow el1
 ```
 ---
 ### code
