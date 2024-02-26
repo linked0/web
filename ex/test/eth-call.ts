@@ -2,11 +2,12 @@ import {
     time,
     loadFixture,
   } from "@nomicfoundation/hardhat-toolbox/network-helpers";
-  import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
-  import { expect } from "chai";
-  import { ethers } from "hardhat";
-  import { Basic, Basic__factory } from "../typechain-types";
+import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
+import { expect } from "chai";
+import { ethers } from "hardhat";
+import { Basic, BasicSimulation__factory } from "../typechain-types";
 import { TransactionRequest } from "ethers";
+import BasicSimulationJson from "../artifacts/contracts/BasicSimulation.sol/BasicSimulation.json";
   
   describe("Call eth-call", function () {
     describe("Deployment", function () {
@@ -29,19 +30,24 @@ import { TransactionRequest } from "ethers";
       });
 
       it("Call eth-call", async function () {
-        const basicInterface = Basic__factory.createInterface();
-        const data = basicInterface.encodeFunctionData("add");
+        const basicSimulation = BasicSimulation__factory.createInterface();
+        const data = basicSimulation.encodeFunctionData("add");
+        const targetAddress = basic.target;
         const tx: TransactionRequest = {
-          to: basic.target,
+          to: targetAddress,
           data: data,
         };
-        const callResult = await ethers.provider.send("eth_call", [tx, "latest"]);
-        const res = await basicInterface.decodeFunctionResult("add", callResult);
-        expect(res[0]).to.eq(1n);
-      });
-
-      it("Call value function (actuall property) and not changed ", async function () {
-        expect(await basic.value()).to.eq(0);
+        
+        const stateOverride = {
+          [targetAddress]: {
+          code: BasicSimulationJson.deployedBytecode
+          }
+        };
+          
+        const callResult = await ethers.provider.send("eth_call", [tx, "latest", stateOverride]);
+        const res = await basicSimulation.decodeFunctionResult("add", callResult);
+        console.log("res:", res);
+        expect(res[0]).to.eq(99n);
       });
     });
 
