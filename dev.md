@@ -79,22 +79,23 @@
   - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
 - [단축키](#단축키)
 - [🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟](#)
-  - [IDEA](#idea)
-  - [.bash\_profile](#bash_profile)
-  - [hardhat 프로젝트 만들기](#hardhat-프로젝트-만들기)
-  - [iterm2 단축키](#iterm2-단축키)
-  - [Command](#command)
-  - [Finder](#finder)
-  - [VSCode](#vscode)
-  - [명령어 하나로 git commit과 push](#명령어-하나로-git-commit과-push)
-  - [poohnet (EL/CL) 실행하기](#poohnet-elcl-실행하기)
-  - [code](#code)
-  - [git submodule](#git-submodule)
-  - [Block projects](#block-projects)
-  - [Docker](#docker-1)
-  - [Screen](#screen)
-  - [텍스트 찾기](#텍스트-찾기)
-  - [zip](#zip)
+  - [🌸 IDEA](#-idea)
+  - [🌸 .bash\_profile](#-bash_profile)
+  - [🌸 hardhat 프로젝트 만들기](#-hardhat-프로젝트-만들기)
+  - [🌸 iterm2 단축키](#-iterm2-단축키)
+  - [🌸 Command](#-command)
+  - [🌸 Finder](#-finder)
+  - [🌸 Whale 듀얼탭](#-whale-듀얼탭)
+  - [🌸 VSCode](#-vscode)
+  - [🌸 명령어 하나로 git commit과 push](#-명령어-하나로-git-commit과-push)
+  - [🌸 poohnet (EL/CL) 실행하기](#-poohnet-elcl-실행하기)
+  - [🌸 code](#-code)
+  - [🌸 git submodule](#-git-submodule)
+  - [🌸 Block projects](#-block-projects)
+  - [🌸 Docker](#-docker)
+  - [🌸 Screen](#-screen)
+  - [🌸 텍스트 찾기](#-텍스트-찾기)
+  - [🌸 zip](#-zip)
 <!-- TOC -->
 
 ## Projects Summary
@@ -867,7 +868,7 @@ ps aux | grep chrome
 
 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
 ---
-###  IDEA
+### 🌸 IDEA
 * Update TOC
 ```angular2html
 mouse right click -> insert... -> update TOC
@@ -886,7 +887,7 @@ View -> Active Editor -> Use Soft Wraps
 ```
 
 ---
-### .bash_profile
+### 🌸 .bash_profile
 ```
 export PS1="\W \u$ "
 
@@ -950,7 +951,7 @@ echo 'alias cb="curl -L bit.ly/3MT0VRb"' >> ~/.zshrc
 ```
 
 
-### hardhat 프로젝트 만들기 
+### 🌸 hardhat 프로젝트 만들기 
 Hardhat은 기존 프로젝트에서는 안됨.
 ```
 yarn init -y (=npm init -y)
@@ -960,11 +961,11 @@ npx hardhat
 yarn add -D dotenv ethers @nomicfoundation/hardhat-toolbox hardhat-deploy @openzeppelin/contracts "@nomicfoundation/hardhat-chai-matchers@^2.0.0" "@nomicfoundation/hardhat-ethers@^3.0.0" "@nomicfoundation/hardhat-network-helpers@^1.0.0" "@nomicfoundation/hardhat-verify@^2.0.0" "@typechain/ethers-v6@^0.5.0" "@typechain/hardhat@^9.0.0" "@types/chai@^4.2.0" "@types/mocha@>=9.1.0" "chai@^4.2.0" "hardhat-gas-reporter@^1.0.8" "solidity-coverage@^0.8.1" "typechain@^8.3.0" 
 ```
 
-### iterm2 단축키
+### 🌸 iterm2 단축키
 - Next split: cmd + ]
 
 ---
-### Command
+### 🌸 Command
 egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
 tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
 tar -xvzf xxx.tar.gz -C ./data
@@ -986,11 +987,16 @@ alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
 find . -type d -name 'temp' -exec rm -rf {} +
 
 ---
-### Finder
+### 🌸 Finder
 - hidden files: Command + Shift + . (period key)
 
 ---
-###  VSCode
+### 🌸 Whale 듀얼탭
+- 듀얼 탭 열기/닫기: Shift Command S
+- 탭 포커스 이동: Shift Command E
+
+---
+### 🌸 VSCode
 - Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 - back: ctrl - , forward: shift ctrl -
 - ctrl tab: recent files
@@ -1008,7 +1014,7 @@ Type and select: Preferences: Configure Language Specific Settings...
 Select a programming language (for example TypeScript).
 ```
 ---
-### 명령어 하나로 git commit과 push
+### 🌸 명령어 하나로 git commit과 push
 .gitconfig에 다음 추가하고 vi종료하면 바로 적용됨
 ```
 [alias]
@@ -1024,7 +1030,7 @@ git config alias.acp '! git commit -a -m "commit" && git push'
 그리고 나서 git acp 하면됨
 ```
 
-### poohnet (EL/CL) 실행하기
+### 🌸 poohnet (EL/CL) 실행하기
 😈 geth compile
 ```
 brew install golang
@@ -1064,11 +1070,11 @@ poohgeth/poohnet$ ./enode-config
 poohgeth/poohnet$ ./enode pow el1
 ```
 ---
-### code
+### 🌸 code
 // SPDX-License-Identifier: UNLICENSED
 
 ---
-### git submodule
+### 🌸 git submodule
 
 😈 git submodule add 
 ```
@@ -1093,29 +1099,29 @@ git submodule update --remote
 git submodule update --init --recursive web2 
 ```
 ---
-### Block projects
+### 🌸 Block projects
 Sepolia: 579fca7e3f10489b83c047f5cc17bec5
 Pooh Admin: 0x58984b2bf6f0f3de4f38290ed3c541ac27bac384b378073ab133af8b314a1887
 Jay Test: 0x7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23
 
 ---
-### Docker
+### 🌸 Docker
 - docker exec -it pow-node geth attach http://localhost:8545
 - docker logs pow-node // enode 알아낼때 사용할 수 있음
   
 ---
-### Screen
+### 🌸 Screen
 - screen -ls // ls
 - ctrl a+d // exit
 - screen -S el1  -X quit
 - screen -r -d 17288 <-- attatch되어 있는 것 detach
 
 ---
-### 텍스트 찾기
+### 🌸 텍스트 찾기
 egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
 
 ---
-### zip
+### 🌸 zip
 zip -r ~/temp/my-archive.zip . -x '*.git*' -x '*node_modules*'
 unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
 
