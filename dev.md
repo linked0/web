@@ -79,14 +79,14 @@
   - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
 - [단축키](#단축키)
 - [🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟](#)
-  - [🌸 IDEA](#-idea)
   - [🌸 .bash\_profile](#-bash_profile)
-  - [🌸 hardhat 프로젝트 만들기](#-hardhat-프로젝트-만들기)
+  - [🌸 IDEA](#-idea)
+  - [�🏓 hardhat 프로젝트 만들기 🏓🏓](#-hardhat-프로젝트-만들기-)
   - [🌸 iterm2 단축키](#-iterm2-단축키)
   - [🌸 Command](#-command)
   - [🌸 Finder](#-finder)
   - [🌸 Whale 듀얼탭](#-whale-듀얼탭)
-  - [🌸 VSCode](#-vscode)
+  - [🦋🦋 VSCode 🦋🦋](#-vscode-)
   - [🌸 명령어 하나로 git commit과 push](#-명령어-하나로-git-commit과-push)
   - [🌸 poohnet (EL/CL) 실행하기](#-poohnet-elcl-실행하기)
   - [🌸 code](#-code)
@@ -868,25 +868,6 @@ ps aux | grep chrome
 
 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
 ---
-### 🌸 IDEA
-* Update TOC
-```angular2html
-mouse right click -> insert... -> update TOC
-```
-* Goto section
-```
-TOC에서 CMD 버튼 누르고 "#..." 항목 누르기
-```
-* 모듈 추가
-
-File -> New -> Module from Existing Sources
-
-* Word Wrap
-```
-View -> Active Editor -> Use Soft Wraps
-```
-
----
 ### 🌸 .bash_profile
 ```
 export PS1="\W \u$ "
@@ -950,8 +931,26 @@ echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 echo 'alias cb="curl -L bit.ly/3MT0VRb"' >> ~/.zshrc
 ```
 
+---
+### 🌸 IDEA
+* Update TOC
+```angular2html
+mouse right click -> insert... -> update TOC
+```
+* Goto section
+```
+TOC에서 CMD 버튼 누르고 "#..." 항목 누르기
+```
+* 모듈 추가
 
-### 🌸 hardhat 프로젝트 만들기 
+File -> New -> Module from Existing Sources
+
+* Word Wrap
+```
+View -> Active Editor -> Use Soft Wraps
+```
+
+### 🏓🏓 hardhat 프로젝트 만들기 🏓🏓
 Hardhat은 기존 프로젝트에서는 안됨.
 ```
 yarn init -y (=npm init -y)
@@ -996,7 +995,7 @@ find . -type d -name 'temp' -exec rm -rf {} +
 - 탭 포커스 이동: Shift Command E
 
 ---
-### 🌸 VSCode
+### 🦋🦋 VSCode 🦋🦋
 - Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
 - back: ctrl - , forward: shift ctrl -
 - ctrl tab: recent files
