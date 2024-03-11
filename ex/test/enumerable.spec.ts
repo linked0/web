@@ -9,8 +9,11 @@ describe("Enumerable", async function () {
        const [owner, otherAccount] = await ethers.getSigners();
        const EnumerableSetTest = await ethers.getContractFactory("EnumerableSetTest");
        const eTest = await EnumerableSetTest.deploy();
-       await eTest.add(1);
-       expect(await eTest.contains(1)).to.equal(true);
+       const maxValue = 115792089237316195423570985008687907853269984665640564039457584007913129639935n;
+       console.log("typeof maxValue", typeof maxValue);
+       await eTest.add(maxValue);
+       expect(await eTest.contains(maxValue)).to.equal(true);
+       expect(await eTest.lastValue()).to.equal(maxValue);
 
        console.log("test");
    });
