@@ -21,7 +21,7 @@
       - [nvm install](#nvm-install)
       - [rust/postgresql install](#rustpostgresql-install)
       - [MySql Server 설치](#mysql-server-설치)
-      - [Whale, Miro, onenote, Visual Studio, Intellij](#whale-miro-onenote-visual-studio-intellij)
+      - [Whale, Miro, onenote, Visual Studio](#whale-miro-onenote-visual-studio)
       - [기타](#기타)
   - [Slack](#slack)
 - [Blockchain](#blockchain)
@@ -80,7 +80,6 @@
 - [단축키](#단축키)
 - [🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟](#)
   - [🌸 .bash\_profile](#-bash_profile)
-  - [🌸 IDEA](#-idea)
   - [🏓🏓 hardhat 프로젝트 만들기 🏓🏓](#-hardhat-프로젝트-만들기-)
   - [🌸 iterm2 단축키](#-iterm2-단축키)
   - [🌸 Command](#-command)
@@ -215,12 +214,13 @@ psql postgres <== 접속해볼 수 있음.
 - 초기화: 시스템 메뉴 -> 설정 -> 왼쪽 하단의 MySQL 클릭해서 들어가서 "Initialize Database" 클릭
 - 암호는 alfred0!@
 
-##### Whale, Miro, onenote, Visual Studio, Intellij
-- Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
+##### Whale, Miro, onenote, Visual Studio
+- Command Palette: [⇧⌘P ] Shell command
+- Settings 열기: cmd + ,
 - Markdown All in One 플러그인: 마크다운 컨텐트 만들어주는 VSCode 
 - VS Code 플러그인 : Solidity/Go/rust-analyzer, Live Preview, Github Copilot, Markdown All in One
-- IntelliJ Copilot 플러그인: cmd + shift + a 눌러서 plugins 검색하고 설치
-- idea 명령어 세팅: export PATH=$PATH:'/Applications/IntelliJ IDEA.app/Contents/MacOS'
+- VS Code 세팅: Editor: Hover Enable을 Disable로 바꿔야 코드창에서 팝업 안뜸
+
 ##### 기타
 - 맥 메인 모니터 설정 및 Dock 사이즈 조정
 - 데스크탑 및 Dock: Mission Control - Spaces를 최근 사용내역에 따라 자동으로 재정렬
@@ -915,24 +915,6 @@ echo 'alias cb="curl -L bit.ly/3MT0VRb"' >> ~/.zshrc
 ```
 
 ---
-### 🌸 IDEA
-* Update TOC
-```angular2html
-mouse right click -> insert... -> update TOC
-```
-* Goto section
-```
-TOC에서 CMD 버튼 누르고 "#..." 항목 누르기
-```
-* 모듈 추가
-
-File -> New -> Module from Existing Sources
-
-* Word Wrap
-```
-View -> Active Editor -> Use Soft Wraps
-```
-
 ### 🏓🏓 hardhat 프로젝트 만들기 🏓🏓
 Hardhat은 기존 프로젝트에서는 안됨.
 ```
@@ -979,7 +961,9 @@ find . -type d -name 'temp' -exec rm -rf {} +
 
 ---
 ### 🦋🦋 VSCode 🦋🦋
-- Command Palette 를 열어줍니다. [⇧⌘P ] Shell command
+- Command Palette: [⇧⌘P ] Shell command
+- Settings 열기: cmd + ,
+
 - back: ctrl - , forward: shift ctrl -
 - ctrl tab: recent files
 - shift cmd n - cmd shift /: open project
@@ -990,11 +974,10 @@ find . -type d -name 'temp' -exec rm -rf {} +
 
 - Bigger Font: cmd + "+"
 - Chagte tabstop for typescript
-```
-Open the Command Palette (⇧ ⌘ P).
-Type and select: Preferences: Configure Language Specific Settings...
-Select a programming language (for example TypeScript).
-```
+  - Open the Command Palette (⇧ ⌘ P).
+  - Type and select: Preferences: Configure Language Specific Settings...
+  - Select a programming language (for example TypeScript).
+
 ---
 ### 🌸 명령어 하나로 git commit과 push
 .gitconfig에 다음 추가하고 vi종료하면 바로 적용됨
@@ -1009,8 +992,8 @@ git cmp 'update'
 아래도 방법
 ```
 git config alias.acp '! git commit -a -m "commit" && git push'
-그리고 나서 git acp 하면됨
 ```
+그리고 나서 git acp 하면됨
 
 ### 🌸 poohnet (EL/CL) 실행하기
 😈 geth compile
