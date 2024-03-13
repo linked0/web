@@ -880,6 +880,9 @@ hgrep() {
 pp() {
   code ./$1
 }
+ii() {
+  idea ./$1
+}
 
 alias ppd='code ~/work/web/dev.md'
 alias ppz='code ~/.zshrc'
