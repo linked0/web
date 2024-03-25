@@ -1094,6 +1094,6 @@ unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
 ---
 - https://bit.ly/3MT0VRb
 - https://bit.ly/3MVG5AN
-- [solidkty markdown](./solidity.md)
+- [solidkty markdown](https://bit.ly/3TtDArL)
 
 

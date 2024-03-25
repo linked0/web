@@ -29,6 +29,8 @@
   - [Contract Size](#contract-size)
   - [Exceeds Gas Limit 에러](#exceeds-gas-limit-에러)
   - [hardhat-gas-reporter](#hardhat-gas-reporter)
+- [Solidity](#solidity)
+  - [function type 바꾸기](#function-type-바꾸기)
 - [Git](#git)
   - [error: cannot run delta: No such file or directory](#error-cannot-run-delta-no-such-file-or-directory)
   - [fatal: Not possible to fast-forward, aborting.](#fatal-not-possible-to-fast-forward-aborting)
@@ -576,6 +578,34 @@ error Command failed with exit code 1.
 
 ### hardhat-gas-reporter
 hardhat.config.ts 참고: https://github.com/poohgithub/zksync-era/blob/main/poohnet/paymaster-examples/contracts/hardhat.config.ts
+
+-------
+## Solidity
+
+### function type 바꾸기
+```
+function _getManifest() internal view returns (PluginManifest memory) {
+  PluginManifest memory m = abi.decode(_manifest, (PluginManifest));
+  return m;
+}
+
+function _castToPure(
+  function() internal view returns (PluginManifest memory) fnIn
+)
+  internal
+  pure
+  returns (function() internal pure returns (PluginManifest memory) fnOut)
+{
+  assembly ("memory-safe") {
+    fnOut := fnIn
+  }
+}
+
+function pluginManifest() external pure returns (PluginManifest memory) {
+  return _castToPure(_getManifest)();
+}
+```
+
 
 -------
 ## Git
