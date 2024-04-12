@@ -4,7 +4,6 @@
 - [solidity markdown](./solidity.md)
 
 ------
-<!-- TOC -->
 - [Projects Summary](#projects-summary)
   - [Project Analysis](#project-analysis)
       - [문서 확인: 2일](#문서-확인-2일)
@@ -21,7 +20,7 @@
       - [nvm install](#nvm-install)
       - [rust/postgresql install](#rustpostgresql-install)
       - [MySql Server 설치](#mysql-server-설치)
-      - [Whale, Miro, onenote, Visual Studio](#whale-miro-onenote-visual-studio)
+      - [Whale, Miro, onenote, Visual Studio, Xcode](#whale-miro-onenote-visual-studio-xcode)
       - [기타](#기타)
   - [Slack](#slack)
 - [Blockchain](#blockchain)
@@ -78,24 +77,17 @@
   - [Mac XCode](#mac-xcode)
   - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
 - [단축키](#단축키)
-- [🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟](#)
-  - [🌸 .bash\_profile](#-bash_profile)
-  - [🏓🏓 hardhat 프로젝트 만들기 🏓🏓](#-hardhat-프로젝트-만들기-)
-  - [🌸 iterm2 단축키](#-iterm2-단축키)
-  - [🌸 Command](#-command)
-  - [🌸 Finder](#-finder)
-  - [🌸 Whale 듀얼탭](#-whale-듀얼탭)
-  - [🦋🦋 VSCode 🦋🦋](#-vscode-)
-  - [🌸 명령어 하나로 git commit과 push](#-명령어-하나로-git-commit과-push)
   - [🌸 poohnet (EL/CL) 실행하기](#-poohnet-elcl-실행하기)
-  - [🌸 code](#-code)
+  - [🌸 .bash\_profile - git push config](#-bash_profile---git-push-config)
+  - [🌸 hardhat 프로젝트 만들기 🌸](#-hardhat-프로젝트-만들기-)
+  - [🌸 Command](#-command)
   - [🌸 git submodule](#-git-submodule)
+  - [🦋 Colab 🦋](#-colab-)
+  - [🦋 VSCode 🦋](#-vscode-)
   - [🌸 Block projects](#-block-projects)
-  - [🌸 Docker](#-docker)
-  - [🌸 Screen](#-screen)
+  - [🌸 Whale 듀얼탭-Docker-Screen](#-whale-듀얼탭-docker-screen)
   - [🌸 텍스트 찾기](#-텍스트-찾기)
   - [🌸 zip](#-zip)
-<!-- TOC -->
 
 ## Projects Summary
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
@@ -214,12 +206,14 @@ psql postgres <== 접속해볼 수 있음.
 - 초기화: 시스템 메뉴 -> 설정 -> 왼쪽 하단의 MySQL 클릭해서 들어가서 "Initialize Database" 클릭
 - 암호는 alfred0!@
 
-##### Whale, Miro, onenote, Visual Studio
+##### Whale, Miro, onenote, Visual Studio, Xcode
 - Command Palette: [⇧⌘P ] Shell command
 - Settings 열기: cmd + ,
 - Markdown All in One 플러그인: 마크다운 컨텐트 만들어주는 VSCode 
 - VS Code 플러그인 : Solidity/Go/rust-analyzer, Live Preview, Github Copilot, Markdown All in One
 - VS Code 세팅: Editor: Hover Enable을 Disable로 바꿔야 코드창에서 팝업 안뜸
+- XCode: [Apple Developer](https://developer.apple.com/xcode/resources/)
+- FileMerge: open /Applications/Xcode.app/Contents/Applications/FileMerge.app
 
 ##### 기타
 - 맥 메인 모니터 설정 및 Dock 사이즈 조정
@@ -867,8 +861,48 @@ ps aux | grep chrome
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
 
 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
+### 🌸 poohnet (EL/CL) 실행하기
+😈 geth compile
+```
+brew install golang
+go run build/ci.go install -static ./cmd/geth or make geth
+sudo cp ./build/bin/geth /usr/local/bin/geth
+```
+😈 EL
+- ./init local 1 & ./enode pow el1
+- ./init pow 1 & ./enode pow el1
+- ./init pow 2 & ./enode pow el2
+
+😈 CL
+1. 블럭해시과 genesis time(date +%s)을 chain-config 반영하고 eth2-testnet-genesis 실행
+    - gen_genesis
+    - zcli pretty bellatrix  BeaconState genesis.ssz > parsedState.json로 Validators Root 가져오기
+    - settings.py에 GENESIS_VALIDATORS_ROOT에 추가, 근데 이건 거의 안 바뀜.
+2. staking-deposit-cli로 wallet 만들기
+    - sudo ./deposit.sh install, 만약 longinterpr.h 에러 발생하면 아래 실행
+        - python3.10 -m venv py310
+        - source py310/bin/activate
+    - ./deposit.sh existing-mnemonic
+3. 첫번째 cnode 실행하고 enr 알아내서 bootstrap-node
+    - cl은 el과 연동되므로 init할 필요 없음
+    - poohprysm 루트폴더의 cnode로 실행.
+4. 나머지 cl 실행시키기
+5. keys &validators 실행
+    - poohprysm 루트폴더에서 찾아야 함.
+
+😈 
+- 그냥 로컬로 실행할때
+```
+poohgeth/poohnet$ ./enode-config
+```
+
+- 간단하게 testnet으로 실행할때
+```
+poohgeth/poohnet$ ./enode pow el1
+```
+
 ---
-### 🌸 .bash_profile
+### 🌸 .bash_profile - git push config
 ```
 export PS1="\W \u$ "
 
@@ -914,72 +948,8 @@ echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 echo 'alias cb="curl -L bit.ly/3MT0VRb"' >> ~/.zshrc
 ```
 
----
-### 🏓🏓 hardhat 프로젝트 만들기 🏓🏓
-Hardhat은 기존 프로젝트에서는 안됨.
-```
-yarn init -y (=npm init -y)
-yarn add --dev hardhat
-npx hardhat
 
-yarn add -D dotenv ethers @nomicfoundation/hardhat-toolbox hardhat-deploy @openzeppelin/contracts "@nomicfoundation/hardhat-chai-matchers@^2.0.0" "@nomicfoundation/hardhat-ethers@^3.0.0" "@nomicfoundation/hardhat-network-helpers@^1.0.0" "@nomicfoundation/hardhat-verify@^2.0.0" "@typechain/ethers-v6@^0.5.0" "@typechain/hardhat@^9.0.0" "@types/chai@^4.2.0" "@types/mocha@>=9.1.0" "chai@^4.2.0" "hardhat-gas-reporter@^1.0.8" "solidity-coverage@^0.8.1" "typechain@^8.3.0" 
-```
-
-### 🌸 iterm2 단축키
-- Next split: cmd + ]
-
----
-### 🌸 Command
-egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
-tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
-tar -xvzf xxx.tar.gz -C ./data
-
-여러 sub directory에 node_modules를 제거함.
-tar --exclude='*/node_modules' --exclude='.git' -cvzf ~/temp/pooh-tools.tar.gz .
-opt cmd b - Bookmark
-
-ssh-keygen -t rsa
-
-brew install golang
-`PATH=$PATH:$HOME/go/bin`
-
-go install github.com/protolambda/zcli@latest
-zcli --help
-alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
-
-하위 동일 폴더 지우기
-find . -type d -name 'temp' -exec rm -rf {} +
-
----
-### 🌸 Finder
-- hidden files: Command + Shift + . (period key)
-
----
-### 🌸 Whale 듀얼탭
-- 듀얼 탭 열기/닫기: Shift Command S
-- 탭 포커스 이동: Shift Command E
-
----
-### 🦋🦋 VSCode 🦋🦋
-- Command Palette: [⇧⌘P ] Shell command
-- Settings 열기: cmd + ,
-
-- back: ctrl - , forward: shift ctrl -
-- ctrl tab: recent files
-- shift cmd n - cmd shift /: open project
-- ctrl `: goto terminal
-- Cmd+Shift+]: Move to previous terminal
-- Cmd+shift+[: Move to next terminal
-- ctrl shift ₩ : new terminal
-
-- Bigger Font: cmd + "+"
-- Chagte tabstop for typescript
-  - Open the Command Palette (⇧ ⌘ P).
-  - Type and select: Preferences: Configure Language Specific Settings...
-  - Select a programming language (for example TypeScript).
-
----
-### 🌸 명령어 하나로 git commit과 push
+**명령어 하나로 git commit과 push**
 .gitconfig에 다음 추가하고 vi종료하면 바로 적용됨
 ```
 [alias]
@@ -995,48 +965,54 @@ git config alias.acp '! git commit -a -m "commit" && git push'
 ```
 그리고 나서 git acp 하면됨
 
-### 🌸 poohnet (EL/CL) 실행하기
-😈 geth compile
-```
-brew install golang
-go run build/ci.go install -static ./cmd/geth or make geth
-sudo cp ./build/bin/geth /usr/local/bin/geth
-```
-😈 EL
-- ./init local 1 & ./enode pow el1
-- ./init pow 1 & ./enode pow el1
-- ./init pow 2 & ./enode pow el2
 
-😈 CL
-1. 블럭해시과 genesis time(date +%s)을 chain-config 반영하고 eth2-testnet-genesis 실행
-    - gen_genesis
-    - zcli pretty bellatrix  BeaconState genesis.ssz > parsedState.json로 Validators Root 가져오기
-    - settings.py에 GENESIS_VALIDATORS_ROOT에 추가, 근데 이건 거의 안 바뀜.
-2. staking-deposit-cli로 wallet 만들기
-    - sudo ./deposit.sh install, 만약 longinterpr.h 에러 발생하면 아래 실행
-        - python3.10 -m venv py310
-        - source py310/bin/activate
-    - ./deposit.sh existing-mnemonic
-3. 첫번째 cnode 실행하고 enr 알아내서 bootstrap-node
-    - cl은 el과 연동되므로 init할 필요 없음
-    - poohprysm 루트폴더의 cnode로 실행.
-4. 나머지 cl 실행시키기
-5. keys &validators 실행
-    - poohprysm 루트폴더에서 찾아야 함.
-
-😈 
-- 그냥 로컬로 실행할때
-```
-poohgeth/poohnet$ ./enode-config
-```
-
-- 간단하게 testnet으로 실행할때
-```
-poohgeth/poohnet$ ./enode pow el1
-```
 ---
-### 🌸 code
-// SPDX-License-Identifier: UNLICENSED
+### 🌸 hardhat 프로젝트 만들기 🌸
+Hardhat은 기존 프로젝트에서는 안됨.
+```
+yarn init -y (=npm init -y)
+yarn add --dev hardhat
+npx hardhat
+
+yarn add -D dotenv ethers @nomicfoundation/hardhat-toolbox hardhat-deploy @openzeppelin/contracts "@nomicfoundation/hardhat-chai-matchers@^2.0.0" "@nomicfoundation/hardhat-ethers@^3.0.0" "@nomicfoundation/hardhat-network-helpers@^1.0.0" "@nomicfoundation/hardhat-verify@^2.0.0" "@typechain/ethers-v6@^0.5.0" "@typechain/hardhat@^9.0.0" "@types/chai@^4.2.0" "@types/mocha@>=9.1.0" "chai@^4.2.0" "hardhat-gas-reporter@^1.0.8" "solidity-coverage@^0.8.1" "typechain@^8.3.0" 
+```
+
+---
+### 🌸 Command
+
+**tar**
+```
+tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
+tar -xvzf xxx.tar.gz -C ./data
+
+여러 sub directory에 node_modules를 제거함.
+tar --exclude='*/node_modules' --exclude='.git' -cvzf ~/temp/pooh-tools.tar.gz .
+```
+
+opt cmd b - Bookmark
+
+ssh-keygen -t rsa
+
+brew install golang
+`PATH=$PATH:$HOME/go/bin`
+
+go install github.com/protolambda/zcli@latest
+zcli --help
+alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
+
+하위 동일 폴더 지우기
+```
+find . -type d -name 'temp' -exec rm -rf {} +
+```
+**hidden files**
+```
+    Command + Shift + . (period key)
+```
+
+**iterm 단축키**
+```
+Next split: cmd + ]
+```
 
 ---
 ### 🌸 git submodule
@@ -1063,6 +1039,38 @@ git submodule update --remote
 ```
 git submodule update --init --recursive web2 
 ```
+
+---
+### 🦋 Colab 🦋
+**열기**
+- [colab.google](https://colab.google)로 이동
+- "Open Colab" 버튼 클릭
+- "노트 열기" 팝업에서 Google Drive -> aplay.ipynb 
+- 아니면 깃헙 web 리파지토리의 [aploy.ipynb](https://colab.research.google.com/github/linked0/web/blob/master/pooh/aplay.ipynb) <- 여기에 pyplot 코드 있음
+
+**실행**
+- MyDrive/colab/data 연결 가능 (코드에 있음)
+- MyDrive/colab/data/test.txt를 가지고 처리하는 코드도 있음
+  
+---
+### 🦋 VSCode 🦋
+- Command Palette: [⇧⌘P ] Shell command
+- Settings 열기: cmd + ,
+
+- back: ctrl - , forward: shift ctrl -
+- ctrl tab: recent files
+- shift cmd n - cmd shift /: open project
+- ctrl `: goto terminal
+- Cmd+Shift+]: Move to previous terminal
+- Cmd+shift+[: Move to next terminal
+- ctrl shift ₩ : new terminal
+
+- Bigger Font: cmd + "+"
+- Chagte tabstop for typescript
+  - Open the Command Palette (⇧ ⌘ P).
+  - Type and select: Preferences: Configure Language Specific Settings...
+  - Select a programming language (for example TypeScript).
+
 ---
 ### 🌸 Block projects
 Sepolia: 579fca7e3f10489b83c047f5cc17bec5
@@ -1070,12 +1078,16 @@ Pooh Admin: 0x58984b2bf6f0f3de4f38290ed3c541ac27bac384b378073ab133af8b314a1887
 Jay Test: 0x7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23
 
 ---
-### 🌸 Docker
+### 🌸 Whale 듀얼탭-Docker-Screen
+**Whale**
+- 듀얼 탭 열기/닫기: Shift Command S
+- 탭 포커스 이동: Shift Command E
+
+**Docker**
 - docker exec -it pow-node geth attach http://localhost:8545
 - docker logs pow-node // enode 알아낼때 사용할 수 있음
   
----
-### 🌸 Screen
+**Screen**
 - screen -ls // ls
 - ctrl a+d // exit
 - screen -S el1  -X quit
