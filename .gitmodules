@@ -13,9 +13,6 @@
 [submodule "zksync-era"]
 	path = zksync-era
 	url = https://github.com/poohgithub/zksync-era
-[submodule "poohgeth"]
-	path = poohgeth
-	url = https://github.com/poohgithub/poohgeth
 [submodule "poohprysm"]
 	path = poohprysm
 	url = https://github.com/poohgithub/poohprysm
