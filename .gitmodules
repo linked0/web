@@ -61,3 +61,15 @@
 [submodule "pooh-erc20"]
 	path = pooh-erc20
 	url = https://github.com/linked0/pooh-erc20
+[submodule "erc6551-reference"]
+	path = erc6551-reference
+	url = https://github.com/linked0/erc6551-reference.git
+[submodule "erc4636-T-REX"]
+	path = erc4636-T-REX
+	url = https://github.com/linked0/erc4636-T-REX.git
+[submodule "erc4337-abstract-account"]
+	path = erc4337-abstract-account
+	url = https://github.com/linked0/account-abstraction.git
+[submodule "openzeppelin-contracts"]
+	path = openzeppelin-contracts
+	url = https://github.com/linked0/openzeppelin-contracts.git
