@@ -1072,6 +1072,17 @@ git submodule update --init --recursive web2
   - Type and select: Preferences: Configure Language Specific Settings...
   - Select a programming language (for example TypeScript).
 
+**정규표현식 SEARCH**
+```
+_IMPLENENTATION_SLOT
+_IMPLENENTATION_APPLT
+_IMPLENENTATION_APPLE
+```
+위 리스트에서 첫 두개의 스트링만 찾고 싶을때
+```
+_[A-Z]*NENTATION_[A-Z]*T
+```
+
 ---
 ### 🌸 Block projects
 Sepolia: 579fca7e3f10489b83c047f5cc17bec5
