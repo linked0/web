@@ -1,0 +1,24 @@
+{
+    "name" : "SpiderVerse Sample NFT",
+    "description": "This NFT is a sample NFT that represents the property.",
+    "image" : "https://ipfs.io/ipfs/QmQhQFBDCiTtfgPic9jf9gKgj6bJbpYzbHU32Vmv1ueKQu",
+    "attributes": [
+        {
+            "trait_type": "PropertyType",
+            "value": "Building"
+        },
+        {
+            "trait_type": "City",
+            "value": "Seoul"
+        },
+        {
+            "trait_type": "Address",
+            "value": "TWO IFC"
+        },
+        {
+            "trait_type": "GrossArea",
+            "value": 2980.8,
+            "unit": "m2"
+        }
+    ]
+}

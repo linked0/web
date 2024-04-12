@@ -1,0 +1,19 @@
+{
+    "name" : "BOB's Project in Space",
+    "description": "Space BoB is a community driven project focused on expanding the metaverse and growing ecosystem.\nThere are deadly dangers lurking in space, but each time you perform a mission, you get an item to save the earth.\nGet your ticket to Space BoB's world of exclusive content, digital experiences and more, full of surprises and experience the exciting universe!",
+    "image" : "https://ipfs.io/ipfs/QmNt9hfGifxrAwvXKu8JevvFCuw2zaEMzb3fap82Mt4HGk",
+    "attributes": [
+        {
+            "trait_type": "PropertyType",
+            "value": "Art"
+        },
+        {
+            "trait_type": "Category",
+            "value": "Metaverse"
+        },
+        {
+            "trait_type": "Address",
+            "value": "Universe"
+        }
+    ]
+}
