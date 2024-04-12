@@ -1028,6 +1028,7 @@ git rm --cached poohgeth // path는 .gitmodules 파일의 참고
 Edit .gitmodules File
 Edit .git/config File
 rm -rf .git/modules/poohgeth
+rm -rf poohgeth // 안되면 sudo
 git commit -am "Removed submodule"
 git push
 ```

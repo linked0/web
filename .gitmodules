@@ -55,3 +55,21 @@
 [submodule "poohnet/poohgeth"]
 	path = poohnet/poohgeth
 	url = https://github.com/poohgithub/poohgeth
+[submodule "poohnet/poohprysm"]
+	path = poohnet/poohprysm
+	url = https://github.com/poohgithub/poohprysm
+[submodule "poohnet/pooh-land"]
+	path = poohnet/pooh-land
+	url = https://github.com/poohgithub/pooh-land
+[submodule "poohnet/pooh-land-js"]
+	path = poohnet/pooh-land-js
+	url = https://github.com/poohgithub/pooh-land-js
+[submodule "poohnet/pooh-swap-v2-core"]
+	path = poohnet/pooh-swap-v2-core
+	url = https://github.com/poohgithub/pooh-swap-v2-core
+[submodule "poohnet/pooh-swap-v2-periphery"]
+	path = poohnet/pooh-swap-v2-periphery
+	url = https://github.com/poohgithub/pooh-swap-v2-periphery
+[submodule "poohnet/pooh-swap-v2-hardhat"]
+	path = poohnet/pooh-swap-v2-hardhat
+	url = https://github.com/linked0/pooh-swap-v2-hardhat.git
