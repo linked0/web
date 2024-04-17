@@ -378,6 +378,32 @@ const tx = await factoryInstance.setFeeTo(process.env.FEE_TO);
 const receipt = await (await tx).wait();
 
 ---
+### Hardhat / Foundry
+[Integrating with Foundry](https://hardhat.org/hardhat-runner/docs/advanced/hardhat-and-foundry)
+
+If you have an existing Hardhat project and you want to use Foundry in it, you should follow these steps.
+
+First, run `forge --version` to make sure that you have Foundry installed. If you don't, go `here` to get it.
+
+After that, install the `@nomicfoundation/hardhat-foundry` plugin:
+
+```
+npm install --save-dev @nomicfoundation/hardhat-foundry
+```
+and import it in your Hardhat config:
+
+```
+import "@nomicfoundation/hardhat-foundry";
+```
+To complete the setup, run `npx hardhat init-foundry`. This task will create a `foundry.toml` file with the right configuration and install `forge-std`.
+
+submodule이 아래와 같이 추가됨
+```
+[submodule "ex2/lib/forge-std"]
+  path = ex2/lib/forge-std
+  url = https://github.com/foundry-rs/forge-std
+```
+---
 ### Docker
 
 😈 Docker Image 만들기

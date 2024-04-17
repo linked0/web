@@ -73,3 +73,6 @@
 [submodule "poohnet/pooh-swap-v2-hardhat"]
 	path = poohnet/pooh-swap-v2-hardhat
 	url = https://github.com/linked0/pooh-swap-v2-hardhat.git
+[submodule "ex2/lib/forge-std"]
+	path = ex2/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
