@@ -972,7 +972,7 @@ Hardhat은 기존 프로젝트에서는 안됨.
 ```
 yarn init -y (=npm init -y)
 yarn add --dev hardhat
-npx hardhat
+npx hardhat // 여기서 이미 필요한 package는 추가됨
 
 yarn add -D dotenv ethers @nomicfoundation/hardhat-toolbox hardhat-deploy @openzeppelin/contracts "@nomicfoundation/hardhat-chai-matchers@^2.0.0" "@nomicfoundation/hardhat-ethers@^3.0.0" "@nomicfoundation/hardhat-network-helpers@^1.0.0" "@nomicfoundation/hardhat-verify@^2.0.0" "@typechain/ethers-v6@^0.5.0" "@typechain/hardhat@^9.0.0" "@types/chai@^4.2.0" "@types/mocha@>=9.1.0" "chai@^4.2.0" "hardhat-gas-reporter@^1.0.8" "solidity-coverage@^0.8.1" "typechain@^8.3.0" 
 ```

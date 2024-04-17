@@ -31,6 +31,7 @@
   "scripts": {
     "clean": "rm -rf cache artifacts typechain typechain-types",
     "test": "hardhat test",
+    "test:trex": "hardhat test test/t-rex/*.ts",
     "test:export": "export BLOCKCHAIN='ethereum' && export FORK_FROM_BLOCK_NUMBER=13537712 && export CHAIN_ID=1 && hardhat test",
     "build": "hardhat compile",
     "build:test": "hardhat compile --network testnet",
