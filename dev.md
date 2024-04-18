@@ -1093,10 +1093,32 @@ git submodule update --init --recursive web2
 - ctrl shift ₩ : new terminal
 
 - Bigger Font: cmd + "+"
-- Chagte tabstop for typescript
-  - Open the Command Palette (⇧ ⌘ P).
-  - Type and select: Preferences: Configure Language Specific Settings...
-  - Select a programming language (for example TypeScript).
+- Prettier 세팅
+  - .prettierrc.json 파일 생성
+    ```
+    {
+      "tabWidth": 2,
+      "printWidth": 80,
+      "overrides": [
+        {
+          "files": "*.sol",
+          "options": {
+            "printWidth": 80,
+            "tabWidth": 2,
+            "useTabs": false,
+            "singleQuote": false,
+            "bracketSpacing": false,
+            "explicitTypes": "always"
+          }
+        }
+      ]
+    }
+    ```
+  - settings.json 파일 열어서 아래 세팅(Default 말고 User용 열어야 함)
+    ```
+    "editor.formatOnSave": true,
+    ```
+
 
 **정규표현식 SEARCH**
 ```
