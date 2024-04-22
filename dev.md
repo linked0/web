@@ -408,20 +408,25 @@ submodule이 아래와 같이 추가됨
 
 😈 Docker Image 만들기
 1. https://github.com/poohgithub/poohgeth/blob/master/Dockerfile 참고
-2. docker build -t poohgeth .
+2. docker build -t linked0/poohgeth:v1.3 . // 끝의 dot(.) 주의
 3. docker 실행 (optional)
-docker run -p 3000:3000 my-app-image
+docker run -p 3000:3000 linked0/poohgeth:v1.3
 4. docker login
 5. tag
-   docker tag local-image-name linked/poohnet-pow:v1.0
+   docker tag local-image-name linked0/poohgeth:v1.0
 6. push
-   docker push linked/poohnet-pow:v1.0
+   docker push linked0/poohgeth:v1.3
 7. pull 
-   docker pull linked/poohnet-pow:v1.0
+   docker pull linked0/poohgeth:v1.3
 8. run using docker-compose
 https://github.com/poohgithub/poohgeth/blob/master/poohnet/docker-compose-node.yml 참조
 docker compose -f docker-compose-node.yml up el1 -d
 
+😈 Docker 이슈
+- `docker build`시 오랫동안 멈춰있을 때, prune후에 재부팅해보기.
+```
+ docker container prune
+``` 
 
 😈 기타
 - docker attach
@@ -1053,6 +1058,14 @@ echo 'alias cb="curl -L bit.ly/3MT0VRb"' >> ~/.zshrc
 Next split: cmd + ]
 Split Vetically: cmd + d
 Split Horizontally: shft + cmd + d
+```
+---
+### 🌸 Mac
+- Finder에서 파일 경로 복사하기 
+```
+1. Control-click or right-click on the file in Finder.
+2. Press the Option (Alt) key.
+3. Choose 'Copy [filename] as Pathname'
 ```
 
 ---
