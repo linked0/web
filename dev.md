@@ -966,8 +966,8 @@ alias cb="curl -L bit.ly/3MT0VRb"
 alias cbb="open https://bit.ly/3MVG5AN"
 alias poo="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
 
-echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
-echo 'alias cb="curl -L bit.ly/3MT0VRb"' >> ~/.zshrc
+alias ecstart="aws ec2 start-instances --instance-ids i-02c89e86234e05850"
+alias ecstop="aws ec2 stop-instances --instance-ids i-02c89e86234e05850"
 ```
 
 
@@ -1023,17 +1023,26 @@ opt cmd b - Bookmark
 
 ssh-keygen -t rsa
 
+```
 brew install golang
 `PATH=$PATH:$HOME/go/bin`
+```
 
 go install github.com/protolambda/zcli@latest
 zcli --help
 alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
 
-하위 동일 폴더 지우기
+**하위 동일 폴더 지우기**
 ```
 find . -type d -name 'temp' -exec rm -rf {} +
 ```
+
+**alias/export 추가**
+```
+echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
+echo 'alias cb="curl -L bit.ly/3MT0VRb"' >> ~/.zshrc
+```
+
 **hidden files**
 ```
     Command + Shift + . (period key)
