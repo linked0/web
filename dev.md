@@ -1155,8 +1155,9 @@ Jay Test: 0x7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23
 ---
 ### 🌸 Whale 듀얼탭-Docker-Screen
 **Whale**
-- 듀얼 탭 열기/닫기: Shift Command S
-- 탭 포커스 이동: Shift Command E
+- 듀얼 탭 열기/닫기: shift + cmd +  s
+- 탭 포커스 이동: shift + cmd +  e
+- 듀얼 탭에 링크 열기: shift + cmd + click
 
 **Docker**
 - docker exec -it pow-node geth attach http://localhost:8545
