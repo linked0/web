@@ -1098,7 +1098,7 @@ git submodule update --init --recursive web2
 ### 🦋 VSCode 🦋
 - Command Palette: [⇧⌘P ] Shell command
 - Settings 열기: cmd + ,
-
+- 현재 프로젝트에서 검색: shift + option + f
 - back: ctrl - , forward: shift ctrl -
 - ctrl tab: recent files
 - shift cmd n - cmd shift /: open project
