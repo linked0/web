@@ -1,7 +1,5 @@
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
-- https://bit.ly/3MT0VRb
-- https://bit.ly/3MVG5AN
-- [solidity markdown](./solidity.md)
+# Jay's Dev Information
 
 ------
 - [Projects Summary](#projects-summary)
@@ -943,18 +941,19 @@ pp() {
 }
 
 alias ppd='code ~/work/web/dev.md'
-alias ppz='code ~/.zshrc'
-alias ppp='code ./package.json'
-alias pph='code ./hardhat.config.ts'
-alias ppe='code ./.env'
-alias ppm='code ./README.md'
+alias ppd1='code ~/work/web/sub/solidity.md'
+alias ppd2='code ~/work/web/sub/voca.md'
+alias ppp='code ~/work/web/ex/package.json'
+alias pph='code ~/work/web/ex/hardhat.config.ts'
+alias ppe='code ~/work/web/ex/.env'
+alias ppo='code ~/work/web/ex/contracts/Ondo.sol'
+alias ppt='code ~/work/web/ex/test/ondo.spec.ts'
 
-alias qqd='code ~/work/web/dev.md'
-alias qqp='code ~/work/web/ex/package.json'
-alias qqh='code ~/work/web/ex/hardhat.config.ts'
-alias qqe='code ~/work/web/ex/.env'
-alias qqo='code ~/work/web/ex/contracts/Ondo.sol'
-alias qqt='code ~/work/web/ex/test/ondo.spec.ts'
+alias qqp='code ./package.json'
+alias qqh='code ./hardhat.config.ts'
+alias qqe='code ./.env'
+alias qqm='code ./README.md'
+
 
 alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
@@ -1195,8 +1194,8 @@ unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
 
 
 ---
+- [solidity](./sub/solidity.md)
+- [voca](./sub/voca.md)
 - https://bit.ly/3MT0VRb
 - https://bit.ly/3MVG5AN
-- [solidkty markdown](https://bit.ly/3TtDArL)
-
 
