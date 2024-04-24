@@ -87,9 +87,7 @@
     - [🦋 VSCode 🦋](#-vscode-)
     - [🌸 Block projects](#-block-projects)
     - [🌸 Whale 듀얼탭-Docker-Screen](#-whale-듀얼탭-docker-screen)
-    - [🌸 텍스트 찾기](#-텍스트-찾기)
-    - [🌸 프로세스 찾기](#-프로세스-찾기)
-    - [🌸 zip](#-zip)
+    - [🌸 텍스트 검색 - 프로세스 찾기 - zip](#-텍스트-검색---프로세스-찾기---zip)
 
 ## Projects Summary
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
@@ -1189,16 +1187,18 @@ Jay Test: 0x7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23
 - screen -r -d 17288 <-- attatch되어 있는 것 detach
 
 ---
-### 🌸 텍스트 찾기
+### 🌸 텍스트 검색 - 프로세스 찾기 - zip
+```
 egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
 
-### 🌸 프로세스 찾기
 ps aux | grep postgres
 
-### 🌸 zip
 zip -r ~/temp/my-archive.zip . -x '*.git*' -x '*node_modules*'
+
 unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
 
+history -100
+```
 
 ---
 - [solidity](./sub/solidity.md)
