@@ -35,6 +35,7 @@
     "test:export": "export BLOCKCHAIN='ethereum' && export FORK_FROM_BLOCK_NUMBER=13537712 && export CHAIN_ID=1 && hardhat test",
     "build": "hardhat compile",
     "build:test": "hardhat compile --network testnet",
+    "deploy-test:localnet": "hardhat run --network localnet scripts/deploy-test.ts",
     "deploy-lock3-factory:hardhat": "hardhat run --network hardhat scripts/deploy-lock3-with-factory.ts",
     "deploy-lock3-factory:local": "hardhat run --network local scripts/deploy-lock3-with-factory.ts",
     "deploy-lock3-factory:test": "hardhat run --network testnet scripts/deploy-lock3-with-factory.ts",

@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const test = await ethers.deployContract("Test", [6]);
+  const test = await ethers.deployContract("Test");
   await test.waitForDeployment();
 
   console.log(`Deployed to ${test.target}`);
