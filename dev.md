@@ -209,6 +209,7 @@ psql postgres <== 접속해볼 수 있음.
 ##### Whale, Miro, onenote, Visual Studio, Xcode
 - Command Palette: [⇧⌘P ] Shell command
 - Settings 열기: cmd + ,
+- 느린 스크롤 세팅: Settings 열기 - terminal smo 검색 - Smooth Scrolling 체크
 - Markdown All in One 플러그인: 마크다운 컨텐트 만들어주는 VSCode 
 - VS Code 플러그인 : Solidity/Go/rust-analyzer, Live Preview, Github Copilot, Markdown All in One
 - VS Code 세팅: Editor: Hover Enable을 Disable로 바꿔야 코드창에서 팝업 안뜸
