@@ -952,6 +952,7 @@ alias pph='code ~/work/web/ex/hardhat.config.ts'
 alias ppe='code ~/work/web/ex/.env'
 alias ppo='code ~/work/web/ex/contracts/Ondo.sol'
 alias ppt='code ~/work/web/ex/test/ondo.spec.ts'
+alias ppz='code ~/.zshrc'
 
 alias qqp='code ./package.json'
 alias qqh='code ./hardhat.config.ts'
