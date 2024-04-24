@@ -1204,5 +1204,5 @@ unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
 - [voca](./sub/voca.md)
 - https://bit.ly/3MT0VRb
 - https://bit.ly/3MVG5AN
-- [dev.doc](https://bit.ly/3t6oyyG)
+- dev.doc: https://bit.ly/3t6oyyG
 
