@@ -16,6 +16,9 @@
   - [NPM publish 에러](#npm-publish-에러)
   - [/bin/sh: python: command not found](#binsh-python-command-not-found)
   - [error work/polymath-core/node\_modules/sha3: Command failed.](#error-workpolymath-corenode_modulessha3-command-failed)
+- [Solidity](#solidity)
+  - [function type 바꾸기](#function-type-바꾸기)
+  - [getContractFactory \& ContractFactory](#getcontractfactory--contractfactory)
 - [Smart Contract/Hardhat](#smart-contracthardhat)
   - [Hardhat config defaultNetwork](#hardhat-config-defaultnetwork)
   - [create2 함수](#create2-함수)
@@ -29,8 +32,6 @@
   - [Contract Size](#contract-size)
   - [Exceeds Gas Limit 에러](#exceeds-gas-limit-에러)
   - [hardhat-gas-reporter](#hardhat-gas-reporter)
-- [Solidity](#solidity)
-  - [function type 바꾸기](#function-type-바꾸기)
 - [Git](#git)
   - [error: cannot run delta: No such file or directory](#error-cannot-run-delta-no-such-file-or-directory)
   - [fatal: Not possible to fast-forward, aborting.](#fatal-not-possible-to-fast-forward-aborting)
@@ -428,12 +429,91 @@ Node 16 버전을 사용함으로써 해결
 ```
 nvm use 16 
 ```
+-------
+## Solidity
 
+### function type 바꾸기
+```
+function _getManifest() internal view returns (PluginManifest memory) {
+  PluginManifest memory m = abi.decode(_manifest, (PluginManifest));
+  return m;
+}
+
+function _castToPure(
+  function() internal view returns (PluginManifest memory) fnIn
+)
+  internal
+  pure
+  returns (function() internal pure returns (PluginManifest memory) fnOut)
+{
+  assembly ("memory-safe") {
+    fnOut := fnIn
+  }
+}
+
+function pluginManifest() external pure returns (PluginManifest memory) {
+  return _castToPure(_getManifest)();
+}
+```
+
+### getContractFactory & ContractFactory
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+contract Greeter {
+    string internal _greeting;
+
+    constructor(string memory newGreeting) {
+        _greeting = newGreeting;
+    }
+
+    function setGreeting(string memory newGreeting) public {
+        _greeting = newGreeting;
+    }
+
+    function greet() public view returns (string memory) {
+        return _greeting;
+    }
+}
+```
+
+```
+import { ethers } from "hardhat";
+import { expect } from "chai";
+import  Greeter from "../artifacts/contracts/Greeter.sol/Greeter.json";
+
+describe("ContractFactory", function () {
+  async function greeterFixture() {
+    const [owner, otherAccount] = await ethers.getSigners();
+    return { owner, otherAccount };
+  }
+
+  it("Should return the new contract instance", async function () {
+    const Factory = await ethers.getContractFactory("Greeter");
+    const greeter = await Factory.deploy("Hello, Hardhat!");
+
+    console.log("Greeter deployed to:", greeter.target);
+
+    expect(await greeter.greet()).to.equal("Hello, Hardhat!");
+  });
+
+  it("Should create a new contract instance with ethers.ContractFactory", async function () {
+    const { owner } = await greeterFixture();
+    const greeter = await new ethers.ContractFactory(
+      Greeter.abi, Greeter.bytecode, owner).
+      deploy("Hello, Hardhat!");
+
+    const contract = await ethers.getContractAt('Greeter', greeter.target, owner);
+    expect(await contract.greet()).to.equal("Hello, Hardhat!");
+  });
+});
+
+```
 -------
 ## Smart Contract/Hardhat
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
----
 ### Hardhat config defaultNetwork
 참고: https://github.com/poohgithub/zksync-era/blob/main/poohnet/paymaster-examples/contracts/hardhat.config.ts
 
@@ -579,37 +659,12 @@ error Command failed with exit code 1.
 ### hardhat-gas-reporter
 hardhat.config.ts 참고: https://github.com/poohgithub/zksync-era/blob/main/poohnet/paymaster-examples/contracts/hardhat.config.ts
 
--------
-## Solidity
-
-### function type 바꾸기
-```
-function _getManifest() internal view returns (PluginManifest memory) {
-  PluginManifest memory m = abi.decode(_manifest, (PluginManifest));
-  return m;
-}
-
-function _castToPure(
-  function() internal view returns (PluginManifest memory) fnIn
-)
-  internal
-  pure
-  returns (function() internal pure returns (PluginManifest memory) fnOut)
-{
-  assembly ("memory-safe") {
-    fnOut := fnIn
-  }
-}
-
-function pluginManifest() external pure returns (PluginManifest memory) {
-  return _castToPure(_getManifest)();
-}
-```
 
 
 -------
 ## Git
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+
 
 ### error: cannot run delta: No such file or directory
 
