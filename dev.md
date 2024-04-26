@@ -77,6 +77,7 @@
     - [Mac XCode](#mac-xcode)
     - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
   - [단축키](#단축키)
+    - [🌸 Google docs](#-google-docs)
     - [🌸 poohnet (EL/CL) 실행하기](#-poohnet-elcl-실행하기)
     - [🌸 .bash\_profile - git push config](#-bash_profile---git-push-config)
     - [🌸 hardhat 프로젝트 만들기 🌸](#-hardhat-프로젝트-만들기-)
@@ -888,6 +889,10 @@ ps aux | grep chrome
 🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋
 🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋
 🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋
+
+### 🌸 Google docs
+* Indentation 수정
+Format - Align & Indent - Indentation Option에서 Hanging 수정하면 됨
 
 ### 🌸 poohnet (EL/CL) 실행하기
 😈 geth compile
