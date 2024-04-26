@@ -902,9 +902,8 @@ go run build/ci.go install -static ./cmd/geth or make geth
 sudo cp ./build/bin/geth /usr/local/bin/geth
 ```
 😈 EL
-- ./init local 1 & ./enode pow el1
-- ./init pow 1 & ./enode pow el1
-- ./init pow 2 & ./enode pow el2
+- ./init 치면 help 나옴
+- ./enode 치면 help 나옴
 
 😈 CL
 1. 블럭해시과 genesis time(date +%s)을 chain-config 반영하고 eth2-testnet-genesis 실행
