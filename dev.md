@@ -1075,6 +1075,9 @@ Split Horizontally: shft + cmd + d
 3. Choose 'Copy [filename] as Pathname'
 ```
 
+- 테이블의 셀에서 개행
+option + enter
+
 ---
 ### 🌸 git submodule
 
@@ -1184,7 +1187,11 @@ Jay Test: 0x7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23
 **Docker**
 - docker exec -it pow-node geth attach http://localhost:8545
 - docker logs pow-node // enode 알아낼때 사용할 수 있음
-  
+- docker run --name postgresql \
+    -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password \
+    -p 5432:5432 \
+    -d postgres:latest
+
 **Screen**
 - screen -ls // ls
 - ctrl a+d // exit
