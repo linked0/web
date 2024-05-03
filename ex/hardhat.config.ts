@@ -2,6 +2,7 @@ import * as dotenv from "dotenv";
 import { task, HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import { HardhatNetworkAccountUserConfig } from "hardhat/types/config";
+import "hardhat-gas-reporter";
 import "hardhat-deploy";
 
 dotenv.config({ path: ".env" });
@@ -77,6 +78,10 @@ const config: HardhatUserConfig = {
   },
   namedAccounts: {
     deployer: 0,
+  },
+  gasReporter: {
+    currency: 'USD',
+    gasPrice: 21
   },
 };
 
