@@ -28,11 +28,14 @@
     - [clique in genesis.json](#clique-in-genesisjson)
     - [BOA 유통량 API](#boa-유통량-api)
     - [이더리엄 Endpoint](#이더리엄-endpoint)
+  - [Hardhat](#hardhat)
+    - [Hardhat / solidity](#hardhat--solidity)
+    - [Hardhat / Foundry](#hardhat--foundry)
+    - [Workspaces](#workspaces)
+  - [Foundry](#foundry)
   - [Dev Settings](#dev-settings)
     - [Node workspaces](#node-workspaces)
     - [TypsScript/Nodejs](#typsscriptnodejs)
-    - [Hardhat / solidity](#hardhat--solidity)
-    - [Hardhat / Foundry](#hardhat--foundry)
     - [Docker](#docker)
     - [NPM](#npm)
     - [Python](#python)
@@ -306,13 +309,79 @@ The epoch length, set here as 30000, is significant in Clique PoA. An epoch is a
 ---
 ### 이더리엄 Endpoint
 - Alchemy 사용 (https://dashboard.alchemy.com/)
-  
+
+
+## Hardhat
+
+
+### Hardhat / solidity
+Hardhat은 기존 프로젝트에서는 안됨.
+```
+yarn init -y (=npm init -y)
+yarn add --dev hardhat
+npx hardhat
+
+yarn add -D hardhat-deploy
+yarn add -D dotenv
+```
+
+아래 두개는 같이 쓰면 안됨.
+```
+import "@nomicfoundation/hardhat-toolbox";
+import "@nomiclabs/hardhat-waffle"; // 이것만써.
+```
+기타
+```
+yarn add @openzeppelin/contracts
+```
+
 --------
+😈 solidiy
+import "hardhat/console.sol";
+npx hardhat compile
+
+const tx = await factoryInstance.setFeeTo(process.env.FEE_TO);
+const receipt = await (await tx).wait();
+
+
+--- 
+
+### Hardhat / Foundry
+[Integrating with Foundry](https://hardhat.org/hardhat-runner/docs/advanced/hardhat-and-foundry)
+
+If you have an existing Hardhat project and you want to use Foundry in it, you should follow these steps.
+
+First, run `forge --version` to make sure that you have Foundry installed. If you don't, go `here` to get it.
+
+After that, install the `@nomicfoundation/hardhat-foundry` plugin:
+
+```
+npm install --save-dev @nomicfoundation/hardhat-foundry
+```
+and import it in your Hardhat config:
+
+```
+import "@nomicfoundation/hardhat-foundry";
+```
+To complete the setup, run `npx hardhat init-foundry`. This task will create a `foundry.toml` file with the right configuration and install `forge-std`.
+
+submodule이 아래와 같이 추가됨
+```
+[submodule "ex2/lib/forge-std"]
+  path = ex2/lib/forge-std
+  url = https://github.com/foundry-rs/forge-std
+```
+
+### Workspaces
+- [hardhat-zksync](https://github.com/poohgithub/hardhat-zksync/tree/main) 참고
+
+
+## Foundry
+
+
 ## Dev Settings
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 
-
----
 ### Node workspaces
 😈 Structure and Configuration
 - Workspace Root: A single workspace has a root directory, usually with a package.json file that includes a workspaces field.
@@ -349,63 +418,7 @@ The epoch length, set here as 30000, is significant in Clique PoA. An epoch is a
 😈 yarn
 yarn add --dev 
 
----
-### Hardhat / solidity
-Hardhat은 기존 프로젝트에서는 안됨.
-```
-yarn init -y (=npm init -y)
-yarn add --dev hardhat
-npx hardhat
 
-yarn add -D hardhat-deploy
-yarn add -D dotenv
-```
-
-아래 두개는 같이 쓰면 안됨.
-```
-import "@nomicfoundation/hardhat-toolbox";
-import "@nomiclabs/hardhat-waffle"; // 이것만써.
-```
-기타
-```
-yarn add @openzeppelin/contracts
-```
-
---------
-😈 solidiy
-import "hardhat/console.sol";
-npx hardhat compile
-
-const tx = await factoryInstance.setFeeTo(process.env.FEE_TO);
-const receipt = await (await tx).wait();
-
----
-### Hardhat / Foundry
-[Integrating with Foundry](https://hardhat.org/hardhat-runner/docs/advanced/hardhat-and-foundry)
-
-If you have an existing Hardhat project and you want to use Foundry in it, you should follow these steps.
-
-First, run `forge --version` to make sure that you have Foundry installed. If you don't, go `here` to get it.
-
-After that, install the `@nomicfoundation/hardhat-foundry` plugin:
-
-```
-npm install --save-dev @nomicfoundation/hardhat-foundry
-```
-and import it in your Hardhat config:
-
-```
-import "@nomicfoundation/hardhat-foundry";
-```
-To complete the setup, run `npx hardhat init-foundry`. This task will create a `foundry.toml` file with the right configuration and install `forge-std`.
-
-submodule이 아래와 같이 추가됨
-```
-[submodule "ex2/lib/forge-std"]
-  path = ex2/lib/forge-std
-  url = https://github.com/foundry-rs/forge-std
-```
----
 ### Docker
 
 😈 Docker Image 만들기
