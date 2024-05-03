@@ -957,11 +957,10 @@ alias ppo='code ~/work/web/ex/contracts/Ondo.sol'
 alias ppt='code ~/work/web/ex/test/ondo.spec.ts'
 alias ppz='code ~/.zshrc'
 
-alias qqp='code ./package.json'
-alias qqh='code ./hardhat.config.ts'
-alias qqe='code ./.env'
-alias qqm='code ./README.md'
-
+alias rrp='code ./package.json'
+alias rrh='code ./hardhat.config.ts'
+alias rre='code ./.env'
+alias rrm='code ./README.md'
 
 alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
