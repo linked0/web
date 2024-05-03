@@ -907,6 +907,7 @@ error: failed to push some refs to 'git@github.com:jiyoungminjung/pooh-land-js.g
   - jiyoungminjung의 계정 setting에서 SSH key를 등록함.
 
 ### 23. BigInt 인식 못하는 문제
+관련 github repo: github.com:poohgithub/pooh-swap-v2-core.git
 ```
 const swapTestCases: BigInt[][] = [
    [1, 5, 10, '1662497915624478906'],
