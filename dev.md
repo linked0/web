@@ -977,7 +977,7 @@ hgrep() {
 pp() {
   code ./$1
 }
-cg() {
+ch() {
   chatgpt $@
 }
 
