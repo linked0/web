@@ -188,6 +188,22 @@ Set the OPENAI_API_KEY environment variable to your [ChatGPT secret key](https:/
 export OPENAI_API_KEY="your_api_key"
 ```
 
+To enable history tracking across CLI calls
+```
+mkdir -p ~/.chatgpt-cli
+```
+
+To start interactive mode, use the -i or --interactive flag:
+```
+chatgpt --interactive
+```
+
+To use the pipe feature, create a text file containing some context.
+Then, use the pipe feature to provide this context to ChatGPT:
+```
+cat context.txt | chatgpt "What kind of toy would Kya enjoy?"
+```
+
 And run this
 ```
 chatgpt what is the capital of the Netherlands
