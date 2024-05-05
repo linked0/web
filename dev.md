@@ -180,7 +180,18 @@ Command + Shift + .
 ```
 
 ##### chatgpt-cli
+```
 brew tap kardolus/chatgpt-cli && brew install chatgpt-cli
+```
+Set the OPENAI_API_KEY environment variable to your [ChatGPT secret key](https://platform.openai.com/account/api-keys). To set the environment variable, you can add the following line to your shell profile (e.g., ~/.bashrc, ~/.zshrc, or ~/.bash_profile), replacing your_api_key with your actual key:
+```
+export OPENAI_API_KEY="your_api_key"
+```
+
+And run this
+```
+chatgpt what is the capital of the Netherlands
+```
 
 ##### npm yarn docker install
 ```
@@ -965,6 +976,9 @@ hgrep() {
 }
 pp() {
   code ./$1
+}
+cg() {
+  chatgpt $@
 }
 
 alias ppd='code ~/work/web/dev.md'
