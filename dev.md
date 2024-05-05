@@ -15,6 +15,9 @@
     - [Mac Setting](#mac-setting)
         - [.ssh 복사](#ssh-복사)
         - [xcode command/brew/zsh/iterm2/karabiner install](#xcode-commandbrewzshiterm2karabiner-install)
+        - [karanbiner 설치 및 karabiner.json](#karanbiner-설치-및-karabinerjson)
+        - [awscli 설치 및 aws configure](#awscli-설치-및-aws-configure)
+        - [chatgpt-cli](#chatgpt-cli)
         - [npm yarn docker install](#npm-yarn-docker-install)
         - [nvm install](#nvm-install)
         - [rust/postgresql install](#rustpostgresql-install)
@@ -146,11 +149,11 @@ brew install --cask iterm2 | brew install zsh | brew install karabiner-elements
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-karanbiner 설치 및 karabiner.json
+##### karanbiner 설치 및 karabiner.json
 - iterm2 - Preferences - Profiles - Silence bell
 - [gitconfig html](sub/gitconfig.htmlml) 내용은 .gitconfig에 복사 & `git init`
 
-awscli 설치 및 aws configure
+##### awscli 설치 및 aws configure
 
 [aws cli](https://awscli.amazonaws.com/AWSCLIV2.pkg)
 
@@ -175,6 +178,10 @@ finder 열고 다음 실행하면 숨김 파일 보임
 ```
 Command + Shift + .
 ```
+
+##### chatgpt-cli
+brew tap kardolus/chatgpt-cli && brew install chatgpt-cli
+
 ##### npm yarn docker install
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
