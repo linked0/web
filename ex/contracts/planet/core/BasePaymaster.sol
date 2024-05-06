@@ -15,57 +15,67 @@ import "./UserOperationLib.sol";
  * Validates that the postOp is called only by the entryPoint.
  */
 abstract contract BasePaymaster is IPaymaster, Ownable {
-    IEntryPoint public immutable entryPoint;
+  IEntryPoint public immutable entryPoint;
 
-    uint256 internal constant PAYMASTER_VALIDATION_GAS_OFFSET = UserOperationLib.PAYMASTER_VALIDATION_GAS_OFFSET;
-    uint256 internal constant PAYMASTER_POSTOP_GAS_OFFSET = UserOperationLib.PAYMASTER_POSTOP_GAS_OFFSET;
-    uint256 internal constant PAYMASTER_DATA_OFFSET = UserOperationLib.PAYMASTER_DATA_OFFSET;
+  uint256 internal constant PAYMASTER_VALIDATION_GAS_OFFSET =
+    UserOperationLib.PAYMASTER_VALIDATION_GAS_OFFSET;
+  uint256 internal constant PAYMASTER_POSTOP_GAS_OFFSET =
+    UserOperationLib.PAYMASTER_POSTOP_GAS_OFFSET;
+  uint256 internal constant PAYMASTER_DATA_OFFSET =
+    UserOperationLib.PAYMASTER_DATA_OFFSET;
 
-    constructor(IEntryPoint _entryPoint) Ownable(msg.sender) {
-        _validateEntryPointInterface(_entryPoint);
-        entryPoint = _entryPoint;
-    }
+  constructor(IEntryPoint _entryPoint) Ownable(msg.sender) {
+    _validateEntryPointInterface(_entryPoint);
+    entryPoint = _entryPoint;
+  }
 
-    //sanity check: make sure this EntryPoint was compiled against the same
-    // IEntryPoint of this paymaster
-    function _validateEntryPointInterface(IEntryPoint _entryPoint) internal virtual {
-        require(IERC165(address(_entryPoint)).supportsInterface(type(IEntryPoint).interfaceId), "IEntryPoint interface mismatch");
-    }
+  //sanity check: make sure this EntryPoint was compiled against the same
+  // IEntryPoint of this paymaster
+  function _validateEntryPointInterface(
+    IEntryPoint _entryPoint
+  ) internal virtual {
+    require(
+      IERC165(address(_entryPoint)).supportsInterface(
+        type(IEntryPoint).interfaceId
+      ),
+      "IEntryPoint interface mismatch"
+    );
+  }
 
-    /// @inheritdoc IPaymaster
-    function validatePaymasterUserOp(
-        PackedUserOperation calldata userOp,
-        bytes32 userOpHash,
-        uint256 maxCost
-    ) external override returns (bytes memory context, uint256 validationData) {
-        _requireFromEntryPoint();
-        return _validatePaymasterUserOp(userOp, userOpHash, maxCost);
-    }
+  /// @inheritdoc IPaymaster
+  function validatePaymasterUserOp(
+    PackedUserOperation calldata userOp,
+    bytes32 userOpHash,
+    uint256 maxCost
+  ) external override returns (bytes memory context, uint256 validationData) {
+    _requireFromEntryPoint();
+    return _validatePaymasterUserOp(userOp, userOpHash, maxCost);
+  }
 
-    /**
-     * Validate a user operation.
-     * @param userOp     - The user operation.
-     * @param userOpHash - The hash of the user operation.
-     * @param maxCost    - The maximum cost of the user operation.
-     */
-    function _validatePaymasterUserOp(
-        PackedUserOperation calldata userOp,
-        bytes32 userOpHash,
-        uint256 maxCost
-    ) internal virtual returns (bytes memory context, uint256 validationData);
+  /**
+   * Validate a user operation.
+   * @param userOp     - The user operation.
+   * @param userOpHash - The hash of the user operation.
+   * @param maxCost    - The maximum cost of the user operation.
+   */
+  function _validatePaymasterUserOp(
+    PackedUserOperation calldata userOp,
+    bytes32 userOpHash,
+    uint256 maxCost
+  ) internal virtual returns (bytes memory context, uint256 validationData);
 
-    /// @inheritdoc IPaymaster
-    function postOp(
-        PostOpMode mode,
-        bytes calldata context,
-        uint256 actualGasCost,
-        uint256 actualUserOpFeePerGas
-    ) external override {
-        _requireFromEntryPoint();
-        _postOp(mode, context, actualGasCost, actualUserOpFeePerGas);
-    }
+  /// @inheritdoc IPaymaster
+  function postOp(
+    PostOpMode mode,
+    bytes calldata context,
+    uint256 actualGasCost,
+    uint256 actualUserOpFeePerGas
+  ) external override {
+    _requireFromEntryPoint();
+    _postOp(mode, context, actualGasCost, actualUserOpFeePerGas);
+  }
 
-    /**
+  /**
      * Post-operation handler.
      * (verified to be called only through the entryPoint)
      * @dev If subclass returns a non-empty context from validatePaymasterUserOp,
@@ -81,73 +91,73 @@ abstract contract BasePaymaster is IPaymaster, Ownable {
      *                        It is not the same as tx.gasprice, which is what the bundler pays.
 
      */
-    function _postOp(
-        PostOpMode mode,
-        bytes calldata context,
-        uint256 actualGasCost,
-        uint256 actualUserOpFeePerGas
-    ) internal virtual {
-        (mode, context, actualGasCost, actualUserOpFeePerGas); // unused params
-        // subclass must override this method if validatePaymasterUserOp returns a context
-        revert("must override");
-    }
+  function _postOp(
+    PostOpMode mode,
+    bytes calldata context,
+    uint256 actualGasCost,
+    uint256 actualUserOpFeePerGas
+  ) internal virtual {
+    (mode, context, actualGasCost, actualUserOpFeePerGas); // unused params
+    // subclass must override this method if validatePaymasterUserOp returns a context
+    revert("must override");
+  }
 
-    /**
-     * Add a deposit for this paymaster, used for paying for transaction fees.
-     */
-    function deposit() public payable {
-        entryPoint.depositTo{value: msg.value}(address(this));
-    }
+  /**
+   * Add a deposit for this paymaster, used for paying for transaction fees.
+   */
+  function deposit() public payable {
+    entryPoint.depositTo{value: msg.value}(address(this));
+  }
 
-    /**
-     * Withdraw value from the deposit.
-     * @param withdrawAddress - Target to send to.
-     * @param amount          - Amount to withdraw.
-     */
-    function withdrawTo(
-        address payable withdrawAddress,
-        uint256 amount
-    ) public onlyOwner {
-        entryPoint.withdrawTo(withdrawAddress, amount);
-    }
+  /**
+   * Withdraw value from the deposit.
+   * @param withdrawAddress - Target to send to.
+   * @param amount          - Amount to withdraw.
+   */
+  function withdrawTo(
+    address payable withdrawAddress,
+    uint256 amount
+  ) public onlyOwner {
+    entryPoint.withdrawTo(withdrawAddress, amount);
+  }
 
-    /**
-     * Add stake for this paymaster.
-     * This method can also carry eth value to add to the current stake.
-     * @param unstakeDelaySec - The unstake delay for this paymaster. Can only be increased.
-     */
-    function addStake(uint32 unstakeDelaySec) external payable onlyOwner {
-        entryPoint.addStake{value: msg.value}(unstakeDelaySec);
-    }
+  /**
+   * Add stake for this paymaster.
+   * This method can also carry eth value to add to the current stake.
+   * @param unstakeDelaySec - The unstake delay for this paymaster. Can only be increased.
+   */
+  function addStake(uint32 unstakeDelaySec) external payable onlyOwner {
+    entryPoint.addStake{value: msg.value}(unstakeDelaySec);
+  }
 
-    /**
-     * Return current paymaster's deposit on the entryPoint.
-     */
-    function getDeposit() public view returns (uint256) {
-        return entryPoint.balanceOf(address(this));
-    }
+  /**
+   * Return current paymaster's deposit on the entryPoint.
+   */
+  function getDeposit() public view returns (uint256) {
+    return entryPoint.balanceOf(address(this));
+  }
 
-    /**
-     * Unlock the stake, in order to withdraw it.
-     * The paymaster can't serve requests once unlocked, until it calls addStake again
-     */
-    function unlockStake() external onlyOwner {
-        entryPoint.unlockStake();
-    }
+  /**
+   * Unlock the stake, in order to withdraw it.
+   * The paymaster can't serve requests once unlocked, until it calls addStake again
+   */
+  function unlockStake() external onlyOwner {
+    entryPoint.unlockStake();
+  }
 
-    /**
-     * Withdraw the entire paymaster's stake.
-     * stake must be unlocked first (and then wait for the unstakeDelay to be over)
-     * @param withdrawAddress - The address to send withdrawn value.
-     */
-    function withdrawStake(address payable withdrawAddress) external onlyOwner {
-        entryPoint.withdrawStake(withdrawAddress);
-    }
+  /**
+   * Withdraw the entire paymaster's stake.
+   * stake must be unlocked first (and then wait for the unstakeDelay to be over)
+   * @param withdrawAddress - The address to send withdrawn value.
+   */
+  function withdrawStake(address payable withdrawAddress) external onlyOwner {
+    entryPoint.withdrawStake(withdrawAddress);
+  }
 
-    /**
-     * Validate the call is made from a valid entrypoint
-     */
-    function _requireFromEntryPoint() internal virtual {
-        require(msg.sender == address(entryPoint), "Sender not EntryPoint");
-    }
+  /**
+   * Validate the call is made from a valid entrypoint
+   */
+  function _requireFromEntryPoint() internal virtual {
+    require(msg.sender == address(entryPoint), "Sender not EntryPoint");
+  }
 }

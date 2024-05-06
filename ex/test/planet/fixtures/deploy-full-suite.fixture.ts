@@ -1,6 +1,11 @@
 import { ethers } from "hardhat";
 import { Wallet, Contract } from "ethers";
-import { SimpleAccountFactory, SimpleAccountFactory__factory, SimpleAccount, SimpleAccount__factory } from "../../../typechain-types";
+import {
+  SimpleAccountFactory,
+  SimpleAccountFactory__factory,
+  SimpleAccount,
+  SimpleAccount__factory,
+} from "../../../typechain-types";
 import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers";
 import { parseEther } from "ethers";
 
@@ -21,10 +26,12 @@ export async function deployFullSuiteFixture() {
 
   let simpleAccountFactory: SimpleAccountFactory;
   let account: SimpleAccount;
-  ({
-    proxy: account,
-    accountFactory: simpleAccountFactory
-  } = await createAccount(deployer, await accountOwner.getAddress(), await entryPoint.getAddress()))
+  ({ proxy: account, accountFactory: simpleAccountFactory } =
+    await createAccount(
+      deployer,
+      await accountOwner.getAddress(),
+      await entryPoint.getAddress(),
+    ));
 
   await fund(await account.getAddress());
 
@@ -34,58 +41,65 @@ export async function deployFullSuiteFixture() {
       user,
     },
     aa: {
-      account
+      account,
     },
     suite: {
       greeter,
       basic,
       entryPoint,
-      simpleAccountFactory
+      simpleAccountFactory,
     },
   };
 }
 
-export function createAccountOwner (): Wallet {
-  const privateKey = ethers.keccak256(Buffer.from(ethers.toBeArray(++counter)))
-  return new ethers.Wallet(privateKey, ethers.provider)
+export function createAccountOwner(): Wallet {
+  const privateKey = ethers.keccak256(Buffer.from(ethers.toBeArray(++counter)));
+  return new ethers.Wallet(privateKey, ethers.provider);
   // return new ethers.Wallet('0x'.padEnd(66, privkeyBase), ethers.provider);
 }
 
 // Deploys an implementation and a proxy pointing to this implementation
-export async function createAccount (
+export async function createAccount(
   ethersSigner: HardhatEthersSigner,
   accountOwner: string,
   entryPoint: string,
-  _factory?: SimpleAccountFactory
-):
-  Promise<{
-    proxy: SimpleAccount
-    accountFactory: SimpleAccountFactory
-    implementation: string
-  }> {
-  const accountFactory = _factory ?? await new SimpleAccountFactory__factory(ethersSigner).deploy(entryPoint)
+  _factory?: SimpleAccountFactory,
+): Promise<{
+  proxy: SimpleAccount;
+  accountFactory: SimpleAccountFactory;
+  implementation: string;
+}> {
+  const accountFactory =
+    _factory ??
+    (await new SimpleAccountFactory__factory(ethersSigner).deploy(entryPoint));
   console.log("accountFactory:", await accountFactory.target);
-  const implementation = await accountFactory.accountImplementation()
-  await accountFactory.createAccount(accountOwner, 0)
-  const accountAddress = await accountFactory.getAccountAddress(accountOwner, 0)
+  const implementation = await accountFactory.accountImplementation();
+  await accountFactory.createAccount(accountOwner, 0);
+  const accountAddress = await accountFactory.getAccountAddress(
+    accountOwner,
+    0,
+  );
   console.log("accountAddress:", accountAddress);
-  const proxy = SimpleAccount__factory.connect(accountAddress, ethersSigner)
+  const proxy = SimpleAccount__factory.connect(accountAddress, ethersSigner);
   return {
     implementation,
     accountFactory,
-    proxy
-  }
+    proxy,
+  };
 }
 
 // just throw 1eth from account[0] to the given address (or contract instance)
-export async function fund (contractOrAddress: string | Contract, amountEth = '1'): Promise<void> {
-  let address: string
-  if (typeof contractOrAddress === 'string') {
-    address = contractOrAddress
+export async function fund(
+  contractOrAddress: string | Contract,
+  amountEth = "1",
+): Promise<void> {
+  let address: string;
+  if (typeof contractOrAddress === "string") {
+    address = contractOrAddress;
   } else {
-    address = await contractOrAddress.getAddress()
+    address = await contractOrAddress.getAddress();
   }
   console.log("address:", address);
   const signer = await ethers.provider.getSigner();
-  await signer.sendTransaction({ to: address, value: parseEther(amountEth) })
+  await signer.sendTransaction({ to: address, value: parseEther(amountEth) });
 }

@@ -9,18 +9,27 @@ import "./TestPaymasterAcceptAll.sol";
  * explicitly returns a context, to test cost (for entrypoint) to call postOp
  */
 contract TestPaymasterWithPostOp is TestPaymasterAcceptAll {
+  constructor(IEntryPoint _entryPoint) TestPaymasterAcceptAll(_entryPoint) {}
 
-    constructor(IEntryPoint _entryPoint) TestPaymasterAcceptAll(_entryPoint) {
-    }
+  function _validatePaymasterUserOp(
+    PackedUserOperation calldata,
+    bytes32,
+    uint256
+  )
+    internal
+    view
+    virtual
+    override
+    returns (bytes memory context, uint256 validationData)
+  {
+    // return a context, to force a call for postOp.
+    return ("1", 0);
+  }
 
-    function _validatePaymasterUserOp(PackedUserOperation calldata, bytes32, uint256)
-    internal virtual override view
-    returns (bytes memory context, uint256 validationData) {
-        // return a context, to force a call for postOp.
-        return ("1", 0);
-    }
-
-    function _postOp(PostOpMode, bytes calldata, uint256, uint256)
-    internal override {
-    }
+  function _postOp(
+    PostOpMode,
+    bytes calldata,
+    uint256,
+    uint256
+  ) internal override {}
 }

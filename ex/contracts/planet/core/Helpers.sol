@@ -15,9 +15,9 @@ pragma solidity ^0.8.12;
  * @param validaUntil - This UserOp is valid only up to this timestamp.
  */
 struct ValidationData {
-    address aggregator;
-    uint48 validAfter;
-    uint48 validUntil;
+  address aggregator;
+  uint48 validAfter;
+  uint48 validUntil;
 }
 
 /**
@@ -26,15 +26,15 @@ struct ValidationData {
  * @param validationData - The packed validation data.
  */
 function _parseValidationData(
-    uint256 validationData
+  uint256 validationData
 ) pure returns (ValidationData memory data) {
-    address aggregator = address(uint160(validationData));
-    uint48 validUntil = uint48(validationData >> 160);
-    if (validUntil == 0) {
-        validUntil = type(uint48).max;
-    }
-    uint48 validAfter = uint48(validationData >> (48 + 160));
-    return ValidationData(aggregator, validAfter, validUntil);
+  address aggregator = address(uint160(validationData));
+  uint48 validUntil = uint48(validationData >> 160);
+  if (validUntil == 0) {
+    validUntil = type(uint48).max;
+  }
+  uint48 validAfter = uint48(validationData >> (48 + 160));
+  return ValidationData(aggregator, validAfter, validUntil);
 }
 
 /**
@@ -43,27 +43,27 @@ function _parseValidationData(
  * @param paymasterValidationData - The packed validation data of the paymaster.
  */
 function _intersectTimeRange(
-    uint256 validationData,
-    uint256 paymasterValidationData
+  uint256 validationData,
+  uint256 paymasterValidationData
 ) pure returns (ValidationData memory) {
-    ValidationData memory accountValidationData = _parseValidationData(
-        validationData
-    );
-    ValidationData memory pmValidationData = _parseValidationData(
-        paymasterValidationData
-    );
-    address aggregator = accountValidationData.aggregator;
-    if (aggregator == address(0)) {
-        aggregator = pmValidationData.aggregator;
-    }
-    uint48 validAfter = accountValidationData.validAfter;
-    uint48 validUntil = accountValidationData.validUntil;
-    uint48 pmValidAfter = pmValidationData.validAfter;
-    uint48 pmValidUntil = pmValidationData.validUntil;
+  ValidationData memory accountValidationData = _parseValidationData(
+    validationData
+  );
+  ValidationData memory pmValidationData = _parseValidationData(
+    paymasterValidationData
+  );
+  address aggregator = accountValidationData.aggregator;
+  if (aggregator == address(0)) {
+    aggregator = pmValidationData.aggregator;
+  }
+  uint48 validAfter = accountValidationData.validAfter;
+  uint48 validUntil = accountValidationData.validUntil;
+  uint48 pmValidAfter = pmValidationData.validAfter;
+  uint48 pmValidUntil = pmValidationData.validUntil;
 
-    if (validAfter < pmValidAfter) validAfter = pmValidAfter;
-    if (validUntil > pmValidUntil) validUntil = pmValidUntil;
-    return ValidationData(aggregator, validAfter, validUntil);
+  if (validAfter < pmValidAfter) validAfter = pmValidAfter;
+  if (validUntil > pmValidUntil) validUntil = pmValidUntil;
+  return ValidationData(aggregator, validAfter, validUntil);
 }
 
 /**
@@ -71,12 +71,12 @@ function _intersectTimeRange(
  * @param data - The ValidationData to pack.
  */
 function _packValidationData(
-    ValidationData memory data
+  ValidationData memory data
 ) pure returns (uint256) {
-    return
-        uint160(data.aggregator) |
-        (uint256(data.validUntil) << 160) |
-        (uint256(data.validAfter) << (160 + 48));
+  return
+    uint160(data.aggregator) |
+    (uint256(data.validUntil) << 160) |
+    (uint256(data.validAfter) << (160 + 48));
 }
 
 /**
@@ -86,35 +86,34 @@ function _packValidationData(
  * @param validAfter - First timestamp this UserOperation is valid.
  */
 function _packValidationData(
-    bool sigFailed,
-    uint48 validUntil,
-    uint48 validAfter
+  bool sigFailed,
+  uint48 validUntil,
+  uint48 validAfter
 ) pure returns (uint256) {
-    return
-        (sigFailed ? 1 : 0) |
-        (uint256(validUntil) << 160) |
-        (uint256(validAfter) << (160 + 48));
+  return
+    (sigFailed ? 1 : 0) |
+    (uint256(validUntil) << 160) |
+    (uint256(validAfter) << (160 + 48));
 }
 
 /**
  * keccak function over calldata.
  * @dev copy calldata into memory, do keccak and drop allocated memory. Strangely, this is more efficient than letting solidity do it.
  */
-    function calldataKeccak(bytes calldata data) pure returns (bytes32 ret) {
-        assembly ("memory-safe") {
-            let mem := mload(0x40)
-            let len := data.length
-            calldatacopy(mem, data.offset, len)
-            ret := keccak256(mem, len)
-        }
-    }
-
+function calldataKeccak(bytes calldata data) pure returns (bytes32 ret) {
+  assembly ("memory-safe") {
+    let mem := mload(0x40)
+    let len := data.length
+    calldatacopy(mem, data.offset, len)
+    ret := keccak256(mem, len)
+  }
+}
 
 /**
  * The minimum of two numbers.
  * @param a - First number.
  * @param b - Second number.
  */
-    function min(uint256 a, uint256 b) pure returns (uint256) {
-        return a < b ? a : b;
-    }
+function min(uint256 a, uint256 b) pure returns (uint256) {
+  return a < b ? a : b;
+}

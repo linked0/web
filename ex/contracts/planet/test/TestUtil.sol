@@ -5,10 +5,11 @@ import "../interfaces/PackedUserOperation.sol";
 import "../core/UserOperationLib.sol";
 
 contract TestUtil {
-    using UserOperationLib for PackedUserOperation;
+  using UserOperationLib for PackedUserOperation;
 
-    function encodeUserOp(PackedUserOperation calldata op) external pure returns (bytes memory){
-        return op.encode();
-    }
-
+  function encodeUserOp(
+    PackedUserOperation calldata op
+  ) external pure returns (bytes memory) {
+    return op.encode();
+  }
 }

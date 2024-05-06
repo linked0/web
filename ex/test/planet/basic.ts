@@ -16,5 +16,9 @@ describe("Basic", () => {
     console.log("basic:", await basic.value());
 
     console.log("account:", account);
+    console.log(
+      "balance:",
+      await ethers.provider.getBalance(await account.getAddress()),
+    );
   });
 });
