@@ -7,11 +7,14 @@ describe("Basic", () => {
   it("Basic Test", async () => {
     const {
       suite: { greeter, basic },
+      aa: { account },
       accounts: { deployer, user },
     } = await loadFixture(deployFullSuiteFixture);
     console.log("greeter:", await greeter.greet());
 
     console.log("basic address:", basic.target);
     console.log("basic:", await basic.value());
+
+    console.log("account:", account);
   });
 });
