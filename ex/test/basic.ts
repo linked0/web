@@ -9,7 +9,7 @@ import { Basic } from "../typechain-types";
 
 describe("Basic Test", function () {
   let basic: Basic;
-  before (async function () {
+  before(async function () {
     basic = await ethers.deployContract("Basic");
   });
   describe("EnumerableSet", function () {

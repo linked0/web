@@ -1,6 +1,6 @@
 import { ethers } from "hardhat";
 import { expect } from "chai";
-import  Greeter from "../artifacts/contracts/Greeter.sol/Greeter.json";
+import Greeter from "../artifacts/contracts/Greeter.sol/Greeter.json";
 
 describe("ContractFactory", function () {
   async function greeterFixture() {
@@ -20,10 +20,16 @@ describe("ContractFactory", function () {
   it("Should create a new contract instance with ethers.ContractFactory", async function () {
     const { owner } = await greeterFixture();
     const greeter = await new ethers.ContractFactory(
-      Greeter.abi, Greeter.bytecode, owner).
-      deploy("Hello, Hardhat!");
+      Greeter.abi,
+      Greeter.bytecode,
+      owner,
+    ).deploy("Hello, Hardhat!");
 
-    const contract = await ethers.getContractAt('Greeter', greeter.target, owner);
+    const contract = await ethers.getContractAt(
+      "Greeter",
+      greeter.target,
+      owner,
+    );
     expect(await contract.greet()).to.equal("Hello, Hardhat!");
   });
 });

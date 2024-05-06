@@ -27,7 +27,7 @@ export const swap = async ({
   const address = getAddress(hre);
   const routerContract = await ethers.getContractAt(
     "IUniswapV2Router02",
-    router
+    router,
   );
   const deadline: number =
     (await ethers.provider.getBlock("latest")).timestamp + 1000;

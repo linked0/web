@@ -5,7 +5,7 @@ export const deposit = async (
   vaultId: string,
   tranche: number,
   amount: ethers.BigNumberish,
-  user: ethers.Signer
+  user: ethers.Signer,
 ) => {
   await allPairVault
     .connect(user)

@@ -14,7 +14,7 @@ describe("Lock3", function () {
     const ONE_GWEI = 1_000_000_000;
     const lockedAmount = ONE_GWEI;
     const lockValue = 2;
-  
+
     // Contracts are deployed using the first signer/account by default
     const [owner, otherAccount] = await ethers.getSigners();
 

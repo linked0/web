@@ -5,7 +5,7 @@ import {
 import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import { expect } from "chai";
 import { deployments, ethers } from "hardhat";
-import {DMSToken, Lock2} from "../../typechain-types";
+import { DMSToken, Lock2 } from "../../typechain-types";
 import { sign } from "crypto";
 import { SignerWithAddress } from "@nomicfoundation/hardhat-ethers/signers";
 
@@ -39,7 +39,6 @@ describe.skip("Lock2", function () {
     const hash = ethers.keccak256(data);
 
     console.log("hash:", hash);
-
   });
 
   it("getBalance", async function () {

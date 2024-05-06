@@ -28,11 +28,10 @@ describe("AllPairVault", function () {
 
   describe("Deployment", function () {
     it("Should set the right unlockTime", async function () {
-      const { lock, unlockTime, } = await loadFixture(deployOneYearLockFixture);
+      const { lock, unlockTime } = await loadFixture(deployOneYearLockFixture);
 
       const AllPairVault = await ethers.getContractFactory("AllPairVault");
-      const allPairVault = await AllPairVault.deploy(
-        await lock.getAddress());
+      const allPairVault = await AllPairVault.deploy(await lock.getAddress());
 
       await lock.add();
       expect(await lock.value()).to.equal(2n);

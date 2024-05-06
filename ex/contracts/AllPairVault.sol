@@ -8,31 +8,31 @@ import "@openzeppelin/contracts/proxy/Clones.sol";
 import "hardhat/console.sol";
 
 contract AllPairVault {
-    uint public unlockTime;
-    address payable public owner;
-    address public impl;
-    Lock public lock;
+  uint public unlockTime;
+  address payable public owner;
+  address public impl;
+  Lock public lock;
 
-    event Withdrawal(uint amount, uint when);
+  event Withdrawal(uint amount, uint when);
 
-    constructor(address _impl) payable {
-        impl = _impl;
-        owner = payable(msg.sender);
-    }
+  constructor(address _impl) payable {
+    impl = _impl;
+    owner = payable(msg.sender);
+  }
 
-    function createLock(uint id) public {
-        lock = Lock(
-            Clones.cloneDeterministic(
-                impl,
-                keccak256(abi.encodePacked(uint256(1), id))
-            )
-        );
-        lock.add();
-    }
+  function createLock(uint id) public {
+    lock = Lock(
+      Clones.cloneDeterministic(
+        impl,
+        keccak256(abi.encodePacked(uint256(1), id))
+      )
+    );
+    lock.add();
+  }
 
-    function getValue() public view returns (uint) {
-        uint val = lock.value();
-        console.log("Value is", val);
-        return val;
-    }
+  function getValue() public view returns (uint) {
+    uint val = lock.value();
+    console.log("Value is", val);
+    return val;
+  }
 }

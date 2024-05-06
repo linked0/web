@@ -4,7 +4,7 @@ import { SignerWithAddress } from "@nomicfoundation/hardhat-ethers/dist/src/sign
 import * as allAddresses from "./addresses";
 
 export const getVaultId = (
-  values: [string, string, string, number, number, number, number]
+  values: [string, string, string, number, number, number, number],
 ): ethers.BigNumber => {
   const encoded = ethers.utils.defaultAbiCoder.encode(
     [
@@ -16,7 +16,7 @@ export const getVaultId = (
       "uint256",
       "uint256",
     ],
-    values
+    values,
   );
   return ethers.BigNumber.from(ethers.utils.keccak256(encoded));
 };
@@ -87,7 +87,7 @@ export type VAULT_PARAMS = {
 export const createVault = async (
   vault: ethers.Contract,
   options: Partial<VAULT_PARAMS>,
-  creator?: SignerWithAddress
+  creator?: SignerWithAddress,
 ) => {
   const params: VAULT_PARAMS = { ...DEFAULT_VAULT_PARAMS, ...options };
   const investAt =

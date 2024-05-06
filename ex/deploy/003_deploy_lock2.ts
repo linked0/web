@@ -16,7 +16,7 @@ const deployLock2: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
   const signers = await ethers.getSigners();
   const accounts = signers.map((signer) => signer.address);
 
-  console.log("###### deployer:", deployer)
+  console.log("###### deployer:", deployer);
 
   const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
   const unlockTime = (await time.latest()) + ONE_YEAR_IN_SECS;
@@ -30,6 +30,4 @@ const deployLock2: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
 
 export default deployLock2;
 deployLock2.tags = ["Lock2"];
-deployLock2.dependencies = [
-    "DMSToken",
-];
+deployLock2.dependencies = ["DMSToken"];

@@ -42,7 +42,7 @@ export const mainnet: Addresses = {
       ...acc,
       [cur.symbol.toLowerCase()]: cur.address,
     }),
-    {}
+    {},
   ),
   alchemix: {
     token: "0xdBdb4d16EdA451D0503b854CF79D55697F90c8DF",
