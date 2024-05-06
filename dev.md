@@ -209,6 +209,16 @@ And run this
 chatgpt what is the capital of the Netherlands
 ```
 
+List the models
+```
+chatgpt --list-models
+```
+
+Set a model
+```
+chatgpt --set-model gpt-4-turbo-2024-04-09
+```
+
 ##### npm yarn docker install
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
