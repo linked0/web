@@ -10,6 +10,7 @@ describe("Basic", () => {
       accounts: { deployer, user },
     } = await loadFixture(deployFullSuiteFixture);
         console.log("deployer address:", deployer.address);
+        console.log("user address:", user.address);
 
         console.log("greeter address:", greeter.target);
         console.log("greeter:", await greeter.greet());
