@@ -9,12 +9,10 @@ describe("Basic", () => {
       suite: { greeter, basic },
       accounts: { deployer, user },
     } = await loadFixture(deployFullSuiteFixture);
-        console.log("deployer address:", deploy);
+    console.log("greeter address:", greeter.target);
+    console.log("greeter:", await greeter.greet());
 
-        console.log("greeter address:", greeter.target);
-        console.log("greeter:", await greeter.greet());
-
-        console.log("basic address:", basic.target);
-        console.log("basic:", await basic.value());
+    console.log("basic address:", basic.target);
+    console.log("basic:", await basic.value());
   });
 });
