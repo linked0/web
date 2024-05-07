@@ -22,8 +22,8 @@ const config: HardhatUserConfig = {
       {
         version: "0.8.23",
         settings: {
-          optimizer: { enabled: true, runs: 1000000 },
-        },
+          optimizer: { enabled: true, runs: 1000000 }
+        }
       },
     ],
     overrides: {
@@ -36,7 +36,7 @@ const config: HardhatUserConfig = {
           },
         },
       },
-      "contracts/Test.sol": {
+      'contracts/Test.sol': {
         version: "0.8.19",
         settings: {
           optimizer: {
@@ -54,36 +54,34 @@ const config: HardhatUserConfig = {
     local: {
       url: process.env.LOCALNET_URL || "",
       chainId: 31337,
-      accounts: [
-        "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80",
-      ],
+      accounts: ["0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"],
     },
     localnet: {
       url: process.env.LOCALNET_URL,
       accounts: [process.env.ADMIN_KEY],
       chainId: parseInt(process.env.LOCALNET_CHAIN_ID),
       gas: 2100000,
-      gasPrice: 8000000000,
+      gasPrice: 8000000000
     },
     testnet: {
       url: process.env.TESTNET_URL,
       accounts: [process.env.ADMIN_KEY],
       chainId: parseInt(process.env.TESTNET_CHAIN_ID),
       gas: 2100000,
-      gasPrice: 8000000000,
+      gasPrice: 8000000000
     },
     sepolia: {
       url: process.env.SEPOLIA_URL || "",
       chainId: 11155111,
-      accounts: [process.env.ADMIN_KEY],
+      accounts: [process.env.ADMIN_KEY]
     },
   },
   namedAccounts: {
     deployer: 0,
   },
   gasReporter: {
-    currency: "USD",
-    gasPrice: 21,
+    currency: 'USD',
+    gasPrice: 21
   },
 };
 

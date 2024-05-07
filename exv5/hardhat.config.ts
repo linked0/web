@@ -41,7 +41,7 @@ const config: HardhatUserConfig = {
     solidity: {
         compilers: [
             {
-                version: "0.8.0",
+                version: "0.8.23",
             },
         ],
         settings: {
@@ -49,6 +49,7 @@ const config: HardhatUserConfig = {
                 enabled: true,
                 runs: 5000000,
             },
+            viaIR: true
         },
     },
     networks: {

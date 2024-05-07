@@ -36,6 +36,7 @@
   "scripts": {
     "clean": "rm -rf cache artifacts typechain typechain-types",
     "test": "hardhat test",
+    "test:first": "hardhat test test/basic.ts",
     "test:trex": "hardhat test test/t-rex/*.ts",
     "test:basic": "hardhat test test/planet/basic.ts",
     "test:hash": "hardhat test test/planet/hash-registry.ts",

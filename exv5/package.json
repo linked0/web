@@ -10,6 +10,7 @@
     "clean": "hardhat clean",
     "build": "hardhat compile",
     "test": "hardhat test",
+    "test:basic": "hardhat test test/aa/*.ts",
     "test:CommonsBudget": "NODE_ENV=test hardhat test test/CommonsBudget.test.ts",
     "prettier": "prettier --write --config .prettierrc.json 'contracts/**/*.sol' 'test/**/*.ts' 'utils/**/*.ts' 'scripts/**/*.ts'",
     "deploy:local": "hardhat run --network localnet scripts/deploy.ts",
@@ -33,6 +34,7 @@
     "@nomiclabs/hardhat-web3": "^2.0.0",
     "@types/chai": "^4.3.0",
     "@types/mocha": "^10.0.0",
+    "@uniswap/v3-periphery": "^1.4.3",
     "chai": "^4.3.6",
     "dotenv": "^10.0.0",
     "ethereum-waffle": "^3.4.0",
@@ -50,6 +52,6 @@
     "web3": "^1.7.4"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.5.0"
+    "@openzeppelin/contracts": "^5.0.0"
   }
 }

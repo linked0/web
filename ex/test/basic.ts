@@ -16,6 +16,8 @@ describe("Basic Test", function () {
     it("Call contract having EnurableSet", async function () {
       console.log("basic address:", basic.target);
       console.log("basic:", await basic.value());
+      await basic.add();
+      console.log("basic after:", await basic.value());
     });
   });
 });
