@@ -36,6 +36,8 @@
     - [Hardhat / Foundry](#hardhat--foundry)
     - [Workspaces](#workspaces)
   - [Foundry](#foundry)
+    - [Install Foundry](#install-foundry)
+    - [Initializing a new Foundry Project](#initializing-a-new-foundry-project)
   - [Dev Settings](#dev-settings)
     - [Node workspaces](#node-workspaces)
     - [TypsScript/Nodejs](#typsscriptnodejs)
@@ -424,7 +426,19 @@ submodule이 아래와 같이 추가됨
 
 
 ## Foundry
+### Install Foundry
+```
+mkdir foundry
+cd foundry
+curl -L https://foundry.paradigm.xyz | bash
+source ~/.bashrc 
+foundryup
+```
 
+### Initializing a new Foundry Project
+```
+forge init .
+```
 
 ## Dev Settings
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
