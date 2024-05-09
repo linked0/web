@@ -79,3 +79,6 @@
 [submodule "exf/lib/forge-std"]
 	path = exf/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "exf/lib/openzeppelin-contracts"]
+	path = exf/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
