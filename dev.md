@@ -91,12 +91,12 @@
     - [🌸 hardhat 프로젝트 만들기 🌸](#-hardhat-프로젝트-만들기-)
     - [🌸 Command](#-command)
     - [🌸 Mac](#-mac)
-    - [🌸 git submodule](#-git-submodule)
     - [🦋 Colab 🦋](#-colab-)
     - [🦋 VSCode I 🦋](#-vscode-i-)
     - [🌸 Block projects](#-block-projects)
     - [🌺🌺🌺🌺🌺🌺 latest forge 🌺🌺🌺🌺🌺🌺](#-latest-forge-)
     - [🌼🌼🌼🌼 latest hardhat 🌼🌼🌼🌼](#-latest-hardhat-)
+    - [�🌟🌟🌟🌟🌟 git submodule 🌟🌟🌟🌟🌟🌟](#-git-submodule-)
     - [🦋 VSCode II 🦋](#-vscode-ii-)
     - [🌸 Whale 듀얼탭-Docker-Screen](#-whale-듀얼탭-docker-screen)
     - [🌸 curl](#-curl)
@@ -1155,32 +1155,6 @@ Split Horizontally: shft + cmd + d
 - 테이블의 셀에서 개행
 option + enter
 
----
-### 🌸 git submodule
-
-😈 git submodule add 
-```
-git submodule add https://github.com/example/lib.git external/lib
-git submodule update --init
-```
-😈 git submodule remove
-```
-git rm --cached poohgeth // path는 .gitmodules 파일의 참고
-Edit .gitmodules File
-Edit .git/config File
-rm -rf .git/modules/poohgeth
-rm -rf poohgeth // 안되면 sudo
-git commit -am "Removed submodule"
-git push
-```
-😈 git submodule update
-```
-git submodule update --remote
-```
-😈 하나만 다운로드 할때
-```
-git submodule update --init --recursive web2 
-```
 
 ---
 ### 🦋 Colab 🦋
@@ -1493,6 +1467,34 @@ if iszero(extcodesize(computed)) {
 mstore(0x00, shr(96, shl(96, computed)))
 return(0x00, 0x20)
 
+```
+---
+🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
+### 🌟🌟🌟🌟🌟🌟 git submodule 🌟🌟🌟🌟🌟🌟
+
+
+😈 git submodule add 
+```
+git submodule add https://github.com/example/lib.git external/lib
+git submodule update --init
+```
+😈 git submodule remove
+```
+git rm --cached poohgeth // path는 .gitmodules 파일의 참고
+Edit .gitmodules File
+Edit .git/config File
+rm -rf .git/modules/poohgeth
+rm -rf poohgeth // 안되면 sudo
+git commit -am "Removed submodule"
+git push
+```
+😈 git submodule update
+```
+git submodule update --remote
+```
+😈 하나만 다운로드 할때
+```
+git submodule update --init --recursive web2 
 ```
 ---
 ### 🦋 VSCode II 🦋
