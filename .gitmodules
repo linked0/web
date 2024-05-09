@@ -28,9 +28,6 @@
 [submodule "argent-contracts"]
 	path = argent-contracts
 	url = https://github.com/linked0/argent-contracts.git
-[submodule "erc6900-impl"]
-	path = erc6900-impl
-	url = https://github.com/linked0/reference-implementation.git
 [submodule "solidstate-solidity"]
 	path = solidstate-solidity
 	url = https://github.com/linked0/solidstate-solidity.git
@@ -40,15 +37,6 @@
 [submodule "pooh-erc20"]
 	path = pooh-erc20
 	url = https://github.com/linked0/pooh-erc20
-[submodule "erc6551-reference"]
-	path = erc6551-reference
-	url = https://github.com/linked0/erc6551-reference.git
-[submodule "erc4636-T-REX"]
-	path = erc4636-T-REX
-	url = https://github.com/linked0/erc4636-T-REX.git
-[submodule "erc4337-abstract-account"]
-	path = erc4337-abstract-account
-	url = https://github.com/linked0/account-abstraction.git
 [submodule "openzeppelin-contracts"]
 	path = openzeppelin-contracts
 	url = https://github.com/linked0/openzeppelin-contracts.git
@@ -85,3 +73,15 @@
 [submodule "foundry-course"]
 	path = foundry-course
 	url = https://github.com/Cyfrin/foundry-full-course-f23.git
+[submodule "erc/erc4337-abstract-account"]
+	path = erc/erc4337-abstract-account
+	url = https://github.com/linked0/account-abstraction.git
+[submodule "erc/erc4636-T-REX"]
+	path = erc/erc4636-T-REX
+	url = https://github.com/linked0/erc4636-T-REX.git
+[submodule "erc/erc6900-impl"]
+	path = erc/erc6900-impl
+	url = https://github.com/linked0/reference-implementation.git
+[submodule "erc/erc6551-reference"]
+	path = erc/erc6551-reference
+	url = https://github.com/linked0/erc6551-reference.git

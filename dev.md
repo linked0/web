@@ -96,7 +96,7 @@
     - [🌸 Block projects](#-block-projects)
     - [🌺🌺🌺🌺🌺🌺 latest forge 🌺🌺🌺🌺🌺🌺](#-latest-forge-)
     - [🌼🌼🌼🌼 latest hardhat 🌼🌼🌼🌼](#-latest-hardhat-)
-    - [�🌟🌟🌟🌟🌟 git submodule 🌟🌟🌟🌟🌟🌟](#-git-submodule-)
+    - [🌟🌟🌟🌟🌟🌟 git submodule 🌟🌟🌟🌟🌟🌟](#-git-submodule-)
     - [🦋 VSCode II 🦋](#-vscode-ii-)
     - [🌸 Whale 듀얼탭-Docker-Screen](#-whale-듀얼탭-docker-screen)
     - [🌸 curl](#-curl)
@@ -1481,8 +1481,8 @@ git submodule update --init
 😈 git submodule remove
 ```
 git rm --cached poohgeth // path는 .gitmodules 파일의 참고
-Edit .gitmodules File
-Edit .git/config File
+code .gitmodules File // poohgeth 항목 제거
+code .git/config File // poohgeth 항목 제거
 rm -rf .git/modules/poohgeth
 rm -rf poohgeth // 안되면 sudo
 git commit -am "Removed submodule"
