@@ -96,9 +96,10 @@
     - [🦋 VSCode I 🦋](#-vscode-i-)
     - [🌸 Block projects](#-block-projects)
     - [🌺🌺🌺🌺🌺🌺 latest forge 🌺🌺🌺🌺🌺🌺](#-latest-forge-)
-    - [🌼🌼🌼🌼🌼🌼 latest 🌼🌼🌼🌼🌼🌼](#-latest-)
+    - [🌼🌼🌼🌼 latest hardhat 🌼🌼🌼🌼](#-latest-hardhat-)
     - [🦋 VSCode II 🦋](#-vscode-ii-)
     - [🌸 Whale 듀얼탭-Docker-Screen](#-whale-듀얼탭-docker-screen)
+    - [🌸 curl](#-curl)
     - [🌸 텍스트 검색 - 프로세스 찾기 - zip](#-텍스트-검색---프로세스-찾기---zip)
 
 ## Projects Summary
@@ -1280,7 +1281,7 @@ chisel - Test and receive verbose feedback on Solidity inputs within a REPL envi
 ```
 
 🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼
-### 🌼🌼🌼🌼🌼🌼 latest 🌼🌼🌼🌼🌼🌼
+### 🌼🌼🌼🌼 latest hardhat 🌼🌼🌼🌼
 **기타: reset array 등**
 
 ```
@@ -1529,6 +1530,17 @@ return(0x00, 0x20)
 - ctrl a+d // exit
 - screen -S el1  -X quit
 - screen -r -d 17288 <-- attatch되어 있는 것 detach
+
+---
+### 🌸 curl
+Post
+```
+curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-Type: application/json" -X POST http://localhost:3000/mint
+```
+Get
+```
+curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-type: application/json" -X GET "http://localhost:3000/balanceOf"
+```
 
 ---
 ### 🌸 텍스트 검색 - 프로세스 찾기 - zip
