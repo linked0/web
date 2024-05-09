@@ -82,3 +82,6 @@
 [submodule "exf/lib/openzeppelin-contracts"]
 	path = exf/lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "foundry-course"]
+	path = foundry-course
+	url = https://github.com/Cyfrin/foundry-full-course-f23.git
