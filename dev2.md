@@ -336,3 +336,5 @@ How to deploy my contract on 2 different chains with the same address?
 Now, let’s answer to the question: How to deploy a smart contract with the same addresses in 2 different chains?
 
 You can do it with the CREATE2 opcode by providing the same salt on different chains. (easier than providing the nonce because you can’t fully control it)
+
+[here](https://trustchain.medium.com/create-a-contract-with-2-same-addresses-on-2-different-chains-3ed987b1e348)
