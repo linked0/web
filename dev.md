@@ -91,6 +91,7 @@
     - [🌸 hardhat 프로젝트 만들기 🌸](#-hardhat-프로젝트-만들기-)
     - [🌸 Command](#-command)
     - [🌸 Mac](#-mac)
+  - [option + enter](#option--enter)
     - [🦋 Colab 🦋](#-colab-)
     - [🦋 VSCode I 🦋](#-vscode-i-)
     - [🌸 Block projects](#-block-projects)
@@ -880,7 +881,6 @@ Add correct host key in /Users/hyunjaelee/.ssh/known_hosts to get rid of this me
 ```
 ssh -i "pooh-seoul.pem" ubuntu@ec2-52-79-227-164.ap-northeast-2.compute.amazonaws.com
 ```
-
 ---
 ### AWS에서 파일 전송 
 * 가져오기
@@ -891,25 +891,21 @@ scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.ama
 ```
 scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-52-78-204-156.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
 ```
-
 ---
 ### Load Balancer 
 - Mappings는 모든 존으로
 - Security Group은 AgoraDevNet_ELB
 - 리스너 지정: Target Group지정
 - 나중에 80에 대해서 443으로 Redirect
-
 ---
 ### URL로 접근이 안되는 문제
 - 실패상황황인데, CNAME과 A 설정만 맞으면 될 것 같음 (230303)
-
 ---
 ### Target Group
 - Basic configuration: Instances
 - Protocol/Port 지정
 - Protocol version: HTTP1
 - Health checks는 그대로 두면 됨.
-
 ---
 ### AWS 타임존 변경
 ```shell
@@ -1005,7 +1001,6 @@ poohgeth/poohnet$ ./enode-config
 ```
 poohgeth/poohnet$ ./enode pow el1
 ```
-
 ---
 ### 🌸 .bash_profile - git push config
 ```
@@ -1025,7 +1020,7 @@ ch() {
 
 alias ppd='code ~/work/web/dev.md'
 alias ppd1='code ~/work/web/sub/solidity.md'
-alias ppd2='code ~/work/web/sub/voca.md'
+alias ppd2='code ~/work/web//dev2.md'
 alias ppp='code ~/work/web/ex/package.json'
 alias pph='code ~/work/web/ex/hardhat.config.ts'
 alias ppe='code ~/work/web/ex/.env'
@@ -1057,8 +1052,6 @@ alias poo="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
 alias ecstart="aws ec2 start-instances --instance-ids i-02c89e86234e05850"
 alias ecstop="aws ec2 stop-instances --instance-ids i-02c89e86234e05850"
 ```
-
-
 **명령어 하나로 git commit과 push**
 .gitconfig에 다음 추가하고 vi종료하면 바로 적용됨
 ```
@@ -1122,18 +1115,15 @@ alias nd1="ssh -i ~/pooh/tednet.pem ubuntu@13.209.149.243"
 ```
 find . -type d -name 'temp' -exec rm -rf {} +
 ```
-
 **alias/export 추가**
 ```
 echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 echo 'alias cb="curl -L bit.ly/3MT0VRb"' >> ~/.zshrc
 ```
-
 **hidden files**
 ```
     Command + Shift + . (period key)
 ```
-
 **iterm 단축키**
 ```
 Next split: cmd + ]
@@ -1148,11 +1138,8 @@ Split Horizontally: shft + cmd + d
 2. Press the Option (Alt) key.
 3. Choose 'Copy [filename] as Pathname'
 ```
-
 - 테이블의 셀에서 개행
 option + enter
-
-
 ---
 ### 🦋 Colab 🦋
 **열기**
@@ -1164,7 +1151,6 @@ option + enter
 **실행**
 - MyDrive/colab/data 연결 가능 (코드에 있음)
 - MyDrive/colab/data/test.txt를 가지고 처리하는 코드도 있음
-  
 ---
 ### 🦋 VSCode I 🦋
 - Prettier 세팅
@@ -1193,7 +1179,6 @@ option + enter
     "editor.formatOnSave": true,
     ```
 
-
 **정규표현식 SEARCH**
 ```
 _IMPLENENTATION_SLOT
@@ -1204,13 +1189,11 @@ _IMPLENENTATION_APPLE
 ```
 _[A-Z]*NENTATION_[A-Z]*T
 ```
-
 ---
 ### 🌸 Block projects
 Sepolia: 579fca7e3f10489b83c047f5cc17bec5
 Pooh Admin: 0x58984b2bf6f0f3de4f38290ed3c541ac27bac384b378073ab133af8b314a1887
 Jay Test: 0x7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23
-
 
 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
 ### 🌟🌟🌟🌟🌟🌟 git submodule 🌟🌟🌟🌟🌟🌟
@@ -1275,7 +1258,6 @@ git submodule update --init --recursive web2
 - ctrl a+d // exit
 - screen -S el1  -X quit
 - screen -r -d 17288 <-- attatch되어 있는 것 detach
-
 ---
 ### 🌸 curl
 Post
@@ -1286,26 +1268,17 @@ Get
 ```
 curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-type: application/json" -X GET "http://localhost:3000/balanceOf"
 ```
-
 ---
 ### 🌸 텍스트 검색 - 프로세스 찾기 - zip
 ```
 egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
-
 ps aux | grep postgres
-
 zip -r ~/temp/my-archive.zip . -x '*.git*' -x '*node_modules*'
-
 unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
-
 history -100
 ```
-
 ---
-- [dev2.md](dev2.md)
-- [solidity](./sub/solidity.md)
-- [voca](./sub/voca.md)
-- https://bit.ly/3MT0VRb
-- https://bit.ly/3MVG5AN
-- dev.doc: https://bit.ly/3t6oyyG
+- [dev2.md](dev2.md), [solidity](./sub/solidity.md), [voca](./sub/voca.md)
+- [dev.md](https://bit.ly/3MVG5AN), [io/dev.md](https://bit.ly/3MT0VRb)
+
 
