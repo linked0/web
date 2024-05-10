@@ -328,3 +328,11 @@ npx hardhat node  // 꼭 hardhat 프로젝트 폴더에서 진행해야함.
 forge script script/DeployTransactionDelegator.s.sol --rpc-url $LOCALNET_RPC_URL
 
 ---
+**CREATE a CONTRACT with 2 SAME addresses on 2 DIFFERENT chains**
+
+address = bytes20(keccak256(0xFF, senderAddress, salt, bytecode))
+
+How to deploy my contract on 2 different chains with the same address?
+Now, let’s answer to the question: How to deploy a smart contract with the same addresses in 2 different chains?
+
+You can do it with the CREATE2 opcode by providing the same salt on different chains. (easier than providing the nonce because you can’t fully control it)
