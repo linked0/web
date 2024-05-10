@@ -320,5 +320,11 @@ The unchecked block is used here to tell the compiler not to check for overflows
 ---
 - transient storage sample:
 https://solidity-by-example.org/transient-storage/
+---
+forge create
 
+npx hardhat node  // 꼭 hardhat 프로젝트 폴더에서 진행해야함.
 
+forge script script/DeployTransactionDelegator.s.sol --rpc-url $LOCALNET_RPC_URL
+
+---
