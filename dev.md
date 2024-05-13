@@ -22,7 +22,7 @@
         - [nvm install](#nvm-install)
         - [rust/postgresql install](#rustpostgresql-install)
         - [MySql Server 설치](#mysql-server-설치)
-        - [Whale, Miro, onenote, Visual Studio, Xcode](#whale-miro-onenote-visual-studio-xcode)
+        - [Whale, Miro, onenote, Visual Studio, Xcode, Github CLI](#whale-miro-onenote-visual-studio-xcode-github-cli)
         - [기타](#기타)
     - [Slack](#slack)
   - [Blockchain](#blockchain)
@@ -259,7 +259,7 @@ psql postgres <== 접속해볼 수 있음.
 - 초기화: 시스템 메뉴 -> 설정 -> 왼쪽 하단의 MySQL 클릭해서 들어가서 "Initialize Database" 클릭
 - 암호는 alfred0!@
 
-##### Whale, Miro, onenote, Visual Studio, Xcode
+##### Whale, Miro, onenote, Visual Studio, Xcode, Github CLI
 - Command Palette: [⇧⌘P ] Shell command
 - Settings 열기: cmd + ,
 - 느린 스크롤 세팅: Settings 열기 - terminal smo 검색 - Smooth Scrolling 체크
@@ -268,6 +268,7 @@ psql postgres <== 접속해볼 수 있음.
 - VS Code 세팅: Editor: Hover Enable을 Disable로 바꿔야 코드창에서 팝업 안뜸
 - XCode: [Apple Developer](https://developer.apple.com/xcode/resources/)
 - FileMerge: open /Applications/Xcode.app/Contents/Applications/FileMerge.app
+- brew install gh
 
 ##### 기타
 - 맥 메인 모니터 설정 및 Dock 사이즈 조정
