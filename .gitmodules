@@ -85,3 +85,6 @@
 [submodule "erc/erc6551-reference"]
 	path = erc/erc6551-reference
 	url = https://github.com/linked0/erc6551-reference.git
+[submodule "exf/lib/account-abstraction"]
+	path = exf/lib/account-abstraction
+	url = https://github.com/eth-infinitism/account-abstraction
