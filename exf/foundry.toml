@@ -4,4 +4,3 @@ solc = '0.8.19'
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-optionssrc = "src"
 out = "out"
 libs = ["lib"]
-remappings = ["@openzepperlin/=lib/openzeppelin-contracts/"]
