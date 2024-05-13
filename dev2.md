@@ -338,3 +338,8 @@ Now, let’s answer to the question: How to deploy a smart contract with the sam
 You can do it with the CREATE2 opcode by providing the same salt on different chains. (easier than providing the nonce because you can’t fully control it)
 
 [here](https://trustchain.medium.com/create-a-contract-with-2-same-addresses-on-2-different-chains-3ed987b1e348)
+
+---
+foundry remapping은 toml에서 지정함.
+
+tokenURI 함수, ERC721
