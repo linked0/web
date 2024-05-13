@@ -343,3 +343,6 @@ You can do it with the CREATE2 opcode by providing the same salt on different ch
 foundry remapping은 toml에서 지정함.
 
 tokenURI 함수, ERC721
+
+forge init –force 
+forge install https://github.com/OpenZeppelin/openzeppelin-contracts@v4.9.3
