@@ -487,17 +487,27 @@ yarn add --dev
 1. https://github.com/poohgithub/poohgeth/blob/master/Dockerfile 참고
 2. docker build -t linked0/poohgeth:v1.3 . // 끝의 dot(.) 주의
 3. docker 실행 (optional)
+```
 docker run -p 3000:3000 linked0/poohgeth:v1.3
-4. docker login
-5. tag
+```
+1. docker login
+2. tag
+```
    docker tag local-image-name linked0/poohgeth:v1.0
-6. push
+```
+3. push
+```
    docker push linked0/poohgeth:v1.3
-7. pull 
+```
+4. pull 
+```
    docker pull linked0/poohgeth:v1.3
-8. run using docker-compose
+```
+5. run using docker-compose
+```
 https://github.com/poohgithub/poohgeth/blob/master/poohnet/docker-compose-node.yml 참조
 docker compose -f docker-compose-node.yml up el1 -d
+```
 
 😈 Docker 이슈
 - `docker build`시 오랫동안 멈춰있을 때, prune후에 재부팅해보기.
