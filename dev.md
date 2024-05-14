@@ -491,9 +491,9 @@ yarn add --dev
 docker run -p 3000:3000 linked0/poohgeth:v1.3
 ```
 1. docker login
-2. tag
+2. tag: 기존 v1.0 태그 말고, latest를 붙이고 싶을때.
 ```
-   docker tag local-image-name linked0/poohgeth:v1.0
+   docker tag linked0/poohgeth:v1.0 linked0/poohgeth:latest
 ```
 3. push
 ```
