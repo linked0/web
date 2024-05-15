@@ -4,7 +4,6 @@ pragma solidity ^0.8.24;
 
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 import "./IPoohnetFund.sol";
-import {console} from "forge-std/Test.sol";
 
 contract PoohnetFund is IERC165, IPoohnetFund {
     event Received(address, uint256);
@@ -62,11 +61,6 @@ contract PoohnetFund is IERC165, IPoohnetFund {
         address receiver,
         uint256 amount
     ) external override {
-        console.log(
-            "PoohnetFund.transferBudget: receiver=%s, amount=%s",
-            receiver,
-            amount
-        );
         require(address(this).balance >= amount, "NotEnoughBudget");
         (bool success, ) = receiver.call{value: amount}("");
         require(success, "POO transfer failed");

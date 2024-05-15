@@ -4,3 +4,6 @@ solc = '0.8.24'
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-optionssrc = "src"
 out = "out"
 libs = ["lib"]
+
+[rpc_endpoints]
+localnet = "${LOCALNET_RPC_URL}"
