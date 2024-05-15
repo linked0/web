@@ -38,6 +38,7 @@
     "deploy": "hardhat run scripts/deploy.ts --network holesky",
     "deploy:localnet": "hardhat run scripts/deploy.ts --network localnet",
     "check:localnet": "hardhat run scripts/check-receiver.ts --network localnet",
+    "balance-fund:localnet": "hardhat run scripts/balance-fund.ts --network localnet",
     "run:localnet": "hardhat node",
     "lint": "prettier --write --config .prettierrc 'contracts/**/*.sol' 'scripts/**/*.ts' 'test/**/*.ts'"
   }
