@@ -83,9 +83,12 @@
     - [Nonce 오류 관련해서 헨리님이 얘기해준것](#nonce-오류-관련해서-헨리님이-얘기해준것)
     - [TODO: boa-space-contracts conduit 관련 assembly 코드 (#conduit.spec.ts)](#todo-boa-space-contracts-conduit-관련-assembly-코드-conduitspects)
 - [Jay's code sneppets](#jays-code-sneppets)
-  - [Purpose: This line declares a variable sessionKeySet that refers to a set of session keys for the message sender (msg.sender). The storage modifier indicates that sessionKeySet is a pointer to the data located in the contract's persistent storage, not a temporary copy. This is crucial in Solidity because changes to a storage variable directly modify the state on the blockchain.](#purpose-this-line-declares-a-variable-sessionkeyset-that-refers-to-a-set-of-session-keys-for-the-message-sender-msgsender-the-storage-modifier-indicates-that-sessionkeyset-is-a-pointer-to-the-data-located-in-the-contracts-persistent-storage-not-a-temporary-copy-this-is-crucial-in-solidity-because-changes-to-a-storage-variable-directly-modify-the-state-on-the-blockchain)
-  - [The unchecked block is used here to tell the compiler not to check for overflows when incrementing the index i. This can save gas since the overflow is unlikely given the controlled environment of the loop (i.e., looping over an array length](#the-unchecked-block-is-used-here-to-tell-the-compiler-not-to-check-for-overflows-when-incrementing-the-index-i-this-can-save-gas-since-the-overflow-is-unlikely-given-the-controlled-environment-of-the-loop-ie-looping-over-an-array-length)
-  - [https://solidity-by-example.org/transient-storage/](#httpssolidity-by-exampleorgtransient-storage)
+    - [PR에 설명 달기](#pr에-설명-달기)
+    - [supportsInterface](#supportsinterface)
+    - [storage modifier](#storage-modifier)
+    - [unchecked block](#unchecked-block)
+    - [transient storage sample](#transient-storage-sample)
+    - [CREATE a CONTRACT with 2 SAME addresses on 2 DIFFERENT chains](#create-a-contract-with-2-same-addresses-on-2-different-chains)
     - [Fatal: Failed to write genesis block: database contains incompatible genesis](#fatal-failed-to-write-genesis-block-database-contains-incompatible-genesis)
     - [forge install 할때, .gitmodules가 필요함](#forge-install-할때-gitmodules가-필요함)
     - [env에서 address 가져오기](#env에서-address-가져오기)
@@ -94,6 +97,7 @@
 # solidity.md
 
 ## NodeJS/TypeScript
+
 ### Event 인자들중 하나만 체크
 ```
 await expect(lock.withdraw())
@@ -1555,27 +1559,41 @@ https://github.com/erc6900/reference-implementation/pull/22/commits/0fb2113a0f1b
     // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
 
-
 ```
 /// @inheritdoc ISessionKeyPlugin
 function addTemporaryOwner(address tempOwner, uint48 _after, uint48 _until) external {
 ```
+
+### PR에 설명 달기
+```
+## Motivation
+We would like to accumulate the money for Poohnet Fund which will be used to support the real world projects which have content to make our world friendly.
+
+## Solution
+commit 789c3cf6c : Change the code for generating inflation for Poohnet Fund
+commit c595c22a9 : Apply configuration for make the inflation start
+```
+
 ---
-- supportsInterface
+### supportsInterface
 ```
 function supportsInterface(bytes4 interfaceId) public view override returns (bool) {
     return interfaceId == type(ISessionKeyPlugin).interfaceId || super.supportsInterface(interfaceId);
 }
 ```
 ---
-- storage modifier: EnumerableSet.Bytes32Set storage sessionKeySet = _sessionKeySet[msg.sender];
+### storage modifier
+EnumerableSet.Bytes32Set storage sessionKeySet = _sessionKeySet[msg.sender];
 Purpose: This line declares a variable sessionKeySet that refers to a set of session keys for the message sender (msg.sender). The storage modifier indicates that sessionKeySet is a pointer to the data located in the contract's persistent storage, not a temporary copy. This is crucial in Solidity because changes to a storage variable directly modify the state on the blockchain.
+
 ---
-- unchecked block: 
+### unchecked block
 The unchecked block is used here to tell the compiler not to check for overflows when incrementing the index i. This can save gas since the overflow is unlikely given the controlled environment of the loop (i.e., looping over an array length
+
 ---
-- transient storage sample:
+### transient storage sample
 https://solidity-by-example.org/transient-storage/
+
 ---
 forge create
 
@@ -1584,7 +1602,7 @@ npx hardhat node  // 꼭 hardhat 프로젝트 폴더에서 진행해야함.
 forge script script/DeployTransactionDelegator.s.sol --rpc-url $LOCALNET_RPC_URL
 
 ---
-**CREATE a CONTRACT with 2 SAME addresses on 2 DIFFERENT chains**
+### CREATE a CONTRACT with 2 SAME addresses on 2 DIFFERENT chains
 
 address = bytes20(keccak256(0xFF, senderAddress, salt, bytecode))
 
