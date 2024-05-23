@@ -55,8 +55,7 @@ contract PluginStorageLibTest is Test {
         uint256[FUZZ_ARR_SIZE] calldata values
     ) public {
         bytes memory key = PluginStorageLib.allocateAssociatedStorageKey(account, batchIndex, 1);
-        uint256[FUZZ_ARR_SIZE] storage val =
-            _castPtrToArray(PluginStorageLib.associatedStorageLookup(key, inputKey));
+        uint256[FUZZ_ARR_SIZE] storage val = _castPtrToArray(PluginStorageLib.associatedStorageLookup(key, inputKey));
         // Write values to storage
         vm.record();
         for (uint256 i = 0; i < FUZZ_ARR_SIZE; i++) {

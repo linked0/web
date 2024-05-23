@@ -11,9 +11,7 @@ contract DeployTransactionDelegator is Script {
         vm.startBroadcast();
 
         MyToken token = new MyToken();
-        TransactionDelegator delegator = new TransactionDelegator(
-            IERC20Mintable(address(token))
-        );
+        TransactionDelegator delegator = new TransactionDelegator(IERC20Mintable(address(token)));
 
         vm.stopBroadcast();
         return delegator;

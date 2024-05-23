@@ -7,9 +7,7 @@ import {Script, console} from "forge-std/Script.sol";
 
 contract BalanceFundScript is Script {
     function run() external view {
-        address fundContractAddr = vm.envAddress(
-            "POOHNET_FUND_CONTRACT_ADDRESS"
-        );
+        address fundContractAddr = vm.envAddress("POOHNET_FUND_CONTRACT_ADDRESS");
         PoohnetFund fundContract = PoohnetFund(payable(fundContractAddr));
 
         // print the balance of the fund contract

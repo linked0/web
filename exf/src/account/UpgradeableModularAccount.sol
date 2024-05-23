@@ -88,11 +88,10 @@ contract UpgradeableModularAccount is
     /// @param plugins The plugins to install
     /// @param manifestHashes The manifest hashes of the plugins to install
     /// @param pluginInstallDatas The plugin install datas of the plugins to install
-    function initialize(
-        address[] memory plugins,
-        bytes32[] memory manifestHashes,
-        bytes[] memory pluginInstallDatas
-    ) external initializer {
+    function initialize(address[] memory plugins, bytes32[] memory manifestHashes, bytes[] memory pluginInstallDatas)
+        external
+        initializer
+    {
         uint256 length = plugins.length;
 
         if (length != manifestHashes.length || length != pluginInstallDatas.length) {
@@ -232,8 +231,7 @@ contract UpgradeableModularAccount is
         // By checking in the order of [address specified with any selector allowed], [any address allowed],
         // [address specified and selector specified], along with the extra bool `permittedCall`, we can
         // reduce the number of `sload`s in the worst-case from 3 down to 2.
-        bool targetContractPermittedCall = _storage.permittedExternalCalls[IPlugin(msg.sender)][target]
-            .addressPermitted
+        bool targetContractPermittedCall = _storage.permittedExternalCalls[IPlugin(msg.sender)][target].addressPermitted
             && (
                 _storage.permittedExternalCalls[IPlugin(msg.sender)][target].anySelectorPermitted
                     || _storage.permittedExternalCalls[IPlugin(msg.sender)][target].permittedSelectors[selector]
@@ -531,9 +529,8 @@ contract UpgradeableModularAccount is
         returns (bytes memory preExecHookReturnData)
     {
         (address plugin, uint8 functionId) = preExecHook.unpack();
-        try IPlugin(plugin).preExecutionHook(functionId, msg.sender, msg.value, data) returns (
-            bytes memory returnData
-        ) {
+        try IPlugin(plugin).preExecutionHook(functionId, msg.sender, msg.value, data) returns (bytes memory returnData)
+        {
             preExecHookReturnData = returnData;
         } catch (bytes memory revertReason) {
             revert PreExecHookReverted(plugin, functionId, revertReason);

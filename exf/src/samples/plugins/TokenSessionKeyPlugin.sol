@@ -35,8 +35,7 @@ contract TokenSessionKeyPlugin is BasePlugin, ITokenSessionKeyPlugin {
 
     // Mock address of target ERC20 contract
     address public constant TARGET_ERC20_CONTRACT = 0xdeaDDeADDEaDdeaDdEAddEADDEAdDeadDEADDEaD;
-    bytes4 public constant TRANSFERFROM_SELECTOR =
-        bytes4(keccak256(bytes("transferFrom(address,address,uint256)")));
+    bytes4 public constant TRANSFERFROM_SELECTOR = bytes4(keccak256(bytes("transferFrom(address,address,uint256)")));
 
     // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
     // ┃    Execution functions    ┃

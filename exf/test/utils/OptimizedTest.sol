@@ -28,16 +28,12 @@ abstract contract OptimizedTest is Test {
         return keccak256(abi.encodePacked(a)) == keccak256(abi.encodePacked(b));
     }
 
-    function _deployUpgradeableModularAccount(IEntryPoint entryPoint)
-        internal
-        returns (UpgradeableModularAccount)
-    {
+    function _deployUpgradeableModularAccount(IEntryPoint entryPoint) internal returns (UpgradeableModularAccount) {
         return _isOptimizedTest()
             ? UpgradeableModularAccount(
                 payable(
                     deployCode(
-                        "out-optimized/UpgradeableModularAccount.sol/UpgradeableModularAccount.json",
-                        abi.encode(entryPoint)
+                        "out-optimized/UpgradeableModularAccount.sol/UpgradeableModularAccount.json", abi.encode(entryPoint)
                     )
                 )
             )

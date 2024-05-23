@@ -93,9 +93,7 @@ contract MockUserOpValidationPlugin is MockBaseUserOpValidationPlugin {
 }
 
 contract MockUserOpValidation1HookPlugin is MockBaseUserOpValidationPlugin {
-    function setValidationData(uint256 userOpValidationFunctionData, uint256 preUserOpValidationHook1Data)
-        external
-    {
+    function setValidationData(uint256 userOpValidationFunctionData, uint256 preUserOpValidationHook1Data) external {
         _userOpValidationFunctionData = userOpValidationFunctionData;
         _preUserOpValidationHook1Data = preUserOpValidationHook1Data;
     }

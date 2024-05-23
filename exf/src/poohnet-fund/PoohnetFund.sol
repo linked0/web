@@ -21,15 +21,9 @@ contract PoohnetFund is IERC165, IPoohnetFund {
         owner = msg.sender;
     }
 
-    function supportsInterface(
-        bytes4 interfaceId
-    ) external pure override returns (bool) {
-        return
-            interfaceId == this.supportsInterface.selector ||
-            interfaceId ==
-            this.getOwner.selector ^
-                this.setOwner.selector ^
-                this.transferBudget.selector;
+    function supportsInterface(bytes4 interfaceId) external pure override returns (bool) {
+        return interfaceId == this.supportsInterface.selector
+            || interfaceId == this.getOwner.selector ^ this.setOwner.selector ^ this.transferBudget.selector;
     }
 
     modifier onlyOwner() {
@@ -57,12 +51,9 @@ contract PoohnetFund is IERC165, IPoohnetFund {
     /// @notice transfer budget to the address of the Commons Budget contract
     /// @param receiver the address of the receiver
     /// @param amount the amount to be transferred
-    function transferBudget(
-        address receiver,
-        uint256 amount
-    ) external override {
+    function transferBudget(address receiver, uint256 amount) external override {
         require(address(this).balance >= amount, "NotEnoughBudget");
-        (bool success, ) = receiver.call{value: amount}("");
+        (bool success,) = receiver.call{value: amount}("");
         require(success, "POO transfer failed");
     }
 }

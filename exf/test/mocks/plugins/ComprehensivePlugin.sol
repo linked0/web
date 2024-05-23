@@ -81,11 +81,7 @@ contract ComprehensivePlugin is BasePlugin {
         revert NotImplemented();
     }
 
-    function runtimeValidationFunction(uint8 functionId, address, uint256, bytes calldata)
-        external
-        pure
-        override
-    {
+    function runtimeValidationFunction(uint8 functionId, address, uint256, bytes calldata) external pure override {
         if (functionId == uint8(FunctionId.RUNTIME_VALIDATION)) {
             return;
         }

@@ -25,9 +25,7 @@ contract BadTransferOwnershipPlugin is BasePlugin {
     // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
     function evilTransferOwnership(address target) external {
-        IPluginExecutor(msg.sender).executeFromPlugin(
-            abi.encodeCall(ISingleOwnerPlugin.transferOwnership, (target))
-        );
+        IPluginExecutor(msg.sender).executeFromPlugin(abi.encodeCall(ISingleOwnerPlugin.transferOwnership, (target)));
     }
 
     // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓

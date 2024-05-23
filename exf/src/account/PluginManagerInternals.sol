@@ -121,9 +121,7 @@ abstract contract PluginManagerInternals is IPluginManager {
         _selectorData.runtimeValidation = FunctionReferenceLib._EMPTY_FUNCTION_REFERENCE;
     }
 
-    function _addExecHooks(bytes4 selector, FunctionReference preExecHook, FunctionReference postExecHook)
-        internal
-    {
+    function _addExecHooks(bytes4 selector, FunctionReference preExecHook, FunctionReference postExecHook) internal {
         SelectorData storage _selectorData = getAccountStorage().selectorData[selector];
 
         _addHooks(_selectorData.executionHooks, preExecHook, postExecHook);
@@ -178,8 +176,7 @@ abstract contract PluginManagerInternals is IPluginManager {
         notNullFunction(preUserOpValidationHook)
     {
         _addOrIncrement(
-            getAccountStorage().selectorData[selector].preUserOpValidationHooks,
-            _toSetValue(preUserOpValidationHook)
+            getAccountStorage().selectorData[selector].preUserOpValidationHooks, _toSetValue(preUserOpValidationHook)
         );
     }
 
@@ -189,8 +186,7 @@ abstract contract PluginManagerInternals is IPluginManager {
     {
         // May ignore return value, as the manifest hash is validated to ensure that the hook exists.
         _removeOrDecrement(
-            getAccountStorage().selectorData[selector].preUserOpValidationHooks,
-            _toSetValue(preUserOpValidationHook)
+            getAccountStorage().selectorData[selector].preUserOpValidationHooks, _toSetValue(preUserOpValidationHook)
         );
     }
 
@@ -199,8 +195,7 @@ abstract contract PluginManagerInternals is IPluginManager {
         notNullFunction(preRuntimeValidationHook)
     {
         _addOrIncrement(
-            getAccountStorage().selectorData[selector].preRuntimeValidationHooks,
-            _toSetValue(preRuntimeValidationHook)
+            getAccountStorage().selectorData[selector].preRuntimeValidationHooks, _toSetValue(preRuntimeValidationHook)
         );
     }
 
@@ -210,8 +205,7 @@ abstract contract PluginManagerInternals is IPluginManager {
     {
         // May ignore return value, as the manifest hash is validated to ensure that the hook exists.
         _removeOrDecrement(
-            getAccountStorage().selectorData[selector].preRuntimeValidationHooks,
-            _toSetValue(preRuntimeValidationHook)
+            getAccountStorage().selectorData[selector].preRuntimeValidationHooks, _toSetValue(preRuntimeValidationHook)
         );
     }
 
@@ -439,9 +433,7 @@ abstract contract PluginManagerInternals is IPluginManager {
         emit PluginInstalled(plugin, manifestHash, dependencies);
     }
 
-    function _uninstallPlugin(address plugin, PluginManifest memory manifest, bytes memory uninstallData)
-        internal
-    {
+    function _uninstallPlugin(address plugin, PluginManifest memory manifest, bytes memory uninstallData) internal {
         AccountStorage storage _storage = getAccountStorage();
 
         // Check if the plugin exists.
@@ -692,8 +684,7 @@ abstract contract PluginManagerInternals is IPluginManager {
                 revert InvalidPluginManifest();
             }
             return dependencies[manifestFunction.dependencyIndex];
-        } else if (manifestFunction.functionType == ManifestAssociatedFunctionType.RUNTIME_VALIDATION_ALWAYS_ALLOW)
-        {
+        } else if (manifestFunction.functionType == ManifestAssociatedFunctionType.RUNTIME_VALIDATION_ALWAYS_ALLOW) {
             if (allowedMagicValue == ManifestAssociatedFunctionType.RUNTIME_VALIDATION_ALWAYS_ALLOW) {
                 return FunctionReferenceLib._RUNTIME_VALIDATION_ALWAYS_ALLOW;
             } else {

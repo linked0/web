@@ -31,9 +31,8 @@ contract MSCAFactoryFixture is OptimizedTest {
     constructor(IEntryPoint _entryPoint, SingleOwnerPlugin _singleOwnerPlugin) {
         entryPoint = _entryPoint;
         accountImplementation = _deployUpgradeableModularAccount(_entryPoint);
-        _PROXY_BYTECODE_HASH = keccak256(
-            abi.encodePacked(type(ERC1967Proxy).creationCode, abi.encode(address(accountImplementation), ""))
-        );
+        _PROXY_BYTECODE_HASH =
+            keccak256(abi.encodePacked(type(ERC1967Proxy).creationCode, abi.encode(address(accountImplementation), "")));
         singleOwnerPlugin = _singleOwnerPlugin;
         self = address(this);
         // The manifest hash is set this way in this factory just for testing purposes.

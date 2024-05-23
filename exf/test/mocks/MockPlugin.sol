@@ -80,8 +80,7 @@ contract MockPlugin is ERC165 {
         emit ReceivedCall(msg.data, msg.value);
         if (
             msg.sig == IPlugin.userOpValidationFunction.selector
-                || msg.sig == IPlugin.runtimeValidationFunction.selector
-                || msg.sig == IPlugin.preExecutionHook.selector
+                || msg.sig == IPlugin.runtimeValidationFunction.selector || msg.sig == IPlugin.preExecutionHook.selector
         ) {
             // return 0 for userOp/runtimeVal case, return bytes("") for preExecutionHook case
             assembly ("memory-safe") {

@@ -26,10 +26,8 @@ abstract contract AccountLoupe is IAccountLoupe {
 
         if (
             selector == IStandardExecutor.execute.selector || selector == IStandardExecutor.executeBatch.selector
-                || selector == UUPSUpgradeable.upgradeTo.selector
-                || selector == UUPSUpgradeable.upgradeToAndCall.selector
-                || selector == IPluginManager.installPlugin.selector
-                || selector == IPluginManager.uninstallPlugin.selector
+                || selector == UUPSUpgradeable.upgradeTo.selector || selector == UUPSUpgradeable.upgradeToAndCall.selector
+                || selector == IPluginManager.installPlugin.selector || selector == IPluginManager.uninstallPlugin.selector
         ) {
             config.plugin = address(this);
         } else {

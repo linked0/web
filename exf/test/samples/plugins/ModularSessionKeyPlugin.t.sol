@@ -49,8 +49,7 @@ contract ModularSessionKeyPluginTest is Test {
     uint256 public constant CALL_GAS_LIMIT = 150000;
     uint256 public constant VERIFICATION_GAS_LIMIT = 3600000;
 
-    bytes4 public constant TRANSFERFROM_SESSIONKEY_SELECTOR =
-        ITokenSessionKeyPlugin.transferFromSessionKey.selector;
+    bytes4 public constant TRANSFERFROM_SESSIONKEY_SELECTOR = ITokenSessionKeyPlugin.transferFromSessionKey.selector;
 
     // Event declarations (needed for vm.expectEmit)
     event UserOperationRevertReason(
@@ -152,9 +151,8 @@ contract ModularSessionKeyPluginTest is Test {
         vm.startPrank(address(account));
         mockERC20.approve(address(account), 1 ether);
 
-        (uint48 _after, uint48 _until) = modularSessionKeyPlugin.getSessionDuration(
-            address(account), tempOwner, TRANSFERFROM_SESSIONKEY_SELECTOR
-        );
+        (uint48 _after, uint48 _until) =
+            modularSessionKeyPlugin.getSessionDuration(address(account), tempOwner, TRANSFERFROM_SESSIONKEY_SELECTOR);
 
         assertEq(_after, 0);
         assertEq(_until, 2);
@@ -231,9 +229,8 @@ contract ModularSessionKeyPluginTest is Test {
 
         vm.stopPrank();
 
-        (uint48 _after, uint48 _until) = modularSessionKeyPlugin.getSessionDuration(
-            address(account), tempOwner, TRANSFERFROM_SESSIONKEY_SELECTOR
-        );
+        (uint48 _after, uint48 _until) =
+            modularSessionKeyPlugin.getSessionDuration(address(account), tempOwner, TRANSFERFROM_SESSIONKEY_SELECTOR);
         assertEq(_after, 0);
         assertEq(_until, 0);
 
@@ -262,9 +259,8 @@ contract ModularSessionKeyPluginTest is Test {
         UserOperation[] memory userOps = new UserOperation[](1);
         userOps[0] = userOp;
 
-        bytes memory revertCallData = abi.encodeWithSelector(
-            tokenSessionKeyPlugin.TRANSFERFROM_SELECTOR(), address(account), target, 1 ether
-        );
+        bytes memory revertCallData =
+            abi.encodeWithSelector(tokenSessionKeyPlugin.TRANSFERFROM_SELECTOR(), address(account), target, 1 ether);
         bytes memory revertReason = abi.encodeWithSelector(
             UpgradeableModularAccount.ExecFromPluginExternalNotPermitted.selector,
             address(tokenSessionKeyPlugin),
@@ -301,8 +297,7 @@ contract ModularSessionKeyPluginTest is Test {
 
         vm.startPrank(address(tempOwner));
 
-        bytes memory revertReason =
-            abi.encodeWithSelector(IModularSessionKeyPlugin.WrongTimeRangeForSession.selector);
+        bytes memory revertReason = abi.encodeWithSelector(IModularSessionKeyPlugin.WrongTimeRangeForSession.selector);
 
         vm.expectRevert(
             abi.encodeWithSelector(
@@ -329,19 +324,11 @@ contract ModularSessionKeyPluginTest is Test {
         vm.expectEmit(true, true, true, true);
 
         emit PluginUninstalled(address(tokenSessionKeyPlugin), true);
-        account.uninstallPlugin({
-            plugin: address(tokenSessionKeyPlugin),
-            config: bytes(""),
-            pluginUninstallData: ""
-        });
+        account.uninstallPlugin({plugin: address(tokenSessionKeyPlugin), config: bytes(""), pluginUninstallData: ""});
 
         vm.expectEmit(true, true, true, true);
         emit PluginUninstalled(address(modularSessionKeyPlugin), true);
-        account.uninstallPlugin({
-            plugin: address(modularSessionKeyPlugin),
-            config: bytes(""),
-            pluginUninstallData: ""
-        });
+        account.uninstallPlugin({plugin: address(modularSessionKeyPlugin), config: bytes(""), pluginUninstallData: ""});
 
         vm.stopPrank();
     }

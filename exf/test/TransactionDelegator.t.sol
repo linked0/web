@@ -16,7 +16,7 @@ contract TransactionDelegatorTest is Test {
     }
 
     function test_Mint() public {
-        uint balance = token.balanceOf(address(this));
+        uint256 balance = token.balanceOf(address(this));
         delegator.mint(address(this), 1);
         assertEq(token.balanceOf(address(this)), balance + 1 ether);
     }

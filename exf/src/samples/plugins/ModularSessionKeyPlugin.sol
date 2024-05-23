@@ -56,9 +56,7 @@ contract ModularSessionKeyPlugin is BasePlugin, IModularSessionKeyPlugin {
     // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
     /// @inheritdoc IModularSessionKeyPlugin
-    function addSessionKey(address sessionKey, bytes4 allowedSelector, uint48 validAfter, uint48 validUntil)
-        external
-    {
+    function addSessionKey(address sessionKey, bytes4 allowedSelector, uint48 validAfter, uint48 validUntil) external {
         _addSessionKey(msg.sender, sessionKey, allowedSelector, validAfter, validUntil);
         emit SessionKeyAdded(msg.sender, sessionKey, allowedSelector, validAfter, validUntil);
     }
@@ -193,8 +191,7 @@ contract ModularSessionKeyPlugin is BasePlugin, IModularSessionKeyPlugin {
         returns (uint256)
     {
         if (functionId == uint8(FunctionId.USER_OP_VALIDATION_TEMPORARY_OWNER)) {
-            (address signer, ECDSA.RecoverError err) =
-                userOpHash.toEthSignedMessageHash().tryRecover(userOp.signature);
+            (address signer, ECDSA.RecoverError err) = userOpHash.toEthSignedMessageHash().tryRecover(userOp.signature);
             if (err != ECDSA.RecoverError.NoError) {
                 revert InvalidSignature();
             }

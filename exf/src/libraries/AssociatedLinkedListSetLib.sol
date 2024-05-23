@@ -49,10 +49,7 @@ library AssociatedLinkedListSetLib {
     /// @param associated The address the set is associated with.
     /// @param value The value to add.
     /// @return True if the value was added, false if the value cannot be added (already exists or is zero).
-    function tryAdd(AssociatedLinkedListSet storage set, address associated, SetValue value)
-        internal
-        returns (bool)
-    {
+    function tryAdd(AssociatedLinkedListSet storage set, address associated, SetValue value) internal returns (bool) {
         bytes32 unwrappedKey = bytes32(SetValue.unwrap(value));
         if (unwrappedKey == bytes32(0)) {
             // Cannot add the zero value
