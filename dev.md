@@ -1251,12 +1251,10 @@ git submodule update --init --recursive web2
 ---
 - back: ctrl - , forward: shift ctrl -
 - ctrl tab: recent files
-- shift cmd n - cmd shift /: open project
-- ctrl `: goto terminal
+- open project
+  - shift cmd n 
+  - cmd shift /
 ---
-- Cmd+Shift+]: Move to previous terminal
-- Cmd+shift+[: Move to next terminal
-- ctrl shift ₩ : new terminal
 - Bigger Font: cmd + "+"
 
 ---
