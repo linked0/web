@@ -92,6 +92,7 @@
     - [Fatal: Failed to write genesis block: database contains incompatible genesis](#fatal-failed-to-write-genesis-block-database-contains-incompatible-genesis)
     - [forge install 할때, .gitmodules가 필요함](#forge-install-할때-gitmodules가-필요함)
     - [env에서 address 가져오기](#env에서-address-가져오기)
+- [Frequent Use](#frequent-use)
 - [solidity 통합됨](#solidity-통합됨)
 
 # solidity.md
@@ -1651,5 +1652,18 @@ address fundContractAddr = vm.envAddress(
   "POOHNET_FUND_CONTRACT_ADDRESS"
 );
 ```
+
+# Frequent Use
+
+forge script script/poohnet-fund/DeployPoohnetFund.s.sol --rpc-url localnet  --private-key $PRIVATE_KEY --broadcast
+
+cast call $POOHNET_FUND_CONTRACT_ADDRESS "getOwner()" --rpc-url $LOCALNET_RPC_URL 
+
+cast balance 0xE024589D0BCd59267E430fB792B29Ce7716566dF --rpc-url $LOCALNET_RPC_URL
+
+cast send $POOHNET_FUND_CONTRACT_ADDRESS --value 2ether --private-key $PRIVATE_KEY 
+
+cast send $POOHNET_FUND_CONTRACT_ADDRESS "transferBudget(address,uint256)" 0xE024589D0BCd59267E430fB792B29Ce7716566dF 1000000000000000000 --rpc-url $LOCALNET_RPC_URL --private-key $PRIVATE_KEY
+
 
 # solidity 통합됨
