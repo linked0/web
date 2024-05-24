@@ -1653,7 +1653,10 @@ address fundContractAddr = vm.envAddress(
 );
 ```
 
+
 # Frequent Use
+🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
+🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
 
 forge script script/poohnet-fund/DeployPoohnetFund.s.sol --rpc-url localnet  --private-key $PRIVATE_KEY --broadcast
 
