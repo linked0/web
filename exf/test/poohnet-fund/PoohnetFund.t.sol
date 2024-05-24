@@ -3,16 +3,22 @@
 pragma solidity ^0.8.24;
 
 import {PoohnetFund} from "../../src/poohnet-fund/PoohnetFund.sol";
-import {Test} from "forge-std/Test.sol";
+import {console, Test} from "forge-std/Test.sol";
 
 contract PoohnetFundTest is Test {
     PoohnetFund public fund;
 
     function setUp() public {
-        fund = new PoohnetFund();
+        address fundContractAddr = vm.envAddress(
+            "POOHNET_FUND_CONTRACT_ADDRESS"
+        );
+        fund = PoohnetFund(payable(fundContractAddr));
     }
 
     function test_GetOwner() public view {
-        assertEq(fund.getOwner(), address(this));
+        uint deployerKey = vm.envUint("PRIVATE_KEY");
+        address owner = fund.getOwner();
+        console.log("Owner: ", owner);
+        assertEq(fund.getOwner(), vm.addr(deployerKey));
     }
 }
