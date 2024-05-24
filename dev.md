@@ -1245,6 +1245,10 @@ git submodule update --init --recursive web2
 - Settings 열기: cmd + ,
 - 현재 프로젝트에서 검색: shift + option + f (마우스 오르쪽 버튼으로 한번 클릭후)
 ---
+- Move editor to the previous/next group
+  - macOS: `Ctrl+Cmd+Left`
+  - macOS: `Ctrl+Cmd+Right`
+---
 - back: ctrl - , forward: shift ctrl -
 - ctrl tab: recent files
 - shift cmd n - cmd shift /: open project
