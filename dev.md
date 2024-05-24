@@ -98,6 +98,7 @@
     - [🌟🌟🌟🌟🌟🌟 git submodule 🌟🌟🌟🌟🌟🌟](#-git-submodule-)
     - [🦋 VSCode II 🦋](#-vscode-ii-)
     - [🌸 Whale 듀얼탭-Docker-Screen](#-whale-듀얼탭-docker-screen)
+    - [🌸 command](#-command-1)
     - [🌸 curl](#-curl)
     - [🌸 텍스트 검색 - 프로세스 찾기 - zip](#-텍스트-검색---프로세스-찾기---zip)
 
@@ -1274,6 +1275,14 @@ git submodule update --init --recursive web2
 - ctrl a+d // exit
 - screen -S el1  -X quit
 - screen -r -d 17288 <-- attatch되어 있는 것 detach
+
+---
+### 🌸 command
+- 프롬프트 커맨드 수정: ctrl + x, ctrl + e
+- vi에서 단어 단위로 이동하기: 
+b to move back, 
+w to move forward
+
 ---
 ### 🌸 curl
 Post
