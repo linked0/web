@@ -6,4 +6,4 @@ out = "out"
 libs = ["lib"]
 
 [rpc_endpoints]
-localnet = "${LOCALNET_RPC_URL}"
+localnet = "${RPC_URL_LOCALNET}"
