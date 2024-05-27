@@ -1228,8 +1228,8 @@ git submodule update --init
 😈 git submodule remove
 ```
 git rm --cached poohgeth // path는 .gitmodules 파일의 참고
-code .gitmodules File // poohgeth 항목 제거
-code .git/config File // poohgeth 항목 제거
+code .gitmodules // poohgeth 항목 제거
+code .git/config // poohgeth 항목 제거
 rm -rf .git/modules/poohgeth
 rm -rf poohgeth // 안되면 sudo
 git commit -am "Removed submodule"

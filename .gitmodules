@@ -70,9 +70,6 @@
 [submodule "exf/lib/openzeppelin-contracts"]
 	path = exf/lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
-[submodule "foundry-course"]
-	path = foundry-course
-	url = https://github.com/Cyfrin/foundry-full-course-f23.git
 [submodule "erc/erc4337-abstract-account"]
 	path = erc/erc4337-abstract-account
 	url = https://github.com/linked0/account-abstraction.git
