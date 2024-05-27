@@ -94,7 +94,7 @@
     - [forge install 할때, .gitmodules가 필요함](#forge-install-할때-gitmodules가-필요함)
     - [source code](#source-code)
     - [command](#command)
-- [solidity 통합됨](#solidity-통합됨)
+- [solidity 통합됨, 익숙해진 것은 `frequent` 위로 넘기기.](#solidity-통합됨-익숙해진-것은-frequent-위로-넘기기)
 
 # solidity.md
 
@@ -1673,4 +1673,4 @@ cast send $POOHNET_FUND_CONTRACT_ADDRESS --value 2ether --private-key $PRIVATE_K
 cast send $POOHNET_FUND_CONTRACT_ADDRESS "transferBudget(address,uint256)" 0xE024589D0BCd59267E430fB792B29Ce7716566dF 1000000000000000000 --rpc-url $LOCALNET_RPC_URL --private-key $PRIVATE_KEY
 
 
-# solidity 통합됨
+# solidity 통합됨, 익숙해진 것은 `frequent` 위로 넘기기. 
