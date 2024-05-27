@@ -90,9 +90,10 @@
     - [transient storage sample](#transient-storage-sample)
     - [CREATE a CONTRACT with 2 SAME addresses on 2 DIFFERENT chains](#create-a-contract-with-2-same-addresses-on-2-different-chains)
     - [Fatal: Failed to write genesis block: database contains incompatible genesis](#fatal-failed-to-write-genesis-block-database-contains-incompatible-genesis)
-    - [forge install 할때, .gitmodules가 필요함](#forge-install-할때-gitmodules가-필요함)
-    - [env에서 address 가져오기](#env에서-address-가져오기)
 - [Frequent Use](#frequent-use)
+    - [forge install 할때, .gitmodules가 필요함](#forge-install-할때-gitmodules가-필요함)
+    - [source code](#source-code)
+    - [command](#command)
 - [solidity 통합됨](#solidity-통합됨)
 
 # solidity.md
@@ -1636,28 +1637,31 @@ forge install https://github.com/OpenZeppelin/openzeppelin-contracts@v4.9.3
 }
 ```
 
+# Frequent Use
+🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
+🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
+
 ### forge install 할때, .gitmodules가 필요함
 
 forge init –force
 
-forge script script/DeployPoohnetFund.s.sol --rpc-url $LOCALNET_RPC_URL --private-key $PRIVATE_KEY --broadcast
+forge install OpenZeppelin/openzeppelin-contracts
 
 forge test --match-contract PoohnetFund
 
 forge test --match-contract PoohnetFund --fork-url $LOCALNET_RPC_URL
 
-### env에서 address 가져오기  
+
+### source code
+import "@openzeppelin/contracts/utils/Create2.sol";
+
 ```
 address fundContractAddr = vm.envAddress(
   "POOHNET_FUND_CONTRACT_ADDRESS"
 );
 ```
 
-
-# Frequent Use
-🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
-🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
-
+### command
 forge script script/poohnet-fund/DeployPoohnetFund.s.sol --rpc-url localnet  --private-key $PRIVATE_KEY --broadcast
 
 cast call $POOHNET_FUND_CONTRACT_ADDRESS "getOwner()" --rpc-url $LOCALNET_RPC_URL 

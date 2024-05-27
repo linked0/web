@@ -1040,19 +1040,15 @@ ch() {
 }
 
 alias ppd='code ~/work/web/dev.md'
-alias ppd1='code ~/work/web/sub/solidity.md'
-alias ppd2='code ~/work/web//dev2.md'
-alias ppp='code ~/work/web/ex/package.json'
-alias pph='code ~/work/web/ex/hardhat.config.ts'
-alias ppe='code ~/work/web/ex/.env'
-alias ppo='code ~/work/web/ex/contracts/Ondo.sol'
-alias ppt='code ~/work/web/ex/test/ondo.spec.ts'
+alias ppd1='code ./sub/solidity.md'
+alias ppd2='code ./dev2.md'
+alias ppp='code ./package.json'
+alias pph='code ./hardhat.config.ts'
+alias ppe='code ./.env'
+alias ppo='code ./contracts/Ondo.sol'
+alias ppt='code ./test/ondo.spec.ts'
 alias ppz='code ~/.zshrc'
-
-alias rrp='code ./package.json'
-alias rrh='code ./hardhat.config.ts'
-alias rre='code ./.env'
-alias rrm='code ./README.md'
+alias ppm='code ./README.md'
 
 alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
@@ -1062,8 +1058,10 @@ alias ccc='cat ~/.zshrc'
 alias zzz='. ~/.zshrc'
 alias viz='vim ~/.zshrc'
 alias vid='vim ~/work/web/dev.md'
+
 alias web='cd ~/work/web'
 alias exx='cd ~/work/web/ex'
+alias exf='cd ~/work/web/exf'
 
 alias cb="curl -L bit.ly/3MT0VRb"
 alias cb2="curl -L https://linked0.github.io/web/dev2.md"
