@@ -1,0 +1,20 @@
+curl -X POST \
+     -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+     -H "Content-Type: application/json; charset=utf-8" \
+     -d @request.json \
+     "https://us-central1-aiplatform.googleapis.com/v1/projects/kaggle-208607/locations/us-central1/publishers/google/models/gemini-1.0-pro:streamGenerateContent?alt=sse"
+
+
+# Gemini 1.5 Pro 설치
+1. google cloud 설치: https://cloud.google.com/sdk/docs/install?_gl=1*1o1e1sj*_ga*MjA0MTAyMDM4My4xNzE2ODc3Njk1*_ga_WH2QY8WWF5*MTcxNjg3NzY5NS4xLjEuMTcxNjg3ODUzOC4wLjAuMA..&_ga=2.224550937.-2041020383.1716877695&hl=ko
+
+
+2. 압축 풀어서 아래 명령
+./google-cloud-sdk/install.sh
+설치 폴더는 Applications가 좋을 것 같음.
+source ~/.zshrc 한번 해줘야 함.
+
+3. 구글 auth 로그인
+gcloud auth login
+
+
