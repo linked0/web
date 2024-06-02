@@ -1298,14 +1298,12 @@ w to move forward
 
 ---
 ### 🌸 curl
-Post
-```
+- Post: 
 curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-Type: application/json" -X POST http://localhost:3000/mint
-```
-Get
-```
+
+- Get: 
 curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-type: application/json" -X GET "http://localhost:3000/balanceOf"
-```
+
 ---
 ### 🌸 텍스트 검색 - 프로세스 찾기 - zip
 ```
