@@ -1065,6 +1065,7 @@ alias exf='cd ~/work/web/exf'
 
 alias cb="curl -L bit.ly/3MT0VRb"
 alias cb2="curl -L https://linked0.github.io/web/dev2.md"
+alias mmm="curl -L https://linked0.github.io/web/memo.txt"
 alias cbb="open https://bit.ly/3MVG5AN"
 alias poo="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
 

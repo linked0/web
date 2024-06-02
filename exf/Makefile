@@ -10,6 +10,8 @@ help:
 	@echo ""
 	@echo "  make deploy-ep-local\n    FOR: deploy EntryPoint in localnet"
 	@echo ""
+	@echo "  make deploy-sop-local\n    FOR: deploy SingleOwnerPlugin in localnet"
+	@echo ""
 	@echo "  make deploy-ma-local\n    FOR: deploy the UpgradeableModularAccount in localnet"
 	@echo ""
 	@echo "  make create-account-local\n    FOR: create Abstraction Account in localnet"
