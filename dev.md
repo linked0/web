@@ -1277,6 +1277,7 @@ git submodule update --init --recursive web2
 - docker exec -it poohgeth-1 sh
 
 **Screen**
+- screen -S el1
 - screen -ls // ls
 - ctrl a+d // exit
 - screen -S el1  -X quit
