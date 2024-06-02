@@ -97,7 +97,7 @@
     - [🌸 Block projects](#-block-projects)
     - [🌟🌟🌟🌟🌟🌟 git submodule 🌟🌟🌟🌟🌟🌟](#-git-submodule-)
     - [🦋 VSCode II 🦋](#-vscode-ii-)
-    - [🌸 Whale 듀얼탭-Docker-Screen](#-whale-듀얼탭-docker-screen)
+    - [🌸 Whale 듀얼탭-Docker-Screen-AWS](#-whale-듀얼탭-docker-screen-aws)
     - [🌸 command](#-command-1)
     - [🌸 curl](#-curl)
     - [🌸 텍스트 검색 - 프로세스 찾기 - zip](#-텍스트-검색---프로세스-찾기---zip)
@@ -1261,7 +1261,7 @@ git submodule update --init --recursive web2
 - Bigger Font: cmd + "+"
 
 ---
-### 🌸 Whale 듀얼탭-Docker-Screen
+### 🌸 Whale 듀얼탭-Docker-Screen-AWS
 **Whale**
 - 듀얼 탭 열기/닫기: shift + cmd +  s
 - 탭 포커스 이동: shift + cmd +  e
@@ -1281,6 +1281,13 @@ git submodule update --init --recursive web2
 - ctrl a+d // exit
 - screen -S el1  -X quit
 - screen -r -d 17288 <-- attatch되어 있는 것 detach
+
+**AWS**
+- 파일 가져오기:
+scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-3-37-37-195.ap-northeast-2.compute.amazonaws.com:~/share/test.txt .
+
+- 파일 보내기:
+scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-3-37-37-195.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
 
 ---
 ### 🌸 command

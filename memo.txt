@@ -27,4 +27,6 @@ source ~/.zshrc 한번 해줘야 함.
 gcloud auth login
 
 
-ssh -i "tednet.pem" ubuntu@ec2-3-37-37-195.ap-northeast-2.compute.amazonaws.com
+ssh -i "~/pooh/tednet.pem" ubuntu@ec2-3-37-37-195.ap-northeast-2.compute.amazonaws.com
+ssh -i "~/pooh/tednet.pem" ubuntu@ec2-54-180-29-208.ap-northeast-2.compute.amazonaws.com
+ssh -i "~/pooh/pooh-seoul.pem" ubuntu@ec2-54-180-29-51.ap-northeast-2.compute.amazonaws.com
