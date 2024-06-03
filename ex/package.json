@@ -38,6 +38,7 @@
     "deploy": "hardhat run scripts/deploy.ts --network holesky",
     "deploy:localnet": "hardhat run scripts/deploy.ts --network localnet",
     "deploy:fund:localnet": "hardhat run scripts/deploy-poohnet-fund.ts --network localnet",
+    "deploy:deposit:localnet": "hardhat run scripts/deploy-deposit.ts --network localnet",
     "check:localnet": "hardhat run scripts/check-receiver.ts --network localnet",
     "balance-fund:localnet": "hardhat run scripts/balance-fund.ts --network localnet",
     "unlock-account:localnet": "hardhat run scripts/unlock-account.ts --network localnet",

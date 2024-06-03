@@ -5,7 +5,16 @@ import "@nomicfoundation/hardhat-toolbox";
 dotenv.config({ path: ".env" });
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.24",
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.24",
+      },
+      {
+        version: "0.8.25",
+      },
+    ],
+  },
   networks: {
     localnet: {
       url: process.env.LOCALNET_URL,
