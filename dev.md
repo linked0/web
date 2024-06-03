@@ -96,6 +96,7 @@
     - [🦋 VSCode I 🦋](#-vscode-i-)
     - [🌸 Block projects](#-block-projects)
     - [🌟🌟🌟🌟🌟🌟 git submodule 🌟🌟🌟🌟🌟🌟](#-git-submodule-)
+    - [hardhat/foundry 🦋](#hardhatfoundry-)
     - [🦋 VSCode II 🦋](#-vscode-ii-)
     - [🌸 Whale 듀얼탭-Docker-Screen-AWS](#-whale-듀얼탭-docker-screen-aws)
     - [🌸 command](#-command-1)
@@ -1242,6 +1243,10 @@ git submodule update --remote
 ```
 git submodule update --init --recursive web2 
 ```
+---
+### hardhat/foundry 🦋
+yarn add https://github.com/eth-infinitism/account-abstraction\#v0.6.0
+
 ---
 ### 🦋 VSCode II 🦋
 - Command Palette: [⇧⌘P ] Shell command
