@@ -1,0 +1,12 @@
+{
+  "name": "exf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "solhint -w 0 'src/**/*.sol'"
+  },
+  "devDependencies": {
+    "solhint": "^5.0.1"
+  }
+}
