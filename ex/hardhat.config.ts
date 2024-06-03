@@ -11,11 +11,23 @@ const config: HardhatUserConfig = {
         version: "0.8.24",
       },
       {
-        version: "0.8.25",
+        version: "0.8.12",
+      },
+      {
+        version: "0.8.19",
       },
     ],
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      },
+    },
   },
   networks: {
+    hardhat: {
+      allowUnlimitedContractSize: true,
+    },
     localnet: {
       url: process.env.LOCALNET_URL,
       chainId: 12301,
