@@ -620,6 +620,12 @@ package.json의 "scripts" 섹션에 다음을 추가
 
 ### fast-forward 문제
 - push 하려고 할때 아래와 같은 문제 발생 --> github remote의 브랜치가 더 최신버전일때 발생
+- 이것을 가장 최신의 확실한 방법임. 그냥 rebase 해주면 됨
+```
+git rebase origin master
+```
+
+- 이것 에전 설명인데, 일단 그냥 참고용으로 그냥둠
 ```
 $ account-abstraction git:(test-flow) ✗ git push -f
 To github.com:linked0/account-abstraction
