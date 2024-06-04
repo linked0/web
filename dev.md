@@ -1039,6 +1039,9 @@ pp() {
 ch() {
   chatgpt $@
 }
+cch() {
+  cat ~/work/web/m2.txt | ch $@
+}
 
 alias ppd='code ~/work/web/dev.md'
 alias ppd1='code ./sub/solidity.md'
@@ -1051,6 +1054,7 @@ alias ppt='code ./test/ondo.spec.ts'
 alias ppz='code ~/.zshrc'
 alias ppr='code ./README.md'
 alias ppm='code ~/work/web/memo.txt'
+alias ppm2='code ~/work/web/m2.txt'
 
 alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
