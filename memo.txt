@@ -4,6 +4,8 @@ curl -L https://linked0.github.io/web/memo.txt
 alias ppr='code ./README.md'
 alias ppm='code ~/work/web/memo.txt'
 
+test
+
 https://safe.global/
 
 
