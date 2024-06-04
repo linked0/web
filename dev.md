@@ -1049,7 +1049,8 @@ alias ppe='code ./.env'
 alias ppo='code ./contracts/Ondo.sol'
 alias ppt='code ./test/ondo.spec.ts'
 alias ppz='code ~/.zshrc'
-alias ppm='code ./README.md'
+alias ppr='code ./README.md'
+alias ppm='code ~/work/web/memo.txt'
 
 alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
@@ -1066,7 +1067,7 @@ alias exf='cd ~/work/web/exf'
 
 alias cb="curl -L bit.ly/3MT0VRb"
 alias cb2="curl -L https://linked0.github.io/web/dev2.md"
-alias mmm="curl -L https://linked0.github.io/web/memo.txt"
+alias cbm="curl -L https://linked0.github.io/web/memo.txt"
 alias cbb="open https://bit.ly/3MVG5AN"
 alias poo="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
 
