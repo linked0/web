@@ -1,6 +1,10 @@
 curl -L https://linked0.github.io/web/memo.txt
 
 
+
+test
+
+
 alias ppr='code ./README.md'
 alias ppm='code ~/work/web/memo.txt'
 
@@ -267,7 +271,6 @@ DepositContract.(constructor)
 			{
 				"value": "0x0000000000000000000000000000000000000000000000000000000000000000",
 				"type": "bytes32"
-			},
 			{
 				"value": "0x0000000000000000000000000000000000000000000000000000000000000000",
 				"type": "bytes32"
