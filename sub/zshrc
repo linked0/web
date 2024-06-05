@@ -104,68 +104,63 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
 
+export PS1="\W \u$ "
+
+export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
+
 hgrep() {
-	grep -irnH --include=*.$1 "$2" ./
+	grep -irnH --include=*.$1 "$2" ./  
 }
-opf() {
-  code ~/work/web/ex/$1
-}
-ocf() {
+pp() {
   code ./$1
 }
-opcc() {
-  code ~/work/web/ex/contracts/$1
+ch() {
+  chatgpt $@
 }
-opss() {
-  code ~/work/web/ex/scripts/$1
+chc() {
+  cat $1 | ch $2
 }
-optt() {
-  code ~/work/web/ex/test/$1
+chm() {
+  ch "$(cat ~/work/web/m2.txt)"
 }
-ipf() {
-  idea ~/work/web/ex/$1
-}
-icf() {
-  idea ./$1
-}
-ipcc() {
-  code ~/work/web/ex/contracts/$1
-}
-ipss() {
-  code ~/work/web/ex/scripts/$1
-}
-iptt() {
-  code ~/work/web/ex/test/$1
+chcm() {
+  cat $@ | ch "$(cat ~/work/web/m2.txt)"
 }
 
-alias opz='code ~/.zshrc'
-alias opd='code ~/work/web/dev.md'
-alias opp='code ~/work/web/ex/package.json'
-alias oph='code ~/work/web/ex/hardhat.config.ts'
-alias opo='code ~/work/web/ex/contracts/Ondo.sol'
-alias opt='code ~/work/web/ex/test/ondo.spec.ts'
-alias ocp='code ./package.json'
-alias och='code ./hardhat.config.ts'
-
-alias ipz='idea ~/.zshrc'
-alias ipd='idea ~/work/web/dev.md'
-alias ipp='idea ~/work/web/ex/package.json'
-alias iph='idea ~/work/web/ex/hardhat.config.ts'
-alias ipo='idea ~/work/web/ex/contracts/Ondo.sol'
-alias ipt='idea ~/work/web/ex/test/ondo.spec.ts'
-alias icp='idea ./package.json'
-alias ich='idea ./hardhat.config.ts'
+alias ppb='code ~/work/web/ex/test/basic.spec.ts'
+alias ppd='code ~/work/web/dev.md'
+alias ppd2='code ./dev2.md'
+alias ppp='code ./package.json'
+alias pph='code ./hardhat.config.ts'
+alias ppe='code ./.env'
+alias ppf='code ./foundry.toml'
+alias ppmk='code ./Makefile'
+alias ppsz='code ~/work/web/sub/zshrc'
+alias ppz='code ~/.zshrc'
+alias ppr='code ./README.md'
+alias pprm='code ./remappings.txt'
+alias ppm='code ~/work/web/memo.txt'
+alias ppm2='code ~/work/web/m2.txt'
 
 alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
 alias lst='ls -al ~/work/web/ex/test'
 
+alias ccc='cat ~/.zshrc'
 alias zzz='. ~/.zshrc'
+alias viz='vim ~/.zshrc'
+alias vid='vim ~/work/web/dev.md'
+
+alias web='cd ~/work/web'
 alias exx='cd ~/work/web/ex'
+alias exf='cd ~/work/web/exf'
+
 alias cb="curl -L bit.ly/3MT0VRb"
+alias cb2="curl -L https://linked0.github.io/web/dev2.md"
+alias cbm="curl -L https://linked0.github.io/web/memo.txt"
 alias cbb="open https://bit.ly/3MVG5AN"
 alias poo="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
+
 alias ecstart="aws ec2 start-instances --instance-ids i-02c89e86234e05850"
 alias ecstop="aws ec2 stop-instances --instance-ids i-02c89e86234e05850"
-
 

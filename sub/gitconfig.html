@@ -30,6 +30,7 @@ ymbolic-full-name HEAD); }; f"
 	recentb = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(align:20)(%(color:green)%(committerdate:relative)%(color:reset))%(end) %(align:30)%(color:yellow)%(refname:short)%(color:reset)%(end) - %(color:red)%(object\
 name:short)%(color:reset) - %(contents:subject)'
 	cmp = "!f() { git add -A && git commit -m \"$@\" && git push; }; f"
+	acp = "! git commit -a -m "commit" && git push"
 [push]
 	default = current
 [pager]
