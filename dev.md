@@ -1,4 +1,4 @@
-🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
+🌟🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴
 # Jay's Dev Information
 
 ------
@@ -84,19 +84,19 @@
     - [Generate Private Key](#generate-private-key)
     - [Mac XCode](#mac-xcode)
     - [source를 다른 위치에 new\_source라는 이름으로 복사(두가지 방법)](#source를-다른-위치에-new_source라는-이름으로-복사두가지-방법)
-  - [단축키](#단축키)
+  - [자주 쓰는 것 - Part1](#자주-쓰는-것---part1)
     - [🌸 Google docs](#-google-docs)
     - [🌸 poohnet (EL/CL) 실행하기](#-poohnet-elcl-실행하기)
     - [🌸 .bash\_profile - git push config](#-bash_profile---git-push-config)
     - [🌸 hardhat 프로젝트 만들기 🌸](#-hardhat-프로젝트-만들기-)
+  - [자주 쓰는 것 - Part2](#자주-쓰는-것---part2)
     - [🌸 Command](#-command)
     - [🌸 Mac](#-mac)
-  - [option + enter](#option--enter)
     - [🦋 Colab 🦋](#-colab-)
     - [🦋 VSCode I 🦋](#-vscode-i-)
     - [🌸 Block projects](#-block-projects)
-    - [🌟🌟🌟🌟🌟🌟 git submodule 🌟🌟🌟🌟🌟🌟](#-git-submodule-)
-    - [hardhat/foundry 🦋](#hardhatfoundry-)
+    - [🌟 git submodule 🌟](#-git-submodule-)
+    - [🥎 hardhat/foundry 🥎](#-hardhatfoundry-)
     - [🦋 VSCode II 🦋](#-vscode-ii-)
     - [🌸 Whale 듀얼탭-Docker-Screen-AWS](#-whale-듀얼탭-docker-screen-aws)
     - [🌸 command](#-command-1)
@@ -977,7 +977,7 @@ To clear the terminal manually: Cmd + K
 ps aux | grep chrome
 
 -------
-## 단축키
+## 자주 쓰는 것 - Part1
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
@@ -1045,18 +1045,23 @@ pp() {
 ch() {
   chatgpt $@
 }
-cch() {
-  cat ~/work/web/m2.txt | ch $@
+chc() {
+  cat $1 | ch $2
+}
+chm() {
+  ch "$(cat ~/work/web/m2.txt)"
+}
+chcm() {
+  cat $@ | ch "$(cat ~/work/web/m2.txt)"
 }
 
+alias ppb='code ~/work/web/ex/test/basic.spec.ts'
 alias ppd='code ~/work/web/dev.md'
 alias ppd1='code ./sub/solidity.md'
 alias ppd2='code ./dev2.md'
 alias ppp='code ./package.json'
 alias pph='code ./hardhat.config.ts'
 alias ppe='code ./.env'
-alias ppo='code ./contracts/Ondo.sol'
-alias ppt='code ./test/ondo.spec.ts'
 alias ppz='code ~/.zshrc'
 alias ppr='code ./README.md'
 alias ppm='code ~/work/web/memo.txt'
@@ -1110,6 +1115,7 @@ yarn add --dev hardhat
 npx hardhat // 여기서 이미 필요한 package는 추가됨
 ```
 
+## 자주 쓰는 것 - Part2
 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
@@ -1172,6 +1178,7 @@ Split Horizontally: shft + cmd + d
 ```
 - 테이블의 셀에서 개행
 option + enter
+
 ---
 ### 🦋 Colab 🦋
 **열기**
@@ -1183,6 +1190,7 @@ option + enter
 **실행**
 - MyDrive/colab/data 연결 가능 (코드에 있음)
 - MyDrive/colab/data/test.txt를 가지고 처리하는 코드도 있음
+
 ---
 ### 🦋 VSCode I 🦋
 - Prettier 세팅
@@ -1227,8 +1235,8 @@ Sepolia: 579fca7e3f10489b83c047f5cc17bec5
 Pooh Admin: 0x58984b2bf6f0f3de4f38290ed3c541ac27bac384b378073ab133af8b314a1887
 Jay Test: 0x7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23
 
-🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
-### 🌟🌟🌟🌟🌟🌟 git submodule 🌟🌟🌟🌟🌟🌟
+
+### 🌟 git submodule 🌟
 
 
 😈 git submodule add 
@@ -1255,7 +1263,7 @@ git submodule update --remote
 git submodule update --init --recursive web2 
 ```
 ---
-### hardhat/foundry 🦋
+### 🥎 hardhat/foundry 🥎
 yarn add https://github.com/eth-infinitism/account-abstraction\#v0.6.0
 
 ---

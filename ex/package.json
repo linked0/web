@@ -36,6 +36,8 @@
     "clean": "rm -rf cache artifacts typechain typechain-types",
     "test": "hardhat test",
     "test:msca": "hardhat test test/erc6900/*.ts",
+    "basic": "hardhat test test/basic.spec.ts",
+    "basic:localnet": "hardhat test test/basic.spec.ts --network localnet",
     "deploy": "hardhat run scripts/deploy.ts --network holesky",
     "deploy:localnet": "hardhat run scripts/deploy.ts --network localnet",
     "deploy:fund:localnet": "hardhat run scripts/deploy-poohnet-fund.ts --network localnet",

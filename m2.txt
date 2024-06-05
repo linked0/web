@@ -1,9 +1,17 @@
-[master 30d13f1] commit
- 1 file changed, 4 insertions(+), 1 deletion(-)
-To github.com:linked0/web.git
- ! [rejected]        master -> master (non-fast-forward)
-error: failed to push some refs to 'github.com:linked0/web.git'
-hint: Updates were rejected because the tip of your current branch is behind
-hint: its remote counterpart. Integrate the remote changes (e.g.
-hint: 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+  2 passing (5s)
+  1 failing
+
+  1) AllPairVault
+       ListSetStore
+         add and contains:
+     TypeError: invalid BytesLike value (argument="value", value="0x1e240", code=INVALID_ARGUMENT, version=6.12.1)
+      at makeError (node_modules/ethers/src.ts/utils/errors.ts:687:21)
+      at assert (node_modules/ethers/src.ts/utils/errors.ts:715:25)
+      at assertArgument (node_modules/ethers/src.ts/utils/errors.ts:727:5)
+      at _getBytes (node_modules/ethers/src.ts/utils/data.ts:44:19)
+      at Proxy.getBytes (node_modules/ethers/src.ts/utils/data.ts:55:12)
+      at Context.<anonymous> (test/all.spec.ts:74:32)
+
+How can I solve this problem
+
+Please answer starting jayjay.

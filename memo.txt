@@ -1,7 +1,10 @@
 curl -L https://linked0.github.io/web/memo.txt
 
+      // const paddedHexValue = ethers.zeroPadValue(byteArray, 30);
 
+      // expect(await listSetStore.contains(paddedHexValue)).to.equal(true);
 
+git rebase origin master
 test
 
 
@@ -13,6 +16,18 @@ test
 https://safe.global/
 
 
+cch() {
+  cat $1 | ch $2pp
+}
+mch() {
+  cat ~/work/web/m2.txt | ch $@
+}
+cch() {
+  cat $1 | ch $2
+}
+mch() {
+  cat ~/work/web/m2.txt | ch $@
+}/Users/hyunjaelee/work/web/ex/contracts/libraries/AssociatedLinkedListSetLib.solpp
 ./deposit.sh existing-mnemonic까지 성공함.
 chain id 세팅하고 cl node를 한개만 설정할 수 없는지에 대한 고민, validator을 실행시키는 것에 대한 세부적인 이해부족을 느끼면서 현타가 옴. 일단 여기까지 중단함.
 
