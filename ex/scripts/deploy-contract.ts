@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const contractName = process.env.CONTRACT_NAME || "";
+  const contractName = process.env.CONTRACT || "";
   const constract = await ethers.deployContract(
     contractName
   );

@@ -1701,6 +1701,6 @@ console.log(`balance of deployer: ${await provider.getBalance(deployer.address)}
 console.log(`Receipt: ${JSON.stringify(receipt)}`);
 const tx = await deployerListSetStore.addValue(valueData);
 
-CONTRACT_NAME="ListSetStore" yarn contract --network localnet
+CONTRACT="AllBasic" yarn contract --network localnet
 
 # solidity 통합됨, 익숙해진 것은 `frequent` 위로 넘기기. 
