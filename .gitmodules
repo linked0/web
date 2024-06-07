@@ -82,3 +82,6 @@
 [submodule "exf/lib/account-abstraction"]
 	path = exf/lib/account-abstraction
 	url = https://github.com/eth-infinitism/account-abstraction
+[submodule "poohnet/deterministic-deployment-proxy"]
+	path = poohnet/deterministic-deployment-proxy
+	url = https://github.com/linked0/deterministic-deployment-proxy.git
