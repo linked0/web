@@ -23,6 +23,7 @@
         - [rust/postgresql install](#rustpostgresql-install)
         - [MySql Server 설치](#mysql-server-설치)
         - [Whale, Miro, onenote, Visual Studio, Xcode, Github CLI](#whale-miro-onenote-visual-studio-xcode-github-cli)
+        - [hardhat \& foundry](#hardhat--foundry)
         - [기타](#기타)
     - [Slack](#slack)
   - [Blockchain](#blockchain)
@@ -33,7 +34,7 @@
     - [이더리엄 Endpoint](#이더리엄-endpoint)
   - [Hardhat](#hardhat)
     - [Hardhat / solidity](#hardhat--solidity)
-    - [Hardhat / Foundry](#hardhat--foundry)
+    - [Hardhat / Foundry](#hardhat--foundry-1)
     - [Workspaces](#workspaces)
   - [Foundry](#foundry)
     - [Install Foundry](#install-foundry)
@@ -270,6 +271,12 @@ psql postgres <== 접속해볼 수 있음.
 - XCode: [Apple Developer](https://developer.apple.com/xcode/resources/)
 - FileMerge: open /Applications/Xcode.app/Contents/Applications/FileMerge.app
 - brew install gh
+
+##### hardhat & foundry
+- npm install --global yarn 
+- yarn global add hardhat 
+
+- curl -L https://foundry.paradigm.xyz | bash
 
 ##### 기타
 - 맥 메인 모니터 설정 및 Dock 사이즈 조정

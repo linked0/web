@@ -1,17 +1,1 @@
-  2 passing (5s)
-  1 failing
-
-  1) AllPairVault
-       ListSetStore
-         add and contains:
-     TypeError: invalid BytesLike value (argument="value", value="0x1e240", code=INVALID_ARGUMENT, version=6.12.1)
-      at makeError (node_modules/ethers/src.ts/utils/errors.ts:687:21)
-      at assert (node_modules/ethers/src.ts/utils/errors.ts:715:25)
-      at assertArgument (node_modules/ethers/src.ts/utils/errors.ts:727:5)
-      at _getBytes (node_modules/ethers/src.ts/utils/data.ts:44:19)
-      at Proxy.getBytes (node_modules/ethers/src.ts/utils/data.ts:55:12)
-      at Context.<anonymous> (test/all.spec.ts:74:32)
-
-How can I solve this problem
-
-Please answer starting jayjay.
+OnlyHardhatNetworkError: This helper can only be used with Hardhat Network. You are connected to 'localnet'.

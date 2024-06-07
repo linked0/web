@@ -1,13 +1,19 @@
-curl -L https://linked0.github.io/web/memo.txt
 
-      // const paddedHexValue = ethers.zeroPadValue(byteArray, 30);
+const tx = await deployerListSetStore.addValue(valueData);
+const receipt = await tx.wait();
+      const hexStr = ethers.toBeHex(valueData.value, 30);
+      console.log(`type of hexStr: ${hexStr} ${typeof hexStr}`);
+      const byteArray = ethers.getBytes(hexStr);
+      expect(await listSetStore.contains(byteArray)).to.equal(true);
+	  
 
-      // expect(await listSetStore.contains(paddedHexValue)).to.equal(true);
+// Check emitted event
+    const event = receipt.events?.filter((x) => x.event === "YourEvent")[0];
+    expect(event.args.someValue).to.equal(expectedValue);
 
-git rebase origin master
-test
+	https://www.amazon.com/Auditors-Guide-Blockchain-Technology-Architecture/dp/1032078251/ref=sr_1_1?crid=3SQKW44JCYWRV&dib=eyJ2IjoiMSJ9.N3jg-S8nmwIe-7zm38KowgjGFCdKYLqkqtHhgyxStl3VCFIaAstNbN7nA7koTP0k6xKC1U7txdtpHxkalAwT5HfklHJlEQImpjh_9Nn_Kc4.I2gbYsTt7f9AfGLPkRaAvg9GuRefeIe5aNXmAghx6ns&dib_tag=se&keywords=smart+contract+audit&qid=1717734491&s=books&sprefix=smart+contract+audit%2Cstripbooks-intl-ship%2C326&sr=1-1
 
-
+	
 alias ppr='code ./README.md'
 alias ppm='code ~/work/web/memo.txt'
 

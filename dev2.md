@@ -90,6 +90,8 @@
     - [transient storage sample](#transient-storage-sample)
     - [CREATE a CONTRACT with 2 SAME addresses on 2 DIFFERENT chains](#create-a-contract-with-2-same-addresses-on-2-different-chains)
     - [Fatal: Failed to write genesis block: database contains incompatible genesis](#fatal-failed-to-write-genesis-block-database-contains-incompatible-genesis)
+    - [OnlyHardhatNetworkError: This helper can only be used with Hardhat Network. You are connected to 'localnet', whose identifier is 'Geth/v1.12.1-unstable-5e198bde-20240602/darwin-amd64/go1.21.3'](#onlyhardhatnetworkerror-this-helper-can-only-be-used-with-hardhat-network-you-are-connected-to-localnet-whose-identifier-is-gethv1121-unstable-5e198bde-20240602darwin-amd64go1213)
+      - [info](#info)
 - [Frequent Use](#frequent-use)
     - [forge install 할때, .gitmodules가 필요함](#forge-install-할때-gitmodules가-필요함)
     - [source code](#source-code)
@@ -1637,6 +1639,27 @@ forge install https://github.com/OpenZeppelin/openzeppelin-contracts@v4.9.3
 }
 ```
 
+### OnlyHardhatNetworkError: This helper can only be used with Hardhat Network. You are connected to 'localnet', whose identifier is 'Geth/v1.12.1-unstable-5e198bde-20240602/darwin-amd64/go1.21.3'
+      at checkIfDevelopmentNetwork (/Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-network-helpers/src/utils.ts:29:11)
+      at processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async getHardhatProvider (/Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-network-helpers/src/utils.ts:40:3)
+      at async Object.latest (/Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-network-helpers/src/helpers/time/latest.ts:7:20)
+      at async deployOneYearLockFixture (/Users/hyunjaelee/work/web/ex/test/basic.spec.localnet.ts:24:25)
+      at async loadFixture (/Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-network-helpers/src/loadFixture.ts:59:18)
+      at async Context.<anonymous> (/Users/hyunjaelee/work/web/ex/test/basic.spec.localnet.ts:37:36)
+
+#### info
+- 2023.06.07 Fri 
+- test code를 로컬넷에서 실행시키니까 문제가 발생함. 
+- web3_clientVersion 관련 있음.
+```
+version.toLowerCase().startsWith("hardhatnetwork") ||
+version.toLowerCase().startsWith("anvil");
+```
+- 내 geth code의 web3_clientVersion 코드를 바꿔야 가능함.
+- anvill 코드 보면 금방 바꿀 수 있을 것으로 보임.
+
+
 # Frequent Use
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
@@ -1672,5 +1695,12 @@ cast send $POOHNET_FUND_CONTRACT_ADDRESS --value 2ether --private-key $PRIVATE_K
 
 cast send $POOHNET_FUND_CONTRACT_ADDRESS "transferBudget(address,uint256)" 0xE024589D0BCd59267E430fB792B29Ce7716566dF 1000000000000000000 --rpc-url $LOCALNET_RPC_URL --private-key $PRIVATE_KEY
 
+cast balance 0xE024589D0BCd59267E430fB792B29Ce7716566dF --rpc-url http://localhost:8545
+
+console.log(`balance of deployer: ${await provider.getBalance(deployer.address)}`);
+console.log(`Receipt: ${JSON.stringify(receipt)}`);
+const tx = await deployerListSetStore.addValue(valueData);
+
+CONTRACT_NAME="ListSetStore" yarn contract --network localnet
 
 # solidity 통합됨, 익숙해진 것은 `frequent` 위로 넘기기. 

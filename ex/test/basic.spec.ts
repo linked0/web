@@ -11,6 +11,8 @@ import { fullSuiteFixture } from "./full-suite.fixture";
 import { hexlify } from "ethers";
 
 describe("AllPairVault", function () {
+  const provider = ethers.provider;
+
   // We define a fixture to reuse the same setup in every test.
   // We use loadFixture to run this setup once, snapshot that state,
   // and reset Hardhat Network to that snapshot in every test.
@@ -30,15 +32,23 @@ describe("AllPairVault", function () {
     return { lock, unlockTime, lockedAmount, owner, otherAccount };
   }
 
-  describe("Deployment", function () {
+  describe("Deployment Lock and AllPairVault", function () {
     it("Should set the right unlockTime", async function () {
       const { lock, unlockTime } = await loadFixture(deployOneYearLockFixture);
-
-      const AllPairVault = await ethers.getContractFactory("AllPairVault");
-      const allPairVault = await AllPairVault.deploy(await lock.getAddress());
-
       await lock.add();
       expect(await lock.value()).to.equal(2n);
+
+      const linkedListSetLib = await ethers.deployContract("LinkedListSetLib");
+      console.log("LinkedListSetLib address: ", linkedListSetLib.target);
+      const allPairVault = await ethers.deployContract("AllPairVault",
+        [lock.target],
+        {
+          libraries: {
+            LinkedListSetLib: linkedListSetLib.target,
+          },
+        });
+
+      console.log("AllPairVault address: ", allPairVault.target);
 
       await allPairVault.createLock(1);
       expect(await allPairVault.getValue()).to.equal(1n);
@@ -49,16 +59,17 @@ describe("AllPairVault", function () {
     it("Should deploy ListSetStore", async function () {
       const {
         accounts: { deployer, user },
-        suiteListSet: { listSetStore },
+        suiteAllPairVault: { allPairVault, lock },
       } = await loadFixture(fullSuiteFixture);
 
-      console.log("ListSetStore address: ", listSetStore.target);
+      // await lock.add();
+      // expect(await lock.value()).to.equal(2n);
     });
 
     it("add and contains", async function () {
       const {
         accounts: { deployer, user },
-        suiteListSet: { listSetStore },
+        suiteAllPairVault: { allPairVault },
       } = await loadFixture(fullSuiteFixture);
 
       // Create a ValueData object
@@ -67,7 +78,11 @@ describe("AllPairVault", function () {
         description: "Example description"
       };
 
-      await listSetStore.addValue(valueData);
+      const tx = await allPairVault.addValue(valueData);
+      console.log(`TX: ${JSON.stringify(tx)}`);
+      const receipt = await tx.wait();
+      console.log(`Receipt: ${JSON.stringify(receipt)}`);
+      expect(receipt.status).to.equal(1);
 
       // THE CODE TO CHECK !!!
       // const valueStr = ethers.toQuantity(valueData.value);
@@ -81,52 +96,42 @@ describe("AllPairVault", function () {
       const hexStr = ethers.toBeHex(valueData.value, 30);
       console.log(`type of hexStr: ${hexStr} ${typeof hexStr}`);
       const byteArray = ethers.getBytes(hexStr);
-      expect(await listSetStore.contains(byteArray)).to.equal(true);
-    });
-  });
-
-  describe("send and sendTransaction", function () {
-    const provider = ethers.provider;
-
-    it("Should succeed for personal_unlocalAccount", async function () {
-      const userKey = process.env.USER_KEY || "";
-      const userWallet = new Wallet(userKey, ethers.provider);
-      const privateKeyPassword = process.env.PRIVATE_KEY_PASSWORD || "";
-      const unlock = await provider.send("personal_unlockAccount", [
-        userWallet.address,
-        privateKeyPassword,
-        0,
-      ]);
-      console.log(unlock);
+      expect(await allPairVault.contains(byteArray)).to.equal(true);
     });
 
-    it("Should succeed for personal_unlocalAccount with admin wallet", async function () {
-      const adminKey = process.env.ADMIN_KEY || "";
-      const userKey = process.env.USER_KEY || "";
-      const adminWallet = new Wallet(adminKey, ethers.provider);
-      const userWallet = new Wallet(userKey, ethers.provider);
-      const privateKeyPassword = process.env.PRIVATE_KEY_PASSWORD || "";
+    it("add with checking event", async function () {
+      const {
+        accounts: { deployer, user },
+        suiteAllPairVault: { allPairVault },
+      } = await loadFixture(fullSuiteFixture);
 
-      // NOTE:It will succeeded even though there is red underline under the code
-      const unlock_response = await adminWallet.provider.send("personal_unlockAccount", [
-        userWallet.address,
-        privateKeyPassword,
-        0 // unlock duration in seconds, 0 for indefinite
-      ]);
-      console.log(unlock_response);
+      // Create a ValueData object
+      const valueData = {
+        value: 123456, // Example uint240 value
+        description: "Example description"
+      };
+
+      const userListSetStore = allPairVault.connect(user);
+      expect(await userListSetStore.addValue(valueData))
+        .to.emit(allPairVault, "ValueAdded")
+        .withArgs(valueData.value, valueData.description);
     });
 
-    it.only("Should succeed for sendTransaction", async function () {
-      const adminKey = process.env.ADMIN_KEY || "";
-      const userKey = process.env.USER_KEY || "";
-      const adminWallet = new Wallet(adminKey, ethers.provider);
-      const userWallet = new Wallet(userKey, ethers.provider);
-      const receipt = await adminWallet.sendTransaction({
-        to: userWallet.address,
-        value: ethers.parseEther("1.0"),
-      });
-      console.log(receipt);
-    });
+    it("add with revert", async function () {
+      const {
+        accounts: { deployer, user },
+        suiteAllPairVault: { allPairVault },
+      } = await loadFixture(fullSuiteFixture);
 
+      // Create a ValueData object
+      const valueData = {
+        value: 123456, // Example uint240 value
+        description: ""
+      };
+
+      const userListSetStore = allPairVault.connect(user);
+      await expect(userListSetStore.addValue(valueData))
+        .to.be.revertedWith("E000");
+    });
   });
 });

@@ -1,5 +1,5 @@
 import { ethers } from "hardhat";
-import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
+import { time, loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers";
 
 let deployer: HardhatEthersSigner;
@@ -17,7 +17,7 @@ export async function fullSuiteFixture() {
   const delegator = await TrasactionDelegatorFactory.deploy(erc20.target);
 
   const {
-    suiteListSet: { listSetStore }
+    suiteAllPairVault: { allPairVault, lock }
   } = await associatedLinkedListSetFixture();
 
   return {
@@ -29,16 +29,25 @@ export async function fullSuiteFixture() {
       erc20,
       delegator,
     },
-    suiteListSet: { listSetStore }
+    suiteAllPairVault: { allPairVault, lock }
   };
 }
 
 async function associatedLinkedListSetFixture() {
   const [deployer, user] = await ethers.getSigners();
 
+  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
+  const ONE_GWEI = 1_000_000_000;
+
+  const lockedAmount = ONE_GWEI;
+  const unlockTime = (await time.latest()) + ONE_YEAR_IN_SECS;
+
+  const lock = await ethers.deployContract("Lock", [unlockTime], {
+    value: lockedAmount,
+  });
   const linkedListSetLib = await ethers.deployContract("LinkedListSetLib");
-  console.log("LinkedListSetLib address: ", linkedListSetLib.target);
-  const listSetStore = await ethers.deployContract("ListSetStore",
+  const allPairVault = await ethers.deployContract("AllPairVault",
+    [lock.target],
     {
       libraries: {
         LinkedListSetLib: linkedListSetLib.target,
@@ -46,8 +55,9 @@ async function associatedLinkedListSetFixture() {
     });
 
   return {
-    suiteListSet: {
-      listSetStore
+    suiteAllPairVault: {
+      lock,
+      allPairVault
     },
   };
 }
