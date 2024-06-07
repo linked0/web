@@ -23,7 +23,9 @@
         - [rust/postgresql install](#rustpostgresql-install)
         - [MySql Server 설치](#mysql-server-설치)
         - [Whale, Miro, onenote, Visual Studio, Xcode, Github CLI](#whale-miro-onenote-visual-studio-xcode-github-cli)
-        - [hardhat \& foundry](#hardhat--foundry)
+        - [hardhat \& foundry \& seth](#hardhat--foundry--seth)
+          - [hardhat](#hardhat)
+          - [foundry](#foundry)
         - [기타](#기타)
     - [Slack](#slack)
   - [Blockchain](#blockchain)
@@ -32,11 +34,11 @@
     - [clique in genesis.json](#clique-in-genesisjson)
     - [BOA 유통량 API](#boa-유통량-api)
     - [이더리엄 Endpoint](#이더리엄-endpoint)
-  - [Hardhat](#hardhat)
+  - [Hardhat](#hardhat-1)
     - [Hardhat / solidity](#hardhat--solidity)
-    - [Hardhat / Foundry](#hardhat--foundry-1)
+    - [Hardhat / Foundry](#hardhat--foundry)
     - [Workspaces](#workspaces)
-  - [Foundry](#foundry)
+  - [Foundry](#foundry-1)
     - [Install Foundry](#install-foundry)
     - [Initializing a new Foundry Project](#initializing-a-new-foundry-project)
   - [Dev Settings](#dev-settings)
@@ -273,9 +275,11 @@ psql postgres <== 접속해볼 수 있음.
 - brew install gh
 
 ##### hardhat & foundry
+###### hardhat 
 - npm install --global yarn 
 - yarn global add hardhat 
 
+###### foundry 
 - curl -L https://foundry.paradigm.xyz | bash
 
 ##### 기타
