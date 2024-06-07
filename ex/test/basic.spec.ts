@@ -32,6 +32,16 @@ describe("AllPairVault", function () {
     return { lock, unlockTime, lockedAmount, owner, otherAccount };
   }
 
+  describe("AllBasic", function () {
+    it("Should deploy AllBasic", async function () {
+      const {
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+
+      expect(await allBasic.value()).to.equal(1n);
+    });
+  });
+
   describe("Deployment Lock and AllPairVault", function () {
     it("Should set the right unlockTime", async function () {
       const { lock, unlockTime } = await loadFixture(deployOneYearLockFixture);
@@ -62,8 +72,8 @@ describe("AllPairVault", function () {
         suiteAllPairVault: { allPairVault, lock },
       } = await loadFixture(fullSuiteFixture);
 
-      // await lock.add();
-      // expect(await lock.value()).to.equal(2n);
+      await lock.add();
+      expect(await lock.value()).to.equal(2n);
     });
 
     it("add and contains", async function () {
@@ -133,5 +143,68 @@ describe("AllPairVault", function () {
       await expect(userListSetStore.addValue(valueData))
         .to.be.revertedWith("E000");
     });
+  });
+
+  describe("send and sendTransaction", function () {
+    it("Should succeed for personal_unlocalAccount", async function () {
+      const network = await provider.getNetwork();
+      if (Number(network.chainId) == 31337) {
+        console.log("Skip for local network");
+        return;
+      }
+      const userKey = process.env.USER_KEY || "";
+      const userWallet = new Wallet(userKey, ethers.provider);
+      const privateKeyPassword = process.env.PRIVATE_KEY_PASSWORD || "";
+      const unlock = await provider.send("personal_unlockAccount", [
+        userWallet.address,
+        privateKeyPassword,
+        0,
+      ]);
+      console.log(unlock);
+    });
+
+    it("Should succeed for personal_unlocalAccount with admin wallet", async function () {
+      const network = await provider.getNetwork();
+      if (Number(network.chainId) == 31337) {
+        console.log("Skip for local network");
+        return;
+      }
+
+      const adminKey = process.env.ADMIN_KEY || "";
+      const userKey = process.env.USER_KEY || "";
+      const adminWallet = new Wallet(adminKey, ethers.provider);
+      const userWallet = new Wallet(userKey, ethers.provider);
+      const privateKeyPassword = process.env.PRIVATE_KEY_PASSWORD || "";
+
+      // NOTE:It will succeeded even though there is red underline under the code
+      const unlock_response = await adminWallet.provider.send("personal_unlockAccount", [
+        userWallet.address,
+        privateKeyPassword,
+        0 // unlock duration in seconds, 0 for indefinite
+      ]);
+      console.log(unlock_response);
+    });
+
+    it("Should succeed for sendTransaction", async function () {
+      const adminKey = process.env.ADMIN_KEY || "";
+      const userKey = process.env.USER_KEY || "";
+      const adminWallet = new Wallet(adminKey, ethers.provider);
+      const userWallet = new Wallet(userKey, ethers.provider);
+
+      const [owner] = await ethers.getSigners();
+      const amount = ethers.parseEther("2.0");
+      const tx = await owner.sendTransaction({
+        to: adminWallet.address,
+        value: amount,
+      });
+      await tx.wait();
+
+      const receipt = await adminWallet.sendTransaction({
+        to: userWallet.address,
+        value: ethers.parseEther("1.0"),
+      });
+      console.log(receipt);
+    });
+
   });
 });

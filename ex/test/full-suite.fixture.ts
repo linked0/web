@@ -1,6 +1,7 @@
 import { ethers } from "hardhat";
 import { time, loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers";
+import { AllBasic__factory } from "../typechain-types";
 
 let deployer: HardhatEthersSigner;
 let user: HardhatEthersSigner;
@@ -20,6 +21,10 @@ export async function fullSuiteFixture() {
     suiteAllPairVault: { allPairVault, lock }
   } = await associatedLinkedListSetFixture();
 
+  const {
+    suiteBasic: { allBasic }
+  } = await allBasicFixture();
+
   return {
     accounts: {
       deployer,
@@ -29,7 +34,8 @@ export async function fullSuiteFixture() {
       erc20,
       delegator,
     },
-    suiteAllPairVault: { allPairVault, lock }
+    suiteAllPairVault: { allPairVault, lock },
+    suiteBasic: { allBasic },
   };
 }
 
@@ -58,6 +64,18 @@ async function associatedLinkedListSetFixture() {
     suiteAllPairVault: {
       lock,
       allPairVault
+    },
+  };
+}
+
+async function allBasicFixture() {
+  const [deployer, user] = await ethers.getSigners();
+
+  const allBasic = await ethers.deployContract("AllBasic");
+
+  return {
+    suiteBasic: {
+      allBasic
     },
   };
 }
