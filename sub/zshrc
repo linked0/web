@@ -127,18 +127,16 @@ chcm() {
   cat $@ | ch "$(cat ~/work/web/m2.txt)"
 }
 
+alias ppa='code ~/work/web/ex/contracts/AllPairVault.sol'
 alias ppb='code ~/work/web/ex/test/basic.spec.ts'
 alias ppd='code ~/work/web/dev.md'
-alias ppd2='code ./dev2.md'
+alias ppd2='code ~/work/web/dev2.md'
 alias ppp='code ./package.json'
+alias ppf='code ~/work/web/ex/test/full-suite.fixture.ts'
 alias pph='code ./hardhat.config.ts'
 alias ppe='code ./.env'
-alias ppf='code ./foundry.toml'
-alias ppmk='code ./Makefile'
-alias ppsz='code ~/work/web/sub/zshrc'
 alias ppz='code ~/.zshrc'
 alias ppr='code ./README.md'
-alias pprm='code ./remappings.txt'
 alias ppm='code ~/work/web/memo.txt'
 alias ppm2='code ~/work/web/m2.txt'
 
