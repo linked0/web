@@ -1703,4 +1703,13 @@ const tx = await deployerListSetStore.addValue(valueData);
 
 CONTRACT="AllBasic" yarn contract --network localnet
 
+function _getListValue(uint240 value) internal pure returns (SetValue) {
+   return SetValue.wrap(bytes30(value));
+ }
+
+byte(0, mload(add(sig, 96))) extracts the first byte of this 32-byte value, because 0 is the index for the first byte.
+
+// Clear any dirty upper bits of address 상위비트가 지워짐을 주의 
+addr := and(addr, 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF)
+
 # solidity 통합됨, 익숙해진 것은 `frequent` 위로 넘기기. 
