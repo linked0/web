@@ -126,6 +126,10 @@ chm() {
 chcm() {
   cat $@ | ch "$(cat ~/work/web/m2.txt)"
 }
+adf() {
+  echo "alias $1=\"code $2\"" >> ~/.zshrc
+}
+
 
 alias ppa='code ~/work/web/ex/contracts/AllBasic.sol'
 alias ppab='code ~/work/web/ex/contracts/AllPairVault.sol'
