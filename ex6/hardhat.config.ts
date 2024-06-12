@@ -1,13 +1,6 @@
 import * as dotenv from "dotenv";
-import '@nomiclabs/hardhat-waffle'
-import '@typechain/hardhat'
-import { HardhatUserConfig } from 'hardhat/config'
-import 'hardhat-deploy'
-import '@nomiclabs/hardhat-etherscan'
-
-import 'solidity-coverage'
-
-import * as fs from 'fs'
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
 
 dotenv.config({ path: ".env" });
 

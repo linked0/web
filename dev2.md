@@ -92,6 +92,8 @@
     - [Fatal: Failed to write genesis block: database contains incompatible genesis](#fatal-failed-to-write-genesis-block-database-contains-incompatible-genesis)
     - [OnlyHardhatNetworkError: This helper can only be used with Hardhat Network. You are connected to 'localnet', whose identifier is 'Geth/v1.12.1-unstable-5e198bde-20240602/darwin-amd64/go1.21.3'](#onlyhardhatnetworkerror-this-helper-can-only-be-used-with-hardhat-network-you-are-connected-to-localnet-whose-identifier-is-gethv1121-unstable-5e198bde-20240602darwin-amd64go1213)
       - [info](#info)
+    - [TypeError: Cannot read properties of undefined (reading 'provider')](#typeerror-cannot-read-properties-of-undefined-reading-provider)
+      - [hardhat.config.ts에 아래 추가](#hardhatconfigts에-아래-추가)
 - [Frequent Use](#frequent-use)
     - [forge install 할때, .gitmodules가 필요함](#forge-install-할때-gitmodules가-필요함)
     - [source code](#source-code)
@@ -1658,6 +1660,27 @@ version.toLowerCase().startsWith("anvil");
 ```
 - 내 geth code의 web3_clientVersion 코드를 바꿔야 가능함.
 - anvill 코드 보면 금방 바꿀 수 있을 것으로 보임.
+
+### TypeError: Cannot read properties of undefined (reading 'provider')
+    at Object.<anonymous> (/Users/hyunjaelee/work/web/ex/test/create2/base.spec.ts:5:25)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module.m._compile (/Users/hyunjaelee/work/web/ex/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/hyunjaelee/work/web/ex/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+    at require (node:internal/modules/helpers:177:18)
+    at /Users/hyunjaelee/work/web/ex/node_modules/mocha/lib/mocha.js:414:36
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+#### hardhat.config.ts에 아래 추가
+import '@nomiclabs/hardhat-waffle'
+import '@typechain/hardhat'
+import { HardhatUserConfig } from 'hardhat/config'
+import 'hardhat-deploy'
+import '@nomiclabs/hardhat-etherscan'
 
 
 # Frequent Use

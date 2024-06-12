@@ -22,6 +22,3 @@ npx hardhat run scripts/deploy.ts
 #### Feb 5, 2024 
 - scripts/deploy-lock-with-factory.ts에 Create2Factory 이용한 Lock 생성 코드 작업 시작
   - hardhat node를 로컬에 실행시켜서 진행함.
-
-#### June 12, 2024
-- ethers v5로 프로젝트 전환
