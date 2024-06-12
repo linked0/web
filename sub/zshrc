@@ -127,7 +127,7 @@ chcm() {
   cat $@ | ch "$(cat ~/work/web/m2.txt)"
 }
 adf() {
-  echo "alias $1=\"code $2\"" >> ~/.zshrc
+  echo "echo \"alias $1='code $2'\" >> ~/.zshrc"
 }
 
 
