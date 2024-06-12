@@ -38,7 +38,7 @@ describe("AllPairVault", function () {
         suiteBasic: { allBasic },
       } = await loadFixture(fullSuiteFixture);
 
-      expect(await allBasic.value()).to.equal(1n);
+      expect(await allBasic.getValue()).to.equal(1n);
     });
   });
 
@@ -92,7 +92,7 @@ describe("AllPairVault", function () {
       console.log(`TX: ${JSON.stringify(tx)}`);
       const receipt = await tx.wait();
       console.log(`Receipt: ${JSON.stringify(receipt)}`);
-      expect(receipt.status).to.equal(1);
+      expect(receipt?.status).to.equal(1);
 
       // THE CODE TO CHECK !!!
       // const valueStr = ethers.toQuantity(valueData.value);

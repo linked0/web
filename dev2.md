@@ -1712,4 +1712,10 @@ byte(0, mload(add(sig, 96))) extracts the first byte of this 32-byte value, beca
 // Clear any dirty upper bits of address 상위비트가 지워짐을 주의 
 addr := and(addr, 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF)
 
+https://github.com/ethereum/solidity/releases
+
+expect(receipt?.status).to.equal(1); <= 이렇게 해야 빨간줄이 안생김.
+
+slot := keccak256(keyBuffer, 0x80) // Solidity keccack256과는 좀 다름.
+
 # solidity 통합됨, 익숙해진 것은 `frequent` 위로 넘기기. 

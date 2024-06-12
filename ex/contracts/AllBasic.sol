@@ -14,4 +14,8 @@ contract AllBasic {
     value += 1;
     console.log("Value2 in Lock is %o", value);
   }
+
+  function getValue() external view returns (uint) {
+    return value;
+  }
 }

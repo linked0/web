@@ -23,7 +23,8 @@
         - [rust/postgresql install](#rustpostgresql-install)
         - [MySql Server 설치](#mysql-server-설치)
         - [Whale, Miro, onenote, Visual Studio, Xcode, Github CLI](#whale-miro-onenote-visual-studio-xcode-github-cli)
-        - [hardhat \& foundry \& seth](#hardhat--foundry--seth)
+        - [VS Code Setting](#vs-code-setting)
+        - [hardhat \& foundry](#hardhat--foundry)
           - [hardhat](#hardhat)
           - [foundry](#foundry)
         - [기타](#기타)
@@ -36,7 +37,7 @@
     - [이더리엄 Endpoint](#이더리엄-endpoint)
   - [Hardhat](#hardhat-1)
     - [Hardhat / solidity](#hardhat--solidity)
-    - [Hardhat / Foundry](#hardhat--foundry)
+    - [Hardhat / Foundry](#hardhat--foundry-1)
     - [Workspaces](#workspaces)
   - [Foundry](#foundry-1)
     - [Install Foundry](#install-foundry)
@@ -266,14 +267,27 @@ psql postgres <== 접속해볼 수 있음.
 ##### Whale, Miro, onenote, Visual Studio, Xcode, Github CLI
 - Command Palette: [⇧⌘P ] Shell command
 - Settings 열기: cmd + ,
-- 느린 스크롤 세팅: Settings 열기 - terminal smo 검색 - Smooth Scrolling 체크
-- Markdown All in One 플러그인: 마크다운 컨텐트 만들어주는 VSCode 
-- VS Code 플러그인 : Solidity/Go/rust-analyzer, Live Preview, Github Copilot, Markdown All in One
-- VS Code 세팅: Editor: Hover Enable을 Disable로 바꿔야 코드창에서 팝업 안뜸
 - XCode: [Apple Developer](https://developer.apple.com/xcode/resources/)
 - FileMerge: open /Applications/Xcode.app/Contents/Applications/FileMerge.app
 - brew install gh
 
+##### VS Code Setting
+- 느린 스크롤 세팅: Settings 열기 - terminal smo 검색 - Smooth Scrolling 체크
+- Markdown All in One 플러그인: 마크다운 컨텐트 만들어주는 VSCode 
+- VS Code 플러그인 : Solidity/Go/rust-analyzer, Live Preview, Github Copilot, Markdown All in One
+- VS Code 세팅: Editor: Hover Enable을 Disable로 바꿔야 코드창에서 팝업 안뜸
+- tabstob 바꾸기
+Open settings(cmd + shift + p => settings) => 다음 코드 추가 및 재실행
+```
+"[typescript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true // true if you prefer spaces over tabs
+    },
+    "[solidity]": {
+        "editor.tabSize": 2, // or the number you prefer for Solidity
+        "editor.insertSpaces": true // true if you prefer spaces over tabs
+    },
+```
 ##### hardhat & foundry
 ###### hardhat 
 - npm install --global yarn 
