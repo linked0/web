@@ -23,25 +23,4 @@ describe("ExecAccount", function () {
       expect(await execAccount.test()).to.equal("Hello World!");
     });
   });
-
-  describe("#executeUserOp", () => {
-    it("should execute", async () => {
-      const {
-        accounts: { deployer, user },
-        suite: { execAccount },
-      } = await loadFixture(fullSuiteFixture);
-
-      const execSig = execAccount.getFunction('executeUserOp').
-      // innerCall, as TestExecAccount.executeUserOp will try to decode it:
-      const innerCall = AbiCoder(['address', 'bytes'], [
-        account.address,
-        account.interface.encodeFunctionData('entryPoint')
-      ])
-
-      const userOp = {
-        sender: user.address,
-        callData: concat([])
-      }
-    });
-  });
 });

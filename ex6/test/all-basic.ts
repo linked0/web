@@ -13,6 +13,17 @@ import { hexlify } from "ethers";
 describe("AllPairVault", function () {
   const provider = ethers.provider;
 
+  describe.only("Deployment ExecAccount", () => {
+    it("should deploy ExecAccount", async () => {
+      const execAccountFactory = await ethers.getContractFactory("ExecAccount");
+      const execAccount = await execAccountFactory.deploy();
+
+      console.log("Test ExecAccount");
+      console.log(execAccount.target);
+      expect(await execAccount.test()).to.equal("Hello World!");
+    });
+  });
+
   // We define a fixture to reuse the same setup in every test.
   // We use loadFixture to run this setup once, snapshot that state,
   // and reset Hardhat Network to that snapshot in every test.
