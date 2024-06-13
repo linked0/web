@@ -5,6 +5,8 @@ import "@openzeppelin/contracts/utils/Create2.sol";
 import "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol";
 import "./IAccountExecute.sol";
 
+import "hardhat/console.sol";
+
 contract ExecAccount is IAccountExecute {
   constructor() {}
 
@@ -13,22 +15,45 @@ contract ExecAccount is IAccountExecute {
   /// @inheritdoc IAccountExecute
   function executeUserOp(
     PackedUserOperation calldata userOp,
-    bytes32 userOpHash
+    uint value
   ) external returns (bytes memory) {
-    // read from the userOp.callData, but skip the "magic" prefix (executeUserOp sig),
-    // which caused it to call this method.
-    // bytes calldata innerCall = userOp.callData[4 :];
-
     bytes memory innerCallRet;
-    // if (innerCall.length > 0) {
-    //   (address target, bytes memory data) = abi.decode(innerCall, (address, bytes));
-    //   bool success;
-    //   (success, innerCallRet) = target.call(data);
-    //   require(success, "inner call failed");
-    // }
+    console.log("value: %d", value);
+
+    bytes calldata callData = userOp.callData;
+    bytes4 methodSig;
+    assembly {
+      let len := callData.length
+      if gt(len, 3) {
+        methodSig := calldataload(callData.offset)
+      }
+    }
+    console.log(_toHexString(methodSig));
+
+    bytes calldata innerCall = userOp.callData[4:];
+    (address target, bytes memory data) = abi.decode(
+      innerCall,
+      (address, bytes)
+    );
+    bool success;
+    (success, innerCallRet) = target.call(data);
 
     emit Executed(userOp, innerCallRet);
     return innerCallRet;
+  }
+
+  // TODO: Make this function into my library
+  // Helper function to convert bytes32 to a hexadecimal string
+  function _toHexString(bytes32 data) internal pure returns (string memory) {
+    bytes memory alphabet = "0123456789abcdef";
+    bytes memory str = new bytes(64);
+
+    for (uint256 i = 0; i < 32; i++) {
+      str[i * 2] = alphabet[uint8(data[i] >> 4)];
+      str[1 + i * 2] = alphabet[uint8(data[i] & 0x0f)];
+    }
+
+    return string(str);
   }
 
   /// @notice Just a test function will be deleted later

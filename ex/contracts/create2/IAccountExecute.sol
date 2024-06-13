@@ -8,10 +8,9 @@ import "./PackedUserOperation.sol";
 interface IAccountExecute {
   /// @notice Execute a function on the account
   /// @param userOp The operation that was just validated.
-  /// @param userOpHash Hash of the user's request data.
   /// @return The return data from the function
   function executeUserOp(
     PackedUserOperation calldata userOp,
-    bytes32 userOpHash
+    uint value
   ) external returns (bytes memory);
 }
