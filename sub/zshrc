@@ -133,7 +133,7 @@ adf() {
 
 alias ppa='code ~/work/web/ex/contracts/AllBasic.sol'
 alias ppab='code ~/work/web/ex/contracts/AllPairVault.sol'
-alias ppb='code ~/work/web/ex/test/basic.spec.ts'
+alias ppb='code ~/work/web/ex/test/all-basic.ts'
 alias ppc='code ~/work/web/ex/scripts/deploy-basic.ts'
 alias ppd='code ~/work/web/dev.md'
 alias ppd2='code ~/work/web/dev2.md'

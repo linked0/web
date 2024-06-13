@@ -10,10 +10,13 @@ import { ethers } from "hardhat";
 import { fullSuiteFixture } from "./full-suite.fixture";
 import { hexlify } from "ethers";
 
+import type { FullSuiteFixtures } from "./full-suite.fixture";
+
 describe("AllPairVault", function () {
+  let allBasic: FullSuiteFixtures["allBasic"];
   const provider = ethers.provider;
 
-  describe.only("Deployment ExecAccount", () => {
+  describe("Deployment ExecAccount", () => {
     it("should deploy ExecAccount", async () => {
       const execAccountFactory = await ethers.getContractFactory("ExecAccount");
       const execAccount = await execAccountFactory.deploy();
@@ -43,7 +46,10 @@ describe("AllPairVault", function () {
     return { lock, unlockTime, lockedAmount, owner, otherAccount };
   }
 
-  describe("AllBasic", function () {
+  describe.only("AllBasic", function () {
+    before(async () => {
+      ({ allBasic } = await fullSuiteFixture());
+    })
     it("Should deploy AllBasic", async function () {
       const {
         suiteBasic: { allBasic },

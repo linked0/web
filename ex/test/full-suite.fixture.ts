@@ -14,7 +14,7 @@ export async function fullSuiteFixture() {
   const TrasactionDelegatorFactory = await ethers.getContractFactory(
     "TransactionDelegator",
   );
-  const delegator = await TrasactionDelegatorFactory.deploy(erc20.target);
+  const delegator = await TrasactionDelegatorFactory.deploy(erc20.address);
   console.log("Delegator address: ", delegator.address);
 
   const {
@@ -25,17 +25,16 @@ export async function fullSuiteFixture() {
     suiteBasic: { allBasic }
   } = await allBasicFixture();
 
+  console.log("allBasic address in Fixture: ", allBasic.address);
+
   return {
-    accounts: {
-      deployer,
-      user,
-    },
-    suite: {
-      erc20,
-      delegator,
-    },
-    suiteAllPairVault: { allPairVault, lock },
-    suiteBasic: { allBasic },
+    deployer,
+    user,
+    erc20,
+    delegator,
+    allPairVault,
+    lock,
+    allBasic
   };
 }
 
@@ -48,22 +47,21 @@ async function associatedLinkedListSetFixture() {
   const lockedAmount = ONE_GWEI;
   const unlockTime = (await time.latest()) + ONE_YEAR_IN_SECS;
 
-  let factory = await ethers.getContractFactory("Lock");
-  const lock = await factory.deploy([unlockTime], {
+  const lockFactory = await ethers.getContractFactory("Lock");
+  const lock = await lockFactory.deploy(unlockTime, {
     value: lockedAmount,
   });
+  console.log("lock address: ", lock.address);
 
-  factory = await ethers.getContractFactory("LinkedListSetLib");
-  const linkedListSetLib = factory.deploy();
+  const LiknedListFactory = await ethers.getContractFactory("LinkedListSetLib");
+  const linkedListSetLib = await LiknedListFactory.deploy();
 
-  factory = await ethers.getContractFactory("AllPairVault");
-  const allPairVault = await factory.deploy(
-    [lock.target],
-    {
-      libraries: {
-        LinkedListSetLib: linkedListSetLib.target,
-      },
-    });
+  const AllPairFactory = await ethers.getContractFactory("AllPairVault", {
+    libraries: {
+      LinkedListSetLib: linkedListSetLib.address
+    }
+  });
+  const allPairVault = await AllPairFactory.deploy(lock.address);
 
   return {
     suiteAllPairVault: {
@@ -76,7 +74,8 @@ async function associatedLinkedListSetFixture() {
 async function allBasicFixture() {
   const [deployer, user] = await ethers.getSigners();
 
-  const allBasic = await ethers.deployContract("AllBasic");
+  const allBasicFactory = await ethers.getContractFactory("AllBasic");
+  const allBasic = await allBasicFactory.deploy();
 
   return {
     suiteBasic: {
@@ -84,3 +83,5 @@ async function allBasicFixture() {
     },
   };
 }
+
+export type FullSuiteFixtures = Awaited<ReturnType<typeof fullSuiteFixture>>;
