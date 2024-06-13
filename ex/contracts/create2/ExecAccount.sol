@@ -16,9 +16,9 @@ contract ExecAccount is IAccountExecute {
   function executeUserOp(
     PackedUserOperation calldata userOp,
     uint value
-  ) external returns (bytes memory) {
+  ) external returns (bool) {
     bytes memory innerCallRet;
-    console.log("value: %d", value);
+    value += 1;
 
     bytes calldata callData = userOp.callData;
     bytes4 methodSig;
@@ -28,7 +28,6 @@ contract ExecAccount is IAccountExecute {
         methodSig := calldataload(callData.offset)
       }
     }
-    console.log(_toHexString(methodSig));
 
     bytes calldata innerCall = userOp.callData[4:];
     (address target, bytes memory data) = abi.decode(
@@ -39,7 +38,10 @@ contract ExecAccount is IAccountExecute {
     (success, innerCallRet) = target.call(data);
 
     emit Executed(userOp, innerCallRet);
-    return innerCallRet;
+    bytes32 encodedValue = keccak256(abi.encodePacked("Got it!"));
+    console.log(_toHexString(encodedValue));
+
+    return true;
   }
 
   // TODO: Make this function into my library

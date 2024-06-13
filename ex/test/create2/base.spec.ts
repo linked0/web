@@ -2,7 +2,8 @@ import { ethers } from 'hardhat'
 import { expect } from 'chai'
 import { Signer, Wallet } from 'ethers'
 import { ExecAccount, Operator } from '../../typechain';
-import { defaultAbiCoder, hexConcat } from 'ethers/lib/utils';
+import { defaultAbiCoder, hexConcat, arrayify, formatBytes32String } from 'ethers/lib/utils';
+import exp from 'constants';
 
 const provider = ethers.provider
 
@@ -36,9 +37,9 @@ describe("ExecAccount", function () {
       }
       await execAccount.executeUserOp(userOp, 1);
       await execAccount.executeUserOp(userOp, 1);
+      // expect(await execAccount.executeUserOp(userOp, 1)).equal(true);
 
-      const value = await operator.value();
-      console.log(value);
+      expect(await operator.value()).to.equal(3);
     });
   });
 });

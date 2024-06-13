@@ -12,5 +12,5 @@ interface IAccountExecute {
   function executeUserOp(
     PackedUserOperation calldata userOp,
     uint value
-  ) external returns (bytes memory);
+  ) external returns (bool);
 }

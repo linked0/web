@@ -1,21 +1,9 @@
-➜  ex git:(master) ✗ yarn getdatavalue                                                     
-yarn run v1.22.21
-$ hardhat run scripts/assembly/get-data-value.ts --network localnet
-DATA_STORAGE_CONTRACT:  0xe2662c5545033460e7cbceb0d53d217db0481973
-Error: could not decode result data (value="0x", info={ "method": "getDataValue", "signature": "getDataValue(string)" }, code=BAD_DATA, version=6.12.1)
-    at makeError (/Users/hyunjaelee/work/web/ex/node_modules/ethers/src.ts/utils/errors.ts:694:21)
-    at assert (/Users/hyunjaelee/work/web/ex/node_modules/ethers/src.ts/utils/errors.ts:715:25)
-    at Interface.decodeFunctionResult (/Users/hyunjaelee/work/web/ex/node_modules/ethers/src.ts/abi/interface.ts:916:15)
-    at staticCallResult (/Users/hyunjaelee/work/web/ex/node_modules/ethers/src.ts/contract/contract.ts:346:35)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async staticCall (/Users/hyunjaelee/work/web/ex/node_modules/ethers/src.ts/contract/contract.ts:303:24)
-    at async Proxy.getDataValue (/Users/hyunjaelee/work/web/ex/node_modules/ethers/src.ts/contract/contract.ts:351:41)
-    at async main (/Users/hyunjaelee/work/web/ex/scripts/assembly/get-data-value.ts:17:21) {
-  code: 'BAD_DATA',
-  value: '0x',
-  info: { method: 'getDataValue', signature: 'getDataValue(string)' },
-  shortMessage: 'could not decode result data'
-}
-error Command failed with exit code 1.
+1 passing (2s)
+  1 failing
 
-Why does this error happend?
+  1) ExecAccount
+       Deployment ExecAccount
+         should deploy ExecAccount:
+     AssertionError: expected { …(22) } to equal true
+      at Context.<anonymous> (test/create2/base.spec.ts:39:58)
+: solve this problem
