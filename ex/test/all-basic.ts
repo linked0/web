@@ -6,9 +6,10 @@ import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import { expect } from "chai";
 import { ethers } from "hardhat";
 import { Wallet, Signer } from "ethers";
+import { BigNumber, constants, utils } from "ethers";
 import { ExecAccount, Operator } from '../typechain';
 import { defaultAbiCoder, hexConcat, arrayify, formatBytes32String } from 'ethers/lib/utils';
-
+import { buildOrderStatus } from "./utils";
 
 import { fullSuiteFixture } from "./full-suite.fixture";
 import type { FullSuiteFixtures } from "./full-suite.fixture";
@@ -40,6 +41,22 @@ describe.only("AllPairVault", () => {
     });
   });
 
+  describe("Typscript grammar", () => {
+    it("should be able to call deep.equal", async () => {
+      const expected = {
+        '0': BigNumber.from(1),
+        '1': BigNumber.from(2),
+        '2': BigNumber.from(3),
+        '3': BigNumber.from(4),
+        isValidated: BigNumber.from(1),
+        isCancelled: BigNumber.from(2),
+        totalFilled: BigNumber.from(3),
+        totalSize: BigNumber.from(4)
+      };
+      expect(buildOrderStatus(1, 2, 3, 4)).to.deep.equal(expected);
+    });
+  });
+
   describe("Deployment ExecAccount", () => {
     it("should deploy ExecAccount", async () => {
       console.log(execAccount.address);
@@ -51,7 +68,7 @@ describe.only("AllPairVault", () => {
       expect(await execAccount.test2()).to.equal(true);
     });
 
-    it.only("#executeUserOp", async () => {
+    it("#executeUserOp", async () => {
       const execSig = operator.interface.getSighash('add');
       const innerCall = defaultAbiCoder.encode(['address', 'bytes'], [operator.address,
       operator.interface.encodeFunctionData('add')
