@@ -85,3 +85,6 @@
 [submodule "poohnet/deterministic-deployment-proxy"]
 	path = poohnet/deterministic-deployment-proxy
 	url = https://github.com/linked0/deterministic-deployment-proxy.git
+[submodule "ex/lib/forge-std"]
+	path = ex/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
