@@ -1,27 +1,66 @@
-# Sample Hardhat Project
-이 프로젝트는 hardhat-deploy를 테스트하기 위해서 생성된 프로젝트.
+## Foundry
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
-Try running some of the following tasks:
+Foundry consists of:
+
+-   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
+-   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
+-   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
+-   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+
+## Documentation
+
+https://book.getfoundry.sh/
+
+## Usage
+
+### Build
 
 ```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
+$ forge build
 ```
 
-## History
-#### Dec 18, 2023
-- ./deploy/002_deploy_lock2.ts를 일단 컴파일되게 처리함.
-  - hardhat.config.ts에 `import "hardhat-deploy"` 추가하니까 컴파일 잘 됨.
-  - ethers와 hardhat과 "@typechain/ethers-v5"관계 정리 필요.
+### Test
 
-#### Feb 5, 2024 
-- scripts/deploy-lock-with-factory.ts에 Create2Factory 이용한 Lock 생성 코드 작업 시작
-  - hardhat node를 로컬에 실행시켜서 진행함.
+```shell
+$ forge test
+```
 
-#### June 12, 2024
-- ethers v5로 프로젝트 전환
+### Format
+
+```shell
+$ forge fmt
+```
+
+### Gas Snapshots
+
+```shell
+$ forge snapshot
+```
+
+### Anvil
+
+```shell
+$ anvil
+```
+
+### Deploy
+
+```shell
+$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```
+
+### Cast
+
+```shell
+$ cast <subcommand>
+```
+
+### Help
+
+```shell
+$ forge --help
+$ anvil --help
+$ cast --help
+```
