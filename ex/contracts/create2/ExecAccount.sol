@@ -10,13 +10,13 @@ import "hardhat/console.sol";
 contract ExecAccount is IAccountExecute {
   constructor() {}
 
-  event Executed(PackedUserOperation userOp, bytes innerCallRet);
+  event Executed(string, bytes32);
 
   /// @inheritdoc IAccountExecute
   function executeUserOp(
     PackedUserOperation calldata userOp,
     uint value
-  ) external returns (bool) {
+  ) external returns (bool result) {
     bytes memory innerCallRet;
     value += 1;
 
@@ -37,11 +37,11 @@ contract ExecAccount is IAccountExecute {
     bool success;
     (success, innerCallRet) = target.call(data);
 
-    emit Executed(userOp, innerCallRet);
     bytes32 encodedValue = keccak256(abi.encodePacked("Got it!"));
     console.log(_toHexString(encodedValue));
+    emit Executed("Got it!", encodedValue);
 
-    return true;
+    result = true;
   }
 
   // TODO: Make this function into my library
@@ -61,5 +61,10 @@ contract ExecAccount is IAccountExecute {
   /// @notice Just a test function will be deleted later
   function test() public pure returns (string memory) {
     return "Hello World!";
+  }
+
+  // @notice Just a test function will be deleted later
+  function test2() public pure returns (bool) {
+    return true;
   }
 }

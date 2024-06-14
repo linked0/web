@@ -98,7 +98,6 @@
     - [forge install 할때, .gitmodules가 필요함](#forge-install-할때-gitmodules가-필요함)
     - [source code](#source-code)
     - [command](#command)
-- [solidity 통합됨, 익숙해진 것은 `frequent` 위로 넘기기.](#solidity-통합됨-익숙해진-것은-frequent-위로-넘기기)
 
 # solidity.md
 
@@ -1737,8 +1736,16 @@ addr := and(addr, 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF)
 
 https://github.com/ethereum/solidity/releases
 
-expect(receipt?.status).to.equal(1); <= 이렇게 해야 빨간줄이 안생김.
+expect(receipt?.status).to.equal(1); **이렇게 해야 빨간줄이 안생김**
 
 slot := keccak256(keyBuffer, 0x80) // Solidity keccack256과는 좀 다름.
 
-# solidity 통합됨, 익숙해진 것은 `frequent` 위로 넘기기. 
+**function executeUserOp 리턴값을 체크하지 못하던 문제** 
+In view and pure functions, which are called statically from a local node without a transaction. Or when doing such a static call to any function, but knowing that the state changes are not persisted.
+
+
+**두개의 차이 ==> 첫번재것 설명**: This expression generally means you are waiting for the `expect` function (a promise) to resolve. This is typically used with assertion libraries like Chai when you are expecting a promise to be rejected or resolved in a certain way.
+```
+await expect(execAccount.executeUserOp(userOp, 1)).to.emit(execAccount, "Executed").withArgs("Got it!", hashedMessage);
+expect(await execAccount.executeUserOp(userOp, 1)).to.emit(execAccount, "Executed").withArgs("Got it!", hashedMessage);
+```

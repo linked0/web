@@ -11,7 +11,6 @@
     "test": "hardhat test",
     "test:msca": "hardhat test test/erc6900/*.ts",
     "test:assembly": "hardhat test test/assembly/*.ts",
-    "test:create2": "hardhat test test/create2/*.ts",
     "basic": "hardhat test test/all-basic.ts",
     "basic:localnet": "hardhat test test/basic.spec.localnet.ts --network localnet",
     "deploy": "hardhat run scripts/deploy.ts --network holesky",
