@@ -22,7 +22,7 @@ describe.only("AllPairVault", () => {
   let operator: Operator;
   let signer: Signer;
 
-  before(async () => {
+  beforeEach(async () => {
     const execAccountFactory = await ethers.getContractFactory("ExecAccount");
     execAccount = await execAccountFactory.deploy();
     const operatorFactory = await ethers.getContractFactory("Operator");
@@ -88,6 +88,52 @@ describe.only("AllPairVault", () => {
 
       // check value of operator
       expect(await operator.value()).to.equal(2);
+    });
+
+    it("#executeMultipleUserOps", async () => {
+      const execSig = operator.interface.getSighash('add');
+      const innerCall = defaultAbiCoder.encode(['address', 'bytes'], [operator.address,
+      operator.interface.encodeFunctionData('add')
+      ]);
+      const userOp = {
+        sender: operator.address,
+        callData: hexConcat([execSig, innerCall])
+      }
+      const userOp2 = {
+        sender: operator.address,
+        callData: hexConcat([execSig, innerCall])
+      }
+
+      // check event
+      const message = "Got it two!";
+      const encodedMessage = ethers.utils.toUtf8Bytes(message);
+      const hashedMessage = ethers.utils.keccak256(encodedMessage);
+
+      await expect(execAccount.executeMultipleUserOps([userOp, userOp2], [1, 2])).to.emit(execAccount, "Executed").withArgs("Got it two!", hashedMessage);
+
+      // check value of operator
+      expect(await operator.value()).to.equal(3);
+    });
+
+    it("#executeIndirect", async () => {
+      const execSig = execAccount.interface.getSighash('indirectInnerCall(bytes)');
+      const innerCall = defaultAbiCoder.encode(['address', 'bytes'], [operator.address,
+      operator.interface.encodeFunctionData('addTen')
+      ]);
+      const userOp = {
+        sender: operator.address,
+        callData: hexConcat([execSig, innerCall])
+      }
+
+      // check event
+      const message = "Indirect";
+      const encodedMessage = ethers.utils.toUtf8Bytes(message);
+      const hashedMessage = ethers.utils.keccak256(encodedMessage);
+
+      await expect(execAccount.executeIndirect(userOp, 1)).to.emit(execAccount, "Executed").withArgs("Indirect", hashedMessage);
+
+      // check value of operator
+      expect(await operator.value()).to.equal(11);
     });
   });
 });

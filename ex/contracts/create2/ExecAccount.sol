@@ -16,7 +16,7 @@ contract ExecAccount is IAccountExecute {
   function executeUserOp(
     PackedUserOperation calldata userOp,
     uint value
-  ) external returns (bool result) {
+  ) public returns (bool result) {
     bytes memory innerCallRet;
     value += 1;
 
@@ -42,6 +42,57 @@ contract ExecAccount is IAccountExecute {
     emit Executed("Got it!", encodedValue);
 
     result = true;
+  }
+
+  function executeMultipleUserOps(
+    PackedUserOperation[] calldata userOps,
+    uint[] calldata values
+  ) external {
+    for (uint i = 0; i < userOps.length; i++) {
+      executeUserOp(userOps[i], values[i]);
+    }
+
+    bytes32 encodedValue = keccak256(abi.encodePacked("Got it two!"));
+    console.log(_toHexString(encodedValue));
+    emit Executed("Got it two!", encodedValue);
+  }
+
+  function executeIndirect(
+    PackedUserOperation calldata userOp,
+    uint value
+  ) external {
+    bytes memory innerCallRet;
+    value += 1;
+
+    bytes calldata callData = userOp.callData;
+    bytes4 methodSig;
+    assembly {
+      let len := callData.length
+      if gt(len, 3) {
+        methodSig := calldataload(callData.offset)
+      }
+    }
+
+    bytes calldata innerCall = userOp.callData[4:];
+    bytes memory data = abi.encodeWithSelector(methodSig, innerCall);
+
+    bool success;
+    (success, innerCallRet) = address(this).call(data);
+
+    bytes32 encodedValue = keccak256(abi.encodePacked("Indirect"));
+    console.log(_toHexString(encodedValue));
+    emit Executed("Indirect", encodedValue);
+  }
+
+  function indirectInnerCall(bytes calldata paramCallData) external {
+    console.log("Indirect inner call");
+    bytes memory innerCallRet;
+    (address target, bytes memory data) = abi.decode(
+      paramCallData,
+      (address, bytes)
+    );
+    bool success;
+    (success, innerCallRet) = target.call(data);
   }
 
   // TODO: Make this function into my library

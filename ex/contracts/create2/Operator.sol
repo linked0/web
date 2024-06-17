@@ -10,6 +10,10 @@ contract Operator {
     value += 1;
   }
 
+  function addTen() public {
+    value += 10;
+  }
+
   function getValue() external view returns (uint) {
     return value;
   }
