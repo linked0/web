@@ -50,6 +50,11 @@ const config: HardhatUserConfig = {
       chainId: 17000,
       accounts: [process.env.HOLESKY_ADMIN_KEY || ""]
     },
+    sepolia: {
+      url: process.env.SEPOLIA_URL,
+      chainId: 11155111,
+      accounts: [process.env.ADMIN_KEY || ""]
+    },
   },
 };
 
