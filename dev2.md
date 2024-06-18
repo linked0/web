@@ -98,6 +98,7 @@
     - [forge install 할때, .gitmodules가 필요함](#forge-install-할때-gitmodules가-필요함)
     - [source code](#source-code)
     - [command](#command)
+      - [contract size](#contract-size-1)
 
 # solidity.md
 
@@ -1748,4 +1749,29 @@ In view and pure functions, which are called statically from a local node withou
 ```
 await expect(execAccount.executeUserOp(userOp, 1)).to.emit(execAccount, "Executed").withArgs("Got it!", hashedMessage);
 expect(await execAccount.executeUserOp(userOp, 1)).to.emit(execAccount, "Executed").withArgs("Got it!", hashedMessage);
+```
+
+#### contract size
+- limit:  **24,576 bytes** (24 KB).
+- 빈 함수 하나 추가하면 23바이트 추가됨 ==> function addNone() public {}
+- 플러스 연산하는 코드 하나 추가하면 26바이트 추가됨 ==> value2 += 62;
+- Warning: 3 contracts exceed the size limit for mainnet deployment (24.000 KiB deployed, 48.000 KiB init).
+
+```
+const contractCode = await provider.getCode(tooBig.address);
+const contractSize = (contractCode.length - 2) / 2; // Subtract 2 for '0x' prefix and divide by 2 to get the byte count
+```
+
+아래의 isPrime처리 코드를 library call 하는 것으로 바꾸면 200bytes 차이, 그냥 없애면 500바이트 차이.
+```
+ function addSixtyTwo(uint256 n) public returns (bool) {
+    // return n.isPrime();
+    if (n <= 1) return false;
+    if (n <= 3) return true;
+    if (n % 2 == 0 || n % 3 == 0) return false;
+    for (uint256 i = 5; i * i <= n; i += 6) {
+      if (n % i == 0 || n % (i + 2) == 0) return false;
+    }
+    return true;
+  }
 ```

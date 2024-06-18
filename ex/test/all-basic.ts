@@ -7,7 +7,7 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 import { Wallet, Signer } from "ethers";
 import { BigNumber, constants, utils } from "ethers";
-import { ExecAccount, Operator } from '../typechain';
+import { ExecAccount, Operator, TooBig } from '../typechain';
 import { defaultAbiCoder, hexConcat, arrayify, formatBytes32String } from 'ethers/lib/utils';
 import { buildOrderStatus } from "./utils";
 

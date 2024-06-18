@@ -1,9 +1,13 @@
-1 passing (2s)
+  TooBig contract
+0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+    1) should deploy TooBig
+
+
+  0 passing (2s)
   1 failing
 
-  1) ExecAccount
-       Deployment ExecAccount
-         should deploy ExecAccount:
-     AssertionError: expected { …(22) } to equal true
-      at Context.<anonymous> (test/create2/base.spec.ts:39:58)
+  1) TooBig contract
+       should deploy TooBig:
+     TypeError: Cannot read properties of undefined (reading 'address')
+      at Context.<anonymous> (test/total/toobig.basic.ts:38:27)
 : solve this problem
