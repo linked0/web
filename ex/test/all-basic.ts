@@ -7,12 +7,13 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 import { Wallet, Signer } from "ethers";
 import { BigNumber, constants, utils } from "ethers";
-import { ExecAccount, Operator, TooBig } from '../typechain';
-import { defaultAbiCoder, hexConcat, arrayify, formatBytes32String } from 'ethers/lib/utils';
+import { ExecAccount, Operator, TooBig, AllPairVault, Lock } from '../typechain';
+import { defaultAbiCoder, hexConcat, arrayify, hexlify, hexValue, formatBytes32String } from 'ethers/lib/utils';
 import { buildOrderStatus } from "./utils";
 
 import { fullSuiteFixture } from "./full-suite.fixture";
 import type { FullSuiteFixtures } from "./full-suite.fixture";
+import { libraries } from "../typechain/contracts";
 
 describe.only("AllPairVault", () => {
   let allBasic: FullSuiteFixtures["allBasic"];
@@ -134,6 +135,69 @@ describe.only("AllPairVault", () => {
 
       // check value of operator
       expect(await operator.value()).to.equal(11);
+    });
+  });
+
+  describe("ListSetStore", () => {
+    let allPairVault: AllPairVault;
+    let lock: Lock;
+    const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
+    const ONE_GWEI = 1_000_000_000;
+    const lockedAmount = ONE_GWEI;
+
+    beforeEach(async () => {
+      const latestTime = await time.latest();
+      const unlockTime = await time.latest() + ONE_YEAR_IN_SECS;
+      const Lock = await ethers.getContractFactory("Lock");
+      lock = await Lock.deploy(unlockTime, {
+        value: lockedAmount
+      });
+
+      const LinkedListSetStore = await ethers.getContractFactory("LinkedListSetLib");
+      const linkedListSetLib = await LinkedListSetStore.deploy();
+      linkedListSetLib.deployed();
+
+      const AllPairVault = await ethers.getContractFactory("AllPairVault", { libraries: { LinkedListSetLib: linkedListSetLib.address } });
+      allPairVault = await AllPairVault.deploy(lock.address);
+    });
+
+    it("add and contains", async function () {
+      // Create a ValueData object
+      const valueData = {
+        value: 123456, // Example uint240 value
+        description: "Example description"
+      };
+
+      const tx = await allPairVault.addValue(valueData);
+      const receipt = await tx.wait();
+      expect(receipt?.status).to.equal(1);
+
+      const hexValue = utils.hexlify(valueData.value);
+      const hexValue30 = utils.hexZeroPad(hexValue, 30);
+      expect(await allPairVault.contains(arrayify(hexValue30))).to.equal(true);
+    });
+
+    it("add with checking event", async function () {
+      // Create a ValueData object
+      const valueData = {
+        value: 123456, // Example uint240 value
+        description: "Example description"
+      };
+
+      expect(await allPairVault.addValue(valueData))
+        .to.emit(allPairVault, "ValueAdded")
+        .withArgs(valueData.value, valueData.description);
+    });
+
+    it("add with revert", async function () {
+      // Create a ValueData object
+      const valueData = {
+        value: 123456, // Example uint240 value
+        description: ""
+      };
+
+      await expect(allPairVault.addValue(valueData))
+        .to.be.revertedWith("E000");
     });
   });
 });
