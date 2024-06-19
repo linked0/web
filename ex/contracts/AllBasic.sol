@@ -6,6 +6,8 @@ import "hardhat/console.sol";
 
 contract AllBasic {
   uint public value = 1;
+  mapping(address => bool) public approvals;
+  mapping(address => bool) public spenders;
 
   constructor() payable {}
 
@@ -17,5 +19,10 @@ contract AllBasic {
 
   function getValue() external view returns (uint) {
     return value;
+  }
+
+  function approve(address owner, address spender) public {
+    approvals[owner] = true;
+    spenders[spender] = true;
   }
 }

@@ -2,6 +2,8 @@ import * as dotenv from "dotenv";
 import '@nomiclabs/hardhat-waffle'
 import '@typechain/hardhat'
 import { HardhatUserConfig, task } from 'hardhat/config'
+import { HardhatNetworkAccountUserConfig } from "hardhat/types/config";
+import { Wallet, Signer, utils } from "ethers";
 import 'hardhat-deploy'
 import '@nomiclabs/hardhat-etherscan'
 import "hardhat-contract-sizer";
@@ -39,6 +41,23 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
+function getAccounts() {
+  const accounts: HardhatNetworkAccountUserConfig[] = [];
+  const defaultBalance = utils.parseEther("2000000").toString();
+
+  const n = 10;
+  for (let i = 0; i < n; ++i) {
+    accounts.push({
+      privateKey: Wallet.createRandom().privateKey,
+      balance: defaultBalance,
+    });
+  }
+  accounts[0].privateKey = process.env.ADMIN_KEY || "";
+  accounts[1].privateKey = process.env.USER_KEY || "";
+
+  return accounts;
+}
+
 const config: HardhatUserConfig = {
   solidity: {
     compilers: [
@@ -65,6 +84,7 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       allowUnlimitedContractSize: false,
+      accounts: getAccounts(),
     },
     localnet: {
       url: process.env.LOCALNET_URL,

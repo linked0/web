@@ -200,4 +200,65 @@ describe.only("AllPairVault", () => {
         .to.be.revertedWith("E000");
     });
   });
+
+  describe("#reduce", () => {
+    const concatenateArrayElements = (arr: any[]): string => {
+      return arr.reduce((acc, curr) => acc += curr.toString(), "");
+    }
+
+    it("should reduce the value", async () => {
+      const numArray: number[] = [1, 2, 3, 4, 5];
+      const strArray: string[] = ["a", "b", "c", "d"];
+
+      const concatenatedNumString = concatenateArrayElements(numArray);
+      const concatenatedStrString = concatenateArrayElements(strArray);
+
+      expect(concatenatedNumString).to.equal("12345");
+      expect(concatenatedStrString).to.equal("abcd");
+    });
+  });
+
+  describe("#signTransaction", function () {
+    before(async () => {
+      ({ allBasic } = await fullSuiteFixture());
+    });
+
+    it("Should approve and verify transactions", async function () {
+      // const [owner, spender] = await ethers.getSigners();
+      const owner = new Wallet(process.env.ADMIN_KEY || "", provider);
+      const spender = new Wallet(process.env.USER_KEY || "", provider);
+
+      // Populate the `approve` transaction
+      const tx = await allBasic.populateTransaction.approve(owner.address, spender.address);
+
+      // Sign the transaction
+      const signedTx = await owner.signTransaction(tx);
+
+      // Parse the signed transaction
+      const parsedTx = ethers.utils.parseTransaction(signedTx);
+      const { v, r, s } = parsedTx;
+      console.log("parsedTx: ", parsedTx);
+
+      // NOTE: refer this code later
+      // work/pooh-rollup/etc/system-contracts/test/BootloaderUtilities.spec.ts
+      // const eip1559Tx = await wallet.populateTransaction({
+      //   type: 2,
+      //   to: wallet.address,
+      //   from: wallet.address,
+      //   data: "0x",
+      //   value: 0,
+      //   maxFeePerGas: 12000,
+      //   maxPriorityFeePerGas: 100,
+      // });
+      // const signedEip1559Tx = await wallet.signTransaction(eip1559Tx);
+      // const parsedEIP1559tx = zksync.utils.parseTransaction(signedEip1559Tx);
+
+      // const EIP1559TxData = signedTxToTransactionData(parsedEIP1559tx)!;
+      // const signature = ethers.utils.arrayify(EIP1559TxData.signature);
+      // signature[64] = 0;
+      // EIP1559TxData.signature = signature;
+
+      // await expect(bootloaderUtilities.getTransactionHashes(EIP1559TxData)).to.be.revertedWith("Invalid v value");
+    });
+  });
 });

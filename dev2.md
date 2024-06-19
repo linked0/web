@@ -1775,3 +1775,6 @@ const contractSize = (contractCode.length - 2) / 2; // Subtract 2 for '0x' prefi
     return true;
   }
 ```
+
+---
+solc --bin --abi contracts/assembly/DataStorage.sol -o output
