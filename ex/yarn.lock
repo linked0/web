@@ -1400,10 +1400,18 @@
   dependencies:
     ethers "^5.0.2"
 
-"@typechain/hardhat@^2.3.0":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@typechain/hardhat/-/hardhat-2.3.1.tgz#1e8a6e3795e115a5d5348526282b5c597fab0b78"
-  integrity sha512-BQV8OKQi0KAzLXCdsPO0pZBNQQ6ra8A2ucC26uFX/kquRBtJu1yEyWnVSmtr07b5hyRoJRpzUeINLnyqz4/MAw==
+"@typechain/ethers-v6@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@typechain/ethers-v6/-/ethers-v6-0.5.1.tgz#42fe214a19a8b687086c93189b301e2b878797ea"
+  integrity sha512-F+GklO8jBWlsaVV+9oHaPh5NJdd6rAKN4tklGfInX1Q7h0xPgVLP39Jl3eCulPB5qexI71ZFHwbljx4ZXNfouA==
+  dependencies:
+    lodash "^4.17.15"
+    ts-essentials "^7.0.1"
+
+"@typechain/hardhat@^9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@typechain/hardhat/-/hardhat-9.1.0.tgz#6985015f01dfb37ef2ca8a29c742d05890351ddc"
+  integrity sha512-mtaUlzLlkqTlfPwB3FORdejqBskSnh+Jl8AIJGjXNAQfRQ4ofHADPl1+oU7Z3pAJzmZbUXII8MhOLQltcHgKnA==
   dependencies:
     fs-extra "^9.1.0"
 
@@ -9119,38 +9127,6 @@ scuffed-abi@^1.0.4:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/scuffed-abi/-/scuffed-abi-1.0.9.tgz#33d7cf57bad3cd29292796feebdbe33b24f9d368"
   integrity sha512-wPYkgvnKBsVMcgUOlUlKoolTYmgIfYxvbD+MgO8s7WFbM/XfDQYHZmU8w8TINgLWM52ohy/ePQAH+DTLGnKrVQ==
-
-seaport-core@1.6.6:
-  version "1.6.6"
-  resolved "https://registry.yarnpkg.com/seaport-core/-/seaport-core-1.6.6.tgz#c599ffbfaccab8e031bd702a67ed5fc48d256802"
-  integrity sha512-BNOg9EizHcLXN27UMKPB+2ewwcRnZkuNV8lRawKORnlpHI7SlCXhLkvCT+SHL/s5W8sJbnq2ef/SCvNB0r+KKA==
-  dependencies:
-    seaport-types "1.6.3"
-
-seaport-core@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/seaport-core/-/seaport-core-0.0.1.tgz#99db0b605d0fbbfd43ca7a4724e64374ce47f6d4"
-  integrity sha512-fgdSIC0ru8xK+fdDfF4bgTFH8ssr6EwbPejC2g/JsWzxy+FvG7JfaX57yn/eIv6hoscgZL87Rm+kANncgwLH3A==
-  dependencies:
-    seaport-types "^0.0.1"
-
-seaport-sol@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/seaport-sol/-/seaport-sol-1.6.0.tgz#2a71ae8da5af9aecffee21767632ef37aaaaee13"
-  integrity sha512-a1FBK1jIeEQXZ9CmQvtmfG0w7CE8nIad89btGg7qrrrtF4j1S0Ilmzpe2Hderap05Uvf3EWS9P/aghDQCNAwkA==
-  dependencies:
-    seaport-core "^0.0.1"
-    seaport-types "^0.0.1"
-
-seaport-types@1.6.3:
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/seaport-types/-/seaport-types-1.6.3.tgz#b9993864517d4f9ecccc6b6daf6ef3f52a114e58"
-  integrity sha512-Rm9dTTEUKmXqMgc5TiRtfX/sFOX6SjKkT9l/spTdRknplYh5tmJ0fMJzbE60pCzV1/Izq0cCua6uvWszo6zOAQ==
-
-seaport-types@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/seaport-types/-/seaport-types-0.0.1.tgz#e2a32fe8641853d7dadb1b0232d911d88ccc3f1a"
-  integrity sha512-m7MLa7sq3YPwojxXiVvoX1PM9iNVtQIn7AdEtBnKTwgxPfGRWUlbs/oMgetpjT/ZYTmv3X5/BghOcstWYvKqRA==
 
 secp256k1@^4.0.1:
   version "4.0.3"

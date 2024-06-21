@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import { Conduit as CoreConduit } from "seaport-core/src/conduit/Conduit.sol";
+import {Conduit as CoreConduit} from "../seaport-core/src/conduit/Conduit.sol";
 
 /**
  * @title Conduit
@@ -15,6 +15,4 @@ import { Conduit as CoreConduit } from "seaport-core/src/conduit/Conduit.sol";
  *         approved ERC20/721/1155 tokens to be taken immediately — be extremely
  *         cautious with what conduits you give token approvals to!*
  */
-contract LocalConduit is CoreConduit {
-
-}
+contract LocalConduit is CoreConduit {}
