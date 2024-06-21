@@ -4,6 +4,7 @@ pragma solidity ^0.8.19;
 // Uncomment this line to use console.log
 import "hardhat/console.sol";
 
+// @audit-issue Should emit event
 contract AllBasic {
   uint public value = 1;
   mapping(address => bool) public approvals;

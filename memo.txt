@@ -1,3 +1,16 @@
+  
+  1. **Install Yarn**: `npm install -g yarn`
+2. **Initialize Yarn Project**: `yarn init -y`
+3. **Install TypeScript**: `yarn add typescript --dev`
+4. **Initialize TypeScript Config**: `yarn tsc --init`
+5. **Optional: Install Node.js Type Definitions**: `yarn add @types/node --dev`
+6. **Create Project Structure**: `mkdir src` and create starter files.
+7. **Configure `tsconfig.json`**: Set root and out directories, and other compiler options.
+8. **Update `package.json` Scripts**: Add `build` and `start` scripts.
+9. **Compile TypeScript Code**: `yarn build`
+10. **Run Your Project**: `yarn start`
+
+
   describe("ListSetStore", () => {
     let allPairVault: AllPairVault;
     const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;

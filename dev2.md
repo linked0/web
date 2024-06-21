@@ -99,6 +99,8 @@
     - [source code](#source-code)
     - [command](#command)
       - [contract size](#contract-size-1)
+  - [solc --bin --abi contracts/assembly/DataStorage.sol -o output](#solc---bin---abi-contractsassemblydatastoragesol--o-output)
+  - [npx hardhat node](#npx-hardhat-node)
 
 # solidity.md
 
@@ -1778,3 +1780,11 @@ const contractSize = (contractCode.length - 2) / 2; // Subtract 2 for '0x' prefi
 
 ---
 solc --bin --abi contracts/assembly/DataStorage.sol -o output
+---
+npx hardhat node
+---
+// Call transfer function and check for success/failure
+        (bool sent, ) = _to.call{value: msg.value}("");
+        require(sent, "Failed to send Ether");
+
+---
