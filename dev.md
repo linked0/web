@@ -1095,7 +1095,7 @@ unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
 history -100
 ```
 ---
-- [dev2.md](dev2.md), [solidity](./sub/solidity.md), [voca](./sub/voca.md)
-- [dev.md](https://bit.ly/3MVG5AN), [io/dev.md](https://bit.ly/3MT0VRb)
-
+- [dev2.md](dev2.md)
+- [dev.md](bit.ly/3MVG5AN), [io/dev.md](bit.ly/3MT0VRb)
+- [Summary](bit.ly/3xiSj1M)
 

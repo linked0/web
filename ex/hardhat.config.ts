@@ -58,6 +58,25 @@ function getAccounts() {
   return accounts;
 }
 
+const optimizerSettingsNoSpecializer = {
+  enabled: true,
+  runs: 4_294_967_295,
+  details: {
+    peephole: true,
+    inliner: true,
+    jumpdestRemover: true,
+    orderLiterals: true,
+    deduplicate: true,
+    cse: true,
+    constantOptimizer: true,
+    yulDetails: {
+      stackAllocation: true,
+      optimizerSteps:
+        "dhfoDgvulfnTUtnIf[xa[r]EscLMcCTUtTOntnfDIulLculVcul [j]Tpeulxa[rul]xa[r]cLgvifCTUca[r]LSsTOtfDnca[r]Iulc]jmul[jul] VcTOcul jmul",
+    },
+  },
+};
+
 const config: HardhatUserConfig = {
   solidity: {
     compilers: [
@@ -72,6 +91,23 @@ const config: HardhatUserConfig = {
       },
       {
         version: "0.8.24",
+        settings: {
+          evmVersion: "cancun",
+          viaIR: true,
+          optimizer: {
+            ...(process.env.NO_SPECIALIZER
+              ? optimizerSettingsNoSpecializer
+              : { enabled: true, runs: 4_294_967_295 }),
+          },
+          metadata: {
+            bytecodeHash: "none",
+          },
+          outputSelection: {
+            "*": {
+              "*": ["evm.assembly", "irOptimized", "devdoc"],
+            },
+          },
+        },
       },
     ],
     settings: {
@@ -84,6 +120,7 @@ const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {
+      hardfork: "cancun",
       allowUnlimitedContractSize: false,
       accounts: getAccounts(),
     },
