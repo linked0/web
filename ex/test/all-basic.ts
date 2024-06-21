@@ -15,7 +15,7 @@ import { fullSuiteFixture } from "./full-suite.fixture";
 import type { FullSuiteFixtures } from "./full-suite.fixture";
 import { libraries } from "../typechain/contracts";
 
-describe.only("AllPairVault", () => {
+describe("AllPairVault", () => {
   let allBasic: FullSuiteFixtures["allBasic"];
   const provider = ethers.provider;
 

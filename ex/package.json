@@ -8,7 +8,8 @@
   "scripts": {
     "build": "hardhat compile",
     "clean": "rm -rf cache artifacts typechain typechain-types",
-    "test": "hardhat test",
+    "test": "hardhat test test/*.ts",
+    "test:all": "hardhat test",
     "test:msca": "hardhat test test/erc6900/*.ts",
     "test:assembly": "hardhat test test/assembly/*.ts",
     "test:toobig": "hardhat test test/total/toobig.basic.ts",
