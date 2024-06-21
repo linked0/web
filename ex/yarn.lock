@@ -9115,6 +9115,11 @@ scryptsy@^1.2.1:
   dependencies:
     pbkdf2 "^3.0.3"
 
+scuffed-abi@^1.0.4:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/scuffed-abi/-/scuffed-abi-1.0.9.tgz#33d7cf57bad3cd29292796feebdbe33b24f9d368"
+  integrity sha512-wPYkgvnKBsVMcgUOlUlKoolTYmgIfYxvbD+MgO8s7WFbM/XfDQYHZmU8w8TINgLWM52ohy/ePQAH+DTLGnKrVQ==
+
 seaport-core@1.6.6:
   version "1.6.6"
   resolved "https://registry.yarnpkg.com/seaport-core/-/seaport-core-1.6.6.tgz#c599ffbfaccab8e031bd702a67ed5fc48d256802"

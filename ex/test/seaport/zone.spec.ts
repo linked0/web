@@ -8,7 +8,7 @@ import {
   type TestERC721,
   type TestZone,
   PausableZoneEventsAndErrors__factory as pausableZoneFactory,
-} from "../typechain-types";
+} from "../../typechain";
 
 import { merkleTree } from "./utils/criteria";
 import {

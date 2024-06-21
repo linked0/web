@@ -417,6 +417,10 @@ describe(`Basic buy now or accept offer flows (Seaport v${VERSION})`, function (
           order
         );
         await withBalanceChecks([order], 0, undefined, async () => {
+          const contractCode = await provider.getCode(marketplaceContract.address);
+          const contractSize = (contractCode.length - 2) / 2; // Subtract 2 for '0x' prefix and divide by 2 to get the byte count
+          console.log("Contract size: ", contractSize);
+
           const tx = marketplaceContract
             .connect(buyer)
             .fulfillBasicOrder(basicOrderParameters, {
