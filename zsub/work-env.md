@@ -131,7 +131,8 @@ psql postgres <== 접속해볼 수 있음.
 - Live Preview
 - Github Copilot
 - Markdown All in One
-- 
+- Github actions
+
 ##### VS Code Setting
 - 느린 스크롤 세팅: Settings 열기 - terminal smo 검색 - Smooth Scrolling 체크
 - VS Code 세팅: Editor: Hover Enable을 Disable로 바꿔야 코드창에서 팝업 안뜸

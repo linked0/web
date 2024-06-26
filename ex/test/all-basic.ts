@@ -31,6 +31,15 @@ describe("AllPairVault", () => {
     signer = provider.getSigner()
   });
 
+  describe("Code Test", () => {
+    const max = ethers.constants.MaxUint256;
+    const hafMax = max.div(2);
+    const hafMaxPlusOne = hafMax.add(1);
+    console.log("max: ", max.toString());
+    console.log("hafMax: ", hafMax.toString());
+    console.log("hafMaxPlusOne: ", hafMaxPlusOne.toString());
+  });
+
   describe("AllBasic", function () {
     before(async () => {
       ({ allBasic } = await fullSuiteFixture());
@@ -237,7 +246,7 @@ describe("AllPairVault", () => {
       // Parse the signed transaction
       const parsedTx = ethers.utils.parseTransaction(signedTx);
       const { v, r, s } = parsedTx;
-      console.log("parsedTx: ", parsedTx);
+      // console.log("parsedTx: ", parsedTx);
 
       // NOTE: refer this code later
       // work/pooh-rollup/etc/system-contracts/test/BootloaderUtilities.spec.ts

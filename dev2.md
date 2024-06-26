@@ -1794,3 +1794,6 @@ npx hardhat node
         require(sent, "Failed to send Ether");
 
 ---
+yarn init -y
+yarn add typescript ts-node @types/node --dev
+tsc --init
