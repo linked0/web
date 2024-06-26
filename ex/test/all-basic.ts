@@ -46,7 +46,7 @@ describe("AllPairVault", () => {
     });
   });
 
-  describe("Typscript grammar", () => {
+  describe("Typscript grammar", () =>   {
     it("should be able to call deep.equal", async () => {
       const expected = {
         '0': BigNumber.from(1),

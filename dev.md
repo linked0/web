@@ -31,7 +31,7 @@
     - [NPM](#npm)
     - [Python](#python)
     - [Rust](#rust)
-    - [Prettier 적용](#prettier-적용)
+  - [Prettier/Lint 적용](#prettierlint-적용)
   - [Github](#github)
     - [fast-forward 문제](#fast-forward-문제)
     - [로컬의 커밋을 날려먹었을때](#로컬의-커밋을-날려먹었을때)
@@ -435,12 +435,37 @@ rustup install nightly-2023-07-21
 rustup default nightly-2023-07-21
 
 ---
-### Prettier 적용
-package.json의 "scripts" 섹션에 다음을 추가
+## Prettier/Lint 적용
+1. VS Code의 settings: 이것을 하면 파일이 저장될때 자동적으로 적용됨.
+- typescript.format: enable/disable
+- solidity.formatter: none/prettier/forge
+
+2. prettier, eslint, solhint
+- .prettierrc.js, .eslintrc.js(.eslintignore.js), .solhint.json(config 폴더에 있을 수 있음.)
 ```
 "prettier": "node_modules/.bin/prettier --write --config .prettierrc 'contracts/**/*.sol' 'test/**/*.ts' 'utils/**/*.ts' 'scripts/**/*.ts'",
 ```
-
+혹은
+```
+"lint:check": "yarn lint:check:format && yarn lint:check:solhint && yarn lint:check:eslint",
+"lint:check:format": "prettier --check **.{sol,js,ts}",
+"lint:check:solhint": "yarn build && solhint --config ./config/.solhint.json --ignore-path ./config/.solhintignore contracts/**/*.sol",
+"lint:check:eslint": "eslint . --ext js,ts",
+```
+3. husky에서 다음 사용 가능
+```
+"husky": {
+   "hooks": {
+     "pre-commit": "lint-staged",
+     "commit-msg": "npx --no -- commitlint --edit ${1}"
+   }
+ },
+  "lint-staged": {
+    "*.sol": "prettier --write",
+    "*.js": "prettier --write",
+    "*.ts": "prettier --write"
+  }
+```
 -------
 ## Github
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
