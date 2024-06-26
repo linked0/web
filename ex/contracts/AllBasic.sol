@@ -64,8 +64,6 @@ contract SimpleAccount is
 
 /**********************************************************
 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴
-
-// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.19;
 
 import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";

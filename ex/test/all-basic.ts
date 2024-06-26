@@ -75,6 +75,35 @@ describe("AllPairVault", () => {
       };
       expect(buildOrderStatus(1, 2, 3, 4)).to.deep.equal(expected);
     });
+
+    // Define the function fetchData
+    function fetchData(): Promise<string> {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("Hello, TypeScript!");
+        }, 10); // If it's too long, the log will not be shown.
+      });
+    }
+
+    // Use ReturnType to get the return type of fetchData
+    type FetchDataReturnType = ReturnType<typeof fetchData>;
+    // FetchDataReturnType is inferred as Promise<string>
+
+    // Use Awaited<T> to get the resolved type of the promise
+    type ResolvedType = Awaited<FetchDataReturnType>;
+    // ResolvedType is inferred as string
+
+    // Example function using Awaited<T>
+    async function logResolvedValue<T>(promise: Promise<T>): Promise<void> {
+      const resolvedValue: Awaited<T> = await promise;
+      console.log(resolvedValue);
+    }
+
+    it("should log resolved value", async () => {
+      // Test the function with fetchData
+      const dataPromise = fetchData();
+      logResolvedValue(dataPromise); // Logs "Hello, TypeScript!" after 1 second
+    });
   });
 
   describe("Deployment ExecAccount", () => {
