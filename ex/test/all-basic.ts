@@ -5,34 +5,29 @@ import {
 import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import { expect } from "chai";
 import { ethers } from "hardhat";
-import { Wallet, Signer } from "ethers";
-import { BigNumber, constants, utils } from "ethers";
-import { ExecAccount, Operator, TooBig, AllPairVault, Lock } from '../typechain';
-import { defaultAbiCoder, hexConcat, arrayify, hexlify, hexValue, formatBytes32String } from 'ethers/lib/utils';
+import { Wallet, Signer, BigNumber, constants, utils } from "ethers-v5";
+import { ExecAccount, Operator, TooBig, AllPairVault, Lock } from '../typechain-types';
+import { defaultAbiCoder, hexConcat, arrayify, hexlify, hexValue, formatBytes32String } from 'ethers-v5/lib/utils';
 import { buildOrderStatus } from "./utils";
 
 import { fullSuiteFixture } from "./full-suite.fixture";
-import type { FullSuiteFixtures } from "./full-suite.fixture";
-import { libraries } from "../typechain/contracts";
+import { libraries, AllBasic } from "../typechain-types/contracts";
 
 describe("AllPairVault", () => {
-  let allBasic: FullSuiteFixtures["allBasic"];
-  const provider = ethers.provider;
-
   let execAccount: ExecAccount;
   let operator: Operator;
-  let signer: Signer;
+  let deployer;
 
   beforeEach(async () => {
     const execAccountFactory = await ethers.getContractFactory("ExecAccount");
     execAccount = await execAccountFactory.deploy();
     const operatorFactory = await ethers.getContractFactory("Operator");
     operator = await operatorFactory.deploy();
-    signer = provider.getSigner()
+    [deployer] = await ethers.getSigners();
   });
 
   describe("Code Test", () => {
-    const max = ethers.constants.MaxUint256;
+    const max = constants.MaxUint256;
     const hafMax = max.div(2);
     const hafMaxPlusOne = hafMax.add(1);
     console.log("max: ", max.toString());
@@ -41,12 +36,12 @@ describe("AllPairVault", () => {
   });
 
   describe("AllBasic", function () {
-    before(async () => {
-      ({ allBasic } = await fullSuiteFixture());
-    });
-
     it("get value", async function () {
-      console.log("AllBasic address: ", allBasic.address);
+      const {
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+
+      console.log("AllBasic address: ", allBasic.target);
       expect(await allBasic.getValue()).to.equal(1n);
     });
   });
@@ -69,7 +64,7 @@ describe("AllPairVault", () => {
 
   describe("Deployment ExecAccount", () => {
     it("should deploy ExecAccount", async () => {
-      console.log(execAccount.address);
+      console.log(execAccount.target);
       expect(await execAccount.test()).to.equal("Hello World!");
     });
 
@@ -79,19 +74,20 @@ describe("AllPairVault", () => {
     });
 
     it("#executeUserOp", async () => {
-      const execSig = operator.interface.getSighash('add');
-      const innerCall = defaultAbiCoder.encode(['address', 'bytes'], [operator.address,
+      const functionSignature = "add";
+      const execSig = utils.keccak256(utils.toUtf8Bytes(functionSignature)).substring(0, 10);
+      const innerCall = defaultAbiCoder.encode(['address', 'bytes'], [operator.target,
       operator.interface.encodeFunctionData('add')
       ]);
       const userOp = {
-        sender: operator.address,
+        sender: operator.target,
         callData: hexConcat([execSig, innerCall])
       }
 
       // check event
       const message = "Got it!";
-      const encodedMessage = ethers.utils.toUtf8Bytes(message);
-      const hashedMessage = ethers.utils.keccak256(encodedMessage);
+      const encodedMessage = utils.toUtf8Bytes(message);
+      const hashedMessage = utils.keccak256(encodedMessage);
       console.log(hashedMessage);
 
       await expect(execAccount.executeUserOp(userOp, 1)).to.emit(execAccount, "Executed").withArgs("Got it!", hashedMessage);
@@ -101,23 +97,24 @@ describe("AllPairVault", () => {
     });
 
     it("#executeMultipleUserOps", async () => {
-      const execSig = operator.interface.getSighash('add');
-      const innerCall = defaultAbiCoder.encode(['address', 'bytes'], [operator.address,
+      const functionSignature = "add";
+      const execSig = utils.keccak256(utils.toUtf8Bytes(functionSignature)).substring(0, 10);
+      const innerCall = defaultAbiCoder.encode(['address', 'bytes'], [operator.target,
       operator.interface.encodeFunctionData('add')
       ]);
       const userOp = {
-        sender: operator.address,
+        sender: operator.target,
         callData: hexConcat([execSig, innerCall])
       }
       const userOp2 = {
-        sender: operator.address,
+        sender: operator.target,
         callData: hexConcat([execSig, innerCall])
       }
 
       // check event
       const message = "Got it two!";
-      const encodedMessage = ethers.utils.toUtf8Bytes(message);
-      const hashedMessage = ethers.utils.keccak256(encodedMessage);
+      const encodedMessage = utils.toUtf8Bytes(message);
+      const hashedMessage = utils.keccak256(encodedMessage);
 
       await expect(execAccount.executeMultipleUserOps([userOp, userOp2], [1, 2])).to.emit(execAccount, "Executed").withArgs("Got it two!", hashedMessage);
 
@@ -126,19 +123,20 @@ describe("AllPairVault", () => {
     });
 
     it("#executeIndirect", async () => {
-      const execSig = execAccount.interface.getSighash('indirectInnerCall(bytes)');
-      const innerCall = defaultAbiCoder.encode(['address', 'bytes'], [operator.address,
+      const functionSignature = "indirectInnerCall(bytes)";
+      const execSig = utils.keccak256(utils.toUtf8Bytes(functionSignature)).substring(0, 10);
+      const innerCall = defaultAbiCoder.encode(['address', 'bytes'], [operator.target,
       operator.interface.encodeFunctionData('addTen')
       ]);
       const userOp = {
-        sender: operator.address,
+        sender: operator.target,
         callData: hexConcat([execSig, innerCall])
       }
 
       // check event
       const message = "Indirect";
-      const encodedMessage = ethers.utils.toUtf8Bytes(message);
-      const hashedMessage = ethers.utils.keccak256(encodedMessage);
+      const encodedMessage = utils.toUtf8Bytes(message);
+      const hashedMessage = utils.keccak256(encodedMessage);
 
       await expect(execAccount.executeIndirect(userOp, 1)).to.emit(execAccount, "Executed").withArgs("Indirect", hashedMessage);
 
@@ -164,10 +162,9 @@ describe("AllPairVault", () => {
 
       const LinkedListSetStore = await ethers.getContractFactory("LinkedListSetLib");
       const linkedListSetLib = await LinkedListSetStore.deploy();
-      linkedListSetLib.deployed();
 
-      const AllPairVault = await ethers.getContractFactory("AllPairVault", { libraries: { LinkedListSetLib: linkedListSetLib.address } });
-      allPairVault = await AllPairVault.deploy(lock.address);
+      const AllPairVault = await ethers.getContractFactory("AllPairVault", { libraries: { LinkedListSetLib: linkedListSetLib.target } });
+      allPairVault = await AllPairVault.deploy(lock.target);
     });
 
     it("add and contains", async function () {
@@ -228,42 +225,43 @@ describe("AllPairVault", () => {
   });
 
   describe("#signTransaction", function () {
-    before(async () => {
-      ({ allBasic } = await fullSuiteFixture());
-    });
-
     it("Should approve and verify transactions", async function () {
+      const {
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+
       // const [owner, spender] = await ethers.getSigners();
-      const owner = new Wallet(process.env.ADMIN_KEY || "", provider);
-      const spender = new Wallet(process.env.USER_KEY || "", provider);
+      const owner = new Wallet(process.env.ADMIN_KEY || "");
+      const spender = new Wallet(process.env.USER_KEY || "");
 
       // Populate the `approve` transaction
-      const tx = await allBasic.populateTransaction.approve(owner.address, spender.address);
+      const tx = await allBasic.approve.populateTransaction(owner.address, spender.address);
 
       // Sign the transaction
       const signedTx = await owner.signTransaction(tx);
 
       // Parse the signed transaction
-      const parsedTx = ethers.utils.parseTransaction(signedTx);
+      const parsedTx = utils.parseTransaction(signedTx);
       const { v, r, s } = parsedTx;
-      // console.log("parsedTx: ", parsedTx);
+      console.log("v, r, s: ", v, r, s);
 
       // NOTE: refer this code later
       // work/pooh-rollup/etc/system-contracts/test/BootloaderUtilities.spec.ts
-      // const eip1559Tx = await wallet.populateTransaction({
+      // FIX: Error: from address mismatch (argument="transaction", value={"type":2,"to":"0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD","from":"0xE024589D0BCd59267E430fB792B29Ce7716566dF","data":"0x","value":0,"maxFeePerGas":12000,"maxPriorityFeePerGas":100}, code=INVALID_ARGUMENT, version=abstract-signer/5.7.0)
+      // const eip1559Tx = await owner.populateTransaction({
       //   type: 2,
-      //   to: wallet.address,
-      //   from: wallet.address,
+      //   to: owner.address,
+      //   from: spender.address,
       //   data: "0x",
       //   value: 0,
       //   maxFeePerGas: 12000,
       //   maxPriorityFeePerGas: 100,
       // });
-      // const signedEip1559Tx = await wallet.signTransaction(eip1559Tx);
-      // const parsedEIP1559tx = zksync.utils.parseTransaction(signedEip1559Tx);
+      // const signedEip1559Tx = await owner.signTransaction(eip1559Tx);
+      // const parsedEIP1559tx = utils.parseTransaction(signedEip1559Tx);
 
       // const EIP1559TxData = signedTxToTransactionData(parsedEIP1559tx)!;
-      // const signature = ethers.utils.arrayify(EIP1559TxData.signature);
+      // const signature = utils.arrayify(EIP1559TxData.signature);
       // signature[64] = 0;
       // EIP1559TxData.signature = signature;
 

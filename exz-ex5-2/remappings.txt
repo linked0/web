@@ -1,0 +1,8 @@
+@ensdomains/=node_modules/@ensdomains/
+@gnosis.pm/=node_modules/@gnosis.pm/
+@openzeppelin/=node_modules/@openzeppelin/
+@uniswap/=node_modules/@uniswap/
+base64-sol/=node_modules/base64-sol/
+hardhat-deploy/=node_modules/hardhat-deploy/
+hardhat/=node_modules/hardhat/
+forge-std/=lib/forge-std/src/

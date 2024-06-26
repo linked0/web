@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { randomBytes as nodeRandomBytes } from "crypto";
-import { BigNumber, constants, utils } from "ethers";
-import { getAddress, keccak256, toUtf8Bytes } from "ethers/lib/utils";
+import { BigNumber, constants, utils } from "ethers-v5";
+import { getAddress, keccak256, toUtf8Bytes } from "ethers-v5/lib/utils";
 import type { BigNumberish, ContractTransaction } from "ethers";
 
 // Reference:
