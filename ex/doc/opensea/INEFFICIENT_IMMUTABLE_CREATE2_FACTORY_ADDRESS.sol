@@ -1,9 +1,8 @@
 /**
  *Submitted for verification at Etherscan.io on 2019-07-30
-*/
+ */
 
 pragma solidity 0.5.10; // optimization enabled, 99999 runs, evm: petersburg
-
 
 /**
  * @title Immutable Create2 Contract Factory
@@ -44,18 +43,14 @@ contract ImmutableCreate2Factory {
 
     // determine the target address for contract deployment.
     address targetDeploymentAddress = address(
-      uint160(                    // downcast to match the address type.
-        uint256(                  // convert to uint to truncate upper digits.
-          keccak256(              // compute the CREATE2 hash using 4 inputs.
-            abi.encodePacked(     // pack all inputs to the hash together.
-              hex"ff",            // start with 0xff to distinguish from RLP.
-              address(this),      // this contract will be the caller.
-              salt,               // pass in the supplied salt value.
-              keccak256(          // pass in the hash of initialization code.
-                abi.encodePacked(
-                  initCode
-                )
-              )
+      uint160( // downcast to match the address type.
+        uint256( // convert to uint to truncate upper digits.
+          keccak256( // compute the CREATE2 hash using 4 inputs.
+            abi.encodePacked( // pack all inputs to the hash together.
+              hex"ff", // start with 0xff to distinguish from RLP.
+              address(this), // this contract will be the caller.
+              salt, // pass in the supplied salt value.
+              keccak256(abi.encodePacked(initCode)) // pass in the hash of initialization code.
             )
           )
         )
@@ -69,14 +64,16 @@ contract ImmutableCreate2Factory {
     );
 
     // using inline assembly: load data and length of data, then call CREATE2.
-    assembly {                                // solhint-disable-line
+    assembly {
+      // solhint-disable-line
       let encoded_data := add(0x20, initCode) // load initialization code.
-      let encoded_size := mload(initCode)     // load the init code's length.
-      deploymentAddress := create2(           // call CREATE2 with 4 arguments.
-        callvalue,                            // forward any attached value.
-        encoded_data,                         // pass in initialization code.
-        encoded_size,                         // pass in init code's length.
-        salt                                  // pass in the salt value.
+      let encoded_size := mload(initCode) // load the init code's length.
+      deploymentAddress := create2(
+        // call CREATE2 with 4 arguments.
+        callvalue, // forward any attached value.
+        encoded_data, // pass in initialization code.
+        encoded_size, // pass in init code's length.
+        salt // pass in the salt value.
       )
     }
 
@@ -110,18 +107,14 @@ contract ImmutableCreate2Factory {
   ) external view returns (address deploymentAddress) {
     // determine the address where the contract will be deployed.
     deploymentAddress = address(
-      uint160(                      // downcast to match the address type.
-        uint256(                    // convert to uint to truncate upper digits.
-          keccak256(                // compute the CREATE2 hash using 4 inputs.
-            abi.encodePacked(       // pack all inputs to the hash together.
-              hex"ff",              // start with 0xff to distinguish from RLP.
-              address(this),        // this contract will be the caller.
-              salt,                 // pass in the supplied salt value.
-              keccak256(            // pass in the hash of initialization code.
-                abi.encodePacked(
-                  initCode
-                )
-              )
+      uint160( // downcast to match the address type.
+        uint256( // convert to uint to truncate upper digits.
+          keccak256( // compute the CREATE2 hash using 4 inputs.
+            abi.encodePacked( // pack all inputs to the hash together.
+              hex"ff", // start with 0xff to distinguish from RLP.
+              address(this), // this contract will be the caller.
+              salt, // pass in the supplied salt value.
+              keccak256(abi.encodePacked(initCode)) // pass in the hash of initialization code.
             )
           )
         )
@@ -154,14 +147,14 @@ contract ImmutableCreate2Factory {
   ) external view returns (address deploymentAddress) {
     // determine the address where the contract will be deployed.
     deploymentAddress = address(
-      uint160(                      // downcast to match the address type.
-        uint256(                    // convert to uint to truncate upper digits.
-          keccak256(                // compute the CREATE2 hash using 4 inputs.
-            abi.encodePacked(       // pack all inputs to the hash together.
-              hex"ff",              // start with 0xff to distinguish from RLP.
-              address(this),        // this contract will be the caller.
-              salt,                 // pass in the supplied salt value.
-              initCodeHash          // pass in the hash of initialization code.
+      uint160( // downcast to match the address type.
+        uint256( // convert to uint to truncate upper digits.
+          keccak256( // compute the CREATE2 hash using 4 inputs.
+            abi.encodePacked( // pack all inputs to the hash together.
+              hex"ff", // start with 0xff to distinguish from RLP.
+              address(this), // this contract will be the caller.
+              salt, // pass in the supplied salt value.
+              initCodeHash // pass in the hash of initialization code.
             )
           )
         )
@@ -198,8 +191,7 @@ contract ImmutableCreate2Factory {
     // prevent contract submissions from being stolen from tx.pool by requiring
     // that the first 20 bytes of the submitted salt match msg.sender.
     require(
-      (address(bytes20(salt)) == msg.sender) ||
-      (bytes20(salt) == bytes20(0)),
+      (address(bytes20(salt)) == msg.sender) || (bytes20(salt) == bytes20(0)),
       "Invalid salt - first 20 bytes of the salt must match calling address."
     );
     _;

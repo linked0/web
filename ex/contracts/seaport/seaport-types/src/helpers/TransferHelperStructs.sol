@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import { ConduitItemType } from "../conduit/lib/ConduitEnums.sol";
+import {ConduitItemType} from "../conduit/lib/ConduitEnums.sol";
 
 /**
  * @dev A TransferHelperItem specifies the itemType (ERC20/ERC721/ERC1155),
@@ -10,10 +10,10 @@ import { ConduitItemType } from "../conduit/lib/ConduitEnums.sol";
  *      must be 0. For ERC721 tokens, amount must be 1.
  */
 struct TransferHelperItem {
-    ConduitItemType itemType;
-    address token;
-    uint256 identifier;
-    uint256 amount;
+  ConduitItemType itemType;
+  address token;
+  uint256 identifier;
+  uint256 amount;
 }
 
 /**
@@ -23,7 +23,7 @@ struct TransferHelperItem {
  *      contract.
  */
 struct TransferHelperItemsWithRecipient {
-    TransferHelperItem[] items;
-    address recipient;
-    bool validateERC721Receiver;
+  TransferHelperItem[] items;
+  address recipient;
+  bool validateERC721Receiver;
 }

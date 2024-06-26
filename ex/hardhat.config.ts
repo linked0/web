@@ -1,13 +1,13 @@
 import * as dotenv from "dotenv";
-import '@typechain/hardhat'
-import { HardhatUserConfig, task } from 'hardhat/config'
+import "@typechain/hardhat";
+import { HardhatUserConfig, task } from "hardhat/config";
 import { HardhatNetworkAccountUserConfig } from "hardhat/types/config";
 import { Wallet, Signer, utils } from "ethers-v5";
-import 'hardhat-deploy'
+import "hardhat-deploy";
 import "hardhat-contract-sizer";
 import "hardhat-gas-reporter";
-import 'solidity-coverage'
-import * as fs from 'fs'
+import "solidity-coverage";
+import * as fs from "fs";
 import yargs from "yargs";
 import "@nomicfoundation/hardhat-toolbox";
 
@@ -30,7 +30,6 @@ dotenv.config({ path: ".env" });
 //   return getNetwork1(`https://${name}.infura.io/v3/${process.env.INFURA_ID}`)
 //   // return getNetwork1(`wss://${name}.infura.io/ws/v3/${process.env.INFURA_ID}`)
 // }
-
 
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   const accounts = await hre.ethers.getSigners();
@@ -112,7 +111,7 @@ const config: HardhatUserConfig = {
     settings: {
       optimizer: {
         enabled: true,
-        runs: 200
+        runs: 200,
       },
     },
   },
@@ -126,19 +125,17 @@ const config: HardhatUserConfig = {
     localnet: {
       url: process.env.LOCALNET_URL,
       chainId: 12301,
-      accounts: [process.env.ADMIN_KEY || "",
-      process.env.USER_KEY || "",
-      ]
+      accounts: [process.env.ADMIN_KEY || "", process.env.USER_KEY || ""],
     },
     holesky: {
       url: "https://rpc.holesky.ethpandaops.io",
       chainId: 17000,
-      accounts: [process.env.HOLESKY_ADMIN_KEY || ""]
+      accounts: [process.env.HOLESKY_ADMIN_KEY || ""],
     },
     sepolia: {
       url: process.env.SEPOLIA_URL,
       chainId: 11155111,
-      accounts: [process.env.ADMIN_KEY || ""]
+      accounts: [process.env.ADMIN_KEY || ""],
     },
   },
   gasReporter: {

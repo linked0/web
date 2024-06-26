@@ -2,22 +2,22 @@
 pragma solidity ^0.8.17;
 
 contract PseudoRandom {
-    bytes32 seedHash;
+  bytes32 seedHash;
 
-    constructor(bytes32 _seedHash) {
-        seedHash = _seedHash;
-    }
+  constructor(bytes32 _seedHash) {
+    seedHash = _seedHash;
+  }
 
-    function prandUint256() external returns (uint256) {
-        return uint256(updateSeedHash());
-    }
+  function prandUint256() external returns (uint256) {
+    return uint256(updateSeedHash());
+  }
 
-    function prandBytes32() external returns (bytes32) {
-        return updateSeedHash();
-    }
+  function prandBytes32() external returns (bytes32) {
+    return updateSeedHash();
+  }
 
-    function updateSeedHash() internal returns (bytes32) {
-        seedHash = keccak256(abi.encode(seedHash));
-        return seedHash;
-    }
+  function updateSeedHash() internal returns (bytes32) {
+    seedHash = keccak256(abi.encode(seedHash));
+    return seedHash;
+  }
 }

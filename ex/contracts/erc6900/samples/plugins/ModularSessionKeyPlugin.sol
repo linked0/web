@@ -320,11 +320,12 @@ contract ModularSessionKeyPlugin is BasePlugin, IModularSessionKeyPlugin {
       associatedFunction: ownerUserOpValidationFunction
     });
 
-    ManifestFunction memory ownerOrSelfRuntimeValidationFunction = ManifestFunction({
-      functionType: ManifestAssociatedFunctionType.DEPENDENCY,
-      functionId: 0, // Unused.
-      dependencyIndex: 1
-    });
+    ManifestFunction
+      memory ownerOrSelfRuntimeValidationFunction = ManifestFunction({
+        functionType: ManifestAssociatedFunctionType.DEPENDENCY,
+        functionId: 0, // Unused.
+        dependencyIndex: 1
+      });
     ManifestFunction memory alwaysAllowFunction = ManifestFunction({
       functionType: ManifestAssociatedFunctionType
         .RUNTIME_VALIDATION_ALWAYS_ALLOW,

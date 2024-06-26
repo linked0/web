@@ -7,21 +7,21 @@ pragma solidity ^0.8.13;
  *      from ERC721 asset contracts.
  */
 interface IERC721Receiver {
-    /**
-     * @dev Whenever an ERC721 token is transferred to this contract via
-     *      safeTransferFrom, this function is called.
-     *
-     * @param operator  The address of the operator.
-     * @param from      The address of the sender.
-     * @param tokenId   The ID of the ERC721.
-     * @param data      Additional data.
-     *
-     * @return bytes4 The magic value, unless throwing.
-     */
-    function onERC721Received(
-        address operator,
-        address from,
-        uint256 tokenId,
-        bytes calldata data
-    ) external returns (bytes4);
+  /**
+   * @dev Whenever an ERC721 token is transferred to this contract via
+   *      safeTransferFrom, this function is called.
+   *
+   * @param operator  The address of the operator.
+   * @param from      The address of the sender.
+   * @param tokenId   The ID of the ERC721.
+   * @param data      Additional data.
+   *
+   * @return bytes4 The magic value, unless throwing.
+   */
+  function onERC721Received(
+    address operator,
+    address from,
+    uint256 tokenId,
+    bytes calldata data
+  ) external returns (bytes4);
 }

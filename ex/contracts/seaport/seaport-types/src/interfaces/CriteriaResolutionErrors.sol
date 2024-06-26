@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-import { Side } from "../lib/ConsiderationEnums.sol";
+import {Side} from "../lib/ConsiderationEnums.sol";
 
 /**
  * @title CriteriaResolutionErrors
@@ -10,61 +10,61 @@ import { Side } from "../lib/ConsiderationEnums.sol";
  *         resolution.
  */
 interface CriteriaResolutionErrors {
-    /**
-     * @dev Revert with an error when providing a criteria resolver that refers
-     *      to an order that has not been supplied.
-     *
-     * @param side The side of the order that was not supplied.
-     */
-    error OrderCriteriaResolverOutOfRange(Side side);
+  /**
+   * @dev Revert with an error when providing a criteria resolver that refers
+   *      to an order that has not been supplied.
+   *
+   * @param side The side of the order that was not supplied.
+   */
+  error OrderCriteriaResolverOutOfRange(Side side);
 
-    /**
-     * @dev Revert with an error if an offer item still has unresolved criteria
-     *      after applying all criteria resolvers.
-     *
-     * @param orderIndex The index of the order that contains the offer item.
-     * @param offerIndex The index of the offer item that still has unresolved
-     *                   criteria.
-     */
-    error UnresolvedOfferCriteria(uint256 orderIndex, uint256 offerIndex);
+  /**
+   * @dev Revert with an error if an offer item still has unresolved criteria
+   *      after applying all criteria resolvers.
+   *
+   * @param orderIndex The index of the order that contains the offer item.
+   * @param offerIndex The index of the offer item that still has unresolved
+   *                   criteria.
+   */
+  error UnresolvedOfferCriteria(uint256 orderIndex, uint256 offerIndex);
 
-    /**
-     * @dev Revert with an error if a consideration item still has unresolved
-     *      criteria after applying all criteria resolvers.
-     *
-     * @param orderIndex         The index of the order that contains the
-     *                           consideration item.
-     * @param considerationIndex The index of the consideration item that still
-     *                           has unresolved criteria.
-     */
-    error UnresolvedConsiderationCriteria(
-        uint256 orderIndex,
-        uint256 considerationIndex
-    );
+  /**
+   * @dev Revert with an error if a consideration item still has unresolved
+   *      criteria after applying all criteria resolvers.
+   *
+   * @param orderIndex         The index of the order that contains the
+   *                           consideration item.
+   * @param considerationIndex The index of the consideration item that still
+   *                           has unresolved criteria.
+   */
+  error UnresolvedConsiderationCriteria(
+    uint256 orderIndex,
+    uint256 considerationIndex
+  );
 
-    /**
-     * @dev Revert with an error when providing a criteria resolver that refers
-     *      to an order with an offer item that has not been supplied.
-     */
-    error OfferCriteriaResolverOutOfRange();
+  /**
+   * @dev Revert with an error when providing a criteria resolver that refers
+   *      to an order with an offer item that has not been supplied.
+   */
+  error OfferCriteriaResolverOutOfRange();
 
-    /**
-     * @dev Revert with an error when providing a criteria resolver that refers
-     *      to an order with a consideration item that has not been supplied.
-     */
-    error ConsiderationCriteriaResolverOutOfRange();
+  /**
+   * @dev Revert with an error when providing a criteria resolver that refers
+   *      to an order with a consideration item that has not been supplied.
+   */
+  error ConsiderationCriteriaResolverOutOfRange();
 
-    /**
-     * @dev Revert with an error when providing a criteria resolver that refers
-     *      to an order with an item that does not expect a criteria to be
-     *      resolved.
-     */
-    error CriteriaNotEnabledForItem();
+  /**
+   * @dev Revert with an error when providing a criteria resolver that refers
+   *      to an order with an item that does not expect a criteria to be
+   *      resolved.
+   */
+  error CriteriaNotEnabledForItem();
 
-    /**
-     * @dev Revert with an error when providing a criteria resolver that
-     *      contains an invalid proof with respect to the given item and
-     *      chosen identifier.
-     */
-    error InvalidProof();
+  /**
+   * @dev Revert with an error when providing a criteria resolver that
+   *      contains an invalid proof with respect to the given item and
+   *      chosen identifier.
+   */
+  error InvalidProof();
 }

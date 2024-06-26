@@ -189,11 +189,12 @@ contract SingleOwnerPlugin is BasePlugin, ISingleOwnerPlugin, IERC1271 {
       associatedFunction: ownerUserOpValidationFunction
     });
 
-    ManifestFunction memory ownerOrSelfRuntimeValidationFunction = ManifestFunction({
-      functionType: ManifestAssociatedFunctionType.SELF,
-      functionId: uint8(FunctionId.RUNTIME_VALIDATION_OWNER_OR_SELF),
-      dependencyIndex: 0 // Unused.
-    });
+    ManifestFunction
+      memory ownerOrSelfRuntimeValidationFunction = ManifestFunction({
+        functionType: ManifestAssociatedFunctionType.SELF,
+        functionId: uint8(FunctionId.RUNTIME_VALIDATION_OWNER_OR_SELF),
+        dependencyIndex: 0 // Unused.
+      });
     ManifestFunction memory alwaysAllowFunction = ManifestFunction({
       functionType: ManifestAssociatedFunctionType
         .RUNTIME_VALIDATION_ALWAYS_ALLOW,

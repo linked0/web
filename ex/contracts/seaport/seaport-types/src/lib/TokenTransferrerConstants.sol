@@ -53,7 +53,7 @@ uint256 constant Generic_error_selector_offset = 0x1c;
 
 // abi.encodeWithSignature("transferFrom(address,address,uint256)")
 uint256 constant ERC20_transferFrom_signature = (
-    0x23b872dd00000000000000000000000000000000000000000000000000000000
+  0x23b872dd00000000000000000000000000000000000000000000000000000000
 );
 uint256 constant ERC20_transferFrom_sig_ptr = 0x0;
 uint256 constant ERC20_transferFrom_from_ptr = 0x04;
@@ -65,7 +65,7 @@ uint256 constant ERC20_transferFrom_length = 0x64; // 4 + 32 * 3 == 100
 //     "safeTransferFrom(address,address,uint256,uint256,bytes)"
 // )
 uint256 constant ERC1155_safeTransferFrom_signature = (
-    0xf242432a00000000000000000000000000000000000000000000000000000000
+  0xf242432a00000000000000000000000000000000000000000000000000000000
 );
 uint256 constant ERC1155_safeTransferFrom_sig_ptr = 0x0;
 uint256 constant ERC1155_safeTransferFrom_from_ptr = 0x04;
@@ -81,7 +81,7 @@ uint256 constant ERC1155_safeTransferFrom_data_length_offset = 0xa0;
 //     "safeBatchTransferFrom(address,address,uint256[],uint256[],bytes)"
 // )
 uint256 constant ERC1155_safeBatchTransferFrom_signature = (
-    0x2eb2c2d600000000000000000000000000000000000000000000000000000000
+  0x2eb2c2d600000000000000000000000000000000000000000000000000000000
 );
 
 // bytes4 constant ERC1155_safeBatchTransferFrom_selector = bytes4(
@@ -89,7 +89,7 @@ uint256 constant ERC1155_safeBatchTransferFrom_signature = (
 // );
 
 uint256 constant ERC721_transferFrom_signature = (
-    0x23b872dd00000000000000000000000000000000000000000000000000000000
+  0x23b872dd00000000000000000000000000000000000000000000000000000000
 );
 uint256 constant ERC721_transferFrom_sig_ptr = 0x0;
 uint256 constant ERC721_transferFrom_from_ptr = 0x04;
@@ -170,11 +170,11 @@ uint256 constant ConduitBatchTransfer_amounts_head_offset = 0x80;
 uint256 constant Invalid1155BatchTransferEncoding_ptr = 0x00;
 uint256 constant Invalid1155BatchTransferEncoding_length = 0x04;
 uint256 constant Invalid1155BatchTransferEncoding_selector = (
-    0xeba2084c00000000000000000000000000000000000000000000000000000000
+  0xeba2084c00000000000000000000000000000000000000000000000000000000
 );
 
 uint256 constant ERC1155BatchTransferGenericFailure_error_signature = (
-    0xafc445e200000000000000000000000000000000000000000000000000000000
+  0xafc445e200000000000000000000000000000000000000000000000000000000
 );
 uint256 constant ERC1155BatchTransferGenericFailure_token_ptr = 0x04;
 uint256 constant ERC1155BatchTransferGenericFailure_ids_offset = 0xc0;
