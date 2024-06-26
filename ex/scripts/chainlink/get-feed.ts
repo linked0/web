@@ -2,15 +2,18 @@ import { ethers } from "hardhat";
 
 async function main() {
   // get chain id from current network
-  const chainId = await ethers.provider.getNetwork().then(network => network.chainId);
+  const chainId = await ethers.provider
+    .getNetwork()
+    .then((network) => network.chainId);
   let feedAddress = "";
 
   if (chainId === 11155111) {
     console.log("FEED_ADDRESS:", process.env.SEPOLIA_FEED_ADDRESS);
     feedAddress = process.env.SEPOLIA_FEED_ADDRESS ?? "";
-  }
-  else {
-    console.log("Chain ID is not 11155111. Please run this script on a hardhat network.");
+  } else {
+    console.log(
+      "Chain ID is not 11155111. Please run this script on a hardhat network."
+    );
     process.exit(1);
   }
 

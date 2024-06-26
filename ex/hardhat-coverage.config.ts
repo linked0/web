@@ -1,6 +1,7 @@
-import type { HardhatUserConfig } from "hardhat/config";
-import { HardhatNetworkAccountUserConfig } from "hardhat/types/config";
 import { Wallet, utils } from "ethers";
+import { HardhatNetworkAccountUserConfig } from "hardhat/types/config";
+
+import type { HardhatUserConfig } from "hardhat/config";
 
 import "dotenv/config";
 import "@nomicfoundation/hardhat-chai-matchers";

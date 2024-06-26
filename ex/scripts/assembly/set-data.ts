@@ -1,10 +1,12 @@
-import { ethers } from "hardhat";
 import { Wallet } from "ethers";
+import { ethers } from "hardhat";
 
 async function main() {
   const factory = await ethers.getContractFactory("DataStorage");
   const provider = ethers.provider;
-  const dataStorage = await factory.attach(process.env.DATA_STORAGE_CONTRACT || "");
+  const dataStorage = await factory.attach(
+    process.env.DATA_STORAGE_CONTRACT || ""
+  );
   const adminWallet = new Wallet(process.env.ADMIN_KEY || "", provider);
 
   // Create a ValueData object

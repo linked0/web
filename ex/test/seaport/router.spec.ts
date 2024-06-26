@@ -8,6 +8,7 @@ import { faucet } from "./utils/faucet";
 import { seaportFixture } from "./utils/fixtures";
 import { VERSION } from "./utils/helpers";
 
+import type { SeaportFixtures } from "./utils/fixtures";
 import type {
   ConduitControllerInterface,
   ConduitInterface,
@@ -16,7 +17,6 @@ import type {
   SeaportRouter,
   TestERC721,
 } from "../typechain-types";
-import type { SeaportFixtures } from "./utils/fixtures";
 import type { Wallet } from "ethers";
 
 describe(`SeaportRouter tests (Seaport v${VERSION})`, function () {

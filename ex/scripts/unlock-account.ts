@@ -1,9 +1,9 @@
 // call unlockAccount of geth
 
 import chain, { assert, expect } from "chai";
-import { ethers } from "hardhat";
 import { Wallet } from "ethers";
 import { JsonRpcSigner } from "ethers";
+import { ethers } from "hardhat";
 
 async function main() {
   const provider = ethers.provider;

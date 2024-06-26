@@ -1,6 +1,7 @@
-import { ethers } from "hardhat";
-import { time, loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers";
+import { time, loadFixture } from "@nomicfoundation/hardhat-network-helpers";
+import { ethers } from "hardhat";
+
 import { AllBasic__factory } from "../typechain-types";
 
 let deployer: HardhatEthersSigner;
@@ -13,16 +14,16 @@ export async function fullSuiteFixture() {
   const erc20 = await ERC20Factory.deploy();
 
   const TrasactionDelegatorFactory = await ethers.getContractFactory(
-    "TransactionDelegator",
+    "TransactionDelegator"
   );
   const delegator = await TrasactionDelegatorFactory.deploy(erc20.target);
 
   const {
-    suiteAllPairVault: { allPairVault, lock }
+    suiteAllPairVault: { allPairVault, lock },
   } = await associatedLinkedListSetFixture();
 
   const {
-    suiteBasic: { allBasic }
+    suiteBasic: { allBasic },
   } = await allBasicFixture();
 
   return {
@@ -52,18 +53,20 @@ async function associatedLinkedListSetFixture() {
     value: lockedAmount,
   });
   const linkedListSetLib = await ethers.deployContract("LinkedListSetLib");
-  const allPairVault = await ethers.deployContract("AllPairVault",
+  const allPairVault = await ethers.deployContract(
+    "AllPairVault",
     [lock.target],
     {
       libraries: {
         LinkedListSetLib: linkedListSetLib.target,
       },
-    });
+    }
+  );
 
   return {
     suiteAllPairVault: {
       lock,
-      allPairVault
+      allPairVault,
     },
   };
 }
@@ -75,7 +78,7 @@ async function allBasicFixture() {
 
   return {
     suiteBasic: {
-      allBasic
+      allBasic,
     },
   };
 }

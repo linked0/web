@@ -1,17 +1,32 @@
+import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import {
   time,
   loadFixture,
 } from "@nomicfoundation/hardhat-toolbox/network-helpers";
-import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import { expect } from "chai";
-import { ethers } from "hardhat";
 import { Wallet, Signer, BigNumber, constants, utils } from "ethers-v5";
-import { ExecAccount, Operator, TooBig, AllPairVault, Lock } from '../typechain-types';
-import { defaultAbiCoder, hexConcat, arrayify, hexlify, hexValue, formatBytes32String } from 'ethers-v5/lib/utils';
-import { buildOrderStatus } from "./utils";
+import {
+  defaultAbiCoder,
+  hexConcat,
+  arrayify,
+  hexlify,
+  hexValue,
+  formatBytes32String,
+} from "ethers-v5/lib/utils";
+import { ethers } from "hardhat";
+
+import {
+  ExecAccount,
+  Operator,
+  TooBig,
+  AllPairVault,
+  Lock,
+} from "../typechain-types";
+import { libraries, AllBasic } from "../typechain-types/contracts";
 
 import { fullSuiteFixture } from "./full-suite.fixture";
-import { libraries, AllBasic } from "../typechain-types/contracts";
+import { buildOrderStatus } from "./utils";
+
 
 describe("AllPairVault", () => {
   let execAccount: ExecAccount;
@@ -46,17 +61,17 @@ describe("AllPairVault", () => {
     });
   });
 
-  describe("Typscript grammar", () =>   {
+  describe("Typscript grammar", () => {
     it("should be able to call deep.equal", async () => {
       const expected = {
-        '0': BigNumber.from(1),
-        '1': BigNumber.from(2),
-        '2': BigNumber.from(3),
-        '3': BigNumber.from(4),
+        "0": BigNumber.from(1),
+        "1": BigNumber.from(2),
+        "2": BigNumber.from(3),
+        "3": BigNumber.from(4),
         isValidated: BigNumber.from(1),
         isCancelled: BigNumber.from(2),
         totalFilled: BigNumber.from(3),
-        totalSize: BigNumber.from(4)
+        totalSize: BigNumber.from(4),
       };
       expect(buildOrderStatus(1, 2, 3, 4)).to.deep.equal(expected);
     });
@@ -75,14 +90,17 @@ describe("AllPairVault", () => {
 
     it("#executeUserOp", async () => {
       const functionSignature = "add";
-      const execSig = utils.keccak256(utils.toUtf8Bytes(functionSignature)).substring(0, 10);
-      const innerCall = defaultAbiCoder.encode(['address', 'bytes'], [operator.target,
-      operator.interface.encodeFunctionData('add')
-      ]);
+      const execSig = utils
+        .keccak256(utils.toUtf8Bytes(functionSignature))
+        .substring(0, 10);
+      const innerCall = defaultAbiCoder.encode(
+        ["address", "bytes"],
+        [operator.target, operator.interface.encodeFunctionData("add")]
+      );
       const userOp = {
         sender: operator.target,
-        callData: hexConcat([execSig, innerCall])
-      }
+        callData: hexConcat([execSig, innerCall]),
+      };
 
       // check event
       const message = "Got it!";
@@ -90,7 +108,9 @@ describe("AllPairVault", () => {
       const hashedMessage = utils.keccak256(encodedMessage);
       console.log(hashedMessage);
 
-      await expect(execAccount.executeUserOp(userOp, 1)).to.emit(execAccount, "Executed").withArgs("Got it!", hashedMessage);
+      await expect(execAccount.executeUserOp(userOp, 1))
+        .to.emit(execAccount, "Executed")
+        .withArgs("Got it!", hashedMessage);
 
       // check value of operator
       expect(await operator.value()).to.equal(2);
@@ -98,25 +118,32 @@ describe("AllPairVault", () => {
 
     it("#executeMultipleUserOps", async () => {
       const functionSignature = "add";
-      const execSig = utils.keccak256(utils.toUtf8Bytes(functionSignature)).substring(0, 10);
-      const innerCall = defaultAbiCoder.encode(['address', 'bytes'], [operator.target,
-      operator.interface.encodeFunctionData('add')
-      ]);
+      const execSig = utils
+        .keccak256(utils.toUtf8Bytes(functionSignature))
+        .substring(0, 10);
+      const innerCall = defaultAbiCoder.encode(
+        ["address", "bytes"],
+        [operator.target, operator.interface.encodeFunctionData("add")]
+      );
       const userOp = {
         sender: operator.target,
-        callData: hexConcat([execSig, innerCall])
-      }
+        callData: hexConcat([execSig, innerCall]),
+      };
       const userOp2 = {
         sender: operator.target,
-        callData: hexConcat([execSig, innerCall])
-      }
+        callData: hexConcat([execSig, innerCall]),
+      };
 
       // check event
       const message = "Got it two!";
       const encodedMessage = utils.toUtf8Bytes(message);
       const hashedMessage = utils.keccak256(encodedMessage);
 
-      await expect(execAccount.executeMultipleUserOps([userOp, userOp2], [1, 2])).to.emit(execAccount, "Executed").withArgs("Got it two!", hashedMessage);
+      await expect(
+        execAccount.executeMultipleUserOps([userOp, userOp2], [1, 2])
+      )
+        .to.emit(execAccount, "Executed")
+        .withArgs("Got it two!", hashedMessage);
 
       // check value of operator
       expect(await operator.value()).to.equal(3);
@@ -124,21 +151,26 @@ describe("AllPairVault", () => {
 
     it("#executeIndirect", async () => {
       const functionSignature = "indirectInnerCall(bytes)";
-      const execSig = utils.keccak256(utils.toUtf8Bytes(functionSignature)).substring(0, 10);
-      const innerCall = defaultAbiCoder.encode(['address', 'bytes'], [operator.target,
-      operator.interface.encodeFunctionData('addTen')
-      ]);
+      const execSig = utils
+        .keccak256(utils.toUtf8Bytes(functionSignature))
+        .substring(0, 10);
+      const innerCall = defaultAbiCoder.encode(
+        ["address", "bytes"],
+        [operator.target, operator.interface.encodeFunctionData("addTen")]
+      );
       const userOp = {
         sender: operator.target,
-        callData: hexConcat([execSig, innerCall])
-      }
+        callData: hexConcat([execSig, innerCall]),
+      };
 
       // check event
       const message = "Indirect";
       const encodedMessage = utils.toUtf8Bytes(message);
       const hashedMessage = utils.keccak256(encodedMessage);
 
-      await expect(execAccount.executeIndirect(userOp, 1)).to.emit(execAccount, "Executed").withArgs("Indirect", hashedMessage);
+      await expect(execAccount.executeIndirect(userOp, 1))
+        .to.emit(execAccount, "Executed")
+        .withArgs("Indirect", hashedMessage);
 
       // check value of operator
       expect(await operator.value()).to.equal(11);
@@ -154,16 +186,20 @@ describe("AllPairVault", () => {
 
     beforeEach(async () => {
       const latestTime = await time.latest();
-      const unlockTime = await time.latest() + ONE_YEAR_IN_SECS;
+      const unlockTime = (await time.latest()) + ONE_YEAR_IN_SECS;
       const Lock = await ethers.getContractFactory("Lock");
       lock = await Lock.deploy(unlockTime, {
-        value: lockedAmount
+        value: lockedAmount,
       });
 
-      const LinkedListSetStore = await ethers.getContractFactory("LinkedListSetLib");
+      const LinkedListSetStore = await ethers.getContractFactory(
+        "LinkedListSetLib"
+      );
       const linkedListSetLib = await LinkedListSetStore.deploy();
 
-      const AllPairVault = await ethers.getContractFactory("AllPairVault", { libraries: { LinkedListSetLib: linkedListSetLib.target } });
+      const AllPairVault = await ethers.getContractFactory("AllPairVault", {
+        libraries: { LinkedListSetLib: linkedListSetLib.target },
+      });
       allPairVault = await AllPairVault.deploy(lock.target);
     });
 
@@ -171,7 +207,7 @@ describe("AllPairVault", () => {
       // Create a ValueData object
       const valueData = {
         value: 123456, // Example uint240 value
-        description: "Example description"
+        description: "Example description",
       };
 
       const tx = await allPairVault.addValue(valueData);
@@ -187,7 +223,7 @@ describe("AllPairVault", () => {
       // Create a ValueData object
       const valueData = {
         value: 123456, // Example uint240 value
-        description: "Example description"
+        description: "Example description",
       };
 
       expect(await allPairVault.addValue(valueData))
@@ -199,18 +235,17 @@ describe("AllPairVault", () => {
       // Create a ValueData object
       const valueData = {
         value: 123456, // Example uint240 value
-        description: ""
+        description: "",
       };
 
-      await expect(allPairVault.addValue(valueData))
-        .to.be.revertedWith("E000");
+      await expect(allPairVault.addValue(valueData)).to.be.revertedWith("E000");
     });
   });
 
   describe("#reduce", () => {
     const concatenateArrayElements = (arr: any[]): string => {
-      return arr.reduce((acc, curr) => acc += curr.toString(), "");
-    }
+      return arr.reduce((acc, curr) => (acc += curr.toString()), "");
+    };
 
     it("should reduce the value", async () => {
       const numArray: number[] = [1, 2, 3, 4, 5];
@@ -235,7 +270,10 @@ describe("AllPairVault", () => {
       const spender = new Wallet(process.env.USER_KEY || "");
 
       // Populate the `approve` transaction
-      const tx = await allBasic.approve.populateTransaction(owner.address, spender.address);
+      const tx = await allBasic.approve.populateTransaction(
+        owner.address,
+        spender.address
+      );
 
       // Sign the transaction
       const signedTx = await owner.signTransaction(tx);

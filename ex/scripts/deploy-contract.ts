@@ -2,9 +2,7 @@ import { ethers } from "hardhat";
 
 async function main() {
   const contractName = process.env.CONTRACT || "";
-  const constract = await ethers.deployContract(
-    contractName
-  );
+  const constract = await ethers.deployContract(contractName);
   await constract.waitForDeployment();
 
   console.log(`Deployed ${contractName}: ${constract.target}`);

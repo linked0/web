@@ -6,17 +6,18 @@ async function main() {
   await mytoken.waitForDeployment();
   console.log(`Deployed MINTABLE_TOKEN: ${mytoken.target}`);
 
-  const delegator = await ethers.deployContract(
-    "TransactionDelegator",
-    [mytoken.target]
-  );
+  const delegator = await ethers.deployContract("TransactionDelegator", [
+    mytoken.target,
+  ]);
   await delegator.waitForDeployment();
   console.log(`Deployed TRANSACTION_DELEGATOR_CONTRACT: ${delegator.target}`);
 
   // PoohnetFund
   const poohentFundFactory = await ethers.getContractFactory("PoohnetFund");
   const provider = ethers.provider;
-  const poohentFund = await poohentFundFactory.attach(process.env.POOHNET_FUND_CONTRACT_ADDRESS || "");
+  const poohentFund = await poohentFundFactory.attach(
+    process.env.POOHNET_FUND_CONTRACT_ADDRESS || ""
+  );
   const adminWallet = new Wallet(process.env.ADMIN_KEY || "", provider);
 
   const fundBalance = await ethers.provider.getBalance(poohentFund.target);

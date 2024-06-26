@@ -1,6 +1,7 @@
+import { randomInt } from "crypto";
+
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { expect } from "chai";
-import { randomInt } from "crypto";
 import { ethers, network } from "hardhat";
 
 import { deployContract } from "./utils/contracts";
@@ -27,6 +28,7 @@ import {
   simulateMatchOrders,
 } from "./utils/helpers";
 
+import type { SeaportFixtures } from "./utils/fixtures";
 import type {
   ConduitControllerInterface,
   ConduitInterface,
@@ -36,7 +38,6 @@ import type {
   TestERC20,
   TestERC721,
 } from "../typechain-types";
-import type { SeaportFixtures } from "./utils/fixtures";
 import type { Wallet } from "ethers";
 
 const { parseEther } = ethers.utils;
@@ -594,16 +595,16 @@ describe(`Conduit tests (Seaport v${VERSION})`, function () {
         case 1: // ERC20
           // Check balance
           expect(
-            await (token as typeof erc20Contracts[0]).balanceOf(from)
+            await (token as (typeof erc20Contracts)[0]).balanceOf(from)
           ).to.equal(0);
           expect(
-            await (token as typeof erc20Contracts[0]).balanceOf(to)
+            await (token as (typeof erc20Contracts)[0]).balanceOf(to)
           ).to.equal(amount);
           break;
         case 2: // ERC721
         case 4: // ERC721_WITH_CRITERIA
           expect(
-            await (token as typeof erc721Contracts[0]).ownerOf(identifier)
+            await (token as (typeof erc721Contracts)[0]).ownerOf(identifier)
           ).to.equal(to);
           break;
         case 3: // ERC1155

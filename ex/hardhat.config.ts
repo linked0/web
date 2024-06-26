@@ -1,13 +1,15 @@
 import * as dotenv from "dotenv";
 import "@typechain/hardhat";
+import { Wallet, Signer, utils } from "ethers-v5";
 import { HardhatUserConfig, task } from "hardhat/config";
 import { HardhatNetworkAccountUserConfig } from "hardhat/types/config";
-import { Wallet, Signer, utils } from "ethers-v5";
+
 import "hardhat-deploy";
 import "hardhat-contract-sizer";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
 import * as fs from "fs";
+
 import yargs from "yargs";
 import "@nomicfoundation/hardhat-toolbox";
 

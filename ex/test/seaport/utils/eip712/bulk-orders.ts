@@ -4,8 +4,8 @@ import { Eip712MerkleTree } from "./Eip712MerkleTree";
 import { DefaultGetter } from "./defaults";
 import { fillArray } from "./utils";
 
-import type { OrderComponents } from "../types";
 import type { EIP712TypeDefinitions } from "./defaults";
+import type { OrderComponents } from "../types";
 
 const { bulkOrderType } = require("../../../eip-712-types/bulkOrder.js");
 

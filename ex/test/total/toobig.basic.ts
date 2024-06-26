@@ -1,19 +1,26 @@
+import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import {
   time,
   loadFixture,
 } from "@nomicfoundation/hardhat-toolbox/network-helpers";
-import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import { expect } from "chai";
-import { ethers } from "hardhat";
 import { Wallet, Signer } from "ethers";
 import { BigNumber, constants, utils } from "ethers";
-import { ExecAccount, Operator, TooBig, JayTestLib } from '../../typechain';
-import { defaultAbiCoder, hexConcat, arrayify, formatBytes32String } from 'ethers/lib/utils';
+import {
+  defaultAbiCoder,
+  hexConcat,
+  arrayify,
+  formatBytes32String,
+} from "ethers/lib/utils";
+import { ethers } from "hardhat";
+
+import { ExecAccount, Operator, TooBig, JayTestLib } from "../../typechain";
+import { libraries } from "../../typechain/contracts";
+import { fullSuiteFixture } from "../full-suite.fixture";
 import { buildOrderStatus } from "../utils";
 
-import { fullSuiteFixture } from "../full-suite.fixture";
 import type { FullSuiteFixtures } from "../full-suite.fixture";
-import { libraries } from "../../typechain/contracts";
+
 
 describe("TooBig contract", () => {
   const provider = ethers.provider;
@@ -29,10 +36,12 @@ describe("TooBig contract", () => {
     console.log(jayTestLib.address);
 
     // const TooBig = await ethers.getContractFactory("TooBig");
-    const TooBig = await ethers.getContractFactory("TooBig", { libraries: { JayTestLib: jayTestLib.address } });
+    const TooBig = await ethers.getContractFactory("TooBig", {
+      libraries: { JayTestLib: jayTestLib.address },
+    });
     tooBig = await TooBig.deploy();
     console.log(tooBig.address);
-    signer = provider.getSigner()
+    signer = provider.getSigner();
   });
 
   it("should deploy TooBig", async () => {

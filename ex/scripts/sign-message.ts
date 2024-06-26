@@ -1,23 +1,24 @@
-import { ethers } from "hardhat";
 import { Signature } from "ethers";
-
-
+import { ethers } from "hardhat";
 
 async function main() {
   const byteCode = process.env.DATA_STORAGE_BYTECODE || "";
-  const deployerWallet = new ethers.Wallet(process.env.ADMIN_KEY || "", ethers.provider);
+  const deployerWallet = new ethers.Wallet(
+    process.env.ADMIN_KEY || "",
+    ethers.provider
+  );
   console.log("Deployer public key: ", await deployerWallet.getAddress());
 
   const contractName = process.env.DATA_STORAGE_NAME || "";
 
   const factory = await ethers.getContractFactory(contractName);
   const deployTx = await factory.getDeployTransaction([]);
-  console.log(deployTx)
+  console.log(deployTx);
 
   const addr = await deployerWallet.getAddress();
   const rlpEncoded = ethers.encodeRlp([addr, ethers.toBeArray(0)]);
   const contractAddressLong = ethers.keccak256(rlpEncoded);
-  const contractAddress = `0x${contractAddressLong.slice(-40)}`;  // Extract last 20 bytes and add '0x' prefix
+  const contractAddress = `0x${contractAddressLong.slice(-40)}`; // Extract last 20 bytes and add '0x' prefix
 
   console.log("Contract Address: ", contractAddress);
 

@@ -1,9 +1,7 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const fund = await ethers.deployContract(
-    "PoohnetFund",
-  );
+  const fund = await ethers.deployContract("PoohnetFund");
   await fund.waitForDeployment();
 
   console.log(`Deployed PoohnetFund: ${fund.target}`);

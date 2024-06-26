@@ -27,6 +27,8 @@ import {
   simulateMatchOrders,
 } from "./utils/helpers";
 
+import type { SeaportFixtures } from "./utils/fixtures";
+import type { ConsiderationItem, Fulfillment, OfferItem } from "./utils/types";
 import type {
   ConduitInterface,
   ConsiderationInterface,
@@ -39,8 +41,6 @@ import type {
   TestERC721,
   TestZone,
 } from "../typechain-types";
-import type { SeaportFixtures } from "./utils/fixtures";
-import type { ConsiderationItem, Fulfillment, OfferItem } from "./utils/types";
 import type { BigNumber, Wallet } from "ethers";
 
 const { parseEther } = ethers.utils;

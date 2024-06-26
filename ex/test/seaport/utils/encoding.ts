@@ -1,5 +1,6 @@
-import { expect } from "chai";
 import { randomBytes as nodeRandomBytes } from "crypto";
+
+import { expect } from "chai";
 import { BigNumber, constants, utils } from "ethers";
 import { getAddress, keccak256, toUtf8Bytes } from "ethers/lib/utils";
 

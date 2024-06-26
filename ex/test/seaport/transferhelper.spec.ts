@@ -1,5 +1,6 @@
-import { expect } from "chai";
 import { randomInt } from "crypto";
+
+import { expect } from "chai";
 import { ethers, network } from "hardhat";
 
 import { randomHex } from "./utils/encoding";
@@ -12,6 +13,7 @@ import {
 } from "./utils/fixtures";
 import { VERSION } from "./utils/helpers";
 
+import type { SeaportFixtures } from "./utils/fixtures";
 import type {
   ConduitControllerInterface,
   ConduitInterface,
@@ -19,7 +21,6 @@ import type {
   EIP1271Wallet__factory,
   TransferHelper,
 } from "../typechain-types";
-import type { SeaportFixtures } from "./utils/fixtures";
 import type { BigNumber, Wallet } from "ethers";
 
 describe(`TransferHelper tests (Seaport v${VERSION})`, function () {
@@ -255,12 +256,12 @@ describe(`TransferHelper tests (Seaport v${VERSION})`, function () {
           case 1: // ERC20
             // Check balance
             expect(
-              await (token as typeof erc20Contracts[0]).balanceOf(
+              await (token as (typeof erc20Contracts)[0]).balanceOf(
                 sender.address
               )
             ).to.equal(0);
             expect(
-              await (token as typeof erc20Contracts[0]).balanceOf(
+              await (token as (typeof erc20Contracts)[0]).balanceOf(
                 recipient.address
               )
             ).to.equal(amount);
@@ -268,7 +269,7 @@ describe(`TransferHelper tests (Seaport v${VERSION})`, function () {
           case 2: // ERC721
           case 4: // ERC721_WITH_CRITERIA
             expect(
-              await (token as typeof erc721Contracts[0]).ownerOf(identifier)
+              await (token as (typeof erc721Contracts)[0]).ownerOf(identifier)
             ).to.equal(recipient.address);
             break;
           case 3: // ERC1155
@@ -1318,12 +1319,12 @@ describe(`TransferHelper tests (Seaport v${VERSION})`, function () {
             case 1: // ERC20
               // Check balance
               expect(
-                await (token as typeof erc20Contracts[0]).balanceOf(
+                await (token as (typeof erc20Contracts)[0]).balanceOf(
                   sender.address
                 )
               ).to.equal(0);
               expect(
-                await (token as typeof erc20Contracts[0]).balanceOf(
+                await (token as (typeof erc20Contracts)[0]).balanceOf(
                   transfersWithRecipients[i].recipient
                 )
               ).to.equal(amount);
@@ -1331,7 +1332,7 @@ describe(`TransferHelper tests (Seaport v${VERSION})`, function () {
             case 2: // ERC721
             case 4: // ERC721_WITH_CRITERIA
               expect(
-                await (token as typeof erc721Contracts[0]).ownerOf(identifier)
+                await (token as (typeof erc721Contracts)[0]).ownerOf(identifier)
               ).to.equal(transfersWithRecipients[i].recipient);
               break;
             case 3: // ERC1155

@@ -26,6 +26,7 @@ import {
   simulateMatchOrders,
 } from "./utils/helpers";
 
+import type { SeaportFixtures } from "./utils/fixtures";
 import type {
   ConduitInterface,
   ConsiderationInterface,
@@ -36,7 +37,6 @@ import type {
   TestPostExecution,
   TestZone,
 } from "../typechain-types";
-import type { SeaportFixtures } from "./utils/fixtures";
 import type { Wallet } from "ethers";
 
 const { parseEther, keccak256 } = ethers.utils;
@@ -417,7 +417,9 @@ describe(`Basic buy now or accept offer flows (Seaport v${VERSION})`, function (
           order
         );
         await withBalanceChecks([order], 0, undefined, async () => {
-          const contractCode = await provider.getCode(marketplaceContract.address);
+          const contractCode = await provider.getCode(
+            marketplaceContract.address
+          );
           const contractSize = (contractCode.length - 2) / 2; // Subtract 2 for '0x' prefix and divide by 2 to get the byte count
           console.log("Contract size: ", contractSize);
 

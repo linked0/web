@@ -1,9 +1,7 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const constract = await ethers.deployContract(
-    "DepositContract",
-  );
+  const constract = await ethers.deployContract("DepositContract");
   await constract.waitForDeployment();
 
   console.log(`Deployed DepositContract: ${constract.target}`);

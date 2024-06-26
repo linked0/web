@@ -18,8 +18,8 @@ import {
   hexToBuffer,
 } from "./utils";
 
-import type { OrderComponents } from "../types";
 import type { EIP712TypeDefinitions } from "./defaults";
+import type { OrderComponents } from "../types";
 
 type BulkOrderElements =
   | [OrderComponents, OrderComponents]

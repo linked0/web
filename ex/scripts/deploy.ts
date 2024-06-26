@@ -5,10 +5,9 @@ async function main() {
   await mytoken.waitForDeployment();
   console.log(`Deployed MINTABLE_TOKEN: ${mytoken.target}`);
 
-  const delegator = await ethers.deployContract(
-    "TransactionDelegator",
-    [mytoken.target]
-  );
+  const delegator = await ethers.deployContract("TransactionDelegator", [
+    mytoken.target,
+  ]);
   await delegator.waitForDeployment();
 
   console.log(`Deployed TRANSACTION_DELEGATOR_CONTRACT: ${delegator.target}`);
