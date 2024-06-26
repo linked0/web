@@ -109,7 +109,7 @@ export PS1="\W \u$ "
 export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
 
 hgrep() {
-	grep -irnH --include=*.$1 "$2" ./  
+	grep -irnH --include=\*.$1 "$2" ./  
 }
 pp() {
   code ./$1
