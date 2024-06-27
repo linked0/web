@@ -1046,6 +1046,7 @@ git submodule update --init --recursive web2
 ---
 ### 🥎 hardhat/foundry 🥎
 yarn add https://github.com/eth-infinitism/account-abstraction\#v0.6.0
+yarn hardhat node (chain id: 31337)
 
 ---
 ### 🦋 VSCode II 🦋

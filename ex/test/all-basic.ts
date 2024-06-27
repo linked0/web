@@ -58,6 +58,10 @@ interface Transaction {
   hash?: string;
 }
 
+// NOTE: Refer this code later
+// /Users/hyunjaelee/work/account-abstraction/node_modules/zksync-web3/src/utils.ts
+// Compute the raw transaction: https://docs.ethers.org/v5/cookbook/transactions/#cookbook--compute-raw-transaction
+
 describe("AllPairVault", () => {
   let execAccount: ExecAccount;
   let operator: Operator;
