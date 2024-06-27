@@ -93,19 +93,23 @@ const config: HardhatUserConfig = {
         version: "0.8.24",
         settings: {
           evmVersion: "cancun",
-          viaIR: true,
+          // viaIR: true,
+          // optimizer: {
+          //   ...(process.env.NO_SPECIALIZER
+          //     ? optimizerSettingsNoSpecializer
+          //     : { enabled: true, runs: 4_294_967_295 }),
+          // },
+          // metadata: {
+          //   bytecodeHash: "none",
+          // },
+          // outputSelection: {
+          //   "*": {
+          //     "*": ["evm.assembly", "irOptimized", "devdoc"],
+          //   },
+          // },
           optimizer: {
-            ...(process.env.NO_SPECIALIZER
-              ? optimizerSettingsNoSpecializer
-              : { enabled: true, runs: 4_294_967_295 }),
-          },
-          metadata: {
-            bytecodeHash: "none",
-          },
-          outputSelection: {
-            "*": {
-              "*": ["evm.assembly", "irOptimized", "devdoc"],
-            },
+            enabled: true,
+            runs: 200
           },
         },
       },

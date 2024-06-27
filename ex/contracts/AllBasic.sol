@@ -4,8 +4,9 @@ pragma solidity ^0.8.19;
 // Uncomment this line to use console.log
 import "hardhat/console.sol";
 
-// 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴
-// 아래 참고 컨트랙트 있음.
+// 코딩 참고 컨트랙트
+//Users/hyunjaelee/work/account-abstraction/contracts/samples/SimpleAccount.sol
+//Users/hyunjaelee/work/erc6900-reference/src/samples/plugins/ModularSessionKeyPlugin.sol
 
 // @audit-issue Should emit event
 contract AllBasic {
@@ -32,7 +33,6 @@ contract AllBasic {
 }
 
 /********************************************************* 
-🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴
 contract SimpleAccount is
   BaseAccount,
   TokenCallbackHandler,
@@ -63,7 +63,6 @@ contract SimpleAccount is
 **********************************************************/
 
 /**********************************************************
-🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴
 pragma solidity ^0.8.19;
 
 import {ECDSA} from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";

@@ -94,6 +94,12 @@
       - [info](#info)
     - [TypeError: Cannot read properties of undefined (reading 'provider')](#typeerror-cannot-read-properties-of-undefined-reading-provider)
       - [hardhat.config.ts에 아래 추가](#hardhatconfigts에-아래-추가)
+      - [TypeError: Cannot read properties of undefined (reading 'provider'):](#typeerror-cannot-read-properties-of-undefined-reading-provider-1)
+      - [TypeError: Cannot read properties of undefined (reading 'waitForTransaction')](#typeerror-cannot-read-properties-of-undefined-reading-waitfortransaction)
+      - ["ethers": "^6.1.0", \<== 알아서 설치됨](#ethers-610--알아서-설치됨)
+      - [TypeError: (0 , ethers\_1.getAddress) is not a function](#typeerror-0--ethers_1getaddress-is-not-a-function)
+  - [Memory](#memory)
+  - [아래 Frequent Use(위 Memory)](#아래-frequent-use위-memory)
     - [forge install 할때, .gitmodules가 필요함](#forge-install-할때-gitmodules가-필요함)
     - [source code](#source-code)
     - [command](#command)
@@ -1683,15 +1689,50 @@ import { HardhatUserConfig } from 'hardhat/config'
 import 'hardhat-deploy'
 import '@nomiclabs/hardhat-etherscan'
 
+
+#### TypeError: Cannot read properties of undefined (reading 'provider'): 
+```
+이런 에러가 떨어지는 이유가 아래 import 문 때문인데, 
+import { ethers } from “hardhat”
+hardhat의 ethers 버전은 내가 쓰려는 버전보다 낮아서 그런 것이다. 아래와 같이 바꾸면 됨. 
+import { ethers } from "ethers";
+hardhat의 ethers 버전과 나의 ethers 버전이 다르면 또 문제가 생김. 
+```
+```
+const provider = ethers.provider;
+signer = await ethers.getSigner();
+위에서 발생하는 “TypeError: Cannot read properties of undefined (reading 'provider')” 문제는 모두  아래와 연관이 있는 것이고,
+ethers: typeof ethers & HardhatEthersHelpers;
+이것은 hardhat.config.ts에 import "@nomicfoundation/hardhat-toolbox"; 추가해야 함.
+결국 provider와 getSigner는 hardhat.config.ts와 관련된 것이었음.
+```
+
+#### TypeError: Cannot read properties of undefined (reading 'waitForTransaction')
+```
+await expect(execAccount.executeUserOp(userOp, 1)).to.emit(execAccount, "Executed").withArgs("Got it!", hashedMessage);
+     TypeError: Cannot read properties of undefined (reading 'waitForTransaction')
+      at waitForPendingTransaction (node_modules/@nomicfoundation/hardhat-chai-matchers/src/internal/emit.ts:34:19)
+      at /Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-chai-matchers/src/internal/emit.ts:84:21
+```
+- @nomicfoundation/hardhat-chai-matchers 버전을 ^1.0.6 -> ^2.0.7 올림
+- 과연 서로 다른 패키지를 하위에 포함시킬때 어떻게 되는지 확인하기: 각자의 패지키를 사용하는데, Peer-dependency를 강제하는 경우도 있지.
+   
+
+#### "ethers": "^6.1.0", <== 알아서 설치됨
+
+
+#### TypeError: (0 , ethers_1.getAddress) is not a function
+hardhat의 ethers를 쓸때 이런일이 발생함으로 6.7.0을 써야함. 그렇다면 hardhat은 내 ethers를 쓴다는 얘기? 내꺼 쓰는게 맞음. 그러면 뭐하러 import { ethers } from "hardhat"; 이걸쓰냐구??? 어쨌든 hardhat의 node_modules에는 hardhat 깔리게 없음. 
+
 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈
 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈
-Memory
+## Memory
 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈
 😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈
 
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
-아래 Frequent Use(위 Memory)
+## 아래 Frequent Use(위 Memory)
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
 

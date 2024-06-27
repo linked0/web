@@ -2,16 +2,11 @@ import { Wallet } from "ethers";
 import { ethers } from "hardhat";
 
 async function main() {
-  const factory = await ethers.getContractFactory("AllBasic");
-  const provider = ethers.provider;
-  const dataStorage = await factory.attach(
-    process.env.DATA_STORAGE_CONTRACT || ""
-  );
-  const adminWallet = new Wallet(process.env.ADMIN_KEY || "", provider);
+  const contract = await ethers.getContractAt("AllBasic", process.env.DATA_STORAGE_CONTRACT || "");
 
-  console.log("DATA_STORAGE_CONTRACT: ", await dataStorage.getAddress());
+  console.log("DATA_STORAGE_CONTRACT: ", await contract.getAddress());
 
-  const value = await dataStorage.getValue();
+  const value = await contract.getValue();
   console.log(value);
 }
 

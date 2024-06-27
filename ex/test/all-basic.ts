@@ -1,9 +1,13 @@
+import * as fs from "fs";
+import * as path from "path";
+
 import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import {
   time,
   loadFixture,
 } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
+import { GasCostPlugin } from "ethers";
 import { Wallet, Signer, BigNumber, constants, utils } from "ethers-v5";
 import {
   defaultAbiCoder,
@@ -12,8 +16,13 @@ import {
   hexlify,
   hexValue,
   formatBytes32String,
+  hexDataSlice,
+  keccak256,
+  serializeTransaction,
+  UnsignedTransaction
 } from "ethers-v5/lib/utils";
 import { ethers } from "hardhat";
+import * as zksync from "zksync-web3";
 
 import {
   ExecAccount,
@@ -24,9 +33,30 @@ import {
 } from "../typechain-types";
 import { libraries, AllBasic } from "../typechain-types/contracts";
 
-import { fullSuiteFixture } from "./full-suite.fixture";
-import { buildOrderStatus } from "./utils";
 
+import { fullSuiteFixture } from "./full-suite.fixture";
+import { buildOrderStatus, TransferAccountOwnershipParams, BasicUser, BasicAccount, AdminUser, takeBytes } from "./utils";
+
+
+const ALLBASIC_JSON_PATH = "../artifacts/contracts/AllBasic.sol/AllBasic.json";
+
+interface Transaction {
+  accessList?: any;
+  chainId?: number;
+  data?: string;
+  gasPrice?: BigNumber;
+  gasLimit?: BigNumber;
+  maxFeePerGas?: BigNumber;
+  maxPriorityFeePerGas?: BigNumber;
+  nonce?: number;
+  to?: string;
+  type?: number;
+  value?: BigNumber;
+  v?: number;
+  r?: string;
+  s?: string;
+  hash?: string;
+}
 
 describe("AllPairVault", () => {
   let execAccount: ExecAccount;
@@ -59,50 +89,14 @@ describe("AllPairVault", () => {
       console.log("AllBasic address: ", allBasic.target);
       expect(await allBasic.getValue()).to.equal(1n);
     });
-  });
 
-  describe("Typscript grammar", () => {
-    it("should be able to call deep.equal", async () => {
-      const expected = {
-        "0": BigNumber.from(1),
-        "1": BigNumber.from(2),
-        "2": BigNumber.from(3),
-        "3": BigNumber.from(4),
-        isValidated: BigNumber.from(1),
-        isCancelled: BigNumber.from(2),
-        totalFilled: BigNumber.from(3),
-        totalSize: BigNumber.from(4),
-      };
-      expect(buildOrderStatus(1, 2, 3, 4)).to.deep.equal(expected);
-    });
+    it("contract size", async function () {
+      const filePath = path.resolve(__dirname, ALLBASIC_JSON_PATH);
+      const rawData = fs.readFileSync(filePath, 'utf8');
+      const jsonData = JSON.parse(rawData);
 
-    // Define the function fetchData
-    function fetchData(): Promise<string> {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve("Hello, TypeScript!");
-        }, 10); // If it's too long, the log will not be shown.
-      });
-    }
+      console.log('Assembly Contract Bytecode Length: ', jsonData.deployedBytecode.length / 2);
 
-    // Use ReturnType to get the return type of fetchData
-    type FetchDataReturnType = ReturnType<typeof fetchData>;
-    // FetchDataReturnType is inferred as Promise<string>
-
-    // Use Awaited<T> to get the resolved type of the promise
-    type ResolvedType = Awaited<FetchDataReturnType>;
-    // ResolvedType is inferred as string
-
-    // Example function using Awaited<T>
-    async function logResolvedValue<T>(promise: Promise<T>): Promise<void> {
-      const resolvedValue: Awaited<T> = await promise;
-      console.log(resolvedValue);
-    }
-
-    it("should log resolved value", async () => {
-      // Test the function with fetchData
-      const dataPromise = fetchData();
-      logResolvedValue(dataPromise); // Logs "Hello, TypeScript!" after 1 second
     });
   });
 
@@ -271,30 +265,105 @@ describe("AllPairVault", () => {
     });
   });
 
-  describe("#reduce", () => {
-    const concatenateArrayElements = (arr: any[]): string => {
-      return arr.reduce((acc, curr) => (acc += curr.toString()), "");
-    };
-
-    it("should reduce the value", async () => {
-      const numArray: number[] = [1, 2, 3, 4, 5];
-      const strArray: string[] = ["a", "b", "c", "d"];
-
-      const concatenatedNumString = concatenateArrayElements(numArray);
-      const concatenatedStrString = concatenateArrayElements(strArray);
-
-      expect(concatenatedNumString).to.equal("12345");
-      expect(concatenatedStrString).to.equal("abcd");
-    });
-  });
-
   describe("#signTransaction", function () {
+    const filePath = path.resolve(__dirname, ALLBASIC_JSON_PATH); // Adjust the path if necessary
+    const rawData = fs.readFileSync(filePath, 'utf8');
+    const jsonData = JSON.parse(rawData);
+
+    it("Should deploy contract", async function () {
+      const allBasic = await ethers.deployContract("AllBasic");
+      console.log("AllBasic address: ", allBasic.target);
+    });
+
+    it("Should deploy operator with bytecode", async function () {
+      const [owner, spender] = await ethers.getSigners();
+
+      const tx = {
+        data: jsonData.bytecode,
+        gasLimit: 4000000,
+        gasPrice: 1000000000,
+      }
+
+      const txResponse = await owner.sendTransaction(tx);
+      const receipt = await txResponse.wait(); // Wait for the transaction to be mined
+      console.log("Contract deployed at address:", receipt.contractAddress);
+    });
+
+    // NOTE: poohnet으로 실행하면 에러가 발생함. 왜냐하면 poohnet은 evmVersion이 cancun이 아니므로,
+    // 쫑 날수 있으므로 hardhat.config.ts의 compiler 부분의 evmVersion: "cancun"을 제거해야함.
+    it("Should create contract creation transaction", async function () {
+      const ownerWallet = new Wallet(process.env.ADMIN_KEY || "");
+      const [owner, spender] = await ethers.getSigners()
+
+      const tx = {
+        data: jsonData.bytecode,
+        gasLimit: 4000000,
+        gasPrice: 1000000000,
+        nonce: 3,
+      }
+
+      const signedTx = await ownerWallet.signTransaction(tx);
+      console.log(`cast publish --rpc-url http://localhost:8545 ${signedTx}`);
+    });
+
+    // NOTE: (code: -32000, message: insufficient funds for gas * price + value: balance 0, tx cost 100000000000000000, overshot 100000000000000000, data: None)
+    // 사인한 트랜잭션을 만드는 것에 오류가 있는 것을 보임. 
+    it.skip("Should create contract creation transaction", async function () {
+      const owner = new Wallet(process.env.ADMIN_KEY || "");
+      // print balance of owner
+      console.log("balance:", await ethers.provider.getBalance(owner.address));
+
+      const nonce = ethers.toBeArray(4);
+      const gasPrice = ethers.toBeArray(100 * 10 ** 9);
+      const gasLimit = ethers.toBeArray(1000000);
+      const to = ethers.toBeArray(0);
+      const value = ethers.toBeArray(0);
+      const data = ethers.getBytes(jsonData.bytecode);
+
+      const unsignedEncodedTx = ethers.encodeRlp([nonce, gasPrice, gasLimit, to, value, data]);
+      // const hashedUnsignedEncodedTx = ethers.keccak256(ethers.getBytes(unsignedEncodedTx));
+      const sigStr = await owner.signMessage(unsignedEncodedTx);
+      console.log("Signature: ", sigStr);
+      const sig = ethers.Signature.from(sigStr);
+      console.log("type of r: ", typeof sig.r);
+      const signedEncodedTx = ethers.encodeRlp([nonce, gasPrice, gasLimit, to, value, data, ethers.toBeArray(sig.v), ethers.getBytes(sig.r), ethers.getBytes(sig.s)]);
+      const signedEncodedTxBytes = ethers.getBytes(signedEncodedTx);
+      const raw = signedEncodedTxBytes.reduce((x, y) => x += y.toString(16).padStart(2, '0'), '')
+      console.log(`cast publish --rpc-url http://localhost:8545 0x${raw}`);
+    });
+
+    // NOTE: (code: -32000, message: insufficient funds for gas * price + value: balance 0, tx cost 100000000000000000, overshot 100000000000000000, data: None)
+    // 사인한 트랜잭션을 만드는 것에 오류가 있는 것을 보임. 
+    it.skip("Should create contract creation transaction - BAK", async function () {
+      const ownerWallet = new Wallet(process.env.ADMIN_KEY || "");
+      console.log("ownerWallet: ", ownerWallet.address);
+      // const spender = new Wallet(process.env.USER_KEY || "");
+      const [owner, spender] = await ethers.getSigners();
+
+      const tx = {
+        data: jsonData.bytecode,
+        gasLimit: 4000000,
+        gasPrice: 1000000000,
+        nonce: 4,
+      }
+
+      const signedMsg = await ownerWallet.signMessage(serializeTransaction(tx));
+      console.log("signedMsg: ", signedMsg);
+      const sig = ethers.Signature.from(signedMsg);
+
+      // Serialize the signed transaction
+      const raw = serializeTransaction(tx, sig);
+      console.log(`cast publish --rpc-url http://localhost:8545 ${raw}`);
+    });
+
     it("Should approve and verify transactions", async function () {
       const {
         suiteBasic: { allBasic },
       } = await loadFixture(fullSuiteFixture);
 
+      // NotImplementedError: Method 'HardhatEthersSigner.signTransaction' is not implemented
       // const [owner, spender] = await ethers.getSigners();
+
       const owner = new Wallet(process.env.ADMIN_KEY || "");
       const spender = new Wallet(process.env.USER_KEY || "");
 
@@ -317,8 +386,8 @@ describe("AllPairVault", () => {
       // FIX: Error: from address mismatch (argument="transaction", value={"type":2,"to":"0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD","from":"0xE024589D0BCd59267E430fB792B29Ce7716566dF","data":"0x","value":0,"maxFeePerGas":12000,"maxPriorityFeePerGas":100}, code=INVALID_ARGUMENT, version=abstract-signer/5.7.0)
       // const eip1559Tx = await owner.populateTransaction({
       //   type: 2,
-      //   to: owner.address,
-      //   from: spender.address,
+      //   from: owner.address,
+      //   to: spender.address,
       //   data: "0x",
       //   value: 0,
       //   maxFeePerGas: 12000,
@@ -333,6 +402,94 @@ describe("AllPairVault", () => {
       // EIP1559TxData.signature = signature;
 
       // await expect(bootloaderUtilities.getTransactionHashes(EIP1559TxData)).to.be.revertedWith("Invalid v value");
+    });
+  });
+
+  describe("Typscript grammar", () => {
+    it("should be able to call deep.equal", async () => {
+      const expected = {
+        "0": BigNumber.from(1),
+        "1": BigNumber.from(2),
+        "2": BigNumber.from(3),
+        "3": BigNumber.from(4),
+        isValidated: BigNumber.from(1),
+        isCancelled: BigNumber.from(2),
+        totalFilled: BigNumber.from(3),
+        totalSize: BigNumber.from(4),
+      };
+      expect(buildOrderStatus(1, 2, 3, 4)).to.deep.equal(expected);
+    });
+
+    it("should log resolved value", async () => {
+      // Define the function fetchData
+      function fetchData(): Promise<string> {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve("Hello, TypeScript!");
+          }, 10); // If it's too long, the log will not be shown.
+        });
+      }
+
+      // Use ReturnType to get the return type of fetchData
+      type FetchDataReturnType = ReturnType<typeof fetchData>;
+      // FetchDataReturnType is inferred as Promise<string>
+
+      // Use Awaited<T> to get the resolved type of the promise
+      type ResolvedType = Awaited<FetchDataReturnType>;
+      // ResolvedType is inferred as string
+
+      // Example function using Awaited<T>
+      async function logResolvedValue<T>(promise: Promise<T>): Promise<void> {
+        const resolvedValue: Awaited<T> = await promise;
+        console.log(resolvedValue);
+      }
+
+      // Test the function with fetchData
+      const dataPromise = fetchData();
+      logResolvedValue(dataPromise); // Logs "Hello, TypeScript!" after 1 second
+    });
+
+    it("generic type example", async () => {
+      // Example with explicit types
+      type BasicAccountOwnershipTransfer = TransferAccountOwnershipParams<BasicUser, BasicAccount>;
+
+      const transferDetails: BasicAccountOwnershipTransfer = {
+        newOwner: { id: 'u123', name: 'Alice', type: 'basic' },
+        accountId: 'a456',
+        owner: { id: 'u456', name: 'Bob', type: 'basic' },
+        waitForConfirmation: true,
+        dryRun: false // `OperationOverrides` from utility type
+      };
+      console.log(transferDetails);
+
+      // Example using default types
+      type AdminAccountOwnershipTransfer = TransferAccountOwnershipParams<AdminUser>;
+
+      const adminTransferDetails: AdminAccountOwnershipTransfer = {
+        newOwner: { id: 'u789', name: 'Eve', type: 'admin' },
+        accountId: 'a789',
+        owner: { id: 'u890', name: 'Frank', type: 'admin' },
+        waitForConfirmation: true,
+        dryRun: true // `OperationOverrides` from utility type
+      };
+      console.log(adminTransferDetails);
+    });
+
+    describe("#reduce", () => {
+      const concatenateArrayElements = (arr: any[]): string => {
+        return arr.reduce((acc, curr) => (acc += curr.toString()), "");
+      };
+
+      it("should reduce the value", async () => {
+        const numArray: number[] = [1, 2, 3, 4, 5];
+        const strArray: string[] = ["a", "b", "c", "d"];
+
+        const concatenatedNumString = concatenateArrayElements(numArray);
+        const concatenatedStrString = concatenateArrayElements(strArray);
+
+        expect(concatenatedNumString).to.equal("12345");
+        expect(concatenatedStrString).to.equal("abcd");
+      });
     });
   });
 });
