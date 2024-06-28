@@ -33,30 +33,13 @@ import {
 } from "../typechain-types";
 import { libraries, AllBasic } from "../typechain-types/contracts";
 
-
+import { fillSignAndPack } from "./UserOp";
+import { PackedUserOperation, Transaction, UserOperation } from './UserOperation'
 import { fullSuiteFixture } from "./full-suite.fixture";
 import { buildOrderStatus, TransferAccountOwnershipParams, BasicUser, BasicAccount, AdminUser, takeBytes } from "./utils";
 
 
 const ALLBASIC_JSON_PATH = "../artifacts/contracts/AllBasic.sol/AllBasic.json";
-
-interface Transaction {
-  accessList?: any;
-  chainId?: number;
-  data?: string;
-  gasPrice?: BigNumber;
-  gasLimit?: BigNumber;
-  maxFeePerGas?: BigNumber;
-  maxPriorityFeePerGas?: BigNumber;
-  nonce?: number;
-  to?: string;
-  type?: number;
-  value?: BigNumber;
-  v?: number;
-  r?: string;
-  s?: string;
-  hash?: string;
-}
 
 // NOTE: Refer this code later
 // /Users/hyunjaelee/work/account-abstraction/node_modules/zksync-web3/src/utils.ts
@@ -100,6 +83,16 @@ describe("AllPairVault", () => {
       const jsonData = JSON.parse(rawData);
 
       console.log('Assembly Contract Bytecode Length: ', jsonData.deployedBytecode.length / 2);
+
+    });
+
+    it.only("#simulateValidation", async function () {
+      const {
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+
+      const userOp = await fillSignAndPack();
+      const valResult = await allBasic.simulateValidation(userOp);
 
     });
   });

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import "./interfaces/IERC20Mintable.sol";
+import "../interfaces/IERC20Mintable.sol";
 
 /// @title A contract that deletes the request of a user to mint a token to the
 /// user. This contract stored the status of the request of the user to mint a

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
+import "./IAllBasic.sol";
 // Uncomment this line to use console.log
 import "hardhat/console.sol";
 
@@ -9,7 +10,7 @@ import "hardhat/console.sol";
 //Users/hyunjaelee/work/erc6900-reference/src/samples/plugins/ModularSessionKeyPlugin.sol
 
 // @audit-issue Should emit event
-contract AllBasic {
+contract AllBasic is IAllBasic {
   uint public value = 1;
   mapping(address => bool) public approvals;
   mapping(address => bool) public spenders;
@@ -29,6 +30,15 @@ contract AllBasic {
   function approve(address owner, address spender) public {
     approvals[owner] = true;
     spenders[spender] = true;
+  }
+
+  function simulateValidation(
+    PackedUserOperation calldata userOp
+  ) external override returns (ValidationResult memory) {
+    ValidationResult memory result;
+    result.returnInfo = ReturnInfo(0, 0);
+    result.senderInfo = StakeInfo(1, 1);
+    return result;
   }
 }
 

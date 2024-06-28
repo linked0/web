@@ -132,6 +132,8 @@ psql postgres <== 접속해볼 수 있음.
 - Github Copilot
 - Markdown All in One
 - Github actions
+- Extension Pack for Java
+
 
 ##### VS Code Setting
 - 느린 스크롤 세팅: Settings 열기 - terminal smo 검색 - Smooth Scrolling 체크
