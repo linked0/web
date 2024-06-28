@@ -102,11 +102,6 @@ source $ZSH/oh-my-zsh.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
-
-export PS1="\W \u$ "
-
-export PATH=$PATH:"/Applications/IntelliJ IDEA.app/Contents/MacOS"
 
 hgrep() {
 	grep -irnH --include=\*.$1 "$2" ./  
