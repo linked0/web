@@ -19,7 +19,8 @@ import {
   hexDataSlice,
   keccak256,
   serializeTransaction,
-  UnsignedTransaction
+  UnsignedTransaction,
+  toUtf8Bytes
 } from "ethers-v5/lib/utils";
 import { ethers } from "hardhat";
 import * as zksync from "zksync-web3";
@@ -65,6 +66,10 @@ describe("AllPairVault", () => {
     console.log("max: ", max.toString());
     console.log("hafMax: ", hafMax.toString());
     console.log("hafMaxPlusOne: ", hafMaxPlusOne.toString());
+
+    const textToHex = (text: string) => hexlify(toUtf8Bytes(text));
+    const JAY = textToHex("Jay");
+    const DATA = textToHex("Data");
   });
 
   describe("AllBasic", function () {
