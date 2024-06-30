@@ -1,0 +1,9 @@
+{
+    "grammarly.selectors": [
+        {
+            "language": "solidity",
+            "scheme": "file",
+            "pattern": "contracts/oracle-manipulation-2/solution/AttackLendly.sol"
+        }
+    ]
+}

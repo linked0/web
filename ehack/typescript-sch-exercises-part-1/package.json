@@ -1,0 +1,35 @@
+{
+	"name": "typescript-sch-exercises-part-1",
+	"scripts": {
+		"compile": "hardhat compile",
+		"test": "hardhat test",
+		"console": "hardhat console",
+		"node": "hardhat node",
+		"erc20-1": "npx hardhat test test/erc20-1/tests.ts",
+		"erc20-2": "npx hardhat test test/erc20-2/tests.ts",
+		"erc721-1": "npx hardhat test test/erc721-1/tests.ts",
+		"erc721-2": "npx hardhat test test/erc721-2/tests.ts",
+		"randomness-vulnerabilities-1": "npx hardhat test test/randomness-vulnerabilities-1/tests.ts",
+		"randomness-vulnerabilities-2": "npx hardhat test test/randomness-vulnerabilities-2/tests.ts",
+		"arithmetic-overflows-1": "npx hardhat test test/arithmetic-overflows-1/tests.ts",
+		"arithmetic-overflows-2": "npx hardhat test test/arithmetic-overflows-2/tests.ts",
+		"arithmetic-overflows-3": "npx hardhat test test/arithmetic-overflows-3/tests.ts",
+		"arithmetic-overflows-4": "npx hardhat test test/arithmetic-overflows-4/tests.ts",
+		"tx-origin-phishing-1": "npx hardhat test test/tx-origin-phishing-1/tests.ts",
+		"reentrancy-1": "npx hardhat test test/reentrancy-1/tests.ts",
+		"reentrancy-2": "npx hardhat test test/reentrancy-2/tests.ts",
+		"reentrancy-3": "npx hardhat test test/reentrancy-3/tests.ts",
+		"reentrancy-4": "npx hardhat test test/reentrancy-4/tests.ts",
+		"access-control-1": "npx hardhat test test/access-control-1/tests.ts",
+		"access-control-2": "npx hardhat test test/access-control-2/tests.ts",
+		"access-control-3": "npx hardhat test test/access-control-3/tests.ts",
+		"access-control-4": "npx hardhat test test/access-control-4/tests.ts"
+	},
+	"license": "UNLICENSED ./LICENSE",
+	"devDependencies": {
+		"@nomicfoundation/hardhat-toolbox": "^3.0.0",
+		"@openzeppelin/contracts": "^4.9.3",
+		"dotenv": "^16.3.1",
+		"hardhat": "^2.17.3"
+	}
+}
