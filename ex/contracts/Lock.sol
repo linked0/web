@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
-// Uncomment this line to use console.log
+import "./ILock.sol";
 import "hardhat/console.sol";
 
-contract Lock {
+contract Lock is ILock {
   uint public unlockTime;
   uint public value = 1;
   address payable public owner;
@@ -12,8 +12,6 @@ contract Lock {
   event Withdrawal(uint amount, uint when);
 
   constructor(uint _unlockTime) payable {
-    console.log("## block.timestamp: %o", block.timestamp);
-    console.log("## unlockTime: %o", _unlockTime);
     require(
       block.timestamp < _unlockTime,
       "Unlock time should be in the future"
@@ -36,8 +34,15 @@ contract Lock {
   }
 
   function add() public {
-    console.log("Value in Lock is %o", value);
     value += 1;
-    console.log("Value2 in Lock is %o", value);
+  }
+
+  function getUnlockTime() external view override returns (uint)
+  {
+    return unlockTime;
+  }
+
+  function setLockTime(uint _unlockTime) external override {
+    unlockTime = _unlockTime;
   }
 }

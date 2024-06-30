@@ -22,7 +22,7 @@ import {
   UnsignedTransaction,
   toUtf8Bytes
 } from "ethers-v5/lib/utils";
-import { ethers } from "hardhat";
+import { ethers, network } from "hardhat";
 import * as zksync from "zksync-web3";
 
 import {
@@ -38,6 +38,8 @@ import { fillSignAndPack } from "./UserOp";
 import { PackedUserOperation, Transaction, UserOperation } from './UserOperation'
 import { fullSuiteFixture } from "./full-suite.fixture";
 import { buildOrderStatus, TransferAccountOwnershipParams, BasicUser, BasicAccount, AdminUser, takeBytes } from "./utils";
+import exp from "constants";
+import { send } from "process";
 
 
 const ALLBASIC_JSON_PATH = "../artifacts/contracts/AllBasic.sol/AllBasic.json";
@@ -59,7 +61,8 @@ describe("AllPairVault", () => {
     [deployer] = await ethers.getSigners();
   });
 
-  describe("Code Test", () => {
+  // describe.only("Code Test", () => {
+  describe.skip("Code Test", () => {
     const max = constants.MaxUint256;
     const hafMax = max.div(2);
     const hafMaxPlusOne = hafMax.add(1);
@@ -69,7 +72,7 @@ describe("AllPairVault", () => {
 
     const textToHex = (text: string) => hexlify(toUtf8Bytes(text));
     const JAY = textToHex("Jay");
-    const DATA = textToHex("Data");
+    const DATA = textToHex("Hello World! Otani is the best! Jay is the best! All the best!");
   });
 
   describe("AllBasic", function () {
@@ -77,8 +80,6 @@ describe("AllPairVault", () => {
       const {
         suiteBasic: { allBasic },
       } = await loadFixture(fullSuiteFixture);
-
-      console.log("AllBasic address: ", allBasic.target);
       expect(await allBasic.getValue()).to.equal(1n);
     });
 
@@ -91,7 +92,71 @@ describe("AllPairVault", () => {
 
     });
 
-    it.only("#simulateValidation", async function () {
+    it("should create a new lock", async () => {
+      const {
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+      const [time1, time2] = await allBasic.getLockTime();
+      expect(time1).to.equal(0);
+      expect(time2).to.equal(0);
+
+      await allBasic.createLock();
+      await allBasic.createLockCreationCode();
+      await network.provider.request({ method: "evm_mine" });
+
+      const [time3, time4] = await allBasic.getLockTime();
+      expect(time3).to.equal(1);
+      expect(time4).to.equal(2);
+    });
+
+    it("#hexify #arrayify #hexValue", async () => {
+      // #hexify & #hexValue
+      const number = 255;
+      const hexString = utils.hexlify(number);
+      expect(typeof hexString).to.equal("string");
+      expect(hexString).to.equal("0xff");
+
+      const byteArray = [0, 1, 2, 3];
+      const hexStr = utils.hexlify(byteArray);
+      expect(hexStr).to.equal("0x00010203");
+      
+      const hexValueStr = utils.hexValue(byteArray);
+      expect(hexValueStr).to.equal("0x10203");
+
+      // #arrayify
+      const sigStr = "calculatePower(uint256,uint256)";
+      const functionHash = hexDataSlice(keccak256(toUtf8Bytes(sigStr)), 0, 4);
+      const args = utils.defaultAbiCoder.encode(["uint256", "uint256"], [10, 3]);
+      const data = functionHash + args.slice(2);
+      const dataArray = utils.arrayify(data);
+      const expected = new Uint8Array([
+        249, 121, 242, 105, 0, 0, 0, 0, 0, 0, 0,  0,
+          0,   0,   0,   0, 0, 0, 0, 0, 0, 0, 0,  0,
+          0,   0,   0,   0, 0, 0, 0, 0, 0, 0, 0, 10,
+          0,   0,   0,   0, 0, 0, 0, 0, 0, 0, 0,  0,
+          0,   0,   0,   0, 0, 0, 0, 0, 0, 0, 0,  0,
+          0,   0,   0,   0, 0, 0, 0, 3
+      ]);
+      expect(dataArray).to.deep.equal(expected);
+
+      // #hexValue
+      const shortString = "Hello, World!";
+      const bytes32Formatted = utils.formatBytes32String(shortString);
+      expect(bytes32Formatted).to.equal(("0x48656c6c6f2c20576f726c642100000000000000000000000000000000000000").toLowerCase());
+
+    });
+
+    it("#calculatePower", async function () {
+      const {
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+
+      await allBasic.calculatePower(10, 2);
+      await network.provider.request({ method: "evm_mine" });
+      expect(await allBasic.getValue()).to.equal(100);
+    });
+
+    it("#simulateValidation", async function () {
       const {
         suiteBasic: { allBasic },
       } = await loadFixture(fullSuiteFixture);
@@ -305,7 +370,8 @@ describe("AllPairVault", () => {
       }
 
       const signedTx = await ownerWallet.signTransaction(tx);
-      console.log(`cast publish --rpc-url http://localhost:8545 ${signedTx}`);
+      console.log("!!! UNCOMMENT code to see signed transaction !!!");
+      // console.log(`cast publish --rpc-url http://localhost:8545 ${signedTx}`);
     });
 
     // NOTE: (code: -32000, message: insufficient funds for gas * price + value: balance 0, tx cost 100000000000000000, overshot 100000000000000000, data: None)
@@ -404,6 +470,79 @@ describe("AllPairVault", () => {
       // EIP1559TxData.signature = signature;
 
       // await expect(bootloaderUtilities.getTransactionHashes(EIP1559TxData)).to.be.revertedWith("Invalid v value");
+    });
+
+    it("should add call with sendTransaction", async () => {
+      const {
+        accounts: { owner }, 
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+      const sigStr = "calculatePower(uint256,uint256)";
+
+      // There is two ways to get functionHash
+      const functionHash = hexDataSlice(keccak256(toUtf8Bytes(sigStr)), 0, 4);
+      // const functionHash = utils.id(sigStr).slice(0, 10);
+
+      const args = utils.defaultAbiCoder.encode(["uint256", "uint256"], [10, 3]);
+      const data = functionHash + args.slice(2);
+      const tx = {
+        to: allBasic.target,
+        data: data,
+      };
+      const ret = await owner.sendTransaction(tx);
+      await ret.wait();
+      expect(await allBasic.getValue()).to.equal(1000);
+
+      // Second call
+      const dataTwo = await allBasic.calculatePower.populateTransaction(10, 4);
+      const retTwo = await owner.sendTransaction(dataTwo);
+      await retTwo.wait();
+      expect(await allBasic.getValue()).to.equal(10000);
+    });
+
+    it("should add call with eth_sendRawTransaction", async () => {
+      const {
+        suiteBasic: { allBasic}
+      } = await loadFixture(fullSuiteFixture);
+      const owner = new Wallet(process.env.ADMIN_KEY || "");
+
+      const sigStr = "calculatePower(uint256,uint256)";
+      const functionHash = utils.id(sigStr).slice(0, 10);
+      const args = utils.defaultAbiCoder.encode(["uint256", "uint256"], [10, 9]);
+      const data = functionHash + args.slice(2);
+      const tx = {
+        to: allBasic.target,
+        data: data,
+        gasLimit: 4000000,
+        gasPrice: 1000000000,
+        nonce: 8,
+      };
+      const signedTx = await owner.signTransaction(tx);
+      const ret = await ethers.provider.send('eth_sendRawTransaction', [signedTx])
+      expect(await allBasic.getValue()).to.equal(1000000000);
+    });
+
+    it("should add call with eth_call", async () => {
+      const {
+        suiteBasic: { allBasic}
+      } = await loadFixture(fullSuiteFixture);
+      const owner = new Wallet(process.env.ADMIN_KEY || "");
+      await allBasic.calculatePower(10, 5);
+
+      const sigStr = "getValue()";
+      const data = utils.id(sigStr).slice(0, 10);
+      const tx = {
+        to: allBasic.target,
+        data: data,
+      };
+      const stateOverride = {
+        [allBasic.target]: {
+          code: jsonData.deployedBytecode
+        }
+      }
+      const ret = await ethers.provider.send('eth_call', [tx, 'latest', stateOverride])
+      const [decodeResult] = allBasic.interface.decodeFunctionResult("getValue", ret);
+      expect(decodeResult).to.equal(100000);
     });
   });
 

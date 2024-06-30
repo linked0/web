@@ -2,6 +2,8 @@
 pragma solidity ^0.8.19;
 
 import "./IAllBasic.sol";
+import "./ILock.sol";
+import "./Lock.sol";
 // Uncomment this line to use console.log
 import "hardhat/console.sol";
 
@@ -14,13 +16,37 @@ contract AllBasic is IAllBasic {
   uint public value = 1;
   mapping(address => bool) public approvals;
   mapping(address => bool) public spenders;
+  Lock public lock;
+  Lock public lock2;
 
   constructor() payable {}
 
+  function createLock() public {
+    lock = new Lock(block.timestamp + 100);
+    lock.setLockTime(1);
+  }
+
+  function createLockCreationCode() public {
+    bytes memory bytecode = abi.encodePacked(type(Lock).creationCode, abi.encode(block.timestamp + 100));
+    bytes32 salt = keccak256(abi.encodePacked(block.timestamp));
+    address newLock;
+    assembly {
+        newLock := create2(0, add(bytecode, 32), mload(bytecode), salt)
+    }
+    lock2 = Lock(newLock);
+    lock2.setLockTime(2);
+  }
+
+  function getLockTime() public view returns (uint, uint) {
+    uint time;
+    uint time2;
+    if (address(lock) != address(0)) time = lock.getUnlockTime();
+    if (address(lock2) != address(0)) time2 = lock2.getUnlockTime();
+    return (time, time2);
+  }
+
   function add() public {
-    console.log("Value in Lock is %o", value);
     value += 1;
-    console.log("Value2 in Lock is %o", value);
   }
 
   function getValue() external view returns (uint) {
@@ -39,6 +65,11 @@ contract AllBasic is IAllBasic {
     result.returnInfo = ReturnInfo(0, 0);
     result.senderInfo = StakeInfo(1, 1);
     return result;
+  }
+
+  function calculatePower(uint x, uint y) external returns (uint) {
+    value = x ** y;
+    return value ;
   }
 }
 

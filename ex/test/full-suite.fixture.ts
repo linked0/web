@@ -26,9 +26,11 @@ export async function fullSuiteFixture() {
     suiteBasic: { allBasic },
   } = await allBasicFixture();
 
+  const owner = deployer;
   return {
     accounts: {
       deployer,
+      owner,  // Actually deployer !!!
       user,
     },
     suite: {
