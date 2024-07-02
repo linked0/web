@@ -140,6 +140,7 @@ alias ppff='code ~/work/web/ex/foundry.toml'
 alias ppfr='code ~/work/web/ex/remappings.txt'
 alias ppm='code ~/work/web/memo.txt'
 alias ppm2='code ~/work/web/m2.txt'
+alias pppp='code ~/work/web/exp/basic.py'
 alias ppz='code ~/work/web/zsub/zshrc'
 alias pzz='code ~/.zshrc'
 

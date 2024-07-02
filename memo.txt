@@ -1,17 +1,33 @@
 0. 기본 세팅
+- go
 sudo rm -rf /usr/bin/go
 sudo rm -rf /usr/local/go
 wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
 add “export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin” to ./zshrc
 
+- nvm install & use
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+source ~/.bashrc  
+nvm install 16 && nvm use 16
+npm install -g npm@9.8.1 @bazel/bazelisk
+
+- poohgeth compile
+./compile
+
+- poohprysm compile
+bazel build //cmd/beacon-chain:beacon-chain --config=release
+bazel build //validator:image_bundle --config=release
+
 1. geth를 새로운 config로 실행
 - 일단 이것으로 설공을 하면 일단 돌지 않고서 대기하고 있을 것임
 
 2.  genesis 만들기
+- vi poohprysm/poohnet/config/chain-config.yaml
 - MIN_GENESIS_ACTIVE_VALIDATOR_COUNT: 8
 - MIN_GENESIS_TIME: 원하는 consensus layer genesis time
     - date +%s으로 현재 시간을 얻어와서 한 600(10분)을 더한다.
+    - 🔥 한번 세팅이 된 후에 다시 여러번 시도할때 이 부분만 세팅하기 다시 하면됨
 - SHARDING_FORK_VERSION, SHARDING_FORK_EPOCH 주석 처리함
 - TERMINAL_BLOCK_HASH 지정
     - el node에서 "eth.getBlockByNumber(0)"를 통해서 "hash" 항목을 가져옴.
@@ -25,12 +41,13 @@ go install github.com/protolambda/zcli@latest
 zcli pretty bellatrix  BeaconState config/genesis.ssz > parsedState.json
 - find "genesis_validators_root" on "parsedState.json" file
 - copy the value of "genesis_validators_root" to the following part of setting.py
-근데 거의 바뀌지 않음.
+근데 거의 바뀌지 않음. --> 왜냐면 mnemonic은 그대로 쓰기 때문에.
 TestnetSetting = BaseChainSetting(
 NETWORK_NAME=TESTNET, GENESIS_FORK_VERSION=bytes.fromhex('2F1C0000'),
 GENESIS_VALIDATORS_ROOT=bytes.fromhex('e63460dc044e056f26ca8f7406a18867d31f1ec195322f428b5918d4b0153050'))
 
 4. staking-deposit-cli
+- cd poohprysm/poohnet/pooh-deposit-cl
 - python 3.10 env
 sudo apt-get update
 sudo apt-get install python3.10-dev
@@ -38,15 +55,31 @@ sudo apt install python3.10-venv
 python3.10 -m venv py310
 source py310/bin/activate (deactivate after all things done)
 - sudo ./deposit.sh install 
+- export PYTHONPATH=$PYTHONPATH:/home/ubuntu/poohprysm/poohnet/pooh-deposit-cli
+- ./deposit.sh existing-mnemonic
+
+- 위에서 생성된 키 복사하기
+- cd poohprysm
+- sudo rm -rf /home/ubuntu/.eth2validators/prysm-wallet-v2
+- ./keys (암호:pooh2023!@)
+- ~/.pooh/cl/config 폴더 생성
+mkdir -p $HOME/.pooh
+mkdir -p $HOME/.pooh/cl
+mkdir -p $HOME/.pooh/cl/config
+cp -rf ./poohnet/config/* $HOME/.pooh/cl/config
+- sudo vi ~/.pooh/cl/config/password.txt, 암호 추가
+
+5. cl 실행
+- cd poohprysm
+- ./cnode: 
+- 첫번째 cl의 enr을 알아내서 다른 cnode 스크립트의 bootstrap-node 항목에 세팅하기 
 
 
-4. run cl node
 
 
-4. validator key import
+🍎 BootNode에 대해서 개념 파악
+사용할수 있는 mnemonic에 대해서 찾아보기 
 
-
-  /**
    * Gas and return values during simulation.
    * @param preOpGas         - The gas used for validation (including preValidationGas)
    * @param prefund          - The required prefund for this operation
