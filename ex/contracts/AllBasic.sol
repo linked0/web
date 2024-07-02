@@ -2,6 +2,7 @@
 pragma solidity ^0.8.19;
 
 import "./IAllBasic.sol";
+import "./AllBasicFriend.sol";
 import "./ILock.sol";
 import "./Lock.sol";
 // Uncomment this line to use console.log
@@ -18,6 +19,7 @@ contract AllBasic is IAllBasic {
   mapping(address => bool) public spenders;
   Lock public lock;
   Lock public lock2;
+  address public friend;
 
   constructor() payable {}
 
@@ -27,11 +29,14 @@ contract AllBasic is IAllBasic {
   }
 
   function createLockCreationCode() public {
-    bytes memory bytecode = abi.encodePacked(type(Lock).creationCode, abi.encode(block.timestamp + 100));
+    bytes memory bytecode = abi.encodePacked(
+      type(Lock).creationCode,
+      abi.encode(block.timestamp + 100)
+    );
     bytes32 salt = keccak256(abi.encodePacked(block.timestamp));
     address newLock;
     assembly {
-        newLock := create2(0, add(bytecode, 32), mload(bytecode), salt)
+      newLock := create2(0, add(bytecode, 32), mload(bytecode), salt)
     }
     lock2 = Lock(newLock);
     lock2.setLockTime(2);
@@ -69,7 +74,34 @@ contract AllBasic is IAllBasic {
 
   function calculatePower(uint x, uint y) external returns (uint) {
     value = x ** y;
-    return value ;
+    return value;
+  }
+
+  function setFriend(address _friend) public {
+    friend = _friend;
+  }
+
+  function callFriendWithSignature(
+    uint256 _value,
+    string memory _message
+  ) public {
+    bytes memory data = abi.encodeWithSignature(
+      "setValues(uint256,string)",
+      _value,
+      _message
+    );
+    (bool success, ) = friend.call(data);
+    require(success, "Call to Friend failed");
+  }
+
+  function callFriendWithSelector(
+    uint256 _value,
+    string memory _message
+  ) public {
+    bytes4 selector = bytes4(keccak256("setValues(uint256,string)"));
+    bytes memory data = abi.encodeWithSelector(selector, _value, _message);
+    (bool success, ) = friend.call(data);
+    require(success, "Call to Friend failed");
   }
 }
 

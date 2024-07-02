@@ -18,13 +18,12 @@ export async function fullSuiteFixture() {
   );
   const delegator = await TrasactionDelegatorFactory.deploy(erc20.target);
 
+  const allBasic = await ethers.deployContract("AllBasic");
+  const friend = await ethers.deployContract("AllBasicFriend");
+
   const {
     suiteAllPairVault: { allPairVault, lock },
   } = await associatedLinkedListSetFixture();
-
-  const {
-    suiteBasic: { allBasic },
-  } = await allBasicFixture();
 
   const owner = deployer;
   return {
@@ -38,7 +37,7 @@ export async function fullSuiteFixture() {
       delegator,
     },
     suiteAllPairVault: { allPairVault, lock },
-    suiteBasic: { allBasic },
+    suiteBasic: { allBasic, friend },
   };
 }
 
@@ -73,14 +72,3 @@ async function associatedLinkedListSetFixture() {
   };
 }
 
-async function allBasicFixture() {
-  const [deployer, user] = await ethers.getSigners();
-
-  const allBasic = await ethers.deployContract("AllBasic");
-
-  return {
-    suiteBasic: {
-      allBasic,
-    },
-  };
-}

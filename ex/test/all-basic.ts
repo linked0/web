@@ -111,6 +111,50 @@ describe("AllPairVault", () => {
       expect(time4).to.equal(2);
     });
 
+    it("#calculatePower", async function () {
+      const {
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+
+      await allBasic.calculatePower(10, 2);
+      await network.provider.request({ method: "evm_mine" });
+      expect(await allBasic.getValue()).to.equal(100);
+    });
+
+    it("#simulateValidation", async function () {
+      const {
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+
+      const userOp = await fillSignAndPack();
+      const valResult = await allBasic.simulateValidation(userOp);
+
+    });
+
+    it("#abi.encodeWithSignature #callFriend #setFriend", async function () {
+      const {
+        suiteBasic: { allBasic, friend },
+      } = await loadFixture(fullSuiteFixture);
+
+      await allBasic.setFriend(friend.target);
+      await allBasic.callFriendWithSignature(256, "Hello, World!");
+      expect(await friend.storedValue()).to.equal(256);
+      expect(await friend.storedMessage()).to.equal("Hello, World!");
+    });
+
+    it("#abi.encodeWithSelector #callFriend #setFriend", async function () {
+      const {
+        suiteBasic: { allBasic, friend },
+      } = await loadFixture(fullSuiteFixture);
+
+      await allBasic.setFriend(friend.target);
+      await allBasic.callFriendWithSelector(256, "Hello, World!");
+      expect(await friend.storedValue()).to.equal(256);
+      expect(await friend.storedMessage()).to.equal("Hello, World!");
+    });
+  });
+
+  describe("Ethers utils", () => {
     it("#hexify #arrayify #hexValue", async () => {
       // #hexify & #hexValue
       const number = 255;
@@ -148,24 +192,13 @@ describe("AllPairVault", () => {
 
     });
 
-    it("#calculatePower", async function () {
-      const {
-        suiteBasic: { allBasic },
-      } = await loadFixture(fullSuiteFixture);
+    it("#parseUnits", async () => {
+      const amount = "10.5"; // 10.5 tokens
+      const decimals = 18; // Assume the token has 18 decimal places
 
-      await allBasic.calculatePower(10, 2);
-      await network.provider.request({ method: "evm_mine" });
-      expect(await allBasic.getValue()).to.equal(100);
-    });
-
-    it("#simulateValidation", async function () {
-      const {
-        suiteBasic: { allBasic },
-      } = await loadFixture(fullSuiteFixture);
-
-      const userOp = await fillSignAndPack();
-      const valResult = await allBasic.simulateValidation(userOp);
-
+      // Convert the amount to Wei using parseUnits
+      const amountInWei = utils.parseUnits(amount, decimals);
+      expect(amountInWei).to.equal(10500000000000000000n);
     });
   });
 
