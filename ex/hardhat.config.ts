@@ -121,10 +121,10 @@ const config: HardhatUserConfig = {
       },
     },
   },
-  defaultNetwork: "localnet",
+  defaultNetwork: "hardhat",
   networks: {
     hardhat: {
-      hardfork: "cancun",
+      // hardfork: "cancun",
       allowUnlimitedContractSize: false,
       accounts: getAccounts(),
     },
