@@ -77,6 +77,9 @@ const optimizerSettingsNoSpecializer = {
   },
 };
 
+// Dynamically get the test mode from environment variables
+const testMode = process.env.TEST_MODE || '';
+
 const config: HardhatUserConfig = {
   solidity: {
     compilers: [
@@ -127,6 +130,9 @@ const config: HardhatUserConfig = {
       // hardfork: "cancun",
       allowUnlimitedContractSize: false,
       accounts: getAccounts(),
+      mining: {
+        auto: testMode !== 'disableAutoMining'
+      }
     },
     localnet: {
       url: process.env.LOCALNET_URL,

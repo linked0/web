@@ -334,7 +334,7 @@ describe("AllPairVault", () => {
     });
   });
 
-  describe.only("Deposit contract", () => {
+  describe("Deposit contract", () => {
     const DEPOSIT_CONTRACT_ADDRESS = "0x0420420420420420420420420420420420420420";
     // Example deposit parameters
     const withdrawalCredentials = utils.hexlify(utils.randomBytes(32)); // Replace with actual withdrawal credentials
@@ -343,7 +343,9 @@ describe("AllPairVault", () => {
     it("deposit contract", async function () {
       const depositContract = await ethers.getContractAt("DepositContract", DEPOSIT_CONTRACT_ADDRESS);
       // console.log("depositContract: ", depositContract);
-      console.log("deposit count: ", await depositContract.get_deposit_count());
+
+      // NOTE: If you want to test this, use localnet network.
+      // console.log("deposit count: ", await depositContract.get_deposit_count());
 
       // const deployer = new Wallet(process.env.ADMIN_KEY || "");
       // const pubkey = deployer.publicKey;
