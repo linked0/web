@@ -1,12 +1,9 @@
-  let JAY: string = "Jay";
-  let DATA: string = "Data";
-  const paymaster = hexConcat([
-    JAY, hexZeroPad(hexlify("0x100", { hexPad: 'left' }), 16),
-    hexZeroPad(hexlify("0x200", { hexPad: 'left' }), 16), DATA
-  ])
-  console.log("gasLimit: ", gasLimit)
-  console.log("paymaster: ", paymaster)
+(py310) ubuntu@ip-172-31-57-211:~/poohprysm/poohnet/pooh-deposit-cli$ ./deposit.sh existing-mnemonic
+linux-gnu
+Running deposit-cli...
+Traceback (most recent call last):
+  File "/home/ubuntu/poohprysm/poohnet/pooh-deposit-cli/./staking_deposit/deposit.py", line 4, in <module>
+    from staking_deposit.cli.existing_mnemonic import existing_mnemonic
+ModuleNotFoundError: No module named 'staking_deposit'
 
-       Error: invalid hexlify value (argument="value", value="Jay", code=INVALID_ARGUMENT, version=bytes/5.7.0)
-
-       : Why does the error happen and how can I solve it.
+: why is this happening?

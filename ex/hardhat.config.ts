@@ -92,7 +92,7 @@ const config: HardhatUserConfig = {
       {
         version: "0.8.24",
         settings: {
-          evmVersion: "cancun",
+          // evmVersion: "cancun",
           // viaIR: true,
           // optimizer: {
           //   ...(process.env.NO_SPECIALIZER
@@ -121,7 +121,7 @@ const config: HardhatUserConfig = {
       },
     },
   },
-  defaultNetwork: "hardhat",
+  defaultNetwork: "localnet",
   networks: {
     hardhat: {
       hardfork: "cancun",

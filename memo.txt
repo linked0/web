@@ -1,3 +1,51 @@
+0. 기본 세팅
+sudo rm -rf /usr/bin/go
+sudo rm -rf /usr/local/go
+wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
+add “export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin” to ./zshrc
+
+1. geth를 새로운 config로 실행
+- 일단 이것으로 설공을 하면 일단 돌지 않고서 대기하고 있을 것임
+
+2.  genesis 만들기
+- MIN_GENESIS_ACTIVE_VALIDATOR_COUNT: 8
+- MIN_GENESIS_TIME: 원하는 consensus layer genesis time
+    - date +%s으로 현재 시간을 얻어와서 한 600(10분)을 더한다.
+- SHARDING_FORK_VERSION, SHARDING_FORK_EPOCH 주석 처리함
+- TERMINAL_BLOCK_HASH 지정
+    - el node에서 "eth.getBlockByNumber(0)"를 통해서 "hash" 항목을 가져옴.
+
+3. gen_genesis 스크립트를 실행하여 CL용 genesis 파일을 만든다.
+- compile with "make build" on "eth2-testnet-genesis" folder
+- "gen_genesis" on "poohnet" folder
+- install "zcli"
+go install github.com/protolambda/zcli@latest
+- get "Genesis Validators Root" with following command on "poohnet" folder.
+zcli pretty bellatrix  BeaconState config/genesis.ssz > parsedState.json
+- find "genesis_validators_root" on "parsedState.json" file
+- copy the value of "genesis_validators_root" to the following part of setting.py
+근데 거의 바뀌지 않음.
+TestnetSetting = BaseChainSetting(
+NETWORK_NAME=TESTNET, GENESIS_FORK_VERSION=bytes.fromhex('2F1C0000'),
+GENESIS_VALIDATORS_ROOT=bytes.fromhex('e63460dc044e056f26ca8f7406a18867d31f1ec195322f428b5918d4b0153050'))
+
+4. staking-deposit-cli
+- python 3.10 env
+sudo apt-get update
+sudo apt-get install python3.10-dev
+sudo apt install python3.10-venv
+python3.10 -m venv py310
+source py310/bin/activate (deactivate after all things done)
+- sudo ./deposit.sh install 
+
+
+4. run cl node
+
+
+4. validator key import
+
+
   /**
    * Gas and return values during simulation.
    * @param preOpGas         - The gas used for validation (including preValidationGas)

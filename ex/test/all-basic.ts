@@ -62,17 +62,19 @@ describe("AllPairVault", () => {
   });
 
   // describe.only("Code Test", () => {
-  describe.skip("Code Test", () => {
-    const max = constants.MaxUint256;
-    const hafMax = max.div(2);
-    const hafMaxPlusOne = hafMax.add(1);
-    console.log("max: ", max.toString());
-    console.log("hafMax: ", hafMax.toString());
-    console.log("hafMaxPlusOne: ", hafMaxPlusOne.toString());
+  describe("Code Test", () => {
+    it.skip("should test code", async () => {
+      const max = constants.MaxUint256;
+      const hafMax = max.div(2);
+      const hafMaxPlusOne = hafMax.add(1);
+      console.log("max: ", max.toString());
+      console.log("hafMax: ", hafMax.toString());
+      console.log("hafMaxPlusOne: ", hafMaxPlusOne.toString());
 
-    const textToHex = (text: string) => hexlify(toUtf8Bytes(text));
-    const JAY = textToHex("Jay");
-    const DATA = textToHex("Hello World! Otani is the best! Jay is the best! All the best!");
+      const textToHex = (text: string) => hexlify(toUtf8Bytes(text));
+      const JAY = textToHex("Jay");
+      const DATA = textToHex("Hello World! Otani is the best! Jay is the best! All the best!");
+    });
   });
 
   describe("AllBasic", function () {
@@ -119,7 +121,7 @@ describe("AllPairVault", () => {
       const byteArray = [0, 1, 2, 3];
       const hexStr = utils.hexlify(byteArray);
       expect(hexStr).to.equal("0x00010203");
-      
+
       const hexValueStr = utils.hexValue(byteArray);
       expect(hexValueStr).to.equal("0x10203");
 
@@ -130,12 +132,12 @@ describe("AllPairVault", () => {
       const data = functionHash + args.slice(2);
       const dataArray = utils.arrayify(data);
       const expected = new Uint8Array([
-        249, 121, 242, 105, 0, 0, 0, 0, 0, 0, 0,  0,
-          0,   0,   0,   0, 0, 0, 0, 0, 0, 0, 0,  0,
-          0,   0,   0,   0, 0, 0, 0, 0, 0, 0, 0, 10,
-          0,   0,   0,   0, 0, 0, 0, 0, 0, 0, 0,  0,
-          0,   0,   0,   0, 0, 0, 0, 0, 0, 0, 0,  0,
-          0,   0,   0,   0, 0, 0, 0, 3
+        249, 121, 242, 105, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 3
       ]);
       expect(dataArray).to.deep.equal(expected);
 
@@ -332,6 +334,50 @@ describe("AllPairVault", () => {
     });
   });
 
+  describe.only("Deposit contract", () => {
+    const DEPOSIT_CONTRACT_ADDRESS = "0x0420420420420420420420420420420420420420";
+    // Example deposit parameters
+    const withdrawalCredentials = utils.hexlify(utils.randomBytes(32)); // Replace with actual withdrawal credentials
+    const signature = utils.hexlify(utils.randomBytes(96)); // Replace with actual signature
+
+    it("deposit contract", async function () {
+      const depositContract = await ethers.getContractAt("DepositContract", DEPOSIT_CONTRACT_ADDRESS);
+      // console.log("depositContract: ", depositContract);
+      console.log("deposit count: ", await depositContract.get_deposit_count());
+
+      // const deployer = new Wallet(process.env.ADMIN_KEY || "");
+      // const pubkey = deployer.publicKey;
+      // console.log(pubkey, withdrawalCredentials, signature);
+
+      // const pubkeyBytes = utils.hexlify(pubkey);
+      // const amount = utils.parseUnits("32", 9); // 32 ETH in Gwei
+
+      // const signatureBytes = utils.arrayify(signature);
+      // const pubkeyRoot = utils.sha256(pubkeyBytes + utils.hexZeroPad("0x", 16).substring(2));
+      // const signatureRoot = utils.sha256(
+      //   utils.sha256(signatureBytes.slice(0, 64)) +
+      //   utils.sha256(signatureBytes.slice(64) + utils.hexZeroPad("0x", 32).substring(2))
+      // );
+      // const node = utils.sha256(
+      //   ethers.sha256(pubkeyRoot + withdrawalCredentials.substring(2)) +
+      //   ethers.sha256(amount + utils.hexZeroPad("0x", 24).substring(2) + signatureRoot.substring(2))
+      // );
+
+      // console.log("pubkey: ", pubkey);
+      // console.log("withdrawalCredentials: ", withdrawalCredentials);
+      // console.log("signature: ", signature);
+      // console.log("node: ", node);
+      // const tx = await depositContract.deposit(pubkey, withdrawalCredentials, signature, node, {
+      //   value: ethers.parseEther("32") // 32 ETH
+      // });
+
+      // console.log("Transaction Hash:", tx.hash);
+
+      // // Wait for the transaction to be mined
+      // const receipt = await tx.wait();
+    });
+  });
+
   describe("#signTransaction", function () {
     const filePath = path.resolve(__dirname, ALLBASIC_JSON_PATH); // Adjust the path if necessary
     const rawData = fs.readFileSync(filePath, 'utf8');
@@ -474,7 +520,7 @@ describe("AllPairVault", () => {
 
     it("should add call with sendTransaction", async () => {
       const {
-        accounts: { owner }, 
+        accounts: { owner },
         suiteBasic: { allBasic },
       } = await loadFixture(fullSuiteFixture);
       const sigStr = "calculatePower(uint256,uint256)";
@@ -502,7 +548,7 @@ describe("AllPairVault", () => {
 
     it("should add call with eth_sendRawTransaction", async () => {
       const {
-        suiteBasic: { allBasic}
+        suiteBasic: { allBasic }
       } = await loadFixture(fullSuiteFixture);
       const owner = new Wallet(process.env.ADMIN_KEY || "");
 
@@ -524,7 +570,7 @@ describe("AllPairVault", () => {
 
     it("should add call with eth_call", async () => {
       const {
-        suiteBasic: { allBasic}
+        suiteBasic: { allBasic }
       } = await loadFixture(fullSuiteFixture);
       const owner = new Wallet(process.env.ADMIN_KEY || "");
       await allBasic.calculatePower(10, 5);

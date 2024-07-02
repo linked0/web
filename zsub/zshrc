@@ -140,7 +140,8 @@ alias ppff='code ~/work/web/ex/foundry.toml'
 alias ppfr='code ~/work/web/ex/remappings.txt'
 alias ppm='code ~/work/web/memo.txt'
 alias ppm2='code ~/work/web/m2.txt'
-alias ppz='code ~/.zshrc'
+alias ppz='code ~/work/web/zsub/zshrc'
+alias pzz='code ~/.zshrc'
 
 alias ppp='code ./package.json'
 alias pph='code ./hardhat.config.ts'
@@ -168,6 +169,9 @@ alias cb2="curl -L https://linked0.github.io/web/dev2.md"
 alias cbm="curl -L https://linked0.github.io/web/memo.txt"
 alias cbb="open https://bit.ly/3MVG5AN"
 alias poo="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
+
+alias ec3="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
+alias ec15="ssh -i ~/pooh/tednet.pem ubuntu@15.165.195.41"
 
 alias ecstart="aws ec2 start-instances --instance-ids i-02c89e86234e05850"
 alias ecstop="aws ec2 stop-instances --instance-ids i-02c89e86234e05850"
