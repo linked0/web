@@ -1,5 +1,7 @@
+import exp from "constants";
 import * as fs from "fs";
 import * as path from "path";
+import { send } from "process";
 
 import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import {
@@ -7,7 +9,7 @@ import {
   loadFixture,
 } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
-import { GasCostPlugin } from "ethers";
+import { GasCostPlugin, TypedDataDomain } from "ethers";
 import { Wallet, Signer, BigNumber, constants, utils } from "ethers-v5";
 import {
   defaultAbiCoder,
@@ -38,8 +40,6 @@ import { fillSignAndPack } from "./UserOp";
 import { PackedUserOperation, Transaction, UserOperation } from './UserOperation'
 import { fullSuiteFixture } from "./full-suite.fixture";
 import { buildOrderStatus, TransferAccountOwnershipParams, BasicUser, BasicAccount, AdminUser, takeBytes } from "./utils";
-import exp from "constants";
-import { send } from "process";
 
 
 const ALLBASIC_JSON_PATH = "../artifacts/contracts/AllBasic.sol/AllBasic.json";
@@ -151,6 +151,56 @@ describe("AllPairVault", () => {
       await allBasic.callFriendWithSelector(256, "Hello, World!");
       expect(await friend.storedValue()).to.equal(256);
       expect(await friend.storedMessage()).to.equal("Hello, World!");
+    });
+
+    it("#encodeData #decodeData #bytes parameter", async function () {
+      const {
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+
+      // Example interaction
+      const encodedData = await allBasic.encodeData(42, "Hello, Hardhat!");
+      const madeData = utils.defaultAbiCoder.encode(
+        ["uint256", "string"],
+        [42, "Hello, Hardhat!"]
+      );
+      expect(encodedData).to.equal(madeData);
+
+      const decodedData = await allBasic.decodeData(madeData);
+      expect(decodedData[0]).to.equal(42);
+      expect(decodedData[1]).to.equal("Hello, Hardhat!");
+    });
+
+    it("#hashMessage #verify #splitSignature", async function () {
+      const {
+        accounts: { owner },
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+
+      const domain: TypedDataDomain = {
+        name: "MyDApp",
+        version: "1",
+        chainId: (await ethers.provider.getNetwork()).chainId,
+        verifyingContract: allBasic.target as string | null | undefined,
+      };
+
+      const types = {
+        Message: [
+          { name: "from", type: "address" },
+          { name: "content", type: "string" },
+        ],
+      };
+
+      const value = {
+        from: owner.address,
+        content: "Hello, Hardhat!",
+      };
+
+      const signature = await owner.signTypedData(domain, types, value);
+      console.log("Signature:", signature);
+
+      const isValid = await allBasic.verify(owner.address, value, signature);
+      expect(isValid).to.be.true;
     });
   });
 

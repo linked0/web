@@ -21,7 +21,32 @@ contract AllBasic is IAllBasic {
   Lock public lock2;
   address public friend;
 
-  constructor() payable {}
+  struct Message {
+    address from;
+    string content;
+  }
+
+  bytes32 public constant MESSAGE_TYPEHASH =
+    keccak256("Message(address from,string content)");
+  bytes32 public DOMAIN_SEPARATOR;
+
+  constructor() payable {
+    uint256 chainId;
+    assembly {
+      chainId := chainid()
+    }
+    DOMAIN_SEPARATOR = keccak256(
+      abi.encode(
+        keccak256(
+          "EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)"
+        ),
+        keccak256(bytes("MyDApp")),
+        keccak256(bytes("1")),
+        chainId,
+        address(this)
+      )
+    );
+  }
 
   function createLock() public {
     lock = new Lock(block.timestamp + 100);
@@ -102,6 +127,59 @@ contract AllBasic is IAllBasic {
     bytes memory data = abi.encodeWithSelector(selector, _value, _message);
     (bool success, ) = friend.call(data);
     require(success, "Call to Friend failed");
+  }
+
+  // Example function to encode some data
+  function encodeData(
+    uint256 number,
+    string memory text
+  ) public pure returns (bytes memory) {
+    return abi.encode(number, text);
+  }
+
+  // Example function to decode the data
+  function decodeData(
+    bytes memory data
+  ) public pure returns (uint256 number, string memory text) {
+    (number, text) = abi.decode(data, (uint256, string));
+  }
+
+  // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+  // ┃    EIP-712 functions      ┃
+  // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  function hashMessage(Message memory message) public pure returns (bytes32) {
+    return
+      keccak256(
+        abi.encode(
+          MESSAGE_TYPEHASH,
+          message.from,
+          keccak256(bytes(message.content))
+        )
+      );
+  }
+
+  function verify(
+    address signer,
+    Message memory message,
+    bytes memory signature
+  ) public view returns (bool) {
+    bytes32 digest = keccak256(
+      abi.encodePacked("\x19\x01", DOMAIN_SEPARATOR, hashMessage(message))
+    );
+    (bytes32 r, bytes32 s, uint8 v) = splitSignature(signature);
+    return ecrecover(digest, v, r, s) == signer;
+  }
+
+  function splitSignature(
+    bytes memory sig
+  ) public pure returns (bytes32 r, bytes32 s, uint8 v) {
+    require(sig.length == 65, "invalid signature length");
+    assembly {
+      r := mload(add(sig, 32))
+      s := mload(add(sig, 64))
+      v := byte(0, mload(add(sig, 96)))
+    }
   }
 }
 
