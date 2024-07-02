@@ -1,9 +1,5 @@
-(py310) ubuntu@ip-172-31-57-211:~/poohprysm/poohnet/pooh-deposit-cli$ ./deposit.sh existing-mnemonic
-linux-gnu
-Running deposit-cli...
-Traceback (most recent call last):
-  File "/home/ubuntu/poohprysm/poohnet/pooh-deposit-cli/./staking_deposit/deposit.py", line 4, in <module>
-    from staking_deposit.cli.existing_mnemonic import existing_mnemonic
-ModuleNotFoundError: No module named 'staking_deposit'
-
-: why is this happening?
+'git pull
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.: how can I solve this. I just want to reset all"
