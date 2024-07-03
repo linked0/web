@@ -12,9 +12,10 @@ brew install --cask iterm2 | brew install zsh | brew install karabiner-elements
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-##### karanbiner 설치 및 karabiner.json
+##### karanbiner 및 기타 파일
 - iterm2 - Preferences - Profiles - Silence bell
 - [gitconfig html](sub/gitconfig.htmlml) 내용은 .gitconfig에 복사 & `git init`
+- iCloud/pooh 폴더 복사해 놓기.
 
 ##### awscli 설치 및 aws configure
 

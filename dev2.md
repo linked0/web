@@ -10,6 +10,8 @@
 
 ---
 - [Content](#content)
+- [기타](#기타)
+    - [EC2 key로 ssh접속 Permission Denied (public key)](#ec2-key로-ssh접속-permission-denied-public-key)
 - [solidity.md](#soliditymd)
   - [NodeJS/TypeScript](#nodejstypescript)
     - [Event 인자들중 하나만 체크](#event-인자들중-하나만-체크)
@@ -38,6 +40,7 @@
     - [hardhat-gas-reporter](#hardhat-gas-reporter)
   - [Git](#git)
     - [error: cannot run delta: No such file or directory](#error-cannot-run-delta-no-such-file-or-directory)
+  - [이렇게 해도 git diff는 안되기 때문에 git-delta 명령만 사용하기](#이렇게-해도-git-diff는-안되기-때문에-git-delta-명령만-사용하기)
     - [fatal: Not possible to fast-forward, aborting.](#fatal-not-possible-to-fast-forward-aborting)
   - [Dev Errors](#dev-errors)
     - [failed to compute cache key: "/target/debug/zksync\_server" not found: not found](#failed-to-compute-cache-key-targetdebugzksync_server-not-found-not-found)
@@ -106,6 +109,10 @@
       - [contract size](#contract-size-1)
   - [solc --bin --abi contracts/assembly/DataStorage.sol -o output](#solc---bin---abi-contractsassemblydatastoragesol--o-output)
   - [npx hardhat node](#npx-hardhat-node)
+
+# 기타
+### EC2 key로 ssh접속 Permission Denied (public key) 
+pooh-seoul.pem를 써야하는데 tednet.pem을 씀.
 
 # solidity.md
 
@@ -702,6 +709,10 @@ hardhat.config.ts 참고: https://github.com/poohgithub/zksync-era/blob/main/poo
 ```
 brew install git-delta
 ```
+```
+sudo apt install git-extras
+```
+이렇게 해도 git diff는 안되기 때문에 git-delta 명령만 사용하기 
 -------
 ### fatal: Not possible to fast-forward, aborting.
 
