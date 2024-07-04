@@ -149,11 +149,13 @@ alias pph='code ./hardhat.config.ts'
 alias ppe='code ./.env'
 alias ppr='code ./README.md'
 
+alias pcc='open https://colab.research.google.com/drive/1QD7vqBdoZvOd-2tBAYIMOSQoZF6-L-BX#scrollTo=f3NGQk2BhcOu'
+
 alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
 alias lst='ls -al ~/work/web/ex/test'
 
-alias ccc='cat ~/.zshrc'
+alias czz='cat ~/.zshrc'
 alias zzz='. ~/.zshrc'
 alias viz='vim ~/.zshrc'
 alias vid='vim ~/work/web/dev.md'
