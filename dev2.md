@@ -1757,7 +1757,7 @@ forge test --match-contract PoohnetFund
 
 forge test --match-contract PoohnetFund --fork-url $LOCALNET_RPC_URL
 
-forge test --match-path test/SeaportBasicTest.sol --gas-report
+forge test --match-path test/forge/FulfillBasicOrderTest.sol --gas-report
 
 
 ### source code

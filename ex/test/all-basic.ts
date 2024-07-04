@@ -11,6 +11,7 @@ import {
   arrayify,
   hexlify,
   hexDataSlice,
+  hexZeroPad,
   keccak256,
   serializeTransaction,
   toUtf8Bytes
@@ -22,6 +23,7 @@ import {
   Operator,
   AllPairVault,
   Lock,
+  AllBasic
 } from "../typechain-types";
 
 import { fillSignAndPack } from "./UserOp";
@@ -39,6 +41,7 @@ describe("AllPairVault", () => {
   let execAccount: ExecAccount;
   let operator: Operator;
   let deployer;
+  const abiCoder = ethers.AbiCoder.defaultAbiCoder();
 
   beforeEach(async () => {
     const execAccountFactory = await ethers.getContractFactory("ExecAccount");
@@ -129,17 +132,6 @@ describe("AllPairVault", () => {
       expect(await friend.storedMessage()).to.equal("Hello, World!");
     });
 
-    it("#abi.encodeWithSelector #callFriend #setFriend", async function () {
-      const {
-        suiteBasic: { allBasic, friend },
-      } = await loadFixture(fullSuiteFixture);
-
-      await allBasic.setFriend(friend.target);
-      await allBasic.callFriendWithSelector(256, "Hello, World!");
-      expect(await friend.storedValue()).to.equal(256);
-      expect(await friend.storedMessage()).to.equal("Hello, World!");
-    });
-
     it("#encodeData #decodeData #bytes parameter", async function () {
       const {
         suiteBasic: { allBasic },
@@ -189,8 +181,29 @@ describe("AllPairVault", () => {
       const isValid = await allBasic.verify(owner.address, value, signature);
       expect(isValid).to.be.true;
     });
-  });
 
+    it("#revertNowhere", async function () {
+      const {
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+
+      const _value = 1;
+
+      const sigStr = "InvalidMsgValue(uint256)";
+      const errorSelector = utils.id(sigStr).slice(0, 10);
+      const encodedError = abiCoder.encode(
+        ["uint256"],
+        [_value]
+      );
+      const expectedRevert = `${errorSelector}${encodedError.slice(2)}`;
+      console.log("expectedRevert: ", expectedRevert);
+
+      // NOTE: 일단 AllBasic.sol에 `error InvalidMsgValue(uint256 value);`를 추가해서
+      // 해결했지만, 이게 열심히 assembly로 만들어진 코드를 테스트하는 것이라고 생각하면
+      // 이렇게 하는 것이 맞는 것인지 의문이 든다. 추후에 다시 확인해봐야 할 것 같다.
+      await expect(allBasic.revertNowhere({ value: _value })).to.be.revertedWithCustomError(allBasic as AllBasic, "InvalidMsgValue").withArgs(1);;
+    });
+  });
   describe("Ethers utils", () => {
     it("#hexify #arrayify #hexValue", async () => {
       // #hexify & #hexValue
@@ -208,7 +221,7 @@ describe("AllPairVault", () => {
 
       // #arrayify
       const sigStr = "calculatePower(uint256,uint256)";
-      const functionHash = hexDataSlice(keccak256(toUtf8Bytes(sigStr)), 0, 4);
+      const functionHash = hexDataSlice(keccak256(toUtf8Bytes(sigStr)), 0, 4) as string;
       const args = utils.defaultAbiCoder.encode(["uint256", "uint256"], [10, 3]);
       const data = functionHash + args.slice(2);
       const dataArray = utils.arrayify(data);

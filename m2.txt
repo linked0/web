@@ -1,5 +1,28 @@
-'git pull
-error: Pulling is not possible because you have unmerged files.
-hint: Fix them up in the work tree, and then use 'git add/rm <file>'
-hint: as appropriate to mark resolution and make a commit.
-fatal: Exiting because of an unresolved conflict.: how can I solve this. I just want to reset all"
+function _revertInvalidMsgValue(uint256 value) pure {
+  console.log("value: ", value);
+  assembly {
+    // Store left-padded selector with push4 (reduces bytecode),
+    // mem[28:32] = selector
+    mstore(0, InvalidMsgValue_error_selector)
+
+    // Store argument.
+    mstore(InvalidMsgValue_error_value_ptr, value)
+
+    // revert(abi.encodeWithSignature("InvalidMsgValue(uint256)", value))
+    revert(Error_selector_offset, InvalidMsgValue_error_length)
+  }
+}
+
+const _value = 1;
+
+      const sigStr = "InvalidMsgValue(uint256)";
+      const errorSelector = utils.id(sigStr).slice(2, 10);
+      const encodedError = abiCoder.encode(
+        ["uint256"],
+        [_value]
+      );
+      const expectedRevert = `${errorSelector}${encodedError.slice(2)}`;
+
+      await expect(allBasic.revertNowhere({ value: _value })).to.be.revertedWith(expectedRevert);
+
+: with what message does this revert?

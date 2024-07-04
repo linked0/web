@@ -5,6 +5,8 @@ import "./IAllBasic.sol";
 import "./AllBasicFriend.sol";
 import "./ILock.sol";
 import "./Lock.sol";
+import {_revertInvalidMsgValue} from "./lib/Errors.sol";
+
 // Uncomment this line to use console.log
 import "hardhat/console.sol";
 
@@ -20,6 +22,8 @@ contract AllBasic is IAllBasic {
   Lock public lock;
   Lock public lock2;
   address public friend;
+
+  error InvalidMsgValue(uint256 value);
 
   struct Message {
     address from;
@@ -180,6 +184,13 @@ contract AllBasic is IAllBasic {
       s := mload(add(sig, 64))
       v := byte(0, mload(add(sig, 96)))
     }
+  }
+
+  // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+  // ┃            ETC            ┃
+  // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+  function revertNowhere() public payable {
+    _revertInvalidMsgValue(msg.value);
   }
 }
 

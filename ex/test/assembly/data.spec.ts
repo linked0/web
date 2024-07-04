@@ -13,7 +13,7 @@ import { hexlify } from "ethers";
 describe("DataStorage", function () {
   const provider = ethers.provider;
 
-  describe.only("Deployment DataStorage", function () {
+  describe("Deployment DataStorage", function () {
     it("Should deploy DataStorage", async function () {
       const {
         accounts: { deployer, user },
