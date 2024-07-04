@@ -15,6 +15,7 @@
     "test:toobig": "hardhat test test/total/toobig.basic.ts",
     "test:toobig:localnet": "hardhat test test/total/toobig.basic.ts --network localnet",
     "test:seaport:basic": "hardhat test test/seaport/basic.spec.ts",
+    "seaport": "hardhat test test-seaport/basic.spec.ts",
     "basic": "hardhat test test/all-basic.ts",
     "basicd": "hardhat run scripts/allbasic/deploy.ts --network localnet",
     "basic:localnet": "hardhat test test/all-basic.ts --network localnet",

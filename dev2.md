@@ -1757,6 +1757,8 @@ forge test --match-contract PoohnetFund
 
 forge test --match-contract PoohnetFund --fork-url $LOCALNET_RPC_URL
 
+forge test --match-path test/SeaportBasicTest.sol --gas-report
+
 
 ### source code
 import "@openzeppelin/contracts/utils/Create2.sol";

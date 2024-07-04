@@ -1,45 +1,32 @@
-import exp from "constants";
 import * as fs from "fs";
 import * as path from "path";
-import { send } from "process";
 
-import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
-import {
-  time,
-  loadFixture,
-} from "@nomicfoundation/hardhat-toolbox/network-helpers";
+import { loadFixture, time } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
-import { GasCostPlugin, TypedDataDomain } from "ethers";
-import { Wallet, Signer, BigNumber, constants, utils } from "ethers-v5";
+import { TypedDataDomain } from "ethers";
+import { Wallet, BigNumber, constants, utils } from "ethers-v5";
 import {
   defaultAbiCoder,
   hexConcat,
   arrayify,
   hexlify,
-  hexValue,
-  formatBytes32String,
   hexDataSlice,
   keccak256,
   serializeTransaction,
-  UnsignedTransaction,
   toUtf8Bytes
 } from "ethers-v5/lib/utils";
 import { ethers, network } from "hardhat";
-import * as zksync from "zksync-web3";
 
 import {
   ExecAccount,
   Operator,
-  TooBig,
   AllPairVault,
   Lock,
 } from "../typechain-types";
-import { libraries, AllBasic } from "../typechain-types/contracts";
 
 import { fillSignAndPack } from "./UserOp";
-import { PackedUserOperation, Transaction, UserOperation } from './UserOperation'
 import { fullSuiteFixture } from "./full-suite.fixture";
-import { buildOrderStatus, TransferAccountOwnershipParams, BasicUser, BasicAccount, AdminUser, takeBytes } from "./utils";
+import { buildOrderStatus, TransferAccountOwnershipParams, BasicUser, BasicAccount, AdminUser } from "./utils";
 
 
 const ALLBASIC_JSON_PATH = "../artifacts/contracts/AllBasic.sol/AllBasic.json";
@@ -646,7 +633,7 @@ describe("AllPairVault", () => {
         data: data,
         gasLimit: 4000000,
         gasPrice: 1000000000,
-        nonce: 8,
+        nonce: 9,
       };
       const signedTx = await owner.signTransaction(tx);
       const ret = await ethers.provider.send('eth_sendRawTransaction', [signedTx])
