@@ -1135,6 +1135,8 @@ curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-t
 ```
 egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
 ps aux | grep postgres
+tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
+tar -xvzf xxx.tar.gz -C ./data
 zip -r ~/temp/my-archive.zip . -x '*.git*' -x '*node_modules*'
 unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
 history -100
