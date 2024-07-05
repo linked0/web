@@ -106,10 +106,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 hgrep() {
-	grep -irnH --include=\*.$1 "$2" ./  
-}
-pp() {
-  code ./$1
+	grep -irnH --include=\*.$1 "$2" ./
 }
 ch() {
   chatgpt $@
@@ -127,6 +124,23 @@ adf() {
   echo "echo \"alias $1='code $2'\" >> ~/.zshrc"
 }
 
+ft() {
+  forge test -vvv --match-test $1
+}
+ftv() {
+  forge test -vvvv --match-test $1
+}
+
+pp() {
+  code ./$1
+}
+uu() {
+  ieda ./$1
+}
+
+alias python=/usr/local/bin/python3
+alias pip=/usr/local/bin/pip3
+alias geth=~/work/poohgeth/build/bin/geth
 
 alias ppaa='code ~/work/web/ex/contracts/AllBasic.sol'
 alias ppab='code ~/work/web/ex/contracts/AllPairVault.sol'
@@ -146,13 +160,35 @@ alias ppm2='code ~/work/web/m2.txt'
 alias pppa='code ~/work/web/exp/allbasic.py'
 alias ppzz='code ~/.zshrc'
 alias ppz2='code ~/work/web/zsub/zshrc'
-
 alias ppp='code ./package.json'
 alias pph='code ./hardhat.config.ts'
 alias ppe='code ./.env'
 alias ppr='code ./README.md'
 
-alias pcc='open https://colab.research.google.com/drive/1QD7vqBdoZvOd-2tBAYIMOSQoZF6-L-BX#scrollTo=f3NGQk2BhcOu'
+alias uuaa='idea ~/work/web/ex/contracts/AllBasic.sol'
+alias uuab='idea ~/work/web/ex/contracts/AllPairVault.sol'
+alias uubb='idea ~/work/web/ex/test/all-basic.ts'
+alias uucc='idea ~/work/web/ex/scripts/deploy-basic.ts'
+alias uudd='idea ~/work/web/dev.md'
+alias uud2='idea ~/work/web/dev2.md'
+alias uupp='idea ~/work/web/ex/package.json'
+alias uuhh='idea ~/work/web/ex/hardhat.config.ts'
+alias uutt='idea ~/work/web/ex/tsconfig.json'
+alias uufb='idea ~/work/web/ex/test/foundry/Counter.t.sol'
+alias uufc='idea ~/work/web/ex/script/Counter.s.sol'
+alias uuff='idea ~/work/web/ex/foundry.toml'
+alias uufr='idea ~/work/web/ex/remappings.txt'
+alias uumm='idea ~/work/web/memo.txt'
+alias uum2='idea ~/work/web/m2.txt'
+alias uupa='idea ~/work/web/exp/allbasic.py'
+alias uuzz='idea ~/.zshrc'
+alias uuz2='idea ~/work/web/zsub/zshrc'
+alias uup='idea ./package.json'
+alias uuh='idea ./hardhat.config.ts'
+alias uue='idea ./.env'
+alias uur='idea ./README.md'
+
+alias occ='open https://colab.research.google.com/drive/1QD7vqBdoZvOd-2tBAYIMOSQoZF6-L-BX#scrollTo=f3NGQk2BhcOu'
 
 alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'

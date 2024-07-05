@@ -124,6 +124,7 @@ psql postgres <== 접속해볼 수 있음.
 - XCode: [Apple Developer](https://developer.apple.com/xcode/resources/)
 - FileMerge: open /Applications/Xcode.app/Contents/Applications/FileMerge.app
 - brew install gh
+- Idea 명령세팅: export PATH=$PATH:'/Applications/IntelliJ IDEA.app/Contents/MacOS'
 
 ##### VS Code Plugin
 - Solidity Visual Developer

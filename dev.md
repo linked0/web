@@ -1067,6 +1067,24 @@ yarn hardhat node (chain id: 31337)
 - Bigger Font: cmd + "+"
 
 ---
+### 🌸 IDEA
+* Update TOC
+```angular2html
+mouse right click -> insert... -> update TOC
+```
+* Goto section
+```
+TOC에서 CMD 버튼 누르고 "#..." 항목 누르기
+```
+* 모듈 추가
+
+File -> New -> Module from Existing Sources
+
+* Word Wrap
+```
+View -> Active Editor -> Use Soft Wraps
+```
+---
 ### 🌸 Whale 듀얼탭-Docker-Screen-AWS
 **Whale**
 - 듀얼 탭 열기/닫기: shift + cmd +  s
