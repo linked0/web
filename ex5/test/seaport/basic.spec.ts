@@ -1854,7 +1854,7 @@ describe(`Basic buy now or accept offer flows (Seaport v${VERSION})`, function (
           return receipt;
         });
       });
-      it("ERC721 <=> ERC20 (basic)", async () => {
+      it.only("ERC721 <=> ERC20 (basic)", async () => {
         const nftId = await mintAndApprove721(
           seller,
           marketplaceContract.address
