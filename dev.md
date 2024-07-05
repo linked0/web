@@ -1079,6 +1079,7 @@ TOC에서 CMD 버튼 누르고 "#..." 항목 누르기
 * 모듈 추가
 
 File -> New -> Module from Existing Sources
+주의: 검색되서 나온 체크를 그냥 그대로 두고 진행해야함. uncheck하면 안됨.
 
 * Word Wrap
 ```
