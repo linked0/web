@@ -135,10 +135,11 @@ pp() {
   code ./$1
 }
 uu() {
-  ieda ./$1
+  idea ./$1
 }
 
-alias python=/usr/local/bin/python3
+alias python=/usr/local/bin/python3.8
+alias python3=/usr/local/bin/python3.8
 alias pip=/usr/local/bin/pip3
 alias geth=~/work/poohgeth/build/bin/geth
 
