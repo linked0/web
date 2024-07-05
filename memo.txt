@@ -56,6 +56,7 @@ nvm install 16 && nvm use 16
 npm install -g npm@9.8.1 @bazel/bazelisk
 
 = python 3.10 env
+python3 버전확인하고 3.10 설치
 sudo apt update
 sudo apt install python3.8 (brew install python@3.10)
 sudo apt install python3-pip
@@ -107,6 +108,9 @@ GENESIS_VALIDATORS_ROOT=bytes.fromhex('e63460dc044e056f26ca8f7406a18867d31f1ec19
 = cd ./poohnet/pooh-deposit-cl
 source py310/bin/activate (deactivate after all things done)
 = 필요 패키지 설치 매번 해줘야 함.
+brew install gcc
+sudo pip3 install web3
+sudo pip3 install git+https://github.com/amitdev/lru-dict@5013406c409a0a143a315146df388281bfb2172d
 sudo pip3 install -r requirements.txt
 sudo pip3 install dataclasses
 = sudo ./deposit.sh install (sudo 꼭 써줘야 함)

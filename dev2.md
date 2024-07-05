@@ -10,6 +10,18 @@ git reset --hard origin/pos
 #### remove python3.9 on ubuntu
 sudo apt-get remove python3.9
 
+#### ubuntu@ip-172-31-22-252:~$ git clone git@github.com:linked0/poohgeth
+Cloning into 'poohgeth'...
+The authenticity of host 'github.com (20.200.245.247)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+* ==> ssh.tar를 풀었는데, .ssh/.ssh에 풀리는 문제 발생 아래와 같이 불필요하게 -C옵션 씀
+* tar -xvzf ssh.tar -C .ssh
 
 # 기타
 ### EC2 key로 ssh접속 Permission Denied (public key) 
