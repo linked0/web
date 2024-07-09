@@ -57,11 +57,11 @@ npm install -g npm@9.8.1 @bazel/bazelisk
 
 = python 3.10 env
 python3 버전확인하고 3.10 설치
-sudo apt update
-sudo apt install python3.8 (brew install python@3.10)
-sudo apt install python3-pip
-sudo apt-get install python3.8-venv(맥에서는 이것 필요 없음)
-python3.8 -m venv py38 (Mac: python3.10 -m venv py310)
+sudo apt install python3.10 (brew install python@3.10)
+sudo apt install python3-dev
+sudo apt install python3.10-venv
+python3.10 -m venv deposit-venv
+
 
 = install "zcli"
 go install github.com/protolambda/zcli@latest
@@ -105,21 +105,13 @@ NETWORK_NAME=TESTNET, GENESIS_FORK_VERSION=bytes.fromhex('2F1C0000'),
 GENESIS_VALIDATORS_ROOT=bytes.fromhex('e63460dc044e056f26ca8f7406a18867d31f1ec195322f428b5918d4b0153050'))
 
 ### 3. staking-deposit-cli
-= cd ./poohnet/pooh-deposit-cl
-source py310/bin/activate (deactivate after all things done)
-= 필요 패키지 설치 매번 해줘야 함.
-brew install gcc
-sudo pip3 install web3
-sudo pip3 install git+https://github.com/amitdev/lru-dict@5013406c409a0a143a315146df388281bfb2172d
-sudo pip3 install -r requirements.txt
-sudo pip3 install dataclasses
-= sudo ./deposit.sh install (sudo 꼭 써줘야 함)
-= export PYTHONPATH=$PYTHONPATH:/Users/hyunjaelee/work/poohprysm/poohnet/pooh-deposit-cli
-(주의 PATH는 다를수 있음)
-= sudo ./deposit.sh existing-mnemonic
+= run "stake" command
 = ./keys: 키 복사 (암호:pooh2023!@)
 = run "password": sudo vi ~/.pooh/cl/config/password.txt, 암호 추가
-
+= Permission Denied Issue
+   sudo chown -R $USER:$USER /path/to/directory
+   sudo chmod -R u+w /path/to/directory
+   
 ### 4. cl & vals 실행
 = cnode가 최소 3개는 실행되어야 함.("at least two peered beacon nodes")
 = 첫번째 머신에서 cl 실행: ./cnode
