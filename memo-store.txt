@@ -12,17 +12,21 @@ cloneDeterministic
 
 # tomorrow's plan: Wendesday
 - code: flashloan, frontrunning, gas-manipulation
+- ERC20Snapshot
+- 코딩시험을 준비하자. 
 - https://blog.openzeppelin.com/deep-dive-into-the-minimal-proxy-contract 
 - https://medium.com/decipher-media/layer-2-a-hub-of-layer-3s-d83c4c1c7c3a
 
 # call attack: 빨
-- 1. Factory(Ownable/Initializable) - Minimal proxy(eip1167) - Admin Proxy(eip1967) / Beacon Proxy - Implementation(ReentrancyGuard) - Beacon
+- 6. Factory(Ownable/Initializable) - Minimal proxy(eip1167) - Admin Proxy(eip1967) / Beacon Proxy - Implementation(ReentrancyGuard) - Beacon
   -- Potential Solution: OZ "Address" library
     -- isContract, sendValue, functionCall, functionCallWithValue, functionStaticCall, functionDelegateCall etc
     -- 자동적으로 revert 함.
   -- uint256[50] private __gap; (OpenZepperlin privides)
-- 3. DiamondProxy(delegate call) but erc6900(call) due to proxy data security issue
-- 2. key cautions: Ensure the storage layout of the new implementation matches the layout of the original.
+- 7. DiamondProxy(delegate call) but erc6900(call) due to proxy data security issue
+- 8. key cautions: Ensure the storage layout of the new implementation matches the layout of the original.
+- 9. Initializable contract로 해결가능
+- 10. 아직 남음
 - Account existence must be checked prior to calling if needed.
 - delegatecall: target contract에서 msg.sender와 msg.value는 바뀌지 않음.
   -- proxy contract에서 사용됨.
@@ -38,3 +42,8 @@ cloneDeterministic
   -- Initialization issues: 
   -- Frontrunning issues: intialize function
   -- Key Leakage & Centralization issue
+
+# DAO attack: 노
+1. Beanstalk Hack Case Study
+2. Generally DAO contract derives from ERC20
+3. @audit-issue
