@@ -1,0 +1,40 @@
+# Jordan
+ERC165Checker/Holder
+cloneDeterministic
+
+
+# how to set calldata with temporary storage
+
+# today's plan
+- lecture : dao, call attack
+- code: callattack, dao
+
+
+# tomorrow's plan: Wendesday
+- code: flashloan, frontrunning, gas-manipulation
+- https://blog.openzeppelin.com/deep-dive-into-the-minimal-proxy-contract 
+- https://medium.com/decipher-media/layer-2-a-hub-of-layer-3s-d83c4c1c7c3a
+
+# call attack: 빨
+- 1. Factory(Ownable/Initializable) - Minimal proxy(eip1167) - Admin Proxy(eip1967) / Beacon Proxy - Implementation(ReentrancyGuard) - Beacon
+  -- Potential Solution: OZ "Address" library
+    -- isContract, sendValue, functionCall, functionCallWithValue, functionStaticCall, functionDelegateCall etc
+    -- 자동적으로 revert 함.
+  -- uint256[50] private __gap; (OpenZepperlin privides)
+- 3. DiamondProxy(delegate call) but erc6900(call) due to proxy data security issue
+- 2. key cautions: Ensure the storage layout of the new implementation matches the layout of the original.
+- Account existence must be checked prior to calling if needed.
+- delegatecall: target contract에서 msg.sender와 msg.value는 바뀌지 않음.
+  -- proxy contract에서 사용됨.
+  -- MultiSig Wallet, Smart Wallet, Account Abstraction
+  -- Bridges & Cross-Chain Messaging
+- prxoy: gas saving, upgradability
+- Relations among Minimal Clones and other proxies.
+- Factory deploy other contracts
+- create2 is very inefficient
+  -- EIP 1167 is a standard for deploying minimal proxy contracts, also known as "clones".
+- Proxy issues
+  -- Storage Collisions
+  -- Initialization issues: 
+  -- Frontrunning issues: intialize function
+  -- Key Leakage & Centralization issue
