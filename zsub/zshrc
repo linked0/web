@@ -162,7 +162,11 @@ alias pmms='code ~/work/web/memo-store.txt'
 alias ppa='code ~/work/web/exp/allbasic.py'
 alias pzz='code ~/.zshrc'
 alias pzzz='code ~/work/web/zsub/zshrc'
+<<<<<<< HEAD
 alias pppp='code ./package.json'
+=======
+alias kkk='code ./package.json'
+>>>>>>> aa7802e (Add ppp for a package.json)
 alias hhh='code ./hardhat.config.ts'
 alias eee='code ./.env'
 alias rrr='code ./README.md'

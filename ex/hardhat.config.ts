@@ -149,6 +149,11 @@ const config: HardhatUserConfig = {
       chainId: 11155111,
       accounts: [process.env.ADMIN_KEY || ""],
     },
+    testnet: {
+      url: process.env.TESTNET_URL,
+      chainId: 12301,
+      accounts: [process.env.ADMIN_KEY || "", process.env.USER_KEY || ""],
+    },
   },
   gasReporter: {
     enabled: false,
