@@ -174,3 +174,8 @@ ERROR p2p: Failed to find peers error=unable to find requisite number of peers f
 # DOS attack:
 1. timeout
 4. array를 너무 길게 만들기 
+
+# Sensitive Data: 금
+3. Parent Contract의 storage space가 순번에서 앞섬
+- 예를 들어 Ownable이 있으면 그것은 storage slot이 0번일 높음. 혹은 ReentrancyGuard의 _status 변수
+- Contract Expoler에 배포된 컨트랙트를 구조를 보면서 확인 가능.

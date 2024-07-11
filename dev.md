@@ -2948,7 +2948,7 @@ cast balance 0xE024589D0BCd59267E430fB792B29Ce7716566dF --rpc-url http://localho
 
 cast sig "calculatePower(uint256,uint256)"
 
-cast storage 0xCada01dfasdfa03a0Da2343bc0daF 0 <= <contract address> <index>
+cast storage 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c 0 --rpc-url https://rpc.ankr.com/bsc
 
 cast chain-id --rpc-url https://rpc.ankr.com/bsc
 
@@ -2960,6 +2960,14 @@ cast 4byte 88303dbd <= signame 가져오기
 cast sig 'buyTickets(uint256,uint32[])' <= sig 가져오기
 
 cast --calldata-decode
+
+cast 4byte-decode 0xa9059cbb000000000000000000000000e78388b4ce79068e89bf8aa7f218ef6b9ab0e9d00000000000000000000000000000000000000000000000000174b37380cea000
+
+cast calldata-decode "transfer(address,uint256)" \
+  0xa9059cbb000000000000000000000000e78388b4ce79068e89bf8aa7f218ef6b9ab0e9d0000000000000000000000000000000000000000000000000008a8e4b1a3d8000
+
+컨트랙트 바이트 코드 가져오기
+cast code 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c --rpc-url https://rpc.ankr.com/bsc
 
 ---
 ### 🌸 텍스트 검색 - 프로세스 찾기 - zip
