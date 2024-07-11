@@ -222,6 +222,7 @@ describe("AllPairVault", () => {
       // #arrayify
       const sigStr = "calculatePower(uint256,uint256)";
       const functionHash = hexDataSlice(keccak256(toUtf8Bytes(sigStr)), 0, 4) as string;
+      console.log("## sig hash for calculatePower: ", functionHash);
       const args = utils.defaultAbiCoder.encode(["uint256", "uint256"], [10, 3]);
       const data = functionHash + args.slice(2);
       const dataArray = utils.arrayify(data);

@@ -1,24 +1,167 @@
-# Jordan
-ERC165Checker/Holder
-cloneDeterministic
+※🌟🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴※
+### 0 기본 세팅
+= ubuntu 버전은 22.04 이상
+ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20230325
+= .gitconfig에 web/sub/gitconfig-aws 내용을 복사
+= aws security settings
+SSH, EL-RPC, CL-NODE, EL-NODE
 
+= make
+sudo apt-get update
+sudo apt-get install make
 
-# how to set calldata with temporary storage
+= git update
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get update
+sudo apt-get install git
 
-# today's plan
-- lecture : dao, call attack
-- code: callattack, dao
+= docker
+1) Set up Docker's apt repository.
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+2) Install the Docker packages.
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
+3) Verify that the Docker Engine installation
+sudo docker run hello-world
 
-# tomorrow's plan: Wendesday
-- code: flashloan, frontrunning, gas-manipulation
-- ERC20Snapshot
-- 코딩시험을 준비하자. 
-- https://blog.openzeppelin.com/deep-dive-into-the-minimal-proxy-contract 
-- https://medium.com/decipher-media/layer-2-a-hub-of-layer-3s-d83c4c1c7c3a
+4) Docker daemon socket Permission
+sudo gpasswd -a $USER docker
+sudo systemctl restart docker
+(머신 리부팅)
+
+= gcc & g++ 설치
+현재 설치되어 있는 것은(3.37.37.195) 11.4.0
+sudo apt install gcc
+sudo apt install g++
+
+= go (go1.21.0)
+sudo rm -rf /usr/bin/go
+sudo rm -rf /usr/local/go
+wget https://go.dev/dl/go1.21.0.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz
+add “export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin” to ./bashrc
+
+= nvm install & use
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+source ~/.bashrc  
+nvm install 16 && nvm use 16
+npm install -g npm@9.8.1 @bazel/bazelisk
+
+= python 3.10 env
+python3 버전확인하고 3.10 설치
+sudo apt install python3.10 (brew install python@3.10)
+sudo apt install python3-dev
+sudo apt install python3.10-venv
+python3.10 -m venv deposit-venv
+
+= install "zcli"
+go install github.com/protolambda/zcli@latest
+
+= poohgeth compile
+./compile
+
+= poohprysm compile (실패하면 다시 컴파일)
+bazel build //cmd/beacon-chain:beacon-chain --config=release
+bazel build //validator:image_bundle --config=release
+
+### 1. geth를 새로운 config로 실행
+= ./init testnet 1 & ./enode-cmd으로 실행하기
+= 일단 이것으로 설공을 하면 일단 돌지 않고서 대기하고 있을 것임
+
+### 2.  chain-config.yaml 수정하고 genesis 파일 만들기
+= 모든 수정은, 내 로컬 머신에서, 새로 딴 브랜치에서 수정하고 모든 머신에서 업데이트하는 방식(브랜치예: el-friday)
+= TERMINAL_BLOCK_HASH 지정
+"hash"스크립트로 "hash" 항목을 가져옴.
+어짜피 고정된 세팅을 사용하므로, 바뀌지 않음. 노드키가 달라지면 바뀔수 있지만, 초기세팅은 똑같은 설정을 사용함.
+= MIN_GENESIS_ACTIVE_VALIDATOR_COUNT: 8
+= MIN_GENESIS_TIME: 원하는 consensus layer genesis time
+    - date +%s으로 현재 시간을 얻어와서 한 600(10분)을 더한다.
+    - 🔥 한번 세팅이 된 후에 다시 여러번 시도할때 이 부분만 세팅하기 다시 하면됨
+= SHARDING_FORK_VERSION, SHARDING_FORK_EPOCH 주석 처리함
+
+= geth2-testnet-genesis 빌드: ./gen-binary
+= genesis.ssz 생성: ./gen_genesis
+    - 이부분은 거의 바뀔 일 없음, 같은 mnemonic 쓰기 때문.
+= Genesis Validators Root 찾아서 setting.py에 추가
+    - get "Genesis Validators Root" with following command on "poohnet" folder.
+    - zcli pretty bellatrix  BeaconState config/genesis.ssz > parsedState.json
+    - find "genesis_validators_root" on "parsedState.json" file
+    - copy the value of "genesis_validators_root" to the following part of setting.py
+바뀌는 것이 거의 없음. 같은 mnemonic 쓰기 때문.
+    - vi ./poohnet/pooh-deposit-cli/staking_deposit/settings.py
+    TestnetSetting = BaseChainSetting(
+    NETWORK_NAME=TESTNET, GENESIS_FORK_VERSION=bytes.fromhex('2F1C0000'),
+    GENESIS_VALIDATORS_ROOT=bytes.fromhex('e63460dc044e056f26ca8f7406a18867d31f1ec195322f428b5918d4b0153050'))
+
+### 3. staking-deposit-cli
+= run "stake" command
+    - 이미 생성된 키 파일들이 있으면 ./keys로 키만 복사: 키 복사 (암호:pooh2023!@)
+= run "password": sudo vi ~/.pooh/cl/config/password.txt, 암호 추가
+
+### 4. cl & vals 실행
+= cnode가 최소 3개는 실행되어야 함.("at least two peered beacon nodes")
+= 머신을 재부팅하고 실행하고 처음 실행시킬때 체크하는 과정이 매우 오래 걸림.
+= 첫번째 머신에서 cl 실행: ./cnode
+= 첫번째 cl의 enr을 알아내서 다른 cnode 스크립트의 bootstrap-node 항목에 세팅하기
+= 두번째 머신에서 cl 실행: ./cnode
+= 첫번째 머신이 validator이므로 실행: ./validators
+= cnode에 이 메시지가 뜨는지 확인: INFO p2p: Peer summary activePeers=1 inbound=1 outbound=0
+= validator에서 이 메시지 확인: INFO validator: Waiting for beacon node to sync to latest chain head
+
+### 5. 살펴볼 메시지 on cnode
+= 기타: git reset --hard origin/set-cl-node, git reset --hard origin/pos
+= Trouble Shooting: https://docs.prylabs.network/docs/troubleshooting/issues-errors
+= INFO slotutil: 4m10s until chain genesis genesisStateRoot=0b6a76b8a59b6a65b9accbb90f556fad77af865c2fe23745a0421f6157ed3751 genesisTime=2024-07-02 03:29:20 +0000 UTC genesisValidators=8
+=  INFO p2p: Peer summary activePeers=0 inbound=0 outbound=0
+--> 이거는 문제로 보임.
+= 에러 1
+ERROR validator: Failed to request block from beacon node blockSlot=33 error=rpc error: code = Unknown desc = could not build block in parallel: rpc error: code = Internal desc = Could not get local payload: unknown beacon state version pubKey=0x8b439a7aa748
+ERROR validator: rpc error: code = Unavailable desc = Syncing to latest head, not ready to respond
+= 에러2: 다음의 메시지가 지정된 merge 타임을 지나서도 나타남
+INFO validator: Waiting for beacon node to sync to latest chain head
+--> RPC gateway provider endpoint에 해당하는 3500번 포트가 열리지 않아서 그런것으로 판단됨
+security group이 적용되기 위해서 instance 다시 돌림.
+= 에러3: ERROR validator: Failed to request block from beacon node blockSlot=70 error=rpc error: code = Unknown desc = could not build block in parallel: rpc error: code = Internal desc = Could not get local payload: could not prepare payload: payload status is SYNCING or ACCEPTED pubKey=0xaa730e92e28d
+--> chain-config.yaml을 적절히 세팅하지 않아서 발생하던 문제를 해결하였으나 위와 같은 문제 추가 발생
+= 에러4: ERROR rpc/validator: Could not pack deposits and attestations error=context canceled
+ERROR p2p: Failed to find peers error=unable to find requisite number of peers for topic /eth2/65c7e087/sync_committee_1/ssz_snappy - only 0 out of 1 peers were able to be found
+--> CL_BOOT_NODE security 설정 안함: 이런 안하면 4000번 포트가 열리지 않음
+
+참고: https://docs.prylabs.network/docs/advanced/proof-of-stake-devnet
+
+887b30d1e617484474521f31a37376760299fa7f15eb4214fce4157744b896c2
+887b30d1e617484474521f31a37376760299fa7f15eb4214fce4157744b896c2
+8532654aD638Db3deE3836B22B35f7Ca707428ca
+997C277946420AfF5deD06D0f52725B17fA1971A
+755f5326dbB7BA8B95d544E55fAAf7634e2B8559
+
+8532654ad638db3dee3836b22b35f7ca707428ca
+
+https://mxtoolbox.com/SuperTool.aspx?action=tcp%3a3.37.37.195%3a13000&run=toolpage
+
+-MK4QDgSxuM57O4IFv-VJOnxdP5aSmnDx89zWhbQQXn_4btWQWg6vl_xcs_-vcq7_Yl6D30-rXM5NLX3E5XyNbxUbwOGAZCbuHYeh2F0dG5ldHOIAAAAAAAAAACEZXRoMpBlx-CHLxwDAP__________gmlkgnY0gmlwhAMlJcOJc2VjcDI1NmsxoQOQAVYeaYHIm97eqXHZBiYR8ElPiE_O-L9_QtLC11AlSIhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A
+
+-MK4QMvkZMpSmM2nmnukeMxMPCiYeqvVRhBjc4f7TgrVpsUBFpeQUKXapPucqXgzi7h5dv6ShcyrUTc3Xze10CyuuBaGAZCbnv4hh2F0dG5ldHOIAAAAAAAAAACEZXRoMpBlx-CHLxwDAP__________gmlkgnY0gmlwhAMlJcOJc2VjcDI1NmsxoQIMv1yq365qINnb2-AqLG_yOhHUFxXsDA8zLJuEzGxzsIhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+
+https://dev.to/q9/how-to-merge-an-ethereum-network-right-from-the-genesis-block-3454
+
+enr:-MK4QEbqRDvJ4DEgxAlEr8foba7anXMhebhuDM6Rav6fGE4nK0Mcy_PhQyZqlCUHOZHcOj8Y1rCJAigKNDHLwFlCDGCGAZCc20PSh2F0dG5ldHOIAAAAAAAAAACEZXRoMpBlx-CHLxwDAP__________gmlkgnY0gmlwhAMlJcOJc2VjcDI1NmsxoQJb_q7mWJ1_tKljTt4EG6l7yQIKpShudx_qw7R5x7oNOYhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A
+enr:-MK4QFFTBUTZ53TJr5Oi5JEBSK8PUwZ3B0OZ0gr_nI_Fbqa3VAAf-borxKUWMcXcIKhio-1PWKA_kSNiEAHH7BQnNzGGAZCbP9cXh2F0dG5ldHOIAAAAAAAAAACEZXRoMpBlx-CHLxwDAP__________gmlkgnY0gmlwhAMlJcOJc2VjcDI1NmsxoQKc2gIB3dIc8_iFyrgfqGrwI0TsIo9rmo5Z_5TCtT3P5YhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A
+
+🍀🌼🌸🏆🍜🍀🌼🌸🏆🔹🍀🌼🌸🏆🍀🌼🌸🏆🍀🌼🌸🏆🍀🌼🌸🏆
+🍀🌼🌸🏆🍜🍀🌼🌸🏆🔹🍀🌼🌸🏆🍀🌼🌸🏆🍀🌼🌸🏆🍀🌼🌸🏆
 
 # call attack: 빨
-- 6. Factory(Ownable/Initializable) - Minimal proxy(eip1167) - Admin Proxy(eip1967) / Beacon Proxy - Implementation(ReentrancyGuard) - Beacon
+- 6. Factory(Ownable/Initializable) - Minimal proxy(eip1167)/Admin Proxy(eip1967) - Beacon Proxy - Implementation(ReentrancyGuard) - Beacon
   -- Potential Solution: OZ "Address" library
     -- isContract, sendValue, functionCall, functionCallWithValue, functionStaticCall, functionDelegateCall etc
     -- 자동적으로 revert 함.
@@ -43,7 +186,11 @@ cloneDeterministic
   -- Frontrunning issues: intialize function
   -- Key Leakage & Centralization issue
 
-# DAO attack: 노
+# DAO attack:
 1. Beanstalk Hack Case Study
 2. Generally DAO contract derives from ERC20
 3. @audit-issue
+
+# DOS attack:
+1. timeout
+4. array를 너무 길게 만들기 

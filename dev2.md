@@ -3,9 +3,22 @@
 #### Your branch is ahead of 'origin/pos' by 1 commit.
 (use "git push" to publish your local commits)
 
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint:
+hint:   git config pull.rebase false  # merge (the default strategy)
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint:
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+
 ==>
 git pull
-git reset --hard origin/pos
+git reset --hard origin/set-cl-node
 
 #### remove python3.9 on ubuntu
 sudo apt-get remove python3.9
@@ -1648,17 +1661,8 @@ await expect(execAccount.executeUserOp(userOp, 1)).to.emit(execAccount, "Execute
 #### TypeError: (0 , ethers_1.getAddress) is not a function
 hardhat의 ethers를 쓸때 이런일이 발생함으로 6.7.0을 써야함. 그렇다면 hardhat은 내 ethers를 쓴다는 얘기? 내꺼 쓰는게 맞음. 그러면 뭐하러 import { ethers } from "hardhat"; 이걸쓰냐구??? 어쨌든 hardhat의 node_modules에는 hardhat 깔리게 없음. 
 
-😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈
-😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈
-## Memory
-😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈
-😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈😈
 
-🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
-🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
-## 아래 Frequent Use(위 Memory)
-🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
-🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
+
 
 ### forge install 할때, .gitmodules가 필요함
 
@@ -1683,17 +1687,7 @@ address fundContractAddr = vm.envAddress(
 ```
 
 ### command
-forge script script/poohnet-fund/DeployPoohnetFund.s.sol --rpc-url localnet  --private-key $PRIVATE_KEY --broadcast
 
-cast call $POOHNET_FUND_CONTRACT_ADDRESS "getOwner()" --rpc-url $LOCALNET_RPC_URL 
-
-cast balance 0xE024589D0BCd59267E430fB792B29Ce7716566dF --rpc-url $LOCALNET_RPC_URL
-
-cast send $POOHNET_FUND_CONTRACT_ADDRESS --value 2ether --private-key $PRIVATE_KEY 
-
-cast send $POOHNET_FUND_CONTRACT_ADDRESS "transferBudget(address,uint256)" 0xE024589D0BCd59267E430fB792B29Ce7716566dF 1000000000000000000 --rpc-url $LOCALNET_RPC_URL --private-key $PRIVATE_KEY
-
-cast balance 0xE024589D0BCd59267E430fB792B29Ce7716566dF --rpc-url http://localhost:8545
 
 console.log(`balance of deployer: ${await provider.getBalance(deployer.address)}`);
 console.log(`Receipt: ${JSON.stringify(receipt)}`);
@@ -1753,8 +1747,10 @@ const contractSize = (contractCode.length - 2) / 2; // Subtract 2 for '0x' prefi
 
 ---
 solc --bin --abi contracts/assembly/DataStorage.sol -o output
+
 ---
 npx hardhat node
+
 ---
 // Call transfer function and check for success/failure
         (bool sent, ) = _to.call{value: msg.value}("");
@@ -1764,3 +1760,41 @@ npx hardhat node
 yarn init -y
 yarn add typescript ts-node @types/node --dev
 tsc --init
+
+
+---
+error: externally-managed-environment
+
+× This environment is externally managed
+╰─> To install Python packages system-wide, try brew install
+xyz, where xyz is the package you are trying to
+install.
+
+==> python3 -m pip config set global.break-system-packages true
+
+
+---
+ModuleNotFoundError: No module named 'web3'
+python3 -m pip --version
+
+python3 -m pip install web3
+
+---
+curl v4.ident.me
+## 🏓 아래 Frequent Use(위 Memory) 🏓
+🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
+
+forge script script/poohnet-fund/DeployPoohnetFund.s.sol --rpc-url localnet  --private-key $PRIVATE_KEY --broadcast
+
+cast call $POOHNET_FUND_CONTRACT_ADDRESS "getOwner()" --rpc-url $LOCALNET_RPC_URL
+
+cast balance 0xE024589D0BCd59267E430fB792B29Ce7716566dF --rpc-url $LOCALNET_RPC_URL
+
+cast send $POOHNET_FUND_CONTRACT_ADDRESS --value 2ether --private-key $PRIVATE_KEY
+
+cast send $POOHNET_FUND_CONTRACT_ADDRESS "transferBudget(address,uint256)" 0xE024589D0BCd59267E430fB792B29Ce7716566dF 1000000000000000000 --rpc-url $LOCALNET_RPC_URL --private-key $PRIVATE_KEY
+
+cast balance 0xE024589D0BCd59267E430fB792B29Ce7716566dF --rpc-url http://localhost:8545
+
+cast sig "calculatePower(uint256,uint256)"
+
