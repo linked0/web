@@ -4,7 +4,7 @@ import { utils } from 'ethers-v5';
 import { ethers } from 'hardhat';
 const { provider, deployContract, getSigners, parseEther, keccak256, toUtf8Bytes } = ethers;
 
-import { RestrictedOwner, UnrestrictedOwner } from '../../../typechain-types';
+import { BlockSafe, BlockSafeFactory, DummyERC20, RestrictedOwner, UnrestrictedOwner } from '../../../typechain-types';
 import { DummyERC20, RentingLibrary, SecureStore, CryptoKeeper, CryptoKeeperFactory } from '../../../typechain-types';
 
 describe('Call Attack Exercise', () => {

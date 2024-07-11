@@ -1,13 +1,13 @@
-// SPDX-License-Identifier: MIT
-pragma solidity 0.8.24;
-
-import "hardhat/console.sol";
+// SCH Course Copyright Policy (C): DO-NOT-SHARE-WITH-ANYONE
+// https://smartcontractshacking.com/#copyright-policy
+pragma solidity ^0.8.13;
 
 /**
  * @title RestrictedOwner
- * @author Jay Lee (https://github.com/linked0)
+ * @author JohnnyTime (https://smartcontractshacking.com)
  */
 contract RestrictedOwner {
+
   address public owner;
   address public manager;
   address public unrestrictedOwnerAddress;
@@ -25,10 +25,10 @@ contract RestrictedOwner {
   }
 
   fallback() external {
-    console.log("fallback called");
-    (bool result, ) = unrestrictedOwnerAddress.delegatecall(msg.data);
+    (bool result,) = unrestrictedOwnerAddress.delegatecall(msg.data);
     if (!result) {
       revert("failed");
     }
   }
+
 }

@@ -1,5 +1,5 @@
-// SPDX-Licence-Identifier: MIT
-pragma solidity 0.8.24;
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.24;
 
 interface ICryptoKeeper {
   function initialize(address[] memory _operators) external;

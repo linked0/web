@@ -136,26 +136,6 @@ security group이 적용되기 위해서 instance 다시 돌림.
 ERROR p2p: Failed to find peers error=unable to find requisite number of peers for topic /eth2/65c7e087/sync_committee_1/ssz_snappy - only 0 out of 1 peers were able to be found
 --> CL_BOOT_NODE security 설정 안함: 이런 안하면 4000번 포트가 열리지 않음
 
-참고: https://docs.prylabs.network/docs/advanced/proof-of-stake-devnet
-
-887b30d1e617484474521f31a37376760299fa7f15eb4214fce4157744b896c2
-887b30d1e617484474521f31a37376760299fa7f15eb4214fce4157744b896c2
-8532654aD638Db3deE3836B22B35f7Ca707428ca
-997C277946420AfF5deD06D0f52725B17fA1971A
-755f5326dbB7BA8B95d544E55fAAf7634e2B8559
-
-8532654ad638db3dee3836b22b35f7ca707428ca
-
-https://mxtoolbox.com/SuperTool.aspx?action=tcp%3a3.37.37.195%3a13000&run=toolpage
-
--MK4QDgSxuM57O4IFv-VJOnxdP5aSmnDx89zWhbQQXn_4btWQWg6vl_xcs_-vcq7_Yl6D30-rXM5NLX3E5XyNbxUbwOGAZCbuHYeh2F0dG5ldHOIAAAAAAAAAACEZXRoMpBlx-CHLxwDAP__________gmlkgnY0gmlwhAMlJcOJc2VjcDI1NmsxoQOQAVYeaYHIm97eqXHZBiYR8ElPiE_O-L9_QtLC11AlSIhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A
-
--MK4QMvkZMpSmM2nmnukeMxMPCiYeqvVRhBjc4f7TgrVpsUBFpeQUKXapPucqXgzi7h5dv6ShcyrUTc3Xze10CyuuBaGAZCbnv4hh2F0dG5ldHOIAAAAAAAAAACEZXRoMpBlx-CHLxwDAP__________gmlkgnY0gmlwhAMlJcOJc2VjcDI1NmsxoQIMv1yq365qINnb2-AqLG_yOhHUFxXsDA8zLJuEzGxzsIhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
-
-https://dev.to/q9/how-to-merge-an-ethereum-network-right-from-the-genesis-block-3454
-
-enr:-MK4QEbqRDvJ4DEgxAlEr8foba7anXMhebhuDM6Rav6fGE4nK0Mcy_PhQyZqlCUHOZHcOj8Y1rCJAigKNDHLwFlCDGCGAZCc20PSh2F0dG5ldHOIAAAAAAAAAACEZXRoMpBlx-CHLxwDAP__________gmlkgnY0gmlwhAMlJcOJc2VjcDI1NmsxoQJb_q7mWJ1_tKljTt4EG6l7yQIKpShudx_qw7R5x7oNOYhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A
-enr:-MK4QFFTBUTZ53TJr5Oi5JEBSK8PUwZ3B0OZ0gr_nI_Fbqa3VAAf-borxKUWMcXcIKhio-1PWKA_kSNiEAHH7BQnNzGGAZCbP9cXh2F0dG5ldHOIAAAAAAAAAACEZXRoMpBlx-CHLxwDAP__________gmlkgnY0gmlwhAMlJcOJc2VjcDI1NmsxoQKc2gIB3dIc8_iFyrgfqGrwI0TsIo9rmo5Z_5TCtT3P5YhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A
 
 🍀🌼🌸🏆🍜🍀🌼🌸🏆🔹🍀🌼🌸🏆🍀🌼🌸🏆🍀🌼🌸🏆🍀🌼🌸🏆
 🍀🌼🌸🏆🍜🍀🌼🌸🏆🔹🍀🌼🌸🏆🍀🌼🌸🏆🍀🌼🌸🏆🍀🌼🌸🏆
@@ -187,8 +167,8 @@ enr:-MK4QFFTBUTZ53TJr5Oi5JEBSK8PUwZ3B0OZ0gr_nI_Fbqa3VAAf-borxKUWMcXcIKhio-1PWKA_
   -- Key Leakage & Centralization issue
 
 # DAO attack:
-1. Beanstalk Hack Case Study
-2. Generally DAO contract derives from ERC20
+1. Beanstalk Hack Case Study, Generally DAO contract derives from ERC20
+2. ERC165Checker/Holder, cloneDeterministic
 3. @audit-issue
 
 # DOS attack:

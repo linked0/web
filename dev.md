@@ -84,9 +84,11 @@
     - [😈 git](#-git)
     - [🥎 hardhat/foundry 🥎](#-hardhatfoundry-)
     - [🦋 VSCode II 🦋](#-vscode-ii-)
+    - [🌸 IDEA](#-idea)
     - [🌸 Whale 듀얼탭-Docker-Screen-AWS](#-whale-듀얼탭-docker-screen-aws)
     - [🌸 command](#-command-1)
     - [🌸 curl](#-curl)
+    - [🌸 Shortcuts](#-shortcuts)
     - [🌸 텍스트 검색 - 프로세스 찾기 - zip](#-텍스트-검색---프로세스-찾기---zip)
 
 ## Projects Summary
@@ -1129,6 +1131,12 @@ curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-T
 
 - Get: 
 curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-type: application/json" -X GET "http://localhost:3000/balanceOf"
+
+---
+### 🌸 Shortcuts
+- alt + arrow: code, 줄 이동 시키기
+- ctrl + k: 나머지 지우기
+- cmd + shift + enter: 패널 크게 하기 
 
 ---
 ### 🌸 텍스트 검색 - 프로세스 찾기 - zip

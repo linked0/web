@@ -1,12 +1,13 @@
-// SPDX-Lincese-Identifier: MIT
-pragma solidity 0.8.24;
+// SCH Course Copyright Policy (C): DO-NOT-SHARE-WITH-ANYONE
+// https://smartcontractshacking.com/#copyright-policy
+pragma solidity ^0.8.13;
 
 /**
  * @title UnrestrictedOwner
- * @author Jay Lee (https://github.com/linked0)
+ * @author JohnnyTime (https://smartcontractshacking.com)
  */
-
 contract UnrestrictedOwner {
+
   address public owner;
 
   constructor() {
@@ -17,3 +18,4 @@ contract UnrestrictedOwner {
     owner = _newOwner;
   }
 }
+
