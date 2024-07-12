@@ -203,6 +203,14 @@ describe("AllPairVault", () => {
       // 이렇게 하는 것이 맞는 것인지 의문이 든다. 추후에 다시 확인해봐야 할 것 같다.
       await expect(allBasic.revertNowhere({ value: _value })).to.be.revertedWithCustomError(allBasic as AllBasic, "InvalidMsgValue").withArgs(1);;
     });
+
+    it("#getByte", async () => {
+      const {
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+
+      expect(await allBasic.getByte(2)).to.equal('0x01');
+    });
   });
   describe("Ethers utils", () => {
     it("#hexify #arrayify #hexValue", async () => {

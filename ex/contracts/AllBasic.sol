@@ -8,7 +8,7 @@ import "./Lock.sol";
 import {_revertInvalidMsgValue} from "./lib/Errors.sol";
 
 // Uncomment this line to use console.log
-import "hardhat/console.sol";
+import {console} from "hardhat/console.sol";
 
 // 코딩 참고 컨트랙트
 //Users/hyunjaelee/work/account-abstraction/contracts/samples/SimpleAccount.sol
@@ -22,6 +22,9 @@ contract AllBasic is IAllBasic {
   Lock public lock;
   Lock public lock2;
   address public friend;
+  uint256 constant BasicOrder_receivedItemByteMap = (
+    0x0000010102030000000000000000000000000000000000000000000000000000
+  );
 
   error InvalidMsgValue(uint256 value);
 
@@ -146,6 +149,16 @@ contract AllBasic is IAllBasic {
     bytes memory data
   ) public pure returns (uint256 number, string memory text) {
     (number, text) = abi.decode(data, (uint256, string));
+  }
+
+  // Example of ByteMap
+  // NOTE: Never use bytes1 type for receivedItemType!!!
+  function getByte(uint256 index) public pure returns (bytes1) {
+    uint8 receivedItemType;
+    assembly {
+      receivedItemType := byte(index, BasicOrder_receivedItemByteMap)
+    }
+    return bytes1(receivedItemType);
   }
 
   // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┓

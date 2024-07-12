@@ -2840,24 +2840,6 @@ yarn add https://github.com/eth-infinitism/account-abstraction\#v0.6.0
 yarn hardhat node (chain id: 31337)
 
 ---
-### 🦋 VSCode II 🦋
-- Command Palette: [⇧⌘P ] Shell command
-- Settings 열기: cmd + ,
-- 현재 프로젝트에서 검색: shift + option + f (마우스 오르쪽 버튼으로 한번 클릭후)
----
-- Move editor to the previous/next group
-  - macOS: `Ctrl+Cmd+Left`
-  - macOS: `Ctrl+Cmd+Right`
----
-- back: ctrl - , forward: shift ctrl -
-- ctrl tab: recent files
-- open project
-  - shift cmd n 
-  - cmd shift /
----
-- Bigger Font: cmd + "+"
-
----
 ### 🌸 IDEA
 * Update TOC
 ```angular2html
@@ -2878,11 +2860,6 @@ View -> Active Editor -> Use Soft Wraps
 ```
 ---
 ### 🌸 Whale 듀얼탭-Docker-Screen-AWS
-**Whale**
-- 듀얼 탭 열기/닫기: shift + cmd +  s
-- 탭 포커스 이동: shift + cmd +  e
-- 듀얼 탭에 링크 열기: shift + cmd + click
-
 **Docker**
 - docker exec -it pow-node geth attach http://localhost:8545
 - docker logs pow-node // enode 알아낼때 사용할 수 있음
@@ -2915,13 +2892,6 @@ curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-T
 - Get: 
 curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-type: application/json" -X GET "http://localhost:3000/balanceOf"
 
----
-### 🌸 Shortcuts
-- alt + arrow: code, 줄 이동 시키기
-- ctrl + k: 나머지 지우기
-- cmd + shift + enter: 패널 크게 하기 
-
-
 # #
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
 NotImplementedError: Method 'HardhatEthersProvider.resolveName' is not implemented
@@ -2935,11 +2905,25 @@ NotImplementedError: Method 'HardhatEthersProvider.resolveName' is not implement
 이런 실수는 하지 말자.
 
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
-### 🌸 command
+### 🌸 shortcuts
+- 듀얼 탭 열기/닫기: shift + cmd +  s
+- 탭 포커스 이동: shift + cmd +  e
+- 듀얼 탭에 링크 열기: shift + cmd + click
+
+- VSCode: Settings 열기: cmd + ,
+- 현재 프로젝트에서 검색: shift + option + f (마우스 오르쪽 버튼으로 한번 클릭후)
+- back: ctrl - , forward: shift ctrl -
+- ctrl tab: recent files
+- open project: cmd shift n & cmd shift /
+- Bigger Font: cmd + "+"
+
+- alt + arrow: code, 줄 이동 시키기
+- ctrl + k: 나머지 지우기
+- cmd + shift + enter: 패널 크게 하기
+- 
 - 프롬프트 커맨드 수정: ctrl + x, ctrl + e
-- vi에서 단어 단위로 이동하기: 
-b to move back, 
-w to move forward
+- vi에서 단어 이동: w or b
+- move window between panes: Ctrl+Cmd+→/←
 
 ### 🌸 Code
 forge script script/poohnet-fund/DeployPoohnetFund.s.sol --rpc-url localnet  --private-key $PRIVATE_KEY --broadcast
