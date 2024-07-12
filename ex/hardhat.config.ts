@@ -161,4 +161,27 @@ const config: HardhatUserConfig = {
   },
 };
 
+// Constants
+const GOERLI_FORK_BLOCK_NUMBER = 8660077;
+
+let scriptName;
+
+if (process.argv[3] != undefined) {
+  scriptName = process.argv[3];
+} else {
+  scriptName = '';
+}
+
+if (scriptName.includes('sensitive')) {
+  console.log(`Forking Goerli Block Height ${GOERLI_FORK_BLOCK_NUMBER}`);
+  config.networks = {
+    hardhat: {
+      forking: {
+        url: process.env.GOERLI_URL!,
+        blockNumber: GOERLI_FORK_BLOCK_NUMBER,
+      },
+    },
+  };
+}
+
 export default config;

@@ -179,3 +179,18 @@ ERROR p2p: Failed to find peers error=unable to find requisite number of peers f
 3. Parent Contract의 storage space가 순번에서 앞섬
 - 예를 들어 Ownable이 있으면 그것은 storage slot이 0번일 높음. 혹은 ReentrancyGuard의 _status 변수
 - Contract Expoler에 배포된 컨트랙트를 구조를 보면서 확인 가능.
+
+# 5.unchecked: 은, 이 은도끼가 네 도끼냐? 체크해보고 아니요 철도끼가 제 도끼예요.
+1) low-level calls don't revert
+- 똑같은 함수를 호출해도 함수명으로 직접 high level call하면 revert함. 그러나 call 같은 low level call을 쓰면 호출받는 쪽에서 require때문에 revert가 발생하는 상황이라도 revert가 발생하지 않음.
+- high level: transfer opcode
+- Low-level calls: send, `call`, `delegatecall`, `staticcall`, and `callcode`.
+- send() is not an opcode but rather a Solidity member of address type. 
+- USDT는 transfer에 대해서 return 안함.
+2) `transfer`: 2300 gas, Automatically reverts on failure.
+- `send`: 2300 gas, Returns a boolean indicating success or failure. 의도치않은 실패 가능
+- transfer() is not an opcode but rather a Solidity member of address type. 
+- transfer() and send() should be avoided (because they take a hard dependency on gas costs by forwarding a fixed amount of gas: 2300).
+-  Gas specific code (call{gas: ..., value: ...}("")) should also be avoided.
+- call{value: ...}("") should be used, for example: contractB.call{value: 1000}("")
+3) SafeERC20 recommand

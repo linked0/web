@@ -2922,9 +2922,17 @@ curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-t
 - cmd + shift + enter: 패널 크게 하기 
 
 
+# #
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
-새로운 거는 이 안에 넣어
+NotImplementedError: Method 'HardhatEthersProvider.resolveName' is not implemented
+      at HardhatEthersProvider.resolveName (/Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-ethers/src/internal/hardhat-ethers-provider.ts:364:11)
+      at HardhatEthersSigner.resolveName (/Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-ethers/src/signers.ts:108:26)
+      at new BaseContract (/Users/hyunjaelee/work/web/ex/node_modules/ethers/src.ts/contract/contract.ts:722:40)
+      at new Contract (/Users/hyunjaelee/work/web/ex/node_modules/ethers/src.ts/contract/contract.ts:1120:1)
+      at Context.<anonymous> (/Users/hyunjaelee/work/web/ex/test/zhacking/sensitive.ts:22:20)
 
+==> const SECRET_DOOR_ADDRESS = '0x0x148f340701D3Ff95c7aA0491f5497709861Ca27D';
+이런 실수는 하지 말자.
 
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
 ### 🌸 command
@@ -2968,6 +2976,17 @@ cast calldata-decode "transfer(address,uint256)" \
 
 컨트랙트 바이트 코드 가져오기
 cast code 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c --rpc-url https://rpc.ankr.com/bsc
+
+=> 여기서 0x를 쓰면 안됨.
+>>> hex_string = "48656c6c6f20576f726c64"  # Hex encoded string for "Hello World"
+>>> byte_string = bytes.fromhex(hex_string)
+>>> regular_string = byte_string.decode("utf-8")
+
+from datetime import datetime
+datetime.fromtimestamp(7214123987)
+
+>>> print(f"{a:08x}{b:016x}{c:08x}")
+0000006400000000000227b200000005
 
 ---
 ### 🌸 텍스트 검색 - 프로세스 찾기 - zip

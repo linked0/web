@@ -23,13 +23,15 @@ Hardhat 사이너 지정 가능
 OPStack 보고 있음. 
 - Travel Wallet/소량앤화, 택시 이용앱 Go
 
+- encodedBytes32String, npm list ethers
 - 이제 approve가 필요없음.
 - 사진 잘 찍는법 - 영어일기 쓰기 - 엘리하이/메가스터디
 
 
-※🌟🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴※
+decodeFunctionResult of AA code
 
-
+😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁
+※🌟🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴
 
 
    * Gas and return values during simulation.
