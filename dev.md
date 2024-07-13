@@ -91,6 +91,8 @@
     - [🌸 Shortcuts](#-shortcuts)
     - [🌸 텍스트 검색 - 프로세스 찾기 - zip](#-텍스트-검색---프로세스-찾기---zip)
 
+# # 0. Work-Summary
+
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 # # 1. Code/Error
 
@@ -2903,6 +2905,14 @@ NotImplementedError: Method 'HardhatEthersProvider.resolveName' is not implement
 
 ==> const SECRET_DOOR_ADDRESS = '0x0x148f340701D3Ff95c7aA0491f5497709861Ca27D';
 이런 실수는 하지 말자.
+
+---
+error: externally-managed-environment
+
+× This environment is externally managed
+╰─> To install Python packages system-wide, try apt install
+    python3-xyz, where xyz is the package you are trying to
+    install.
 
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
 ### 🌸 shortcuts
