@@ -2998,15 +2998,18 @@ cast calldata-decode "transfer(address,uint256)" \
 cast code 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c --rpc-url https://rpc.ankr.com/bsc
 
 => 여기서 0x를 쓰면 안됨.
->>> hex_string = "48656c6c6f20576f726c64"  # Hex encoded string for "Hello World"
->>> byte_string = bytes.fromhex(hex_string)
->>> regular_string = byte_string.decode("utf-8")
+> hex_string = "48656c6c6f20576f726c64"  # Hex encoded string for "Hello World"
+> byte_string = bytes.fromhex(hex_string)
+> regular_string = byte_string.decode("utf-8")
 
 from datetime import datetime
 datetime.fromtimestamp(7214123987)
 
->>> print(f"{a:08x}{b:016x}{c:08x}")
+> print(f"{a:08x}{b:016x}{c:08x}")
 0000006400000000000227b200000005
+
+---
+ w3 = Web3(Web3.HTTPProvider('https://eth-sepolia.g.alchemy.com/v2/73I-qvN9yqtRcajnfvEarwA2FNHM4Nph')
 
 ---
 ### 🌸 텍스트 검색 - 프로세스 찾기 - zip
