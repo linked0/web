@@ -2914,6 +2914,32 @@ error: externally-managed-environment
     python3-xyz, where xyz is the package you are trying to
     install.
 
+---
+error: externally-managed-environment
+
+× This environment is externally managed
+╰─> To install Python packages system-wide, try brew install
+    xyz, where xyz is the package you are trying to
+    install.
+
+==> pip3 install git+https://github.com/elyase/ethers-py --break-system-packages
+
+---
+  × Preparing metadata (pyproject.toml) did not run successfully.
+  │ exit code: 1
+  ╰─> [6 lines of output]
+
+      Cargo, the Rust package manager, is not installed or is not on PATH.
+      This package requires Rust and Cargo to compile extensions. Install it through
+      the system's package manager or via https://rustup.rs/
+
+      Checking for Rust toolchain....
+==>  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+ export PATH="$HOME/.cargo/bin:$PATH"
+ 
+
+
+
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
 ### 🌸 shortcuts
 - 듀얼 탭 열기/닫기: shift + cmd +  s

@@ -191,7 +191,7 @@ alias hhhu='idea ./hardhat.config.ts'
 alias eeeu='idea ./.env'
 alias rrru='idea ./README.md'
 
-alias occ='open https://colab.research.google.com/drive/1QD7vqBdoZvOd-2tBAYIMOSQoZF6-L-BX#scrollTo=f3NGQk2BhcOu'
+alias ooo='open https://colab.research.google.com/drive/1QD7vqBdoZvOd-2tBAYIMOSQoZF6-L-BX#scrollTo=ErhkR06Iw8kE'
 
 alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
