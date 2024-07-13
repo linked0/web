@@ -91,23 +91,23 @@ brew install cask docker
 brew install cask docker-compose
 ```
 ##### nvm install
-```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+> curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 source ~/.nvm/nvm.sh
-```
 
 https://www.docker.com/products/docker-desktop/ 도커 Desktop (linked0/**)
 
 ##### rust/postgresql install
-```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+> pip3 install git+https://github.com/elyase/ethers-py --break-system-packages
+
+
+> curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+export PATH="$HOME/.cargo/bin:$PATH"
 cargo install sqlx-cli
-```
-```
-brew update
+
+> brew update
 brew install postgresql
 brew services start postgresql
-```
+
 psql postgres <== 접속해볼 수 있음.
 
 ##### MySql Server 설치
