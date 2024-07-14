@@ -243,12 +243,6 @@ describe("AllPairVault", () => {
         0, 0, 0, 0, 0, 0, 0, 3
       ]);
       expect(dataArray).to.deep.equal(expected);
-
-      // #hexValue
-      const shortString = "Hello, World!";
-      const bytes32Formatted = utils.formatBytes32String(shortString);
-      expect(bytes32Formatted).to.equal(("0x48656c6c6f2c20576f726c642100000000000000000000000000000000000000").toLowerCase());
-
     });
 
     it("#parseUnits", async () => {
@@ -258,6 +252,17 @@ describe("AllPairVault", () => {
       // Convert the amount to Wei using parseUnits
       const amountInWei = utils.parseUnits(amount, decimals);
       expect(amountInWei).to.equal(10500000000000000000n);
+    });
+
+    // NOTE: encodedBytes32String in ethers v6 = formatBytes32String 
+    it("#formatBytes32String #parseBytes32String", async () => {
+      // #hexValue
+      const shortString = "Hello, World!";
+      const bytes32Formatted = utils.formatBytes32String(shortString);
+      expect(bytes32Formatted).to.equal(("0x48656c6c6f2c20576f726c642100000000000000000000000000000000000000").toLowerCase());
+
+      let decodedString = utils.parseBytes32String(bytes32Formatted);
+      expect(decodedString).to.equal(shortString);
     });
   });
 

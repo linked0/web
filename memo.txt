@@ -15,21 +15,14 @@ https://github.com/OffchainLabs/eth-pos-devnet/issues/19
 https://youtu.be/5GkgQXycpu8?si=ZePAYj_5UG7S4jSP
 
 https://medium.com/indie-developer-life/how-to-integrate-chatgpt-to-your-ios-app-in-swift-9210bce16e01
-
-Jaylee.io 만료 ==> poohnet으로 변경 필요
-poohgeth 이름 바꾸기 
-OpenSea와 OpenZepperlin 프로젝트 분석해서 좋은 코드 찾아보자. 
-Hardhat 사이너 지정 가능
-OPStack 보고 있음. 
+- homehome.io or jayjay.io
+- OpenSea와 OpenZepperlin 프로젝트 분석해서 좋은 코드 찾아보자. 
+- OPStack 보고 있음. 
 - Travel Wallet/소량앤화, 택시 이용앱 Go
-
-- encodedBytes32String, npm list ethers
 - 이제 approve가 필요없음.
 - 사진 잘 찍는법 - 영어일기 쓰기 - 엘리하이/메가스터디
 - poohgithub, dex 빼먹음.
-
-
-decodeFunctionResult of AA code
+- decodeFunctionResult of AA code
 
 
 😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁

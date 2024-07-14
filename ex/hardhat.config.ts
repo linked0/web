@@ -155,6 +155,9 @@ const config: HardhatUserConfig = {
       accounts: [process.env.ADMIN_KEY || "", process.env.USER_KEY || ""],
     },
   },
+  namedAccounts: {
+    deployer: 0,
+  },
   gasReporter: {
     enabled: false,
     currency: "USD",
