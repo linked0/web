@@ -73,7 +73,7 @@ go install github.com/protolambda/zcli@latest
 bazel build //cmd/beacon-chain:beacon-chain --config=release
 bazel build //validator:image_bundle --config=release
 
-### 1. geth를 새로운 config로 실행
+
 = ./init testnet 1 & ./enode-cmd으로 실행하기
 = 일단 이것으로 설공을 하면 일단 돌지 않고서 대기하고 있을 것임
 
@@ -140,57 +140,3 @@ ERROR p2p: Failed to find peers error=unable to find requisite number of peers f
 🍀🌼🌸🏆🍜🍀🌼🌸🏆🔹🍀🌼🌸🏆🍀🌼🌸🏆🍀🌼🌸🏆🍀🌼🌸🏆
 🍀🌼🌸🏆🍜🍀🌼🌸🏆🔹🍀🌼🌸🏆🍀🌼🌸🏆🍀🌼🌸🏆🍀🌼🌸🏆
 
-# call attack: 빨
-- 6. Factory(Ownable/Initializable) - Minimal proxy(eip1167)/Admin Proxy(eip1967) - Beacon Proxy - Implementation(ReentrancyGuard) - Beacon
-  -- Potential Solution: OZ "Address" library
-    -- isContract, sendValue, functionCall, functionCallWithValue, functionStaticCall, functionDelegateCall etc
-    -- 자동적으로 revert 함.
-  -- uint256[50] private __gap; (OpenZepperlin privides)
-- 7. DiamondProxy(delegate call) but erc6900(call) due to proxy data security issue
-- 8. key cautions: Ensure the storage layout of the new implementation matches the layout of the original.
-- 9. Initializable contract로 해결가능
-- 10. 아직 남음
-- Account existence must be checked prior to calling if needed.
-- delegatecall: target contract에서 msg.sender와 msg.value는 바뀌지 않음.
-  -- proxy contract에서 사용됨.
-  -- MultiSig Wallet, Smart Wallet, Account Abstraction
-  -- Bridges & Cross-Chain Messaging
-- prxoy: gas saving, upgradability
-- Relations among Minimal Clones and other proxies.
-- Factory deploy other contracts
-- create2 is very inefficient
-  -- EIP 1167 is a standard for deploying minimal proxy contracts, also known as "clones".
-- Proxy issues
-  -- Storage Collisions
-  -- Initialization issues: 
-  -- Frontrunning issues: intialize function
-  -- Key Leakage & Centralization issue
-
-# DAO attack:
-1. Beanstalk Hack Case Study, Generally DAO contract derives from ERC20
-2. ERC165Checker/Holder, cloneDeterministic
-3. @audit-issue
-
-# DOS attack:
-1. timeout
-4. array를 너무 길게 만들기 
-
-# Sensitive Data: 금
-3. Parent Contract의 storage space가 순번에서 앞섬
-- 예를 들어 Ownable이 있으면 그것은 storage slot이 0번일 높음. 혹은 ReentrancyGuard의 _status 변수
-- Contract Expoler에 배포된 컨트랙트를 구조를 보면서 확인 가능.
-
-# 5.unchecked: 은, 이 은도끼가 네 도끼냐? 체크해보고 아니요 철도끼가 제 도끼예요.
-1) low-level calls don't revert
-- 똑같은 함수를 호출해도 함수명으로 직접 high level call하면 revert함. 그러나 call 같은 low level call을 쓰면 호출받는 쪽에서 require때문에 revert가 발생하는 상황이라도 revert가 발생하지 않음.
-- high level: transfer opcode
-- Low-level calls: send, `call`, `delegatecall`, `staticcall`, and `callcode`.
-- send() is not an opcode but rather a Solidity member of address type. 
-- USDT는 transfer에 대해서 return 안함.
-2) `transfer`: 2300 gas, Automatically reverts on failure.
-- `send`: 2300 gas, Returns a boolean indicating success or failure. 의도치않은 실패 가능
-- transfer() is not an opcode but rather a Solidity member of address type. 
-- transfer() and send() should be avoided (because they take a hard dependency on gas costs by forwarding a fixed amount of gas: 2300).
--  Gas specific code (call{gas: ..., value: ...}("")) should also be avoided.
-- call{value: ...}("") should be used, for example: contractB.call{value: 1000}("")
-3) SafeERC20 recommand

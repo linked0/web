@@ -95,6 +95,14 @@
 
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 # # 1. Code/Error
+Forking Mainnet Block Height 15969633, Manual Mining Mode with interval of 10 seconds
+Error HH8: There's one or more errors in your config file:
+
+  * Invalid value {"mining":{"auto":false,"interval":10000},"forking":{"blockNumber":15969633}} for HardhatConfig.networks.hardhat - Expected a value of type HardhatNetworkConfig.
+
+To learn more about Hardhat's configuration, please go to https://hardhat.org/config/
+
+==> hardhat.config.ts(혹은 js)에서 process.env.MAINNET을 찾는데, .env에 MAINNET_URL로 되어 있어서 에러남.
 
 #### Your branch is ahead of 'origin/pos' by 1 commit.
 (use "git push" to publish your local commits)

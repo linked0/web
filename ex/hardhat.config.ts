@@ -96,6 +96,7 @@ const config: HardhatUserConfig = {
         version: "0.8.24",
         settings: {
           evmVersion: "cancun",
+          // evmVersion: "london",
           // viaIR: true,
           // optimizer: {
           //   ...(process.env.NO_SPECIALIZER
@@ -127,7 +128,7 @@ const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {
-      hardfork: "cancun",
+      // hardfork: "cancun",
       allowUnlimitedContractSize: false,
       accounts: getAccounts(),
       mining: {
@@ -170,7 +171,9 @@ const config: HardhatUserConfig = {
 };
 
 // Constants
+const FRONTRUNNING_MINING_INTERVAL = 10000; // 10 seconds
 const GOERLI_FORK_BLOCK_NUMBER = 8660077;
+const MAINNET_FORK_BLOCK_NUMBER = 15969633;
 
 let scriptName;
 
@@ -188,6 +191,22 @@ if (scriptName.includes('sensitive')) {
         url: process.env.GOERLI_URL!,
         blockNumber: GOERLI_FORK_BLOCK_NUMBER,
       },
+    },
+  };
+} else if (scriptName.includes('frontrunning') || scriptName.includes('vault-1')) {
+  // Frontrunning exercises are with "hardhat node mode", mining interval is 10 seconds
+  console.log(`Forking Mainnet Block Height ${MAINNET_FORK_BLOCK_NUMBER}, Manual Mining Mode`);
+  config.networks = {
+    hardhat: {
+      forking: {
+        url: process.env.MAINNET_URL!,
+        blockNumber: MAINNET_FORK_BLOCK_NUMBER,
+      },
+      mining: {
+        auto: false,
+        interval: FRONTRUNNING_MINING_INTERVAL,
+      },
+      gas: 'auto',
     },
   };
 }

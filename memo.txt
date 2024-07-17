@@ -1,28 +1,4 @@
 
-# today's plan: Wendesday
-- Deposit contract
-- screen으로 좀 띄워놓고 보자. 
-- how to set calldata with temporary storage
-
-- https://blog.openzeppelin.com/deep-dive-into-the-minimal-proxy-contract 
-- https://medium.com/decipher-media/layer-2-a-hub-of-layer-3s-d83c4c1c7c3a
-https://docs.prylabs.network/docs/advanced/proof-of-stake-devnet
-https://mxtoolbox.com/SuperTool.aspx?action=tcp%3a3.37.37.195%3a13000&run=toolpage
-https://github.com/protolambda/merge-genesis-tools/blob/master/README.md#deposit-contract
-geth.ethereum.org/docs/interface/private-network
-https://ethereum.stackexchange.com/questions/159998/beacon-chain-1-level-error-msg-beacon-node-is-not-respecting-the-follow-distanc
-https://github.com/OffchainLabs/eth-pos-devnet/issues/19
-https://youtu.be/5GkgQXycpu8?si=ZePAYj_5UG7S4jSP
-
-https://medium.com/indie-developer-life/how-to-integrate-chatgpt-to-your-ios-app-in-swift-9210bce16e01
-- homehome.io or jayjay.io
-- OpenSea와 OpenZepperlin 프로젝트 분석해서 좋은 코드 찾아보자. 
-- OPStack 보고 있음. 
-- Travel Wallet/소량앤화, 택시 이용앱 Go
-- 이제 approve가 필요없음.
-- 사진 잘 찍는법 - 영어일기 쓰기 - 엘리하이/메가스터디
-- poohgithub, dex 빼먹음.
-- decodeFunctionResult of AA code
 
 
 😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁

