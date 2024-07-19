@@ -24,6 +24,7 @@
     "unchecked": "hardhat test test/zhacking/5-unchecked.ts",
     "vault": "hardhat test test/zhacking/6-vault-1.ts",
     "vault2": "hardhat test test/zhacking/6-vault-2.ts",
+    "burn": "hardhat test test/oz/burnable.ts",
     "basicd": "hardhat run scripts/allbasic/deploy.ts --network testnet",
     "basicadd": "hardhat run scripts/allbasic/add.ts --network testnet",
     "basicget": "hardhat run scripts/allbasic/get-value.ts --network testnet",

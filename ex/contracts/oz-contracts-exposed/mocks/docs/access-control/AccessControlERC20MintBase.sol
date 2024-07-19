@@ -1,0 +1,89 @@
+// SPDX-License-Identifier: UNLICENSED
+
+pragma solidity >=0.6.0;
+
+import "../../../../contracts/mocks/docs/access-control/AccessControlERC20MintBase.sol";
+import "../../../../contracts/access/AccessControl.sol";
+import "../../../../contracts/utils/introspection/ERC165.sol";
+import "../../../../contracts/utils/introspection/IERC165.sol";
+import "../../../../contracts/access/IAccessControl.sol";
+import "../../../../contracts/token/ERC20/ERC20.sol";
+import "../../../../contracts/interfaces/draft-IERC6093.sol";
+import "../../../../contracts/token/ERC20/extensions/IERC20Metadata.sol";
+import "../../../../contracts/token/ERC20/IERC20.sol";
+import "../../../../contracts/utils/Context.sol";
+
+contract $AccessControlERC20MintBase is AccessControlERC20MintBase {
+    bytes32 public constant __hh_exposed_bytecode_marker = "hardhat-exposed";
+
+    event return$_grantRole(bool ret0);
+
+    event return$_revokeRole(bool ret0);
+
+    constructor(address minter) AccessControlERC20MintBase(minter) payable {
+    }
+
+    function $_checkRole(bytes32 role) external view {
+        super._checkRole(role);
+    }
+
+    function $_checkRole(bytes32 role,address account) external view {
+        super._checkRole(role,account);
+    }
+
+    function $_setRoleAdmin(bytes32 role,bytes32 adminRole) external {
+        super._setRoleAdmin(role,adminRole);
+    }
+
+    function $_grantRole(bytes32 role,address account) external returns (bool ret0) {
+        (ret0) = super._grantRole(role,account);
+        emit return$_grantRole(ret0);
+    }
+
+    function $_revokeRole(bytes32 role,address account) external returns (bool ret0) {
+        (ret0) = super._revokeRole(role,account);
+        emit return$_revokeRole(ret0);
+    }
+
+    function $_transfer(address from,address to,uint256 value) external {
+        super._transfer(from,to,value);
+    }
+
+    function $_update(address from,address to,uint256 value) external {
+        super._update(from,to,value);
+    }
+
+    function $_mint(address account,uint256 value) external {
+        super._mint(account,value);
+    }
+
+    function $_burn(address account,uint256 value) external {
+        super._burn(account,value);
+    }
+
+    function $_approve(address owner,address spender,uint256 value) external {
+        super._approve(owner,spender,value);
+    }
+
+    function $_approve(address owner,address spender,uint256 value,bool emitEvent) external {
+        super._approve(owner,spender,value,emitEvent);
+    }
+
+    function $_spendAllowance(address owner,address spender,uint256 value) external {
+        super._spendAllowance(owner,spender,value);
+    }
+
+    function $_msgSender() external view returns (address ret0) {
+        (ret0) = super._msgSender();
+    }
+
+    function $_msgData() external view returns (bytes memory ret0) {
+        (ret0) = super._msgData();
+    }
+
+    function $_contextSuffixLength() external view returns (uint256 ret0) {
+        (ret0) = super._contextSuffixLength();
+    }
+
+    receive() external payable {}
+}
