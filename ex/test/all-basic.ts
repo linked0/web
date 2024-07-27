@@ -3,21 +3,27 @@ import * as path from "path";
 
 import { loadFixture, time } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
-import { TypedDataDomain } from "ethers";
+import { BytesLike, TypedDataDomain } from "ethers";
 import { Wallet, constants, utils } from "ethers-v5";
 import {
-  hexConcat,
-  arrayify,
-  hexlify,
-  hexDataSlice,
-  hexZeroPad,
-  keccak256,
-  serializeTransaction,
-  toUtf8Bytes,
-  
 } from "ethers-v5/lib/utils";
 import { ethers, network } from "hardhat";
-
+const {
+  encodeBytes32String,
+  decodeBytes32String,
+  id,
+  parseUnits,
+  dataSlice,
+  getBytes,
+  concat,
+  hexlify,
+  keccak256,
+  randomBytes,
+  Transaction,
+  toQuantity,
+  toBeHex,
+  toUtf8Bytes,
+  zeroPadValue } = ethers;
 import {
   ExecAccount,
   Operator,
@@ -32,6 +38,26 @@ import { buildOrderStatus, TransferAccountOwnershipParams, BasicUser, BasicAccou
 
 
 const ALLBASIC_JSON_PATH = "../artifacts/contracts/AllBasic.sol/AllBasic.json";
+
+// NOTE; ethers v5 -> v6
+// AddressZero -> ZeroAddress
+// HashZero -> ZeroHash
+// arrayify -> getBytes
+// hexConcat -> concat
+// hexValue -> toQuantity
+// hexDataSlice -> dataSlice
+// hexZeroPad -> - zeroPadValue
+// hexlify(value: BytesLike | Hexable | number | bigint)
+//    -> hexlify(value: BytesLike) No longer works on numbers
+//    -> toBeHex for numbers
+// solidityPack -> solidityPacked
+// Web3Provider -> BrowserProvider
+// splitSignature -> https://github.com/ethers-io/ethers.js/discussions/4370
+// checkProperties, shallowCopy -> The checkProperties and shallowCopy have been removed in favor of using .map and Object.assign.
+// formatBytes32String -> encodeBytes32String
+// parseBytes32String -> decodeBytes32String
+// serializeTransaction(tx) -> Transaction.from(tx).serialized
+// parseTransaction(txBytes) -> Transaction.from(txBytes)
 
 // NOTE: Refer this code later
 // /Users/hyunjaelee/work/account-abstraction/node_modules/zksync-web3/src/utils.ts
@@ -190,7 +216,7 @@ describe("AllPairVault", () => {
       const _value = 1;
 
       const sigStr = "InvalidMsgValue(uint256)";
-      const errorSelector = utils.id(sigStr).slice(0, 10);
+      const errorSelector = id(sigStr).slice(0, 10);
       const encodedError = abiCoder.encode(
         ["uint256"],
         [_value]
@@ -216,24 +242,26 @@ describe("AllPairVault", () => {
     it("#hexify #arrayify #hexValue", async () => {
       // #hexify & #hexValue
       const number = 255;
-      const hexString = utils.hexlify(number);
+      const hexString = toBeHex(number);
       expect(typeof hexString).to.equal("string");
       expect(hexString).to.equal("0xff");
 
-      const byteArray = [0, 1, 2, 3];
-      const hexStr = utils.hexlify(byteArray);
+      const byteArray = new Uint8Array([0, 1, 2, 3]);
+      const hexStr = hexlify(byteArray);
       expect(hexStr).to.equal("0x00010203");
 
-      const hexValueStr = utils.hexValue(byteArray);
+      const hexValueStr = toQuantity(byteArray);
+      // NOTE: ethers v5에서는 hexValue를 사용함.
+      // const hexValueStr = utils.hexValue(byteArray);
       expect(hexValueStr).to.equal("0x10203");
 
       // #arrayify
       const sigStr = "calculatePower(uint256,uint256)";
-      const functionHash = hexDataSlice(keccak256(toUtf8Bytes(sigStr)), 0, 4) as string;
+      const functionHash = dataSlice(keccak256(toUtf8Bytes(sigStr)), 0, 4) as string;
       console.log("## sig hash for calculatePower: ", functionHash);
-      const args = utils.defaultAbiCoder.encode(["uint256", "uint256"], [10, 3]);
+      const args = abiCoder.encode(["uint256", "uint256"], [10, 3]);
       const data = functionHash + args.slice(2);
-      const dataArray = utils.arrayify(data);
+      const dataArray = getBytes(data);
       const expected = new Uint8Array([
         249, 121, 242, 105, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -250,7 +278,7 @@ describe("AllPairVault", () => {
       const decimals = 18; // Assume the token has 18 decimal places
 
       // Convert the amount to Wei using parseUnits
-      const amountInWei = utils.parseUnits(amount, decimals);
+      const amountInWei = parseUnits(amount, decimals);
       expect(amountInWei).to.equal(10500000000000000000n);
     });
 
@@ -258,10 +286,10 @@ describe("AllPairVault", () => {
     it("#formatBytes32String #parseBytes32String", async () => {
       // #hexValue
       const shortString = "Hello, World!";
-      const bytes32Formatted = utils.formatBytes32String(shortString);
+      const bytes32Formatted = encodeBytes32String(shortString);
       expect(bytes32Formatted).to.equal(("0x48656c6c6f2c20576f726c642100000000000000000000000000000000000000").toLowerCase());
 
-      let decodedString = utils.parseBytes32String(bytes32Formatted);
+      let decodedString = decodeBytes32String(bytes32Formatted);
       expect(decodedString).to.equal(shortString);
     });
   });
@@ -280,7 +308,7 @@ describe("AllPairVault", () => {
     it("#executeUserOp", async () => {
       const functionSignature = "add";
       const execSig = utils
-        .keccak256(utils.toUtf8Bytes(functionSignature))
+        .keccak256(toUtf8Bytes(functionSignature))
         .substring(0, 10);
       const innerCall = abiCoder.encode(
         ["address", "bytes"],
@@ -288,13 +316,13 @@ describe("AllPairVault", () => {
       );
       const userOp = {
         sender: operator.target,
-        callData: hexConcat([execSig, innerCall]),
+        callData: concat([execSig, innerCall]),
       };
 
       // check event
       const message = "Got it!";
-      const encodedMessage = utils.toUtf8Bytes(message);
-      const hashedMessage = utils.keccak256(encodedMessage);
+      const encodedMessage = toUtf8Bytes(message);
+      const hashedMessage = keccak256(encodedMessage);
       console.log(hashedMessage);
 
       await expect(execAccount.executeUserOp(userOp, 1))
@@ -308,7 +336,7 @@ describe("AllPairVault", () => {
     it("#executeMultipleUserOps", async () => {
       const functionSignature = "add";
       const execSig = utils
-        .keccak256(utils.toUtf8Bytes(functionSignature))
+        .keccak256(toUtf8Bytes(functionSignature))
         .substring(0, 10);
       const innerCall = abiCoder.encode(
         ["address", "bytes"],
@@ -316,17 +344,17 @@ describe("AllPairVault", () => {
       );
       const userOp = {
         sender: operator.target,
-        callData: hexConcat([execSig, innerCall]),
+        callData: concat([execSig, innerCall]),
       };
       const userOp2 = {
         sender: operator.target,
-        callData: hexConcat([execSig, innerCall]),
+        callData: concat([execSig, innerCall]),
       };
 
       // check event
       const message = "Got it two!";
-      const encodedMessage = utils.toUtf8Bytes(message);
-      const hashedMessage = utils.keccak256(encodedMessage);
+      const encodedMessage = toUtf8Bytes(message);
+      const hashedMessage = keccak256(encodedMessage);
 
       await expect(
         execAccount.executeMultipleUserOps([userOp, userOp2], [1, 2])
@@ -340,8 +368,7 @@ describe("AllPairVault", () => {
 
     it("#executeIndirect", async () => {
       const functionSignature = "indirectInnerCall(bytes)";
-      const execSig = utils
-        .keccak256(utils.toUtf8Bytes(functionSignature))
+      const execSig = keccak256(toUtf8Bytes(functionSignature))
         .substring(0, 10);
       const innerCall = abiCoder.encode(
         ["address", "bytes"],
@@ -349,13 +376,13 @@ describe("AllPairVault", () => {
       );
       const userOp = {
         sender: operator.target,
-        callData: hexConcat([execSig, innerCall]),
+        callData: concat([execSig, innerCall]),
       };
 
       // check event
       const message = "Indirect";
-      const encodedMessage = utils.toUtf8Bytes(message);
-      const hashedMessage = utils.keccak256(encodedMessage);
+      const encodedMessage = toUtf8Bytes(message);
+      const hashedMessage = keccak256(encodedMessage);
 
       await expect(execAccount.executeIndirect(userOp, 1))
         .to.emit(execAccount, "Executed")
@@ -403,9 +430,9 @@ describe("AllPairVault", () => {
       const receipt = await tx.wait();
       expect(receipt?.status).to.equal(1);
 
-      const hexValue = utils.hexlify(valueData.value);
-      const hexValue30 = utils.hexZeroPad(hexValue, 30);
-      expect(await allPairVault.contains(arrayify(hexValue30))).to.equal(true);
+      const hexValue = toBeHex(valueData.value);
+      const hexValue30 = zeroPadValue(hexValue, 30);
+      expect(await allPairVault.contains(getBytes(hexValue30))).to.equal(true);
     });
 
     it("add with checking event", async function () {
@@ -434,8 +461,8 @@ describe("AllPairVault", () => {
   describe("Deposit contract", () => {
     const DEPOSIT_CONTRACT_ADDRESS = "0x0420420420420420420420420420420420420420";
     // Example deposit parameters
-    const withdrawalCredentials = utils.hexlify(utils.randomBytes(32)); // Replace with actual withdrawal credentials
-    const signature = utils.hexlify(utils.randomBytes(96)); // Replace with actual signature
+    const withdrawalCredentials = hexlify(randomBytes(32)); // Replace with actual withdrawal credentials
+    const signature = hexlify(randomBytes(96)); // Replace with actual signature
 
     it("deposit contract", async function () {
       const depositContract = await ethers.getContractAt("DepositContract", DEPOSIT_CONTRACT_ADDRESS);
@@ -560,12 +587,18 @@ describe("AllPairVault", () => {
         nonce: 4,
       }
 
-      const signedMsg = await ownerWallet.signMessage(serializeTransaction(tx));
+      const signedMsg = await ownerWallet.signMessage(Transaction.from(tx).serialized);
       console.log("signedMsg: ", signedMsg);
       const sig = ethers.Signature.from(signedMsg);
 
       // Serialize the signed transaction
-      const raw = serializeTransaction(tx, sig);
+      const sigTx = {
+        ...tx,
+        v: sig.v,
+        r: sig.r,
+        s: sig.s,
+      }
+      const raw = Transaction.from(sigTx).serialized;
       console.log(`cast publish --rpc-url http://localhost:8545 ${raw}`);
     });
 
@@ -625,8 +658,8 @@ describe("AllPairVault", () => {
       const sigStr = "calculatePower(uint256,uint256)";
 
       // There is two ways to get functionHash
-      const functionHash = hexDataSlice(keccak256(toUtf8Bytes(sigStr)), 0, 4);
-      // const functionHash = utils.id(sigStr).slice(0, 10);
+      const functionHash = dataSlice(keccak256(toUtf8Bytes(sigStr)), 0, 4);
+      // const functionHash = id(sigStr).slice(0, 10);
 
       const args = abiCoder.encode(["uint256", "uint256"], [10, 3]);
       const data = functionHash + args.slice(2);
@@ -652,7 +685,7 @@ describe("AllPairVault", () => {
       const owner = new Wallet(process.env.ADMIN_KEY || "");
 
       const sigStr = "calculatePower(uint256,uint256)";
-      const functionHash = utils.id(sigStr).slice(0, 10);
+      const functionHash = id(sigStr).slice(0, 10);
       const args = abiCoder.encode(["uint256", "uint256"], [10, 9]);
       const data = functionHash + args.slice(2);
       const tx = {
@@ -675,7 +708,7 @@ describe("AllPairVault", () => {
       await allBasic.calculatePower(10, 5);
 
       const sigStr = "getValue()";
-      const data = utils.id(sigStr).slice(0, 10);
+      const data = id(sigStr).slice(0, 10);
       const tx = {
         to: allBasic.target,
         data: data,
