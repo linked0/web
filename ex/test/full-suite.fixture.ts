@@ -1,6 +1,6 @@
 import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers";
 import { time, loadFixture } from "@nomicfoundation/hardhat-network-helpers";
-import { ethers } from "hardhat";
+import { ethers, artifacts } from "hardhat";
 
 import { AllBasic__factory } from "../typechain-types";
 
@@ -10,8 +10,12 @@ let user: HardhatEthersSigner;
 export async function fullSuiteFixture() {
   const [deployer, user] = await ethers.getSigners();
 
-  const ERC20Factory = await ethers.getContractFactory("MyToken");
-  const erc20 = await ERC20Factory.deploy();
+  const MyTokenArtifact = await artifacts.readArtifact("contracts/archive/MyToken.sol:MyToken");
+  const MyTokenFactory = new ethers.ContractFactory(MyTokenArtifact.abi, MyTokenArtifact.bytecode, deployer);
+
+  // NOTE: You can use this commented code to deploy the contract as above
+  // const MyTokenFactory = await ethers.getContractFactory("contracts/archive/MyToken.sol:MyToken");
+  const erc20 = await MyTokenFactory.deploy();
 
   const TrasactionDelegatorFactory = await ethers.getContractFactory(
     "TransactionDelegator"

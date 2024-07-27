@@ -4,9 +4,8 @@ import * as path from "path";
 import { loadFixture, time } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
 import { TypedDataDomain } from "ethers";
-import { Wallet, BigNumber, constants, utils } from "ethers-v5";
+import { Wallet, constants, utils } from "ethers-v5";
 import {
-  defaultAbiCoder,
   hexConcat,
   arrayify,
   hexlify,
@@ -14,7 +13,8 @@ import {
   hexZeroPad,
   keccak256,
   serializeTransaction,
-  toUtf8Bytes
+  toUtf8Bytes,
+  
 } from "ethers-v5/lib/utils";
 import { ethers, network } from "hardhat";
 
@@ -139,7 +139,7 @@ describe("AllPairVault", () => {
 
       // Example interaction
       const encodedData = await allBasic.encodeData(42, "Hello, Hardhat!");
-      const madeData = utils.defaultAbiCoder.encode(
+      const madeData = abiCoder.encode(
         ["uint256", "string"],
         [42, "Hello, Hardhat!"]
       );
@@ -282,7 +282,7 @@ describe("AllPairVault", () => {
       const execSig = utils
         .keccak256(utils.toUtf8Bytes(functionSignature))
         .substring(0, 10);
-      const innerCall = defaultAbiCoder.encode(
+      const innerCall = abiCoder.encode(
         ["address", "bytes"],
         [operator.target, operator.interface.encodeFunctionData("add")]
       );
@@ -310,7 +310,7 @@ describe("AllPairVault", () => {
       const execSig = utils
         .keccak256(utils.toUtf8Bytes(functionSignature))
         .substring(0, 10);
-      const innerCall = defaultAbiCoder.encode(
+      const innerCall = abiCoder.encode(
         ["address", "bytes"],
         [operator.target, operator.interface.encodeFunctionData("add")]
       );
@@ -343,7 +343,7 @@ describe("AllPairVault", () => {
       const execSig = utils
         .keccak256(utils.toUtf8Bytes(functionSignature))
         .substring(0, 10);
-      const innerCall = defaultAbiCoder.encode(
+      const innerCall = abiCoder.encode(
         ["address", "bytes"],
         [operator.target, operator.interface.encodeFunctionData("addTen")]
       );
@@ -628,7 +628,7 @@ describe("AllPairVault", () => {
       const functionHash = hexDataSlice(keccak256(toUtf8Bytes(sigStr)), 0, 4);
       // const functionHash = utils.id(sigStr).slice(0, 10);
 
-      const args = utils.defaultAbiCoder.encode(["uint256", "uint256"], [10, 3]);
+      const args = abiCoder.encode(["uint256", "uint256"], [10, 3]);
       const data = functionHash + args.slice(2);
       const tx = {
         to: allBasic.target,
@@ -653,7 +653,7 @@ describe("AllPairVault", () => {
 
       const sigStr = "calculatePower(uint256,uint256)";
       const functionHash = utils.id(sigStr).slice(0, 10);
-      const args = utils.defaultAbiCoder.encode(["uint256", "uint256"], [10, 9]);
+      const args = abiCoder.encode(["uint256", "uint256"], [10, 9]);
       const data = functionHash + args.slice(2);
       const tx = {
         to: allBasic.target,
@@ -694,14 +694,14 @@ describe("AllPairVault", () => {
   describe("Typscript grammar", () => {
     it("should be able to call deep.equal", async () => {
       const expected = {
-        "0": BigNumber.from(1),
-        "1": BigNumber.from(2),
-        "2": BigNumber.from(3),
-        "3": BigNumber.from(4),
-        isValidated: BigNumber.from(1),
-        isCancelled: BigNumber.from(2),
-        totalFilled: BigNumber.from(3),
-        totalSize: BigNumber.from(4),
+        "0": 1n,
+        "1": 2n,
+        "2": 3n,
+        "3": 4n,
+        isValidated: 1n,
+        isCancelled: 2n,
+        totalFilled: 3n,
+        totalSize: 4n,
       };
       expect(buildOrderStatus(1, 2, 3, 4)).to.deep.equal(expected);
     });
