@@ -95,6 +95,24 @@
 
 🌟🏓🦋⚾️🐳🍀🌼🌸🏆🍜😈🐶🦄☕️🚘※
 # # 1. Code/Error
+#### 단위 테스트에서는 에러가 안나는데 전체 테스트 (yarn test)에서는 에러남
+에러 안남 => "sensitive2": "hardhat test test/4-sensitive-on-chain-data-2.ts",
+에러 남 => yarn test 
+1) Sensitive On-Chain Data Exercise 2
+   "after all" hook for "Exploit":
+   Error: could not decode result data (value="0x", info={ "method": "isLocked", "signature": "isLocked()" }, code=BAD_DATA, version=6.13.2)
+   at makeError (node_modules/ethers/src.ts/utils/errors.ts:694:21)
+   at assert (node_modules/ethers/src.ts/utils/errors.ts:715:25)
+   at Interface.decodeFunctionResult (node_modules/ethers/src.ts/abi/interface.ts:916:15)
+   at staticCallResult (node_modules/ethers/src.ts/contract/contract.ts:346:35)
+   at async staticCall (node_modules/ethers/src.ts/contract/contract.ts:303:24)
+   at async Proxy.isLocked (node_modules/ethers/src.ts/contract/contract.ts:351:41)
+   at async Context.<anonymous> (test/4-sensitive-on-chain-data-2.ts:59:44)
+
+==> 테스트 순서를 바꾸니 해결됨.
+파일 명을 0-sensitive-on-chain-data-2.ts로 수정
+
+#### 
 Forking Mainnet Block Height 15969633, Manual Mining Mode with interval of 10 seconds
 Error HH8: There's one or more errors in your config file:
 
