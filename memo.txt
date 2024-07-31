@@ -1,6 +1,10 @@
-각 내용에 대한 해결책이 필요함.
+psql postgres://postgres@localhost:5432/postgres
+DROP DATABASE IF EXISTS zksync_local;
 
-8 0x3a8996e89d126c61720f3cb11e6862e60305fc64b3dbb69561bc2f378f1d9dbd 0x7be72fdb016a1e888d8b898f5f6d07a227e8b9d853b1553fd818e07e1cabe969
+Using deployer wallet: 0x52312AD6f01657413b2eaE9287f6B9ADaD93D5FE
+Using governor address: 0x52312AD6f01657413b2eaE9287f6B9ADaD93D5FE
+
+2000000 000000000 000000000
 
 😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁
 ※🌟🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴
