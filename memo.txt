@@ -1,75 +1,43 @@
-psql postgres://postgres@localhost:5432/postgres
-DROP DATABASE IF EXISTS zksync_local;
 
-Using deployer wallet: 0x52312AD6f01657413b2eaE9287f6B9ADaD93D5FE
-Using governor address: 0x52312AD6f01657413b2eaE9287f6B9ADaD93D5FE
-
-2000000 000000000 000000000
-
-😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁
-※🌟🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴
+😈[오늘정리]🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁
 
 
-   * Gas and return values during simulation.
-   * @param preOpGas         - The gas used for validation (including preValidationGas)
-   * @param prefund          - The required prefund for this operation
-   * @param sigFailed        - ValidateUserOp's (or paymaster's) signature check failed
-   * @param validAfter       - First timestamp this UserOp is valid (merging account and paymaster time-range)
-   * @param validUntil       - Last timestamp this UserOp is valid (merging account and paymaster time-range)
-   * @param paymasterContext - Returned by validatePaymasterUserOp (to be passed into postOp)
-   */
-  struct ReturnInfo {
-    uint256 preOpGas;
-    uint256 prefund;
-    bool sigFailed;
-    uint48 validAfter;
-    uint48 validUntil;
-    bytes paymasterContext;
-  }
+yarn hardhat compile --network zkSyncTestnet
+Passing the --network flag we make sure Hardhat will use the zksolc compiler (or zkvyper).
 
-  
-contract ExampleContract {
-    struct ValueData {
-        string name;
-        uint256 value;
-    }
 
-    function getData(string calldata _name) public view returns (ValueData memory) {
-        bytes32 nameSlot = keccak256(abi.encodePacked(_name));
-        bytes32 valueSlot = keccak256(abi.encodePacked(_name, uint256(0)));
+🌟[정리]🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴
+const friend = gift.split(" ");
+data[friend[0]] ??= {};
+data[friend[0]][friend[1]] ??= 0;
 
-        ValueData memory _data;
-        bytes memory gottonName;
-        uint256 value;
-        uint256 nameLength;
+data[friend[0]][friend[1]] += 1;
 
-        assembly {
-            // Load the length of the name from storage
-            nameLength := sload(nameSlot)
+data2[friend[0]] ??= 0;
+data2[friend[0]] += 1;
+data2[friend[1]] ??= 0;
+data2[friend[1]] -= 1;
+        
+function create2DArray(size) {
+    const array = [];
 
-            // Allocate memory for the gottonName
-            gottonName := mload(0x40)
-            mstore(gottonName, nameLength)
-            
-            // Calculate where the free memory will be after gottonName
-            let strPtr := add(gottonName, 0x20)
-            mstore(0x40, add(strPtr, nameLength))
-
-            // Read the string data from storage
-            let dataSlot := add(nameSlot, 1)
-            for { let i := 0 } lt(i, nameLength) { i := add(i, 0x20) } {
-                mstore(add(strPtr, i), sload(add(dataSlot, div(i, 0x20))))
-            }
-            
-            // Read the uint256 value from storage
-            value := sload(valueSlot)
+    for (let i = 0; i < size; i++) {
+        const row = [];
+        for (let j = 0; j < size; j++) {
+            row.push(0);
         }
-
-        // Convert the bytes to a string and set the ValueData struct
-        _data.name = string(gottonName);
-        _data.value = value;
-
-        return _data;
+        array.push(row);
     }
+
+    return array;
 }
-```
+
+function create1DArray(size) {
+    const array = [];
+
+    for (let i = 0; i < size; i++) {
+        array.push(0);
+    }
+
+    return array;
+}

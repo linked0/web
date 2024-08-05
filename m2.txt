@@ -1,2 +1,5 @@
-So, the attacker can retrieve about 150,000 dollars for their 100,001 dollar deposit.
-: correct this sentence meaningfully and grammatically
+if (!data[friend]) {
+            data[friend] = {};
+        }
+
+        : can I simplify this?
