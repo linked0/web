@@ -7,37 +7,101 @@ Passing the --network flag we make sure Hardhat will use the zksolc compiler (or
 
 
 🌟[정리]🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴
+* 순서
+- 팅커벨에서 시작, 팅커벨 분석 및 해법: [], 1), a) 로 구획 분류
+- 피터팬은 연습장
+- 데이터 구조와 본게임은 찰리 정리
+- 노트 한장에 정리
+- 실제 데이터를 가지고 알고리즘 만들기 & 단계별로 실행해가면서 데이터 확인
+- 경우의 수를 나누는게 중요.
+- 막혔을때 빨리 진행할 수 있는 능력 필요.
+- ai가 만들어준 코드 확인.
+- 항상 모든 시작 섹션에는 == 를 둔다.
+
+* 전략
+- 10분 문제 숙지 및 알고리즘 만들기 
+- 잘 한 사람의 코드 방식 분석1: 데이터가 아니라 속성을 이용함. 
+- map이 인덱스를 쓰지 않아서 좋음
+- 코트를 최소화하는 분석 시간 필요
+
+* 주의 점
+- index 실수
+- 작은 따옴표 쓰기
+- 초반에 다양한 경우의 수를 잘 정리하면서 풀어가야함.
+- 찰리이 변수 정리(이건 나중에도 꼭 사용)
+- 중요한 수정은 백업하기 (그냥 copy 해 놓기 )
+- 변수를 최소한으로 하기, 익명 함수로 처리 
+- 화면과 철리와 영애 변수 일치시키기 
+- 중간중간에 idea에서 chm 활용하기 
+
+======
+while (sumRiding(riding) > 0) {
+    const index = riding.indexOf(0);
+    var startingIndex = 0;
+    if (index >= 0) {
+        startingIndex = index + 1;
+    }
+    else {
+        startingIndex = 0;
+    }
+
+    for (var i = startingIndex; i < startingIndex + n && i < length; i++) {
+        if (i < length) {
+            riding[i] = riding[i] - 1;
+        }
+    }
+    answer++;
+}
+
+======
+* 참고 코드 정리
+let inoutMap = new Map();// 이런 맵도 있네.
+for (const [start, end] of edges) // for 문은 이렇게
+of Object.entries(map) // map은 이렇게 
+array.splice(indexToRemove, 1); // arry에서 제거 
+groups[i].indexOf(node[0]) >= 0 && indices.push(i); // if 대신
+let uniqueArray = [...new Set(array)]; // unique array
+map[start] = map[start] ?? [0, 0] // 없으면 추가하기 
+
+var graph = new Array(max + 1).fill(null).map(() => [[], []]);
+Array.from({ length: n }, (_, i) => i)
+combo.push(arr[i]); and combo.pop();
+bestCombination.map(index => index + 1).sort((a, b) => a - b);
+
 const friend = gift.split(" ");
 data[friend[0]] ??= {};
 data[friend[0]][friend[1]] ??= 0;
-
 data[friend[0]][friend[1]] += 1;
 
-data2[friend[0]] ??= 0;
-data2[friend[0]] += 1;
-data2[friend[1]] ??= 0;
-data2[friend[1]] -= 1;
-        
-function create2DArray(size) {
-    const array = [];
 
-    for (let i = 0; i < size; i++) {
-        const row = [];
-        for (let j = 0; j < size; j++) {
-            row.push(0);
+// Map
+var sortedGroups = [];
+for (var i = 0; i < groups.length; i++) {
+    var temp = groups[i];
+    const uniqueArray = temp.filter((item, index) => temp.indexOf(item) === index);
+    var edgeCount = 0;
+    for (var j = 0; j < edges.length; j++) {
+        if ((uniqueArray.indexOf(edges[j][0]) >= 0 || uniqueArray.indexOf(edges[j][1]) >= 0) && edges[j].indexOf(connecting) == -1) {
+            edgeCount++;
         }
-        array.push(row);
+        // console.log("uniqueArray", uniqueArray, "edges[i]", edges[i], "edgeCount", edgeCount);
     }
+    sortedGroups.push({ 0: uniqueArray, 1: edgeCount });
+}
+// console.log("sortedGroups", sortedGroups);
 
-    return array;
+answer[0] = connecting;
+for (var i = 0; i < sortedGroups.length; i++) {
+    if (sortedGroups[i][0].length == sortedGroups[i][1]) {
+        answer[1] += 1;
+    }
+    else if (sortedGroups[i][0].length - 1 == sortedGroups[i][1]) {
+        answer[2] += 1;
+    }
+    else {
+        answer[3] += 1;
+    }
 }
 
-function create1DArray(size) {
-    const array = [];
 
-    for (let i = 0; i < size; i++) {
-        array.push(0);
-    }
-
-    return array;
-}
+        

@@ -52,7 +52,6 @@ contract BasicOrderFulfiller is OrderValidator {
    * @return A boolean indicating whether the order has been fulfilled.
    */
   function _validateAndFulfillBasicOrder() internal returns (bool) {
-    console.log("#_validateAndFulfillBasicOrder()");
     // Declare enums for order type & route to extract from basicOrderType.
     BasicOrderRouteType route;
     OrderType orderType;

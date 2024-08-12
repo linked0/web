@@ -1,5 +1,17 @@
-if (!data[friend]) {
-            data[friend] = {};
-        }
+function solution(n, m, op, maximum) {
+    var answer = 0;
+    const andOperation = (n, m) => n & m;
+    const orOperation = (n, m) => n | m;
+    const xorOperation = (n, m) => n ^ m;
+    const curOperation = op.toUpperCase() == "AND" ? andOperation : op.toUpperCase() == "OR" ? orOperation : xorOperation;
 
-        : can I simplify this?
+    for (let x = 0; x <= maximum; x++) {
+        if (curOperation(n, x) == m) {
+            answer++;
+        }
+    }
+
+    return answer;
+}
+:
+optimize this function

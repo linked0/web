@@ -19,6 +19,7 @@
     "seaport": "hardhat test test-seaport/basic.spec.ts",
     "basic": "hardhat test test/all-basic.ts",
     "oz": "hardhat test test/oz/*.ts",
+    "oz:permit": "hardhat test test/oz/token/ERC20/extensions/ERC20Permit.test.js",
     "attack": "hardhat test test/zhacking/1-call-attack.ts",
     "dao": "hardhat test test/zhacking/2-dao.ts",
     "dos": "hardhat test test/zhacking/3-dos.ts",

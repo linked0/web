@@ -1893,6 +1893,7 @@ describe(`Basic buy now or accept offer flows (Seaport v${VERSION})`, function (
           order
         );
 
+        console.log("basicOrderParameters", basicOrderParameters);
         await withBalanceChecks([order], 0, undefined, async () => {
           const tx = marketplaceContract
             .connect(buyer)
