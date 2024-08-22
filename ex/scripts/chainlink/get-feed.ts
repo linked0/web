@@ -7,7 +7,8 @@ async function main() {
     .then((network) => network.chainId);
   let feedAddress = "";
 
-  if (chainId === 11155111) {
+  console.log(`chainId: ${chainId}`);
+  if (BigInt(chainId) === BigInt(11155111)) {
     console.log("FEED_ADDRESS:", process.env.SEPOLIA_FEED_ADDRESS);
     feedAddress = process.env.SEPOLIA_FEED_ADDRESS ?? "";
   } else {
@@ -18,11 +19,13 @@ async function main() {
   }
 
   // Deploy the PriceFeed contract
-  const PriceFeed = await ethers.getContractFactory("PriceFeed");
-  const priceFeed = await PriceFeed.deploy(feedAddress);
-  console.log("PriceFeed deployed to:", priceFeed.address);
+  // const PriceFeed = await ethers.getContractFactory("PriceFeed");
+  // const priceFeed = await PriceFeed.deploy(feedAddress);
+  const priceFeed = await ethers.deployContract("PriceFeed", [feedAddress]);
+  await priceFeed.waitForDeployment();
 
-  await priceFeed.deployed();
+  console.log("PriceFeed deployed to:", priceFeed.target);
+
   console.log("getEthUsdPrice:", await priceFeed.getEthUsdPrice());
 }
 

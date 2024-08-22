@@ -1,10 +1,17 @@
 
+
+
 😈[오늘정리]🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁
 
 
-yarn hardhat compile --network zkSyncTestnet
-Passing the --network flag we make sure Hardhat will use the zksolc compiler (or zkvyper).
 
+struct Transaction {
+        address to;
+        uint256 value;
+        bytes data;
+        Enum.Operation operation;
+        uint256 targetTxGas;
+    }
 
 🌟[정리]🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴
 * 순서

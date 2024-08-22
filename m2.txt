@@ -1,17 +1,34 @@
-function solution(n, m, op, maximum) {
-    var answer = 0;
-    const andOperation = (n, m) => n & m;
-    const orOperation = (n, m) => n | m;
-    const xorOperation = (n, m) => n ^ m;
-    const curOperation = op.toUpperCase() == "AND" ? andOperation : op.toUpperCase() == "OR" ? orOperation : xorOperation;
+# Attack Scenario
+At the end of the function, the total consumed gas is calculated as gasleft() - startGas and the appropriate refund is sent to the relayer.
 
-    for (let x = 0; x <= maximum; x++) {
-        if (curOperation(n, x) == m) {
-            answer++;
-        }
+An attacker could manipulate the calldata to increase the refund amount while spending less gas than what is calculated by the contract. To do this, the attacker could provide calldata with zero padded bytes of arbitrary length.
+
+The modified (frontrun) transaction calldata:
+```
+// Basically, just add zero bytes at the end
+abi.encodeWithSignature(RelayerManager.execute.selector, (...)) || 0x00[]
+```
+
+Proof of Concept
+The PoC shows that the function may accept the data with redundant zeroes at the end. At the code above, an attacker send a 100_000 meaningless zeroes bytes, that gives a 100_000 * 4 = 400_000 additional gas refund. Technically, it is possible to pass even more zero bytes.
+```
+// Successfully call with original data + padded zero bytes
+    function testWithModifiedData() external {
+        bytes memory originalTxCalldata = _getOriginalTxCalldata();
+        bytes memory zeroBytes = new bytes(100000);
+        bytes memory txCalldata = abi.encodePacked(originalTxCalldata, zeroBytes);
+        (bool success, ) = smartWallet.call(txCalldata);
+        require(success);
     }
 
-    return answer;
-}
-:
-optimize this function
+```
+
+Mitigation Steps
+You can calculate the number of bytes used by the relayer as a sum per input parameter. Then an attacker won’t have the advantage of providing non-standard ABI encoding for the PoC calldata.
+
+// Sum the length of each  bynamic and static length parameters.
+uint256 expectedNumberOfBytes = _tx.data.length + signatures.length + 12 * 32;
+uint256 dataLen = Math.min(msg.data.length, expectedNumberOfBytes);
+Please note, the length of the signature must also be bounded to eliminate the possibility to put meaningless zeroes there.
+
+: explain last three line
