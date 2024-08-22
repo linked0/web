@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="validators">
+    <select id="getValidatorList">
+        SELECT
+            COUNT(*) OVER() AS full_count,
+            validatorindex,
+            pubkeyhex,
+            votekeyhex
+        FROM
+            voters
+        ORDER BY validatorindex
+        LIMIT ${page_size} OFFSET ${offset};
+    </select>
+
+    <select id="getValidator">
+        SELECT
+            validatorindex,
+            pubkeyhex,
+            votekeyhex
+        FROM
+            voters
+        WHERE
+            LOWER(votekeyhex) = LOWER(#{voteAddress})
+    </select>
+
+    <select id="readValidators">
+        SELECT
+            A.validatorindex,
+            A.pubkeyhex,
+            V.votekeyhex
+        FROM validators AS A
+        LEFT OUTER JOIN voters V on A.validatorindex = V.validatorindex
+        WHERE
+            A.slashed = FALSE
+        ORDER BY validatorindex;
+    </select>
+
+    <select id="readAllVoters">
+        SELECT
+            validatorindex,
+            pubkeyhex,
+            votekeyhex
+        FROM voters
+        ORDER BY validatorindex;
+    </select>
+</mapper>

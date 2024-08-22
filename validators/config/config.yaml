@@ -1,0 +1,46 @@
+################################################################################
+##                             Network interface                              ##
+################################################################################
+server:
+    # Address to which we bind (default: 127.0.0.1)
+    address: "0.0.0.0"
+    # Port on which we bind (default: 3000)
+    port: "${SERVER_PORT}"
+
+################################################################################
+##                               Database options                             ##
+################################################################################
+database:
+    host: "${DATABASE_HOST}"
+    user: "${DATABASE_USER}"
+    database: "${DATABASE_NAME}"
+    password: "${DATABASE_PASSWORD}"
+    port: "${DATABASE_PORT}"
+    # maximum number of clients the pool should contain
+    max: 20
+    # number of milliseconds to wait before timing out when connecting a new client
+    connectionTimeoutMillis: 10000
+
+################################################################################
+##                               Logging options                              ##
+################################################################################
+logging:
+    # The name of the folder where the logs are stored.
+    folder: logs/
+    # Values: error, warn, info, http, verbose, debug, silly
+    level: http
+    # Default to false
+    console: true
+
+################################################################################
+##                               Scheduler                                    ##
+################################################################################
+scheduler:
+    enable: true
+    items:
+        - name: voter
+          enable: true
+          interval: 300
+
+voter:
+    deposit_contract_address: "${DEPOSIT_CONTRACT_ADDRESS}"
