@@ -13,3 +13,6 @@ artifacts
 
 # python
 .venv
+
+# exg/bin
+exg/bin
