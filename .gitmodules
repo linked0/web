@@ -67,9 +67,6 @@
 [submodule "exf/lib/openzeppelin-contracts"]
 	path = exf/lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
-[submodule "erc/erc4337-abstract-account"]
-	path = erc/erc4337-abstract-account
-	url = https://github.com/linked0/account-abstraction.git
 [submodule "erc/erc4636-T-REX"]
 	path = erc/erc4636-T-REX
 	url = https://github.com/linked0/erc4636-T-REX.git
