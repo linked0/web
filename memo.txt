@@ -1,5 +1,35 @@
-
-
+* @/_generated/contracts/contract-abi-akroma.json in ./src/utils/networks/types/HOLESKY.js
+* @/_generated/contracts/contract-abi-aurora.json in ./src/utils/networks/types/AURORA.js
+* @/_generated/contracts/contract-abi-bsc.json in ./src/utils/networks/types/BSC.js
+* @/_generated/contracts/contract-abi-etc.json in ./src/utils/networks/types/ETC.js
+* @/_generated/contracts/contract-abi-eth.json in ./src/utils/networks/types/ARB.js
+* @/_generated/contracts/contract-abi-ftm.json in ./src/utils/networks/types/AMOY.js
+* @/_generated/contracts/contract-abi-gno.json in ./src/utils/networks/types/GNO.js
+* @/_generated/contracts/contract-abi-go.json in ./src/utils/networks/types/GO.js
+* @/_generated/contracts/contract-abi-goerli.json in ./src/utils/networks/types/COTI.js
+* @/_generated/contracts/contract-abi-klay.json in ./src/utils/networks/types/KLAY.js
+* @/_generated/contracts/contract-abi-mintme.json in ./src/utils/networks/types/MINTME.js
+* @/_generated/contracts/contract-abi-moonbeam.json in ./src/utils/networks/types/MOONBEAM.js
+* @/_generated/contracts/contract-abi-moonriver.json in ./src/utils/networks/types/MOONRIVER.js
+* @/_generated/contracts/contract-abi-op.json in ./src/utils/networks/types/OP.js
+* @/_generated/contracts/contract-abi-rsk.json in ./src/utils/networks/types/ROOTSTOCKTESTNET.js
+* @/_generated/platformlist.json in ./src/core/store/external/getters.js
+* @/_generated/tokens/tokens-akroma.json in ./src/utils/networks/types/HOLESKY.js
+* @/_generated/tokens/tokens-aurora.json in ./src/utils/networks/types/AURORA.js
+* @/_generated/tokens/tokens-bsc.json in ./src/utils/networks/types/BSC.js
+* @/_generated/tokens/tokens-etc.json in ./src/utils/networks/types/ETC.js
+* @/_generated/tokens/tokens-eth.json in ./src/utils/networks/types/ARB.js
+* @/_generated/tokens/tokens-ftm.json in ./src/utils/networks/types/AMOY.js
+* @/_generated/tokens/tokens-gno.json in ./src/utils/networks/types/GNO.js
+* @/_generated/tokens/tokens-go.json in ./src/utils/networks/types/GO.js
+* @/_generated/tokens/tokens-goerli.json in ./src/utils/networks/types/COTI.js
+* @/_generated/tokens/tokens-klay.json in ./src/utils/networks/types/KLAY.js
+* @/_generated/tokens/tokens-matic.json in ./src/utils/networks/types/MATIC.js
+* @/_generated/tokens/tokens-mintme.json in ./src/utils/networks/types/MINTME.js
+* @/_generated/tokens/tokens-moonbeam.json in ./src/utils/networks/types/MOONBEAM.js
+* @/_generated/tokens/tokens-moonriver.json in ./src/utils/networks/types/MOONRIVER.js
+* @/_generated/tokens/tokens-op.json in ./src/utils/networks/types/OP.js
+* @/_generated/tokens/tokens-rsk.json in ./src/utils/networks/types/ROOTSTOCKTESTNET.js
 
 😈[오늘정리]🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁
 

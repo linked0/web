@@ -1,6 +1,10 @@
 # Jay's Dev Information
 🌟🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴
 
+- [dev.md text](bit.ly/3MT0VRb)
+- [dev.md]([bit.ly/3MVG5AN)
+- [site summary](https://bit.ly/2PmH3XE)
+
 # # 0. Work-Summary
 
 
@@ -2954,6 +2958,37 @@ datetime.fromtimestamp(7214123987)
 ---
 ### 🌸 텍스트 검색 - 프로세스 찾기 - zip
 ```
+find ./ -type f > files
+find . -type file -name '*.js' -o -name '*.json' > files  //-o는 or를 뜻함
+find . -type f -not -path './node_modules/*' -not -path './chaindata/*' > files
+CTRL-W f: open in a new window
+CTRL-W gf: open in a new tab
+CTRL-W {H,J,K,L}: move among windows, or use arrow key
+CTRL-W w 창을 순차적으로 이동
+CTRL-W t 최상위 창으로 이동
+CTRL-W b 최하위 창으로 이동
+
+g t: Next tab, 그냥 에디터에서 g와 t를 치면 됨
+g T: Prior tab
+nnn g t: Numbered tab, nnn은 숫자를 나타냄, 1일수도 있고, 12일수도 있음.
+
+"*yy           ; copt from vi 
+:! wc          ; sh command in vi
+
+set softtabstop=4       ; TAB키를 눌렀을때 몇 칸을 이동?
+set tabstop=4           ; 하나의 TAB을 몇 칸으로 인식? 
+set number		            ;  Line Number
+set mouse=a             ; Adjust area with mouse
+
+:shell 혹은 :sh를 이용해서 shell(:12)로 빠져나갈 수 있다. exit 혹은 Ctrl+D를 이용해서 vim으로 되돌아올 수 있다.
+:! # 마지막 커맨드의 결과보기 
+
+mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
+# Move cursor to end of file in vim
+:$
+```
+---
+```
 egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
 ps aux | grep postgres
 tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
@@ -2963,6 +2998,7 @@ unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
 history -100
 ```
 ---
-- [io/dev.md](bit.ly/3MT0VRb)
-- # # 로 검색하면 좋음
-
+- [dev.md text](bit.ly/3MT0VRb)
+- [dev.md]([bit.ly/3MVG5AN)
+- [site summary](https://bit.ly/2PmH3XE)
+- \# # 로 검색하면 좋음
