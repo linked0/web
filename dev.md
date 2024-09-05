@@ -3005,6 +3005,8 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 --- 
 ```
 cmd w : close file in VS Code
+"key": "ctrl+cmd+right", "command": "workbench.action.moveEditorToNextGroup"
+"key": "ctrl+cmd+left", "command": "workbench.action.moveEditorToPreviousGroup"
 ```
 ---
 ```
