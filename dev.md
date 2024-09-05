@@ -9,6 +9,21 @@
 
 
 # # 1. Code/Error
+
+
+#### error This project's package.json defines "packageManager": "yarn@4.4.1". However the current global version of Yarn is 1.22.22.
+
+Presence of the "packageManager" field indicates that the project is meant to be used with Corepack, a tool included by default with all official Node.js distributions starting from 16.9 and 14.19.
+Corepack must currently be enabled by running corepack enable in your terminal. For more information, check out https://yarnpkg.com/corepack.
+
+==>
+```
+brew install corepack
+corepack enable
+brew unlink yarn
+corepack prepare yarn@4.1.1 --activate
+```
+
 #### Cannot connect to the Docker daemon at unix:///Users/hyunjaelee/.docker/run/docker.sock. Is the docker daemon running?
 
 ==> docker가 실행중이지 않음. 데스크탑 실행 필요. 업데이트 중일수 있음.
