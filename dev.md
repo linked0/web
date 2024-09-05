@@ -3002,6 +3002,10 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 # Move cursor to end of file in vim
 :$
 ```
+--- 
+```
+cmd w : close file in VS Code
+```
 ---
 ```
 egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
