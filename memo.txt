@@ -1,7 +1,48 @@
+Undefined symbols for architecture x86_64:
+  "std::__1::vector<stellar::SCPQuorumSet, std::__1::allocator<stellar::SCPQuorumSet>>::reserve(unsigned long)", referenced from:
+      __D4scpd3Cpp__T6vectorTSQv5types11Stellar_SCP12SCPQuorumSetTSQCgQCe__T9allocatorTQCgZQpZQCv10fromStringFNfAyaZSQEeQEc__TQEbTQDxTQCqZQEn in agora.o
+  "std::__1::vector<stellar::Slot::HistoricalStatement, std::__1::allocator<stellar::Slot::HistoricalStatement>>::reserve(unsigned long)", referenced from:
+      __D4scpd3Cpp__T6vectorTSQv3scp4SlotQf19HistoricalStatementTSQCfQCd__T9allocatorTQCfZQpZQCu10fromStringFNfAyaZSQEdQEb__TQEaTQDwTQCqZQEm in agora.o
+  "std::__1::vector<unsigned long long, std::__1::allocator<unsigned long long>>::reserve(unsigned long)", referenced from:
+      __D4scpd3Cpp__T6vectorTE4core4stdc6config13__c_ulonglongTSQCdQCb__T9allocatorTQCdZQpZQCs10fromStringFNfAyaZSQEbQDz__TQDyTQDuTQCqZQEk in agora.o
+ld: symbol(s) not found for architecture x86_64
+
+---
+
 yarn add /Users/hyunjaelee/work/pooh-land-js
 
 /Users/hyunjaelee/work/metamask-extension
 
+To use the bundled libc++ please add the following LDFLAGS:
+
+
+  echo 'export PATH="/usr/local/opt/sqlite/bin:$PATH"' >> /Users/hyunjaelee/.zshrc
+
+For compilers to find sqlite you may need to set:
+  export LDFLAGS="-L/usr/local/opt/sqlite/lib"
+  export CPPFLAGS="-I/usr/local/opt/sqlite/include"
+
+For pkg-config to find sqlite you may need to set:
+  export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig"
+
+
+  LDFLAGS="-L/usr/local/opt/llvm/lib/c++ -L/usr/local/opt/llvm/lib -lunwind"
+
+llvm is keg-only, which means it was not symlinked into /usr/local,
+because macOS already provides this software and installing another version in
+parallel can cause all kinds of trouble.
+
+If you need to have llvm first in your PATH, run:
+  echo 'export PATH="/usr/local/opt/llvm/bin:$PATH"' >> /Users/hyunjaelee/.zshrc
+
+For compilers to find llvm you may need to set:
+  export LDFLAGS="-L/usr/local/opt/llvm/lib"
+  export CPPFLAGS="-I/usr/local/opt/llvm/include"
+==> Summary
+🍺  /usr/local/Cellar/llvm/18.1.8: 7,722 files, 2.0GB
+==> Running `brew cleanup llvm`...
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
 
 ls /usr/local/opt/openssl@3.3/lib/pkgconfig/ 
   
@@ -15,18 +56,32 @@ ls /usr/local/opt/openssl@3.3/lib/pkgconfig/
     ],
     "__v": 0
 }
+ls /usr/local/Cellar/libsodium/1.0.20/include
+source ~/dlang/ldc-1.28.1/activate
+
+https://github.com/D-Programming-Deimos/openssl/commit/e44c6afc11a98e0c483934919e866ef2e6e7f66b
+
+Jun 11 2018
+
+lrwxr-xr-x    1 hyunjaelee  admin    25 Jul  5 14:16 openssl -> ../Cellar/openssl@3/3.3.1
 
 
-😈[오늘정리]🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁
-
-
-
-struct Transaction {
-        address to;
-        uint256 value;
-        bytes data;
-        Enum.Operation operation;
-        uint256 targetTxGas;
-    }
+        {
+            "name": "unittest",
+            "targetName": "agora-unittests",
+            "excludedSourceFiles": [
+                "source/agora/cli/*/main.d",
+            ],
+            "sourceFiles-posix": [
+                "source/scpp/build/DSizeChecks.o",
+                "source/scpp/build/DLayoutChecks.o"
+            ],
+            "sourceFiles-windows": [
+                "source/scpp/build/DSizeChecks.obj",
+                "source/scpp/build/DLayoutChecks.obj"
+            ],
+            "dflags": [ "-checkaction=context" ],
+            "dflags-ldc": [ "--link-defaultlib-debug" ],
+        },
 
 🌟[정리]🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴
