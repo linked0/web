@@ -3,8 +3,18 @@ yarn add /Users/hyunjaelee/work/pooh-land-js
 /Users/hyunjaelee/work/metamask-extension
 
 
-
+ls /usr/local/opt/openssl@3.3/lib/pkgconfig/ 
   
+{
+    "_id": "66d9a4a9cdc60bbb1f142f24",
+    "title": "New Disney 3",
+    "content": "New High 3",
+    "comments": [
+        "66d9a70a86ef59d9622ff94d",
+        "66d9a8a53ded8c0e0f640a3a"
+    ],
+    "__v": 0
+}
 
 
 😈[오늘정리]🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁😈🐹🦁
