@@ -7,7 +7,7 @@ iCloud/pooh/ssh.tar
 ##### xcode command/brew/zsh/iterm2/karabiner install
 ```
 xcode-select —-install
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install --cask iterm2 | brew install zsh | brew install karabiner-elements
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
