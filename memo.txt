@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 dsinglethreaded=true dtest=agora.test.MultiRoundConsensus dub test
 
 
@@ -21,6 +22,37 @@ For compilers to find llvm@14 you may need to set:
   
   
   Undefined symbols for architecture x86_64:
+=======
+
+
+🍺  /opt/homebrew/Cellar/libsodium/1.0.20: 78 files, 888.8KB
+
+🍺  /opt/homebrew/Cellar/pkg-config/0.29.2_3: 12 files, 678.8KB
+🍺  /opt/homebrew/Cellar/openssl@3/3.3.2: 6,984 files, 32.5MB
+
+"stringImportPaths" : [ "build" , "/opt/homebrew/Cellar/libsodium/1.0.20/include"],
+
+"dflags": [ "-extern-std=c++17", "-preview=in", "-revert=dtorfields", "-I/opt/homebrew/Cellar/libsodium/1.0.20/include" ],
+"lflags-posix": [ "-lstdc++", "-lsqlite3", "-L/opt/homebrew/Cellar/libsodium/1.0.20/lib" ],
+
+If you need to have sqlite first in your PATH, run:
+  echo 'export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"' >> /Users/jaylee/.zshrc
+
+For compilers to find sqlite you may need to set:
+  export LDFLAGS="-L/opt/homebrew/opt/sqlite/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/sqlite/include"
+
+
+For compilers to find zlib you may need to set:
+  export LDFLAGS="-L/opt/homebrew/opt/zlib/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/zlib/include"
+
+For pkg-config to find zlib you may need to set:
+  export PKG_CONFIG_PATH="/opt/homebrew/opt/zlib/lib/pkgconfig"
+
+---
+Undefined symbols for architecture x86_64:
+>>>>>>> Stashed changes
   "std::__1::vector<stellar::SCPQuorumSet, std::__1::allocator<stellar::SCPQuorumSet>>::reserve(unsigned long)", referenced from:
       __D4scpd3Cpp__T6vectorTSQv5types11Stellar_SCP12SCPQuorumSetTSQCgQCe__T9allocatorTQCgZQpZQCv10fromStringFNfAyaZSQEeQEc__TQEbTQDxTQCqZQEn in agora.o
   "std::__1::vector<stellar::Slot::HistoricalStatement, std::__1::allocator<stellar::Slot::HistoricalStatement>>::reserve(unsigned long)", referenced from:
