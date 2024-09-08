@@ -142,8 +142,8 @@ psql postgres <== 접속해볼 수 있음.
 - 느린 스크롤 세팅: Settings 열기 - terminal smo 검색 - Smooth Scrolling 체크
 - VS Code 세팅: Editor: Hover Enable을 Disable로 바꿔야 코드창에서 팝업 안뜸
 - tabstob 바꾸기
-  - Open settings(cmd + shift + p => tabSize) => 왼쪽 페인에서 Text Editor Click
-  - "Edit in setting.json" 링크 클릭 
+  - Open settings(cmd + shift + p에서 "Open Settings" 입력) => Intent Size 검색
+  - 맨 밑에서 "Edit in setting.json" 링크 클릭 
 ```
 "[typescript]": {
         "editor.tabSize": 2,
