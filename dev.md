@@ -3010,6 +3010,7 @@ cmd w : close file in VS Code
 ```
 ---
 ```
+echo 'export PATH="/usr/local/opt/go@1.21/bin:$PATH"' >> /Users/jay/.zshrc
 egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
 ps aux | grep postgres
 tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
