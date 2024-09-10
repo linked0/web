@@ -3008,6 +3008,9 @@ cmd w : close file in VS Code
 "key": "ctrl+cmd+right", "command": "workbench.action.moveEditorToNextGroup"
 "key": "ctrl+cmd+left", "command": "workbench.action.moveEditorToPreviousGroup"
 ```
+**Column Selection with Keyboard**:
+Hold down `Cmd + Shift + Option` and use the arrow keys to expand your selection vertically.
+
 ---
 ```
 echo 'export PATH="/usr/local/opt/go@1.21/bin:$PATH"' >> /Users/jay/.zshrc

@@ -5,6 +5,51 @@ dsinglethreaded=true dtest=agora.test.MultiRoundConsensus dub test
 
 
 ⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️
+
+
+
+brew install go@1.21
+  281* zzz
+  282* git st
+  283* ddd
+  284* git diff exg/hello.go
+  285* git co exg/hello.go
+  286* git st
+  287* code .gitignore
+  288* git st
+  289* git acp
+  290  zzz
+  291  zz
+  292  go version
+  293  make all
+  294  cd poohnet
+  295  ./init testnet 1
+  296  ./enode-console
+  297  ls
+  298  ./enode-console
+  299  cd ..
+  300  ls
+  301  ls build
+  302  ls build/bin
+  303  pwd
+  304  zzz
+  305  zz
+  306  ./init testnet 1
+  307  cd poohnet
+  308  ./init testnet 1
+  309  brew install docker
+  310  ch "how to run docker on Mac"
+  311  docker --version
+  312  docker run hello-world
+  313  docker --version
+  314  ch "how to run it on Mac after installing it"
+  315  ch "how to run docker deamon"
+  316  ch "how to install docker desktop?\n"
+
+
+
+
+
 FBFT is a variant of the BFT algorithm that has been implemented in payment-protocol-based blockchain platforms such as Ripple and Stellar. 
 
 A quorum is the number of nodes required to reach agreement within a system. FBAs instead use ‘quorum slices’. A quorum slice is a subset of a quorum, which can convince another specific node to agree.
