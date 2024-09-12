@@ -1,1 +1,25 @@
-Which is better? Thank You or Thank You! or Thank you or Thank you!
+func ApplyMessage(evm *vm.EVM, msg *Message, gp *GasPool) (*ExecutionResult, error) {
+	log.Warn("state_transition > ApplyMessage > msg:", msg)
+: 
+// A Message contains the data derived from a single transaction that is relevant to state
+// processing.
+type Message struct {
+	To            *common.Address
+	From          common.Address
+	Nonce         uint64
+	Value         *big.Int
+	GasLimit      uint64
+	GasPrice      *big.Int
+	GasFeeCap     *big.Int
+	GasTipCap     *big.Int
+	Data          []byte
+	AccessList    types.AccessList
+	BlobGasFeeCap *big.Int
+	BlobHashes    []common.Hash
+
+	// When SkipAccountChecks is true, the message nonce is not checked against the
+	// account nonce in state. It also disables checking that the sender is an EOA.
+	// This field will be set to true for operations like RPC eth_call.
+	SkipAccountChecks bool
+}
+: how can I print the Message struct

@@ -1,11 +1,43 @@
 🌟[정리]🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴
 dsinglethreaded=true dtest=agora.test.MultiRoundConsensus dub test
 
-
-
-
 ⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️
 
+ 
+ "bosagoraBlock": 100,
+    "bosagora": {
+      "commonsBudget": "0x6A9866BEB9CE792F57ea116F457825fDcC1FC75D",
+      "commonsBudgetReward": 120000000000000000000,
+      "lastCommonsBudgetRewardBlock": 15000100
+    }
+
+
+a1=eth.accounts[1]
+a2=eth.accounts[2]
+a0=eth.accounts[0]
+personal.unlockAccount(a0, 'boa2022!@')
+personal.unlockAccount(a1,'boa2022!@')
+personal.unlockAccount(a2,'boa2022!@')
+miner.setEtherbase(a0)
+
+
+a1=personal.importRawKey("7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23", "boa2022!@")
+a2=personal.importRawKey("58984b2bf6f0f3de4f38290ed3c541ac27bac384b378073ab133af8b314a1887", "boa2022!@")
+personal.unlockAccount(a0, 'boa2022!@')
+personal.unlockAccount(a1,'boa2022!@')
+personal.unlockAccount(a2,'boa2022!@')
+miner.setEtherbase(a0)
+
+eth.sendTransaction({from:a2, to:a1, value:web3.toWei(9, 'ether'), gasLimit:21000, gasPrice: 200000000000})
+
+eth.sendTransaction({from:a0, to:a1, value:web3.toWei(9, 'ether'), gasLimit:21000, gasPrice: 200000000000})
+eth.sendTransaction({from:a0, to:a1, value:web3.toWei(9, 'ether'), gasLimit:21000, gasPrice: 200000000000})
+
+eth.pendingTransactions
+miner.stop()
+web3.fromWei(eth.getBalance(a0), 'ether')
+web3.fromWei(eth.getBalance(a1),  'ether')
+web3.fromWei(eth.getBalance(a2),  'ether')
 
 
 brew install go@1.21
@@ -47,13 +79,95 @@ brew install go@1.21
   316  ch "how to install docker desktop?\n"
 
 
+func (s *BlockChainAPI) Call(ctx context.Context, args TransactionArgs, blockNrOrHash rpc.BlockNumberOrHash, overrides *StateOverride, blockOverrides *BlockOverrides) (hexutil.Bytes, error) {
+	result, err := DoCall(ctx, s.b, args, blockNrOrHash, overrides, blockOverrides, s.b.RPCEVMTimeout(), s.b.RPCGasCap())
+	if err != nil {
+		return nil, err
+	}
+	// If the result contains a revert reason, try to unpack and return it.
+	if len(result.Revert()) > 0 {
+		return nil, newRevertError(result)
+	}
+	return result.Return(), result.Err
+}
 
-
-
-FBFT is a variant of the BFT algorithm that has been implemented in payment-protocol-based blockchain platforms such as Ripple and Stellar. 
-
-A quorum is the number of nodes required to reach agreement within a system. FBAs instead use ‘quorum slices’. A quorum slice is a subset of a quorum, which can convince another specific node to agree.
-
+⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️
+> eth.sendTransaction({from:a2, to:a1, value:web3.toWei(9, 'ether'), gasLimit:21000, gasPrice: 200000000000})
+WARN [09-12|15:43:05.728] JJJ api > doCall:                        msg="(*core.Message)(0xc001708210)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 4390523,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.728] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.728] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ api > doCall:                        msg="(*core.Message)(0xc0017082c0)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 2205761,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.729] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ api > doCall:                        msg="(*core.Message)(0xc001708370)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 1113380,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.729] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ api > doCall:                        msg="(*core.Message)(0xc001708420)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 567189,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.729] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ api > doCall:                        msg="(*core.Message)(0xc0017084d0)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 294094,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.729] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ api > doCall:                        msg="(*core.Message)(0xc001708580)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 157546,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.729] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ api > doCall:                        msg="(*core.Message)(0xc001708630)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 89272,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.729] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ api > doCall:                        msg="(*core.Message)(0xc0017086e0)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 55135,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.729] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ api > doCall:                        msg="(*core.Message)(0xc001708790)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 38067,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.729] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.729] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ api > doCall:                        msg="(*core.Message)(0xc001708840)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 29533,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.730] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ api > doCall:                        msg="(*core.Message)(0xc0017088f0)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 25266,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.730] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ api > doCall:                        msg="(*core.Message)(0xc0017089a0)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 23132,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.730] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ api > doCall:                        msg="(*core.Message)(0xc001708a50)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 22065,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.730] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ api > doCall:                        msg="(*core.Message)(0xc001708b00)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 21532,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.730] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ api > doCall:                        msg="(*core.Message)(0xc001708bb0)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 21265,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.730] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ api > doCall:                        msg="(*core.Message)(0xc001708c60)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 21132,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.730] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ api > doCall:                        msg="(*core.Message)(0xc001708d10)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 21065,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.730] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ api > doCall:                        msg="(*core.Message)(0xc001708dc0)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 21032,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.730] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.730] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.742] JJJ api > doCall:                        msg="(*core.Message)(0xc001708e70)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 21015,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.742] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.742] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.762] JJJ api > doCall:                        msg="(*core.Message)(0xc001708f20)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 21007,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.762] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.763] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.763] JJJ api > doCall:                        msg="(*core.Message)(0xc001708fd0)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 21003,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.763] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.763] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.763] JJJ api > doCall:                        msg="(*core.Message)(0xc001709080)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 21001,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.763] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.763] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.763] JJJ api > doCall:                        msg="(*core.Message)(0xc001709130)({\n To: (*common.Address)(0xc000349248)((len=20 cap=20) 0x8790d4A448873CE0F624E31aC732c06eB211a715),\n From: (common.Address) (len=20 cap=20) 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD,\n Nonce: (uint64) 0,\n Value: (*big.Int)(0xc0023c8720)(9000000000000000000),\n GasLimit: (uint64) 21000,\n GasPrice: (*big.Int)(0xc0023c8700)(200000000000),\n GasFeeCap: (*big.Int)(0xc0023c8700)(200000000000),\n GasTipCap: (*big.Int)(0xc0023c8700)(200000000000),\n Data: ([]uint8) <nil>,\n AccessList: (types.AccessList) <nil>,\n BlobGasFeeCap: (*big.Int)(<nil>),\n BlobHashes: ([]common.Hash) <nil>,\n SkipAccountChecks: (bool) true\n})\n"
+WARN [09-12|15:43:05.763] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.763] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+INFO [09-12|15:43:05.765] Submitted transaction                    hash=0x5486e28d5099b2c7d3e9185078804184d5d205bf98d0f908d53a25eb4d7c5add from=0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD nonce=21 recipient=0x8790d4A448873CE0F624E31aC732c06eB211a715 value=9,000,000,000,000,000,000
+WARN [09-12|15:43:05.765] JJJ core > state_processor > applyTransaction:  msg="&{To:0x8790d4A448873CE0F624E31aC732c06eB211a715 From:0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD Nonce:21 Value:+9000000000000000000 GasLimit:21000 GasPrice:+200000000000 GasFeeCap:+200000000000 GasTipCap:+200000000000 Data:[] AccessList:[] BlobGasFeeCap:<nil> BlobHashes:[] SkipAccountChecks:false}"
+"0x5486e28d5099b2c7d3e9185078804184d5d205bf98d0f908d53a25eb4d7c5add"
+WARN [09-12|15:43:05.765] JJJ ApplyMessage > msg: %+v              LOG15_ERROR=*core.Message is not a string key LOG15_ERROR="Normalized odd number of arguments by adding nil"
+WARN [09-12|15:43:05.765] JJJ state_transition.go > TransitionDb > commonsCut 1260000=nil LOG15_ERROR="Normalized odd number of arguments by adding nil"
+> 
 
 
 ⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️
