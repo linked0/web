@@ -62,7 +62,7 @@ func marshalOne(vv reflect.Value) ([]string, error) {
 		case reflect.Bool:
 			row = append(row, strconv.FormatBool(fieldVal.Bool()))
 		default:
-			return nil, fmt.Errorf("unsupported type: %s", fieldVal.Kind())
+			return nil, fmt.Errorf("cannot handle field of kind %v", fieldVal.Kind())
 		}
 	}
 	return row, nil
@@ -77,7 +77,7 @@ func Unmarshal(data [][]string, v interface{}) error {
 	}
 	sliceVal := sliceValPtr.Elem()
 	if sliceVal.Kind() != reflect.Slice {
-		return errors.New("must be a slice of structs")
+		return errors.New("must be a pointer to a slice of structs")
 	}
 	structType := sliceVal.Type().Elem()
 	if structType.Kind() != reflect.Struct {
@@ -149,9 +149,9 @@ type MyData struct {
 func main() {
 	data := `name,age,has_pet
 Jon,"100",true
-"Fred ""The Hammper"" Smith",42,false
-Martha,37,"true"`
-
+"Fred ""The Hammer"" Smith",42,false
+Martha,37,"true"
+`
 	r := csv.NewReader(strings.NewReader(data))
 	allData, err := r.ReadAll()
 	if err != nil {
@@ -170,5 +170,4 @@ Martha,37,"true"`
 	w := csv.NewWriter(sb)
 	w.WriteAll(out)
 	fmt.Println(sb)
-
 }

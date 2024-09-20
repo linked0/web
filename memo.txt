@@ -28,6 +28,8 @@ personal.unlockAccount(a0, 'boa2022!@')
 personal.unlockAccount(a1,'boa2022!@')
 personal.unlockAccount(a2,'boa2022!@')
 miner.setEtherbase(a0)
+
+
 eth.sendTransaction({from:a2, to:a1, value:web3.toWei(9, 'ether'), gasLimit:21000, gasPrice: 200000000000})
 
 eth.sendTransaction({from:a0, to:a1, value:web3.toWei(9, 'ether'), gasLimit:21000, gasPrice: 200000000000})

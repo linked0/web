@@ -17,3 +17,5 @@ artifacts
 # exg/bin
 exg/bin
 exg/hello
+
+*.swp
