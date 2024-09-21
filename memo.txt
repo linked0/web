@@ -1,6 +1,28 @@
 🌟[정리]🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴
 dsinglethreaded=true dtest=agora.test.MultiRoundConsensus dub test
 
+
+
+# Saturday
+=1 DFS
+=2 BFS
+=3 DAG
+=4 Reachability
+=5 Dijkstra -> Grokking & Jay
+=6 탐욕법 (Greedy) -> Grokking
+=7 동적계획법 (Dynamic Programming) -> Grokking 
+8 Binary Search -> Grokking
+=9 완전 탐색(Brute Force)
+=10 Merge sort
+
+# Not to do
+Binary Tree
+Connected Component
+Topological sort
+
+# Summary
+[Algorithms summary] (https://velog.io/@qlgks1/python-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8-cheat-sheet)
+
 ⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️
 
  

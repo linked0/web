@@ -38,11 +38,11 @@ def get_input():
 2 5
 3 5
 """
-    return input2
+    return input
 
 if __name__ == '__main__':
-    input = sys.stdin.read()
-    # input = get_input()
+    # input = sys.stdin.read()
+    input = get_input()
     data = list(map(int, input.split()))
     n, m = data[0:2]
     data = data[2:]
