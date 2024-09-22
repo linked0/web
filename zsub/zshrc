@@ -108,6 +108,9 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
+#######################################
+### Below is the common aliases
+
 hgrep() {
 	grep -irnH --include=\*.$1 "$2" ./
 }
@@ -132,13 +135,6 @@ ft() {
 }
 ftv() {
   forge test -vvvv --match-test $1
-}
-
-pp() {
-  code ./$1
-}
-uu() {
-  idea ./$1
 }
 
 alias python=/opt/homebrew/bin/python3
@@ -194,8 +190,6 @@ alias lst='ls -al ~/work/web/ex/test'
 
 alias czz='cat ~/.zshrc'
 alias zzz='. ~/.zshrc'
-alias viz='vim ~/.zshrc'
-alias vid='vim ~/work/web/dev.md'
 
 alias web='cd ~/work/web'
 alias exx='cd ~/work/web/ex'
