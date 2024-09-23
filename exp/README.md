@@ -27,7 +27,7 @@ pip freeze > requirements.txt
 - 스택/큐
 - 힙(Heap)
 
-### Saturday
+### First
 - 탐욕법 (Greedy)
 - 동적계획법 (Dynamic Programming)
 - DFS/BFS
@@ -35,12 +35,17 @@ pip freeze > requirements.txt
 - Reachability
 - Dijkstra
 
-### Sunday
+### Second
 - 정렬
 - Binary Search
 - 완전 탐색(Brute Force)
 - 이진 탐색
 - DAG
+
+# Not to do
+Binary Tree
+Connected Component
+Topological sort
 
 ## Reference
 [Grokking Algorithms](https://github.com/egonSchiele/grokking_algorithms/tree/master)
