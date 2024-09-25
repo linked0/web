@@ -10,6 +10,14 @@
 
 # # 1. Code/Error
 
+#### $ hardhat run --network localnet script/deploy.ts
+ProviderError: method handler crashed
+    at HttpProvider.request (/Users/jay/work/pooh-land-contract/node_modules/hardhat/src/internal/core/providers/http.ts:107:21)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async EthersProviderWrapper.send (/Users/jay/work/pooh-land-contract/node_modules/@nomiclabs/hardhat-ethers/src/internal/ethers-provider-wrapper.ts:13:20)
+error Command failed with exit code 1.
+
+==>
 
 #### error This project's package.json defines "packageManager": "yarn@4.4.1". However the current global version of Yarn is 1.22.22.
 
