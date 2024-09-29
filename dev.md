@@ -3033,5 +3033,5 @@ history -100
 ---
 - [dev.md text](bit.ly/3MT0VRb)
 - [dev.md]([bit.ly/3MVG5AN)
-- [site summary](https://bit.ly/2PmH3XE)
+- [miki summary](https://bit.ly/3xiSj1M)
 - \# # 로 검색하면 좋음
