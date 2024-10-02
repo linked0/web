@@ -4,6 +4,10 @@
 
 
 
+
+
+
+
 Migration 폴더의 파일 지우기 
 rm src/migrations/Migration20240925113829.ts
 
