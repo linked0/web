@@ -118,6 +118,9 @@ psql postgres <== 접속해볼 수 있음.
 - 초기화: 시스템 메뉴 -> 설정 -> 왼쪽 하단의 MySQL 클릭해서 들어가서 "Initialize Database" 클릭
 - 암호는 alfred0!@
 
+### Posgresql Server 설치
+- pgadmin download(https://www.pgadmin.org/download/pgadmin-4-macos/)
+
 ### Whale, Miro, onenote, Visual Studio, Xcode, Github CLI, IDEA
 - Command Palette: [⇧⌘P ] Shell command
 - Settings 열기: cmd + ,

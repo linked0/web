@@ -10,6 +10,30 @@
 
 # # 1. Code/Error
 
+#### src/entities/user.entity.ts:10:4 - error TS1240: Unable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Object'.
+
+10   @Field(() => Int)
+      ~~~~~~~~~~~~~~~~
+
+src/entities/user.entity.ts:11:4 - error TS1240: Unable to resolve signature of property decorator when called as an expression.
+  Argument of type 'undefined' is not assignable to parameter of type 'Partial<any>'.
+
+11   @PrimaryKey()
+      ~~~~~~~~~~~~
+
+==>
+tsconfig.json에 아래와 같이 설정
+```
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  }
+}
+```
+
+
 #### $ hardhat run --network localnet script/deploy.ts
 ProviderError: method handler crashed
     at HttpProvider.request (/Users/jay/work/pooh-land-contract/node_modules/hardhat/src/internal/core/providers/http.ts:107:21)
@@ -3011,25 +3035,20 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 :$
 ```
 --- 
-```
-cmd w : close file in VS Code
-"key": "ctrl+cmd+right", "command": "workbench.action.moveEditorToNextGroup"
-"key": "ctrl+cmd+left", "command": "workbench.action.moveEditorToPreviousGroup"
-```
-**Column Selection with Keyboard**:
-Hold down `Cmd + Shift + Option` and use the arrow keys to expand your selection vertically.
-
+- Open Quick Chat: Cmd+Shift+I 
+- cmd w : close file in VS Code
+- moveEditorToNextGroup: "ctrl+cmd+right"
+- moveEditorToPreviousGrou: "ctrl+cmd+left"
+- 컬럼 단위 선택: Hold down `Cmd + Shift + Option` and use the arrow keys
 ---
-```
-echo 'export PATH="/usr/local/opt/go@1.21/bin:$PATH"' >> /Users/jay/.zshrc
-egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
-ps aux | grep postgres
-tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
-tar -xvzf xxx.tar.gz -C ./data
-zip -r ~/temp/my-archive.zip . -x '*.git*' -x '*node_modules*'
-unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
-history -100
-```
+- echo 'export PATH="/usr/local/opt/go@1.21/bin:$PATH"' >> /Users/jay/.zshrc
+- egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
+- ps aux | grep postgres
+- tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
+- tar -xvzf xxx.tar.gz -C ./data
+- zip -r ~/temp/my-archive.zip . -x '*.git*' -x '*node_modules*'
+- unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
+- history -100
 ---
 - [dev.md text](bit.ly/3MT0VRb)
 - [dev.md]([bit.ly/3MVG5AN)
