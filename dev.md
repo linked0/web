@@ -3035,6 +3035,7 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 :$
 ```
 --- 
+- Quick Open: Cmd + P // 이미 열려있는 tab에서 찾기
 - Open Quick Chat: Cmd+Shift+I 
 - cmd w : close file in VS Code
 - moveEditorToNextGroup: "ctrl+cmd+right"
