@@ -3042,7 +3042,8 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 - 컬럼 단위 선택: Hold down `Cmd + Shift + Option` and use the arrow keys
 ---
 - echo 'export PATH="/usr/local/opt/go@1.21/bin:$PATH"' >> /Users/jay/.zshrc
-- egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./
+- egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./ 
+- egrep -irnH --include=\*.{ts,js}  'createUnionType' ./
 - ps aux | grep postgres
 - tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
 - tar -xvzf xxx.tar.gz -C ./data

@@ -1,4 +1,3 @@
-
 import { ClassType, createUnionType } from 'type-graphql';
 import { BaseError } from '../utils/BaseError';
 
@@ -11,150 +10,22 @@ export function ServiceResponse<T>(cls: ClassType<T>) {
   });
 }
 
-import {
-  Collection,
-  Entity,
-  Enum,
-  Index,
-  ManyToMany,
-  ManyToOne,
-  OneToMany,
-  Property,
-  Unique,
-} from '@mikro-orm/core';
-import { Field, Int, ObjectType, registerEnumType } from 'type-graphql';
-import BaseET from './base.entity';
-import Asset from './asset.entity';
-import User, { FeeCollector, Owner } from './user.entity';
 
-export enum CategoryType {
-  ART,
-  GAME,
-  MUSIC,
-  PHOTOGRAPHY,
-  DOMAIN,
-  MEMBERSHIP,
-  VIRTUAL_WORLD,
-  SPORTS,
-  NO_CATEGORY,
+import { ClassType } from "../interfaces";
+import { UnionFromClasses } from "../helpers/utils";
+import { ResolveTypeOptions } from "./types";
+export interface UnionTypeConfig<TClassTypes extends readonly ClassType[]> extends ResolveTypeOptions<UnionFromClasses<TClassTypes>> {
+    name: string;
+    description?: string;
+    types: () => TClassTypes;
 }
-
-registerEnumType(CategoryType, {
-  name: 'CategoryType', // this one is mandatory
-});
-
-@ObjectType()
-@Entity()
-@Unique({ properties: ['name'] })
-export default class AssetCollection extends BaseET {
-  // ====== PROPERTIES ======//
-
-  @Field()
-  @Index({ type: 'fulltext' })
-  @Property()
-  name!: string;
-
-  @Field({ nullable: true })
-  @Property({ type: 'string', nullable: true })
-  url?: string;
-
-  @Field()
-  @Property({ length: 3000 })
-  description!: string;
-
-  @Field({ nullable: true })
-  @Property({ type: 'string', nullable: true })
-  logoUrl?: string;
-
-  @Field({ nullable: true })
-  @Property({ type: 'string', nullable: true })
-  featureUrl?: string;
-
-  @Field({ nullable: true })
-  @Property({ type: 'string', nullable: true })
-  bannerUrl?: string;
-
-  @Field({ nullable: true })
-  @Property({ type: 'string', nullable: true })
-  webLink?: string;
-
-  @Field({ nullable: true })
-  @Property({ type: 'string', nullable: true })
-  mediumLink?: string;
-
-  @Field({ nullable: true })
-  @Property({ type: 'string', nullable: true })
-  telegramLink?: string;
-
-  @Field(() => CategoryType)
-  @Enum(() => CategoryType)
-  categoryType!: CategoryType;
-
-  // ====== RELATIONS ======//
-  @Field(() => User)
-  @ManyToOne(() => User)
-  creator!: User;
-
-  @Field(() => [Asset], { nullable: true })
-  @OneToMany(() => Asset, (asset) => asset.assetCollection, { nullable: true })
-  assets? = new Collection<Asset>(this);
-
-  @Field(() => [FeeCollector], { nullable: true })
-  @OneToMany(
-    () => FeeCollector,
-    (feeCollector) => feeCollector.assetCollection,
-    {
-      nullable: true,
-    },
-  )
-  feeCollectors? = new Collection<FeeCollector>(this);
-
-  // ====== METHODS ======//
-  // ====== GETTERS ======//
-  // ====== MUTATORS ======//
-  // ====== CONSTRUCTORS ======//
-  constructor(name, description, categoryType, logoUrl = '') {
-    // call the constructor for BaseEntity
-    super();
-
-    // assign the properties
-    this.name = name;
-    this.description = description;
-    this.categoryType = categoryType;
-    this.logoUrl = logoUrl;
-  }
-}
+export declare function createUnionType<T extends readonly ClassType[]>(config: UnionTypeConfig<T>): UnionFromClasses<T>;
 
 
-const AssetCollectionServiceResponse = ServiceResponse(AssetCollection);
-
-@Resolver()
-export class AssetCollectionResolver {
-  @Query(() => AssetCollectionServiceResponse)
-  async GetAssetCollection(
-    @Arg('id') id: string,
-    @Ctx() ctx: ReqContext,
-  ): Promise<typeof AssetCollectionServiceResponse> {
-    try {
-      const { em } = ctx;
-
-      const assetCollection: AssetCollection = await em.findOneOrFail(
-        AssetCollection,
-        {
-          id,
-        },
-        {
-          populate: ['assets'],
-        },
-      );
-      return assetCollection;
-    } catch (e) {
-      return new ApiUserError(
-        this.constructor.name,
-        'failed to retrieve assetCollection.',
-      );
-    }
-  }
-
-
-explain const AssetCollectionServiceResponse = ServiceResponse(AssetCollection); part and Promise<typeof AssetCollectionServiceResponse> part
+: do you think it's right code because UnionTypeConfig and "{
+                                                                name: `${cls.name}ServiceResponse`,
+                                                                types: () => [cls, BaseError] as const,
+                                                                resolveType: (value) =>
+                                                                  (value as BaseError).statusCode === undefined ? cls : BaseError,
+                                                              }"
+are differnt
