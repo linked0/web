@@ -1,10 +1,33 @@
 🌟[정리]🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴
 
 
+{
+    "email": "linked0@gmail.com",
+    "password": "alfred0",
+    "posts": [],
+    "_id": "66ff51468fb5fa2763f7e7a5",
+    "__v": 0
+}
 
 
+session=eyJqd3QiOiJleUpoYkdjaU9pSklVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKbGJXRnBiQ0k2SW14cGJtdGxaREJBWjIxaGFXd3VZMjl0SWl3aWRYTmxja2xrSWpvaU5qWm1aalV4TkRZNFptSTFabUV5TnpZelpqZGxOMkUxSWl3aWFXRjBJam94TnpJNE1EQTROVEU0ZlEuaUxzUHRmaUdUR040V3lBNGg0U1NYc2JnMHBjU1hNOV9EWmh5YXZKZGs1SSJ9; path=/; httponly
 
 
+Rabbit
+POST
+localhost:8080/signup
+1234
+{  "email": "linked0@gmail.com",  "password": "alfred0"}
+{
+  "email": "linked0@gmail.com",
+  "password": "alfred0"
+}
+201
+Created
+116 ms
+683 B
+Set-Cookie
+Online
 
 
 

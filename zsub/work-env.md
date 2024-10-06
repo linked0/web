@@ -122,6 +122,7 @@ psql postgres <== 접속해볼 수 있음.
 - pgadmin download(https://www.pgadmin.org/download/pgadmin-4-macos/)
 
 ### Whale, Miro, onenote, Visual Studio, Xcode, Github CLI, IDEA
+- Whale extension: React Developer Tools
 - Command Palette: [⇧⌘P ] Shell command
 - Settings 열기: cmd + ,
 - XCode: [Apple Developer](https://developer.apple.com/xcode/resources/)
@@ -139,7 +140,8 @@ psql postgres <== 접속해볼 수 있음.
 - Markdown All in One
 - Github actions
 - Extension Pack for Java
-
+- Prettier - Code formatter
+- ES7+ React/Redux/React-Native
 
 ### VS Code Setting
 - 느린 스크롤 세팅: Settings 열기 - smoothScrolling 검색 - Smooth Scrolling 체크

@@ -3041,6 +3041,7 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 - moveEditorToNextGroup: "ctrl+cmd+right"
 - moveEditorToPreviousGrou: "ctrl+cmd+left"
 - 컬럼 단위 선택: Hold down `Cmd + Shift + Option` and use the arrow keys
+- replace string: cmd + d
 ---
 - echo 'export PATH="/usr/local/opt/go@1.21/bin:$PATH"' >> /Users/jay/.zshrc
 - egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./ 
