@@ -1,35 +1,116 @@
 🌟[정리]🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴
 
-
-{
-    "email": "linked0@gmail.com",
-    "password": "alfred0",
-    "posts": [],
-    "_id": "66ff51468fb5fa2763f7e7a5",
-    "__v": 0
+"compilerOptions": {
+    "outDir": "lib",
+    "target": "es2020",          // Keep this if you're targeting modern JavaScript
+    "module": "ESNext",          // Change this to ESNext for Vite compatibility
+    "esModuleInterop": true,     // Keep this for interop with CommonJS modules
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  }
 }
 
 
-session=eyJqd3QiOiJleUpoYkdjaU9pSklVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKbGJXRnBiQ0k2SW14cGJtdGxaREJBWjIxaGFXd3VZMjl0SWl3aWRYTmxja2xrSWpvaU5qWm1aalV4TkRZNFptSTFabUV5TnpZelpqZGxOMkUxSWl3aWFXRjBJam94TnpJNE1EQTROVEU0ZlEuaUxzUHRmaUdUR040V3lBNGg0U1NYc2JnMHBjU1hNOV9EWmh5YXZKZGs1SSJ9; path=/; httponly
+  else {
+    allBasic = new AllBasic(owner, process.env.ALL_BASIC_CONTRACT || "");
+  }
+
+  
+They are Korean so it's not a problem.
+Do you have an updated resume ?
+**Lending / Defi protocol**
+
+200M TVL
+
+Only Korean, no foreigners Seoul.
+
+1-3 engineers
+
+SC experience Solidity or Move
+
+40K ~ 100K$
+
+Young team, 31-32 avg age
+
+For non-crypto:
+
+Backend engineer skills
+
+25% comm, 3mo
+
+Position: Smart Contract Engineer
+
+Company Overview: We are an innovative company developing a leading lending protocol in the DeFi space, with a total value locked (TVL) exceeding $300 million. Our platform is the largest of its kind in South Korea and ranks among the top globally. We are committed to revolutionizing the financial landscape through blockchain technology, providing secure and efficient solutions for our users. Join us to be part of a dynamic team that is shaping the future of decentralized finance.
+
+Job Description: As a Smart Contract Developer, you will play a crucial role in improving our products and developing new features. WeSmart are looking for someone with a deep understanding and passion for blockchain technology. Smart contracts are a vital part of our service's security, so a high level of security awareness and attention to detail is essential.
+
+Key Responsibilities:
+
+Design, develop, and deploy smart contracts
+Improve existing products and develop new features
+Conduct code reviews and ensure quality assurance
+Perform security audits and vulnerability analysis
+Collaborate with the team to provide efficient solutions
+Qualifications:
+
+Experience with Move, Solidity, or Rust (not mandatory)
+Passion for blockchain and DeFi
+Understanding of smart contracts and distributed systems
+Problem-solving skills and analytical thinking
+Strong teamwork and communication abilities
+Preferred Qualifications:
+
+Experience using DeFi services
+Familiarity with version control systems like Git
+Experience in Agile/Scrum development environments
+Benefits:
+
+Flexible Working Hours: We operate on a 40-hour flexible work schedule. Thanks to our responsible team members, there are no fixed commuting times, but we do have core hours for effective collaboration.
+
+High-Quality Equipment Provided:
+
+MacBook Pro/Air, 27/32-inch high-end LG/Samsung/DELL FULL HD dual monitors.
+Adjustable standing desks from Rivart, and ergonomic chairs (Herman Miller, Ergohuman, Sidiz).
+We actively support necessary equipment up to 10 million KRW to ensure your comfort.
+Unlimited Paid Time Off: Our team members enjoy unlimited half-days, annual leave, and vacation days, allowing for maximum efficiency and personal growth. All time off can be taken freely without an approval process.
+
+One Month of Workation: Take a month-long workation to refresh yourself in a special location. This allows you to work while enjoying leisure time, with only core hours dedicated to work.
+
+Monthly Meal Allowance: We provide a monthly meal allowance of 300,000 KRW. Dinner expenses are covered 100% by the company.
+
+Unlimited Book Support: We support books for self-improvement.
+
+Unlimited Education Expense Support:
+
+100% coverage for essential job-related training.
+Fitness Support: We prioritize the health of our team members, offering up to 2 million KRW annually for fitness expenses, such as gym memberships, Pilates, or yoga.
+
+Premium Health Checkup Support: We provide up to 1 million KRW for comprehensive health checkups every two years for eligible employees.
 
 
-Rabbit
-POST
-localhost:8080/signup
-1234
-{  "email": "linked0@gmail.com",  "password": "alfred0"}
-{
-  "email": "linked0@gmail.com",
-  "password": "alfred0"
-}
-201
-Created
-116 ms
-683 B
-Set-Cookie
-Online
+Blockchain developer with 6 years of experience in open-source blockchain mainnet and DApp projects. I’ve successfully collaborated with international teams to deliver key solutions, such as an NFT marketplace deployed on an EVM-based mainnet. Currently focused on expanding my expertise in DeFi, Account Abstraction, and smart contract audits. I am ready to bring my skills and experience to contribute to your company’s success.
+
+=====
+Dear Hiring Manager,
+
+I am excited to apply for the Solidity engineer position at BJAK. With six years of blockchain development experience, I have led projects like an NFT marketplace on an EVM-based mainnet, collaborating with diverse teams to deliver successful solutions.
+
+Currently, I am expanding my knowledge in DeFi, Layer 2 scaling, Account Abstraction, and smart contract audits. I am confident that my skills and commitment to continuous learning will allow me to contribute effectively to BJAK’s goals.
+
+Thank you for considering my application. I look forward to discussing how I can support your team.
+
+Sincerely,
+Hyunjae Lee
+===
+
+인트라넷 그룹웨어 시스템
+내용: 결제 시스템 및 HTML 편집기 개발 
+사용기술: MFC, C/C++, ActiveX, HTML, UML
 
 
+https://chatgpt.com/g/g-HcVIV3Alx-buddy/c/670dd0d6-27a0-8005-9187-5e243c49b77c
 
 Migration 폴더의 파일 지우기 
 rm src/migrations/Migration20240925113829.ts

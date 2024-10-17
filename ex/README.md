@@ -3,14 +3,47 @@
 
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
 
-Try running some of the following tasks:
-
-Hardhat과 Foundry 둘 중에 하나의 환경으로 사용할 수 있다.
+## Source Summary
+- efoundry-course-src: foundry 강의 by Patrick Collins
+- erc4337-aa: 4337 구현 hardhat 프로젝트
+- erc6900-reference: erc-6900 foundry 프로젝트
+- ex: 중요 기본 컨트랙트 프로젝트
+- ex5: seaport등 
+- exdot: TypeScript 코딩 테스트
+- exf: foundry 테스트
+- exzksync: zksync 테스트
+- exzzbak: 많이 안 쓰이는 프로젝트
+  - commons-budget-contract
+  - ehacking: Smart Contract Hacking 코스 Solution
+  - eplanet
+  - evalidators
+  - exz-ex6
+  - exz-original
 
 ## Hardhat
 ```
 yarn
 yarn test
+```
+
+### oz contract test
+- ex 폴더로 이동
+- 원하는 테스트 파일 골라서 다음과 같이 실행
+```
+yarn hardhat test /Users/jay/work/web/ex/test/oz/access/Ownable.test.js
+```
+
+### seaport contract test
+- ex5 폴더로 이동
+- 원하는 테스트 파일 골라서 다음과 같이 실행
+```
+yarn hardhat test /Users/jay/work/web/ex/test/seaport/basic.spec.ts
+```
+
+### test를 pooh-geth로 localnet에서 테스트할 때 주의점
+- `pooh-geth`는 cancun 빌드가 아니기 때문에, `.env` 파일에서 다음과 같이 설정하고 해야함.
+```
+EVM_VERSION=london
 ```
 
 ## Foundry

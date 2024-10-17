@@ -95,8 +95,7 @@ const config: HardhatUserConfig = {
       {
         version: "0.8.24",
         settings: {
-          evmVersion: "cancun",
-          // evmVersion: "london",
+          evmVersion: process.env.EVM_VERSION || "cancun",
           // viaIR: true,
           // optimizer: {
           //   ...(process.env.NO_SPECIALIZER
