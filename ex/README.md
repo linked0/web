@@ -4,21 +4,24 @@
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
 
 ## Source Summary
-- efoundry-course-src: foundry 강의 by Patrick Collins
-- erc4337-aa: 4337 구현 hardhat 프로젝트
-- erc6900-reference: erc-6900 foundry 프로젝트
-- ex: 중요 기본 컨트랙트 프로젝트
-- ex5: seaport등 
-- exdot: TypeScript 코딩 테스트
-- exf: foundry 테스트
-- exzksync: zksync 테스트
-- exzzbak: 많이 안 쓰이는 프로젝트
+- `efoundry-course-src`: foundry 강의 by Patrick Collins
+- `eondo-v1`: ondo 프로젝트
+- `erc4337-aa`: 4337 구현 hardhat 프로젝트
+- `erc6900-reference`: erc-6900 foundry 프로젝트
+- `euniswap-v2-hardhat`: uniswap 컨트랙트를 hardhat으로 테스트할 수 있게 수정한 프로젝트 
+- `ex`: 중요 기본 컨트랙트 프로젝트
+- `ex5`: seaport등 
+- `exdot`: TypeScript 코딩 테스트
+- `exf`: foundry 테스트
+- `exzksync`: zksync 테스트
+- `exzzbak`: 많이 안 쓰이는 프로젝트
   - commons-budget-contract
   - ehacking: Smart Contract Hacking 코스 Solution
   - eplanet
   - evalidators
   - exz-ex6
   - exz-original
+
 
 ## Hardhat
 ```

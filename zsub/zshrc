@@ -114,6 +114,12 @@ export PATH="$HOME/.cargo/bin:$PATH"
 hgrep() {
 	grep -irnH --include=\*.$1 "$2" ./
 }
+cc() {
+  code $@
+}
+ii() {
+  idea $@
+}
 ch() {
   chatgpt $@
 }
