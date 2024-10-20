@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.0.1",
   "license": "TBD",
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint:fix && yarn clean"
+    }
+  },
   "scripts": {
     "clean": "rm -rf build types",
     "coverage": "export BLOCKCHAIN='ethereum' && hardhat coverage",

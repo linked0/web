@@ -112,3 +112,13 @@ This will run all tests and report on gas usage.
 ```sh
 REPORT_GAS=true yarn hardhat test
 ```
+
+## History & Note
+- 다음 부분 때문에 에러가 나서 package.json.bak.husky로 백업하고, package.json에서 해당부분 제거
+```
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint:fix && yarn clean"
+    }
+  },
+```

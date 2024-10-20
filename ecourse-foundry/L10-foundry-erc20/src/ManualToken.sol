@@ -45,7 +45,7 @@ contract ManualToken {
         string memory tokenName,
         string memory tokenSymbol
     ) {
-        totalSupply = initialSupply * 10 ** uint256(decimals); // Update total supply with the decimal amount
+        totalSupply = initialSupply * 10**uint256(decimals); // Update total supply with the decimal amount
         balanceOf[msg.sender] = totalSupply; // Give the creator all initial tokens
         name = tokenName; // Set the name for display purposes
         symbol = tokenSymbol; // Set the symbol for display purposes
@@ -54,7 +54,11 @@ contract ManualToken {
     /**
      * Internal transfer, only can be called by this contract
      */
-    function _transfer(address _from, address _to, uint256 _value) internal {
+    function _transfer(
+        address _from,
+        address _to,
+        uint256 _value
+    ) internal {
         // Prevent transfer to 0x0 address. Use burn() instead
         require(_to != address(0x0));
         // Check if the sender has enough
@@ -80,10 +84,10 @@ contract ManualToken {
      * @param _to The address of the recipient
      * @param _value the amount to send
      */
-    function transfer(
-        address _to,
-        uint256 _value
-    ) public returns (bool success) {
+    function transfer(address _to, uint256 _value)
+        public
+        returns (bool success)
+    {
         _transfer(msg.sender, _to, _value);
         return true;
     }
@@ -116,10 +120,10 @@ contract ManualToken {
      * @param _spender The address authorized to spend
      * @param _value the max amount they can spend
      */
-    function approve(
-        address _spender,
-        uint256 _value
-    ) public returns (bool success) {
+    function approve(address _spender, uint256 _value)
+        public
+        returns (bool success)
+    {
         allowance[msg.sender][_spender] = _value;
         emit Approval(msg.sender, _spender, _value);
         return true;
@@ -174,10 +178,10 @@ contract ManualToken {
      * @param _from the address of the sender
      * @param _value the amount of money to burn
      */
-    function burnFrom(
-        address _from,
-        uint256 _value
-    ) public returns (bool success) {
+    function burnFrom(address _from, uint256 _value)
+        public
+        returns (bool success)
+    {
         require(balanceOf[_from] >= _value); // Check if the targeted balance is enough
         require(_value <= allowance[_from][msg.sender]); // Check allowance
         balanceOf[_from] -= _value; // Subtract from the targeted balance
