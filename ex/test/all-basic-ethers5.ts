@@ -4,6 +4,9 @@ import * as path from "path";
 import { loadFixture, time } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
 import { BytesLike, TypedDataDomain } from "ethers";
+import { Wallet, constants, utils } from "ethers-v5";
+import {
+} from "ethers-v5/lib/utils";
 import { ethers, network } from "hardhat";
 const {
   encodeBytes32String,
@@ -32,7 +35,6 @@ import {
 import { fillSignAndPack } from "./UserOp";
 import { fullSuiteFixture } from "./full-suite.fixture";
 import { buildOrderStatus, TransferAccountOwnershipParams, BasicUser, BasicAccount, AdminUser } from "./utils";
-import { PackedUserOperationStruct } from "../typechain-types/contracts/AllBasic";
 
 
 const ALLBASIC_JSON_PATH = "../artifacts/contracts/AllBasic.sol/AllBasic.json";
@@ -140,9 +142,9 @@ describe("AllPairVault", () => {
         suiteBasic: { allBasic },
       } = await loadFixture(fullSuiteFixture);
 
-      // NOTE: CHECK THIS CODE
-      const userOp = await fillSignAndPack() as PackedUserOperationStruct;
+      const userOp = await fillSignAndPack();
       const valResult = await allBasic.simulateValidation(userOp);
+
     });
 
     it("#abi.encodeWithSignature #callFriend #setFriend", async function () {
@@ -303,8 +305,7 @@ describe("AllPairVault", () => {
       expect(await execAccount.test2()).to.equal(true);
     });
 
-    // NOTE: Solve this ethers5 depenency problem
-    it.skip("#executeUserOp", async () => {
+    it("#executeUserOp", async () => {
       const functionSignature = "add";
       const execSig = utils
         .keccak256(toUtf8Bytes(functionSignature))
@@ -332,8 +333,7 @@ describe("AllPairVault", () => {
       expect(await operator.value()).to.equal(2);
     });
 
-    // NOTE: Solve this problem now
-    it.skip("#executeMultipleUserOps", async () => {
+    it("#executeMultipleUserOps", async () => {
       const functionSignature = "add";
       const execSig = utils
         .keccak256(toUtf8Bytes(functionSignature))
@@ -530,8 +530,7 @@ describe("AllPairVault", () => {
 
     // NOTE: poohnet으로 실행하면 에러가 발생함. 왜냐하면 poohnet은 evmVersion이 cancun이 아니므로,
     // 쫑 날수 있으므로 hardhat.config.ts의 compiler 부분의 evmVersion: "cancun"을 제거해야함.
-    // NOTE: Solve this ethers5 depenency problem
-    it.skip("Should create contract creation transaction", async function () {
+    it("Should create contract creation transaction", async function () {
       const ownerWallet = new Wallet(process.env.ADMIN_KEY || "");
       const [owner, spender] = await ethers.getSigners()
 
@@ -603,8 +602,7 @@ describe("AllPairVault", () => {
       console.log(`cast publish --rpc-url http://localhost:8545 ${raw}`);
     });
 
-    // NOTE: Solve this ethers5 depenency problem
-    it.skip("Should approve and verify transactions", async function () {
+    it("Should approve and verify transactions", async function () {
       const {
         suiteBasic: { allBasic },
       } = await loadFixture(fullSuiteFixture);
@@ -680,8 +678,7 @@ describe("AllPairVault", () => {
       expect(await allBasic.getValue()).to.equal(10000);
     });
 
-    // NOTE: Solve this ethers5 depenency problem
-    it.skip("should add call with eth_sendRawTransaction", async () => {
+    it("should add call with eth_sendRawTransaction", async () => {
       const {
         suiteBasic: { allBasic }
       } = await loadFixture(fullSuiteFixture);
@@ -703,8 +700,7 @@ describe("AllPairVault", () => {
       expect(await allBasic.getValue()).to.equal(1000000000);
     });
 
-    // NOTE: Solve this ethers5 depenency problem
-    it.skip("should add call with eth_call", async () => {
+    it("should add call with eth_call", async () => {
       const {
         suiteBasic: { allBasic }
       } = await loadFixture(fullSuiteFixture);
