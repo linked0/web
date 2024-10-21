@@ -148,6 +148,11 @@ psql postgres <== 접속해볼 수 있음.
 - Extension Pack for Java
 - Prettier - Code formatter
 - ES7+ React/Redux/React-Native
+- vscode-pdf
+- Cairo 1.0 (with r) & Cairo Syntax
+- Solidity Visual Developer: audit tag를 위해서 사용될 수 있음, @audit-ok ⇐ 오딧 관련 코멘트
+- Inline Bookmarks
+
 
 ### VS Code Setting
 - 느린 스크롤 세팅: Settings 열기 - smoothScrolling 검색 - Smooth Scrolling 체크

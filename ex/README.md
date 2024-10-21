@@ -4,16 +4,28 @@
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
 
 ## Source Summary
-- `efoundry-course-src`: foundry 강의 by Patrick Collins
+- `efoundry-course`: foundry 강의 by Patrick Collins
+  - `cd ~/work/web/ecourse-foundry/L7-foundry-fund-me`
+  - `make install`
+  - `forge test`
 - `eondo-v1`: ondo 프로젝트
+  - `yarn test`
 - `erc4337-aa`: 4337 구현 hardhat 프로젝트
+  - `yarn simple`
 - `erc6900-reference`: erc-6900 foundry 프로젝트
-- `euniswap-v2-hardhat`: uniswap 컨트랙트를 hardhat으로 테스트할 수 있게 수정한 프로젝트 
+  - `forge test --match-path test/account/UpgradeableModularAccount.t.sol`
+- `euniswap-v2-hardhat`: uniswap 컨트랙트에 hardhat 프레임워크 적용
+  - `cp .env.sample .env`
+  - `yarn test`
 - `ex`: 중요 기본 컨트랙트 프로젝트
-- `ex5`: seaport등 
+- `ex5`: seaport등
+  - package.json 파일 참고
 - `exdot`: TypeScript 코딩 테스트
+  - `node ex.js`
 - `exf`: foundry 테스트
+  - `forge test Counter`
 - `exzksync`: zksync 테스트
+  - 이거 pooh-geth와 연동하려다가 실패함.
 - `exzzbak`: 많이 안 쓰이는 프로젝트
   - commons-budget-contract
   - ehacking: Smart Contract Hacking 코스 Solution
@@ -22,6 +34,11 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
   - exz-ex6
   - exz-original
 
+### External Repositiries
+- `web_cairo`: Cairo 테스트 프로젝트
+  - README 참고
+- `smart-contract-hacking`: Solidity smart contract security
+  - README 참고
 
 ## Hardhat
 ```

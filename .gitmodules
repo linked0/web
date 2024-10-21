@@ -85,3 +85,12 @@
 [submodule "ex/lib/forge-std"]
 	path = ex/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "ecourse-foundry/L7-foundry-fund-me/lib/chainlink-brownie-contracts"]
+	path = ecourse-foundry/L7-foundry-fund-me/lib/chainlink-brownie-contracts
+	url = https://github.com/smartcontractkit/chainlink-brownie-contracts
+[submodule "ecourse-foundry/L7-foundry-fund-me/lib/foundry-devops"]
+	path = ecourse-foundry/L7-foundry-fund-me/lib/foundry-devops
+	url = https://github.com/cyfrin/foundry-devops
+[submodule "ecourse-foundry/L7-foundry-fund-me/lib/forge-std"]
+	path = ecourse-foundry/L7-foundry-fund-me/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
