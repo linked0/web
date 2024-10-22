@@ -40,6 +40,25 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
 - `smart-contract-hacking`: Solidity smart contract security
   - README 참고
 
+## ethers v5 vs ethers v6 issue 
+- all-basic.ts를 두개로 분리함
+
+#### all-basic.ts
+- `yarn test:basic` 로 테스트
+- 특이하게, `ethers.provider.send('eth_sendRawTransaction', ...)` 함수를 ethers v6 환경에서 사용하려고 하면 아래의 에러가 뜸
+  ```
+  InvalidArgumentsError: Trying to send a raw transaction with an invalid chainId. The expected chainId is 31337
+    at EdrProviderWrapper.request (/Users/jay/work/web/ex/node_modules/hardhat/src/internal/hardhat-network/provider/provider.ts:453:19)
+    at async Context.<anonymous> (/Users/jay/work/web/ex/test/all-basic-sign.ts:171:19)
+  ```
+
+#### all-balic-ethers5.ts
+- `yarn test:basic5` 로 테스트
+- `ethers.provider.send('eth_sendRawTransaction', ...)`
+- `ethers.provider.send('eth_call', ...)`
+- 이런 복잡한 처리를 할 때는 어쩔수 없이 ethers v5를 이용한 소스를 써야 할 듯함.
+  - 이미 참고 소스가 존재하고, 테스트 코드에 복잡성을 따로 파일로 분리시킨다면 문제 없을 것으로 보임.
+
 ## Hardhat
 ```
 yarn

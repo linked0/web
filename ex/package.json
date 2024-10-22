@@ -14,6 +14,7 @@
     "test:msca": "hardhat test test/erc6900/*.ts",
     "test:assembly": "hardhat test test/assembly/*.ts",
     "test:basic": "hardhat test test/all-basic.ts",
+    "test:basic:localnet": "EVM_VERSION=london hardhat test test/all-basic-sign.ts",
     "test:basic5": "hardhat test test/all-basic-ethers5.ts",
     "test:toobig": "hardhat test test/total/toobig.basic.ts",
     "test:toobig:localnet": "hardhat test test/total/toobig.basic.ts --network localnet",
