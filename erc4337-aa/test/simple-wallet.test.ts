@@ -83,6 +83,18 @@ describe('SimpleAccount', function () {
       expect(targetLogs.length).to.eq(2)
     })
 
+    it('should allow zero value array with count function', async () => {
+      console.log(`account: ${account.address}`)
+      const counterCount = await counter.populateTransaction.count().then(tx => tx.data!)
+      const rcpt = await account.executeBatch(
+        [counter.address, counter.address, counter.address],
+        [],
+        [counterCount, counterCount, counterCount]
+      ).then(async t => await t.wait())
+      const counterContract = await counter.connect(ethersSigner);
+      expect(await counterContract.getCount(account.address)).to.eq(3)
+    })
+
     it('should allow transfer value', async () => {
       const counterJustEmit = await counter.populateTransaction.justemit().then(tx => tx.data!)
       const target = createAddress()

@@ -9,6 +9,10 @@ contract TestCounter {
         counters[msg.sender] = counters[msg.sender] + 1;
     }
 
+    function getCount(address user) public view returns (uint256) {
+        return counters[user];
+    }
+
     function countFail() public pure {
         revert("count failed");
     }
