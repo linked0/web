@@ -34,7 +34,7 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
   - exz-ex6
   - exz-original
 
-### External Repositiries
+#### External Repositiries
 - `web_cairo`: Cairo 테스트 프로젝트
   - README 참고
 - `smart-contract-hacking`: Solidity smart contract security
@@ -59,6 +59,25 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
 - 이런 복잡한 처리를 할 때는 어쩔수 없이 ethers v5를 이용한 소스를 써야 할 듯함.
   - 이미 참고 소스가 존재하고, 테스트 코드에 복잡성을 따로 파일로 분리시킨다면 문제 없을 것으로 보임.
 
+
+## Issues
+#### pooh-geth `cancun` 미적용 문제
+- contract-dencun과 contract-seaport 컨트랙트를 사용할 때, localnet에서는 테스트가 안됨.
+- 원래는 contracts 폴더 안에 있으나, localnet과 연동시에는 바깥으로 옮겨야하는 불편함이 있음.
+- localnet으로 쓰는 pooh-geth가 Cancun evm으로 빌드되어 있지 않기 때문임.
+- 다음의 코드 참고 (hardhat.config.ts)
+  ```typescript
+  {
+    version: "0.8.24",
+    settings: {
+      evmVersion: process.env.EVM_VERSION || "cancun",
+      ...
+    }
+    ...
+  }
+  ```
+- 환경변수 값에 따라서 컴파일 대상을 변경할 수는 없는 것으로 보임.
+  - 참고로, 테스트되는 파일의 위치나 이름으로 환경변수 값을 바꿀 수는 있음.
 ## Hardhat
 ```
 yarn
