@@ -1,21 +1,35 @@
 🌟[정리]🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴
+   struct UserOperation {
 
-"compilerOptions": {
-    "outDir": "lib",
-    "target": "es2020",          // Keep this if you're targeting modern JavaScript
-    "module": "ESNext",          // Change this to ESNext for Vite compatibility
-    "esModuleInterop": true,     // Keep this for interop with CommonJS modules
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true
-  }
-}
-
-
-  else {
-    allBasic = new AllBasic(owner, process.env.ALL_BASIC_CONTRACT || "");
-  }
+        address sender;
+        uint256 nonce;
+        bytes initCode;
+        bytes callData;
+        uint256 callGasLimit;
+        uint256 verificationGasLimit;
+        uint256 preVerificationGas;
+        uint256 maxFeePerGas;
+        uint256 maxPriorityFeePerGas;
+        bytes paymasterAndData;
+        bytes signature;
+    }
+    struct MemoryUserOp {
+        address sender;
+        uint256 nonce;
+        uint256 callGasLimit;
+        uint256 verificationGasLimit;
+        uint256 preVerificationGas;
+        address paymaster;
+        uint256 maxFeePerGas;
+        uint256 maxPriorityFeePerGas;
+    }
+    struct UserOpInfo {
+        MemoryUserOp mUserOp;
+        bytes32 userOpHash;
+        uint256 prefund;
+        uint256 contextOffset;
+        uint256 preOpGas;
+    }
 
   
 They are Korean so it's not a problem.

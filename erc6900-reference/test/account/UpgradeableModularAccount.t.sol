@@ -127,7 +127,7 @@ contract UpgradeableModularAccountTest is OptimizedTest {
         entryPoint.handleOps(userOps, beneficiary);
     }
 
-    function test_basicUserOpJay() public {
+    function test_jay_basicUserOp() public {
         UserOperation memory userOp = UserOperation({
             sender: address(account1),
             nonce: 0,

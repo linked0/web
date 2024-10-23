@@ -36,5 +36,7 @@ forge test --match-path test/account/UpgradeableModularAccount.t.sol
 
 Test one function
 ```
-forge test -vvvv --match-path test/account/UpgradeableModularAccount.t.sol --match-test test_basicUserOpJay
+forge test -vvvv --match-test test_jay_basicUserOp
+
+forge test -vvvv --match-path test/account/UpgradeableModularAccount.t.sol --match-test test_jay_basicUserOp
 ```
