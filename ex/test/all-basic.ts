@@ -36,6 +36,7 @@ import { fillSignAndPack } from "./UserOp";
 import { fullSuiteFixture } from "./full-suite.fixture";
 import { buildOrderStatus, TransferAccountOwnershipParams, BasicUser, BasicAccount, AdminUser } from "./utils";
 import { PackedUserOperationStruct } from "../typechain-types/contracts/AllBasic";
+import { deployContract } from "@nomicfoundation/hardhat-ethers/types";
 
 
 const ALLBASIC_JSON_PATH = "../artifacts/contracts/AllBasic.sol/AllBasic.json";
@@ -60,6 +61,7 @@ const ALLBASIC_JSON_PATH = "../artifacts/contracts/AllBasic.sol/AllBasic.json";
 // parseBytes32String -> decodeBytes32String
 // serializeTransaction(tx) -> Transaction.from(tx).serialized
 // parseTransaction(txBytes) -> Transaction.from(txBytes)
+// populateTransaction -> <contract>.<function>.populateTransaction() 이런 식으로 사용
 
 // NOTE: Refer this code later
 // /Users/hyunjaelee/work/account-abstraction/node_modules/zksync-web3/src/utils.ts
@@ -391,6 +393,31 @@ describe("AllPairVault", () => {
 
       // check value of operator
       expect(await operator.value()).to.equal(11);
+    });
+
+    it("#executeUserOp with populateTransaction", async () => {
+      const {
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+
+      // 둘 다 동일한 결과를 가져온다.
+      // const callAdd = await allBasic.add.populateTransaction().then(tx => tx.data!);
+      const tx = await allBasic.add.populateTransaction();
+      const callAdd = tx.data!;
+      
+      const functionSignature = "add";
+      const execSig = keccak256(toUtf8Bytes(functionSignature))
+        .substring(0, 10);
+      const innerCall = abiCoder.encode(
+        ["address", "bytes"],
+        [allBasic.target, callAdd]
+      );
+      const userOp = {
+        sender: allBasic.target,
+        callData: concat([execSig, innerCall]),
+      };
+      await execAccount.executeUserOp(userOp, 1);
+      expect(await allBasic.getValue()).to.equal(2n);
     });
   });
 
