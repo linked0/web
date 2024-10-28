@@ -63,6 +63,8 @@ const ALLBASIC_JSON_PATH = "../artifacts/contracts/AllBasic.sol/AllBasic.json";
 // parseTransaction(txBytes) -> Transaction.from(txBytes)
 // populateTransaction -> <contract>.<function>.populateTransaction() 이런 식으로 사용
 
+// ethers.utils.id -> ethers.id
+
 // NOTE: Refer this code later
 // /Users/hyunjaelee/work/account-abstraction/node_modules/zksync-web3/src/utils.ts
 // Compute the raw transaction: https://docs.ethers.org/v5/cookbook/transactions/#cookbook--compute-raw-transaction
@@ -313,6 +315,7 @@ describe("AllPairVault", () => {
       const functionSignature = "add";
       const execSig = keccak256(toUtf8Bytes(functionSignature))
         .substring(0, 10);
+      console.log('execSig: ', execSig);
       const innerCall = abiCoder.encode(
         ["address", "bytes"],
         [operator.target, operator.interface.encodeFunctionData("add")]
@@ -417,7 +420,30 @@ describe("AllPairVault", () => {
         callData: concat([execSig, innerCall]),
       };
       await execAccount.executeUserOp(userOp, 1);
-      expect(await allBasic.getValue()).to.equal(2n);
+      expect(await allBasic.getValue()).to.equal(1n);
+    });
+
+    it("#executeUserOp with populateTransaction ethers.id ", async () => {
+      const {
+        suiteBasic: { allBasic },
+      } = await loadFixture(fullSuiteFixture);
+
+      const tx = await allBasic.add.populateTransaction();
+      const callAdd = tx.data!;
+      const execSig = ethers.id("add()").slice(0, 10);
+
+      console.log(`execSig: ${execSig}, callAdd: ${callAdd}`);
+      const innerCall = abiCoder.encode(
+        ["address", "bytes"],
+        [allBasic.target, callAdd]
+      );
+      const userOp = {
+        sender: allBasic.target,
+        callData: concat([execSig, innerCall]),
+      };
+      await execAccount.executeUserOp(userOp, 1);
+      expect(await allBasic.getValue()).to.equal(1n);
+
     });
   });
 

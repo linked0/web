@@ -38,6 +38,7 @@ describe("Uni", () => {
       0,
       0
     );
+
     const _signers = signers.slice(1, 5);
     for (const signer of _signers) {
       await uniPool.mintAndAdd(
@@ -60,6 +61,17 @@ describe("Uni", () => {
     expect(await uniPool.token0.balanceOf(signer.address)).eq(amt0);
     expect(await uniPool.token1.balanceOf(signer.address)).eq(amt1);
   });
+  // it("test uniPull 2", async function () {
+  //   const amt = e18.times(1000);
+  //   let signer = signers[1];
+  //   const balance = await uniPool.pool.balanceOf(signer.address);
+  //   await uniPool.pool.connect(signer).transfer(uniPull.address, balance);
+  //   const amt0 = e18.times(5).toFixed(0);
+  //   const amt1 = e18.times(0).toFixed(0);
+  //   await uniPull.connect(signer).migrate2(uniPool.pool.address, amt0, amt1);
+  //   expect(await uniPool.token0.balanceOf(signer.address)).eq(amt0);
+  //   expect(await uniPool.token1.balanceOf(signer.address)).eq(amt1);
+  // });
   // it("test mock mintAddLiquidity", async function () {
   //   const amt = e18.times(100000).toFixed();
   //   const bal = await uniPool.pool.balanceOf(uniPool.minterAddress);
