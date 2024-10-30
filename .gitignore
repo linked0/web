@@ -19,3 +19,7 @@ exg/bin
 exg/hello
 
 *.swp
+
+# my git
+memo.txt
+m2.txt

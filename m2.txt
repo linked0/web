@@ -1,4 +1,0 @@
-Configuration from /Users/jay/work/linked0.github.io/_config.yml
-bundler: failed to load command: jekyll (/usr/local/bin/jekyll)
-/Library/Ruby/Gems/2.6.0/gems/jekyll-0.11.0/lib/jekyll/site.rb:21:in `expand_path': no implicit conversion of Array into String (TypeError)
-        from /Library/Ruby/Gems/2.6.0/gems/jekyll-0.11.0/lib/jekyll/site.rb:21:in `initialize'
