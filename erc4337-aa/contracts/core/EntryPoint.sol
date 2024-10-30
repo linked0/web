@@ -20,6 +20,7 @@ import "@openzeppelin/contracts/utils/introspection/ERC165.sol" as OpenZeppelin;
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 import "hardhat/console.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 /*
  * Account-Abstraction (EIP-4337) singleton EntryPoint implementation.
@@ -87,7 +88,6 @@ contract EntryPoint is IEntryPoint, StakeManager, NonceManager, ReentrancyGuard,
     internal
     returns
     (uint256 collected) {
-        console.log("### _executeUserOp");
         uint256 preGas = gasleft();
         bytes memory context = getMemoryBytesFromOffset(opInfo.contextOffset);
         bool success;
@@ -105,13 +105,12 @@ contract EntryPoint is IEntryPoint, StakeManager, NonceManager, ReentrancyGuard,
                     methodSig := calldataload(callData.offset)
                 }
             }
+            console.log("### _executeUserOp %s", Strings.toHexString(uint32(methodSig)));
             if (methodSig == IAccountExecute.executeUserOp.selector) {
-                console.log("### IAccountExecute.executeUserOp");
                 bytes memory executeUserOp = abi.encodeCall(IAccountExecute.executeUserOp, (userOp, opInfo.userOpHash));
                 innerCall = abi.encodeCall(this.innerHandleOp, (executeUserOp, opInfo, context));
             } else
             {
-                console.log("### abi.encodeCall");
                 innerCall = abi.encodeCall(this.innerHandleOp, (callData, opInfo, context));
             }
             assembly ("memory-safe") {

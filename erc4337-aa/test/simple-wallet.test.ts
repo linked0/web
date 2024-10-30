@@ -63,7 +63,7 @@ describe('SimpleAccount', function () {
     expect(await testUtil.encodeUserOp(packed)).to.equal(encoded)
   })
 
-  describe.only('#executeBatch', () => {
+  describe('#executeBatch', () => {
     let account: SimpleAccount
     let counter: TestCounter
     before(async () => {

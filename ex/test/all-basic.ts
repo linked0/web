@@ -97,6 +97,14 @@ describe("AllPairVault", () => {
       const JAY = textToHex("Jay");
       const DATA = textToHex("Hello World! Otani is the best! Jay is the best! All the best!");
     });
+
+    it("create a new key", async () => {
+      const wanted = 1;
+      for (let i = 0; i < wanted; i++) {
+        const wallet = ethers.Wallet.createRandom();
+        console.log(wallet.privateKey, wallet.address);  // This is your private key
+      }
+    });
   });
 
   describe("AllBasic", function () {

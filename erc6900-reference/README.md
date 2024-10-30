@@ -14,14 +14,12 @@ The implementation includes an upgradable modular account with two plugins (`Sin
 Anyone is welcome to submit feedback and/or PRs to improve code or add Plugins.
 
 ### Testing
-
 The default Foundry profile can be used to compile (without IR) and test the entire project. The default profile should be used when generating coverage and debugging.
 
 ```bash
 forge build
 forge test -vvv
 ```
-
 Since IR compilation generates different bytecode, it's useful to test against the contracts compiled via IR. Since compiling the entire project (including the test suite) takes a long time, special profiles can be used to precompile just the source contracts, and have the tests deploy the relevant contracts using those artifacts.
 
 ```bash

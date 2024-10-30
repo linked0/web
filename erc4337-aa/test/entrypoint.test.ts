@@ -243,7 +243,7 @@ describe('@EntryPoint', function () {
     })
   })
 
-  describe.only('#flickering account validation', () => {
+  describe('#flickering account validation', () => {
     it('should prevent leakage of basefee', async function () {
       if (process.env.COVERAGE != null) {
         // coverage disables block.baseFee, which breaks this test...
