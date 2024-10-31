@@ -1,6 +1,10 @@
 import { ethers } from "hardhat";
 
 async function main() {
+  const provider = ethers.provider;
+  const admin = new ethers.Wallet(process.env.ADMIN_KEY || "", provider);
+  console.log("admin address:", admin.address);
+
   const mytoken = await ethers.deployContract("MyToken");
   await mytoken.waitForDeployment();
   console.log(`Deployed MINTABLE_TOKEN: ${mytoken.target}`);
