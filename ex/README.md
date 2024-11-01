@@ -5,25 +5,25 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
 
 ## Source Summary
 - `efoundry-course`: foundry 강의 by Patrick Collins
-  - `cd ~/work/web/ecourse-foundry/L7-foundry-fund-me`
-  - `make install`
-  - `forge test`
+  - cd ~/work/web/ecourse-foundry/L7-foundry-fund-me
+  - make install
+  - forge test
 - `eondo-v1`: ondo 프로젝트
-  - `yarn test`
+  - yarn test
 - `erc4337-aa`: 4337 구현 hardhat 프로젝트
-  - `yarn simple`
+  - yarn simple
 - `erc6900-reference`: erc-6900 foundry 프로젝트
-  - `forge test --match-path test/account/UpgradeableModularAccount.t.sol`
+  - forge test --match-path test/account/UpgradeableModularAccount.t.sol
 - `euniswap-v2-hardhat`: uniswap 컨트랙트에 hardhat 프레임워크 적용
-  - `cp .env.sample .env`
-  - `yarn test`
+  - cp .env.sample .env
+  - yarn test
 - `ex`: 중요 기본 컨트랙트 프로젝트
-- `ex5`: seaport등
+- `ex5`: The very important project `seaport`
   - package.json 파일 참고
 - `exdot`: TypeScript 코딩 테스트
-  - `node ex.js`
+  - node ex.js
 - `exf`: foundry 테스트
-  - `forge test Counter`
+  - forge test Counter
 - `exzksync`: zksync 테스트
   - 이거 pooh-geth와 연동하려다가 실패함.
 - `exzzbak`: 많이 안 쓰이는 프로젝트
@@ -33,12 +33,18 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
   - evalidators
   - exz-ex6
   - exz-original
-
+- `tload` and `tstore` example
+  - test/StorageSlot.local.test.js, StorageSlot.sol, StorageSlotMock.sol
+    - localnet에서는 아직 `getXXX` 함수가 정상 동작하지는 않음. 
+    - StorageSlot.local.test.js의 `TODO` 참고
+  - DoubleBufferContract.sol
 #### External Repositiries
 - `web_cairo`: Cairo 테스트 프로젝트
   - README 참고
 - `smart-contract-hacking`: Solidity smart contract security
   - README 참고
+- `eopenzeppelin-contracts`: openzeppelin contracts
+  - [openzeppelin github](https://github.com/OpenZeppelin/openzeppelin-contracts)
 
 ## ethers v5 vs ethers v6 issue 
 - all-basic.ts를 두개로 분리함
@@ -78,6 +84,13 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
   ```
 - 환경변수 값에 따라서 컴파일 대상을 변경할 수는 없는 것으로 보임.
   - 참고로, 테스트되는 파일의 위치나 이름으로 환경변수 값을 바꿀 수는 있음.
+- 24.11.01 solved
+  - Added the following configurations into `genesis_testnet.json`
+    ```
+    "shanghaiTime": 0,
+    "cancunTime": 0,
+    ```
+
 ## Hardhat
 ```
 yarn
