@@ -1,13 +1,15 @@
-// SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.19;
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
 
 import {IEntryPoint} from "@eth-infinitism/account-abstraction/interfaces/IEntryPoint.sol";
 
-import {UpgradeableModularAccount} from "../../src/account/UpgradeableModularAccount.sol";
-import {SingleOwnerPlugin} from "../../src/plugins/owner/SingleOwnerPlugin.sol";
-import {TokenReceiverPlugin} from "../../src/plugins/TokenReceiverPlugin.sol";
+import {ReferenceModularAccount} from "../../src/account/ReferenceModularAccount.sol";
+import {SemiModularAccount} from "../../src/account/SemiModularAccount.sol";
+
+import {TokenReceiverModule} from "../../src/modules/TokenReceiverModule.sol";
+import {SingleSignerValidationModule} from "../../src/modules/validation/SingleSignerValidationModule.sol";
 
 /// @dev This contract provides functions to deploy optimized (via IR) precompiled contracts. By compiling just
 /// the source contracts (excluding the test suite) via IR, and using the resulting bytecode within the tests
@@ -28,31 +30,40 @@ abstract contract OptimizedTest is Test {
         return keccak256(abi.encodePacked(a)) == keccak256(abi.encodePacked(b));
     }
 
-    function _deployUpgradeableModularAccount(IEntryPoint entryPoint)
-        internal
-        returns (UpgradeableModularAccount)
-    {
+    function _deployReferenceModularAccount(IEntryPoint entryPoint) internal returns (ReferenceModularAccount) {
         return _isOptimizedTest()
-            ? UpgradeableModularAccount(
+            ? ReferenceModularAccount(
                 payable(
                     deployCode(
-                        "out-optimized/UpgradeableModularAccount.sol/UpgradeableModularAccount.json",
+                        "out-optimized/ReferenceModularAccount.sol/ReferenceModularAccount.json",
                         abi.encode(entryPoint)
                     )
                 )
             )
-            : new UpgradeableModularAccount(entryPoint);
+            : new ReferenceModularAccount(entryPoint);
     }
 
-    function _deploySingleOwnerPlugin() internal returns (SingleOwnerPlugin) {
+    function _deploySemiModularAccount(IEntryPoint entryPoint) internal returns (ReferenceModularAccount) {
         return _isOptimizedTest()
-            ? SingleOwnerPlugin(deployCode("out-optimized/SingleOwnerPlugin.sol/SingleOwnerPlugin.json"))
-            : new SingleOwnerPlugin();
+            ? ReferenceModularAccount(
+                payable(
+                    deployCode("out-optimized/SemiModularAccount.sol/SemiModularAccount.json", abi.encode(entryPoint))
+                )
+            )
+            : ReferenceModularAccount(new SemiModularAccount(entryPoint));
     }
 
-    function _deployTokenReceiverPlugin() internal returns (TokenReceiverPlugin) {
+    function _deployTokenReceiverModule() internal returns (TokenReceiverModule) {
         return _isOptimizedTest()
-            ? TokenReceiverPlugin(deployCode("out-optimized/TokenReceiverPlugin.sol/TokenReceiverPlugin.json"))
-            : new TokenReceiverPlugin();
+            ? TokenReceiverModule(deployCode("out-optimized/TokenReceiverModule.sol/TokenReceiverModule.json"))
+            : new TokenReceiverModule();
+    }
+
+    function _deploySingleSignerValidationModule() internal returns (SingleSignerValidationModule) {
+        return _isOptimizedTest()
+            ? SingleSignerValidationModule(
+                deployCode("out-optimized/SingleSignerValidationModule.sol/SingleSignerValidationModule.json")
+            )
+            : new SingleSignerValidationModule();
     }
 }

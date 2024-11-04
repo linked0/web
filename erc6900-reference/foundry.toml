@@ -1,5 +1,5 @@
 [profile.default]
-solc = '0.8.19'
+solc = '0.8.26'
 via_ir = false
 src = 'src'
 test = 'test'
@@ -7,20 +7,25 @@ libs = ['lib']
 out = 'out'
 optimizer = true
 optimizer_runs = 200
-ignored_error_codes = []
-fs_permissions = [{ access = "read", path = "./out-optimized" }]
+auto_detect_solc = false
+bytecode_hash = "none"
+auto_detect_remappings = false
+fs_permissions = [
+  { access = "read", path = "./out-optimized" }
+]
 
 [fuzz]
 runs = 500
 
 [invariant]
-runs = 500
+runs=500
 fail_on_revert = true
 depth = 10
 
 [profile.optimized-build]
 via_ir = true
 test = 'src'
+optimizer_runs = 10000
 out = 'out-optimized'
 
 [profile.optimized-test]
@@ -37,7 +42,7 @@ runs = 5000
 depth = 32
 
 [profile.deep.fuzz]
-runs = 10000
+runs = 100000
 
 [profile.deep.invariant]
 runs = 5000
@@ -46,10 +51,8 @@ depth = 32
 [fmt]
 line_length = 115
 wrap_comments = true
-
-[rpc_endpoints]
-mainnet = "${RPC_URL_MAINNET}"
-goerli = "${RPC_URL_GOERLI}"
-
+sort_imports = true
+number_underscore = "thousands"
+int_types = "long"
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config

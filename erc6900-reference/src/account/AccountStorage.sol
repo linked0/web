@@ -1,71 +1,51 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.20;
 
-import {EnumerableMap} from "@openzeppelin/contracts/utils/structs/EnumerableMap.sol";
 import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 
-import {IPlugin} from "../interfaces/IPlugin.sol";
-import {FunctionReference} from "../interfaces/IPluginManager.sol";
+import {HookConfig, ModuleEntity} from "../interfaces/IModularAccount.sol";
 
-// bytes = keccak256("ERC6900.UpgradeableModularAccount.Storage")
-bytes32 constant _ACCOUNT_STORAGE_SLOT = 0x9f09680beaa4e5c9f38841db2460c401499164f368baef687948c315d9073e40;
-
-struct PluginData {
-    bool anyExternalExecPermitted;
-    // boolean to indicate if the plugin can spend native tokens, if any of the execution function can spend
-    // native tokens, a plugin is considered to be able to spend native tokens of the accounts
-    bool canSpendNativeToken;
-    bytes32 manifestHash;
-    FunctionReference[] dependencies;
-    // Tracks the number of times this plugin has been used as a dependency function
-    uint256 dependentCount;
-}
-
-// Represents data associated with a plugin's permission to use `executeFromPluginExternal`
-// to interact with contracts and addresses external to the account and its plugins.
-struct PermittedExternalCallData {
-    // Is this address on the permitted addresses list? If it is, we either have a
-    // list of allowed selectors, or the flag that allows any selector.
-    bool addressPermitted;
-    bool anySelectorPermitted;
-    mapping(bytes4 => bool) permittedSelectors;
-}
-
-// Represets a set of pre- and post- hooks.
-struct HookGroup {
-    EnumerableMap.Bytes32ToUintMap preHooks;
-    // bytes21 key = pre hook function reference
-    mapping(FunctionReference => EnumerableMap.Bytes32ToUintMap) associatedPostHooks;
-    EnumerableMap.Bytes32ToUintMap postOnlyHooks;
-}
+// bytes = keccak256("ERC6900.ReferenceModularAccount.Storage")
+bytes32 constant _ACCOUNT_STORAGE_SLOT = 0xc531f081ecdb5a90f38c197521797881a6e5c752a7d451780f325a95f8b91f45;
 
 // Represents data associated with a specifc function selector.
-struct SelectorData {
-    // The plugin that implements this execution function.
+struct ExecutionStorage {
+    // The module that implements this execution function.
     // If this is a native function, the address must remain address(0).
-    address plugin;
-    FunctionReference userOpValidation;
-    FunctionReference runtimeValidation;
-    // The pre validation hooks for this function selector.
-    EnumerableMap.Bytes32ToUintMap preUserOpValidationHooks;
-    EnumerableMap.Bytes32ToUintMap preRuntimeValidationHooks;
+    address module;
+    // Whether or not the function needs runtime validation, or can be called by anyone. The function can still be
+    // state changing if this flag is set to true.
+    // Note that even if this is set to true, user op validation will still be required, otherwise anyone could
+    // drain the account of native tokens by wasting gas.
+    bool skipRuntimeValidation;
+    // Whether or not a global validation function may be used to validate this function.
+    bool allowGlobalValidation;
     // The execution hooks for this function selector.
-    HookGroup executionHooks;
+    EnumerableSet.Bytes32Set executionHooks;
+}
+
+struct ValidationStorage {
+    // Whether or not this validation can be used as a global validation function.
+    bool isGlobal;
+    // Whether or not this validation is allowed to validate ERC-1271 signatures.
+    bool isSignatureValidation;
+    // Whether or not this validation is allowed to validate ERC-4337 user operations.
+    bool isUserOpValidation;
+    // The validation hooks for this validation function.
+    HookConfig[] validationHooks;
+    // Execution hooks to run with this validation function.
+    EnumerableSet.Bytes32Set executionHooks;
+    // The set of selectors that may be validated by this validation function.
+    EnumerableSet.Bytes32Set selectors;
 }
 
 struct AccountStorage {
     // AccountStorageInitializable variables
     uint8 initialized;
     bool initializing;
-    // Plugin metadata storage
-    EnumerableSet.AddressSet plugins;
-    mapping(address => PluginData) pluginData;
     // Execution functions and their associated functions
-    mapping(bytes4 => SelectorData) selectorData;
-    // bytes24 key = address(calling plugin) || bytes4(selector of execution function)
-    mapping(bytes24 => bool) callPermitted;
-    // key = address(calling plugin) || target address
-    mapping(IPlugin => mapping(address => PermittedExternalCallData)) permittedExternalCalls;
+    mapping(bytes4 selector => ExecutionStorage) executionStorage;
+    mapping(ModuleEntity validationFunction => ValidationStorage) validationStorage;
     // For ERC165 introspection
     mapping(bytes4 => uint256) supportedIfaces;
 }
@@ -76,26 +56,44 @@ function getAccountStorage() pure returns (AccountStorage storage _storage) {
     }
 }
 
-function getPermittedCallKey(address addr, bytes4 selector) pure returns (bytes24) {
-    return bytes24(bytes20(addr)) | (bytes24(selector) >> 160);
+using EnumerableSet for EnumerableSet.Bytes32Set;
+
+function toSetValue(ModuleEntity moduleEntity) pure returns (bytes32) {
+    return bytes32(ModuleEntity.unwrap(moduleEntity));
 }
 
-// Helper function to get all elements of a set into memory.
-using EnumerableMap for EnumerableMap.Bytes32ToUintMap;
+function toModuleEntity(bytes32 setValue) pure returns (ModuleEntity) {
+    return ModuleEntity.wrap(bytes24(setValue));
+}
 
-function toFunctionReferenceArray(EnumerableMap.Bytes32ToUintMap storage map)
-    view
-    returns (FunctionReference[] memory)
-{
-    uint256 length = map.length();
-    FunctionReference[] memory result = new FunctionReference[](length);
-    for (uint256 i = 0; i < length;) {
-        (bytes32 key,) = map.at(i);
-        result[i] = FunctionReference.wrap(bytes21(key));
+// ExecutionHook layout:
+// 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF______________________ Hook Module Entity
+// 0x________________________________________________AA____________________ is pre hook
+// 0x__________________________________________________BB__________________ is post hook
 
-        unchecked {
-            ++i;
-        }
+function toSetValue(HookConfig hookConfig) pure returns (bytes32) {
+    return bytes32(HookConfig.unwrap(hookConfig));
+}
+
+function toHookConfig(bytes32 setValue) pure returns (HookConfig) {
+    return HookConfig.wrap(bytes25(setValue));
+}
+
+function toSetValue(bytes4 selector) pure returns (bytes32) {
+    return bytes32(selector);
+}
+
+function toSelector(bytes32 setValue) pure returns (bytes4) {
+    return bytes4(setValue);
+}
+
+/// @dev Helper function to get all elements of a set into memory.
+function toModuleEntityArray(EnumerableSet.Bytes32Set storage set) view returns (ModuleEntity[] memory) {
+    uint256 length = set.length();
+    ModuleEntity[] memory result = new ModuleEntity[](length);
+    for (uint256 i = 0; i < length; ++i) {
+        bytes32 key = set.at(i);
+        result[i] = ModuleEntity.wrap(bytes24(key));
     }
     return result;
 }
