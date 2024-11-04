@@ -2,7 +2,7 @@
 
 .PHONY: all test clean deploy fund help install snapshot format anvil
 
-DEFAULT_ANVIL_KEY := 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+DEFAULT_ANVIL_KEY := 0x58984b2bf6f0f3de4f38290ed3c541ac27bac384b378073ab133af8b314a1887
 
 help:
 	@echo "Usage:"
