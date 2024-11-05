@@ -1,12 +1,17 @@
+import * as dotenv from 'dotenv'
 import '@nomiclabs/hardhat-waffle'
 import '@typechain/hardhat'
 import { HardhatUserConfig } from 'hardhat/config'
+import { HardhatNetworkAccountUserConfig } from "hardhat/types/config";
 import 'hardhat-deploy'
 import '@nomiclabs/hardhat-etherscan'
+import { Wallet, utils } from 'ethers';
 
 import 'solidity-coverage'
 
 import * as fs from 'fs'
+
+dotenv.config({ path: ".env" });
 
 const mnemonicFileName = process.env.MNEMONIC_FILE ?? `${process.env.HOME}/.secret/testnet-mnemonic.txt`
 let mnemonic = 'test '.repeat(11) + 'junk'
@@ -35,6 +40,23 @@ const optimizedComilerSettings = {
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
+function getAccounts() {
+  const accounts: HardhatNetworkAccountUserConfig[] = [];
+  const defaultBalance = utils.parseEther("2000000").toString();
+
+  const n = 10;
+  for (let i = 0; i < n; ++i) {
+    accounts.push({
+      privateKey: Wallet.createRandom().privateKey,
+      balance: defaultBalance,
+    });
+  }
+  accounts[0].privateKey = process.env.ADMIN_KEY || "";
+  accounts[1].privateKey = process.env.USER_KEY || "";
+
+  return accounts;
+}
+
 const config: HardhatUserConfig = {
   solidity: {
     compilers: [{
@@ -51,7 +73,10 @@ const config: HardhatUserConfig = {
   networks: {
     dev: { url: 'http://localhost:8545' },
     // github action starts localgeth service, for gas calculations
-    localgeth: { url: 'http://localgeth:8545' },
+    localnet: { 
+      url: 'http://localhost:8545',
+      accounts: [process.env.ADMIN_KEY || "", process.env.USER_KEY || ""],
+     },
     goerli: getNetwork('goerli'),
     sepolia: getNetwork('sepolia'),
     proxy: getNetwork1('http://localhost:8545')

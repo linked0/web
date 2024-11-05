@@ -224,6 +224,13 @@ forge --version
 
 # # 1. Code/Error
 
+#### You probably tried to import the "hardhat" module from your config or a file imported from it. This is not possible, as Hardhat can't be initialized while its config is being defined.
+
+==> Remove the line in hardhat.config.ts
+```
+const { ethers } = require("hardhat");
+```
+
 #### src/entities/user.entity.ts:10:4 - error TS1240: Unable to resolve signature of property decorator when called as an expression.
   Argument of type 'undefined' is not assignable to parameter of type 'Object'.
 
