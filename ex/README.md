@@ -4,16 +4,10 @@
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
 
 ## Source Summary
-- `efoundry-course`: foundry 강의 by Patrick Collins
-  - cd ~/work/web/ecourse-foundry/L7-foundry-fund-me
-  - make install
-  - forge test
 - `eondo-v1`: ondo 프로젝트
   - yarn test
 - `erc4337-aa`: 4337 구현 hardhat 프로젝트
   - yarn simple
-- `erc6900-reference`: erc-6900 foundry 프로젝트
-  - forge test --match-path test/account/UpgradeableModularAccount.t.sol
 - `euniswap-v2-hardhat`: uniswap 컨트랙트에 hardhat 프레임워크 적용
   - cp .env.sample .env
   - yarn test
@@ -22,8 +16,6 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
   - package.json 파일 참고
 - `exdot`: TypeScript 코딩 테스트
   - node ex.js
-- `exf`: foundry 테스트
-  - forge test Counter
 - `exzksync`: zksync 테스트
   - 이거 pooh-geth와 연동하려다가 실패함.
 - `exzzbak`: 많이 안 쓰이는 프로젝트
@@ -38,7 +30,17 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
     - localnet에서는 아직 `getXXX` 함수가 정상 동작하지는 않음. 
     - StorageSlot.local.test.js의 `TODO` 참고
   - DoubleBufferContract.sol
+
 #### External Repositiries
+- `webf`
+  - `erc6900-reference`: erc-6900 foundry 프로젝트
+    - forge test --match-path test/account/UpgradeableModularAccount.t.sol
+  - `efoundry-course`: foundry 강의 by Patrick Collins
+    - cd ~/work/web/ecourse-foundry/L7-foundry-fund-me
+    - make install
+    - forge test
+  - `exf`: foundry 테스트
+    - forge test Counter
 - `web_cairo`: Cairo 테스트 프로젝트
   - README 참고
 - `smart-contract-hacking`: Solidity smart contract security
