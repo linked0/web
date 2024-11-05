@@ -7,8 +7,8 @@ ffi = true
 fs_permissions = [{ access = "read", path = "./broadcast" }]
 
 [etherscan]
-mainnet = { key = "${ETHERSCAN_API_KEY}" }
-sepolia = { key = "${ETHERSCAN_API_KEY}" }
+# mainnet = { key = "${ETHERSCAN_API_KEY}" }
+# sepolia = { key = "${ETHERSCAN_API_KEY}" }
 
 [rpc_endpoints]
 sepolia = "${SEPOLIA_RPC_URL}"

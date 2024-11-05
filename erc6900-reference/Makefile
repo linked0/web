@@ -16,6 +16,8 @@ clean  :; forge clean
 # Remove modules
 remove :; rm -rf .gitmodules && rm -rf .git/modules/* && rm -rf lib && touch .gitmodules && git add . && git commit -m "modules"
 
+install :; forge install foundry-rs/forge-std@v1.5.3 --no-commit && forge install eth-infinitism/account-abstraction --no-commit && forge install vectorized/solady --no-commit && forge install OpenZeppelin/openzeppelin-contracts --no-commit
+
 # Update Dependencies
 update:; forge update
 

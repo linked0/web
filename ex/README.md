@@ -184,4 +184,120 @@ $ anvil --help
 $ cast --help
 ```
 
-## Chainlink project
+## .gitmodules
+```
+[submodule "poohcode"]
+	path = poohcode
+	url = https://github.com/poohgithub/poohcode
+[submodule "dao-budget-contracts"]
+	path = dao-budget-contracts
+	url = https://github.com/poohgithub/dao-budget-contracts
+[submodule "web2"]
+	path = web2
+	url = https://github.com/linked0/web2
+[submodule "zksync-era"]
+	path = zksync-era
+	url = https://github.com/poohgithub/zksync-era
+[submodule "ondo-v1"]
+	path = ondo-v1
+	url = https://github.com/poohgithub/ondo-v1.git
+[submodule "keyless2/pooh-swap-lib"]
+	path = ex/pooh-swap-lib
+	url = https://github.com/poohgithub/pooh-swap-lib
+[submodule "ondo-v1-linked0"]
+	path = ondo-v1-linked0
+	url = https://github.com/linked0/ondo-v1.git
+[submodule "pooh-swap-v2-periphery"]
+	path = pooh-swap-v2-periphery
+	url = https://github.com/poohgithub/pooh-swap-v2-periphery
+[submodule "argent-contracts"]
+	path = argent-contracts
+	url = https://github.com/linked0/argent-contracts.git
+[submodule "solidstate-solidity"]
+	path = solidstate-solidity
+	url = https://github.com/linked0/solidstate-solidity.git
+[submodule "account-abstraction"]
+	path = account-abstraction
+	url = https://github.com/linked0/account-abstraction.git
+[submodule "pooh-erc20"]
+	path = pooh-erc20
+	url = https://github.com/linked0/pooh-erc20
+[submodule "openzeppelin-contracts"]
+	path = openzeppelin-contracts
+	url = https://github.com/linked0/openzeppelin-contracts.git
+[submodule "poohnet/poohgeth"]
+	path = poohnet/poohgeth
+	url = https://github.com/poohgithub/poohgeth
+[submodule "poohnet/poohprysm"]
+	path = poohnet/poohprysm
+	url = https://github.com/poohgithub/poohprysm
+[submodule "poohnet/pooh-land"]
+	path = poohnet/pooh-land
+	url = https://github.com/poohgithub/pooh-land
+[submodule "poohnet/pooh-land-js"]
+	path = poohnet/pooh-land-js
+	url = https://github.com/poohgithub/pooh-land-js
+[submodule "poohnet/pooh-swap-v2-core"]
+	path = poohnet/pooh-swap-v2-core
+	url = https://github.com/poohgithub/pooh-swap-v2-core
+[submodule "poohnet/pooh-swap-v2-periphery"]
+	path = poohnet/pooh-swap-v2-periphery
+	url = https://github.com/poohgithub/pooh-swap-v2-periphery
+[submodule "poohnet/pooh-swap-v2-hardhat"]
+	path = poohnet/pooh-swap-v2-hardhat
+	url = https://github.com/linked0/pooh-swap-v2-hardhat.git
+[submodule "ex2/lib/forge-std"]
+	path = exhf/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "exf/lib/forge-std"]
+	path = exf/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "exf/lib/openzeppelin-contracts"]
+	path = exf/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "erc/erc4636-T-REX"]
+	path = erc/erc4636-T-REX
+	url = https://github.com/linked0/erc4636-T-REX.git
+[submodule "erc/erc6900-impl"]
+	path = erc/erc6900-impl
+	url = https://github.com/linked0/reference-implementation.git
+[submodule "erc/erc6551-reference"]
+	path = erc/erc6551-reference
+	url = https://github.com/linked0/erc6551-reference.git
+[submodule "exf/lib/account-abstraction"]
+	path = exf/lib/account-abstraction
+	url = https://github.com/eth-infinitism/account-abstraction
+[submodule "poohnet/deterministic-deployment-proxy"]
+	path = poohnet/deterministic-deployment-proxy
+	url = https://github.com/linked0/deterministic-deployment-proxy.git
+[submodule "ex/lib/forge-std"]
+	path = ex/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "ecourse-foundry/L7-foundry-fund-me/lib/chainlink-brownie-contracts"]
+	path = ecourse-foundry/L7-foundry-fund-me/lib/chainlink-brownie-contracts
+	url = https://github.com/smartcontractkit/chainlink-brownie-contracts
+[submodule "ecourse-foundry/L7-foundry-fund-me/lib/foundry-devops"]
+	path = ecourse-foundry/L7-foundry-fund-me/lib/foundry-devops
+	url = https://github.com/cyfrin/foundry-devops
+[submodule "ecourse-foundry/L7-foundry-fund-me/lib/forge-std"]
+	path = ecourse-foundry/L7-foundry-fund-me/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "erc6900-reference/lib/forge-std"]
+	path = erc6900-reference/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "erc6900-reference/lib/account-abstraction"]
+	path = erc6900-reference/lib/account-abstraction
+	url = https://github.com/eth-infinitism/account-abstraction
+[submodule "erc6900-reference/lib/openzeppelin-contracts-upgradeable"]
+	path = erc6900-reference/lib/openzeppelin-contracts-upgradeable
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable
+[submodule "erc6900-reference/lib/openzeppelin-foundry-upgrades"]
+	path = erc6900-reference/lib/openzeppelin-foundry-upgrades
+	url = https://github.com/OpenZeppelin/openzeppelin-foundry-upgrades
+[submodule "erc6900-reference/lib/solady"]
+	path = erc6900-reference/lib/solady
+	url = https://github.com/vectorized/solady
+[submodule "erc6900-reference/lib/openzeppelin-contracts"]
+	path = erc6900-reference/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+```
