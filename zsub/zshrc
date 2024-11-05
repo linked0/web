@@ -34,6 +34,7 @@ ccp() {
   echo "
 69 /web/erc6900-reference/
 43 /web/erc4337-aa/
+webf /webf/
 fo /web/ecourse-foundry/
 ex /web/ex/
 exf /web/exf/
@@ -60,6 +61,8 @@ cc() {
     folder="$HOME/work/webf/erc6900-reference/"
   elif [ "$1" = "43" ]; then
     folder="$HOME/work/web/erc4337-aa/"
+  elif [ "$1" = "webf" ]; then
+    folder="$HOME/work/webf/"
   elif [ "$1" = "fo" ]; then
     folder="$HOME/work/web/ecourse-foundry/L7-foundry-fund-me/"
   elif [ "$1" = "ex" ]; then
@@ -97,6 +100,41 @@ cc() {
 
   echo "code \"$folder$file\""
   code "$folder$file"
+}
+
+dd() {
+  local folder=""
+  local file=""
+  
+  if [ "$1" = "69" ]; then
+    folder="$HOME/work/webf/erc6900-reference/"
+  elif [ "$1" = "43" ]; then
+    folder="$HOME/work/web/erc4337-aa/"
+  elif [ "$1" = "webf" ]; then
+    folder="$HOME/work/webf/"
+  elif [ "$1" = "fo" ]; then
+    folder="$HOME/work/web/ecourse-foundry/L7-foundry-fund-me/"
+  elif [ "$1" = "ex" ]; then
+    folder="$HOME/work/web/ex/"
+  elif [ "$1" = "exf" ]; then
+    folder="$HOME/work/web/exf/"
+  elif [ "$1" = "exj" ]; then
+    folder="$HOME/work/web/ex-j/"
+  elif [ "$1" = "exp" ]; then
+    folder="$HOME/work/web/exp/"
+  elif [ "$1" = "exw" ]; then
+    folder="$HOME/work/web/ex-w/"
+  elif [ "$1" = "oz" ]; then
+    folder="$HOME/work/openzeppelin/"
+  elif [ "$1" = "ha" ]; then
+    folder="$HOME/work/smart-contract-hacking/"
+  elif [ -z "$2" ]; then
+    code $@
+    return
+  fi
+
+  echo "cd \"$folder\""
+  cd "$folder"
 }
 
 
