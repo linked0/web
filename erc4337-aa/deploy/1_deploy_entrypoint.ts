@@ -27,7 +27,7 @@ const deployEntryPoint: DeployFunction = async function (hre: HardhatRuntimeEnvi
       deterministicDeployment: true
     })
 
-  console.log('== wallet=', w.address)
+  console.log('==wallet=', w.address)
 
   const t = await hre.deployments.deploy('TestCounter', {
     from,

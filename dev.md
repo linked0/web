@@ -3132,6 +3132,7 @@ yarn hardhat node (chain id: 31337)
 주의: 검색되서 나온 체크를 그냥 그대로 두고 진행해야함. uncheck하면 안됨.
 * Word Wrap: View -> Active Editor -> Use Soft Wraps
 * Terminal: ctrl + `
+* 줄번호 없애기: Settings/Preferences > navigate to `Editor` > `General` > `Appearance`.
 
 ### 🌸 shortcuts
 - 듀얼 탭 열기/닫기: shift + cmd +  s
