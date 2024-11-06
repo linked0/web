@@ -3015,97 +3015,6 @@ Sepolia: 579fca7e3f10489b83c047f5cc17bec5
 Pooh Admin: 0x58984b2bf6f0f3de4f38290ed3c541ac27bac384b378073ab133af8b314a1887
 Jay Test: 0x7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23
 
-
-### 🌟 git submodule 🌟
-
-
-😈 git submodule add 
-```
-git submodule add https://github.com/example/lib.git external/lib
-git submodule update --init
-```
-😈 git submodule remove
-```
-git rm --cached poohgeth // path는 .gitmodules 파일의 참고
-code .gitmodules // poohgeth 항목 제거
-code .git/config // poohgeth 항목 제거
-rm -rf .git/modules/poohgeth
-rm -rf poohgeth // 안되면 sudo
-git commit -am "Removed submodule"
-git push
-```
-😈 git submodule update
-```
-git submodule update --remote
-```
-😈 하나만 다운로드 할때
-```
-git submodule update --init --recursive web2 
-```
-
----
-### 😈 git
-- submodule의 HEAD를 알고 싶을때: 
-  - git ls-tree HEAD lib/murky
-
----
-### 🥎 hardhat/foundry 🥎
-yarn add https://github.com/eth-infinitism/account-abstraction\#v0.6.0
-yarn hardhat node (chain id: 31337)
-
----
-### 🌸 IDEA
-* Update TOC
-```angular2html
-mouse right click -> insert... -> update TOC
-```
-* Goto section
-```
-TOC에서 CMD 버튼 누르고 "#..." 항목 누르기
-```
-* 모듈 추가
-
-File -> New -> Module from Existing Sources
-주의: 검색되서 나온 체크를 그냥 그대로 두고 진행해야함. uncheck하면 안됨.
-
-* Word Wrap
-```
-View -> Active Editor -> Use Soft Wraps
-```
----
-### 🌸 Whale 듀얼탭-Docker-Screen-AWS
-**Docker**
-- docker exec -it pow-node geth attach http://localhost:8545
-- docker logs pow-node // enode 알아낼때 사용할 수 있음
-- docker run --name postgresql \
-    -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password \
-    -p 5432:5432 \
-    -d postgres:latest
-- docker exec -it poohgeth-1 sh
-
-**Screen**
-- screen -S el1
-- screen -ls // ls
-- ctrl a+d // exit
-- screen -S el1  -X quit
-- screen -r -d 17288 <-- attatch되어 있는 것 detach
-
-**AWS**
-- 파일 가져오기:
-scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-3-37-37-195.ap-northeast-2.compute.amazonaws.com:~/share/test.txt .
-
-- 파일 보내기:
-scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-3-37-37-195.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
-
-
----
-### 🌸 curl
-- Post: 
-curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-Type: application/json" -X POST http://localhost:3000/mint
-
-- Get: 
-curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-type: application/json" -X GET "http://localhost:3000/balanceOf"
-
 # #
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
 NotImplementedError: Method 'HardhatEthersProvider.resolveName' is not implemented
@@ -3153,6 +3062,77 @@ error: externally-managed-environment
 
 
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
+### git
+- submodule의 HEAD를 알고 싶을때: 
+  - git ls-tree HEAD lib/murky
+
+### git submodule
+😈 git submodule add 
+```
+git submodule add https://github.com/example/lib.git external/lib
+git submodule update --init
+```
+😈 git submodule remove
+```
+git rm --cached poohgeth // path는 .gitmodules 파일의 참고
+code .gitmodules // poohgeth 항목 제거
+code .git/config // poohgeth 항목 제거
+rm -rf .git/modules/poohgeth
+rm -rf poohgeth // 안되면 sudo
+git commit -am "Removed submodule"
+git push
+```
+😈 git submodule update
+```
+git submodule update --remote
+```
+😈 하나만 다운로드 할때
+```
+git submodule update --init --recursive web2 
+```
+
+### Screen
+- screen -S el1
+- screen -ls // ls
+- ctrl a+d // exit
+- screen -S el1  -X quit
+- screen -r -d 17288 <-- attatch되어 있는 것 detach
+
+### AWS
+- 파일 가져오기:
+scp -i ~/pooh/pooh-seoul.pem ubuntu@ec2-3-37-37-195.ap-northeast-2.compute.amazonaws.com:~/share/test.txt .
+
+- 파일 보내기:
+scp -i ~/pooh/pooh-seoul.pem test.txt ubuntu@ec2-3-37-37-195.ap-northeast-2.compute.amazonaws.com:~/share/test.txt
+
+### 🌸 curl
+- Post: 
+curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-Type: application/json" -X POST http://localhost:3000/mint
+
+- Get: 
+curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-type: application/json" -X GET "http://localhost:3000/balanceOf"
+
+### 🥎 hardhat/foundry 🥎
+yarn add https://github.com/eth-infinitism/account-abstraction\#v0.6.0
+yarn hardhat node (chain id: 31337)
+
+### Docker
+- docker exec -it pow-node geth attach http://localhost:8545
+- docker logs pow-node // enode 알아낼때 사용할 수 있음
+- docker run --name postgresql \
+    -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password \
+    -p 5432:5432 \
+    -d postgres:latest
+- docker exec -it poohgeth-1 sh
+
+### 🌸 IDEA
+* Update TOC: mouse right click -> insert... -> update TOC
+* Goto section: TOC에서 CMD 버튼 누르고 "#..." 항목 누르기
+* 모듈 추가: File -> New -> Module from Existing Sources
+주의: 검색되서 나온 체크를 그냥 그대로 두고 진행해야함. uncheck하면 안됨.
+* Word Wrap: View -> Active Editor -> Use Soft Wraps
+* Terminal: ctrl + `
+
 ### 🌸 shortcuts
 - 듀얼 탭 열기/닫기: shift + cmd +  s
 - 탭 포커스 이동: shift + cmd +  e
@@ -3173,7 +3153,7 @@ error: externally-managed-environment
 - vi에서 단어 이동: w or b
 - move window between panes: Ctrl+Cmd+→/←
 
-### 🌸 Code
+### 🌸 code & foundry
 forge script script/poohnet-fund/DeployPoohnetFund.s.sol --rpc-url localnet  --private-key $PRIVATE_KEY --broadcast
 
 cast call $POOHNET_FUND_CONTRACT_ADDRESS "getOwner()" --rpc-url $LOCALNET_RPC_URL
@@ -3223,7 +3203,7 @@ datetime.fromtimestamp(7214123987)
 ---
  w3 = Web3(Web3.HTTPProvider('https://eth-sepolia.g.alchemy.com/v2/73I-qvN9yqtRcajnfvEarwA2FNHM4Nph')
 
----
+
 ### 🌸 텍스트 검색 - 프로세스 찾기 - zip
 ```
 find ./ -type f > files
