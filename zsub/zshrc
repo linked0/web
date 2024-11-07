@@ -35,14 +35,24 @@ ccp() {
 69 /web/erc6900-reference/
 43 /web/erc4337-aa/
 webf /webf/
-fo /web/ecourse-foundry/
+fo /webf/course-foundry/L8-html-fund-me/
 ex /web/ex/
-exf /web/exf/
+exf /webf/exf/
 exj /web/ex-j/
 exp /web/exp/
 exw /web/ex-w/
 oz /openzeppelin/
 ha /smart-contract-hacking/
+poco /pooh-land-contract/
+posr /pooh-land-backend/
+powe /pooh-land-frontend/
+rajs /rabbit-js/
+rasr /rabbit-server/
+rawe /rabbit-web/
+rawa /rabbit-wallet/
+tisw /tigger-swap-contract/
+tico /tigger-bridge-contract/
+tisr /tigger-bridge-server/
 
 pp package.json
 hh hardhat.config.ts
@@ -65,11 +75,11 @@ cc() {
   elif [ "$1" = "webf" ]; then
     folder="$HOME/work/webf/"
   elif [ "$1" = "fo" ]; then
-    folder="$HOME/work/web/ecourse-foundry/L7-foundry-fund-me/"
+    folder="$HOME/work/webf/course-foundry/L7-foundry-fund-me/"
   elif [ "$1" = "ex" ]; then
     folder="$HOME/work/web/ex/"
   elif [ "$1" = "exf" ]; then
-    folder="$HOME/work/web/exf/"
+    folder="$HOME/work/webf/exf/"
   elif [ "$1" = "exj" ]; then
     folder="$HOME/work/web/ex-j/"
   elif [ "$1" = "exp" ]; then
@@ -80,8 +90,26 @@ cc() {
     folder="$HOME/work/openzeppelin/"
   elif [ "$1" = "ha" ]; then
     folder="$HOME/work/smart-contract-hacking/"
-  elif [ "$1" = "polaco" ]; then
+  elif [ "$1" = "poco" ]; then
     folder="$HOME/work/pooh-land-contract/"
+  elif [ "$1" = "posr" ]; then
+    folder="$HOME/work/pooh-land-backend/"
+  elif [ "$1" = "powe" ]; then
+    folder="$HOME/work/pooh-land-frontend/"
+  elif [ "$1" = "rajs" ]; then
+    folder="$HOME/work/rabbit-js/"
+  elif [ "$1" = "rasr" ]; then
+    folder="$HOME/work/rabbit-server/"
+  elif [ "$1" = "rawe" ]; then
+    folder="$HOME/work/rabbit-web/"
+  elif [ "$1" = "rawa" ]; then
+    folder="$HOME/work/rabbit-wallet/"
+  elif [ "$1" = "tisw" ]; then
+    folder="$HOME/work/tigger-swap-contract/"
+  elif [ "$1" = "tico" ]; then
+    folder="$HOME/work/tigger-bridge-contract/"
+  elif [ "$1" = "tisr" ]; then
+    folder="$HOME/work/tigger-bridge-server/"
   elif [ -z "$2" ]; then
     code $@
     return
