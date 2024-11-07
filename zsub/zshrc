@@ -37,6 +37,7 @@ ccp() {
 webf /webf/
 fo /webf/course-foundry/L8-html-fund-me/
 ex /web/ex/
+ex5 /web/ex5/
 exf /webf/exf/
 exj /web/ex-j/
 exp /web/exp/
@@ -78,6 +79,8 @@ cc() {
     folder="$HOME/work/webf/course-foundry/L7-foundry-fund-me/"
   elif [ "$1" = "ex" ]; then
     folder="$HOME/work/web/ex/"
+  elif [ "$1" = "ex5" ]; then
+    folder="$HOME/work/web/ex5/"
   elif [ "$1" = "exf" ]; then
     folder="$HOME/work/webf/exf/"
   elif [ "$1" = "exj" ]; then
