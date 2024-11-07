@@ -50,6 +50,7 @@ ee .env
 rr README.md
 fo fountry.toml
 re remappings.txt
+ma Makefile
 "
 }
 
@@ -79,6 +80,8 @@ cc() {
     folder="$HOME/work/openzeppelin/"
   elif [ "$1" = "ha" ]; then
     folder="$HOME/work/smart-contract-hacking/"
+  elif [ "$1" = "polaco" ]; then
+    folder="$HOME/work/pooh-land-contract/"
   elif [ -z "$2" ]; then
     code $@
     return
@@ -96,6 +99,8 @@ cc() {
     file="foundry.toml"
   elif [ "$2" = "re" ]; then
     file="remappings.txt"
+  elif [ "$2" = "ma" ]; then
+    file="Makefile"
   fi
 
   echo "code \"$folder$file\""
@@ -152,9 +157,10 @@ alias ees='code ~/work/web/ex/.env.sample'
 alias ppp='code ~/work/web/ex/package.json'
 alias hhh='code ~/work/web/ex/hardhat.config.ts'
 alias ttt='code ~/work/web/ex/tsconfig.json'
-alias fff='code ~/work/web/exf/foundry.toml'
+alias fff='code ~/work/web3/exf/foundry.toml'
 alias rrr='code ~/work/web/ex/README.md'
 alias rrf='code ~/work/web/ex/remappings.txt'
+alias maa='code ~/work/web3/exf/Makefile'
 alias mmm='code ~/work/web/memo.txt'
 alias mmt='code ~/work/web/m2.txt'
 alias mms='code ~/work/web/ms.txt'
@@ -164,6 +170,7 @@ alias pp='code ./package.json'
 alias hh='code ./hardhat.config.ts'
 alias ee='code ./.env'
 alias rr='code ./README.md'
+alias ma='code ./Makefile'
 
 alias aaai='idea ~/work/web/ex/contracts/AllBasic.sol'
 alias bbbi='idea ~/work/web/ex/test/all-basic.ts'
@@ -175,9 +182,10 @@ alias eesi='idea ~/work/web/ex/.env.sample'
 alias pppi='idea ~/work/web/ex/package.json'
 alias hhhi='idea ~/work/web/ex/hardhat.config.ts'
 alias ttti='idea ~/work/web/ex/tsconfig.json'
-alias fffi='idea ~/work/web/exf/foundry.toml'
+alias fffi='idea ~/work/web3/exf/foundry.toml'
 alias rrri='idea ~/work/web/ex/README.md'
 alias rrfi='idea ~/work/web/ex/remappings.txt'
+alias maai='idea ~/work/web3/exf/Makefile'
 alias mmmi='idea ~/work/web/memo.txt'
 alias mmti='idea ~/work/web/m2.txt'
 alias mmsi='idea ~/work/web/ms.txt'
@@ -187,52 +195,7 @@ alias ppi='idea ./package.json'
 alias hhi='idea ./hardhat.config.ts'
 alias eei='idea ./.env'
 alias rri='idea ./README.md'
-
-alias aaav='vim ~/work/web/ex/contracts/AllBasic.sol'
-alias bbbv='vim ~/work/web/ex/test/all-basic.ts'
-alias cccv='vim ~/work/web/ex/scripts/deploy.ts'
-alias dddv='vim ~/work/web/dev.md'
-alias ddtv='vim ~/work/web/dev2.md'
-alias eeev='vim ~/work/web/ex/.env'
-alias eesv='vim ~/work/web/ex/.env.sample'
-alias pppv='vim ~/work/web/ex/package.json'
-alias hhhv='vim ~/work/web/ex/hardhat.config.ts'
-alias tttv='vim ~/work/web/ex/tsconfig.json'
-alias fffv='vim ~/work/web/exf/foundry.toml'
-alias rrrv='vim ~/work/web/ex/README.md'
-alias rrfv='vim ~/work/web/ex/remappings.txt'
-alias mmmv='vim ~/work/web/memo.txt'
-alias mmtv='vim ~/work/web/m2.txt'
-alias mmsv='vim ~/work/web/ms.txt'
-alias zzv='vim ~/.zshrc'
-alias zzv='vim ~/work/web/zsub/zshrc'
-alias ppv='vim ./package.json'
-alias hhv='vim ./hardhat.config.ts'
-alias eev='vim ./.env'
-alias rrv='vim ./README.md'
-
-alias aaac='cat ~/work/web/ex/contracts/AllBasic.sol'
-alias bbbc='cat ~/work/web/ex/test/all-basic.ts'
-alias cccc='cat ~/work/web/ex/scripts/deploy.ts'
-alias dddc='cat ~/work/web/dev.md'
-alias ddtc='cat ~/work/web/dev2.md'
-alias eeec='cat ~/work/web/ex/.env'
-alias eesc='cat ~/work/web/ex/.env.sample'
-alias pppc='cat ~/work/web/ex/package.json'
-alias hhhc='cat ~/work/web/ex/hardhat.config.ts'
-alias tttc='cat ~/work/web/ex/tsconfig.json'
-alias fffc='cat ~/work/web/exf/foundry.toml'
-alias rrrc='cat ~/work/web/ex/README.md'
-alias rrfc='cat ~/work/web/ex/remappings.txt'
-alias mmmc='cat ~/work/web/memo.txt'
-alias mmtc='cat ~/work/web/m2.txt'
-alias mmsc='cat ~/work/web/ms.txt'
-alias zzc='cat ~/.zshrc'
-alias zzc='cat ~/work/web/zsub/zshrc'
-alias ppc='cat ./package.json'
-alias hhc='cat ./hardhat.config.ts'
-alias eec='cat ./.env'
-alias rrc='cat ./README.md'
+alias mai='idea ./Makefile'
 
 alias zzz='. ~/.zshrc'
 
