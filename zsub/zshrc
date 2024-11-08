@@ -32,6 +32,7 @@ ftv() {
 
 # Declare an associative array
 declare -A folderMap
+declare -A fileMap
 
 # Assign values to the map
 folderMap["69"]="$HOME/work/webf/erc6900-reference/"
@@ -57,13 +58,13 @@ folderMap["tisw"]="$HOME/work/tigger-swap-contract/"
 folderMap["tico"]="$HOME/work/tigger-bridge-contract/"
 folderMap["tisr"]="$HOME/work/tigger-bridge-server/"
 
-folderMap["pp"]="package.json"
-folderMap["hh"]="hardhat.config.ts"
-folderMap["ee"]=".env"
-folderMap["rr"]="README.md"
-folderMap["fo"]="fountry.toml"
-folderMap["re"]="eemappings.txt"
-folderMap["ma"]="Makefile"
+fileMap["pp"]="package.json"
+fileMap["hh"]="hardhat.config.ts"
+fileMap["ee"]=".env"
+fileMap["rr"]="README.md"
+fileMap["fo"]="fountry.toml"
+fileMap["re"]="eemappings.txt"
+fileMap["ma"]="Makefile"
 
 cc() {
   local folder=""
@@ -85,24 +86,14 @@ cc() {
     fi
     return
   fi
+
+  if [ -z "$folder" ]; then
+    folder="./"
+  fi
   
-  if [ "$2" = "pp" ]; then
-    file="package.json"
-  elif [ "$2" = "hh" ]; then
-    file="hardhat.config.ts"
-  elif [ "$2" = "ee" ]; then
-    file=".env"
-  elif [ "$2" = "rr" ]; then
-    file="README.md"
-  elif [ "$2" = "fo" ]; then
-    file="foundry.toml"
-  elif [ "$2" = "re" ]; then
-    file="remappings.txt"
-  elif [ "$2" = "ma" ]; then
-    file="Makefile"
-  else
-    echo "Not supported file"
-    return
+  file=${fileMap["$2"]}
+  if [ -z "$file" ]; then
+    file=$2
   fi
 
   echo "code \"$folder$file\""
