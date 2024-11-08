@@ -219,10 +219,55 @@ forge --version
 😈 Calendar 추가(Dev Team)
 😈 스타일가이드: https://github.com/bpfkorea/agora/blob/v0.x.x/doc/Style.md, 상세한 설명 필요
 
-🌼🌟🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱※ 반짝🌟🔴
-
+🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱
+🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀
+🌼🌟🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱※ 반짝🌟🔴⚡️⚡️⚡️⚡️⚡️
+⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️
+🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾
 
 # # 1. Code/Error
+
+#### NotImplementedError: Method 'HardhatEthersProvider.resolveName' is not implemented
+      at HardhatEthersProvider.resolveName (/Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-ethers/src/internal/hardhat-ethers-provider.ts:364:11)
+      at HardhatEthersSigner.resolveName (/Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-ethers/src/signers.ts:108:26)
+      at new BaseContract (/Users/hyunjaelee/work/web/ex/node_modules/ethers/src.ts/contract/contract.ts:722:40)
+      at new Contract (/Users/hyunjaelee/work/web/ex/node_modules/ethers/src.ts/contract/contract.ts:1120:1)
+      at Context.<anonymous> (/Users/hyunjaelee/work/web/ex/test/zhacking/sensitive.ts:22:20)
+
+==> const SECRET_DOOR_ADDRESS = '0x0x148f340701D3Ff95c7aA0491f5497709861Ca27D';
+이런 실수는 하지 말자.
+
+---
+error: externally-managed-environment
+
+× This environment is externally managed
+╰─> To install Python packages system-wide, try apt install
+    python3-xyz, where xyz is the package you are trying to
+    install.
+
+---
+error: externally-managed-environment
+
+× This environment is externally managed
+╰─> To install Python packages system-wide, try brew install
+    xyz, where xyz is the package you are trying to
+    install.
+
+==> pip3 install git+https://github.com/elyase/ethers-py --break-system-packages
+
+---
+  × Preparing metadata (pyproject.toml) did not run successfully.
+  │ exit code: 1
+  ╰─> [6 lines of output]
+
+      Cargo, the Rust package manager, is not installed or is not on PATH.
+      This package requires Rust and Cargo to compile extensions. Install it through
+      the system's package manager or via https://rustup.rs/
+
+      Checking for Rust toolchain....
+==>  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+ export PATH="$HOME/.cargo/bin:$PATH"
+ 
 
 #### You probably tried to import the "hardhat" module from your config or a file imported from it. This is not possible, as Hardhat can't be initialized while its config is being defined.
 
@@ -3017,50 +3062,6 @@ Jay Test: 0x7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23
 
 # #
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
-NotImplementedError: Method 'HardhatEthersProvider.resolveName' is not implemented
-      at HardhatEthersProvider.resolveName (/Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-ethers/src/internal/hardhat-ethers-provider.ts:364:11)
-      at HardhatEthersSigner.resolveName (/Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-ethers/src/signers.ts:108:26)
-      at new BaseContract (/Users/hyunjaelee/work/web/ex/node_modules/ethers/src.ts/contract/contract.ts:722:40)
-      at new Contract (/Users/hyunjaelee/work/web/ex/node_modules/ethers/src.ts/contract/contract.ts:1120:1)
-      at Context.<anonymous> (/Users/hyunjaelee/work/web/ex/test/zhacking/sensitive.ts:22:20)
-
-==> const SECRET_DOOR_ADDRESS = '0x0x148f340701D3Ff95c7aA0491f5497709861Ca27D';
-이런 실수는 하지 말자.
-
----
-error: externally-managed-environment
-
-× This environment is externally managed
-╰─> To install Python packages system-wide, try apt install
-    python3-xyz, where xyz is the package you are trying to
-    install.
-
----
-error: externally-managed-environment
-
-× This environment is externally managed
-╰─> To install Python packages system-wide, try brew install
-    xyz, where xyz is the package you are trying to
-    install.
-
-==> pip3 install git+https://github.com/elyase/ethers-py --break-system-packages
-
----
-  × Preparing metadata (pyproject.toml) did not run successfully.
-  │ exit code: 1
-  ╰─> [6 lines of output]
-
-      Cargo, the Rust package manager, is not installed or is not on PATH.
-      This package requires Rust and Cargo to compile extensions. Install it through
-      the system's package manager or via https://rustup.rs/
-
-      Checking for Rust toolchain....
-==>  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
- export PATH="$HOME/.cargo/bin:$PATH"
- 
-
-
-
 🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓🏓
 ### git
 - submodule의 HEAD를 알고 싶을때: 
@@ -3093,10 +3094,11 @@ git submodule update --init --recursive web2
 
 ### Screen
 - screen -S el1
-- screen -ls // ls
-- ctrl a+d // exit
+- screen -ls            // ls
+- screen -r 17288       // attach하기. ls에서 나온 숫자만 입력
+- ctrl a+d              // exit
 - screen -S el1  -X quit
-- screen -r -d 17288 <-- attatch되어 있는 것 detach
+- screen -r -d 17288    // attatch되어 있는 것 detach
 
 ### AWS
 - 파일 가져오기:

@@ -35,6 +35,7 @@ declare -A folderMap
 declare -A fileMap
 
 # Assign values to the map
+folderMap["poge"]="$HOME/work/pooh-geth/"
 folderMap["69"]="$HOME/work/webf/erc6900-reference/"
 folderMap["43"]="$HOME/work/web/erc4337-aa/"
 folderMap["webf"]="$HOME/work/webf/"
@@ -54,8 +55,8 @@ folderMap["rajs"]="$HOME/work/rabbit-js/"
 folderMap["rasr"]="$HOME/work/rabbit-server/"
 folderMap["rawe"]="$HOME/work/rabbit-web/"
 folderMap["rawa"]="$HOME/work/rabbit-wallet/"
-folderMap["tisw"]="$HOME/work/tigger-swap-contract/"
-folderMap["tico"]="$HOME/work/tigger-bridge-contract/"
+folderMap["swco"]="$HOME/work/tigger-swap-contracts/"
+folderMap["tico"]="$HOME/work/tigger-bridge-contracts/"
 folderMap["tisr"]="$HOME/work/tigger-bridge-server/"
 
 fileMap["pp"]="package.json"
