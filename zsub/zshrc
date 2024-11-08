@@ -30,91 +30,59 @@ ftv() {
   forge test -vvvv --match-test $1
 }
 
-ccp() {
-  echo "
-69 /web/erc6900-reference/
-43 /web/erc4337-aa/
-webf /webf/
-fo /webf/course-foundry/L8-html-fund-me/
-ex /web/ex/
-ex5 /web/ex5/
-exf /webf/exf/
-exj /web/ex-j/
-exp /web/exp/
-exw /web/ex-w/
-oz /openzeppelin/
-ha /smart-contract-hacking/
-poco /pooh-land-contract/
-posr /pooh-land-backend/
-powe /pooh-land-frontend/
-rajs /rabbit-js/
-rasr /rabbit-server/
-rawe /rabbit-web/
-rawa /rabbit-wallet/
-tisw /tigger-swap-contract/
-tico /tigger-bridge-contract/
-tisr /tigger-bridge-server/
+# Declare an associative array
+declare -A folderMap
 
-pp package.json
-hh hardhat.config.ts
-ee .env
-rr README.md
-fo fountry.toml
-re remappings.txt
-ma Makefile
-"
-}
+# Assign values to the map
+folderMap["69"]="$HOME/work/webf/erc6900-reference/"
+folderMap["43"]="$HOME/work/web/erc4337-aa/"
+folderMap["webf"]="$HOME/work/webf/"
+folderMap["fo"]="$HOME/work/webf/course-foundry/L7-foundry-fund-me/"
+folderMap["ex"]="$HOME/work/web/ex/"
+folderMap["ex5"]="$HOME/work/web/ex5/"
+folderMap["exf"]="$HOME/work/webf/exf/"
+folderMap["exj"]="$HOME/work/web/ex-j/"
+folderMap["exp"]="$HOME/work/web/exp/"
+folderMap["exw"]="$HOME/work/web/ex-w/"
+folderMap["oz"]="$HOME/work/openzeppelin/"
+folderMap["ha"]="$HOME/work/smart-contract-hacking/"
+folderMap["poco"]="$HOME/work/pooh-land-contract/"
+folderMap["posr"]="$HOME/work/pooh-land-backend/"
+folderMap["powe"]="$HOME/work/pooh-land-frontend/"
+folderMap["rajs"]="$HOME/work/rabbit-js/"
+folderMap["rasr"]="$HOME/work/rabbit-server/"
+folderMap["rawe"]="$HOME/work/rabbit-web/"
+folderMap["rawa"]="$HOME/work/rabbit-wallet/"
+folderMap["tisw"]="$HOME/work/tigger-swap-contract/"
+folderMap["tico"]="$HOME/work/tigger-bridge-contract/"
+folderMap["tisr"]="$HOME/work/tigger-bridge-server/"
+
+folderMap["pp"]="package.json"
+folderMap["hh"]="hardhat.config.ts"
+folderMap["ee"]=".env"
+folderMap["rr"]="README.md"
+folderMap["fo"]="fountry.toml"
+folderMap["re"]="eemappings.txt"
+folderMap["ma"]="Makefile"
 
 cc() {
   local folder=""
   local file=""
-  
-  if [ "$1" = "69" ]; then
-    folder="$HOME/work/webf/erc6900-reference/"
-  elif [ "$1" = "43" ]; then
-    folder="$HOME/work/web/erc4337-aa/"
-  elif [ "$1" = "webf" ]; then
-    folder="$HOME/work/webf/"
-  elif [ "$1" = "fo" ]; then
-    folder="$HOME/work/webf/course-foundry/L7-foundry-fund-me/"
-  elif [ "$1" = "ex" ]; then
-    folder="$HOME/work/web/ex/"
-  elif [ "$1" = "ex5" ]; then
-    folder="$HOME/work/web/ex5/"
-  elif [ "$1" = "exf" ]; then
-    folder="$HOME/work/webf/exf/"
-  elif [ "$1" = "exj" ]; then
-    folder="$HOME/work/web/ex-j/"
-  elif [ "$1" = "exp" ]; then
-    folder="$HOME/work/web/exp/"
-  elif [ "$1" = "exw" ]; then
-    folder="$HOME/work/web/ex-w/"
-  elif [ "$1" = "oz" ]; then
-    folder="$HOME/work/openzeppelin/"
-  elif [ "$1" = "ha" ]; then
-    folder="$HOME/work/smart-contract-hacking/"
-  elif [ "$1" = "poco" ]; then
-    folder="$HOME/work/pooh-land-contract/"
-  elif [ "$1" = "posr" ]; then
-    folder="$HOME/work/pooh-land-backend/"
-  elif [ "$1" = "powe" ]; then
-    folder="$HOME/work/pooh-land-frontend/"
-  elif [ "$1" = "rajs" ]; then
-    folder="$HOME/work/rabbit-js/"
-  elif [ "$1" = "rasr" ]; then
-    folder="$HOME/work/rabbit-server/"
-  elif [ "$1" = "rawe" ]; then
-    folder="$HOME/work/rabbit-web/"
-  elif [ "$1" = "rawa" ]; then
-    folder="$HOME/work/rabbit-wallet/"
-  elif [ "$1" = "tisw" ]; then
-    folder="$HOME/work/tigger-swap-contract/"
-  elif [ "$1" = "tico" ]; then
-    folder="$HOME/work/tigger-bridge-contract/"
-  elif [ "$1" = "tisr" ]; then
-    folder="$HOME/work/tigger-bridge-server/"
-  elif [ -z "$2" ]; then
-    code $@
+
+  folder=${folderMap["$1"]}
+  if [ -z "$1" ]; then
+    for key in "${(@k)folderMap}"; do
+      echo "Key: $key, Value: ${folderMap[$key]}"
+    done
+  fi
+
+  if [ -z "$2" ]; then
+    if [ -z "$folder" ]; then
+      code $@
+    else
+      echo "cd \"$folder\""
+      cd "$folder"
+    fi
     return
   fi
   
@@ -132,47 +100,14 @@ cc() {
     file="remappings.txt"
   elif [ "$2" = "ma" ]; then
     file="Makefile"
+  else
+    echo "Not supported file"
+    return
   fi
 
   echo "code \"$folder$file\""
   code "$folder$file"
 }
-
-dd() {
-  local folder=""
-  local file=""
-  
-  if [ "$1" = "69" ]; then
-    folder="$HOME/work/webf/erc6900-reference/"
-  elif [ "$1" = "43" ]; then
-    folder="$HOME/work/web/erc4337-aa/"
-  elif [ "$1" = "webf" ]; then
-    folder="$HOME/work/webf/"
-  elif [ "$1" = "fo" ]; then
-    folder="$HOME/work/web/ecourse-foundry/L7-foundry-fund-me/"
-  elif [ "$1" = "ex" ]; then
-    folder="$HOME/work/web/ex/"
-  elif [ "$1" = "exf" ]; then
-    folder="$HOME/work/web/exf/"
-  elif [ "$1" = "exj" ]; then
-    folder="$HOME/work/web/ex-j/"
-  elif [ "$1" = "exp" ]; then
-    folder="$HOME/work/web/exp/"
-  elif [ "$1" = "exw" ]; then
-    folder="$HOME/work/web/ex-w/"
-  elif [ "$1" = "oz" ]; then
-    folder="$HOME/work/openzeppelin/"
-  elif [ "$1" = "ha" ]; then
-    folder="$HOME/work/smart-contract-hacking/"
-  elif [ -z "$2" ]; then
-    code $@
-    return
-  fi
-
-  echo "cd \"$folder\""
-  cd "$folder"
-}
-
 
 alias python=/usr/local/bin/python3
 alias pip=/opt/homebrew/bin/pip3
@@ -243,7 +178,7 @@ alias lst='ls -al ~/work/web/ex/test'
 
 alias web='cd ~/work/web'
 alias exx='cd ~/work/web/ex'
-alias exf='cd ~/work/web/exf'
+alias exf='cd ~/work/web3/exf'
 alias exj='cd ~/work/web/ex-j'
 alias exp='cd ~/work/web/exp'
 alias exw='cd ~/work/web/ex-w'
