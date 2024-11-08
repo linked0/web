@@ -3066,6 +3066,13 @@ Jay Test: 0x7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23
 ### git
 - submodule의 HEAD를 알고 싶을때: 
   - git ls-tree HEAD lib/murky
+- submodule의 commit hash 변경
+  - cd path/to/submodule
+  - git checkout <commit-hash>
+  - cd ..
+  - git add path/to/submodule
+  - git commit -m "Update submodule to specific commit hash"
+  - git push
 
 ### git submodule
 😈 git submodule add 
