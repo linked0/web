@@ -37,7 +37,7 @@ declare -A folderMap
 folderMap["69"]="$HOME/work/webf/erc6900-reference/"
 folderMap["43"]="$HOME/work/web/erc4337-aa/"
 folderMap["webf"]="$HOME/work/webf/"
-folderMap["fo"]="$HOME/work/webf/course-foundry/L7-foundry-fund-me/"
+folderMap["foc"]="$HOME/work/webf/course-foundry/L7-foundry-fund-me/"
 folderMap["ex"]="$HOME/work/web/ex/"
 folderMap["ex5"]="$HOME/work/web/ex5/"
 folderMap["exf"]="$HOME/work/webf/exf/"
