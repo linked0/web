@@ -57,8 +57,10 @@ folderMap["rase"]="$HOME/work/rabbit-server/"
 folderMap["rawe"]="$HOME/work/rabbit-web/"
 folderMap["rawa"]="$HOME/work/rabbit-wallet/"
 folderMap["swco"]="$HOME/work/tigger-swap-contracts/"
+folderMap["tisd"]="$HOME/work/tigger-swap-sdk/"
 folderMap["tico"]="$HOME/work/tigger-bridge-contracts/"
 folderMap["tise"]="$HOME/work/tigger-bridge-server/"
+folderMap["tiwe"]="$HOME/work/tigger-web/"
 
 fileMap["pp"]="package.json"
 fileMap["hh"]="hardhat.config.ts"
@@ -161,6 +163,7 @@ alias rri='idea ./README.md'
 alias mai='idea ./Makefile'
 
 alias zzz='. ~/.zshrc'
+alias mmc='mkdir -p ~/work/web/zzmemo; cp ~/work/web/memo.txt ~/work/web/zzmemo/memo.txt.bak.$(date +%y%m%d%H%M%S)'
 
 alias occ='open https://colab.research.google.com/drive/1QD7vqBdoZvOd-2tBAYIMOSQoZF6-L-BX#scrollTo=f3NGQk2BhcOu'
 alias ozz='open /Users/hyunjaelee/work/web/ex/node_modules/@openzeppelin/contracts'
