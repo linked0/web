@@ -3,8 +3,13 @@ Implementation of contracts for [ERC-4337](https://eips.ethereum.org/EIPS/eip-43
 
 ## How to deploy contracts to localnet
 ```
+nvm use 18
 yarn deploy:localnet
 ```
+
+## Points to check
+If this value is set to true, the address of the contract doesn't change.
+- `deterministicDeployment: true` in deploy/1_deploy_entrypoint.ts
 
 ## Resources
 

@@ -227,6 +227,20 @@ forge --version
 
 # # 1. Code/Error
 
+#### URL.canParse(range)
+/Users/jay/.nvm/versions/node/v16.20.2/lib/node_modules/corepack/dist/lib/corepack.cjs:22095
+  const isURL = URL.canParse(range);
+                    ^
+TypeError: URL.canParse is not a function
+    at parseSpec (/Users/jay/.nvm/versions/node/v16.20.2/lib/node_modules/corepack/dist/lib/corepack.cjs:22095:21)
+    at loadSpec (/Users/jay/.nvm/versions/node/v16.20.2/lib/node_modules/corepack/dist/lib/corepack.cjs:22158:11)
+    at async Engine.findProjectSpec (/Users/jay/.nvm/versions/node/v16.20.2/lib/node_modules/corepack/dist/lib/corepack.cjs:22348:22)
+    at async Engine.executePackageManagerRequest (/Users/jay/.nvm/versions/node/v16.20.2/lib/node_modules/corepack/dist/lib/corepack.cjs:22404:24)
+    at async Object.runMain (/Users/jay/.nvm/versions/node/v16.20.2/lib/node_modules/corepack/dist/lib/corepack.cjs:23096:5)
+
+==> nvm use 18
+
+
 #### NotImplementedError: Method 'HardhatEthersProvider.resolveName' is not implemented
       at HardhatEthersProvider.resolveName (/Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-ethers/src/internal/hardhat-ethers-provider.ts:364:11)
       at HardhatEthersSigner.resolveName (/Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-ethers/src/signers.ts:108:26)
