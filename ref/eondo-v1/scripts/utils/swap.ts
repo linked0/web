@@ -1,6 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/dist/src/signers";
-import { getAddress } from "../utils/helpers";
+import { getAddress } from "./helpers";
 
 export type SWAP_PARAMS = {
   hre: HardhatRuntimeEnvironment;

@@ -8,7 +8,7 @@ import { TestCounter__factory, EntryPoint__factory } from '../typechain'
 import '../test/aa.init'
 import { parseEther } from 'ethers/lib/utils'
 import { providers } from 'ethers'
-import { TransactionReceipt } from '@ethersproject/abstract-provider/src.ts/index';
+import { TransactionReceipt } from '@ethersproject/abstract-provider/src.ts';
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
 (async () => {

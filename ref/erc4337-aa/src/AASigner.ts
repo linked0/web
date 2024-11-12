@@ -1,5 +1,5 @@
 import { TransactionResponse } from '@ethersproject/abstract-provider'
-import { TransactionReceipt } from '@ethersproject/abstract-provider/src.ts/index'
+import { TransactionReceipt } from '@ethersproject/abstract-provider/src.ts'
 import { BytesLike, hexValue } from '@ethersproject/bytes'
 import { Deferrable, resolveProperties } from '@ethersproject/properties'
 import { BaseProvider, Provider, TransactionRequest } from '@ethersproject/providers'
