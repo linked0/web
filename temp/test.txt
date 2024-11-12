@@ -1,8 +1,0 @@
-modify 200907
-added luna 11.12
-first commit
-added linked0 11.22
-second commit
-modified 17 4:48
-17 5:03
-endof 200907
