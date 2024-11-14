@@ -104,8 +104,8 @@ cc() {
   code "$folder$file"
 }
 
-alias python=/usr/local/bin/python3
-alias pip=/opt/homebrew/bin/pip3
+alias python=python3
+alias pip=pip3
 # alias geth=~/work/poohgeth/build/bin/geth
 
 alias aaa='code ~/work/web/contracts/AllBasic.sol'
@@ -118,7 +118,7 @@ alias ees='code ~/work/web/.env.sample'
 alias ppp='code ~/work/web/package.json'
 alias hhh='code ~/work/web/hardhat.config.ts'
 alias ttt='code ~/work/web/tsconfig.json'
-alias rrr='code ~/work/web/ex/README.md'
+alias rrr='code ~/work/web/README.md'
 alias mmm='code ~/work/web/memo.txt'
 alias mmt='code ~/work/web/m2.txt'
 alias mms='code ~/work/web/ms.txt'
@@ -145,6 +145,7 @@ alias eesi='idea ~/work/web/.env.sample'
 alias pppi='idea ~/work/web/package.json'
 alias hhhi='idea ~/work/web/hardhat.config.ts'
 alias ttti='idea ~/work/web/tsconfig.json'
+alias rrri='code ~/work/web/README.md'
 alias mmmi='idea ~/work/web/memo.txt'
 alias mmti='idea ~/work/web/m2.txt'
 alias mmsi='idea ~/work/web/ms.txt'
@@ -164,6 +165,7 @@ alias mai='idea ./Makefile'
 alias web='cd ~/work/web'
 alias ex5='cd ~/work/web/ex5'
 alias zzz='. ~/.zshrc'
+alias zzzz='cat ~/.zshrc'
 alias mmc='mkdir -p ~/work/web/zsub/zzmemo; cp ~/work/web/memo.txt ~/work/web/zsub/zzmemo/memo.txt.bak.$(date +%y%m%d%H%M%S)'
 
 alias occ='open https://colab.research.google.com/drive/1QD7vqBdoZvOd-2tBAYIMOSQoZF6-L-BX#scrollTo=f3NGQk2BhcOu'

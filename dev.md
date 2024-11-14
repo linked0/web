@@ -227,6 +227,21 @@ forge --version
 
 # # 1. Code/Error
 
+#### ProviderError: Must be authenticated!
+      at HttpProvider.request (node_modules/hardhat/src/internal/core/providers/http.ts:49:19)
+      at getNetworkId (node_modules/hardhat/src/internal/hardhat-network/provider/utils/makeForkClient.ts:109:43)
+      at Object.makeForkClient (node_modules/hardhat/src/internal/hardhat-network/provider/utils/makeForkClient.ts:40:27)
+      at Function.create (node_modules/hardhat/src/internal/hardhat-network/provider/node.ts:153:15)
+      at HardhatNetworkProvider._init (node_modules/hardhat/src/internal/hardhat-network/provider/provider.ts:234:46)
+      at HardhatNetworkProvider._send (node_modules/hardhat/src/internal/hardhat-network/provider/provider.ts:182:5)
+      at HardhatNetworkProvider.request (node_modules/hardhat/src/internal/hardhat-network/provider/provider.ts:108:18)
+      at EthersProviderWrapper.send (node_modules/@nomiclabs/hardhat-ethers/src/internal/ethers-provider-wrapper.ts:13:20)
+      at Object.getSigners (node_modules/@nomiclabs/hardhat-ethers/src/internal/helpers.ts:88:20)
+      at Context.<anonymous> (test/uni.spec.usdt-bond.ts:22:15)
+
+==> .env에 Mainnet URL에 Alchemy API URL이 세팅되어야 함.
+MAINNET_RPC_URL='https://eth-mainnet.g.alchemy.com/v2/API-KEY'
+
 #### URL.canParse(range)
 /Users/jay/.nvm/versions/node/v16.20.2/lib/node_modules/corepack/dist/lib/corepack.cjs:22095
   const isURL = URL.canParse(range);
@@ -3138,6 +3153,21 @@ curl -d '{"address":"0x1666186e21F3c130fF15a6c2B0b1BbC4F6689B3F"}' -H "Content-t
 ### 🥎 hardhat/foundry 🥎
 yarn add https://github.com/eth-infinitism/account-abstraction\#v0.6.0
 yarn hardhat node (chain id: 31337)
+
+
+### yarn
+#### Add a local dependency for tigger-swap-sdk
+In tigger-swap-sdk folder
+- `yarn build`
+- `yarn link`
+
+In tigger-web using tigger-web folder
+- Add a local dependency for tigger-swap-sdk with yarn
+  ```
+  yarn add -D file:/Users/jay/work/tigger-swap-sdk 
+  ```
+- `yarn link "tigger-swap-sdk"` 
+- `yarn list`
 
 ### Docker
 - docker exec -it pow-node geth attach http://localhost:8545

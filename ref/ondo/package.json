@@ -32,7 +32,8 @@
     "deploy:bsc": "export BLOCKCHAIN='bsc' && hardhat --network bsc deploy",
     "deploy:bsc-testnet": "export BLOCKCHAIN='bsc' && hardhat --network 'bsc-testnet' deploy",
     "deploy:polygon": "export BLOCKCHAIN='polygon' && hardhat --network polygon deploy",
-    "deploy:mumbai": "export BLOCKCHAIN='polygon' && hardhat --network mumbai deploy"
+    "deploy:mumbai": "export BLOCKCHAIN='polygon' && hardhat --network mumbai deploy",
+    "deploy:marigold": "export BLOCKCHAIN='marigold' && hardhat --network marigold deploy"
   },
   "dependencies": {
     "@nomiclabs/hardhat-waffle": "2.0.1",

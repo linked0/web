@@ -60,6 +60,12 @@ const config: HardhatUserConfig = {
       },
       chainId: process.env.CHAIN_ID ? parseInt(process.env.CHAIN_ID) : 1337,
     },
+    marigold: {
+      accounts: [process.env.TESTNET_PRIVATE_KEY!],
+      timeout: 60 * 30 * 1000,
+      url: process.env.MARIGOLD_RPC_URL!,
+      gas: 5000000,
+    },
     ropsten: {
       accounts: [process.env.TESTNET_PRIVATE_KEY!],
       timeout: 60 * 30 * 1000,
