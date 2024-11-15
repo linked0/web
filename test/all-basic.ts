@@ -3,7 +3,7 @@ import * as path from "path";
 
 import { loadFixture, time } from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
-import { BytesLike, TypedDataDomain } from "ethers";
+import { BytesLike, TypedDataDomain, Signature } from "ethers";
 import { ethers, network } from "hardhat";
 const {
   encodeBytes32String,
@@ -55,7 +55,7 @@ const ALLBASIC_JSON_PATH = "../artifacts/contracts/AllBasic.sol/AllBasic.json";
 //    -> toBeHex for numbers
 // solidityPack -> solidityPacked
 // Web3Provider -> BrowserProvider
-// splitSignature -> https://github.com/ethers-io/ethers.js/discussions/4370
+// splitSignature -> Signature.from(signature), https://github.com/ethers-io/ethers.js/discussions/4370
 // checkProperties, shallowCopy -> The checkProperties and shallowCopy have been removed in favor of using .map and Object.assign.
 // formatBytes32String -> encodeBytes32String
 // parseBytes32String -> decodeBytes32String
@@ -77,10 +77,10 @@ describe("AllPairVault", () => {
   const abiCoder = ethers.AbiCoder.defaultAbiCoder();
 
   beforeEach(async () => {
-    const execAccountFactory = await ethers.getContractFactory("ExecAccount");
-    execAccount = await execAccountFactory.deploy();
-    const operatorFactory = await ethers.getContractFactory("Operator");
-    operator = await operatorFactory.deploy();
+    execAccount = await ethers.deployContract("ExecAccount");
+    execAccount.waitForDeployment();
+    operator = await ethers.deployContract("Operator");
+    operator.waitForDeployment();
     [deployer] = await ethers.getSigners();
   });
 
@@ -215,8 +215,14 @@ describe("AllPairVault", () => {
         content: "Hello, Hardhat!",
       };
 
+      const expectedR = "0xe65368172b62be3909187f6b44108765726daec9cbf280e217e7cb925b8f5c01";
+      const expectedS = "0x6ee2077d85c537b6357dc14a55b5926f827b4d8e23a562ec86c60b73908cf9ad";
+      const expectedV = 27;
       const signature = await owner.signTypedData(domain, types, value);
-      console.log("Signature:", signature);
+      let sig = Signature.from(signature);
+      expect(sig.r).to.equal(expectedR);
+      expect(sig.s).to.equal(expectedS);
+      expect(sig.v).to.equal(expectedV);
 
       const isValid = await allBasic.verify(owner.address, value, signature);
       expect(isValid).to.be.true;
