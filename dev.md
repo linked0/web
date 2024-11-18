@@ -3299,8 +3299,9 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 - replace string: cmd + d
 ---
 - echo 'export PATH="/usr/local/opt/go@1.21/bin:$PATH"' >> /Users/jay/.zshrc
-- egrep -irnH --include=\*.cpp --exclude-dir=.svn 'beacon.pntbiz.com' ./ 
-- egrep -irnH --include=\*.{ts,js}  'createUnionType' ./
+- egrep -irnH --exclude-dir=.git 'test test test' ./ <== 모든 파일 확장자 검색
+- egrep -irnH --include=\*.ts --exclude-dir=.git 'test test test' ./
+- egrep -irnH --include=\*.{ts,sol} --exclude-dir=.git 'test test test' ./
 - ps aux | grep postgres
 - tar --exclude='node_modules' -cvzf bccard.tar.gz bccard
 - tar -xvzf xxx.tar.gz -C ./data
