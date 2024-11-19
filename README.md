@@ -48,6 +48,21 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
 - `eopenzeppelin-contracts`: openzeppelin contracts
   - [openzeppelin github](https://github.com/OpenZeppelin/openzeppelin-contracts)
 
+
+## Run Devnet/Marigold
+### Marigold
+```
+./init marigold 1
+./enode-cmd
+```
+### Devnet
+The chain id is 7212302. So it uses enode-cmd-devnet.
+```
+./init devnet 1
+./enode-cmd-devnet
+```
+As of 19th Nov. 2024, we use `http://3.37.37.195:8545` for the RPC URL.
+
 ## ethers v5 vs ethers v6 issue 
 - all-basic.ts를 두개로 분리함
 
