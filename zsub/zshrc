@@ -26,9 +26,22 @@ adf() {
 ft() {
   forge test -vvv --match-test $1
 }
-ftv() {
+ftc() {
+  forge test -vvv --match-contract $1
+}
+ftf() {
+  forge test -vvv --match-path $1
+}
+ft2() {
   forge test -vvvv --match-test $1
 }
+ftc2() {
+  forge test -vvvv --match-contract $1
+}
+ftf2() {
+  forge test -vvvv --match-path $1
+}
+
 
 # Declare an associative array
 declare -A folderMap
@@ -112,21 +125,28 @@ alias aaa='code ~/work/web/contracts/AllBasic.sol'
 alias bbb='code ~/work/web/test/all-basic.ts'
 alias ccc='code ~/work/web/scripts/deploy.ts'
 alias ddd='code ~/work/web/dev.md'
-alias dd2='code ~/work/web/dev2.md'
 alias eee='code ~/work/web/.env'
-alias ees='code ~/work/web/.env.sample'
 alias ppp='code ~/work/web/package.json'
 alias hhh='code ~/work/web/hardhat.config.ts'
 alias ttt='code ~/work/web/tsconfig.json'
 alias rrr='code ~/work/web/README.md'
+alias aaaf='code ~/work/webf/src/Counter.sol'
+alias bbbf='code ~/work/webf/test/Counter.t.sol'
+alias cccf='code ~/work/webf/script/Counter.s.sol'
+alias dddf='code ~/work/webf/dev.md'
+alias eeef='code ~/work/webf/.env'
+alias pppf='code ~/work/webf/package.json'
+alias hhhf='code ~/work/webf/hardhat.config.ts'
+alias tttf='code ~/work/webf/tsconfig.json'
+alias rrrf='code ~/work/webf/README.md'
+alias makf='code ~/work/webf/Makefile'
+alias remf='code ~/work/webf/remappings.txt'
+alias fouf='code ~/work/webf/foundry.toml'
 alias mmm='code ~/work/web/memo.txt'
 alias mmt='code ~/work/web/m2.txt'
 alias mms='code ~/work/web/ms.txt'
-alias fff='code ~/work/webf/exf/foundry.toml'
-alias rrf='code ~/work/webf/exf/remappings.txt'
-alias maa='code ~/work/webf/exf/Makefile'
 alias zz='code ~/.zshrc'
-alias zzt='code ~/work/web/zsub/zshrc'
+alias zz2='code ~/work/web/zsub/zshrc'
 alias ff='code ./foundry.toml'
 alias pp='code ./package.json'
 alias hh='code ./hardhat.config.ts'
@@ -134,26 +154,31 @@ alias ee='code ./.env'
 alias re='code ./remappings.txt'
 alias rr='code ./README.md'
 alias ma='code ./Makefile'
+alias fff='code ./foundry.toml'
+alias ppf='code ./package.json'
+alias hhf='code ./hardhat.config.ts'
+alias eef='code ./.env'
+alias ref='code ./remappings.txt'
+alias rrf='code ./README.md'
+alias maf='code ./Makefile'
 
 alias aaai='idea ~/work/web/contracts/AllBasic.sol'
 alias bbbi='idea ~/work/web/test/all-basic.ts'
-alias ccci='idea ~/work/web/cripts/deploy.ts'
+alias ccci='idea ~/work/web/scripts/deploy.ts'
 alias dddi='idea ~/work/web/dev.md'
-alias ddti='idea ~/work/web/dev2.md'
 alias eeei='idea ~/work/web/.env'
-alias eesi='idea ~/work/web/.env.sample'
 alias pppi='idea ~/work/web/package.json'
 alias hhhi='idea ~/work/web/hardhat.config.ts'
 alias ttti='idea ~/work/web/tsconfig.json'
-alias rrri='code ~/work/web/README.md'
+alias rrri='idea ~/work/web/README.md'
+alias makfi='code ~/work/webf/Makefile'
+alias remfi='code ~/work/webf/remappings.txt'
+alias foufi='code ~/work/webf/foundry.toml'
 alias mmmi='idea ~/work/web/memo.txt'
 alias mmti='idea ~/work/web/m2.txt'
 alias mmsi='idea ~/work/web/ms.txt'
-alias fffi='idea ~/work/webf/exf/foundry.toml'
-alias rrfi='code ~/work/webf/exf/remappings.txt'
-alias maai='idea ~/work/webf/exf/Makefile'
 alias zzi='idea ~/.zshrc'
-alias zzti='idea ~/work/web/zsub/zshrc'
+alias zz2i='idea ~/work/web/zsub/zshrc'
 alias ffi='idea ./foundry.toml'
 alias ppi='idea ./package.json'
 alias hhi='idea ./hardhat.config.ts'
@@ -161,11 +186,19 @@ alias eei='idea ./.env'
 alias rei='idea ./remappings.txt'
 alias rri='idea ./README.md'
 alias mai='idea ./Makefile'
+alias fffi='idea ./foundry.toml'
+alias ppfi='idea ./package.json'
+alias hhfi='idea ./hardhat.config.ts'
+alias eefi='idea ./.env'
+alias refi='idea ./remappings.txt'
+alias rrfi='idea ./README.md'
+alias mafi='idea ./Makefile'
 
 alias web='cd ~/work/web'
+alias webf='cd ~/work/webf'
 alias ex5='cd ~/work/web/ex5'
 alias zzz='. ~/.zshrc'
-alias zzzz='cat ~/.zshrc'
+alias zzc='cat ~/.zshrc'
 alias mmc='mkdir -p ~/work/web/zsub/zzmemo; cp ~/work/web/memo.txt ~/work/web/zsub/zzmemo/memo.txt.bak.$(date +%y%m%d%H%M%S)'
 
 alias occ='open https://colab.research.google.com/drive/1QD7vqBdoZvOd-2tBAYIMOSQoZF6-L-BX#scrollTo=f3NGQk2BhcOu'
