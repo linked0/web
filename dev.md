@@ -3156,6 +3156,17 @@ git submodule update --remote
 git submodule update --init --recursive web2 
 ```
 
+### git submodule commit change
+```bash
+cd path/to/submodule
+git fetch
+git checkout <desired-commit-hash>
+cd ../../
+git add path/to/submodule
+git commit -m "Update submodule to new commit <commit-hash>"
+git push origin main  # or your respective branch
+```
+
 ### Screen
 - screen -S el1
 - screen -ls            // ls
