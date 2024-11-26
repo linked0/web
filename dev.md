@@ -2989,14 +2989,6 @@ poohgeth/poohnet$ ./enode-config
 poohgeth/poohnet$ ./enode pow el1
 ```
 ---
-### 🌸 hardhat 프로젝트 만들기 🌸
-Hardhat은 기존 프로젝트에서는 안됨.
-```
-yarn init -y (=npm init -y)
-yarn add --dev hardhat
-npx hardhat // 여기서 이미 필요한 package는 추가됨
-```
-
 ## 자주 쓰는 것 - Part2
 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
 🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
@@ -3166,6 +3158,19 @@ git add path/to/submodule
 git commit -m "Update submodule to new commit <commit-hash>"
 git push origin main  # or your respective branch
 ```
+
+
+### hardhat & package.json
+🌸 hardhat 프로젝트 만들기
+Hardhat은 기존 프로젝트에서는 안됨.
+```
+yarn init -y (=npm init -y)
+yarn add --dev hardhat
+npx hardhat // 여기서 이미 필요한 package는 추가됨
+```
+
+🌸 local dependency
+"tigger-swap-sdk": "file:../tigger-swap-sdk", <-- 현재 프로젝트에서 상대경로이므로 `..`
 
 ### Screen
 - screen -S el1

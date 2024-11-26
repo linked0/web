@@ -56,6 +56,10 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
 	yarn keys
 	```
 
+## .env 정리
+- Marigold에 대해서는 .env.sample에 정리
+- DevNet에 대해서는 .env.devent에 정리
+
 ## Run Devnet/Marigold
 ### Marigold
 ```
