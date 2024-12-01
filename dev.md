@@ -3159,6 +3159,9 @@ git commit -m "Update submodule to new commit <commit-hash>"
 git push origin main  # or your respective branch
 ```
 
+### npm publish
+npm login
+npm publish
 
 ### hardhat & package.json
 🌸 hardhat 프로젝트 만들기
