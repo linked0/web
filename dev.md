@@ -946,10 +946,15 @@ Require stack:
 
 ### 12.  Unexpected end of JSON input 에러
 * npx hardhat run scripts/deploy.ts --network devnet 실행시 발생
-* 해결방법: 그냥 폴더 자체를 지우고, git clone으로 소스를 다시 받음
-	- artifacts를 지워도 안되었음.
-	- 깨끗한 상태에서 잘되는 걸 보니, 리파지토리와 같이 파일이 정리된 상태이면 잘 될 것 같음.
-* 에러 내용
+
+* 해결방법: Delete currupted find, hardhat clean & reinstall
+	- cd /home/ubuntu/.cache/hardhat-nodejs/compilers/linux-amd64
+	- rm list.json
+	- npx hardhat clean <-- 원래 폴더로 돌아와서.
+	- yarn install
+	- yarn build
+
+* 에러 내용 I
 ```
 An unexpected error occurred:
 
@@ -958,6 +963,21 @@ SyntaxError: /Users/hyunjaelee/work/commons-budget-contract/artifacts/@openzeppe
     at /Users/hyunjaelee/work/commons-budget-contract/node_modules/jsonfile/index.js:33:18
     at /Users/hyunjaelee/work/commons-budget-contract/node_modules/graceful-fs/graceful-fs.js:123:16
     at FSReqCallback.readFileAfterClose [as oncomplete] (node:internal/fs/read_file_context:68:3)
+```
+
+* 에러 내용 II
+```
+yarn run v1.22.22
+$ hardhat run --network devnet scripts/deploy-factory.js
+An unexpected error occurred:
+
+SyntaxError: /home/ubuntu/.cache/hardhat-nodejs/compilers/linux-amd64/list.json: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at /home/ubuntu/tigger-swap/node_modules/jsonfile/index.js:33:18
+    at /home/ubuntu/tigger-swap/node_modules/graceful-fs/graceful-fs.js:123:16
+    at FSReqCallback.readFileAfterClose [as oncomplete] (node:internal/fs/read/context:68:3)
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
 ```
 
 ### 13. HardhatError: HH103: Account 0x3e29aefa7af16625691a9fca4a7fff0624aabc6f is not managed by the node you are connected to.

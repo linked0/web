@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# run gascalc, assuming "geth" is running on localhost, port 8545
+cd `dirname $0`/..
+function getClientVersion() {
+  curl -m 1 -s -d '{"method":"web3_clientVersion","params":[],"id":1234,"jsonrpc":"2.0"}' -H content-type:application/json http://127.0.0.1:8545
+}
+
+echo `getClientVersion`
+
+if [[ `getClientVersion` =~ "HardhatNetwork/2.18.1/@nomicfoundation/ethereumjs-vm/7.0.2" ]]; then
+  echo Using GETH on localhost:8545
+  HARDHAT_NETWORK=dev yarn mocha-gascalc
+else
+  echo No GETH running on localhost:8545. Using docker..
+  ./scripts/docker-gascalc
+fi
