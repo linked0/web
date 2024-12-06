@@ -1,0 +1,194 @@
+
+contract BasicUserOpInteract is Script {
+    using ECDSA for bytes32;
+
+    bytes32 private immutable _PROXY_BYTECODE_HASH;
+    uint256 public constant CALL_GAS_LIMIT = 5000000;
+    uint256 public constant VERIFICATION_GAS_LIMIT = 120000000;
+
+    address entryPointAddr;
+    EntryPoint entryPoint;
+    Counter public counter;
+
+    address public owner1;
+    uint256 public owner1Key;
+    uint256 salt1;
+    address public account1;
+
+    address public owner2;
+    uint256 public owner2Key;
+    uint256 salt2;
+    address public account2;
+
+    address payable recipient;
+    address payable beneficiary;
+
+    constructor() {
+        address modularAccount = vm.envAddress(
+            "UPGRADEABLE_MODULAR_ACCOUNT_ADDRESS"
+        );
+        _PROXY_BYTECODE_HASH = keccak256(
+            abi.encodePacked(
+                type(ERC1967Proxy).creationCode,
+                abi.encode(address(modularAccount), "")
+            )
+        );
+    }
+
+    function run() external returns (uint) {
+        console.log("ENTRYPOINT_CONTRACT_ADDRESS", vm.envAddress("ENTRYPOINT_CONTRACT_ADDRESS"));
+        entryPointAddr = vm.envAddress("ENTRYPOINT_CONTRACT_ADDRESS");
+        entryPoint = EntryPoint(payable(entryPointAddr));
+        
+        console.log("COUNTER_CONTRACT", vm.envAddress("COUNTER_CONTRACT"));
+        counter = Counter(vm.envAddress("COUNTER_CONTRACT"));
+
+        owner1 = vm.envAddress("OWNER1");
+        owner1Key = vm.envUint("OWNER1_KEY");
+        salt1 = vm.envUint("SALT");
+        console.log("owner:", owner1);
+        console.log("ownerKey:", Strings.toHexString(owner1Key));
+        console.log("salt1:", salt1);
+
+        // owner2 = vm.envAddress("OWNER2");
+        // owner2Key = vm.envUint("OWNER2_KEY");
+        // salt2 = vm.envUint("OWNER2_SALT");
+        // account2 = UpgradeableModularAccount(payable(this.getAddress(owner2, salt2)));
+
+        address accountComputed = Create2.computeAddress(
+            getSalt(owner1, salt1),
+            _PROXY_BYTECODE_HASH
+        );
+        console.log("accountComputed:", accountComputed);
+        account1 = vm.envAddress("OWNER1_ACCOUNT");
+        account2 = Create2.computeAddress(
+            getSalt(owner2, salt2),
+            _PROXY_BYTECODE_HASH
+        );
+
+        console.log("ownerAccount1:", account1);
+        console.log("ownerAccount2:", account2);
+
+        recipient = payable(vm.envAddress("RECIPIENT"));
+        beneficiary = payable(vm.envAddress("BENEFICIARY"));
+        console.log("recipient:", recipient, "beneficiary:", beneficiary);
+
+        vm.startBroadcast();
+        UserOperation memory userOp = UserOperation({
+            sender: account1,
+            nonce: 0,
+            initCode: "",
+            callData: abi.encodeCall(
+                UpgradeableModularAccount.execute, (address(counter), 0, abi.encodeCall(counter.increment, ()))
+                ),
+            callGasLimit: CALL_GAS_LIMIT,
+            verificationGasLimit: VERIFICATION_GAS_LIMIT,
+            preVerificationGas: 0,
+            maxPriorityFeePerGas: 2 gwei,
+            maxFeePerGas: block.basefee + 2 gwei,
+            paymasterAndData: "",
+            signature: ""
+        });
+
+        // Generate signature
+        bytes32 userOpHash = entryPoint.getUserOpHash(userOp);
+        (uint8 v, bytes32 r, bytes32 s) = vm.sign(owner1Key, userOpHash.toEthSignedMessageHash());
+        userOp.signature = abi.encodePacked(r, s, v);
+
+        UserOperation[] memory userOps = new UserOperation[](1);
+        userOps[0] = userOp;
+
+        entryPoint.handleOps(userOps, beneficiary);
+
+        vm.stopBroadcast();
+
+        return 0;
+    }
+
+:
+source .env; forge script script/erc6900/CallEntryPoint.s.sol:BasicUserOpInteract --rpc-url $RPC_URL_LOCALNET --private-key $PRIVATE_KEY --broadcast -vvvv
+[⠒] Compiling...
+No files changed, compilation skipped
+Traces:
+  [432723] BasicUserOpInteract::run()
+    ├─ [0] VM::envAddress("ENTRYPOINT_CONTRACT_ADDRESS") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] console::log("ENTRYPOINT_CONTRACT_ADDRESS", 0x282110DCc33f7Bcd4F3B13e86Ea545F0aECd9818) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [0] VM::envAddress("ENTRYPOINT_CONTRACT_ADDRESS") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envAddress("COUNTER_CONTRACT") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] console::log("COUNTER_CONTRACT", 0x55ab099c8C1Be6b8ea38602a76c84806B172fc13) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [0] VM::envAddress("COUNTER_CONTRACT") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envAddress("OWNER1") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envUint("OWNER1_KEY") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envUint("SALT") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] console::log("owner:", 0xE024589D0BCd59267E430fB792B29Ce7716566dF) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [0] console::log("ownerKey:", "0xae3b35fcbe8d65fa1e24802f95241ed22c6a68ea3958df0a40607a80bb292f97") [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [0] console::log("salt1:", 1205002 [1.205e6]) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [0] console::log("accountComputed:", 0x78ba0e14a17C60ee550DA7393966cd7736387c87) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [0] VM::envAddress("OWNER1_ACCOUNT") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] console::log("ownerAccount1:", 0x4354b72227C07Da18EF67b822AC2F49A24B87d1C) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [0] console::log("ownerAccount2:", 0x4FC1FB0D1940ff3cBF477E7604baa3789FD13935) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [0] VM::envAddress("RECIPIENT") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envAddress("BENEFICIARY") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] console::log("recipient:", 0xC9dd7D5F80051C7fA468547d27f2c27C58270133, "beneficiary:", 0x99e918CBe43341290E67067A3C6ddf03E751861B) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [0] VM::startBroadcast()
+    │   └─ ← [Return] 
+    ├─ [2181] 0x282110DCc33f7Bcd4F3B13e86Ea545F0aECd9818::getUserOpHash(UserOperation({ sender: 0x4354b72227C07Da18EF67b822AC2F49A24B87d1C, nonce: 0, initCode: 0x, callData: 0xb61d27f600000000000000000000000055ab099c8c1be6b8ea38602a76c84806b172fc13000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000004d09de08a00000000000000000000000000000000000000000000000000000000, callGasLimit: 5000000 [5e6], verificationGasLimit: 120000000 [1.2e8], preVerificationGas: 0, maxFeePerGas: 2000000007 [2e9], maxPriorityFeePerGas: 2000000000 [2e9], paymasterAndData: 0x, signature: 0x })) [staticcall]
+    │   └─ ← [Return] 0x07090c9af2a2c2d43ca52d437d25e7ea5d17add6fe9c9fd358b2edb90ef74434
+    ├─ [0] VM::sign("<pk>", 0x20863c84b8eafbfa65a78649b6700c9c5afb7ea2ded49031c4712ddb3f5acaab) [staticcall]
+    │   └─ ← [Return] 27, 0xbb0098d9dd58a17a43e89bb0f4cafab712a599698ec5481017c3c58369f651ae, 0x1e02b3b752bb20be555af430102147c919a4683a459cb67a227d5e9a36d71005
+    ├─ [174563] 0x282110DCc33f7Bcd4F3B13e86Ea545F0aECd9818::handleOps([UserOperation({ sender: 0x4354b72227C07Da18EF67b822AC2F49A24B87d1C, nonce: 0, initCode: 0x, callData: 0xb61d27f600000000000000000000000055ab099c8c1be6b8ea38602a76c84806b172fc13000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000004d09de08a00000000000000000000000000000000000000000000000000000000, callGasLimit: 5000000 [5e6], verificationGasLimit: 120000000 [1.2e8], preVerificationGas: 0, maxFeePerGas: 2000000007 [2e9], maxPriorityFeePerGas: 2000000000 [2e9], paymasterAndData: 0x, signature: 0xbb0098d9dd58a17a43e89bb0f4cafab712a599698ec5481017c3c58369f651ae1e02b3b752bb20be555af430102147c919a4683a459cb67a227d5e9a36d710051b })], 0x99e918CBe43341290E67067A3C6ddf03E751861B)
+    │   ├─ [52160] 0x4354b72227C07Da18EF67b822AC2F49A24B87d1C::validateUserOp(UserOperation({ sender: 0x4354b72227C07Da18EF67b822AC2F49A24B87d1C, nonce: 0, initCode: 0x, callData: 0xb61d27f600000000000000000000000055ab099c8c1be6b8ea38602a76c84806b172fc13000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000004d09de08a00000000000000000000000000000000000000000000000000000000, callGasLimit: 5000000 [5e6], verificationGasLimit: 120000000 [1.2e8], preVerificationGas: 0, maxFeePerGas: 2000000007 [2e9], maxPriorityFeePerGas: 2000000000 [2e9], paymasterAndData: 0x, signature: 0xbb0098d9dd58a17a43e89bb0f4cafab712a599698ec5481017c3c58369f651ae1e02b3b752bb20be555af430102147c919a4683a459cb67a227d5e9a36d710051b }), 0x07090c9af2a2c2d43ca52d437d25e7ea5d17add6fe9c9fd358b2edb90ef74434, 250000000875000000 [2.5e17])
+    │   │   ├─ [47108] 0x8E0e31AA84c5604c09A1cf6c841643bb3568aeBE::validateUserOp(UserOperation({ sender: 0x4354b72227C07Da18EF67b822AC2F49A24B87d1C, nonce: 0, initCode: 0x, callData: 0xb61d27f600000000000000000000000055ab099c8c1be6b8ea38602a76c84806b172fc13000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000004d09de08a00000000000000000000000000000000000000000000000000000000, callGasLimit: 5000000 [5e6], verificationGasLimit: 120000000 [1.2e8], preVerificationGas: 0, maxFeePerGas: 2000000007 [2e9], maxPriorityFeePerGas: 2000000000 [2e9], paymasterAndData: 0x, signature: 0xbb0098d9dd58a17a43e89bb0f4cafab712a599698ec5481017c3c58369f651ae1e02b3b752bb20be555af430102147c919a4683a459cb67a227d5e9a36d710051b }), 0x07090c9af2a2c2d43ca52d437d25e7ea5d17add6fe9c9fd358b2edb90ef74434, 250000000875000000 [2.5e17]) [delegatecall]
+    │   │   │   ├─ [6882] 0xaCd2b3064f72125574e9703a2D24CFFF4B1a5899::userOpValidationFunction(1, UserOperation({ sender: 0x4354b72227C07Da18EF67b822AC2F49A24B87d1C, nonce: 0, initCode: 0x, callData: 0xb61d27f600000000000000000000000055ab099c8c1be6b8ea38602a76c84806b172fc13000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000004d09de08a00000000000000000000000000000000000000000000000000000000, callGasLimit: 5000000 [5e6], verificationGasLimit: 120000000 [1.2e8], preVerificationGas: 0, maxFeePerGas: 2000000007 [2e9], maxPriorityFeePerGas: 2000000000 [2e9], paymasterAndData: 0x, signature: 0xbb0098d9dd58a17a43e89bb0f4cafab712a599698ec5481017c3c58369f651ae1e02b3b752bb20be555af430102147c919a4683a459cb67a227d5e9a36d710051b }), 0x07090c9af2a2c2d43ca52d437d25e7ea5d17add6fe9c9fd358b2edb90ef74434)
+    │   │   │   │   ├─ [3000] PRECOMPILES::ecrecover(0x20863c84b8eafbfa65a78649b6700c9c5afb7ea2ded49031c4712ddb3f5acaab, 27, 84583557624134430606705000345132610108844655703073465449279451801496239624622, 13574159506606451890980031933405812433594324840121939675245391101370457067525) [staticcall]
+    │   │   │   │   │   └─ ← [Return] 0x000000000000000000000000e024589d0bcd59267e430fb792b29ce7716566df
+    │   │   │   │   └─ ← [Return] 0
+    │   │   │   ├─ [22278] 0x282110DCc33f7Bcd4F3B13e86Ea545F0aECd9818::fallback{value: 250000000875000000}()
+    │   │   │   │   ├─ emit Deposited(account: 0x4354b72227C07Da18EF67b822AC2F49A24B87d1C, totalDeposit: 250000000875000000 [2.5e17])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] 0
+    │   │   └─ ← [Return] 0
+    │   ├─ emit BeforeExecution()
+    │   ├─ [44745] 0x282110DCc33f7Bcd4F3B13e86Ea545F0aECd9818::innerHandleOp(0xb61d27f600000000000000000000000055ab099c8c1be6b8ea38602a76c84806b172fc13000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000004d09de08a00000000000000000000000000000000000000000000000000000000, UserOpInfo({ mUserOp: MemoryUserOp({ sender: 0x4354b72227C07Da18EF67b822AC2F49A24B87d1C, nonce: 0, callGasLimit: 5000000 [5e6], verificationGasLimit: 120000000 [1.2e8], preVerificationGas: 0, paymaster: 0x0000000000000000000000000000000000000000, maxFeePerGas: 2000000007 [2e9], maxPriorityFeePerGas: 2000000000 [2e9] }), userOpHash: 0x07090c9af2a2c2d43ca52d437d25e7ea5d17add6fe9c9fd358b2edb90ef74434, prefund: 250000000875000000 [2.5e17], contextOffset: 96, preOpGas: 85657 [8.565e4] }), 0x)
+    │   │   ├─ [18113] 0x4354b72227C07Da18EF67b822AC2F49A24B87d1C::execute(0x55ab099c8C1Be6b8ea38602a76c84806B172fc13, 0, 0xd09de08a)
+    │   │   │   ├─ [17691] 0x8E0e31AA84c5604c09A1cf6c841643bb3568aeBE::execute(0x55ab099c8C1Be6b8ea38602a76c84806B172fc13, 0, 0xd09de08a) [delegatecall]
+    │   │   │   │   ├─ [455] 0x55ab099c8C1Be6b8ea38602a76c84806B172fc13::supportsInterface(0x01ffc9a7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [569] 0x55ab099c8C1Be6b8ea38602a76c84806B172fc13::supportsInterface(0xffffffff) [staticcall]
+    │   │   │   │   │   └─ ← [Return] false
+    │   │   │   │   ├─ [569] 0x55ab099c8C1Be6b8ea38602a76c84806B172fc13::supportsInterface(0xf23b1ed7) [staticcall]
+    │   │   │   │   │   └─ ← [Return] false
+    │   │   │   │   ├─ [5274] 0x55ab099c8C1Be6b8ea38602a76c84806B172fc13::increment()
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 0x
+    │   │   │   └─ ← [Return] 0x
+    │   │   ├─ emit UserOperationEvent(userOpHash: 0x07090c9af2a2c2d43ca52d437d25e7ea5d17add6fe9c9fd358b2edb90ef74434, sender: 0x4354b72227C07Da18EF67b822AC2F49A24B87d1C, paymaster: 0x0000000000000000000000000000000000000000, nonce: 0, success: true, actualGasCost: 208826000730891 [2.088e14], actualGasUsed: 104413 [1.044e5])
+    │   │   └─ ← [Return] 208826000730891 [2.088e14]
+    │   ├─ [0] 0x99e918CBe43341290E67067A3C6ddf03E751861B::fallback{value: 208826000730891}()
+    │   │   └─ ← [Stop] 
+    │   └─ ← [Stop] 
+    ├─ [0] VM::stopBroadcast()
+    │   └─ ← [Return] 
+    └─ ← [Return] 0
+
+
+Script ran successfully.

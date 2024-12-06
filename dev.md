@@ -7,6 +7,121 @@
 
 
 # # 1. Code/Error
+####
+```
+unchecked {
+    // handleOps was called with gas limit too low. abort entire bundle.
+    if (preGas < callGasLimit + mUserOp.verificationGasLimit + 5000) {
+        assembly {
+            mstore(0, INNER_OUT_OF_GAS)
+            revert(0, 32)
+        }
+     
+}
+```
+**위의 코드에서 단지 아래 assembly 코드때문에 문제가 생김.**
+**실상 저 if문 들어가지도 않고 실행이 다 되고 나서 Transaction Fail이 남.**
+```
+assembly {
+  mstore(0, INNER_OUT_OF_GAS)
+  revert(0, 32)
+}
+```
+
+**아래와 같이 변경**
+```
+unchecked {
+  // handleOps was called with gas limit too low. abort entire bundle.
+  if (preGas < callGasLimit + mUserOp.verificationGasLimit + 5000) {
+    revert(INNER_OUT_OF_GAS);
+  }
+}
+
+```
+
+스크립트 실행 로그
+```
+➜  webf git:(main) ✗ source .env; forge script script/erc6900/CallEntryPoint.s.sol:BasicUserOp --rpc-url $RPC_URL_LOCALNET --gas-limit 200000000 --broadcast --slow  -vvvvv
+[⠒] Compiling...
+[⠑] Compiling 1 files with Solc 0.8.24
+[⠘] Solc 0.8.24 finished in 5.73s
+Compiler run successful with warnings:
+Warning (5667): Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> lib/account-abstraction/contracts/core/EntryPoint.sol:232:77:
+    |
+232 |     function innerHandleOp(bytes memory callData, UserOpInfo memory opInfo, bytes calldata context) external returns (uint256 actualGasCost) {
+    |                                                                             ^^^^^^^^^^^^^^^^^^^^^^
+
+...
+
+== Logs ==
+  ownerAccount1: 0x9977e41bdfCAD1b9cFB576Ae64e5c0E4e3440B0c
+  beneficiary balance: 1010000000000000000000
+  recipient: 0x99e918CBe43341290E67067A3C6ddf03E751861B beneficiary: 0xE024589D0BCd59267E430fB792B29Ce7716566dF
+  nonce: 0
+  EntryPoint::handleOps
+  beneficiary balance at end: 1011000000000000000000
+
+## Setting up 1 EVM.
+==========================
+Simulated On-chain Traces:
+
+  [127115] 0x844cB73DC22ae616D6B27684A72332fd0AACFD82::handleOps([UserOperation({ sender: 0x9977e41bdfCAD1b9cFB576Ae64e5c0E4e3440B0c, nonce: 0, initCode: 0x, callData: 0xb61d27f600000000000000000000000099e918cbe43341290e67067a3c6ddf03e751861b0000000000000000000000000000000000000000000000000de0b6b3a764000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000, callGasLimit: 50000 [5e4], verificationGasLimit: 120000 [1.2e5], preVerificationGas: 10, maxFeePerGas: 10, maxPriorityFeePerGas: 20, paymasterAndData: 0x, signature: 0x8155dd00278c957fcdc9437114b5f9c1d26864290148e50e5daeced57abe77b225d11dc429a92766f6b99caf25c09149cec9f7040de74f5547bce4f553aa211c1c })], 0xE024589D0BCd59267E430fB792B29Ce7716566dF)
+    ├─ [0] console::log("EntryPoint::handleOps") [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [52147] 0x9977e41bdfCAD1b9cFB576Ae64e5c0E4e3440B0c::validateUserOp(UserOperation({ sender: 0x9977e41bdfCAD1b9cFB576Ae64e5c0E4e3440B0c, nonce: 0, initCode: 0x, callData: 0xb61d27f600000000000000000000000099e918cbe43341290e67067a3c6ddf03e751861b0000000000000000000000000000000000000000000000000de0b6b3a764000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000, callGasLimit: 50000 [5e4], verificationGasLimit: 120000 [1.2e5], preVerificationGas: 10, maxFeePerGas: 10, maxPriorityFeePerGas: 20, paymasterAndData: 0x, signature: 0x8155dd00278c957fcdc9437114b5f9c1d26864290148e50e5daeced57abe77b225d11dc429a92766f6b99caf25c09149cec9f7040de74f5547bce4f553aa211c1c }), 0x9903c6a3972c6abc46094319b67a8e2412d7f01473cc2af602f09a967e601208, 1700100 [1.7e6])
+    │   ├─ [47101] 0x37f2Ae6c1C4d638B583462C44C57d13E051960dF::validateUserOp(UserOperation({ sender: 0x9977e41bdfCAD1b9cFB576Ae64e5c0E4e3440B0c, nonce: 0, initCode: 0x, callData: 0xb61d27f600000000000000000000000099e918cbe43341290e67067a3c6ddf03e751861b0000000000000000000000000000000000000000000000000de0b6b3a764000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000, callGasLimit: 50000 [5e4], verificationGasLimit: 120000 [1.2e5], preVerificationGas: 10, maxFeePerGas: 10, maxPriorityFeePerGas: 20, paymasterAndData: 0x, signature: 0x8155dd00278c957fcdc9437114b5f9c1d26864290148e50e5daeced57abe77b225d11dc429a92766f6b99caf25c09149cec9f7040de74f5547bce4f553aa211c1c }), 0x9903c6a3972c6abc46094319b67a8e2412d7f01473cc2af602f09a967e601208, 1700100 [1.7e6]) [delegatecall]
+    │   │   ├─ [6882] 0x7C0A64a1ed25208133A156a395123971B52A20a0::userOpValidationFunction(1, UserOperation({ sender: 0x9977e41bdfCAD1b9cFB576Ae64e5c0E4e3440B0c, nonce: 0, initCode: 0x, callData: 0xb61d27f600000000000000000000000099e918cbe43341290e67067a3c6ddf03e751861b0000000000000000000000000000000000000000000000000de0b6b3a764000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000, callGasLimit: 50000 [5e4], verificationGasLimit: 120000 [1.2e5], preVerificationGas: 10, maxFeePerGas: 10, maxPriorityFeePerGas: 20, paymasterAndData: 0x, signature: 0x8155dd00278c957fcdc9437114b5f9c1d26864290148e50e5daeced57abe77b225d11dc429a92766f6b99caf25c09149cec9f7040de74f5547bce4f553aa211c1c }), 0x9903c6a3972c6abc46094319b67a8e2412d7f01473cc2af602f09a967e601208)
+    │   │   │   ├─ [3000] PRECOMPILES::ecrecover(0xd4765370025a76d4b7d911ad583bbfa91c25a18e35e406840b85c089267f4cab, 28, 58500064757855179753356770091712841833154998082444311490392159816813610170290, 17105051873300532225426587738352130296342979792875145320829193135543164739868) [staticcall]
+    │   │   │   │   └─ ← [Return] 0x000000000000000000000000e024589d0bcd59267e430fb792b29ce7716566df
+    │   │   │   └─ ← [Return] 0
+    │   │   ├─ [22278] 0x844cB73DC22ae616D6B27684A72332fd0AACFD82::fallback{value: 1700100}()
+    │   │   │   ├─ emit Deposited(account: 0x9977e41bdfCAD1b9cFB576Ae64e5c0E4e3440B0c, totalDeposit: 1700100 [1.7e6])
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Return] 0
+    │   └─ ← [Return] 0
+    ├─ emit BeforeExecution()
+    ├─ [19114] 0x844cB73DC22ae616D6B27684A72332fd0AACFD82::innerHandleOp(0xb61d27f600000000000000000000000099e918cbe43341290e67067a3c6ddf03e751861b0000000000000000000000000000000000000000000000000de0b6b3a764000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000, UserOpInfo({ mUserOp: MemoryUserOp({ sender: 0x9977e41bdfCAD1b9cFB576Ae64e5c0E4e3440B0c, nonce: 0, callGasLimit: 50000 [5e4], verificationGasLimit: 120000 [1.2e5], preVerificationGas: 10, paymaster: 0x0000000000000000000000000000000000000000, maxFeePerGas: 10, maxPriorityFeePerGas: 20 }), userOpHash: 0x9903c6a3972c6abc46094319b67a8e2412d7f01473cc2af602f09a967e601208, prefund: 1700100 [1.7e6], contextOffset: 96, preOpGas: 85636 [8.563e4] }), 0x)
+    │   ├─ [16812] 0x9977e41bdfCAD1b9cFB576Ae64e5c0E4e3440B0c::execute(0x99e918CBe43341290E67067A3C6ddf03E751861B, 1000000000000000000 [1e18], 0x)
+    │   │   ├─ [16396] 0x37f2Ae6c1C4d638B583462C44C57d13E051960dF::execute(0x99e918CBe43341290E67067A3C6ddf03E751861B, 1000000000000000000 [1e18], 0x) [delegatecall]
+    │   │   │   ├─ [0] 0x99e918CBe43341290E67067A3C6ddf03E751861B::supportsInterface(0x01ffc9a7) [staticcall]
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   ├─ [0] 0x99e918CBe43341290E67067A3C6ddf03E751861B::fallback{value: 1000000000000000000}()
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] 0x
+    │   │   └─ ← [Return] 0x
+    │   └─ ← [Return] 0
+    ├─ [0] 0xE024589D0BCd59267E430fB792B29Ce7716566dF::fallback{value: 1000000000000000000}()
+    │   └─ ← [Stop] 
+    └─ ← [Stop] 
+
+
+==========================
+
+Chain 12301
+
+Estimated gas price: 0.500000014 gwei
+
+Estimated total gas used for script: 180676
+
+Estimated amount required: 0.000090338002529464 ETH
+
+==========================
+
+##### 12301
+❌  [Failed]Hash: 0x140df53f553795e53f9b72104cc90be42a7328586c8a11ac61033cc6a79e4326
+Block: 65767
+Paid: 0.000063352500886935 ETH (126705 gas * 0.500000007 gwei)
+
+
+Transactions saved to: /Users/jay/work/webf/broadcast/CallEntryPoint.s.sol/12301/run-latest.json
+
+Sensitive values saved to: /Users/jay/work/webf/cache/CallEntryPoint.s.sol/12301/run-latest.json
+
+Error: 
+Transaction Failure: 0x140df53f553795e53f9b72104cc90be42a7328586c8a11ac61033cc6a79e4326
+```
+
 #### vm.getCode doesn't find artifacts by name
 Ran 1 test for forge-tests/lending/Comptroller/adminTest.t.sol:Test_Comptroller_Admin
 [FAIL: setup failed: vm.getCode: no matching artifact found] setUp() (gas: 0)

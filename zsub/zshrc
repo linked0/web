@@ -7,6 +7,9 @@ hgrep() {
 ii() {
   idea $@
 }
+adf() {
+  echo "echo \"alias $1='code $2'\" >> ~/.zshrc"
+}
 ch() {
   chatgpt $@
 }
@@ -19,8 +22,12 @@ chm() {
 chcm() {
   cat $@ | ch "$(cat ~/work/web/m2.txt)"
 }
-adf() {
-  echo "echo \"alias $1='code $2'\" >> ~/.zshrc"
+cmm() {
+  if [ -z "$1" ]; then
+    echo "No argument"
+    return
+  fi
+  code ~/work/web/zsub/zzmemo/$1
 }
 
 ft() {
@@ -142,7 +149,7 @@ alias makf='code ~/work/webf/Makefile'
 alias remf='code ~/work/webf/remappings.txt'
 alias fouf='code ~/work/webf/foundry.toml'
 alias mmm='code ~/work/web/memo.txt'
-alias mmt='code ~/work/web/m2.txt'
+alias mm2='code ~/work/web/m2.txt'
 alias mms='code ~/work/web/ms.txt'
 alias zz='code ~/.zshrc'
 alias zz2='code ~/work/web/zsub/zshrc'
@@ -182,6 +189,7 @@ alias zzz='. ~/.zshrc'
 alias cazz='cat ~/.zshrc'
 alias caee='cat ~/work/web/.env'
 alias cpmm='mkdir -p ~/work/web/zsub/zzmemo; cp ~/work/web/memo.txt ~/work/web/zsub/zzmemo/memo.txt.bak.$(date +%y%m%d%H%M%S)'
+alias lmm='ls -al ~/work/web/zsub/zzmemo'
 
 alias occ='open https://colab.research.google.com/drive/1QD7vqBdoZvOd-2tBAYIMOSQoZF6-L-BX#scrollTo=f3NGQk2BhcOu'
 alias ozz='open /Users/hyunjaelee/work/web/ex/node_modules/@openzeppelin/contracts'
