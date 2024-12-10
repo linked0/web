@@ -1146,7 +1146,7 @@ npm ERR! sha1-UzRK2xRhehP26N0s4okF0cC6MhU=sha512-XWwnNNFCuuSQ0m3r3C4LE3EiORltHd9
   * yarn install을 써야하는 곳에서 npm install을 썼을때 나타남
 
 ### 21. Error: error:0308010C:digital envelope routines::unsupported
-* 에러 내용
+#### 에러 내용
 - hardhat compile --config ./hardhat.config.ts
 - An unexpected error occurred:
 
@@ -1167,7 +1167,9 @@ Error: error:0308010C:digital envelope routines::unsupported
   reason: 'unsupported',
   code: 'ERR_OSSL_EVP_UNSUPPORTED'
 ```
-node 버전 16을 사용해야하는데 18을 사용할때 문제 발생함.
+
+#### 해결
+export NODE_OPTIONS=--openssl-legacy-provider
 
 ### 22. jiyoungminjung으로 처음에 push를 하려고할때 권한 문제 발생
 * 에러 내용
@@ -3264,16 +3266,6 @@ Jay Test: 0x7184281c677db98212c216cf11e47a4e9ec8f4b6932aa5d2d902b943ad501d23
 git submodule add https://github.com/example/lib.git external/lib
 git submodule update --init
 ```
-😈 git submodule remove
-```
-git rm --cached poohgeth // path는 .gitmodules 파일의 참고
-code .gitmodules // poohgeth 항목 제거
-code .git/config // poohgeth 항목 제거
-rm -rf .git/modules/poohgeth
-rm -rf poohgeth // 안되면 sudo
-git commit -am "Removed submodule"
-git push
-```
 😈 git submodule update
 ```
 git submodule update --remote
@@ -3281,6 +3273,14 @@ git submodule update --remote
 😈 하나만 다운로드 할때
 ```
 git submodule update --init --recursive web2 
+```
+
+### git submodule remove
+```
+git rm --cached poohgeth // path는 .gitmodules 파일의 참고
+code .gitmodules // poohgeth 항목 제거
+git commit -am "Removed submodule"
+git push
 ```
 
 ### git submodule commit change
