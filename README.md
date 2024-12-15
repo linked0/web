@@ -30,6 +30,16 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
     - localnet에서는 아직 `getXXX` 함수가 정상 동작하지는 않음. 
     - StorageSlot.local.test.js의 `TODO` 참고
   - DoubleBufferContract.sol
+- `exp`: Python project folder
+  - Refer to the `README.md` in the folder
+- `exg`: Go project folder
+  - Refer to the `README.md` in the folder
+- `exj`: Javascript project folder
+  - Refer to the `README.md` in the folder
+- `ext`: Typescript project folder
+  - Refer to the `README.md` in the folder
+- `exr`: Rust project folder
+  - Refer to the `README.md` in the folder
 
 #### External Repositiries
 - `webf`

@@ -1,25 +1,32 @@
 # basic.py
 
 ## Setup
-install matplotlib
+Create venv environment
 ```
-pip install matplotlib
+python3 -m venv env
+source env/bin/activate
+```
+
+Install matplotlib
+```
+pip3 install matplotlib
 ```
 
 or install dependencies with requirements.txt
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
-run basic.py
+Run basic.py
 ```
-python basic.py
+python3 allbasic.py
 ```
 
-get dependency list
+Get dependency list
 ```
-pip freeze > requirements.txt
+pip3 freeze > requirements.txt
 ```
+
 ## Coding Test Categories
 
 ### Not to do
