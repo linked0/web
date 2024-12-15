@@ -29,6 +29,22 @@ cmm() {
   fi
   code ~/work/web/zsub/zzmemo/$1
 }
+py() {
+  if [ -z "$1" ]; then
+    echo "No argument"
+    echo "Usage: py 123/34"
+    return
+  fi
+   python -c "print($1)"
+}
+py2() {
+  if [ -z "$1" ]; then
+    echo "No argument"
+    echo "Usage: py2 \"a=2;b=2;print(a+b);\""
+    return
+  fi
+   python -c "$1"
+}
 
 ft() {
   forge test -vvv --match-test $1

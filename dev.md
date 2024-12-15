@@ -3442,7 +3442,6 @@ datetime.fromtimestamp(7214123987)
 
 
 ### 🌸 텍스트 검색 - 프로세스 찾기 - zip
-```
 find ./ -type f > files
 find . -type file -name '*.js' -o -name '*.json' > files  //-o는 or를 뜻함
 find . -type f -not -path './node_modules/*' -not -path './chaindata/*' > files
@@ -3469,9 +3468,9 @@ set mouse=a             ; Adjust area with mouse
 :! # 마지막 커맨드의 결과보기 
 
 mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
-# Move cursor to end of file in vim
+// Move cursor to end of file in vim
 :$
-```
+
 --- 
 - Quick Open: Cmd + P // 이미 열려있는 tab에서 찾기
 - Open Quick Chat: Cmd+Shift+I 
@@ -3481,6 +3480,8 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 - 컬럼 단위 선택: Hold down `Cmd + Shift + Option` and use the arrow keys
 - replace string: cmd + d
 ---
+- ls -l bytecode.hex // 배포된 바이트 코드(deployedBytecode in json) 사이즈를 알아내는 방법
+- py 1323/23         // py 셸 함수 이용하기
 - echo 'export PATH="/usr/local/opt/go@1.21/bin:$PATH"' >> /Users/jay/.zshrc
 - egrep -irnH --exclude-dir=.git 'test test test' ./ <== 모든 파일 확장자 검색
 - egrep -irnH --include=\*.ts --exclude-dir=.git 'test test test' ./
