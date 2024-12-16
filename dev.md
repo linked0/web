@@ -8,7 +8,27 @@
 
 
 # # 1. Code/Error
-####
+
+
+### Private key로 keystore 파일 만들기 
+(keystore, decrypt, encrypt)
+
+**account import**
+- Create `mykeyfile` and set private key in the file (`0x`는 붙이면 안됨)
+- `geth --datadir ./mykeystore account import mykeyfile`
+- `mykeystore` 폴더에 파일 생성됨
+
+**decrypt**
+```
+const data = JSON.parse(
+  fs.readFileSync(path.resolve(Utils.getInitCWD(), this.key), "utf-8")
+);
+const account = hre.web3.eth.accounts.decrypt(data, "pooh2024");
+this.key = account.privateKey;
+```
+
+
+### mstore(0, INNER_OUT_OF_GAS)
 ```
 unchecked {
     // handleOps was called with gas limit too low. abort entire bundle.
@@ -123,14 +143,14 @@ Error:
 Transaction Failure: 0x140df53f553795e53f9b72104cc90be42a7328586c8a11ac61033cc6a79e4326
 ```
 
-#### vm.getCode doesn't find artifacts by name
+### vm.getCode doesn't find artifacts by name
 Ran 1 test for forge-tests/lending/Comptroller/adminTest.t.sol:Test_Comptroller_Admin
 [FAIL: setup failed: vm.getCode: no matching artifact found] setUp() (gas: 0)
 Suite result: FAILED. 0 passed; 1 failed; 0 skipped; finished in 30.92ms (0.00ns CPU time)
 
 ==> unchecked_cheatcode_artifacts = true
 
-#### ProviderError: Must be authenticated!
+### ProviderError: Must be authenticated!
       at HttpProvider.request (node_modules/hardhat/src/internal/core/providers/http.ts:49:19)
       at getNetworkId (node_modules/hardhat/src/internal/hardhat-network/provider/utils/makeForkClient.ts:109:43)
       at Object.makeForkClient (node_modules/hardhat/src/internal/hardhat-network/provider/utils/makeForkClient.ts:40:27)
@@ -145,7 +165,7 @@ Suite result: FAILED. 0 passed; 1 failed; 0 skipped; finished in 30.92ms (0.00ns
 ==> .env에 Mainnet URL에 Alchemy API URL이 세팅되어야 함.
 MAINNET_RPC_URL='https://eth-mainnet.g.alchemy.com/v2/API-KEY'
 
-#### URL.canParse(range)
+### URL.canParse(range)
 /Users/jay/.nvm/versions/node/v16.20.2/lib/node_modules/corepack/dist/lib/corepack.cjs:22095
   const isURL = URL.canParse(range);
                     ^
@@ -159,7 +179,7 @@ TypeError: URL.canParse is not a function
 ==> nvm use 18
 
 
-#### NotImplementedError: Method 'HardhatEthersProvider.resolveName' is not implemented
+### NotImplementedError: Method 'HardhatEthersProvider.resolveName' is not implemented
       at HardhatEthersProvider.resolveName (/Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-ethers/src/internal/hardhat-ethers-provider.ts:364:11)
       at HardhatEthersSigner.resolveName (/Users/hyunjaelee/work/web/ex/node_modules/@nomicfoundation/hardhat-ethers/src/signers.ts:108:26)
       at new BaseContract (/Users/hyunjaelee/work/web/ex/node_modules/ethers/src.ts/contract/contract.ts:722:40)
@@ -201,14 +221,14 @@ error: externally-managed-environment
  export PATH="$HOME/.cargo/bin:$PATH"
  
 
-#### You probably tried to import the "hardhat" module from your config or a file imported from it. This is not possible, as Hardhat can't be initialized while its config is being defined.
+### You probably tried to import the "hardhat" module from your config or a file imported from it. This is not possible, as Hardhat can't be initialized while its config is being defined.
 
 ==> Remove the line in hardhat.config.ts
 ```
 const { ethers } = require("hardhat");
 ```
 
-#### src/entities/user.entity.ts:10:4 - error TS1240: Unable to resolve signature of property decorator when called as an expression.
+### src/entities/user.entity.ts:10:4 - error TS1240: Unable to resolve signature of property decorator when called as an expression.
   Argument of type 'undefined' is not assignable to parameter of type 'Object'.
 
 10   @Field(() => Int)
@@ -232,7 +252,7 @@ tsconfig.json에 아래와 같이 설정
 ```
 
 
-#### $ hardhat run --network localnet script/deploy.ts
+### $ hardhat run --network localnet script/deploy.ts
 ProviderError: method handler crashed
     at HttpProvider.request (/Users/jay/work/pooh-land-contract/node_modules/hardhat/src/internal/core/providers/http.ts:107:21)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
@@ -241,7 +261,7 @@ error Command failed with exit code 1.
 
 ==>
 
-#### error This project's package.json defines "packageManager": "yarn@4.4.1". However the current global version of Yarn is 1.22.22.
+### error This project's package.json defines "packageManager": "yarn@4.4.1". However the current global version of Yarn is 1.22.22.
 
 Presence of the "packageManager" field indicates that the project is meant to be used with Corepack, a tool included by default with all official Node.js distributions starting from 16.9 and 14.19.
 Corepack must currently be enabled by running corepack enable in your terminal. For more information, check out https://yarnpkg.com/corepack.
@@ -254,11 +274,11 @@ brew unlink yarn
 corepack prepare yarn@4.1.1 --activate
 ```
 
-#### Cannot connect to the Docker daemon at unix:///Users/hyunjaelee/.docker/run/docker.sock. Is the docker daemon running?
+### Cannot connect to the Docker daemon at unix:///Users/hyunjaelee/.docker/run/docker.sock. Is the docker daemon running?
 
 ==> docker가 실행중이지 않음. 데스크탑 실행 필요. 업데이트 중일수 있음.
 
-#### 단위 테스트에서는 에러가 안나는데 전체 테스트 (yarn test)에서는 에러남
+### 단위 테스트에서는 에러가 안나는데 전체 테스트 (yarn test)에서는 에러남
 에러 안남 => "sensitive2": "hardhat test test/4-sensitive-on-chain-data-2.ts",
 에러 남 => yarn test 
 1) Sensitive On-Chain Data Exercise 2
@@ -275,7 +295,7 @@ corepack prepare yarn@4.1.1 --activate
 ==> 테스트 순서를 바꾸니 해결됨.
 파일 명을 0-sensitive-on-chain-data-2.ts로 수정
 
-#### 
+### 
 Forking Mainnet Block Height 15969633, Manual Mining Mode with interval of 10 seconds
 Error HH8: There's one or more errors in your config file:
 
@@ -285,7 +305,7 @@ To learn more about Hardhat's configuration, please go to https://hardhat.org/co
 
 ==> hardhat.config.ts(혹은 js)에서 process.env.MAINNET을 찾는데, .env에 MAINNET_URL로 되어 있어서 에러남.
 
-#### Your branch is ahead of 'origin/pos' by 1 commit.
+### Your branch is ahead of 'origin/pos' by 1 commit.
 (use "git push" to publish your local commits)
 
 hint: You have divergent branches and need to specify how to reconcile them.
@@ -305,10 +325,10 @@ hint: invocation.
 git pull
 git reset --hard origin/set-cl-node
 
-#### remove python3.9 on ubuntu
+### remove python3.9 on ubuntu
 sudo apt-get remove python3.9
 
-#### ubuntu@ip-172-31-22-252:~$ git clone git@github.com:linked0/poohgeth
+### ubuntu@ip-172-31-22-252:~$ git clone git@github.com:linked0/poohgeth
 Cloning into 'poohgeth'...
 The authenticity of host 'github.com (20.200.245.247)' can't be established.
 ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
