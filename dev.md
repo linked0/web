@@ -3044,22 +3044,6 @@ forge --version
 /broadcast/*
 ```
 
-------
-## Slack
-
-😈 github subscribe
-```
-/github subscribe  bosagora/boa-space-contracts issues pulls commits releases deployments reviews comments
-```
-
-```
-/github subscribe zeroone-boa/validators reviews comments
-```
-이것도 방법, 위의 것과 비교 필요: 
-```
-/github subscribe bosagora/boa-space-seaport-js issues pulls commits releases deployments reviews comments
-```
-
 😈 Calendar 추가(Dev Team)
 😈 스타일가이드: https://github.com/bpfkorea/agora/blob/v0.x.x/doc/Style.md, 상세한 설명 필요
 
@@ -3075,6 +3059,21 @@ forge --version
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
+
+### Slack
+
+😈 github subscribe
+```
+/github subscribe  bosagora/boa-space-contracts issues pulls commits releases deployments reviews comments
+```
+
+```
+/github subscribe zeroone-boa/validators reviews comments
+```
+이것도 방법, 위의 것과 비교 필요: 
+```
+/github subscribe bosagora/boa-space-seaport-js issues pulls commits releases deployments reviews comments
+```
 
 ### Memo Google Docs
 - bit.ly/44TH7Ua : Memo Pub
@@ -3410,42 +3409,30 @@ In tigger-web using tigger-web folder
 - vi에서 단어 이동: w or b
 - move window between panes: Ctrl+Cmd+→/←
 
-### 🌸 code & foundry
+### 🌸 foundry
+```
 forge script script/poohnet-fund/DeployPoohnetFund.s.sol --rpc-url localnet  --private-key $PRIVATE_KEY --broadcast
-
 cast call $POOHNET_FUND_CONTRACT_ADDRESS "getOwner()" --rpc-url $LOCALNET_RPC_URL
-
 cast balance 0xE024589D0BCd59267E430fB792B29Ce7716566dF --rpc-url $LOCALNET_RPC_URL
-
 cast send $POOHNET_FUND_CONTRACT_ADDRESS --value 2ether --private-key $PRIVATE_KEY
-
 cast send $POOHNET_FUND_CONTRACT_ADDRESS "transferBudget(address,uint256)" 0xE024589D0BCd59267E430fB792B29Ce7716566dF 1000000000000000000 --rpc-url $LOCALNET_RPC_URL --private-key $PRIVATE_KEY
-
 cast balance 0xE024589D0BCd59267E430fB792B29Ce7716566dF --rpc-url http://localhost:8545
-
 cast sig "calculatePower(uint256,uint256)"
-
 cast storage 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c 0 --rpc-url https://rpc.ankr.com/bsc
-
 cast chain-id --rpc-url https://rpc.ankr.com/bsc
-
 cast tx 0x3f6da406747a55797a7f84173cbb243f4fd929d57326fdcfcf8d7ca55b75fe99 --rpc-url https://rpc.ankr.com/bsc
-
 cast block --help
-
 cast 4byte 88303dbd <= signame 가져오기
 cast sig 'buyTickets(uint256,uint32[])' <= sig 가져오기
-
 cast --calldata-decode
-
 cast 4byte-decode 0xa9059cbb000000000000000000000000e78388b4ce79068e89bf8aa7f218ef6b9ab0e9d00000000000000000000000000000000000000000000000000174b37380cea000
-
 cast calldata-decode "transfer(address,uint256)" \
   0xa9059cbb000000000000000000000000e78388b4ce79068e89bf8aa7f218ef6b9ab0e9d0000000000000000000000000000000000000000000000000008a8e4b1a3d8000
-
 컨트랙트 바이트 코드 가져오기
 cast code 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c --rpc-url https://rpc.ankr.com/bsc
+```
 
+### 🌸 code
 => 여기서 0x를 쓰면 안됨.
 > hex_string = "48656c6c6f20576f726c64"  # Hex encoded string for "Hello World"
 > byte_string = bytes.fromhex(hex_string)
@@ -3457,11 +3444,10 @@ datetime.fromtimestamp(7214123987)
 > print(f"{a:08x}{b:016x}{c:08x}")
 0000006400000000000227b200000005
 
----
- w3 = Web3(Web3.HTTPProvider('https://eth-sepolia.g.alchemy.com/v2/73I-qvN9yqtRcajnfvEarwA2FNHM4Nph')
-
+w3 = Web3(Web3.HTTPProvider('https://eth-sepolia.g.alchemy.com/v2/73I-qvN9yqtRcajnfvEarwA2FNHM4Nph')
 
 ### 🌸 텍스트 검색 - 프로세스 찾기 - zip
+```
 find ./ -type f > files
 find . -type file -name '*.js' -o -name '*.json' > files  //-o는 or를 뜻함
 find . -type f -not -path './node_modules/*' -not -path './chaindata/*' > files
@@ -3490,6 +3476,7 @@ set mouse=a             ; Adjust area with mouse
 mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 // Move cursor to end of file in vim
 :$
+```
 
 --- 
 - Quick Open: Cmd + P // 이미 열려있는 tab에서 찾기
