@@ -41,7 +41,7 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
 - `exr`: Rust project folder
   - Refer to the `README.md` in the folder
 
-#### External Repositiries
+### External Repositiries
 - `webf`
   - `erc6900-reference`: erc-6900 foundry 프로젝트
     - forge test --match-path test/account/UpgradeableModularAccount.t.sol
@@ -58,6 +58,46 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
 - `eopenzeppelin-contracts`: openzeppelin contracts
   - [openzeppelin github](https://github.com/OpenZeppelin/openzeppelin-contracts)
 
+## Order of deploying contracts
+### WETH, Multicall on betelgeuse on Marigold
+WETH_ADDRESS=0xc8D1FBBF3f7Aad55FDC39f6Dd4E9C288b9195E5B
+MULTICALL_ADDRESS=0x310F14Bbe49d02073AeBb497D72a34d59742adeB
+### WETH, Multicall on betelgeuse on Milkynet
+WETH_ADDRESS=0xF6f4B08B97F7374Db656c05F6e27be873eC0E5Cf
+MULTICALL_ADDRESS=0xEa832C035E79B0e40d866BFcAfb6568E4D71D0E8
+### Uniswap and Token contracts on tigger-swap-contracts Marigold
+WETH_ADDRESS=0xc8D1FBBF3f7Aad55FDC39f6Dd4E9C288b9195E5B
+MULTICALL_ADDRESS=0x310F14Bbe49d02073AeBb497D72a34d59742adeB
+FACTORY_ADDRESS=0x2e032C874A9BE49a97DDA99fb181188405fE1F85
+ROUTER_ADDRESS=0x073605352fc800BED964D3AA4bD705e91E919F10
+CALLHASH_ADDRESS=0xcdb5c7a94a3b876fbeb290dd258ac954a243df6f3dc0a6ab2568dc6e8e732ad3
+FEE_TO=0x0000000000000000000000000000000000000000
+BOA_ADDRESS=0xE63310039d9d3740fe74e6BE2030E79d5ff15Ee1
+GTOKEN_ADDRESS=0xBa774d4eBa8D7d3606B54a540D0Fe5f6d940eAAD
+ETOKEN_ADDRESS=0xa76059F8907b77116eD32C70cad7eC039dCCE13d
+### Uniswap and Token contracts on tigger-swap-contracts on Milkynet
+WETH_ADDRESS=0xF6f4B08B97F7374Db656c05F6e27be873eC0E5Cf
+MULTICALL_ADDRESS=0xEa832C035E79B0e40d866BFcAfb6568E4D71D0E8
+FACTORY_ADDRESS=0x0BA5B25444f96929342a7356b4B1026BDa304cF2
+ROUTER_ADDRESS=0x9c86249E3A0473Dc6944b4F46f83E20D7f1c1a61
+CALLHASH_ADDRESS=0xcdb5c7a94a3b876fbeb290dd258ac954a243df6f3dc0a6ab2568dc6e8e732ad3
+FEE_TO=0x0000000000000000000000000000000000000000
+BOA_ADDRESS=0x9B4ea652EC002AFb0e81Ca508F10fb68e0A16a24
+GTOKEN_ADDRESS=0x4ad5BDa9e450340F384FE4aDB4DC3d3ed76a25a1
+ETOKEN_ADDRESS=0x872e26D4940eD7342C72B462ab3f8C4d8034fd66
+### Bridge contracts on tigger-bridge-contracts on Marigold
+BOA_TOKEN_BRIDGE=0x87388bD5AdcD9A752B20c37dE2cDD8978d4c75Ff
+BOA_COIN_BRIDGE=0x3f7ADA8e897d72dE90097E1E1221bf8C988406Ea
+TOKEN_BRIDGE=0x39757B13270d50f2087D5fd15f83A6D6C31c7Fd2
+### Approve User1's BOA to BOA_TOKEN_BRIDGE on on tigger-bridge-contracts Marigold
+User1: 0xE024589D0BCd59267E430fB792B29Ce7716566dF(ae3b35fcbe8d65fa1e24802f95241ed22c6a68ea3958df0a40607a80bb292f97)
+`yarn approve:localnet`
+### Bridge contracts on tigger-bridge-contracts on Milkynet
+BOA_TOKEN_BRIDGE=0x56A2438D895D7d8EDb3E22F41d11f1BFEbd11f26
+BOA_COIN_BRIDGE=0x364D7a5D875C5ef272E9F3A73B94Db6f4f4bf7f6
+TOKEN_BRIDGE=0xf1675e81da4Ccb7153EdF63955C19fcf0179ED87
+
+
 ## Good Practices
 - `flux-finance` 프로젝트 처럼 `openzeppelin` 같은 외부 프로젝트를 코드에 직접 포함시키는 것도 방법
   - `contracts/external/openzeppelin`, 여기는 `src` 대신 `contracts` 폴더를 사용.
@@ -65,6 +105,34 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
 	```
 	yarn keys
 	```
+
+### Private key로 keystore 파일 만들기 
+(keystore, decrypt, encrypt)
+
+**account import**
+- Create `mykeyfile` and set private key in the file (`0x`는 붙이면 안됨)
+- `geth --datadir ./mykeystore account import mykeyfile`
+- `mykeystore` 폴더에 파일 생성됨
+
+**decrypt**
+Using ethers
+```
+const data = fs.readFileSync(
+	path.resolve(Utils.getInitCWD(), this.key), "utf-8"
+);
+const pwd = await this.ip();
+const wallet = await Wallet.fromEncryptedJson(data, pwd);
+this.key = wallet.privateKey;
+```
+Using Web3
+```
+const data = JSON.parse(
+  fs.readFileSync(path.resolve(Utils.getInitCWD(), this.key), "utf-8")
+);
+const account = hre.web3.eth.accounts.decrypt(data, "pooh2024");
+this.key = account.privateKey;
+```
+
 
 ## .env 정리
 - Marigold에 대해서는 .env.sample에 정리
