@@ -106,33 +106,6 @@ TOKEN_BRIDGE=0xf1675e81da4Ccb7153EdF63955C19fcf0179ED87
 	yarn keys
 	```
 
-### Private key로 keystore 파일 만들기 
-(keystore, decrypt, encrypt)
-
-**account import**
-- Create `mykeyfile` and set private key in the file (`0x`는 붙이면 안됨)
-- `geth --datadir ./mykeystore account import mykeyfile`
-- `mykeystore` 폴더에 파일 생성됨
-
-**decrypt**
-Using ethers
-```
-const data = fs.readFileSync(
-	path.resolve(Utils.getInitCWD(), this.key), "utf-8"
-);
-const pwd = await this.ip();
-const wallet = await Wallet.fromEncryptedJson(data, pwd);
-this.key = wallet.privateKey;
-```
-Using Web3
-```
-const data = JSON.parse(
-  fs.readFileSync(path.resolve(Utils.getInitCWD(), this.key), "utf-8")
-);
-const account = hre.web3.eth.accounts.decrypt(data, "pooh2024");
-this.key = account.privateKey;
-```
-
 
 ## .env 정리
 - Marigold에 대해서는 .env.sample에 정리

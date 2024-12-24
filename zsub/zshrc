@@ -73,6 +73,7 @@ declare -A fileMap
 folderMap["poge"]="$HOME/work/pooh-geth/"
 folderMap["69"]="$HOME/work/webf/erc6900-reference/"
 folderMap["43"]="$HOME/work/web/erc4337-aa/"
+folderMap["web"]="$HOME/work/web/"
 folderMap["webf"]="$HOME/work/webf/"
 folderMap["foc"]="$HOME/work/webf/course-foundry/L7-foundry-fund-me/"
 folderMap["ex"]="$HOME/work/web/ex/"
@@ -104,39 +105,23 @@ fileMap["rr"]="README.md"
 fileMap["fo"]="fountry.toml"
 fileMap["re"]="eemappings.txt"
 fileMap["ma"]="Makefile"
+fileMap["mm"]="memo.txt"
+fileMap["mm2"]="m2.txt"
 
-cc() {
+ii() {
   local folder=""
   local file=""
 
-  folder=${folderMap["$1"]}
-  if [ -z "$1" ]; then
-    for key in "${(@k)folderMap}"; do
-      echo "Key: $key, Value: ${folderMap[$key]}"
-    done
-  fi
-
   if [ -z "$2" ]; then
-    if [ -z "$folder" ]; then
-      code $@
-    else
-      echo "cd \"$folder\""
-      cd "$folder"
-    fi
-    return
-  fi
-
-  if [ -z "$folder" ]; then
     folder="./"
-  fi
-  
-  file=${fileMap["$2"]}
-  if [ -z "$file" ]; then
-    file=$2
+    file=${fileMap["$1"]}
+  else
+    folder=${folderMap["$1"]}
+    file=${fileMap["$2"]}
   fi
 
-  echo "code \"$folder$file\""
-  code "$folder$file"
+  echo "idea \"$folder$file\""
+  idea "$folder$file"
 }
 
 alias python=python3
@@ -232,3 +217,4 @@ alias ecstart="aws ec2 start-instances --instance-ids i-02c89e86234e05850"
 alias ecstop="aws ec2 stop-instances --instance-ids i-02c89e86234e05850"
 
 export PATH="$PATH:$HOME/.local/bin"
+

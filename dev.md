@@ -6,9 +6,43 @@
 - [site summary](https://bit.ly/2PmH3XE)
 - [작업 환경 세팅](#-0-work-env) <== ctrl click
 
+# # 0. Code
 
-# # 1. Code/Error
+### Private key로 keystore 파일 만들기 
+(keystore, decrypt, encrypt)
 
+**account import**
+- Create `mykeyfile` and set private key in the file (`0x`는 붙이면 안됨)
+- `geth --datadir ./mykeystore account import mykeyfile`
+- `mykeystore` 폴더에 파일 생성됨
+
+**decrypt**
+Using ethers
+```
+const data = fs.readFileSync(
+	path.resolve(Utils.getInitCWD(), this.key), "utf-8"
+);
+const pwd = await this.ip();
+const wallet = await Wallet.fromEncryptedJson(data, pwd);
+this.key = wallet.privateKey;
+```
+Using Web3
+```
+const data = JSON.parse(
+  fs.readFileSync(path.resolve(Utils.getInitCWD(), this.key), "utf-8")
+);
+const account = hre.web3.eth.accounts.decrypt(data, "pooh2024");
+this.key = account.privateKey;
+```
+
+🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳
+🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳
+🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳
+
+# # 1. Error
+### ethers v5
+(ethersv5)
+"ethers-v5": "npm:ethers@5",
 
 ### Private key로 keystore 파일 만들기 
 (keystore, decrypt, encrypt)
