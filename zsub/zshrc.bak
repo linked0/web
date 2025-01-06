@@ -73,7 +73,6 @@ declare -A fileMap
 folderMap["poge"]="$HOME/work/pooh-geth/"
 folderMap["69"]="$HOME/work/webf/erc6900-reference/"
 folderMap["43"]="$HOME/work/web/erc4337-aa/"
-folderMap["web"]="$HOME/work/web/"
 folderMap["webf"]="$HOME/work/webf/"
 folderMap["foc"]="$HOME/work/webf/course-foundry/L7-foundry-fund-me/"
 folderMap["ex"]="$HOME/work/web/ex/"
@@ -105,23 +104,39 @@ fileMap["rr"]="README.md"
 fileMap["fo"]="fountry.toml"
 fileMap["re"]="eemappings.txt"
 fileMap["ma"]="Makefile"
-fileMap["mm"]="memo.txt"
-fileMap["mm2"]="m2.txt"
 
-ii() {
+cc() {
   local folder=""
   local file=""
 
-  if [ -z "$2" ]; then
-    folder="./"
-    file=${fileMap["$1"]}
-  else
-    folder=${folderMap["$1"]}
-    file=${fileMap["$2"]}
+  folder=${folderMap["$1"]}
+  if [ -z "$1" ]; then
+    for key in "${(@k)folderMap}"; do
+      echo "Key: $key, Value: ${folderMap[$key]}"
+    done
   fi
 
-  echo "idea \"$folder$file\""
-  idea "$folder$file"
+  if [ -z "$2" ]; then
+    if [ -z "$folder" ]; then
+      code $@
+    else
+      echo "cd \"$folder\""
+      cd "$folder"
+    fi
+    return
+  fi
+
+  if [ -z "$folder" ]; then
+    folder="./"
+  fi
+  
+  file=${fileMap["$2"]}
+  if [ -z "$file" ]; then
+    file=$2
+  fi
+
+  echo "code \"$folder$file\""
+  code "$folder$file"
 }
 
 alias python=python3
@@ -207,6 +222,7 @@ alias cb="curl -L bit.ly/3MT0VRb"
 alias cb2="curl -L https://linked0.github.io/web/dev2.md"
 alias cbm="curl -L https://linked0.github.io/web/memo.txt"
 alias cbb="open https://bit.ly/3MVG5AN"
+alias poo="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
 
 alias ec1="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
 alias ec2="ssh -i ~/pooh/tednet.pem ubuntu@3.37.170.83"
@@ -214,10 +230,5 @@ alias ec3="ssh -i ~/pooh/tednet.pem ubuntu@15.165.195.41"
 
 alias ecstart="aws ec2 start-instances --instance-ids i-02c89e86234e05850"
 alias ecstop="aws ec2 stop-instances --instance-ids i-02c89e86234e05850"
-alias ecst="aws ec2 describe-instances --instance-ids i-02c89e86234e05850 --query 'Reservations[*].Instances[*].State.Name' --output text"
-alias ecstart2="aws ec2 start-instances --instance-ids i-0dae133af2b0dd1f5"
-alias ecstop2="aws ec2 stop-instances --instance-ids i-0dae133af2b0dd1f5"
-alias ecst2="aws ec2 describe-instances --instance-ids i-0dae133af2b0dd1f5 --query 'Reservations[*].Instances[*].State.Name' --output text"
 
 export PATH="$PATH:$HOME/.local/bin"
-

@@ -78,7 +78,7 @@ const optimizerSettingsNoSpecializer = {
 };
 
 // Dynamically get the test mode from environment variables
-const testMode = process.env.TEST_MODE || '';
+const testMode = process.env.TEST_MODE || "";
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -112,7 +112,7 @@ const config: HardhatUserConfig = {
           // },
           optimizer: {
             enabled: true,
-            runs: 200
+            runs: 200,
           },
         },
       },
@@ -131,11 +131,16 @@ const config: HardhatUserConfig = {
       allowUnlimitedContractSize: false,
       accounts: getAccounts(),
       mining: {
-        auto: testMode !== 'disableAutoMining'
-      }
+        auto: testMode !== "disableAutoMining",
+      },
     },
     localnet: {
       url: process.env.LOCALNET_URL,
+      chainId: 7212309,
+      accounts: [process.env.ADMIN_KEY || "", process.env.USER_KEY || ""],
+    },
+    marigold: {
+      url: process.env.MARIGOLD_URL,
       chainId: 12301,
       accounts: [process.env.ADMIN_KEY || "", process.env.USER_KEY || ""],
     },
@@ -179,10 +184,10 @@ let scriptName;
 if (process.argv[3] != undefined) {
   scriptName = process.argv[3];
 } else {
-  scriptName = '';
+  scriptName = "";
 }
 
-if (scriptName.includes('sensitive')) {
+if (scriptName.includes("sensitive")) {
   console.log(`Forking Goerli Block Height ${GOERLI_FORK_BLOCK_NUMBER}`);
   config.networks = {
     hardhat: {
@@ -192,9 +197,14 @@ if (scriptName.includes('sensitive')) {
       },
     },
   };
-} else if (scriptName.includes('frontrunning') || scriptName.includes('vault-1')) {
+} else if (
+  scriptName.includes("frontrunning") ||
+  scriptName.includes("vault-1")
+) {
   // Frontrunning exercises are with "hardhat node mode", mining interval is 10 seconds
-  console.log(`Forking Mainnet Block Height ${MAINNET_FORK_BLOCK_NUMBER}, Manual Mining Mode`);
+  console.log(
+    `Forking Mainnet Block Height ${MAINNET_FORK_BLOCK_NUMBER}, Manual Mining Mode`
+  );
   config.networks = {
     hardhat: {
       forking: {
@@ -205,7 +215,7 @@ if (scriptName.includes('sensitive')) {
         auto: false,
         interval: FRONTRUNNING_MINING_INTERVAL,
       },
-      gas: 'auto',
+      gas: "auto",
     },
   };
 }

@@ -3,6 +3,8 @@
 
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
 
+🎂🌼🌟🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱※반짝🌟🙌🔴👍🙌
+
 ## Source Summary
 - `eondo-v1`: ondo 프로젝트
   - yarn test
@@ -59,13 +61,27 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
   - [openzeppelin github](https://github.com/OpenZeppelin/openzeppelin-contracts)
 
 ## Order of deploying contracts
-### WETH, Multicall on betelgeuse on Marigold
-WETH_ADDRESS=0xc8D1FBBF3f7Aad55FDC39f6Dd4E9C288b9195E5B
-MULTICALL_ADDRESS=0x310F14Bbe49d02073AeBb497D72a34d59742adeB
-### WETH, Multicall on betelgeuse on Milkynet
+### 🏆 betelgeuse
+
+#### WETH, Multicall on betelgeuse on Localnet
+CONDUIT_CONTROLLER_ADDRESS=0x6A9866BEB9CE792F57ea116F457825fDcC1FC75D
+CONDUIT_ADDRESS=0x59932169d312E34Fd17CC6E479530a3c9a455e92
+CONDUIT_KEY=0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD000000000000000000000000
+SEAPORT_ADDRESS=0x8565Dcd93Ec8f8bA06851a2D91c2BAdd84D40526
+ASSET_CONTRACT_SHARED_ADDRESS=0xAbC0Fa75F06848AD3F71c46976dA46990a2C8799
+LAZY_MINT_ADAPTER_ADDRESS=0xa5d49c88AfBdA22B12682AA9904B70b7fe99C9A7
+SPIDER_VERSE_NFT_LAST_COMBINE_TOKEN_ID=0xc559c7d0c3851140185900d223b7fe531e8823a80000000000000100000f4240
+WETH_ADDRESS=0x1e80e9b38F5727Ad2c56a2e90bfF21642434Ff82
+MULTICALL_ADDRESS=0x24eC01416dCfA432b4b877F0fc230955b3855C92
+#### WETH, Multicall on betelgeuse on Marigold
 WETH_ADDRESS=0xF6f4B08B97F7374Db656c05F6e27be873eC0E5Cf
 MULTICALL_ADDRESS=0xEa832C035E79B0e40d866BFcAfb6568E4D71D0E8
-### Uniswap and Token contracts on tigger-swap-contracts Marigold
+#### WETH, Multicall on betelgeuse on PoohNet Devent
+WETH_ADDRESS=0xF6f4B08B97F7374Db656c05F6e27be873eC0E5Cf
+MULTICALL_ADDRESS=0xEa832C035E79B0e40d866BFcAfb6568E4D71D0E8
+
+### 🏆 tigger-swap-contracts pooh-erc20
+#### Uniswap and Token contracts on tigger-swap-contracts Localnet
 WETH_ADDRESS=0xc8D1FBBF3f7Aad55FDC39f6Dd4E9C288b9195E5B
 MULTICALL_ADDRESS=0x310F14Bbe49d02073AeBb497D72a34d59742adeB
 FACTORY_ADDRESS=0x2e032C874A9BE49a97DDA99fb181188405fE1F85
@@ -75,7 +91,7 @@ FEE_TO=0x0000000000000000000000000000000000000000
 BOA_ADDRESS=0xE63310039d9d3740fe74e6BE2030E79d5ff15Ee1
 GTOKEN_ADDRESS=0xBa774d4eBa8D7d3606B54a540D0Fe5f6d940eAAD
 ETOKEN_ADDRESS=0xa76059F8907b77116eD32C70cad7eC039dCCE13d
-### Uniswap and Token contracts on tigger-swap-contracts on Milkynet
+#### Uniswap and Token contracts on tigger-swap-contracts on Marigold
 WETH_ADDRESS=0xF6f4B08B97F7374Db656c05F6e27be873eC0E5Cf
 MULTICALL_ADDRESS=0xEa832C035E79B0e40d866BFcAfb6568E4D71D0E8
 FACTORY_ADDRESS=0x0BA5B25444f96929342a7356b4B1026BDa304cF2
@@ -85,20 +101,33 @@ FEE_TO=0x0000000000000000000000000000000000000000
 BOA_ADDRESS=0x9B4ea652EC002AFb0e81Ca508F10fb68e0A16a24
 GTOKEN_ADDRESS=0x4ad5BDa9e450340F384FE4aDB4DC3d3ed76a25a1
 ETOKEN_ADDRESS=0x872e26D4940eD7342C72B462ab3f8C4d8034fd66
-### Bridge contracts on tigger-bridge-contracts on Marigold
+#### Uniswap and Token contracts on tigger-swap-contracts on PoohNet Devnet
+WETH_ADDRESS=0xF6f4B08B97F7374Db656c05F6e27be873eC0E5Cf
+MULTICALL_ADDRESS=0xEa832C035E79B0e40d866BFcAfb6568E4D71D0E8
+FACTORY_ADDRESS=0x0BA5B25444f96929342a7356b4B1026BDa304cF2
+ROUTER_ADDRESS=0x9c86249E3A0473Dc6944b4F46f83E20D7f1c1a61
+CALLHASH_ADDRESS=0xcdb5c7a94a3b876fbeb290dd258ac954a243df6f3dc0a6ab2568dc6e8e732ad3
+FEE_TO=0x0000000000000000000000000000000000000000
+BOA_ADDRESS=0x9B4ea652EC002AFb0e81Ca508F10fb68e0A16a24
+GTOKEN_ADDRESS=0x4ad5BDa9e450340F384FE4aDB4DC3d3ed76a25a1
+ETOKEN_ADDRESS=0x872e26D4940eD7342C72B462ab3f8C4d8034fd66
+
+### 🏆 tigger-bridge-contracts
+#### Bridge contracts on tigger-bridge-contracts on Localnet
 BOA_TOKEN_BRIDGE=0x87388bD5AdcD9A752B20c37dE2cDD8978d4c75Ff
 BOA_COIN_BRIDGE=0x3f7ADA8e897d72dE90097E1E1221bf8C988406Ea
 TOKEN_BRIDGE=0x39757B13270d50f2087D5fd15f83A6D6C31c7Fd2
-### Approve User1's BOA to BOA_TOKEN_BRIDGE on on tigger-bridge-contracts Marigold
+#### Approve User1's BOA to BOA_TOKEN_BRIDGE on on tigger-bridge-contracts Localnet
 User1: 0xE024589D0BCd59267E430fB792B29Ce7716566dF(ae3b35fcbe8d65fa1e24802f95241ed22c6a68ea3958df0a40607a80bb292f97)
 `yarn approve:localnet`
-### Bridge contracts on tigger-bridge-contracts on Milkynet
+#### Bridge contracts on tigger-bridge-contracts on PoohNet Devnet
 BOA_TOKEN_BRIDGE=0x56A2438D895D7d8EDb3E22F41d11f1BFEbd11f26
 BOA_COIN_BRIDGE=0x364D7a5D875C5ef272E9F3A73B94Db6f4f4bf7f6
 TOKEN_BRIDGE=0xf1675e81da4Ccb7153EdF63955C19fcf0179ED87
 
 
 ## Good Practices
+### Etc
 - `flux-finance` 프로젝트 처럼 `openzeppelin` 같은 외부 프로젝트를 코드에 직접 포함시키는 것도 방법
   - `contracts/external/openzeppelin`, 여기는 `src` 대신 `contracts` 폴더를 사용.
 - Random Key 생성
@@ -106,6 +135,30 @@ TOKEN_BRIDGE=0xf1675e81da4Ccb7153EdF63955C19fcf0179ED87
 	yarn keys
 	```
 
+### Deploy factory contract
+#### Check if the factory exists
+The Create2 factory contract will be deployed at the address `0x4e59b44847b379578588920cA78FbF26c0B4956C`. You can check if this contract has already been deployed to your L1 network with a block explorer or by running the following command:
+```
+cast codesize 0x4e59b44847b379578588920cA78FbF26c0B4956C --rpc-url $L1_RPC_URL
+```
+If the command returns 0 then the contract has not been deployed yet. If the command returns 69 then the contract has been deployed and you can safely skip this section.
+
+#### Fund the factory deployer
+You will need to send some ETH to the address that will be used to deploy the factory contract, `0x3fAB184622Dc19b6109349B94811493BF2a45362`. This address can only be used to deploy the factory contract and will not be used for anything else. Send at least 1 ETH to this address on your L1 chain.
+
+#### Deploy the factory
+Using cast, deploy the factory contract to your L1 chain:
+```
+cast publish --rpc-url $L1_RPC_URL 0xf8a58085174876e800830186a08080b853604580600e600039806000f350fe7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf31ba02222222222222222222222222222222222222222222222222222222222222222a02222222222222222222222222222222222222222222222222222222222222222 
+```
+#### Wait for the transaction to be mined
+Make sure that the transaction is included in a block on your L1 chain before continuing.
+
+#### Verify that the factory was deployed
+Run the code size check again to make sure that the factory was properly deployed:
+```
+cast codesize 0x4e59b44847b379578588920cA78FbF26c0B4956C --rpc-url $L1_RPC_URL
+```
 
 ## .env 정리
 - Marigold에 대해서는 .env.sample에 정리
