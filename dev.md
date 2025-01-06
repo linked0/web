@@ -3,6 +3,8 @@
 
 - [dev.md text - 3MT0VRb](bit.ly/3MT0VRb)
 - [dev.md - 3MVG5AN]([bit.ly/3MVG5AN)
+- [Miki - 421Gf1x](https://bit.ly/421Gf1x)
+- [Miki-Summary - 4iWn0fY](https://bit.ly/4iWn0fY)
 - [작업 환경 세팅](#-0-work-env) <== ctrl click
 - [Code](#-code)
 - [Errors](#-1-error)
@@ -3821,5 +3823,5 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 ---
 - [dev.md text - 3MT0VRb](bit.ly/3MT0VRb)
 - [dev.md - 3MVG5AN]([bit.ly/3MVG5AN)
-- [miki summary](https://bit.ly/3xiSj1M)
-- \# # 로 검색하면 좋음
+- [Miki - 421Gf1x](https://bit.ly/421Gf1x)
+- [Miki-Summary - 4iWn0fY](https://bit.ly/4iWn0fY)
