@@ -1,13 +1,13 @@
 # Total Summary of projects
-🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱※반짝🌟🔴
+🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱🌟🔴
 
 - [dev.md text - 3MT0VRb](bit.ly/3MT0VRb)
 - [dev.md - 3MVG5AN]([bit.ly/3MVG5AN)
 - [Miki - 421Gf1x](https://bit.ly/421Gf1x)
 - [Miki-Summary - 4iWn0fY](https://bit.ly/4iWn0fY)
 - [작업 환경 세팅](#-0-work-env) <== ctrl click
-- [Code](#code) <== Search with "#code"
-- [Errors](#error)
+- [code](#code) <== Search with "#code"
+- [error](#error)
 
 이 프로젝트는 hardhat-deploy를 테스트하기 위해서 생성된 프로젝트.
 
@@ -69,8 +69,9 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
   - [openzeppelin github](https://github.com/OpenZeppelin/openzeppelin-contracts)
 
 ## Order of deploying contracts
-### 🏆 betelgeuse
+### 🏆 pooh-geth, optimism
 
+### 🏆 betelgeuse
 #### WETH, Multicall on betelgeuse on Localnet
 CONDUIT_CONTROLLER_ADDRESS=0x6A9866BEB9CE792F57ea116F457825fDcC1FC75D
 CONDUIT_ADDRESS=0x59932169d312E34Fd17CC6E479530a3c9a455e92
@@ -100,13 +101,13 @@ The `pooh-erc20` is not used because Token.sol in `tigger-swap-contracts` is use
 #### Uniswap and Token contracts on tigger-swap-contracts Localnet
 WETH_ADDRESS=0x1e80e9b38F5727Ad2c56a2e90bfF21642434Ff82
 MULTICALL_ADDRESS=0x24eC01416dCfA432b4b877F0fc230955b3855C92
-FACTORY_ADDRESS=0x73b82e23400525176f1f8B2c7ac6013F68A6dDf2
-ROUTER_ADDRESS=0x7d72459bD06C487Ea572bF7FDF3Bc4e1a23C8049
+FACTORY_ADDRESS=0xC2c83516c002046a9b4Afc1a830cA9B70dbCd945
+ROUTER_ADDRESS=0x9C03F940a7A5A6c691aBDC07a16deC19b39980e2
 CALLHASH_ADDRESS=0xcdb5c7a94a3b876fbeb290dd258ac954a243df6f3dc0a6ab2568dc6e8e732ad3
 FEE_TO=0x0000000000000000000000000000000000000000
-BOA_ADDRESS=0x24f16Afd05C011169E4a4E426DA8C609834bf1e5
-GTOKEN_ADDRESS=0xf43c2D2B537a84707C94E39682207b3aA1AfdB83
-ETOKEN_ADDRESS=0x7469843a2b39e0De83B7e6b78134D6725AB2E49B
+BOA_ADDRESS=0x18BE667f6a6261CAF97Ea4d30a0915f981424150
+GTOKEN_ADDRESS=0xcAffF4489551d9962DC97e1DB1bB26B50A4971D4
+ETOKEN_ADDRESS=0x345264D8A41a55dF8FCa443b5D7c80332b94b6d4
 #### Uniswap and Token contracts on tigger-swap-contracts on Marigold
 WETH_ADDRESS=0xF6f4B08B97F7374Db656c05F6e27be873eC0E5Cf
 MULTICALL_ADDRESS=0xEa832C035E79B0e40d866BFcAfb6568E4D71D0E8
@@ -120,26 +121,33 @@ ETOKEN_ADDRESS=0x872e26D4940eD7342C72B462ab3f8C4d8034fd66
 #### Uniswap and Token contracts on tigger-swap-contracts on PoohNet Devnet
 WETH_ADDRESS=0x7d72459bD06C487Ea572bF7FDF3Bc4e1a23C8049
 MULTICALL_ADDRESS=0xf9cC1E443c237a5A5B16a00ddC43566830BbA768
-FACTORY_ADDRESS=0x7469843a2b39e0De83B7e6b78134D6725AB2E49B
-ROUTER_ADDRESS=0x56Bd9d617dCE5dCEcd792BB6e4cC22890D6B609d
+FACTORY_ADDRESS=0x0e877509F73E3f06c86F1403bf4599329e4f7063
+ROUTER_ADDRESS=0xd1b04bb65b4Ba8D59c35A43E07A45cc694dC2C01
 CALLHASH_ADDRESS=0xcdb5c7a94a3b876fbeb290dd258ac954a243df6f3dc0a6ab2568dc6e8e732ad3
 FEE_TO=0x0000000000000000000000000000000000000000
-BOA_ADDRESS=0x849b56b8C3aF8f8659453Ec19742751E0b602158
-GTOKEN_ADDRESS=0xBB8FF6f7B48A142290721f94e2890a66E06881CC
-ETOKEN_ADDRESS=0xbcB08b651fB6319727c44eE093162764F9A4340A
+BOA_ADDRESS=0x9C03F940a7A5A6c691aBDC07a16deC19b39980e2
+GTOKEN_ADDRESS=0xaA841D992A909aFbaE5dB2a6b424dADdcaa4Ad64
+ETOKEN_ADDRESS=0x1f3D4ABCD77A130e417af38B6c71F06B944E4fe6
 
 ### 🏆 tigger-bridge-contracts
 #### Bridge contracts on tigger-bridge-contracts on Localnet
-BOA_TOKEN_BRIDGE=0x87388bD5AdcD9A752B20c37dE2cDD8978d4c75Ff
-BOA_COIN_BRIDGE=0x3f7ADA8e897d72dE90097E1E1221bf8C988406Ea
-TOKEN_BRIDGE=0x39757B13270d50f2087D5fd15f83A6D6C31c7Fd2
+BOA_TOKEN_BRIDGE=0x76386a0523fFd0261cBe70ACA8E61213e00bA4C5
+BOA_COIN_BRIDGE=0x4557fF51D49ec670B59a5C883DC082b99eC485f8
+TOKEN_BRIDGE=0x224d9B009450a3917287512Be181d2B3dCEc937A
+#### Bridge contracts on tigger-bridge-contracts on PoohNet Devnet
+BOA_TOKEN_BRIDGE=0x8f2961B7237cc28A1cA6f95371BE4Cd2c99f5Be5
+BOA_COIN_BRIDGE=0x8C883156799698dF874Cc8Da00DdF971B744D801
+TOKEN_BRIDGE=0x309E958ECb54C09094A0Fcd5F3478dB4bC33Babc
+
 #### Approve User1's BOA to BOA_TOKEN_BRIDGE on on tigger-bridge-contracts Localnet
 User1: 0xE024589D0BCd59267E430fB792B29Ce7716566dF(ae3b35fcbe8d65fa1e24802f95241ed22c6a68ea3958df0a40607a80bb292f97)
 `yarn approve:localnet`
-#### Bridge contracts on tigger-bridge-contracts on PoohNet Devnet
-BOA_TOKEN_BRIDGE=0x56A2438D895D7d8EDb3E22F41d11f1BFEbd11f26
-BOA_COIN_BRIDGE=0x364D7a5D875C5ef272E9F3A73B94Db6f4f4bf7f6
-TOKEN_BRIDGE=0xf1675e81da4Ccb7153EdF63955C19fcf0179ED87
+
+#### Set the Admin to Manager role to BOA_COIN_BRIDGE on tigger-bridge-contracts Devnet
+`yarn setManager:devnet`
+
+#### Add liquidity to BOA_COIN_BRIDGE on tigger-bridge-contracts Devnet
+`yarn addLiquid:devnet`
 
 ## .env 정리
 - Marigold에 대해서는 .env.sample에 정리
