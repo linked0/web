@@ -137,12 +137,20 @@ const config: HardhatUserConfig = {
     localnet: {
       url: process.env.LOCALNET_URL,
       chainId: 7212309,
-      accounts: [process.env.ADMIN_KEY || "", process.env.USER_KEY || ""],
+      accounts: [
+        process.env.ADMIN_KEY || "",
+        process.env.USER_KEY || "",
+        process.env.USER2_KEY || "",
+      ],
     },
     marigold: {
       url: process.env.MARIGOLD_URL,
       chainId: 12301,
-      accounts: [process.env.ADMIN_KEY || "", process.env.USER_KEY || ""],
+      accounts: [
+        process.env.ADMIN_KEY || "",
+        process.env.USER_KEY || "",
+        process.env.USER2_KEY || "",
+      ],
     },
     holesky: {
       url: "https://rpc.holesky.ethpandaops.io",
@@ -152,12 +160,29 @@ const config: HardhatUserConfig = {
     sepolia: {
       url: process.env.SEPOLIA_URL,
       chainId: 11155111,
-      accounts: [process.env.ADMIN_KEY || ""],
+      accounts: [
+        process.env.ADMIN_KEY || "",
+        process.env.USER_KEY || "",
+        process.env.USER2_KEY || "",
+      ],
     },
     testnet: {
       url: process.env.TESTNET_URL,
-      chainId: 12301,
-      accounts: [process.env.ADMIN_KEY || "", process.env.USER_KEY || ""],
+      chainId: 7212301,
+      accounts: [
+        process.env.ADMIN_KEY || "",
+        process.env.USER_KEY || "",
+        process.env.USER2_KEY || "",
+      ],
+    },
+    devnet: {
+      url: process.env.DEVNET_URL,
+      chainId: 7212302,
+      accounts: [
+        process.env.ADMIN_KEY || "",
+        process.env.USER_KEY || "",
+        process.env.USER2_KEY || "",
+      ],
     },
   },
   namedAccounts: {

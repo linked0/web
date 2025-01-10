@@ -9,11 +9,48 @@
 - [code](#code) <== Search with "#code"
 - [error](#error)
 
-이 프로젝트는 hardhat-deploy를 테스트하기 위해서 생성된 프로젝트.
+이 프로젝트는 hardhat-ignition을 사용하여 컨트랙트를 배포한다.
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+## 😈 Main projects 
+### ignition
+- [Hardhat Ignition](https://hardhat.org/ignition/docs/getting-started#quick-start)
+- [Medium Article](https://medium.com/nomic-foundation-blog/introducing-hardhat-ignition-a-refreshed-deployments-experience-9580d2946e10)
+1. Refer to `contracts/ignition` folder
+2. Refer to `ignition/modules` folder
+3. Run deploy script
+```
+hardhat ignition deploy ignition/modules/apollo.ts --network localnet
+```
+4. Check `ignition/deployments` folder
+5. Remove `ignition/deployments` folder if you want to deploy contract from start.
 
-## Source Summary
+### oz contract test
+- web 디렉토리에서 실행
+- 원하는 테스트 파일 골라서 다음과 같이 실행
+```
+yarn hardhat test test/oz/access/Ownable.test.js
+```
+
+### seaport contract test
+- ex5 디렉토리로 이동
+- 원하는 테스트 파일 골라서 다음과 같이 실행
+```
+yarn hardhat test /Users/jay/work/web/ex/test/seaport/basic.spec.ts
+```
+```
+yarn sea
+```
+
+### test를 pooh-geth로 localnet에서 테스트할 때 주의점
+- `pooh-geth`는 cancun 빌드가 아니기 때문에, `.env` 파일에서 다음과 같이 설정하고 해야함.
+```
+EVM_VERSION=london
+```
+
+
+## 😈 Source summary on web repo
+This is basically using ethers v6, hardhat-ignition-ethers.
+
 - `eondo-v1`: ondo 프로젝트
   - yarn test
 - `erc4337-aa`: 4337 구현 hardhat 프로젝트
@@ -51,7 +88,7 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
 - `exr`: Rust project folder
   - Refer to the `README.md` in the folder
 
-### External Repositiries
+### External repositiries
 - `webf`
   - `erc6900-reference`: erc-6900 foundry 프로젝트
     - forge test --match-path test/account/UpgradeableModularAccount.t.sol
@@ -68,7 +105,8 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
 - `eopenzeppelin-contracts`: openzeppelin contracts
   - [openzeppelin github](https://github.com/OpenZeppelin/openzeppelin-contracts)
 
-## Order of deploying contracts
+# Poohnet
+## 😈 Order of deploying contracts for PoohNet
 ### 🏆 pooh-geth, optimism
 
 ### 🏆 betelgeuse
@@ -211,32 +249,6 @@ As of 19th Nov. 2024, we use `http://3.37.37.195:8545` for the RPC URL.
     "shanghaiTime": 0,
     "cancunTime": 0,
     ```
-
-## Hardhat
-```
-yarn
-yarn test
-```
-
-### oz contract test
-- ex 폴더로 이동
-- 원하는 테스트 파일 골라서 다음과 같이 실행
-```
-yarn hardhat test /Users/jay/work/web/ex/test/oz/access/Ownable.test.js
-```
-
-### seaport contract test
-- ex5 폴더로 이동
-- 원하는 테스트 파일 골라서 다음과 같이 실행
-```
-yarn hardhat test /Users/jay/work/web/ex/test/seaport/basic.spec.ts
-```
-
-### test를 pooh-geth로 localnet에서 테스트할 때 주의점
-- `pooh-geth`는 cancun 빌드가 아니기 때문에, `.env` 파일에서 다음과 같이 설정하고 해야함.
-```
-EVM_VERSION=london
-```
 
 ## Foundry
 
