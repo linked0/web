@@ -11,7 +11,7 @@
 
 이 프로젝트는 hardhat-ignition을 사용하여 컨트랙트를 배포한다.
 
-## 😈 Main projects 
+## 😈 Reference codes
 ### ignition
 - [Hardhat Ignition](https://hardhat.org/ignition/docs/getting-started#quick-start)
 - [Medium Article](https://medium.com/nomic-foundation-blog/introducing-hardhat-ignition-a-refreshed-deployments-experience-9580d2946e10)
@@ -23,6 +23,74 @@ hardhat ignition deploy ignition/modules/apollo.ts --network localnet
 ```
 4. Check `ignition/deployments` folder
 5. Remove `ignition/deployments` folder if you want to deploy contract from start.
+
+### Etc
+- `flux-finance` 프로젝트 처럼 `openzeppelin` 같은 외부 프로젝트를 코드에 직접 포함시키는 것도 방법
+  - `contracts/external/openzeppelin`, 여기는 `src` 대신 `contracts` 폴더를 사용.
+- Random Key 생성
+	```
+	yarn keys
+	```
+
+   여기서 0x를 쓰면 안됨.
+> hex_string = "48656c6c6f20576f726c64"  # Hex encoded string for "Hello World"
+> byte_string = bytes.fromhex(hex_string)
+> regular_string = byte_string.decode("utf-8")
+
+from datetime import datetime
+datetime.fromtimestamp(7214123987)
+
+> print(f"{a:08x}{b:016x}{c:08x}")
+0000006400000000000227b200000005
+
+w3 = Web3(Web3.HTTPProvider('https://eth-sepolia.g.alchemy.com/v2/73I-qvN9yqtRcajnfvEarwA2FNHM4Nph')
+
+
+### ethers v5
+(ethersv5)
+"ethers-v5": "npm:ethers@5",
+
+### Private key로 keystore 파일 만들기 
+(keystore, decrypt, encrypt)
+
+**account import**
+- Create `mykeyfile` and set private key in the file (`0x`는 붙이면 안됨)
+- `geth --datadir ./mykeystore account import mykeyfile`
+- `mykeystore` 폴더에 파일 생성됨
+
+**decrypt**
+```
+const data = JSON.parse(
+  fs.readFileSync(path.resolve(Utils.getInitCWD(), this.key), "utf-8")
+);
+const account = hre.web3.eth.accounts.decrypt(data, "pooh2024");
+this.key = account.privateKey;
+```
+
+### Deploy factory contract
+#### Check if the factory exists
+The Create2 factory contract will be deployed at the address `0x4e59b44847b379578588920cA78FbF26c0B4956C`. You can check if this contract has already been deployed to your L1 network with a block explorer or by running the following command:
+```
+cast codesize 0x4e59b44847b379578588920cA78FbF26c0B4956C --rpc-url $L1_RPC_URL
+```
+If the command returns 0 then the contract has not been deployed yet. If the command returns 69 then the contract has been deployed and you can safely skip this section.
+
+#### Fund the factory deployer
+You will need to send some ETH to the address that will be used to deploy the factory contract, `0x3fAB184622Dc19b6109349B94811493BF2a45362`. This address can only be used to deploy the factory contract and will not be used for anything else. Send at least 1 ETH to this address on your L1 chain.
+
+#### Deploy the factory
+Using cast, deploy the factory contract to your L1 chain:
+```
+cast publish --rpc-url $L1_RPC_URL 0xf8a58085174876e800830186a08080b853604580600e600039806000f350fe7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf31ba02222222222222222222222222222222222222222222222222222222222222222a02222222222222222222222222222222222222222222222222222222222222222 
+```
+#### Wait for the transaction to be mined
+Make sure that the transaction is included in a block on your L1 chain before continuing.
+
+#### Verify that the factory was deployed
+Run the code size check again to make sure that the factory was properly deployed:
+```
+cast codesize 0x4e59b44847b379578588920cA78FbF26c0B4956C --rpc-url $L1_RPC_URL
+```
 
 ### oz contract test
 - web 디렉토리에서 실행
@@ -319,104 +387,6 @@ $ cast --help
 
 🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🔥⚾️🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🔥⚾️🐶🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆⚾️🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆⚾️🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆⚾️🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆⚾️🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🔥⚾️🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🔥⚾️🐶🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆⚾️🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆⚾️🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆⚾️🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆⚾️🐶🦄☕️🚘🎱🌟🔴🌼🏓🦋⚾️🥎🏐⚽️🏀🏈
 
-
-# #code
-
-### Etc
-- `flux-finance` 프로젝트 처럼 `openzeppelin` 같은 외부 프로젝트를 코드에 직접 포함시키는 것도 방법
-  - `contracts/external/openzeppelin`, 여기는 `src` 대신 `contracts` 폴더를 사용.
-- Random Key 생성
-	```
-	yarn keys
-	```
-
-   여기서 0x를 쓰면 안됨.
-> hex_string = "48656c6c6f20576f726c64"  # Hex encoded string for "Hello World"
-> byte_string = bytes.fromhex(hex_string)
-> regular_string = byte_string.decode("utf-8")
-
-from datetime import datetime
-datetime.fromtimestamp(7214123987)
-
-> print(f"{a:08x}{b:016x}{c:08x}")
-0000006400000000000227b200000005
-
-w3 = Web3(Web3.HTTPProvider('https://eth-sepolia.g.alchemy.com/v2/73I-qvN9yqtRcajnfvEarwA2FNHM4Nph')
-
-### Private key로 keystore 파일 만들기 
-(keystore, decrypt, encrypt)
-
-**account import**
-- Create `mykeyfile` and set private key in the file (`0x`는 붙이면 안됨)
-- `geth --datadir ./mykeystore account import mykeyfile`
-- `mykeystore` 폴더에 파일 생성됨
-
-**decrypt**
-Using ethers
-```
-const data = fs.readFileSync(
-	path.resolve(Utils.getInitCWD(), this.key), "utf-8"
-);
-const pwd = await this.ip();
-const wallet = await Wallet.fromEncryptedJson(data, pwd);
-this.key = wallet.privateKey;
-```
-Using Web3
-```
-const data = JSON.parse(
-  fs.readFileSync(path.resolve(Utils.getInitCWD(), this.key), "utf-8")
-);
-const account = hre.web3.eth.accounts.decrypt(data, "pooh2024");
-this.key = account.privateKey;
-```
-
-### ethers v5
-(ethersv5)
-"ethers-v5": "npm:ethers@5",
-
-### Private key로 keystore 파일 만들기 
-(keystore, decrypt, encrypt)
-
-**account import**
-- Create `mykeyfile` and set private key in the file (`0x`는 붙이면 안됨)
-- `geth --datadir ./mykeystore account import mykeyfile`
-- `mykeystore` 폴더에 파일 생성됨
-
-**decrypt**
-```
-const data = JSON.parse(
-  fs.readFileSync(path.resolve(Utils.getInitCWD(), this.key), "utf-8")
-);
-const account = hre.web3.eth.accounts.decrypt(data, "pooh2024");
-this.key = account.privateKey;
-```
-
-### Deploy factory contract
-#### Check if the factory exists
-The Create2 factory contract will be deployed at the address `0x4e59b44847b379578588920cA78FbF26c0B4956C`. You can check if this contract has already been deployed to your L1 network with a block explorer or by running the following command:
-```
-cast codesize 0x4e59b44847b379578588920cA78FbF26c0B4956C --rpc-url $L1_RPC_URL
-```
-If the command returns 0 then the contract has not been deployed yet. If the command returns 69 then the contract has been deployed and you can safely skip this section.
-
-#### Fund the factory deployer
-You will need to send some ETH to the address that will be used to deploy the factory contract, `0x3fAB184622Dc19b6109349B94811493BF2a45362`. This address can only be used to deploy the factory contract and will not be used for anything else. Send at least 1 ETH to this address on your L1 chain.
-
-#### Deploy the factory
-Using cast, deploy the factory contract to your L1 chain:
-```
-cast publish --rpc-url $L1_RPC_URL 0xf8a58085174876e800830186a08080b853604580600e600039806000f350fe7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf31ba02222222222222222222222222222222222222222222222222222222222222222a02222222222222222222222222222222222222222222222222222222222222222 
-```
-#### Wait for the transaction to be mined
-Make sure that the transaction is included in a block on your L1 chain before continuing.
-
-#### Verify that the factory was deployed
-Run the code size check again to make sure that the factory was properly deployed:
-```
-cast codesize 0x4e59b44847b379578588920cA78FbF26c0B4956C --rpc-url $L1_RPC_URL
-```
-
-🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🦋🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🐳🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🪀🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🌼🌟🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱※반짝🌟🔴⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🌼🌟🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱※반짝🌟🔴⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🌼🌟🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱※반짝🌟🔴⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎱🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🌼🌟🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱※반짝🌟🔴⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎱🏀🏀🏀🏀🌼🌟🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱🌟🔴⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾
 
 # #error
 ### throw new UsageError(`Invalid package.json ...

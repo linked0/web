@@ -1,0 +1,223 @@
+#######################################
+### Below is the common aliases
+
+hgrep() {
+	grep -irnH --include=\*.$1 "$2" ./
+}
+ii() {
+  idea $@
+}
+adf() {
+  echo "echo \"alias $1='code $2'\" >> ~/.zshrc"
+}
+ch() {
+  chatgpt $@
+}
+chc() {
+  cat $1 | ch $2
+}
+chm() {
+  ch "$(cat ~/work/web/m2.txt)"
+}
+chcm() {
+  cat $@ | ch "$(cat ~/work/web/m2.txt)"
+}
+cmm() {
+  if [ -z "$1" ]; then
+    echo "No argument"
+    return
+  fi
+  code ~/work/web/zsub/zzmemo/$1
+}
+py() {
+  if [ -z "$1" ]; then
+    echo "No argument"
+    echo "Usage: py 123/34"
+    return
+  fi
+   python -c "print($1)"
+}
+py2() {
+  if [ -z "$1" ]; then
+    echo "No argument"
+    echo "Usage: py2 \"a=2;b=2;print(a+b);\""
+    return
+  fi
+   python -c "$1"
+}
+
+ft() {
+  forge test -vvv --match-test $1
+}
+ftc() {
+  forge test -vvv --match-contract $1
+}
+ftf() {
+  forge test -vvv --match-path $1
+}
+ft2() {
+  forge test -vvvv --match-test $1
+}
+ftc2() {
+  forge test -vvvv --match-contract $1
+}
+ftf2() {
+  forge test -vvvv --match-path $1
+}
+
+# Declare an associative array
+declare -A folderMap
+declare -A fileMap
+
+# Assign values to the map
+folderMap["poge"]="$HOME/work/pooh-geth/"
+folderMap["69"]="$HOME/work/webf/erc6900-reference/"
+folderMap["43"]="$HOME/work/web/erc4337-aa/"
+folderMap["web"]="$HOME/work/web/"
+folderMap["webf"]="$HOME/work/webf/"
+folderMap["foc"]="$HOME/work/webf/course-foundry/L7-foundry-fund-me/"
+folderMap["ex"]="$HOME/work/web/ex/"
+folderMap["ex5"]="$HOME/work/web/ex5/"
+folderMap["exf"]="$HOME/work/webf/exf/"
+folderMap["exj"]="$HOME/work/web/ex-j/"
+folderMap["exp"]="$HOME/work/web/exp/"
+folderMap["exw"]="$HOME/work/web/ex-w/"
+folderMap["oz"]="$HOME/work/openzeppelin/"
+folderMap["ha"]="$HOME/work/smart-contract-hacking/"
+folderMap["poer"]="$HOME/work/pooh-erc20/"
+folderMap["poco"]="$HOME/work/pooh-land-contract/"
+folderMap["pose"]="$HOME/work/pooh-land-backend/"
+folderMap["powe"]="$HOME/work/pooh-land-frontend/"
+folderMap["rajs"]="$HOME/work/rabbit-js/"
+folderMap["rase"]="$HOME/work/rabbit-server/"
+folderMap["rawe"]="$HOME/work/rabbit-web/"
+folderMap["rawa"]="$HOME/work/rabbit-wallet/"
+folderMap["swco"]="$HOME/work/tigger-swap-contracts/"
+folderMap["tisd"]="$HOME/work/tigger-swap-sdk/"
+folderMap["tico"]="$HOME/work/tigger-bridge-contracts/"
+folderMap["tise"]="$HOME/work/tigger-bridge-server/"
+folderMap["tiwe"]="$HOME/work/tigger-web/"
+
+fileMap["pp"]="package.json"
+fileMap["hh"]="hardhat.config.ts"
+fileMap["ee"]=".env"
+fileMap["rr"]="README.md"
+fileMap["fo"]="fountry.toml"
+fileMap["re"]="eemappings.txt"
+fileMap["ma"]="Makefile"
+fileMap["mm"]="memo.txt"
+fileMap["mm2"]="m2.txt"
+
+ii() {
+  local folder=""
+  local file=""
+
+  if [ -z "$2" ]; then
+    folder="./"
+    file=${fileMap["$1"]}
+  else
+    folder=${folderMap["$1"]}
+    file=${fileMap["$2"]}
+  fi
+
+  echo "idea \"$folder$file\""
+  idea "$folder$file"
+}
+
+alias python=python3
+alias pip=pip3
+# alias geth=~/work/poohgeth/build/bin/geth
+
+alias aaa='code ~/work/web/contracts/AllBasic.sol'
+alias bbb='code ~/work/web/test/all-basic.ts'
+alias ccc='code ~/work/web/scripts/deploy.ts'
+alias ddd='code ~/work/web/dev.md'
+alias eee='code ~/work/web/.env'
+alias ppp='code ~/work/web/package.json'
+alias hhh='code ~/work/web/hardhat.config.ts'
+alias ttt='code ~/work/web/tsconfig.json'
+alias rrr='code ~/work/web/README.md'
+alias aaaf='code ~/work/webf/src/Counter.sol'
+alias bbbf='code ~/work/webf/test/Counter.t.sol'
+alias cccf='code ~/work/webf/script/Counter.s.sol'
+alias dddf='code ~/work/webf/dev.md'
+alias eeef='code ~/work/webf/.env'
+alias pppf='code ~/work/webf/package.json'
+alias hhhf='code ~/work/webf/hardhat.config.ts'
+alias tttf='code ~/work/webf/tsconfig.json'
+alias rrrf='code ~/work/webf/README.md'
+alias makf='code ~/work/webf/Makefile'
+alias remf='code ~/work/webf/remappings.txt'
+alias fouf='code ~/work/webf/foundry.toml'
+alias mmm='code ~/work/web/memo.txt'
+alias mm2='code ~/work/web/m2.txt'
+alias mms='code ~/work/web/ms.txt'
+alias zz='code ~/.zshrc'
+alias zz2='code ~/work/web/zsub/zshrc'
+alias ff='code ./foundry.toml'
+alias pp='code ./package.json'
+alias hh='code ./hardhat.config.ts'
+alias ee='code ./.env'
+alias re='code ./remappings.txt'
+alias rr='code ./README.md'
+alias ma='code ./Makefile'
+alias fff='code ./foundry.toml'
+alias ppf='code ./package.json'
+alias hhf='code ./hardhat.config.ts'
+alias eef='code ./.env'
+alias ref='code ./remappings.txt'
+alias rrf='code ./README.md'
+alias maf='code ./Makefile'
+
+alias czz='cat ~/.zshrc'
+alias czz2='cat ~/work/web/zsub/zshrc'
+alias cff='cat ./foundry.toml'
+alias cpp='cat ./package.json'
+alias chh='cat ./hardhat.config.ts'
+alias cee='cat ./.env'
+alias cre='cat ./remappings.txt'
+alias crr='cat ./README.md'
+alias cma='cat ./Makefile'
+alias cfff='cat ./foundry.toml'
+alias cppf='cat ./package.json'
+alias chhf='cat ./hardhat.config.ts'
+alias ceef='cat ./.env'
+alias cref='cat ./remappings.txt'
+alias crrf='cat ./README.md'
+alias cmaf='cat ./Makefile'
+
+alias zzz='. ~/.zshrc'
+alias cazz='cat ~/.zshrc'
+alias caee='cat ~/work/web/.env'
+alias cpmm='mkdir -p ~/work/web/zsub/zzmemo; cp ~/work/web/memo.txt ~/work/web/zsub/zzmemo/memo.txt.bak.$(date +%y%m%d%H%M%S)'
+alias lmm='ls -al ~/work/web/zsub/zzmemo'
+
+alias occ='open https://colab.research.google.com/drive/1QD7vqBdoZvOd-2tBAYIMOSQoZF6-L-BX#scrollTo=f3NGQk2BhcOu'
+alias ozz='open /Users/hyunjaelee/work/web/ex/node_modules/@openzeppelin/contracts'
+
+alias web='cd ~/work/web'
+alias webf='cd ~/work/webf'
+alias ex5='cd ~/work/web/ex5'
+
+alias lsc='ls -al ~/work/web/ex/contracts'
+alias lss='ls -al ~/work/web/ex/scripts'
+alias lst='ls -al ~/work/web/ex/test'
+
+alias cb="curl -L bit.ly/3MT0VRb"
+alias cb2="curl -L https://linked0.github.io/web/dev2.md"
+alias cbm="curl -L https://linked0.github.io/web/memo.txt"
+alias cbb="open https://bit.ly/3MVG5AN"
+
+alias ec1="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
+alias ec2="ssh -i ~/pooh/tednet.pem ubuntu@3.37.170.83"
+alias ec3="ssh -i ~/pooh/tednet.pem ubuntu@15.165.195.41"
+
+alias ecstart="aws ec2 start-instances --instance-ids i-02c89e86234e05850"
+alias ecstop="aws ec2 stop-instances --instance-ids i-02c89e86234e05850"
+alias ecst="aws ec2 describe-instances --instance-ids i-02c89e86234e05850 --query 'Reservations[*].Instances[*].State.Name' --output text"
+alias ecstart2="aws ec2 start-instances --instance-ids i-0dae133af2b0dd1f5"
+alias ecstop2="aws ec2 stop-instances --instance-ids i-0dae133af2b0dd1f5"
+alias ecst2="aws ec2 describe-instances --instance-ids i-0dae133af2b0dd1f5 --query 'Reservations[*].Instances[*].State.Name' --output text"
+
+export PATH="$PATH:$HOME/.local/bin"
+

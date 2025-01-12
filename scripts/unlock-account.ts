@@ -7,16 +7,16 @@ import { ethers } from "hardhat";
 
 async function main() {
   const provider = ethers.provider;
-  const adminWallet = new Wallet(process.env.ADMIN_KEY || "", provider);
+  const unlockAccount = process.env.UNLOCK_ACCOUNT || "";
   const password = process.env.PRIVATE_KEY_PASSWORD || "";
-  console.log("Admin address: ", adminWallet.address.toLowerCase());
+  console.log("UNLOCK_ACCOUNT: ", unlockAccount);
 
   const accounts = await provider.send("eth_accounts", []);
   console.log("Accounts: ", accounts);
 
   // send unlockAccount request
   const unlock = await provider.send("personal_unlockAccount", [
-    adminWallet.address.toLowerCase(),
+    unlockAccount.toLowerCase(),
     password,
     60000,
   ]);
