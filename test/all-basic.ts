@@ -1,7 +1,11 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import { loadFixture, time } from "@nomicfoundation/hardhat-toolbox/network-helpers";
+import { deployContract } from "@nomicfoundation/hardhat-ethers/types";
+import {
+  loadFixture,
+  time,
+} from "@nomicfoundation/hardhat-toolbox/network-helpers";
 import { expect } from "chai";
 import { BytesLike, TypedDataDomain, Signature } from "ethers";
 import { ethers, network } from "hardhat";
@@ -23,26 +27,32 @@ const {
   toBeHex,
   toUtf8Bytes,
   Wallet,
-  zeroPadValue } = ethers;
+  zeroPadValue,
+} = ethers;
 import {
   ExecAccount,
   Operator,
   AllPairVault,
   Lock,
-  AllBasic
+  AllBasic,
 } from "../typechain-types";
+import { PackedUserOperationStruct } from "../typechain-types/contracts/AllBasic";
 
 import { fillSignAndPack } from "./UserOp";
+import { BYTECODE, BYTECODE0X } from "./all-basic-data";
 import { fullSuiteFixture } from "./full-suite.fixture";
-import { buildOrderStatus, TransferAccountOwnershipParams, BasicUser, BasicAccount, AdminUser } from "./utils";
-import { PackedUserOperationStruct } from "../typechain-types/contracts/AllBasic";
-import { deployContract } from "@nomicfoundation/hardhat-ethers/types";
-
+import {
+  buildOrderStatus,
+  TransferAccountOwnershipParams,
+  BasicUser,
+  BasicAccount,
+  AdminUser,
+} from "./utils";
 
 const ALLBASIC_JSON_PATH = "../artifacts/contracts/AllBasic.sol/AllBasic.json";
 
 /**********************************************************************************
-// NOTE; ethers v5 -> v6
+// NOTE: ethers v5 -> v6
 // AddressZero -> ZeroAddress
 // HashZero -> ZeroHash
 // arrayify -> getBytes
@@ -68,6 +78,10 @@ const ALLBASIC_JSON_PATH = "../artifacts/contracts/AllBasic.sol/AllBasic.json";
 // NOTE: Refer this code later
 // /Users/hyunjaelee/work/account-abstraction/node_modules/zksync-web3/src/utils.ts
 // Compute the raw transaction: https://docs.ethers.org/v5/cookbook/transactions/#cookbook--compute-raw-transaction
+
+// NOTE: Keywords
+// Ethers utils: Convert v5 to v6
+// CREATE2: Get the address of a contract deployed using CREATE2
 ***********************************************************************************/
 
 describe("AllPairVault", () => {
@@ -95,14 +109,16 @@ describe("AllPairVault", () => {
 
       const textToHex = (text: string) => hexlify(toUtf8Bytes(text));
       const JAY = textToHex("Jay");
-      const DATA = textToHex("Hello World! Otani is the best! Jay is the best! All the best!");
+      const DATA = textToHex(
+        "Hello World! Otani is the best! Jay is the best! All the best!"
+      );
     });
 
     it("create a new key", async () => {
       const wanted = 1;
       for (let i = 0; i < wanted; i++) {
         const wallet = ethers.Wallet.createRandom();
-        console.log(wallet.privateKey, wallet.address);  // This is your private key
+        console.log(wallet.privateKey, wallet.address); // This is your private key
       }
     });
   });
@@ -117,11 +133,13 @@ describe("AllPairVault", () => {
 
     it("contract size", async function () {
       const filePath = path.resolve(__dirname, ALLBASIC_JSON_PATH);
-      const rawData = fs.readFileSync(filePath, 'utf8');
+      const rawData = fs.readFileSync(filePath, "utf8");
       const jsonData = JSON.parse(rawData);
 
-      console.log('Assembly Contract Bytecode Length: ', jsonData.deployedBytecode.length / 2);
-
+      console.log(
+        "Assembly Contract Bytecode Length: ",
+        jsonData.deployedBytecode.length / 2
+      );
     });
 
     it("should create a new lock", async () => {
@@ -157,7 +175,7 @@ describe("AllPairVault", () => {
       } = await loadFixture(fullSuiteFixture);
 
       // NOTE: CHECK THIS CODE
-      const userOp = await fillSignAndPack() as PackedUserOperationStruct;
+      const userOp = (await fillSignAndPack()) as PackedUserOperationStruct;
       const valResult = await allBasic.simulateValidation(userOp);
     });
 
@@ -215,8 +233,10 @@ describe("AllPairVault", () => {
         content: "Hello, Hardhat!",
       };
 
-      const expectedR = "0xe65368172b62be3909187f6b44108765726daec9cbf280e217e7cb925b8f5c01";
-      const expectedS = "0x6ee2077d85c537b6357dc14a55b5926f827b4d8e23a562ec86c60b73908cf9ad";
+      const expectedR =
+        "0xe65368172b62be3909187f6b44108765726daec9cbf280e217e7cb925b8f5c01";
+      const expectedS =
+        "0x6ee2077d85c537b6357dc14a55b5926f827b4d8e23a562ec86c60b73908cf9ad";
       const expectedV = 27;
       const signature = await owner.signTypedData(domain, types, value);
       let sig = Signature.from(signature);
@@ -237,17 +257,16 @@ describe("AllPairVault", () => {
 
       const sigStr = "InvalidMsgValue(uint256)";
       const errorSelector = id(sigStr).slice(0, 10);
-      const encodedError = abiCoder.encode(
-        ["uint256"],
-        [_value]
-      );
+      const encodedError = abiCoder.encode(["uint256"], [_value]);
       const expectedRevert = `${errorSelector}${encodedError.slice(2)}`;
       console.log("expectedRevert: ", expectedRevert);
 
       // NOTE: 일단 AllBasic.sol에 `error InvalidMsgValue(uint256 value);`를 추가해서
       // 해결했지만, 이게 열심히 assembly로 만들어진 코드를 테스트하는 것이라고 생각하면
       // 이렇게 하는 것이 맞는 것인지 의문이 든다. 추후에 다시 확인해봐야 할 것 같다.
-      await expect(allBasic.revertNowhere({ value: _value })).to.be.revertedWithCustomError(allBasic as AllBasic, "InvalidMsgValue").withArgs(1);;
+      await expect(allBasic.revertNowhere({ value: _value }))
+        .to.be.revertedWithCustomError(allBasic as AllBasic, "InvalidMsgValue")
+        .withArgs(1);
     });
 
     it("#getByte", async () => {
@@ -255,9 +274,33 @@ describe("AllPairVault", () => {
         suiteBasic: { allBasic },
       } = await loadFixture(fullSuiteFixture);
 
-      expect(await allBasic.getByte(2)).to.equal('0x01');
+      expect(await allBasic.getByte(2)).to.equal("0x01");
     });
   });
+
+  describe("CREATE2", () => {
+    it("get fixed address using CREATE2", async () => {
+      const byteCode = BYTECODE0X;
+      console.log("## BYTECODE: ", byteCode);
+      const salt = ethers.keccak256(ethers.toUtf8Bytes("MyProject:UniqueID"));
+      // const saltHex = zeroPadValue(hexlify(toBeHex(salt)), 32);
+      const saltHex = zeroPadValue(salt, 32);
+
+      // get deterministic proxy address from ethers
+
+      const deployer = "0x4e59b44847b379578588920cA78FbF26c0B4956C";
+      const address = ethers.getCreate2Address(
+        deployer,
+        saltHex,
+        keccak256(byteCode)
+      );
+      console.log("## Address: ", address);
+
+      // Please refer to the scripts/deploy-with-create2.ts
+      // npx hardhat run scripts/deploy-with-create2.ts --network localnet
+    });
+  });
+
   describe("Ethers utils", () => {
     it("#hexify #arrayify #hexValue", async () => {
       // #hexify & #hexValue
@@ -277,18 +320,19 @@ describe("AllPairVault", () => {
 
       // #arrayify
       const sigStr = "calculatePower(uint256,uint256)";
-      const functionHash = dataSlice(keccak256(toUtf8Bytes(sigStr)), 0, 4) as string;
+      const functionHash = dataSlice(
+        keccak256(toUtf8Bytes(sigStr)),
+        0,
+        4
+      ) as string;
       console.log("## sig hash for calculatePower: ", functionHash);
       const args = abiCoder.encode(["uint256", "uint256"], [10, 3]);
       const data = functionHash + args.slice(2);
       const dataArray = getBytes(data);
       const expected = new Uint8Array([
-        249, 121, 242, 105, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 3
+        249, 121, 242, 105, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
       ]);
       expect(dataArray).to.deep.equal(expected);
     });
@@ -302,12 +346,14 @@ describe("AllPairVault", () => {
       expect(amountInWei).to.equal(10500000000000000000n);
     });
 
-    // NOTE: encodedBytes32String in ethers v6 = formatBytes32String 
+    // NOTE: encodedBytes32String in ethers v6 = formatBytes32String
     it("#formatBytes32String #parseBytes32String", async () => {
       // #hexValue
       const shortString = "Hello, World!";
       const bytes32Formatted = encodeBytes32String(shortString);
-      expect(bytes32Formatted).to.equal(("0x48656c6c6f2c20576f726c642100000000000000000000000000000000000000").toLowerCase());
+      expect(bytes32Formatted).to.equal(
+        "0x48656c6c6f2c20576f726c642100000000000000000000000000000000000000".toLowerCase()
+      );
 
       let decodedString = decodeBytes32String(bytes32Formatted);
       expect(decodedString).to.equal(shortString);
@@ -327,9 +373,11 @@ describe("AllPairVault", () => {
 
     it("#executeUserOp", async () => {
       const functionSignature = "add";
-      const execSig = keccak256(toUtf8Bytes(functionSignature))
-        .substring(0, 10);
-      console.log('execSig: ', execSig);
+      const execSig = keccak256(toUtf8Bytes(functionSignature)).substring(
+        0,
+        10
+      );
+      console.log("execSig: ", execSig);
       const innerCall = abiCoder.encode(
         ["address", "bytes"],
         [operator.target, operator.interface.encodeFunctionData("add")]
@@ -356,8 +404,10 @@ describe("AllPairVault", () => {
     // NOTE: Solve this problem now
     it("#executeMultipleUserOps", async () => {
       const functionSignature = "add";
-      const execSig = keccak256(toUtf8Bytes(functionSignature))
-        .substring(0, 10);
+      const execSig = keccak256(toUtf8Bytes(functionSignature)).substring(
+        0,
+        10
+      );
       const innerCall = abiCoder.encode(
         ["address", "bytes"],
         [operator.target, operator.interface.encodeFunctionData("add")]
@@ -388,8 +438,10 @@ describe("AllPairVault", () => {
 
     it("#executeIndirect", async () => {
       const functionSignature = "indirectInnerCall(bytes)";
-      const execSig = keccak256(toUtf8Bytes(functionSignature))
-        .substring(0, 10);
+      const execSig = keccak256(toUtf8Bytes(functionSignature)).substring(
+        0,
+        10
+      );
       const innerCall = abiCoder.encode(
         ["address", "bytes"],
         [operator.target, operator.interface.encodeFunctionData("addTen")]
@@ -421,10 +473,12 @@ describe("AllPairVault", () => {
       // const callAdd = await allBasic.add.populateTransaction().then(tx => tx.data!);
       const tx = await allBasic.add.populateTransaction();
       const callAdd = tx.data!;
-      
+
       const functionSignature = "add";
-      const execSig = keccak256(toUtf8Bytes(functionSignature))
-        .substring(0, 10);
+      const execSig = keccak256(toUtf8Bytes(functionSignature)).substring(
+        0,
+        10
+      );
       const innerCall = abiCoder.encode(
         ["address", "bytes"],
         [allBasic.target, callAdd]
@@ -457,7 +511,6 @@ describe("AllPairVault", () => {
       };
       await execAccount.executeUserOp(userOp, 1);
       expect(await allBasic.getValue()).to.equal(1n);
-
     });
   });
 
@@ -527,13 +580,17 @@ describe("AllPairVault", () => {
   });
 
   describe("Deposit contract", () => {
-    const DEPOSIT_CONTRACT_ADDRESS = "0x0420420420420420420420420420420420420420";
+    const DEPOSIT_CONTRACT_ADDRESS =
+      "0x0420420420420420420420420420420420420420";
     // Example deposit parameters
     const withdrawalCredentials = hexlify(randomBytes(32)); // Replace with actual withdrawal credentials
     const signature = hexlify(randomBytes(96)); // Replace with actual signature
 
     it("deposit contract", async function () {
-      const depositContract = await ethers.getContractAt("DepositContract", DEPOSIT_CONTRACT_ADDRESS);
+      const depositContract = await ethers.getContractAt(
+        "DepositContract",
+        DEPOSIT_CONTRACT_ADDRESS
+      );
       // console.log("depositContract: ", depositContract);
 
       // NOTE: If you want to test this, use localnet network.
@@ -618,26 +675,30 @@ describe("AllPairVault", () => {
 
     it("generic type example", async () => {
       // Example with explicit types
-      type BasicAccountOwnershipTransfer = TransferAccountOwnershipParams<BasicUser, BasicAccount>;
+      type BasicAccountOwnershipTransfer = TransferAccountOwnershipParams<
+        BasicUser,
+        BasicAccount
+      >;
 
       const transferDetails: BasicAccountOwnershipTransfer = {
-        newOwner: { id: 'u123', name: 'Alice', type: 'basic' },
-        accountId: 'a456',
-        owner: { id: 'u456', name: 'Bob', type: 'basic' },
+        newOwner: { id: "u123", name: "Alice", type: "basic" },
+        accountId: "a456",
+        owner: { id: "u456", name: "Bob", type: "basic" },
         waitForConfirmation: true,
-        dryRun: false // `OperationOverrides` from utility type
+        dryRun: false, // `OperationOverrides` from utility type
       };
       console.log(transferDetails);
 
       // Example using default types
-      type AdminAccountOwnershipTransfer = TransferAccountOwnershipParams<AdminUser>;
+      type AdminAccountOwnershipTransfer =
+        TransferAccountOwnershipParams<AdminUser>;
 
       const adminTransferDetails: AdminAccountOwnershipTransfer = {
-        newOwner: { id: 'u789', name: 'Eve', type: 'admin' },
-        accountId: 'a789',
-        owner: { id: 'u890', name: 'Frank', type: 'admin' },
+        newOwner: { id: "u789", name: "Eve", type: "admin" },
+        accountId: "a789",
+        owner: { id: "u890", name: "Frank", type: "admin" },
         waitForConfirmation: true,
-        dryRun: true // `OperationOverrides` from utility type
+        dryRun: true, // `OperationOverrides` from utility type
       };
       console.log(adminTransferDetails);
     });

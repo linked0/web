@@ -67,9 +67,14 @@ const account = hre.web3.eth.accounts.decrypt(data, "pooh2024");
 this.key = account.privateKey;
 ```
 
-### Deploy factory contract
+### Deploy factory contract (Deterministic deployment proxy)
+#### Reference
+- `pooh-geth/poohnet/deploy-deployer.sh` on `pooh-geth`
+- `npx hardhat test test/all-basic.ts --grep CREATE2` on `web`
+- `npx hardhat run scripts/deploy-with-create2.ts --network localnet` on `web`
+
 #### Check if the factory exists
-The Create2 factory contract will be deployed at the address `0x4e59b44847b379578588920cA78FbF26c0B4956C`. You can check if this contract has already been deployed to your L1 network with a block explorer or by running the following command:
+The Create2 factory contract will be deployed at the address **`0x4e59b44847b379578588920cA78FbF26c0B4956C`**. You can check if this contract has already been deployed to your L1 network with a block explorer or by running the following command:
 ```
 cast codesize 0x4e59b44847b379578588920cA78FbF26c0B4956C --rpc-url $L1_RPC_URL
 ```
