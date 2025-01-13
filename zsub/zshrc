@@ -70,58 +70,45 @@ declare -A folderMap
 declare -A fileMap
 
 # Assign values to the map
-folderMap["poge"]="$HOME/work/pooh-geth/"
-folderMap["69"]="$HOME/work/webf/erc6900-reference/"
-folderMap["43"]="$HOME/work/web/erc4337-aa/"
-folderMap["web"]="$HOME/work/web/"
-folderMap["webf"]="$HOME/work/webf/"
-folderMap["foc"]="$HOME/work/webf/course-foundry/L7-foundry-fund-me/"
-folderMap["ex"]="$HOME/work/web/ex/"
-folderMap["ex5"]="$HOME/work/web/ex5/"
-folderMap["exf"]="$HOME/work/webf/exf/"
-folderMap["exj"]="$HOME/work/web/ex-j/"
-folderMap["exp"]="$HOME/work/web/exp/"
-folderMap["exw"]="$HOME/work/web/ex-w/"
-folderMap["oz"]="$HOME/work/openzeppelin/"
-folderMap["ha"]="$HOME/work/smart-contract-hacking/"
-folderMap["poer"]="$HOME/work/pooh-erc20/"
-folderMap["poco"]="$HOME/work/pooh-land-contract/"
-folderMap["pose"]="$HOME/work/pooh-land-backend/"
-folderMap["powe"]="$HOME/work/pooh-land-frontend/"
-folderMap["rajs"]="$HOME/work/rabbit-js/"
-folderMap["rase"]="$HOME/work/rabbit-server/"
-folderMap["rawe"]="$HOME/work/rabbit-web/"
-folderMap["rawa"]="$HOME/work/rabbit-wallet/"
-folderMap["swco"]="$HOME/work/tigger-swap-contracts/"
-folderMap["tisd"]="$HOME/work/tigger-swap-sdk/"
-folderMap["tico"]="$HOME/work/tigger-bridge-contracts/"
-folderMap["tise"]="$HOME/work/tigger-bridge-server/"
-folderMap["tiwe"]="$HOME/work/tigger-web/"
-
-fileMap["pp"]="package.json"
-fileMap["hh"]="hardhat.config.ts"
-fileMap["ee"]=".env"
-fileMap["rr"]="README.md"
-fileMap["fo"]="fountry.toml"
-fileMap["re"]="eemappings.txt"
-fileMap["ma"]="Makefile"
-fileMap["mm"]="memo.txt"
-fileMap["mm2"]="m2.txt"
+fileMap["aaa"]="$HOME/work/web/contracts/AllBasic.sol"
+fileMap["bbb"]="$HOME/work/web/test/all-basic.ts"
+fileMap["ccc"]="$HOME/work/web/scripts/deploy.ts"
+fileMap["aaaf"]="$HOME/work/webf/src/Counter.sol"
+fileMap["bbbf"]="$HOME/work/webf/test/Counter.t.sol"
+fileMap["cccf"]="$HOME/work/webf/script/Counter.s.sol"
+fileMap["ddd"]="$HOME/work/web/dev.md"
+fileMap["eee"]="$HOME/work/web/.env"
+fileMap["ppp"]="$HOME/work/web/package.json"
+fileMap["hhh"]="$HOME/work/web/hardhat.config.ts"
+fileMap["ttt"]="$HOME/work/web/tsconfig.json"
+fileMap["rrr"]="$HOME/work/web/README.md"
+fileMap["mmm"]="$HOME/work/web/memo.txt"
+fileMap["mm2"]="$HOME/work/web/m2.txt"
+fileMap["mms"]="$HOME/work/web/ms.txt"
+fileMap["zz"]="$HOME/.zshrc"
+fileMap["zz2"]="$HOME/work/web/zsub/zshrc"
+fileMap["ff"]="./foundry.toml"
+fileMap["pp"]="./package.json"
+fileMap["hh"]="./hardhat.config.ts"
+fileMap["ee"]="./.env"
+fileMap["re"]="./remappings.txt"
+fileMap["rr"]="./README.md"
+fileMap["ma"]="./Makefile"
 
 ii() {
-  local folder=""
   local file=""
+  file=${fileMap["$1"]}
 
-  if [ -z "$2" ]; then
-    folder="./"
-    file=${fileMap["$1"]}
-  else
-    folder=${folderMap["$1"]}
-    file=${fileMap["$2"]}
-  fi
+  echo "idea $file"
+  idea "$file"
+}
 
-  echo "idea \"$folder$file\""
-  idea "$folder$file"
+cc() {
+  local file=""
+  file=${fileMap["$1"]}
+
+  echo "cat $file"
+  cat "$file"
 }
 
 alias python=python3
@@ -131,24 +118,15 @@ alias pip=pip3
 alias aaa='code ~/work/web/contracts/AllBasic.sol'
 alias bbb='code ~/work/web/test/all-basic.ts'
 alias ccc='code ~/work/web/scripts/deploy.ts'
+alias aaaf='code ~/work/webf/src/Counter.sol'
+alias bbbf='code ~/work/webf/test/Counter.t.sol'
+alias cccf='code ~/work/webf/script/Counter.s.sol'
 alias ddd='code ~/work/web/dev.md'
 alias eee='code ~/work/web/.env'
 alias ppp='code ~/work/web/package.json'
 alias hhh='code ~/work/web/hardhat.config.ts'
 alias ttt='code ~/work/web/tsconfig.json'
 alias rrr='code ~/work/web/README.md'
-alias aaaf='code ~/work/webf/src/Counter.sol'
-alias bbbf='code ~/work/webf/test/Counter.t.sol'
-alias cccf='code ~/work/webf/script/Counter.s.sol'
-alias dddf='code ~/work/webf/dev.md'
-alias eeef='code ~/work/webf/.env'
-alias pppf='code ~/work/webf/package.json'
-alias hhhf='code ~/work/webf/hardhat.config.ts'
-alias tttf='code ~/work/webf/tsconfig.json'
-alias rrrf='code ~/work/webf/README.md'
-alias makf='code ~/work/webf/Makefile'
-alias remf='code ~/work/webf/remappings.txt'
-alias fouf='code ~/work/webf/foundry.toml'
 alias mmm='code ~/work/web/memo.txt'
 alias mm2='code ~/work/web/m2.txt'
 alias mms='code ~/work/web/ms.txt'
@@ -161,13 +139,6 @@ alias ee='code ./.env'
 alias re='code ./remappings.txt'
 alias rr='code ./README.md'
 alias ma='code ./Makefile'
-alias fff='code ./foundry.toml'
-alias ppf='code ./package.json'
-alias hhf='code ./hardhat.config.ts'
-alias eef='code ./.env'
-alias ref='code ./remappings.txt'
-alias rrf='code ./README.md'
-alias maf='code ./Makefile'
 
 alias czz='cat ~/.zshrc'
 alias czz2='cat ~/work/web/zsub/zshrc'
