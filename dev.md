@@ -24,15 +24,84 @@ hardhat ignition deploy ignition/modules/apollo.ts --network localnet
 4. Check `ignition/deployments` folder
 5. Remove `ignition/deployments` folder if you want to deploy contract from start.
 
-### Etc
+### OpenSea fulfillOrder parameter ABI encode
+```
+function fulfillOrder(
+  /**
+    * @custom:name order
+    */
+  Order calldata,
+  bytes32 fulfillerConduitKey
+) external payable override returns (bool fulfilled)
+```
+
+```
++------------------------------------------+
+| 0x00..0x03 : Function Selector           |
++------------------------------------------+
+| 0x04..0x23 : offset To Order = 0x80      | (for param1: Order)
++------------------------------------------+
+| 0x24..0x43 : fulfillerConduitKey         | (for param2: conduitKey)
++------------------------------------------+
+| 0x44(68)..0x63 : offset to acutal data = 0x40| (start of `parameters` of `AdvancedOrder`)
++------------------------------------------+
+| 0x64..0x83 : (unused or ...)             |
++------------------------------------------+
+| 0x84(132)..0xA3 : offerer                | (start of `offer`)
+| 0xA4..0xC3 : zone                        |
++------------------------------------------+
+| 0xC4..0xE3 : offset to  parameters = 0x40|
+| 0xE4..0x103 : (unused or ...)            |
++------------------------------------------+
+[ array length of offer ]      // 32 bytes
+[ pointerToElem0StructData ]   // 32 bytes
+[ pointerToElem1StructData ]   // 32 bytes
+...
+(Then in the tail region)
+Elem0 struct data
+Elem1 struct data
+...
++------------------------------------------+
+| `consideration` part
++------------------------------------------+
+```
+
+```
+struct AdvancedOrder {
+  OrderParameters parameters;
+  uint120 numerator;
+  uint120 denominator;
+  bytes signature;
+  bytes extraData;
+}
+
+struct OrderParameters {
+  address offerer; // 0x00
+  address zone; // 0x20
+  OfferItem[] offer; // 0x40
+  ConsiderationItem[] consideration; // 0x60
+  OrderType orderType; // 0x80
+  uint256 startTime; // 0xa0
+  uint256 endTime; // 0xc0
+  bytes32 zoneHash; // 0xe0
+  uint256 salt; // 0x100
+  bytes32 conduitKey; // 0x120
+  uint256 totalOriginalConsiderationItems; // 0x140
+  // offer.length                          // 0x160
+}
+```
+
+### `openzeppelin` 같은 외부 프로젝트 적용
 - `flux-finance` 프로젝트 처럼 `openzeppelin` 같은 외부 프로젝트를 코드에 직접 포함시키는 것도 방법
   - `contracts/external/openzeppelin`, 여기는 `src` 대신 `contracts` 폴더를 사용.
-- Random Key 생성
+
+### Random Key 생성
 	```
 	yarn keys
 	```
 
-   여기서 0x를 쓰면 안됨.
+### Python 참고 코드   
+여기서 0x를 쓰면 안됨.
 > hex_string = "48656c6c6f20576f726c64"  # Hex encoded string for "Hello World"
 > byte_string = bytes.fromhex(hex_string)
 > regular_string = byte_string.decode("utf-8")
@@ -43,6 +112,7 @@ datetime.fromtimestamp(7214123987)
 > print(f"{a:08x}{b:016x}{c:08x}")
 0000006400000000000227b200000005
 
+### Python에서 Ethereum 호출
 w3 = Web3(Web3.HTTPProvider('https://eth-sepolia.g.alchemy.com/v2/73I-qvN9yqtRcajnfvEarwA2FNHM4Nph')
 
 
