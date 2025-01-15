@@ -6,7 +6,7 @@
 - [Miki - 421Gf1x](https://bit.ly/421Gf1x)
 - [Miki-Summary - 4iWn0fY](https://bit.ly/4iWn0fY)
 - [작업 환경 세팅](#-0-work-env) <== ctrl click
-- [code](#-code) / [projects](#-projects) / [error](#error)
+- [Code](#-code) - [Projects](#-projects) - [Error](#error) - [Trend](#-trend)
 
 
 ## 😈 code
@@ -245,6 +245,32 @@ This is basically using ethers v6, hardhat-ignition-ethers.
   - README 참고
 - `eopenzeppelin-contracts`: openzeppelin contracts
   - [openzeppelin github](https://github.com/OpenZeppelin/openzeppelin-contracts)
+
+## 😈 Trend
+### 🏆 생성형 AI에서 AGI까지ㅣ카이스트 김대식 교수
+[Youtube](https://youtu.be/-i78SZAJG8E?si=Eb17Pn3fF1xmJTOK)
+- 멀티모달, 휴대폰으로 인공지능을 쓰지는 않을 것
+- 휴대폰의 시대가 끝난다.: 그렇게 한다고 하면 그렇게 된다. Self-fullfilling process
+- New formfactor, 새로운 데이터를 찾아라.
+- 2~3년후에 인공지능과 열라게 말하게 될 것.
+- 모델이 커지면서 갑자기 새롭게 해결되는 현상이 발생함.
+- 5년후 100조 모델은 AGI
+- AI Pilot
+
+### 🏆 CES 2025
+  - Intent based의 동작을 하게 한다.
+  - AI MPC in 게임.
+  - 물리 인공지능
+  - AGI - ASI (super intelligence)
+  - Lipsync 제품
+  - 이미지를 3D로 바꿈.
+  - AI Agent: 복잡한 작업 실행. 구글이 가장 빠르게 적용(Universal Assistent, Javis)
+  - Copilot Studio, AI Agent Studio
+  - 업무 자동화
+  - Fabrix: LLM을 보안과 함께 도임. 클라우드 형태.
+  - MultiAgent: 리더에이전트가 하위 에이전트와 통신함.
+  - Personal Agent: 나의 역할을 대신함.
+  - Brity Automation
 
 # Poohnet
 ## 😈 Order of deploying contracts for PoohNet
