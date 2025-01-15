@@ -1,4 +1,4 @@
-# Total Summary of projects
+# Knowledge Base & Projects
 🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱🌟🔴
 
 - [dev.md text - 3MT0VRb](bit.ly/3MT0VRb)
@@ -6,12 +6,10 @@
 - [Miki - 421Gf1x](https://bit.ly/421Gf1x)
 - [Miki-Summary - 4iWn0fY](https://bit.ly/4iWn0fY)
 - [작업 환경 세팅](#-0-work-env) <== ctrl click
-- [code](#code) <== Search with "#code"
-- [error](#error)
+- [code](#-code) / [projects](#-projects) / [error](#error)
 
-이 프로젝트는 hardhat-ignition을 사용하여 컨트랙트를 배포한다.
 
-## 😈 Reference codes
+## 😈 code
 ### ignition
 - [Hardhat Ignition](https://hardhat.org/ignition/docs/getting-started#quick-start)
 - [Medium Article](https://medium.com/nomic-foundation-blog/introducing-hardhat-ignition-a-refreshed-deployments-experience-9580d2946e10)
@@ -191,7 +189,7 @@ EVM_VERSION=london
 ```
 
 
-## 😈 Source summary on web repo
+## 😈 Projects
 This is basically using ethers v6, hardhat-ignition-ethers.
 
 - `eondo-v1`: ondo 프로젝트
@@ -464,6 +462,17 @@ $ cast --help
 
 
 # #error
+### 'com.docker.vmnetd'에 악성 코드가 포함되어 있어서 열리지 않았습니다.
+```
+sudo launchctl bootout system/com.docker.vmnetd 2>/dev/null || true
+sudo launchctl bootout system/com.docker.socket 2>/dev/null || true
+
+sudo rm /Library/PrivilegedHelperTools/com.docker.vmnetd || true
+sudo rm /Library/PrivilegedHelperTools/com.docker.socket || true
+
+ps aux | grep -i docker | awk '{print $2}' | sudo xargs kill -9 2>/dev/null
+```
+
 ### throw new UsageError(`Invalid package.json ...
 ➜  tigger-swap-contracts git:(main) ✗ yarn install            
 /Users/jay/.nvm/versions/node/v20.17.0/lib/node_modules/corepack/dist/lib/corepack.cjs:22147
