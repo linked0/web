@@ -247,6 +247,12 @@ This is basically using ethers v6, hardhat-ignition-ethers.
   - [openzeppelin github](https://github.com/OpenZeppelin/openzeppelin-contracts)
 
 ## 😈 Trend
+### ChatGPT o1, o3
+- o3: private chain of thought
+- o1:  논리적 오류 결합을 지켜줌. 추론을 잘함.
+  - 변화를 유추하도록 함. 추론 성능
+- xml 태그를 쓰면 좋다.
+
 ### CES & TTimes
 - Grader를 통한 나만의 FineTuning
 - 카메라로 상황을 보고 가이드해주는 것(예를들어 기계 고치는법)
