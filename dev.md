@@ -3483,6 +3483,9 @@ psql postgres <== 접속해볼 수 있음.
 - Idea 명령세팅: export PATH=$PATH:'/Applications/IntelliJ IDEA.app/Contents/MacOS'
 - Idea Cyan Light Theme 설치
 
+### ETC
+- Postman Agent
+
 ### VS Code Plugin
 - Solidity Visual Developer
 - Solidity(JuanBlanco)
