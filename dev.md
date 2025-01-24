@@ -3484,7 +3484,7 @@ psql postgres <== 접속해볼 수 있음.
 - Idea Cyan Light Theme 설치
 
 ### ETC
-- Postman Agent
+- Postman Agent: 이거 쓰지 말고 그냥 ChatGPT에 물어보면 됨.
 
 ### VS Code Plugin
 - Solidity Visual Developer
