@@ -94,9 +94,9 @@ struct OrderParameters {
   - `contracts/external/openzeppelin`, 여기는 `src` 대신 `contracts` 폴더를 사용.
 
 ### Random Key 생성
-	```
-	yarn keys
-	```
+```
+yarn keys
+```
 
 ### Python 참고 코드   
 여기서 0x를 쓰면 안됨.
@@ -3490,7 +3490,7 @@ psql postgres <== 접속해볼 수 있음.
 - Idea Cyan Light Theme 설치
 
 ### ETC
-- Postman Agent: 이거 쓰지 말고 그냥 ChatGPT에 물어보면 됨.
+- Postman Agent: 이거 쓰지 말고 curl쓰는 방식으로 그냥 ChatGPT에게 물어보면 됨.
 
 ### VS Code Plugin
 - Solidity Visual Developer
@@ -3546,6 +3546,10 @@ forge --version
 ```
 
 ### 기타
+- CAPS 키 지연 문제
+```
+hidutil property --set '{"CapsLockDelayOverride":10}'
+```
 - 🔥 memo.txt를 사용하기 보다는 그냥 스티커 앱 사용
 - 맥 메인 모니터 설정 및 Dock 사이즈 조정
 - 데스크탑 및 Dock: Mission Control - Spaces를 최근 사용내역에 따라 자동으로 재정렬
