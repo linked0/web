@@ -523,6 +523,29 @@ $ cast --help
 
 
 # #error
+### Invalid package.json
+/Users/jay/.nvm/versions/node/v18.20.4/lib/node_modules/corepack/dist/lib/corepack.cjs:22147
+      throw new UsageError(`Invalid package.json in ${import_path8.default.relative(initialCwd, manifestPath)}`);
+            ^
+
+UsageError: Invalid package.json in package.json
+    at loadSpec (/Users/jay/.nvm/versions/node/v18.20.4/lib/node_modules/corepack/dist/lib/corepack.cjs:22147:13)
+    at async Engine.findProjectSpec (/Users/jay/.nvm/versions/node/v18.20.4/lib/node_modules/corepack/dist/lib/corepack.cjs:22348:22)
+    at async Engine.executePackageManagerRequest (/Users/jay/.nvm/versions/node/v18.20.4/lib/node_modules/corepack/dist/lib/corepack.cjs:22404:24)
+    at async Object.runMain (/Users/jay/.nvm/versions/node/v18.20.4/lib/node_modules/corepack/dist/lib/corepack.cjs:23096:5) {
+  clipanion: { type: 'usage' }
+
+==>
+```
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7", <== 이 부분이 문제임, 불필요한 콤마
+  },
+```
+
 ### 'com.docker.vmnetd'에 악성 코드가 포함되어 있어서 열리지 않았습니다.
 ```
 sudo launchctl bootout system/com.docker.vmnetd 2>/dev/null || true
