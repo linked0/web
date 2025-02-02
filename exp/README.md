@@ -27,6 +27,15 @@ Get dependency list
 pip3 freeze > requirements.txt
 ```
 
+### Setup and Run for ball_bounce.py
+This doesn't need to requirements.txt. If you want it, you should have a folder for this project.
+```
+python3 -m venv ball_bounce_env // If you have one already, no need for it.
+source ball_bounce_env/bin/activate
+pip3 install pygame
+python ball_bounce.py 
+```
+
 ## Coding Test Categories
 
 ### Not to do
