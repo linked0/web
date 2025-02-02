@@ -28,6 +28,9 @@ pip3 freeze > requirements.txt
 ```
 
 ### Setup and Run for ball_bounce.py
+Prompt on o3-mini-high
+> write a Python program that shows a ball bouncing inside a spinning hexagon. The ball should be affected by gravity and friction, and it must bounce off the rotating walls realistically
+
 This doesn't need to requirements.txt. If you want it, you should have a folder for this project.
 ```
 python3 -m venv ball_bounce_env // If you have one already, no need for it.
