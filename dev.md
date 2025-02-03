@@ -10,6 +10,170 @@
 - [Error](#error) - [Trend](#-trend)
 
 ## 😈 code
+### permission denied to set parameter "session_replication_role"
+==> orm.config.ts에 `disableForeignKeys: false` 추가
+```
+const config: Options = {
+  migrations: {
+    path: "./src/migrations",
+    tableName: "migrations",
+    transactional: true,
+    disableForeignKeys: false,
+  },
+  ...
+}
+```
+
+##### 에러 상세
+```
+➜  rabbit-server git:(main) ✗ yarn start:dev
+yarn run v1.22.22
+$ nodemon src/index.ts
+[nodemon] 3.1.4
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: ts,json
+[nodemon] starting `ts-node src/index.ts`
+NODE_DEV : true
+DEPLOY_TARGET : undefined
+POSTGRES_DB : rabbit-data
+JWT_KEY : adslfkjalsdfjaskldf
+S3_REGION : undefined
+SHAREDASSET_CONTRACT : undefined
+LAZY_MINT_ADAPTER : undefined
+NATIVE_TOKEN : undefined
+[info] MikroORM version: 5.9.8
+[discovery] ORM entity discovery started, using ReflectMetadataProvider
+[discovery] - processing 1 files
+[discovery] - processing entity Actor (/Users/jay/work/snake0124/rabbit-server/src/entities/actor.entity.ts)
+[discovery] - entity discovery finished, found 1 entities, took 72 ms
+[info] MikroORM successfully connected to database rabbit-data on postgresql://rabbit_app:*****@localhost:5432
+[query] select 1 from pg_database where datname = 'rabbit-data' [took 26 ms, 1 result]
+[query] select 1 from pg_database where datname = 'rabbit-data' [took 2 ms, 1 result]
+[query] select table_name, table_schema as schema_name, (select pg_catalog.obj_description(c.oid) from pg_catalog.pg_class c where c.oid = (select ('"' || table_schema || '"."' || table_name || '"')::regclass::oid) and c.relname = table_name) as table_comment from information_schema.tables where "table_schema" not like 'pg_%' and "table_schema" not like 'crdb_%' and "table_schema" not like '_timescaledb_%' and "table_schema" not in ('information_schema', 'tiger', 'topology') and table_name != 'geometry_columns' and table_name != 'spatial_ref_sys' and table_type != 'VIEW' order by table_name [took 23 ms, 0 result]
+[query] select schema_name from information_schema.schemata where "schema_name" not like 'pg_%' and "schema_name" not like 'crdb_%' and "schema_name" not like '_timescaledb_%' and "schema_name" not in ('information_schema', 'tiger', 'topology') order by schema_name [took 2 ms, 1 result]
+[query] create table "public"."migrations" ("id" serial primary key, "name" varchar(255), "executed_at" timestamptz default current_timestamp)
+[query] select * from "public"."migrations" order by "id" asc [took 4 ms, 0 result]
+[query] select table_name, table_schema as schema_name, (select pg_catalog.obj_description(c.oid) from pg_catalog.pg_class c where c.oid = (select ('"' || table_schema || '"."' || table_name || '"')::regclass::oid) and c.relname = table_name) as table_comment from information_schema.tables where "table_schema" not like 'pg_%' and "table_schema" not like 'crdb_%' and "table_schema" not like '_timescaledb_%' and "table_schema" not in ('information_schema', 'tiger', 'topology') and table_name != 'geometry_columns' and table_name != 'spatial_ref_sys' and table_type != 'VIEW' order by table_name [took 5 ms, 1 result]
+[query] begin
+[query] select * from "public"."migrations" order by "id" asc [took 3 ms, 0 result]
+Processing 'Migration20240930063516'
+[query] savepoint trx3
+[query] set names 'utf8'; [took 0 ms, 0 result]
+[query] set session_replication_role = 'replica'; [took 4 ms]
+[query] rollback to savepoint trx3
+[query] rollback
+📌 Could not connect to the database MigrationError: Migration Migration20240930063516 (up) failed: Original error: set session_replication_role = 'replica'; - permission denied to set parameter "session_replication_role"
+    at /Users/jay/work/snake0124/rabbit-server/node_modules/umzug/src/umzug.ts:261:12
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Umzug.runCommand (/Users/jay/work/snake0124/rabbit-server/node_modules/umzug/src/umzug.ts:210:11)
+    at async Migrator.runInTransaction (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/migrations/Migrator.js:301:21)
+    at async PostgreSqlConnection.transactional (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/knex/AbstractSqlConnection.js:36:25) {
+  cause: DriverException: set session_replication_role = 'replica'; - permission denied to set parameter "session_replication_role"
+      at PostgreSqlExceptionConverter.convertException (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/core/platforms/ExceptionConverter.js:8:16)
+      at PostgreSqlExceptionConverter.convertException (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/postgresql/PostgreSqlExceptionConverter.js:42:22)
+      at PostgreSqlDriver.convertException (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/core/drivers/DatabaseDriver.js:201:54)
+      at /Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/core/drivers/DatabaseDriver.js:205:24
+      at processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Function.runSerial (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/core/utils/Utils.js:611:22)
+      at async connection.transactional.ctx (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/migrations/MigrationRunner.js:23:17)
+      at async PostgreSqlConnection.transactional (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/knex/AbstractSqlConnection.js:36:25)
+      at async MigrationRunner.run (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/migrations/MigrationRunner.js:20:13)
+      at async createMigrationHandler (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/migrations/Migrator.js:191:13)
+  
+  previous error: set session_replication_role = 'replica'; - permission denied to set parameter "session_replication_role"
+      at Parser.parseErrorMessage (/Users/jay/work/snake0124/rabbit-server/node_modules/pg-protocol/src/parser.ts:368:69)
+      at Parser.handlePacket (/Users/jay/work/snake0124/rabbit-server/node_modules/pg-protocol/src/parser.ts:187:21)
+      at Parser.parse (/Users/jay/work/snake0124/rabbit-server/node_modules/pg-protocol/src/parser.ts:102:30)
+      at Socket.<anonymous> (/Users/jay/work/snake0124/rabbit-server/node_modules/pg-protocol/src/index.ts:7:48)
+      at Socket.emit (node:events:517:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:368:12)
+      at readableAddChunk (node:internal/streams/readable:341:9)
+      at Socket.Readable.push (node:internal/streams/readable:278:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 121,
+    severity: 'ERROR',
+    code: '42501',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'guc.c',
+    line: '7475',
+    routine: 'set_config_option'
+  },
+  jse_cause: DriverException: set session_replication_role = 'replica'; - permission denied to set parameter "session_replication_role"
+      at PostgreSqlExceptionConverter.convertException (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/core/platforms/ExceptionConverter.js:8:16)
+      at PostgreSqlExceptionConverter.convertException (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/postgresql/PostgreSqlExceptionConverter.js:42:22)
+      at PostgreSqlDriver.convertException (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/core/drivers/DatabaseDriver.js:201:54)
+      at /Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/core/drivers/DatabaseDriver.js:205:24
+      at processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Function.runSerial (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/core/utils/Utils.js:611:22)
+      at async connection.transactional.ctx (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/migrations/MigrationRunner.js:23:17)
+      at async PostgreSqlConnection.transactional (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/knex/AbstractSqlConnection.js:36:25)
+      at async MigrationRunner.run (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/migrations/MigrationRunner.js:20:13)
+      at async createMigrationHandler (/Users/jay/work/snake0124/rabbit-server/node_modules/@mikro-orm/migrations/Migrator.js:191:13)
+  
+  previous error: set session_replication_role = 'replica'; - permission denied to set parameter "session_replication_role"
+      at Parser.parseErrorMessage (/Users/jay/work/snake0124/rabbit-server/node_modules/pg-protocol/src/parser.ts:368:69)
+      at Parser.handlePacket (/Users/jay/work/snake0124/rabbit-server/node_modules/pg-protocol/src/parser.ts:187:21)
+      at Parser.parse (/Users/jay/work/snake0124/rabbit-server/node_modules/pg-protocol/src/parser.ts:102:30)
+      at Socket.<anonymous> (/Users/jay/work/snake0124/rabbit-server/node_modules/pg-protocol/src/index.ts:7:48)
+      at Socket.emit (node:events:517:28)
+      at Socket.emit (node:domain:489:12)
+      at addChunk (node:internal/streams/readable:368:12)
+      at readableAddChunk (node:internal/streams/readable:341:9)
+      at Socket.Readable.push (node:internal/streams/readable:278:10)
+      at TCP.onStreamRead (node:internal/stream_base_commons:190:23) {
+    length: 121,
+    severity: 'ERROR',
+    code: '42501',
+    detail: undefined,
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'guc.c',
+    line: '7475',
+    routine: 'set_config_option'
+  },
+  migration: {
+    direction: 'up',
+    name: 'Migration20240930063516',
+    path: '/Users/jay/work/snake0124/rabbit-server/src/migrations/Migration20240930063516.ts',
+    context: {}
+  }
+}
+/Users/jay/work/snake0124/rabbit-server/src/application.ts:108
+      throw Error(String(error));
+            ^
+Error: MigrationError: Migration Migration20240930063516 (up) failed: Original error: set session_replication_role = 'replica'; - permission denied to set parameter "session_replication_role"
+    at Application.<anonymous> (/Users/jay/work/snake0124/rabbit-server/src/application.ts:108:13)
+    at Generator.throw (<anonymous>)
+    at rejected (/Users/jay/work/snake0124/rabbit-server/src/application.ts:6:65)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `ts-node src/index.ts`
+/Users/jay/work/snake0124/rabbit-server/node_modules/ts-node/src/index.ts:859
+    return new TSError(diagnosticText, diagnosticCodes, diagnostics);
+           ^
+```
+
 ### ignition
 - [Hardhat Ignition](https://hardhat.org/ignition/docs/getting-started#quick-start)
 - [Medium Article](https://medium.com/nomic-foundation-blog/introducing-hardhat-ignition-a-refreshed-deployments-experience-9580d2946e10)
