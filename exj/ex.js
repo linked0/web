@@ -9,3 +9,10 @@ function solution(edges) {
 }
 
 console.log("RESULT:", solution([5, 1, 5], 30, [[2, 10], [9, 15], [10, 5], [11, 5]]));
+
+const array = ["aaa", "bbb"];
+
+// Using map to iterate over the array
+array.map(item => {
+  console.log(item);
+});

@@ -17,9 +17,9 @@ or install dependencies with requirements.txt
 pip3 install -r requirements.txt
 ```
 
-Run basic.py
+Run ex.py
 ```
-python3 allbasic.py
+python3 ex.py
 ```
 
 Get dependency list

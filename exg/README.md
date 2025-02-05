@@ -17,5 +17,5 @@ go install golang.org/x/lint/golint@latest
 
 ## run
 ```
-go run hello.go
+go run ex.go
 ```

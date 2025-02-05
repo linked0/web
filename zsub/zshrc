@@ -45,24 +45,22 @@ py2() {
   fi
    python -c "$1"
 }
+zipit() {
+  if [ -z "$1" ]; then
+    echo "No argument"
+    echo "Usage: zipit 123"
+    echo "Usage: zipit ."
+    return
+  fi
+  # Create temp folder if it doesn't exist
+  mkdir -p $HOME/temp
 
-ft() {
-  forge test -vvv --match-test $1
-}
-ftc() {
-  forge test -vvv --match-contract $1
-}
-ftf() {
-  forge test -vvv --match-path $1
-}
-ft2() {
-  forge test -vvvv --match-test $1
-}
-ftc2() {
-  forge test -vvvv --match-contract $1
-}
-ftf2() {
-  forge test -vvvv --match-path $1
+  timestamp=$(date +%Y%m%d%H%M%S)
+  filename="$1"_"$timestamp.zip"
+
+  zip -x "*/node_modules/*" "*/.git/*" -r $HOME/temp/$filename $1
+  echo "=== Showing the file in temp folder ==="
+  ls $HOME/temp/$filename
 }
 
 # Declare an associative array
