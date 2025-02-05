@@ -13,7 +13,7 @@ Set output folder in `tsconfig.json`
 "outDir": "./dist", 
 ```
 
-Create file `index.ts`
+Create file `ex.ts`
 ```
 function greet(name: string): string {
   return `Hello, ${name}!`;
@@ -29,5 +29,5 @@ npx tsc
 
 Run
 ```
-node dist/index.js
+node dist/ex.js
 ```

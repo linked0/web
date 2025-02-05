@@ -2,7 +2,7 @@
   "name": "ext",
   "version": "1.0.0",
   "description": "## Set up environment ``` npm install -g typescript tsc --version tsc --init ```",
-  "main": "index.js",
+  "main": "ex.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
