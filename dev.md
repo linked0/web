@@ -5,7 +5,7 @@
 - [dev.md - 3MVG5AN]([bit.ly/3MVG5AN)
 - [Miki - 421Gf1x](https://bit.ly/421Gf1x)
 - [Miki-Sum - 4iWn0fY](https://bit.ly/4iWn0fY)
-- [작업 환경 세팅](#-0-work-env) <== ctrl click
+- [작업 환경 세팅](#-0-work-env) <= ctrl click
 - [Poohnet & Betelgeuse](#poohnet)
 - [Code](#-code) - [Projects](#-projects)
 - [Error](#error) - [Trend](#-trend)
