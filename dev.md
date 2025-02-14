@@ -3689,6 +3689,7 @@ psql postgres <== 접속해볼 수 있음.
 
 ### ETC
 - Postman Agent: 이거 쓰지 말고 curl쓰는 방식으로 그냥 ChatGPT에게 물어보면 됨.
+- Whiteboard (AppStore에 있음)
 
 ### VS Code Plugin
 - Solidity Visual Developer
