@@ -250,6 +250,23 @@ This is basically using ethers v6, hardhat-ignition-ethers.
   - [openzeppelin github](https://github.com/OpenZeppelin/openzeppelin-contracts)
 
 ## 😈 Trend
+### 25.02.20
+@ 전체
+- 소니는 자동차를 통해서 경험을 팔겠다.
+- 더이상 운전하면서 시간을 낭비할 일은 없을 것임. 
+- OnDevice AI (인터넷이 안되도 됨)
+- Land-Air-Craft 
+
+@ 칼리버스
+  - 공간음향을 만드는 것도 GenAI를 사용함.
+  - 스마트 폰으로 사진을 찍으면 Unreal 엔진으로 생성된 오브젝트가 생성되는 제품. 쇼핑에서 활용 가능
+  - 사람을 스캐닝해서 가상공간에서 사용됨.
+
+@ TCL
+  - 10년전에 CES에서 종이 상자로 안경을 만드는 걸 3D 안경을 보여줌. 
+  - 스마트글래스를 통해서 다른 성능의 화면을 볼 수 있음. 
+  - 실시간 번역기능이 있는데, 얼마나 쓰기 편할지... 의문.
+
 ### 막오른 '세상 만물 투자' 토큰증권…내년 본격 궤도 오르나
 * 입력 2024.12.25.
 * 토큰증권은 종전에 돈을 넣기 어려웠던 자산을 잘게 쪼개 금투상품으로 전환하는데 요긴하다.

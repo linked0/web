@@ -21,3 +21,5 @@ ignition/deployments/chain-31337
 
 /lib
 /zsub/zzmemo
+
+/exr/target
