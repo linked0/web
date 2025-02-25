@@ -55,58 +55,26 @@ zipit() {
   # Create temp folder if it doesn't exist
   mkdir -p $HOME/temp
 
-  timestamp=$(date +%Y%m%d%H%M%S)
-  filename="$1"_"$timestamp.zip"
+  # If argument is ".", use the current directory name as base
+  if [ "$1" = "." ]; then
+    base=$(basename "$PWD")
+  else
+    base="$1"
+  fi
 
-  zip -x "*/node_modules/*" "*/.git/*" -r $HOME/temp/$filename $1
+  timestamp=$(date +%Y%m%d%H%M%S)
+  filename="${base}_${timestamp}.zip"
+
+  if [ "$1" = "." ]; then
+    # When zipping the current directory, file paths don't have a parent folder
+    zip -r "$HOME/temp/$filename" "$1" -x "node_modules/*" ".git/*" "*/node_modules/*" "*/.git/*" "artifacts/*" "*/artifacts/*"
+  else
+    # When zipping a named folder, the patterns can include the parent directory
+    zip -r "$HOME/temp/$filename" "$1" -x "*/node_modules/*" "*/.git/*" "*/artifacts/*"
+  fi
+
   echo "=== Showing the file in temp folder ==="
   ls $HOME/temp/$filename
-}
-
-# Declare an associative array
-declare -A folderMap
-declare -A fileMap
-
-# Assign values to the map
-fileMap["aaa"]="$HOME/work/web/contracts/AllBasic.sol"
-fileMap["bbb"]="$HOME/work/web/test/all-basic.ts"
-fileMap["ccc"]="$HOME/work/web/scripts/deploy.ts"
-fileMap["aaaf"]="$HOME/work/webf/src/Counter.sol"
-fileMap["bbbf"]="$HOME/work/webf/test/Counter.t.sol"
-fileMap["cccf"]="$HOME/work/webf/script/Counter.s.sol"
-fileMap["ddd"]="$HOME/work/web/dev.md"
-fileMap["eee"]="$HOME/work/web/.env"
-fileMap["ppp"]="$HOME/work/web/package.json"
-fileMap["hhh"]="$HOME/work/web/hardhat.config.ts"
-fileMap["ttt"]="$HOME/work/web/tsconfig.json"
-fileMap["rrr"]="$HOME/work/web/README.md"
-fileMap["mmm"]="$HOME/work/web/memo.txt"
-fileMap["mm2"]="$HOME/work/web/m2.txt"
-fileMap["mms"]="$HOME/work/web/ms.txt"
-fileMap["zz"]="$HOME/.zshrc"
-fileMap["zz2"]="$HOME/work/web/zsub/zshrc"
-fileMap["ff"]="./foundry.toml"
-fileMap["pp"]="./package.json"
-fileMap["hh"]="./hardhat.config.ts"
-fileMap["ee"]="./.env"
-fileMap["re"]="./remappings.txt"
-fileMap["rr"]="./README.md"
-fileMap["ma"]="./Makefile"
-
-ii() {
-  local file=""
-  file=${fileMap["$1"]}
-
-  echo "idea $file"
-  idea "$file"
-}
-
-cc() {
-  local file=""
-  file=${fileMap["$1"]}
-
-  echo "cat $file"
-  cat "$file"
 }
 
 alias python=python3
