@@ -5,6 +5,7 @@ pragma solidity ^0.8.28;
 /* sholhint-disable no-empty-blocks */
 
 import "./interfaces/IAccount.sol";
+import "hardhat/console.sol";
 
 /**
  * Basic account implementation.
@@ -22,10 +23,11 @@ abstract contract BaseAccount is IAccount {
    * Validate user's signature and nonce.
    * subclass doesn't need to override this method. Instead, it should override the specific internal validation method.
    */
-  function validateUserOp(
+  function validateUserOp( 
     UserOperation calldata userOp,
     bytes32 userOpHash
   ) external virtual override returns (uint256 validationData) {
+    console.log("BaseAccount: validateUserOp");
     return _validateSignature(userOp, userOpHash);
   }
 
