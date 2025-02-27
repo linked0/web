@@ -19,6 +19,7 @@
     "test:toobig": "hardhat test test/total/toobig.basic.ts",
     "test:toobig:localnet": "hardhat test test/total/toobig.basic.ts --network localnet",
     "test:seaport:basic": "hardhat test test/seaport/basic.spec.ts",
+    "test:zex": "NODE_OPTIONS=--max-old-space-size=8192 hardhat test test/zex/jay-smart-account.spec.ts",
     "seaport": "hardhat test test-seaport/basic.spec.ts",
     "basic": "hardhat test test/all-basic.ts",
     "oz:storage": "hardhat test test/oz/utils/StorageSlot.test.js",

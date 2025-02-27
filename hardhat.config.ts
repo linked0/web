@@ -116,6 +116,12 @@ const config: HardhatUserConfig = {
           },
         },
       },
+      {
+        version: "0.8.28",
+        settings: {
+          evmVersion: "cancun", // Target the Cancun EVM which supports tload/tstore
+        },
+      },
     ],
     settings: {
       optimizer: {

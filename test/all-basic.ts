@@ -9,6 +9,7 @@ import {
 import { expect } from "chai";
 import { BytesLike, TypedDataDomain, Signature } from "ethers";
 import { ethers, network } from "hardhat";
+
 const {
   encodeBytes32String,
   decodeBytes32String,

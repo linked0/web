@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-3.0
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.12;
 
 /* solhint-disable avoid-low-level-calls */
@@ -17,7 +17,7 @@ abstract contract BaseAccount is IAccount {
   using UserOperationLib for UserOperation;
 
   //return value in case of signature failure, with no time-range.
-  // equivalent to _packValidationData(true,0,0);
+  // equivalent to _packValidationData(true,0Ba,0);
   uint256 internal constant SIG_VALIDATION_FAILED = 1;
 
   /**

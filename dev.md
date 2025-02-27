@@ -191,46 +191,7 @@ yarn sea
 EVM_VERSION=london
 ```
 
-
 ## 😈 Projects
-This is basically using ethers v6, hardhat-ignition-ethers.
-
-- `eondo-v1`: ondo 프로젝트
-  - yarn test
-- `erc4337-aa`: 4337 구현 hardhat 프로젝트
-  - yarn simple
-- `euniswap-v2-hardhat`: uniswap 컨트랙트에 hardhat 프레임워크 적용
-  - cp .env.sample .env
-  - yarn test
-- `ex`: 중요 기본 컨트랙트 프로젝트
-- `ex5`: The very important project `seaport`
-  - package.json 파일 참고
-- `exdot`: TypeScript 코딩 테스트
-  - node ex.js
-- `exzksync`: zksync 테스트
-  - 이거 pooh-geth와 연동하려다가 실패함.
-- `exzzbak`: 많이 안 쓰이는 프로젝트
-  - commons-budget-contract
-  - ehacking: Smart Contract Hacking 코스 Solution
-  - eplanet
-  - evalidators
-  - exz-ex6
-  - exz-original
-- `tload` and `tstore` example
-  - test/StorageSlot.local.test.js, StorageSlot.sol, StorageSlotMock.sol
-    - localnet에서는 아직 `getXXX` 함수가 정상 동작하지는 않음. 
-    - StorageSlot.local.test.js의 `TODO` 참고
-  - DoubleBufferContract.sol
-- `exp`: Python project folder
-  - Refer to the `README.md` in the folder
-- `exg`: Go project folder
-  - Refer to the `README.md` in the folder
-- `exj`: Javascript project folder
-  - Refer to the `README.md` in the folder
-- `ext`: Typescript project folder
-  - Refer to the `README.md` in the folder
-- `exr`: Rust project folder
-  - Refer to the `README.md` in the folder
 
 ### External repositiries
 - `webf`
@@ -4077,6 +4038,10 @@ cast calldata-decode "transfer(address,uint256)" \
 컨트랙트 바이트 코드 가져오기
 cast code 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c --rpc-url https://rpc.ankr.com/bsc
 ```
+
+#### add submodule
+git submodule add https://github.com/linked0/web.git lib/web
+git submodule update --remote lib/web
 
 ### 🌸 텍스트 검색 - 프로세스 찾기 - zip
 ```
