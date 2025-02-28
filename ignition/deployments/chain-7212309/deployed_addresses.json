@@ -1,9 +1,3 @@
 {
-  "Apollo#BasicContract": "0x720eC4775f787f6851D88F0954cD18D1971D46af",
-  "Apollo#BasicLibrary": "0x63bf3977e1e101e53AA2c672DfB77f43268bc322",
-  "Apollo#BasicLibrary2": "0xf9cF456293461cc0f7DbF2e1D3035099DcC26461",
-  "Apollo#Rocket": "0x133dDFB82c5668f8BA056c214D6207E5E5860E09",
-  "Apollo#BasicContract2": "0x720eC4775f787f6851D88F0954cD18D1971D46af",
-  "Apollo#ContractWithLibrary": "0xCeD1aA6c1054F80B1E2602eFf1dd520F5aF75aE8",
-  "Apollo#ContractWithLibrary2": "0xCeD1aA6c1054F80B1E2602eFf1dd520F5aF75aE8"
+  "Zex#JaySmartAccount": "0x9465138339143bDC955cB92F6e6198ae6cd10deb"
 }

@@ -10,7 +10,7 @@ import "./BaseAccount.sol";
   * This contract provides the specific logic for implementing the IAccount interface - validateUserOp
   */
 contract JaySmartAccount is BaseAccount {
-    function getSigVAlidationFailed() public pure returns (uint256) {
+    function getSigValidationFailed() public pure returns (uint256) {
         return SIG_VALIDATION_FAILED;
     }
 

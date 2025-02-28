@@ -47,6 +47,7 @@
     "deploy:fund:localnet": "hardhat run scripts/deploy-poohnet-fund.ts --network localnet",
     "deploy:deposit:localnet": "hardhat run scripts/deploy-deposit.ts --network localnet",
     "deploy:apollo:localnet": "hardhat ignition deploy ignition/modules/apollo.ts --network localnet",
+    "deploy:zex:localnet": "hardhat ignition deploy ignition/modules/zex.ts --network localnet",
     "sign": "hardhat run scripts/sign-message.ts",
     "setdata": "hardhat run scripts/assembly/set-data.ts --network localnet",
     "getdatavalue": "hardhat run scripts/assembly/get-data-value.ts --network localnet",

@@ -19,7 +19,7 @@ describe("Jay Smart Account", () => {
   });
 
   it("should have the correct error value", async () => {
-    expect(await jaySmartAccount.getSigVAlidationFailed()).to.equal(1);
+    expect(await jaySmartAccount.getSigValidationFailed()).to.equal(1);
   });
 
   it("should pass validation with correct signature", async () => {
