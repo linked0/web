@@ -10,6 +10,9 @@ yarn hardhat console --network localnet
 ## dev.md
 All data transferred to [dev.md](./dev.md)
 
+## Coding Style
+[Here](./doc/CodingStyle.md)
+
 ## Folders
 ### exref
 - 참고 스마트 컨트랙트 프로젝트
