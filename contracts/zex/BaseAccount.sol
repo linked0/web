@@ -4,7 +4,7 @@ pragma solidity ^0.8.28;
 /* solhit-disable avoid-low-level-calls */
 /* sholhint-disable no-empty-blocks */
 
-import "./interfaces/IAccount.sol";
+import "../interfaces/IAccount.sol";
 import "hardhat/console.sol";
 
 /**
