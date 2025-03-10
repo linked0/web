@@ -3529,7 +3529,7 @@ chatgpt --list-models
 
 Set a model
 ```
-chatgpt --set-model gpt-4-turbo-2024-04-09
+chatgpt --set-model o1-mini
 ```
 
 ### npm yarn docker install

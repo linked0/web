@@ -9,7 +9,7 @@
     "build": "hardhat compile",
     "clean": "rm -rf cache artifacts typechain typechain-types",
     "test": "hardhat test",
-    "test:root": "hardhat test test/*.ts",
+    "test:root": "node --max-old-space-size=8912 ./node_modules/.bin/hardhat test test/*.ts",
     "test:hack": "hardhat test test/zhacking/*.ts",
     "test:msca": "hardhat test test/erc6900/*.ts",
     "test:assembly": "hardhat test test/assembly/*.ts",

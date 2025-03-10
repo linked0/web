@@ -1,8 +1,48 @@
 # Project Style
+
 This document defines the naming rules for files, variables, etc. It also includes the principles related to all aspects of projects.
 
 ## Coding Style
+
+## String Quoting
+
+In our project, we use **template literals (backticks \`\`)** when string interpolation (using `${}`) or multi-line strings are needed.
+
+**Example**:  
+```javascript
+const name = 'John';
+const age = 30;
+const greeting = `Hello, my name is ${name} and I am ${age} years old.`;  // String interpolation
+const message = `
+  Hello, ${name}.
+  Welcome to our website!
+`;  // Multi-line string
+```
+
+For simple, static strings, we prefer single quotes (') as they are cleaner and avoid escaping double quotes.
+
+**Example**:
+```javascript
+const greeting = 'Hello, World!';
+const name = 'John';
+
+const quote = "It's a great day!";  // Contains single quotes
+const jsonString = "{\"name\": \"John\", \"age\": 30}"; // JSON-style string using double quotes
+```
+
+Double quotes (") are used only when the string contains single quotes (to avoid escaping) or when working with JSON or HTML attributes, which conventionally use double quotes.
+
+**Example**:
+```javascript
+const quote = "It's a great day!";  // Contains single quotes
+const jsonString = "{\"name\": \"John\", \"age\": 30}"; // JSON-style string using double quotes
+```
+
+Consistency is key, so we aim to follow these conventions throughout the codebase: use template literals where applicable, prefer single quotes for simple strings, and use double quotes only when necessary.
+
+
 ### Solidity lint in VS Code
+
 - Install plugins
   ```
   - Search for "Solidity" and install:
@@ -24,7 +64,13 @@ This document defines the naming rules for files, variables, etc. It also includ
    ```
 - Restart VS Code
 
+### Column Limit
+
+As of their latest coding standards, OpenZeppelin typically follows a **100-character limit per line** for Solidity code.
+So, we use a **100-character limit per line**.
+
 ### File Name
+
 - Solidity: PascalCase (or UpperCamelCase) naming convention
   - BaseAccount.sol
   - JaySmartAccount.sol
@@ -33,7 +79,9 @@ This document defines the naming rules for files, variables, etc. It also includ
   - check-receiver.ts
 
 ## Project Policy
+
 ### Solidity dependencies
+
 - The OpenZeppelin library code is included in the files to prevent unexpected version conflicts
   
   > OpenZeppelin is a well-known library in the Ethereum and Solidity ecosystem, providing secure, reusable smart contract templates for ERC-20, ERC-721, access control, upgradability, and more.

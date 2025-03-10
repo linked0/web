@@ -4,6 +4,8 @@ pragma solidity ^0.8.28;
 import "../interfaces/UserOperation.sol";
 import "./BaseAccount.sol";
 import "../utils/Logger.sol";
+import "../interfaces/IPluginJay.sol";
+import "hardhat/console.sol";
 
 /**
  * @title MySmartAccount
@@ -122,5 +124,22 @@ contract JaySmartAccount is BaseAccount, Logger {
     //   3) or build a dynamic array in memory and process it after assembly.
     //
     // For demonstration, let's keep it minimal.
+  }
+
+  function installPlugin(
+    address plugin,
+    bytes32 manifestHash,
+    bytes calldata pluginInstallData
+  ) external {
+    PluginManifest memory manifest = IPlugin(plugin).pluginManifest();
+    console.log("Plugin installed:");
+    console.logBytes32(manifestHash);
+    console.log("Plugin Name:", manifest.name);
+    console.log("Plugin Version:", manifest.version);
+    console.log("Plugin Author:", manifest.author);
+  }
+
+  function getPluginAddress(uint256 index) public pure returns (address) {
+    return address(0x0);
   }
 }
