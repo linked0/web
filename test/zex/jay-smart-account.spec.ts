@@ -4,8 +4,8 @@ import { ethers } from "hardhat";
 
 import { JaySmartAccount, BasicPlugin } from "../../typechain-types";
 
-import { UserOperation } from "./UserOperation";
 import { encodePluginManifest, PluginManifest } from "./PluginManifest";
+import { UserOperation } from "./UserOperation";
 
 describe("Jay Smart Account", () => {
   let jaySmartAccount: JaySmartAccount;
