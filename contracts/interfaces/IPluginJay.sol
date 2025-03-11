@@ -11,7 +11,7 @@ import "../interfaces/UserOperation.sol";
 struct PluginManifest {
   string name;
   // The version of the plugin, following the semantic versioning scheme.
-  string version;
+  uint256 version;
   // The author field SHOULD be a username reprsenting the identity of the user or organization
   // that created the plugin.
   string author;

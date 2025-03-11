@@ -17,7 +17,7 @@ contract BasicPlugin is IPlugin {
   {
     // Set the basic details of the plugin.
     manifest.name = "BasicPlugin";
-    manifest.version = "1.0.0";
+    manifest.version = 1_00_00;
     manifest.author = "ZEX";
 
     // Create an array of bytes4 with one dummy interface ID.

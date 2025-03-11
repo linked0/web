@@ -45,11 +45,6 @@ describe("Jay Smart Account", () => {
   it("should return a valid PluginManifest with the expected interface ID", async function () {
     // Call the pluginManifest function on the deployed contract.
     const manifest = await basicPlugin.pluginManifest();
-    // log the type of manifest
-    console.log("manifest:", manifest);
-
-    // Log the manifest for debugging (optional)
-    console.log("Plugin Manifest:", manifest);
 
     // Check that the manifest's interfacerIds array has a length of 1.
     expect(manifest.interfaceIds.length).to.equal(1);
@@ -60,9 +55,16 @@ describe("Jay Smart Account", () => {
 
   it("should call installPlugin and return the correct plugin address", async function () {
     // Create the manifest hash (or use the relevant logic if manifest is already a hash
-    const manifest: PluginManifest = await basicPlugin.pluginManifest();
+    const manifestPlugin: PluginManifest = await basicPlugin.pluginManifest();
+    const manifest = {
+      name: manifestPlugin.name,
+      version: manifestPlugin.version,
+      author: manifestPlugin.author,
+      reserves: [...manifestPlugin.reserves],
+      interfaceIds: [...manifestPlugin.interfaceIds],
+    };
     const manifestHash = ethers.keccak256(abiCoder.encode(
-      ['string', 'string', 'string'],
+      ['string', 'uint256', 'string'],
       [manifest.name, manifest.version, manifest.author]
     ));
     const encoded = encodePluginManifest(manifest);
@@ -71,18 +73,49 @@ describe("Jay Smart Account", () => {
     const tx = await jaySmartAccount.installPlugin(
       basicPlugin.target,
       manifestHash,
+      manifest,
       encoded
     );
 
     // Wait for the transaction to be mined.
-    await tx.wait();
+    const result = await tx.wait();
+    expect(result!.status).to.equal(
+      1,
+      "The transaction should be successful"  // Error message
+    );
 
-    // Call the getPluginAddress function on the JaySmartAccount contract.
+    // Get the plugin address with getPluginAddress function.
     const pluginAddress = await jaySmartAccount.getPluginAddress(0);
-    console.log("Plugin Address:", pluginAddress);  // Ensure this is treated as an address
+    console.log("pluginAddress:", pluginAddress);
+    expect(pluginAddress).to.equal(basicPlugin.target);
+  });
 
+  it("reverts on invalid plugin version", async function () {
+    // Create the manifest hash (or use the relevant logic if manifest is already a hash
+    const manifestPlugin: PluginManifest = await basicPlugin.pluginManifest();
+    const manifest: PluginManifest = {
+      name: manifestPlugin.name,
+      version: 1_00_01n,
+      author: manifestPlugin.author,
+      reserves: [...manifestPlugin.reserves],
+      interfaceIds: [...manifestPlugin.interfaceIds],
+    };
+    const manifestHash = ethers.keccak256(abiCoder.encode(
+      ['string', 'uint256', 'string'],
+      [manifest.name, manifest.version, manifest.author]
+    ));
+    const encoded = encodePluginManifest(manifest);
 
-    // Check that the plugin address is equal to the basicPlugin address.
-    // expect(pluginAddress).to.equal(basicPlugin.address);
+    // Call the installPlugin function on the JaySmartAccount contract.
+    await expect(
+      jaySmartAccount.installPlugin(
+        basicPlugin.target,
+        manifestHash,
+        manifest,
+        encoded
+      )
+    )
+    // .to.be.revertedWith("Plugin version mismatch");
+    .to.be.revertedWithCustomError(jaySmartAccount, "PluginVersionMismatch");
   });
 });
