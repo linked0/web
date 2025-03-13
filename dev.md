@@ -1,6 +1,6 @@
 # Knowledge Base & Projects
 🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱🌟🔴
-
+- [README](./README.md)
 - [dev.md text - 3MT0VRb](bit.ly/3MT0VRb)
 - [dev.md - 3MVG5AN]([bit.ly/3MVG5AN)
 - [Miki - 421Gf1x](https://bit.ly/421Gf1x)

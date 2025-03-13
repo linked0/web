@@ -1,6 +1,6 @@
-# web3 project for Smart contracts and other language
-General information is located in [dev.md](./dev.md).
-There is also the polocy for the project in [here](./doc/ProjectStyle.md).
+# Web3 Project for Smart Contracts
+See [dev.md](./dev.md) for general info.  
+Project policies, including coding style, are [here](./doc/ProjectStyle.md).
 
 ## Setup
 ### Hardhat console

@@ -4,9 +4,68 @@
 hgrep() {
 	grep -irnH --include=\*.$1 "$2" ./
 }
+# ii() {
+#   idea $@
+# }
+
 ii() {
-  idea $@
+  # Check if $1 is a defined alias.
+  if alias "$1" >/dev/null 2>&1; then
+    # Retrieve the alias definition, e.g.:
+    # alias aaa='code ~/work/web/contracts/AllBasic.sol'
+    local alias_def
+    alias_def=$(alias "$1")
+    # Remove everything up to the equal sign and strip the surrounding single quotes.
+    alias_def=${alias_def#*=}
+    alias_def=${alias_def#\'}
+    alias_def=${alias_def%\'}
+    # Extract the second token, assuming the alias is of the form "code <file_path>".
+    local file_path
+    file_path=$(echo "$alias_def" | awk '{print $2}')
+    
+    # Expand a leading tilde to the home directory.
+    file_path=${file_path/#\~/$HOME}
+    
+    # Log the file path before calling idea.
+    echo "File path: $file_path"
+    
+    # Call idea with the extracted file path and any extra parameters.
+    idea "$file_path" "${@:2}"
+  else
+    # If $1 isn't an alias, simply pass all parameters to idea.
+    idea "$@"
+  fi
 }
+
+cc() {
+  # Check if $1 is a defined alias.
+  if alias "$1" >/dev/null 2>&1; then
+    # Retrieve the alias definition, e.g.:
+    # alias aaa='code ~/work/web/contracts/AllBasic.sol'
+    local alias_def
+    alias_def=$(alias "$1")
+    # Remove everything up to the equal sign and strip the surrounding single quotes.
+    alias_def=${alias_def#*=}
+    alias_def=${alias_def#\'}
+    alias_def=${alias_def%\'}
+    # Extract the second token, assuming the alias is of the form "code <file_path>".
+    local file_path
+    file_path=$(echo "$alias_def" | awk '{print $2}')
+    
+    # Expand a leading tilde to the home directory.
+    file_path=${file_path/#\~/$HOME}
+    
+    # Log the file path before calling idea.
+    echo "File path: $file_path"
+    
+    # Call idea with the extracted file path and any extra parameters.
+    cat "$file_path" "${@:2}"
+  else
+    # If $1 isn't an alias, simply pass all parameters to idea.
+    cat "$@"
+  fi
+}
+
 adf() {
   echo "echo \"alias $1='code $2'\" >> ~/.zshrc"
 }
@@ -105,23 +164,6 @@ alias ee='code ./.env'
 alias re='code ./remappings.txt'
 alias rr='code ./README.md'
 alias ma='code ./Makefile'
-
-alias czz='cat ~/.zshrc'
-alias czz2='cat ~/work/web/zsub/zshrc'
-alias cff='cat ./foundry.toml'
-alias cpp='cat ./package.json'
-alias chh='cat ./hardhat.config.ts'
-alias cee='cat ./.env'
-alias cre='cat ./remappings.txt'
-alias crr='cat ./README.md'
-alias cma='cat ./Makefile'
-alias cfff='cat ./foundry.toml'
-alias cppf='cat ./package.json'
-alias chhf='cat ./hardhat.config.ts'
-alias ceef='cat ./.env'
-alias cref='cat ./remappings.txt'
-alias crrf='cat ./README.md'
-alias cmaf='cat ./Makefile'
 
 alias zzz='. ~/.zshrc'
 alias cazz='cat ~/.zshrc'

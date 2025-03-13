@@ -1837,6 +1837,9 @@ describe(`Basic buy now or accept offer flows (Seaport v${VERSION})`, function (
           conduitKeyOne
         );
 
+        console.log("order:", order);
+        console.log("orderHash:", orderHash);
+
         await withBalanceChecks([order], 0, undefined, async () => {
           const tx = marketplaceContract
             .connect(buyer)

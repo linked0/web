@@ -9,6 +9,11 @@ contract BasicPlugin is IPlugin {
   /// @notice Returns the plugin manifest which contains the list of supported interface IDs.
   /// @dev The returned manifest is constant and includes a sample ERC-165 interface ID.
   /// @return manifest A PluginManifest struct with the supported interface IDs.
+  address public owner;
+
+  constructor() {
+    owner = msg.sender;
+  }
   function pluginManifest()
     external
     pure
