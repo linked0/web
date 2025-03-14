@@ -4,7 +4,7 @@ This document defines the naming rules for files, variables, etc. It also includ
 
 ## Coding Style
 
-## String Quoting
+### String Quoting
 
 In our project, we use **template literals (backticks \`\`)** when string interpolation (using `${}`) or multi-line strings are needed.
 
@@ -79,7 +79,16 @@ So, we use a **100-character limit per line**.
   - check-receiver.ts
 
 ## Project Policy
+### Folder Structure 
+We follow the contract development structure used in the Ondo Finance project. Our contracts are organized into separate folders rather than having a single main contract file in the root directory.
 
+Maintaining multiple repositories for different types of contracts can be cumbersome. Instead, we keep all contracts in one repository and categorize them into subfolders as follows:
+
+```
+contracts
+├── external
+└── lending
+```
 ### Solidity dependencies
 
 - The OpenZeppelin library code is included in the files to prevent unexpected version conflicts
