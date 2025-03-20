@@ -177,6 +177,11 @@ alias ozz='open /Users/hyunjaelee/work/web/ex/node_modules/@openzeppelin/contrac
 alias web='cd ~/work/web'
 alias webf='cd ~/work/webf'
 alias ex5='cd ~/work/web/ex5'
+alias exj='cd ~/work/web/exlang/exj'
+alias ext='cd ~/work/web/exlang/ext'
+alias exp='cd ~/work/web/exlang/exp'
+alias exr='cd ~/work/web/exlang/exr'
+alias exg='cd ~/work/web/exlang/exg'
 
 alias lsc='ls -al ~/work/web/ex/contracts'
 alias lss='ls -al ~/work/web/ex/scripts'
