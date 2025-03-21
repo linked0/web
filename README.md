@@ -1,6 +1,7 @@
 # Web3 Project for Smart Contracts
 See [dev.md](./dev.md) for general info.  
 Project policies, including coding style, are [here](./doc/ProjectStyle.md).
+Refer to [history](#history) for the project progress.
 
 ## Setup
 ### Hardhat console
@@ -208,3 +209,10 @@ The chain id is 7212302. So it uses enode-cmd-devnet.
 ./enode-cmd-devnet
 ```
 As of 19th Nov. 2024, we use `http://3.37.37.195:8545` for the RPC URL.
+
+## History 
+#### 25.03.21
+- Add `zkit` config to hardhat.config.ts.
+- Add curcuits to `curcuits` folder.
+- But didn't work.
+- Commit these to the `zkit` branch
