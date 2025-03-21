@@ -13,7 +13,8 @@ import * as fs from "fs";
 import yargs from "yargs";
 import "@nomicfoundation/hardhat-toolbox";
 
-dotenv.config({ path: ".env" });
+// Load environment file dynamically: defaults to "env/.env"
+dotenv.config({ path: process.env.ENV_FILE || ".env" });
 
 // TODO: Fix this
 // console.log("argv: ", yargs.argv);
@@ -152,6 +153,15 @@ const config: HardhatUserConfig = {
     marigold: {
       url: process.env.MARIGOLD_URL,
       chainId: 12301,
+      accounts: [
+        process.env.ADMIN_KEY || "",
+        process.env.USER_KEY || "",
+        process.env.USER2_KEY || "",
+      ],
+    },
+    marigoldlocalnet: {
+      url: process.env.MARIGOLD_LOCALNET_URL,
+      chainId: 12309,
       accounts: [
         process.env.ADMIN_KEY || "",
         process.env.USER_KEY || "",
