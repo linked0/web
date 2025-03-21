@@ -1,6 +1,11 @@
-import * as dotenv from "dotenv";
+import "@nomicfoundation/hardhat-chai-matchers";
+import "@solarity/chai-zkit";
+import "@solarity/hardhat-zkit";
+// import "@solarity/hardhat-migrate";
+
 import "@typechain/hardhat";
-import { Wallet, Signer, utils } from "ethers-v5";
+import * as dotenv from "dotenv";
+import { Wallet, utils } from "ethers-v5";
 import { HardhatUserConfig, task } from "hardhat/config";
 import { HardhatNetworkAccountUserConfig } from "hardhat/types/config";
 
@@ -8,9 +13,7 @@ import "hardhat-deploy";
 import "hardhat-contract-sizer";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
-import * as fs from "fs";
 
-import yargs from "yargs";
 import "@nomicfoundation/hardhat-toolbox";
 
 dotenv.config({ path: ".env" });
@@ -202,6 +205,34 @@ const config: HardhatUserConfig = {
     // coinmarketcap: process.env.COINMARKETCAP_API_KEY, // Fetch real-time gas price
     // outputFile: 'gas-report.txt', // Save report to file
     // noColors: true, // Disable console colors
+  },
+  zkit: {
+    compilerVersion: "2.1.9",
+    circuitsDir: "circuits",
+    compilationSettings: {
+      artifactsDir: "zkit/artifacts",
+      onlyFiles: [],
+      skipFiles: [],
+      c: false,
+      json: false,
+      optimization: "O1",
+    },
+    setupSettings: {
+      contributionSettings: {
+        provingSystem: "groth16",
+        contributions: 1,
+      },
+      onlyFiles: [],
+      skipFiles: [],
+      ptauDir: undefined,
+      ptauDownload: true,
+    },
+    verifiersSettings: {
+      verifiersDir: "contracts/verifiers",
+      verifiersType: "sol",  
+    },
+    typesDir: "generated-types/zkit",
+    quiet: false,
   },
 };
 

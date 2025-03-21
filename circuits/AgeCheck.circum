@@ -1,0 +1,24 @@
+// LICENSE: MIT
+pragma circom 2.1.9;
+
+include "circomlib/circuits/poseidon.circom";
+include "circomlib/circuits/switcher.circom";
+include "circomlib/circuits/gates.circom";
+include "circomlib/circuits/bitify.circom";
+
+template AgeCheck() {
+    // Private Input: user's age
+    signal input age;
+    // Output: eligible is 1 if age >= 20, otherwise 0
+    signal output eligible;
+
+    // Use the GreaterOrEqual comparator from zkit.
+    // It compares signal 'a' with signal 'b' and outputs 1 if a >= b.
+    component cmp = GreaterOrEqual();
+    cmp.a <== age;
+    cmp.b <== 20;
+    eligible <== cmp.out;
+}
+
+// The main component instantiates the AgeCheck circuit.
+component main = AgeCheck(); 
