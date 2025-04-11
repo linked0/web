@@ -183,6 +183,8 @@ alias ext='cd ~/work/web/exlang/ext'
 alias exp='cd ~/work/web/exlang/exp'
 alias exr='cd ~/work/web/exlang/exr'
 alias exg='cd ~/work/web/exlang/exg'
+alias poonet='cd ~/work/pooh-geth/poohnet'
+alias poohnet='cd ~/work/pooh-geth/poohnet'
 
 alias bet='cd ~/work/betelgeuse/contracts'
 alias betbac='cd ~/work/betelgeuse/backend'
