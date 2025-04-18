@@ -1,5 +1,11 @@
 # Teypscrypt Project
 
+## Run code
+yarn tsx ex.ts 
+
+## Old document
+It’s just for reference.
+
 ## Set up environment for the first time
 ```
 npm init -y
