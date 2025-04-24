@@ -3963,8 +3963,7 @@ yarn add https://github.com/eth-infinitism/account-abstraction\#v0.6.0
 yarn hardhat node (chain id: 31337)
 
 
-### yarn
-#### Add a local dependency for tigger-swap-sdk
+### Add a local dependency for tigger-swap-sdk
 In tigger-swap-sdk folder
 - `yarn build`
 - `yarn link`
@@ -4015,30 +4014,7 @@ In tigger-web using tigger-web folder
 - vi에서 단어 이동: w or b
 - move window between panes: Ctrl+Cmd+→/←
 
-### 🌸 foundry
-```
-forge script script/poohnet-fund/DeployPoohnetFund.s.sol --rpc-url localnet  --private-key $PRIVATE_KEY --broadcast
-cast call $POOHNET_FUND_CONTRACT_ADDRESS "getOwner()" --rpc-url $LOCALNET_RPC_URL
-cast balance 0xE024589D0BCd59267E430fB792B29Ce7716566dF --rpc-url $LOCALNET_RPC_URL
-cast send $POOHNET_FUND_CONTRACT_ADDRESS --value 2ether --private-key $PRIVATE_KEY
-cast send $POOHNET_FUND_CONTRACT_ADDRESS "transferBudget(address,uint256)" 0xE024589D0BCd59267E430fB792B29Ce7716566dF 1000000000000000000 --rpc-url $LOCALNET_RPC_URL --private-key $PRIVATE_KEY
-cast balance 0xE024589D0BCd59267E430fB792B29Ce7716566dF --rpc-url http://localhost:8545
-cast sig "calculatePower(uint256,uint256)"
-cast storage 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c 0 --rpc-url https://rpc.ankr.com/bsc
-cast chain-id --rpc-url https://rpc.ankr.com/bsc
-cast tx 0x3f6da406747a55797a7f84173cbb243f4fd929d57326fdcfcf8d7ca55b75fe99 --rpc-url https://rpc.ankr.com/bsc
-cast block --help
-cast 4byte 88303dbd <= signame 가져오기
-cast sig 'buyTickets(uint256,uint32[])' <= sig 가져오기
-cast --calldata-decode
-cast 4byte-decode 0xa9059cbb000000000000000000000000e78388b4ce79068e89bf8aa7f218ef6b9ab0e9d00000000000000000000000000000000000000000000000000174b37380cea000
-cast calldata-decode "transfer(address,uint256)" \
-  0xa9059cbb000000000000000000000000e78388b4ce79068e89bf8aa7f218ef6b9ab0e9d0000000000000000000000000000000000000000000000000008a8e4b1a3d8000
-컨트랙트 바이트 코드 가져오기
-cast code 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c --rpc-url https://rpc.ankr.com/bsc
-```
-
-#### add submodule
+### add submodule
 git submodule add https://github.com/linked0/web.git lib/web
 git submodule update --remote lib/web
 
@@ -4095,6 +4071,30 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 - zip -r ~/temp/my-archive.zip . -x '*.git*' -x '*node_modules*'
 - unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
 - history -100
+
+### 🌸 foundry
+```
+forge script script/poohnet-fund/DeployPoohnetFund.s.sol --rpc-url localnet  --private-key $PRIVATE_KEY --broadcast
+cast call $POOHNET_FUND_CONTRACT_ADDRESS "getOwner()" --rpc-url $LOCALNET_RPC_URL
+cast balance 0xE024589D0BCd59267E430fB792B29Ce7716566dF --rpc-url $LOCALNET_RPC_URL
+cast send $POOHNET_FUND_CONTRACT_ADDRESS --value 2ether --private-key $PRIVATE_KEY
+cast send $POOHNET_FUND_CONTRACT_ADDRESS "transferBudget(address,uint256)" 0xE024589D0BCd59267E430fB792B29Ce7716566dF 1000000000000000000 --rpc-url $LOCALNET_RPC_URL --private-key $PRIVATE_KEY
+cast balance 0xE024589D0BCd59267E430fB792B29Ce7716566dF --rpc-url http://localhost:8545
+cast sig "calculatePower(uint256,uint256)"
+cast storage 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c 0 --rpc-url https://rpc.ankr.com/bsc
+cast chain-id --rpc-url https://rpc.ankr.com/bsc
+cast tx 0x3f6da406747a55797a7f84173cbb243f4fd929d57326fdcfcf8d7ca55b75fe99 --rpc-url https://rpc.ankr.com/bsc
+cast block --help
+cast 4byte 88303dbd <= signame 가져오기
+cast sig 'buyTickets(uint256,uint32[])' <= sig 가져오기
+cast --calldata-decode
+cast 4byte-decode 0xa9059cbb000000000000000000000000e78388b4ce79068e89bf8aa7f218ef6b9ab0e9d00000000000000000000000000000000000000000000000000174b37380cea000
+cast calldata-decode "transfer(address,uint256)" \
+  0xa9059cbb000000000000000000000000e78388b4ce79068e89bf8aa7f218ef6b9ab0e9d0000000000000000000000000000000000000000000000000008a8e4b1a3d8000
+컨트랙트 바이트 코드 가져오기
+cast code 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c --rpc-url https://rpc.ankr.com/bsc
+```
+
 ---
 - [dev.md text - 3MT0VRb](bit.ly/3MT0VRb)
 - [dev.md - 3MVG5AN]([bit.ly/3MVG5AN)
