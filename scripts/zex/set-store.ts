@@ -3,17 +3,26 @@ import { ethers } from 'hardhat';
 import { JaySmartAccount } from '../../typechain-types'; 
 
 async function main() {
-  const jsaAddress = process.env.JAY_SMART_ACCOUNT_CONTRACT;
-  if (!jsaAddress) {
-    throw new Error("JAY_SMART_ACCOUNT_CONTRACT environment variable not set.");
+  const [deployer, user] = await ethers.getSigners();
+  const provider = ethers.provider;
+
+  const proxyAddress = process.env.JSA_PROXY_CONTRACT;
+  if (!proxyAddress) {
+    throw new Error("✋ Missing JSA_PROXY_CONTRACT in your .env");
   }
 
-  const JSAFactory = await ethers.getContractFactory('JaySmartAccount');
-  const jaySmartAccount = JSAFactory.attach(jsaAddress) as JaySmartAccount;
+  const accountUser = await ethers.getContractAt(
+    "JaySmartAccount",      // name of your logic contract
+    proxyAddress,           // proxy’s address
+    user                    // signer
+  );
+  const tx = await accountUser.setStore(99);
+  const receipt = await tx.wait();
+  console.log(`block number: ${receipt.blockNumber}, block tag: ${receipt.blockTag}`);
 
-  // Call the setStore function on the deployed contract
-  const result = await jaySmartAccount.setStore(1);
-  console.log(`setStore: ${result}`);
+  // Call the getStore function on the deployed contract
+  const result = await accountUser.getStore();
+  console.log(`getStore: ${result}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

@@ -37,6 +37,11 @@ contract JaySmartAccount is BaseAccount, Logger {
   // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
   // ┃    External & Public functions    ┃
   // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+  function initialize(uint256 _store) public {
+    store = _store;
+  }
+
   function getStore() public view returns (uint256) {
     return store;
   }
