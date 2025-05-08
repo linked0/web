@@ -11,7 +11,8 @@ async function main() {
   await basicPlugin.waitForDeployment();
   console.log(`BASIC_PLUGIN_CONTRACT=${basicPlugin.target}`);
 
-  const initData = logic.interface.encodeFunctionData(
+  const JaySmartAccountF = await ethers.getContractFactory("JaySmartAccount");
+  const initData = JaySmartAccountF.interface.encodeFunctionData(
     "initialize(uint256)",
     [1]
   );
@@ -25,7 +26,7 @@ async function main() {
 
   const account = await ethers.getContractAt(
     "JaySmartAccount",      // name of your logic contract
-    proxy.target,           // proxy’s address
+    proxy.target.toString(),// proxy’s address
     user                    // signer
   );
   console.log("proxy.store =", await account.getStore());
