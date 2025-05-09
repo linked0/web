@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.19;
 
 import "./ILock.sol";
-import "hardhat/console.sol";
+// import "hardhat/console.sol";
 
 contract Lock is ILock {
   uint public unlockTime;
@@ -37,8 +37,7 @@ contract Lock is ILock {
     value += 1;
   }
 
-  function getUnlockTime() external view override returns (uint)
-  {
+  function getUnlockTime() external view override returns (uint) {
     return unlockTime;
   }
 

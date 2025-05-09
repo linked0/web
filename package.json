@@ -54,6 +54,8 @@
     "deploy:localnet": "hardhat run scripts/deploy.ts --network localnet",
     "deploy:marigold:localnet": "ENV_FILE=.env.marigold.localnet hardhat run scripts/deploy.ts --network marigoldlocalnet",
     "deploy:basic:localnet": "hardhat run scripts/allbasic/deploy.ts --network localnet",
+    "deploy:basic:sepolia": "hardhat run scripts/allbasic/deploy.ts --network sepolia",
+    "deploy:counter:sepolia": "hardhat run scripts/deploy-counter.ts --network sepolia",
     "deploy:delegator:localnet": "hardhat run scripts/deploy-delegator.ts --network localnet",
     "deploy:fund:localnet": "hardhat run scripts/deploy-poohnet-fund.ts --network localnet",
     "deploy:deposit:localnet": "hardhat run scripts/deploy-deposit.ts --network localnet",
