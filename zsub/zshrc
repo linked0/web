@@ -204,6 +204,7 @@ alias cb="curl -L bit.ly/3MT0VRb"
 alias cb2="curl -L https://linked0.github.io/web/dev2.md"
 alias cbm="curl -L https://linked0.github.io/web/memo.txt"
 alias cbb="open https://bit.ly/3MVG5AN"
+alias czz="cat ~/.zshrc"
 
 alias ec1="ssh -i ~/pooh/tednet.pem ubuntu@3.37.37.195"
 alias ec2="ssh -i ~/pooh/tednet.pem ubuntu@3.37.170.83"
