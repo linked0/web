@@ -1,0 +1,22 @@
+{
+  "name": "zkex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "test": "hardhat test test/*.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@iden3/js-crypto": "^1.3.0",
+    "@solarity/chai-zkit": "^0.3.3",
+    "@solarity/hardhat-zkit": "^0.5.16",
+    "circomlib": "^2.0.5",
+    "hardhat": "^2.24.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0"
+  }
+}

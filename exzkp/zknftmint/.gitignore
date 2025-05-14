@@ -1,0 +1,39 @@
+circuits/zkeys/*
+contracts/artifacts
+contracts/cache
+*.wtns
+node_modules
+circomHelperConfig.json
+circuits/circomHelperConfig.json
+circuits/zkeys
+**/build/
+contracts/dist
+contracts/contracts/verifier.sol
+circuits/vk.json
+
+**/MyLogFile.log
+input.json
+proof.json
+public.json
+
+lerna-debug.log
+
+**/.parcel-cache/*
+**/dist/
+
+# ----- zkSNARK build artifacts -----
+# (R1CS, proving/verifying keys, wasm, sym, etc.)
+**/*.r1cs
+**/*.zkey
+**/*.wasm
+**/*.sym
+**/*.vkey.json
+**/*_artifacts.json
+
+# JS witness helper scripts (auto-generated)
+**/generate_witness.js
+**/witness_calculator.js
+
+# ----- Front-end / web folder -----
+# snark artifacts that you copy into your UI
+web/zkeys/
