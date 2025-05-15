@@ -373,6 +373,7 @@ describe("AllPairVault", () => {
     });
 
     it("#executeUserOp", async () => {
+      // NOTE: ethers.id("add()").slice(0, 10);
       const functionSignature = "add";
       const execSig = keccak256(toUtf8Bytes(functionSignature)).substring(
         0,
@@ -404,6 +405,7 @@ describe("AllPairVault", () => {
 
     // NOTE: Solve this problem now
     it("#executeMultipleUserOps", async () => {
+      // NOTE: ethers.id("add()").slice(0, 10);
       const functionSignature = "add";
       const execSig = keccak256(toUtf8Bytes(functionSignature)).substring(
         0,
@@ -438,6 +440,7 @@ describe("AllPairVault", () => {
     });
 
     it("#executeIndirect", async () => {
+      // NOTE: ethers.id("indirectInnerCall(bytes)").slice(0, 10);
       const functionSignature = "indirectInnerCall(bytes)";
       const execSig = keccak256(toUtf8Bytes(functionSignature)).substring(
         0,
@@ -475,6 +478,7 @@ describe("AllPairVault", () => {
       const tx = await allBasic.add.populateTransaction();
       const callAdd = tx.data!;
 
+      // NOTE: ethers.id("add()").slice(0, 10);
       const functionSignature = "add";
       const execSig = keccak256(toUtf8Bytes(functionSignature)).substring(
         0,
