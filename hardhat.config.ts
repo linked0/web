@@ -203,6 +203,15 @@ const config: HardhatUserConfig = {
         process.env.USER2_KEY || "",
       ],
     },
+    optsepolia: {
+      url: process.env.OPT_SEPOLIA_URL,
+      chainId: 11155420,
+      accounts: [
+        process.env.ADMIN_KEY || "",
+        process.env.USER_KEY || "",
+        process.env.USER2_KEY || "",
+      ],
+    },
   },
   namedAccounts: {
     deployer: 0,
