@@ -1,10 +1,10 @@
-# basic.py
+# Python Examples
 
 ## Setup
 Create venv environment
 ```
-python3 -m venv env
-source env/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 ```
 
 Install matplotlib
@@ -27,7 +27,20 @@ Get dependency list
 pip3 freeze > requirements.txt
 ```
 
-### Setup and Run for ball_bounce.py
+## Setup and Run for tweet.py
+```
+source venv/bin/activate
+python tweet.py
+```
+
+### Errors
+#### Error during Tweepy request: 403 Forbidden
+```
+Error during Tweepy request: 403 Forbidden
+When authenticating requests to the Twitter API v2 endpoints, you must use keys and tokens from a Twitter developer App that is attached to a Project. You can create a project via the developer portal.
+```
+
+## Setup and Run for ball_bounce.py
 Prompt on o3-mini-high
 > write a Python program that shows a ball bouncing inside a spinning hexagon. The ball should be affected by gravity and friction, and it must bounce off the rotating walls realistically
 
