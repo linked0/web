@@ -146,6 +146,9 @@ alias ccc='code ~/work/web/scripts/deploy.ts'
 alias aaaf='code ~/work/webf/src/Counter.sol'
 alias bbbf='code ~/work/webf/test/Counter.t.sol'
 alias cccf='code ~/work/webf/script/Counter.s.sol'
+alias fff='code ~/work/webf/foundry.toml'
+alias ree='code ~/work/webf/remappings.txt'
+alias maa='code ~/work/webf/Makefile'
 alias ddd='code ~/work/web/dev.md'
 alias eee='code ~/work/web/.env'
 alias ppp='code ~/work/web/package.json'
@@ -218,4 +221,5 @@ alias ecstop2="aws ec2 stop-instances --instance-ids i-0dae133af2b0dd1f5"
 alias ecst2="aws ec2 describe-instances --instance-ids i-0dae133af2b0dd1f5 --query 'Reservations[*].Instances[*].State.Name' --output text"
 
 export PATH="$PATH:$HOME/.local/bin"
+
 
