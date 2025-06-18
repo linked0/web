@@ -1,17 +1,16 @@
-import { Wallet } from "ethers";
 import { ethers } from "hardhat";
 
 async function main() {
-  const factory = await ethers.getContractFactory("AllBasic");
-  const provider = ethers.provider;
-  const dataStorage = await factory.attach(
-    process.env.DATA_STORAGE_CONTRACT || ""
-  );
-  const adminWallet = new Wallet(process.env.ADMIN_KEY || "", provider);
-
-  console.log("DATA_STORAGE_CONTRACT: ", await dataStorage.getAddress());
-
-  await dataStorage.add();
+  const [deployer, user] = await ethers.getSigners();
+  const contractAddress = process.env.DATA_STORAGE_CONTRACT;
+  if (!contractAddress) {
+    throw new Error("DATA_STORAGE_CONTRACT environment variable not set.");
+  }
+  const contract = await ethers.getContractAt("AllBasic", contractAddress);
+  console.log("DATA_STORAGE_CONTRACT: ", contractAddress);
+  const contractAdmin = contract.connect(deployer)
+  
+  await contractAdmin.add();
 }
 
 // We recommend this pattern to be able to use async/await everywhere
