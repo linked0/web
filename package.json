@@ -22,6 +22,7 @@
     "test:zex": "NODE_OPTIONS=--max-old-space-size=8192 hardhat test test/zex/zex.ts",
     "test:zex:diamond": "NODE_OPTIONS=--max-old-space-size=8192 hardhat test test/zex/DiamondPattern.test.ts",
     "test:tload": "NODE_OPTIONS=--max-old-space-size=8192 hardhat test test/StorageSlot.local.test.js",
+    "test:dia:base": "hardhat test test/diamond/diamondTest.ts",
     "seaport": "hardhat test test-seaport/basic.spec.ts",
     "basic": "hardhat test test/all-basic.ts",
     "oz:storage": "hardhat test test/oz/utils/StorageSlot.test.js",

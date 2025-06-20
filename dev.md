@@ -3182,8 +3182,25 @@ cast calldata-decode "transfer(address,uint256)" \
 cast code 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c --rpc-url https://rpc.ankr.com/bsc
 ```
 
+### 🌸 Brand-new 🌸
+```
+curl -L https://foundry.paradigm.xyz | bash
+export PATH="$HOME/.foundry/bin:$PATH"
+source ~/.zshrc   # or ~/.bashrc, whichever you edited
+foundryup
+forge --version
+forge init // Cannot run `init` on a non-empty directory.
+forge install
 ---
-- [dev.md text - 3MT0VRb](bit.ly/3MT0VRb)
+forge-std/=lib/forge-std/src/
+import {Test, console} from "forge-std/src/Test.sol";
+---
+console.log(string.concat("fee: ", vm.toString(fee)));
+console.log("USDC:", address(USDC));
+```
+
+DEBUG=hardhat:* npx hardhat node // Run hardhat node
+
+---
+- [dev.md text - 3MT0VRb](bit.ly/3MT0VRb) 
 - [dev.md - 3MVG5AN]([bit.ly/3MVG5AN)
-- [Miki - 421Gf1x](https://bit.ly/421Gf1x)
-- [Miki-Summary - 4iWn0fY](https://bit.ly/4iWn0fY)
