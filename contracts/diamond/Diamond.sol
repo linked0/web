@@ -11,7 +11,8 @@ pragma solidity ^0.8.18;
 import { LibDiamond } from "./libraries/LibDiamond.sol";
 import { IDiamondCut } from "./interfaces/IDiamondCut.sol";
 
-contract Diamond {    
+contract Diamond {
+    string public name = "Diamond";
 
     constructor(address _contractOwner, address _diamondCutFacet) payable {        
         LibDiamond.setContractOwner(_contractOwner);
