@@ -3180,6 +3180,9 @@ cast calldata-decode "transfer(address,uint256)" \
   0xa9059cbb000000000000000000000000e78388b4ce79068e89bf8aa7f218ef6b9ab0e9d0000000000000000000000000000000000000000000000000008a8e4b1a3d8000
 컨트랙트 바이트 코드 가져오기
 cast code 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c --rpc-url https://rpc.ankr.com/bsc
+
+testp:; forge test -vvvv --match-test test_passERC721Transfer
+testp2:; forge test -vvvv --match-contract TokenReceiverPluginTest
 ```
 
 ### 🌸 Brand-new 🌸
