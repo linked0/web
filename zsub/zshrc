@@ -1,5 +1,7 @@
 #######################################
 ### Below is the common aliases
+export PATH="/Applications/PyCharm.app/Contents/MacOS:$PATH"
+
 
 hgrep() {
 	grep -irnH --include=\*.$1 "$2" ./
@@ -63,6 +65,35 @@ cc() {
   else
     # If $1 isn't an alias, simply pass all parameters to idea.
     cat "$@"
+  fi
+}
+
+pc() {
+  # Check if $1 is a defined alias.
+  if alias "$1" >/dev/null 2>&1; then
+    # Retrieve the alias definition, e.g.:
+    # alias aaa='code ~/work/web/contracts/AllBasic.sol'
+    local alias_def
+    alias_def=$(alias "$1")
+    # Remove everything up to the equal sign and strip the surrounding single quotes.
+    alias_def=${alias_def#*=}
+    alias_def=${alias_def#\'}
+    alias_def=${alias_def%\'}
+    # Extract the second token, assuming the alias is of the form "code <file_path>".
+    local file_path
+    file_path=$(echo "$alias_def" | awk '{print $2}')
+    
+    # Expand a leading tilde to the home directory.
+    file_path=${file_path/#\~/$HOME}
+    
+    # Log the file path before calling idea.
+    echo "File path: $file_path"
+    
+    # Call idea with the extracted file path and any extra parameters.
+    pycharm "$file_path" "${@:2}"
+  else
+    # If $1 isn't an alias, simply pass all parameters to idea.
+    pycharm "$@"
   fi
 }
 
@@ -223,3 +254,4 @@ alias ecst2="aws ec2 describe-instances --instance-ids i-0dae133af2b0dd1f5 --que
 export PATH="$PATH:$HOME/.local/bin"
 
 
+eval "$(rbenv init -)"
