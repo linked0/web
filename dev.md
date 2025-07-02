@@ -2578,6 +2578,26 @@ finder 열고 다음 실행하면 숨김 파일 보임
 Command + Shift + .
 ```
 
+### google gemini
+use nvm 20
+npm install -g @google/gemini-cli
+gemini
+
+### claude
+https://claude.ai/download
+npm install -g @anthropic-ai/claude-code
+claude
+
+Quick start:
+│ • Press Cmd+Esc to launch Claude Code
+│ • View and apply file diffs directly in your editor
+│ • Use Cmd+Option+K to insert @File references
+
+### codex cli
+brew install codex
+codex login
+codex
+$ /model
 ### chatgpt-cli
 ```
 brew tap kardolus/chatgpt-cli && brew install chatgpt-cli
