@@ -95,7 +95,7 @@ struct OrderParameters {
 - `flux-finance` 프로젝트 처럼 `openzeppelin` 같은 외부 프로젝트를 코드에 직접 포함시키는 것도 방법
   - `contracts/external/openzeppelin`, 여기는 `src` 대신 `contracts` 폴더를 사용.
 
-### Random Key 생성
+### Random Key 생성 (#키생성 #키 생성 #Key Generation)
 ```
 yarn keys
 ```
