@@ -7,7 +7,7 @@ set -e
 
 # --- Configuration ---
 MERGED_FILENAME="mergedTextFiles.txt"
-TEMP_SUBDIR="work/web"
+TEMP_SUBDIR="temp"
 
 # --- Helper Functions ---
 info() {
@@ -48,10 +48,12 @@ TEMP_OUTPUT_PATH="${HOME_TEMP_DIR}/${MERGED_FILENAME}"
 info "Ensuring temporary directory exists: ${HOME_TEMP_DIR}"
 mkdir -p "${HOME_TEMP_DIR}"
 
-# 4. Gather all files recursively from all specified directories (sorted)
-info "Gathering all files from: $@"
-# The "$@" correctly expands to all positional parameters as separate arguments for find
-ALL_FILES=$(find "$@" -type f | sort)
+# 4. Gather all files recursively from all specified directories (sorted), excluding node_modules
+info "Gathering all files from: $@ (excluding node_modules)"
+ALL_FILES=$(find "$@" \
+  -type d -name "node_modules" -prune -o \
+  -type f ! -path "*/node_modules/*" -print \
+  | sort)
 
 if [ -z "$ALL_FILES" ]; then
   warn "No files found in the specified directories: $@"

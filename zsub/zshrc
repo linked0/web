@@ -207,6 +207,7 @@ alias lmm='ls -al ~/work/web/zsub/zzmemo'
 
 alias occ='open https://colab.research.google.com/drive/1QD7vqBdoZvOd-2tBAYIMOSQoZF6-L-BX#scrollTo=f3NGQk2BhcOu'
 alias ozz='open /Users/hyunjaelee/work/web/ex/node_modules/@openzeppelin/contracts'
+alias mrg='~/work/web/merge_txt.sh'
 
 alias web='cd ~/work/web'
 alias webf='cd ~/work/webf'

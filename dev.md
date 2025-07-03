@@ -1587,9 +1587,6 @@ https://solidity-by-example.org/transient-storage/
 ---
 forge create
 
-NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8585 --verbose // 꼭 hardhat 프로젝트 폴더에서 진행해야함.
-npx hardhat node  // npx version
-
 forge script script/DeployTransactionDelegator.s.sol --rpc-url $LOCALNET_RPC_URL
 
 ---
@@ -3200,7 +3197,20 @@ cast calldata-decode "transfer(address,uint256)" \
   0xa9059cbb000000000000000000000000e78388b4ce79068e89bf8aa7f218ef6b9ab0e9d0000000000000000000000000000000000000000000000000008a8e4b1a3d8000
 컨트랙트 바이트 코드 가져오기
 cast code 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c --rpc-url https://rpc.ankr.com/bsc
+```
 
+##### Calling balanceOf 
+```
+cast call 0x6a9866beb9ce792f57ea116f457825fdcc1fc75d \
+  "balanceOf(address)" 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD \
+  --rpc-url http://127.0.0.1:8545
+
+cast send 0x6a9866beb9ce792f57ea116f457825fdcc1fc75d "balanceOf(address account)" 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD --rpc-url  http://127.0.0.1:8545 --private-key 0x58984b2bf6f0f3de4f38290ed3c541ac27bac384b378073ab133af8b314a1887 \
+  --gas-limit 200000
+```
+🔥Make this cast rpc eth_call format
+
+```
 testp:; forge test -vvvv --match-test test_passERC721Transfer
 testp2:; forge test -vvvv --match-contract TokenReceiverPluginTest
 ```
@@ -3222,8 +3232,18 @@ console.log(string.concat("fee: ", vm.toString(fee)));
 console.log("USDC:", address(USDC));
 ```
 
-DEBUG=hardhat:* npx hardhat node // Run hardhat node
+Run hardhat node (🔥yarn hardhat node 해야 hardhat.config.ts를 읽어들임)
+```
+nvm use 20
+NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8545
+```
+Run anvil node
+```
+anvil --port 8545
+```
 
 ---
+🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌🔴👍🪣0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
+
 - [dev.md text - 3MT0VRb](bit.ly/3MT0VRb) 
 - [dev.md - 3MVG5AN]([bit.ly/3MVG5AN)
