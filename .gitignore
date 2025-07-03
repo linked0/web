@@ -25,3 +25,7 @@ ignition/deployments/chain-31337
 /zsub/zzmemo
 
 /exlang/exr/target/*
+
+# Rust / Cargo
+/target/
+**/*.rs.bk
