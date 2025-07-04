@@ -2967,6 +2967,12 @@ cast calldata-decode "transfer(address,uint256)" \
 cast code 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c --rpc-url https://rpc.ankr.com/bsc
 ```
 
+```
+testp:; forge test -vvvv --match-test test_passERC721Transfer
+testp2:; forge test -vvvv --match-contract TokenReceiverPluginTest
+```
+
+### 🌸 Brand-new 🌸
 💎 Calling balanceOf 
 ```
 cast call 0x6a9866beb9ce792f57ea116f457825fdcc1fc75d \
@@ -2977,13 +2983,7 @@ cast send 0x6a9866beb9ce792f57ea116f457825fdcc1fc75d "balanceOf(address account)
   --gas-limit 200000
 ```
 Make this cast rpc eth_call format
-
-```
-testp:; forge test -vvvv --match-test test_passERC721Transfer
-testp2:; forge test -vvvv --match-contract TokenReceiverPluginTest
-```
-
-### 🌸 Brand-new 🌸
+💎 Foundry basic
 ```
 curl -L https://foundry.paradigm.xyz | bash
 export PATH="$HOME/.foundry/bin:$PATH"
@@ -2999,19 +2999,12 @@ import {Test, console} from "forge-std/src/Test.sol";
 console.log(string.concat("fee: ", vm.toString(fee)));
 console.log("USDC:", address(USDC));
 ```
-
 💎 Run hardhat node (🔥yarn hardhat node 해야 hardhat.config.ts를 읽어들임)
 ```
 nvm use 20
 NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8545
 ```
-Run anvil node
-```
 anvil --port 8545
-```
-
-💎 List repos
-gh repo list linked0 --limit 1000 | sort 
-
+💎 gh repo list linked0 --limit 1000 | sort 
 
 [dev.md - 3MVG5AN]([http://bit.ly/3MVG5AN), [dev.md text - 3MT0VRb](http://bit.ly/3MT0VRb)
