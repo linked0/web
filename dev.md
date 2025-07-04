@@ -2,12 +2,12 @@
 🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱🌟🔴
 - [README](./README.md)
 - [Coding Style](./doc/ProjectStyle.md)
-- [dev.md: 3MVG5AN]([bit.ly/3MVG5AN) / [dev.md text: 3MT0VRb](bit.ly/3MT0VRb)
-- [Miki: 421Gf1x](https://bit.ly/421Gf1x) / [Miki-Sum: 4iWn0fY](https://bit.ly/4iWn0fY)
-- [작업 환경 세팅](#-0-work-env) <= ctrl click
+- [dev.md: 3MVG5AN]([bit.ly/3MVG5AN), [dev.md text: 3MT0VRb](bit.ly/3MT0VRb)
+- [Miki: 421Gf1x](https://bit.ly/421Gf1x), [Miki-Sum: 4iWn0fY](https://bit.ly/4iWn0fY)
+- [작업 환경 세팅](./zsub/work-env.md) <= ctrl click
 - [Poohnet & Betelgeuse](#poohnet)
 - [Code](#-code) - [Projects](#-projects)
-- [Error](./error.md) - [Trend](#-trend)
+- [Error](./zsub/error.md) - [Trend](#-trend)
 
 ## 😈 code
 
@@ -1787,9 +1787,6 @@ const contractSize = (contractCode.length - 2) / 2; // Subtract 2 for '0x' prefi
 solc --bin --abi contracts/assembly/DataStorage.sol -o output
 
 ---
-npx hardhat node
-
----
 // Call transfer function and check for success/failure
         (bool sent, ) = _to.call{value: msg.value}("");
         require(sent, "Failed to send Ether");
@@ -1850,9 +1847,6 @@ curl v4.ident.me
 - hardhat-deploy
 - .env.sample
 
-### ondo-v1
-- "local-node": "export BLOCKCHAIN='ethereum' && export POOH='JAY' && hardhat node",
-  
 ---
 ### zksync
 local-setup에서 clear-sql.sh와 start-sql.sh
@@ -2528,234 +2522,6 @@ $tzselect
 ```
 TZ='Asia/Seoul'; export TZ
 ```
-🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🚘🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🌼🌟🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱※반짝🌟🔴⚡️⚡️⚡️⚡️⚡️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🌼🌟🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱※반짝🌟🔴⚡️⚡️⚡️⚡️⚡️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️
-🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🌼🌟🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱※반짝🌟🔴⚡️⚡️⚡️⚡️⚡️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🏀🌼🌟🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱※반짝🌟🔴⚡️⚡️⚡️⚡️⚡️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🏀🏀🏀🏀🌼🌟🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱※반짝🌟🔴⚡️⚡️⚡️⚡️⚡️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱🎱
-
-# # 0. Work-Env
-## Mac Setting
-### .ssh 복사
-iCloud/pooh/ssh.tar
-
-#### xcode command/brew/zsh/iterm2/karabiner install
-```
-xcode-select —-install
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install --cask iterm2 | brew install zsh | brew install karabiner-elements
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-### karanbiner 및 기타 파일
-- iterm2 - Preferences - Profiles - Silence bell
-- [gitconfig html](sub/gitconfig.htmlml) 내용은 .gitconfig에 복사 & `git init`
-- iCloud/pooh 폴더 복사해 놓기.
-
-### awscli 설치 및 aws configure
-
-[aws cli](https://awscli.amazonaws.com/AWSCLIV2.pkg)
-
-```
-$ aws configure
-AWS Access Key ID: 맥 메모에 있음
-AWS Secret Access Key : 맥 메모에 있음.
-Default region name [None]: ap-northeast-2
-Default output format [None]:
-```
-
-echo $SHELL로 쉘 확인하고 아래 .zshrc에 복사
-```
-`단축키` 부분으로 이동
-```
-.zshrc에 테마 찾아서 복사
-```
-ZSH_THEME="robbyrussell"
-```
-
-finder 열고 다음 실행하면 숨김 파일 보임
-```
-Command + Shift + .
-```
-
-### google gemini
-use nvm 20
-npm install -g @google/gemini-cli
-gemini
-
-### claude
-https://claude.ai/download
-npm install -g @anthropic-ai/claude-code
-claude
-
-Quick start:
-│ • Press Cmd+Esc to launch Claude Code
-│ • View and apply file diffs directly in your editor
-│ • Use Cmd+Option+K to insert @File references
-
-### codex cli
-brew install codex
-codex login
-codex
-$ /model
-### chatgpt-cli
-```
-brew tap kardolus/chatgpt-cli && brew install chatgpt-cli
-```
-Set the OPENAI_API_KEY environment variable to your [ChatGPT secret key](https://platform.openai.com/account/api-keys). To set the environment variable, you can add the following line to your shell profile (e.g., ~/.bashrc, ~/.zshrc, or ~/.bash_profile), replacing your_api_key with your actual key:
-```
-export OPENAI_API_KEY="your_api_key"
-```
-
-To enable history tracking across CLI calls
-```
-mkdir -p ~/.chatgpt-cli
-```
-
-To start interactive mode, use the -i or --interactive flag:
-```
-chatgpt --interactive
-```
-
-To use the pipe feature, create a text file containing some context.
-Then, use the pipe feature to provide this context to ChatGPT:
-```
-cat context.txt | chatgpt "What kind of toy would Kya enjoy?"
-```
-
-And run this
-```
-chatgpt what is the capital of the Netherlands
-```
-
-List the models
-```
-chatgpt --list-models
-```
-
-Set a model
-```
-chatgpt --set-model o1-mini
-```
-
-### npm yarn docker install
-```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-npm install -g yarn
-brew install cask docker
-brew install cask docker-compose
-```
-### nvm install
-> curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-source ~/.nvm/nvm.sh
-
-https://www.docker.com/products/docker-desktop/ 도커 Desktop (linked0/**)
-
-### rust/postgresql install
-> pip3 install git+https://github.com/elyase/ethers-py --break-system-packages
-
-
-> curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-export PATH="$HOME/.cargo/bin:$PATH"
-cargo install sqlx-cli
-
-> brew update
-brew install postgresql
-brew services start postgresql
-
-psql postgres <== 접속해볼 수 있음.
-
-### MySql Server 설치
-- https://dev.mysql.com/downloads/mysql/ 이동
-- 버전에 맞게 ARM이나 X86 버전 설치 
-- 예) macOS 14 (ARM, 64-bit), DMG Archive 이나 macOS 14 (x86, 64-bit), DMG Archive
-- MySQL Workbench도 설치
-- 초기화: 시스템 메뉴 -> 설정 -> 왼쪽 하단의 MySQL 클릭해서 들어가서 "Initialize Database" 클릭
-- 암호는 alfred0!@
-
-### Posgresql Server 설치
-- pgadmin download(https://www.pgadmin.org/download/pgadmin-4-macos/)
-
-### Whale, Miro, onenote, Visual Studio, Xcode, Github CLI, IDEA
-- Whale extension: React Developer Tools
-- Command Palette: [⇧⌘P ] Shell command
-- Settings 열기: cmd + ,
-- XCode: [Apple Developer](https://developer.apple.com/xcode/resources/)
-- FileMerge: open /Applications/Xcode.app/Contents/Applications/FileMerge.app
-- brew install gh
-- Idea 명령세팅: export PATH=$PATH:'/Applications/IntelliJ IDEA.app/Contents/MacOS'
-- Idea Cyan Light Theme 설치
-
-### ETC
-- Postman Agent: 이거 쓰지 말고 curl쓰는 방식으로 그냥 ChatGPT에게 물어보면 됨.
-- Whiteboard (AppStore에 있음)
-
-### VS Code Plugin
-- Solidity Visual Developer
-- Solidity(JuanBlanco)
-- Go/rust-analyzer
-- Live Preview
-- Github Copilot
-- Markdown All in One
-- Github actions
-- Extension Pack for Java
-- Prettier - Code formatter
-- ES7+ React/Redux/React-Native
-- vscode-pdf
-- Cairo 1.0 (with r) & Cairo Syntax
-- Solidity Visual Developer: audit tag를 위해서 사용될 수 있음, @audit-ok ⇐ 오딧 관련 코멘트
-- Inline Bookmarks
-
-
-### VS Code Setting
-- 느린 스크롤 세팅: Settings 열기 - smoothScrolling 검색 - Smooth Scrolling 체크
-- VS Code 세팅: Editor: Hover Enable을 Disable로 바꿔야 코드창에서 팝업 안뜸
-- tabstob 바꾸기
-  - Open settings(cmd + shift + p에서 "Open Settings" 입력) => Intent Size 검색
-  - 맨 밑에서 "Edit in setting.json" 링크 클릭 
-```
-"[typescript]": {
-        "editor.tabSize": 2,
-        "editor.insertSpaces": true // true if you prefer spaces over tabs
-    },
-    "[solidity]": {
-        "editor.tabSize": 2, // or the number you prefer for Solidity
-        "editor.insertSpaces": true // true if you prefer spaces over tabs
-    },
-```
-- terminal buffer 늘리기
-  - cmd + shift + p => scrollback
-  - 1000을 100000으로 늘려줌
-
-### hardhat & foundry
-#### hardhat 
-- npm install --global yarn 
-- yarn global add hardhat 
-
-#### foundry 
-```shell
-curl -L https://foundry.paradigm.xyz | bash
-source /Users/jay/.zshenv
-brew install libusb
-brew link libusb
-source ~/.zshrc
-foundryup
-forge --version
-```
-
-### 기타
-- CAPS 키 지연 문제
-```
-hidutil property --set '{"CapsLockDelayOverride":10}'
-```
-- 🔥 memo.txt를 사용하기 보다는 그냥 스티커 앱 사용
-- 맥 메인 모니터 설정 및 Dock 사이즈 조정
-- 데스크탑 및 Dock: Mission Control - Spaces를 최근 사용내역에 따라 자동으로 재정렬
-- 휴지통 컵
-- .gitignore: broadcast 폴더 전부 제거할 때
-```
-/broadcast/*
-```
-
-😈 Calendar 추가(Dev Team)
-😈 스타일가이드: https://github.com/bpfkorea/agora/blob/v0.x.x/doc/Style.md, 상세한 설명 필요
 
 
 # #4. Freqeunt Use
@@ -3176,6 +2942,8 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 - unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
 - history -100
 
+🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌🔴👍🪣0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
+
 ### 🌸 foundry
 ```
 forge script script/poohnet-fund/DeployPoohnetFund.s.sol --rpc-url localnet  --private-key $PRIVATE_KEY --broadcast
@@ -3199,7 +2967,7 @@ cast calldata-decode "transfer(address,uint256)" \
 cast code 0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c --rpc-url https://rpc.ankr.com/bsc
 ```
 
-##### Calling balanceOf 
+💎 Calling balanceOf 
 ```
 cast call 0x6a9866beb9ce792f57ea116f457825fdcc1fc75d \
   "balanceOf(address)" 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD \
@@ -3208,7 +2976,7 @@ cast call 0x6a9866beb9ce792f57ea116f457825fdcc1fc75d \
 cast send 0x6a9866beb9ce792f57ea116f457825fdcc1fc75d "balanceOf(address account)" 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD --rpc-url  http://127.0.0.1:8545 --private-key 0x58984b2bf6f0f3de4f38290ed3c541ac27bac384b378073ab133af8b314a1887 \
   --gas-limit 200000
 ```
-🔥Make this cast rpc eth_call format
+Make this cast rpc eth_call format
 
 ```
 testp:; forge test -vvvv --match-test test_passERC721Transfer
@@ -3232,7 +3000,7 @@ console.log(string.concat("fee: ", vm.toString(fee)));
 console.log("USDC:", address(USDC));
 ```
 
-Run hardhat node (🔥yarn hardhat node 해야 hardhat.config.ts를 읽어들임)
+💎 Run hardhat node (🔥yarn hardhat node 해야 hardhat.config.ts를 읽어들임)
 ```
 nvm use 20
 NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8545
@@ -3242,8 +3010,8 @@ Run anvil node
 anvil --port 8545
 ```
 
----
-🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌🔴👍🪣0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
+💎 List repos
+gh repo list linked0 --limit 1000 | sort 
 
-- [dev.md text - 3MT0VRb](bit.ly/3MT0VRb) 
-- [dev.md - 3MVG5AN]([bit.ly/3MVG5AN)
+
+[dev.md - 3MVG5AN]([bit.ly/3MVG5AN), [dev.md text - 3MT0VRb](bit.ly/3MT0VRb)
