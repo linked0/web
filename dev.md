@@ -2975,11 +2975,11 @@ testp2:; forge test -vvvv --match-contract TokenReceiverPluginTest
 ### 🌸 Brand-new 🌸
 💎 Calling balanceOf 
 ```
-cast call 0x6a9866beb9ce792f57ea116f457825fdcc1fc75d \
-  "balanceOf(address)" 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD \
-  --rpc-url http://127.0.0.1:8545
+cast call 0x3a7655D710E1ee579275e5F4fa2E4c2D4580BbE1 \
+  "balanceOf(address)" 0xA100Cbb212fdB5Ba02F6CFB5694b04354799a1b1 \
+  --rpc-url https://data-seed-prebsc-1-s1.binance.org:8545
 
-cast send 0x6a9866beb9ce792f57ea116f457825fdcc1fc75d "balanceOf(address account)" 0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD --rpc-url  http://127.0.0.1:8545 --private-key 0x58984b2bf6f0f3de4f38290ed3c541ac27bac384b378073ab133af8b314a1887 \
+cast send 0x3a7655D710E1ee579275e5F4fa2E4c2D4580BbE1 "balanceOf(address account)" 0xA100Cbb212fdB5Ba02F6CFB5694b04354799a1b1 --rpc-url  http://127.0.0.1:8545 --private-key 0x58984b2bf6f0f3de4f38290ed3c541ac27bac384b378073ab133af8b314a1887 \
   --gas-limit 200000
 ```
 Make this cast rpc eth_call format
@@ -3004,7 +3004,11 @@ console.log("USDC:", address(USDC));
 nvm use 20
 NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8545
 ```
-anvil --port 8545
+
+brew install codex --> codex login --> codex
+npm install -g @google/gemini-cli --> gemini
+
 💎 gh repo list linked0 --limit 1000 | sort 
 
-[dev.md - 3MVG5AN]([http://bit.ly/3MVG5AN), [dev.md text - 3MT0VRb](http://bit.ly/3MT0VRb)
+[Miki](https://bit.ly/421Gf1x), [Miki-Sum](https://bit.ly/4iWn0fY)
+[dev.md]([https://bit.ly/3MVG5AN), [dev.md text](https://bit.ly/3MT0VRb)

@@ -28,4 +28,5 @@ ignition/deployments/chain-31337
 
 # Rust / Cargo
 /target/
+exr/target/
 **/*.rs.bk
