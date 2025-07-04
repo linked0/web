@@ -3014,4 +3014,4 @@ anvil --port 8545
 gh repo list linked0 --limit 1000 | sort 
 
 
-[dev.md - 3MVG5AN]([bit.ly/3MVG5AN), [dev.md text - 3MT0VRb](bit.ly/3MT0VRb)
+[dev.md - 3MVG5AN]([http://bit.ly/3MVG5AN), [dev.md text - 3MT0VRb](http://bit.ly/3MT0VRb)
