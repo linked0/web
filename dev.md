@@ -2,8 +2,8 @@
 🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱🌟🔴
 - [README](./README.md)
 - [Coding Style](./doc/ProjectStyle.md)
-- [dev.md: 3MVG5AN]([bit.ly/3MVG5AN), [dev.md text: 3MT0VRb](bit.ly/3MT0VRb)
-- [Miki: 421Gf1x](https://bit.ly/421Gf1x), [Miki-Sum: 4iWn0fY](https://bit.ly/4iWn0fY)
+- [dev.md]([bit.ly/3MVG5AN), [dev.md text](bit.ly/3MT0VRb)
+- [Miki](https://bit.ly/421Gf1x), [Miki-Sum](https://bit.ly/4iWn0fY)
 - [작업 환경 세팅](./zsub/work-env.md) <= ctrl click
 - [Poohnet & Betelgeuse](#poohnet)
 - [Code](#-code) - [Projects](#-projects)
@@ -3010,5 +3010,5 @@ npm install -g @google/gemini-cli --> gemini
 
 💎 gh repo list linked0 --limit 1000 | sort 
 
-[Miki](https://bit.ly/421Gf1x), [Miki-Sum](https://bit.ly/4iWn0fY)
-[dev.md]([https://bit.ly/3MVG5AN), [dev.md text](https://bit.ly/3MT0VRb)
+🏀[dev]([https://bit.ly/3MVG5AN), 🎾[dev txt](https://bit.ly/3MT0VRb)
+⚽️[Miki](https://bit.ly/421Gf1x), 🏈[Miki-Sum](https://bit.ly/4iWn0fY)
