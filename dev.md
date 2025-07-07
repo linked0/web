@@ -2972,7 +2972,7 @@ testp:; forge test -vvvv --match-test test_passERC721Transfer
 testp2:; forge test -vvvv --match-contract TokenReceiverPluginTest
 ```
 
-### 🌸 Brand-new 🌸
+### 🌸 New & Latest 🌸
 💎 Calling balanceOf 
 ```
 cast call 0x3a7655D710E1ee579275e5F4fa2E4c2D4580BbE1 \
@@ -3009,6 +3009,15 @@ brew install codex --> codex login --> codex
 npm install -g @google/gemini-cli --> gemini
 
 💎 gh repo list linked0 --limit 1000 | sort 
+
+💎 fastest python dev
+brew install pipenv
+pipenv --python 3.11.8 // ~/.local/share/virtualenvs에 생김.
+pipenv shell // 이걸 호출하면 위 폴더에서 자동으로 찾아줌. 
+if __name__ == "__main__":
+pipenv run python main.py // pipenv run을 붙여야 virtual env에서 실행함.
+exit // deactivate가 아님.
+
 
 🏀[dev]([https://bit.ly/3MVG5AN), 🎾[dev txt](https://bit.ly/3MT0VRb)
 ⚽️[Miki](https://bit.ly/421Gf1x), 🏈[Miki-Sum](https://bit.ly/4iWn0fY)
