@@ -1,5 +1,7 @@
 ※🌟🏓🦋⚾️🥎🏐🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🔴※
+mrg go \!console \!tests \!log \!trie \!metrics \!graphql \!event \!ethdb \!ethstats \!params \!node\
 
+※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※※
 CONDUIT_CONTROLLER_ADDRESS=0x6A9866BEB9CE792F57ea116F457825fDcC1FC75D
 CONDUIT_ADDRESS=0x59932169d312E34Fd17CC6E479530a3c9a455e92
 CONDUIT_KEY=0x1811DfdE14b2e9aBAF948079E8962d200E71aCFD000000000000000000000000
