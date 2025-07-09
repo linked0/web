@@ -2983,6 +2983,7 @@ cast send 0x3a7655D710E1ee579275e5F4fa2E4c2D4580BbE1 "balanceOf(address account)
   --gas-limit 200000
 ```
 Make this cast rpc eth_call format
+
 💎 Foundry basic
 ```
 curl -L https://foundry.paradigm.xyz | bash
@@ -3009,6 +3010,7 @@ brew install codex --> codex login --> codex
 npm install -g @google/gemini-cli --> gemini
 
 💎 gh repo list linked0 --limit 1000 | sort 
+💎 git submodule update --init
 
 💎 fastest python dev
 brew install pipenv
