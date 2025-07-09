@@ -1,0 +1,27 @@
+server:
+    address: 127.0.0.1
+    port: 3000
+
+database:
+    host: "${DATABASE_HOST}"
+    user: "${DATABASE_USER}"
+    database: "${DATABASE_NAME}"
+    password: "${DATABASE_PASSWORD}"
+    port: "${DATABASE_PORT}"
+
+logging:
+    folder: /swap/logs/
+    level: debug
+
+################################################################################
+##                               Scheduler                                    ##
+################################################################################
+scheduler:
+    enable: true
+    items:
+        - name: voter
+          enable: true
+          interval: 1
+
+voter:
+    deposit_contract_address: "0xf1f0AF73A72D392433BE2c2A6596062632efE433"

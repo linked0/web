@@ -1,0 +1,60 @@
+{
+  "name": "commons-budget-contract",
+  "version": "1.0.0",
+  "description": "Commons Budget Contract",
+  "main": "",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "clean": "node_modules/.bin/hardhat clean",
+    "build": "node_modules/.bin/hardhat compile",
+    "test": "node_modules/.bin/hardhat test",
+    "test:CommonsBudget": "NODE_ENV=test node_modules/.bin/hardhat test test/CommonsBudget.test.ts",
+    "prettier": "node_modules/.bin/prettier --write --config .prettierrc 'contracts/**/*.sol' 'test/**/*.ts'"
+  },
+  "repository": {
+    "type": "git+https://github.com/zeroone-boa/commons-budget-contract.git",
+    "url": ""
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zeroone-boa/commons-budget-contract/issues"
+  },
+  "homepage": "",
+  "devDependencies": {
+    "@ethersproject/experimental": "^5.6.3",
+    "@ethersproject/keccak256": "^5.6.0",
+    "@nomiclabs/hardhat-ethers": "^2.1.0",
+    "@nomiclabs/hardhat-etherscan": "^3.1.0",
+    "@nomiclabs/hardhat-waffle": "^2.0.2",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "@typechain/ethers-v5": "^10.1.0",
+    "@typechain/hardhat": "^6.1.2",
+    "@types/chai": "^4.3.0",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "^12.20.43",
+    "assert": "^2.0.0",
+    "chai": "^4.3.6",
+    "dotenv": "^10.0.0",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.6.9",
+    "hardhat": "^2.10.0",
+    "hardhat-contract-sizer": "^2.6.1",
+    "hardhat-gas-reporter": "^1.0.7",
+    "prettier": "^2.5.1",
+    "prettier-plugin-solidity": "^1.0.0-beta.13",
+    "solhint": "^3.3.6",
+    "solidity-coverage": "^0.7.19",
+    "ts-node": "^10.5.0",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typechain": "^8.1.0",
+    "typescript": "^4.5.5",
+    "web3": "^1.8.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.5.0"
+  }
+}
