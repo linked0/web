@@ -3011,6 +3011,7 @@ npm install -g @google/gemini-cli --> gemini
 
 💎 gh repo list linked0 --limit 1000 | sort 
 💎 git submodule update --init
+git submodule update --remote // submodule을 최신 커밋으로 업데이트, commit 해야함.
 
 💎 fastest python dev
 brew install pipenv
