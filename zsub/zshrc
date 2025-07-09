@@ -101,7 +101,7 @@ adf() {
   echo "echo \"alias $1='code $2'\" >> ~/.zshrc"
 }
 ch() {
-  chatgpt $@
+  chatgpt $@ ": answer very briefly"
 }
 chc() {
   cat $1 | ch $2

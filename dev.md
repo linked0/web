@@ -3014,6 +3014,7 @@ npm install -g @google/gemini-cli --> gemini
 brew install pipenv
 pipenv --python 3.11.8 // ~/.local/share/virtualenvs에 생김.
 pipenv shell // 이걸 호출하면 위 폴더에서 자동으로 찾아줌. 
+pipenv install requests
 pipenv run python main.py // pipenv run을 붙여야 virtual env에서 실행함.
 exit // deactivate가 아님.
 
