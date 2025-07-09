@@ -1,0 +1,3 @@
+[submodule "web-archive"]
+	path = web-archive
+	url = https://github.com/linked0/web-archive
