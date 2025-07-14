@@ -3010,6 +3010,7 @@ brew install codex --> codex login --> codex
 npm install -g @google/gemini-cli --> gemini
 
 💎 gh repo list linked0 --limit 1000 | sort 
+
 💎 git submodule update --init // 처음에 submodule 파일 가져오기
 git submodule update --remote // submodule을 최신 커밋으로 업데이트, commit 해야함.
 
@@ -3021,6 +3022,11 @@ pipenv install requests
 pipenv run python main.py // pipenv run을 붙여야 virtual env에서 실행함.
 exit // deactivate가 아님.
 
+💎 fastest node dev
+ext         // Move to ~/work/web/exlang/ext directory
+nvm use 20
+yarn
+npx ts-node ex.ts
 
 🏀[dev]([https://bit.ly/3MVG5AN), 🎾[dev txt](https://bit.ly/3MT0VRb)
 ⚽️[Miki](https://bit.ly/421Gf1x), 🏈[Miki-Sum](https://bit.ly/4iWn0fY)

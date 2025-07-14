@@ -23,7 +23,8 @@ instance.greet(); // This line won't be reached
  */
 // 1️⃣ compiles even with the error flag.
 let x: string =  "hi";
-x = 42;               // ❌ Type error, but JS still emitted
+// TODO: comment out the next line to see the error
+// x = 42;               // ❌ Type error, but JS still emitted
 
 // 2️⃣ `as number` converts nothing—it's erased.
 function asNumber(val: string | number): number {
@@ -42,8 +43,9 @@ function len2D(v: Vector2D) {
   return Math.sqrt(v.x ** 2 + v.y ** 2);
 }
 
-const v3: Vector3D = { x: 3, y: 4, z: 12 };
-console.log(len2D(v3));   // ✅ compiles, but ignores `z`
+// TODO: comment out the next line to see the error
+// const v3: Vector3D = { x: 3, y: 4, z: 12 };
+// console.log(len2D(v3));   // ✅ compiles, but ignores `z`
 
 interface Vector2D { kind: 'v2'; x: number; y: number }
 interface Vector3D { kind: 'v3'; x: number; y: number; z: number }
@@ -52,7 +54,8 @@ function len(v: Vector2D | Vector3D) {
     ? Math.hypot(v.x, v.y)
     : Math.hypot(v.x, v.y, v.z);
 }
-console.log(len(v3));   // ✅ compiles, and works as expected
+// TODO: comment out the next line to see the error
+// console.log(len(v3));   // ✅ compiles, and works as expected
 
 /*
  * 3. Classes are values and types — only one survives to JS
@@ -72,8 +75,12 @@ declare const rectCtor2: typeof Rectangle; // ✅ `rectCtor2` is a value, but `t
 function sayhi(name: string) {
   console.log(name.toUpperCase());
 }
-sayhi(undefined);    // passes types without strictNullChecks
+// TODO: comment out the next line to see the error
+// sayhi(undefined);    // passes types without strictNullChecks
 
+function doSomething(s: string) {
+  console.log("Doing something with:", s);
+}
 /*
  * 5. Type guards are not type assertions
  */
@@ -82,3 +89,7 @@ function handle(raw: unknown) {
     doSomething(raw);   // smart‑narrowed to `string`
   }
 }
+
+// Example of how to use the handle function
+handle("Hello, TypeScript!");
+handle(123); // This will do nothing, as raw is not a string.
