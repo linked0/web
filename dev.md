@@ -3013,7 +3013,8 @@ NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8545
 brew install codex --> codex login --> codex
 npm install -g @google/gemini-cli --> gemini
 
-💎 gh repo list linked0 --limit 1000 | sort 
+💎 gh auth login // code는 command 로그에 나타남.
+gh repo list linked0 --limit 1000 | sort 
 
 💎 git submodule update --init // 처음에 submodule 파일 가져오기
 git submodule update --remote // submodule을 최신 커밋으로 업데이트, commit 해야함.

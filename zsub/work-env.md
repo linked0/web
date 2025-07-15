@@ -20,7 +20,11 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 - [.gitconfig](./gitconfig) 내용은 .gitconfig에 복사 & `git init`
 - iCloud/pooh 폴더 복사해 놓기.
 - brew install gh
-- 
+
+### Warp/GitKraken
+https://www.gitkraken.com/
+https://www.warp.dev/
+
 ### awscli 설치 및 aws configure
 [aws cli](https://awscli.amazonaws.com/AWSCLIV2.pkg)
 
@@ -57,15 +61,16 @@ npm install -g @anthropic-ai/claude-code
 claude
 
 Quick start:
-│ • Press Cmd+Esc to launch Claude Code
-│ • View and apply file diffs directly in your editor
-│ • Use Cmd+Option+K to insert @File references
+- Press Cmd+Esc to launch Claude Code
+- View and apply file diffs directly in your editor
+- Use Cmd+Option+K to insert @File references
 
 ### codex cli
 brew install codex
 codex login
 codex
-$ /model
+/model
+
 ### chatgpt-cli
 ```
 brew tap kardolus/chatgpt-cli && brew install chatgpt-cli
@@ -105,6 +110,18 @@ Set a model
 ```
 chatgpt --set-model o1-mini
 ```
+
+### gpt shortcut
+- shift cmd x
+  - keystroke ": show corrected, better, and casual versions for my english, and answer my message in detail"
+- shift cmd ,
+  - keystroke ": create sentence with this text"
+- shift cmd '
+  - keystroke ": translate into korean and explain in english"
+- shift cmd \
+  - keystroke ": summarize this in brief"
+- shift cmd p
+  - keystroke ": translate into english and answer in english"
 
 ### npm yarn docker install
 ```
@@ -173,7 +190,7 @@ psql postgres <== 접속해볼 수 있음.
 - Cairo 1.0 (with r) & Cairo Syntax
 - Solidity Visual Developer: audit tag를 위해서 사용될 수 있음, @audit-ok ⇐ 오딧 관련 코멘트
 - Inline Bookmarks
-
+- CodeRabbit
 
 ### VS Code Setting
 - 느린 스크롤 세팅: Settings 열기 - smoothScrolling 검색 - Smooth Scrolling 체크
