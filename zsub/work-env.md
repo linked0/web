@@ -20,6 +20,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 - [.gitconfig](./gitconfig) 내용은 .gitconfig에 복사 & `git init`
 - iCloud/pooh 폴더 복사해 놓기.
 - brew install gh
+- right command to 한영전환
+  - karabinder에서 add rule, right command를 F19로 세팅
+  - system setting에서 입력소스 단축키에 right command 입력하면 F19 입력됨.
+  - 그리고, CapsLock으로 한영전환하는 것은 제거하기
 
 ### Warp/GitKraken
 https://www.gitkraken.com/
