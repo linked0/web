@@ -2942,10 +2942,11 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 - unzip my-archive.zip -d data //data 폴더에 풀고 싶을때.
 - history -100
 
-🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
-🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
+🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴
+🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴
 
-### 🍀🍀🍀 foundry 🍀🍀🍀
+🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀
+### foundry
 ```
 forge script script/poohnet-fund/DeployPoohnetFund.s.sol --rpc-url localnet  --private-key $PRIVATE_KEY --broadcast
 cast call $POOHNET_FUND_CONTRACT_ADDRESS "geOwner()" --rpc-url $LOCALNET_RPC_URL
@@ -2984,7 +2985,8 @@ And then, thoroughly respond to the content of my message and briefly explain an
 
 if I write ":ca", check my sentences grammatically before answring
 
-### 🌼🌼🌼 GPT Prompt 🌼🌼🌼
+🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼
+### GPT Prompt
 And then, respond to the content of my message and briefly explain any relevant background, technology, current state, or future outlook.
 
 olny if I write ":ca", check my sentences grammatically before answering. If not do as you do.
@@ -3002,7 +3004,8 @@ shift cmd \
 shift cmd p
     keystroke ": translate into english and answer in english"
 
-### 🌸🌸🌸 New & Latest 🌸🌸🌸
+🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
+### New & Latest
 💎 Calling balanceOf 
 ```
 cast call 0x3a7655D710E1ee579275e5F4fa2E4c2D4580BbE1 \
