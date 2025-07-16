@@ -216,6 +216,11 @@ psql postgres <== 접속해볼 수 있음.
   - cmd + shift + p => scrollback
   - 1000을 100000으로 늘려줌
 
+### How to Show the .git Folder in VS Code
+- Open VS Code Settings: Press (Cmd + ,) to open the Settings UI.
+- Open Settings as JSON 📄: Type "files.exclude"
+- Modify the files.exclude Setting 
+
 ### hardhat & foundry
 #### hardhat 
 - npm install --global yarn 
