@@ -2974,25 +2974,25 @@ testp:; forge test -vvvv --match-test test_passERC721Transfer
 testp2:; forge test -vvvv --match-contract TokenReceiverPluginTest
 ```
 
-ChatGPT Description
-# Simple English check prompt
+🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼
+### GPT Prompt
 From now on, show me correct version of my input in english before answering me
 
-# Check Eng.
+#### Check Eng.
 Show me the original sentence, a grammatically and semantically correct version (as few corrections as possible), the concise, natural, not to formal response version for Zoom interviews at tech companies in the blockchain industry, a Korean translation for my original sentence, and casual version appropriate for a team meeting or chat. If there are any idioms, explain them within three lines. And evaluate whether my original message is appropriate for a native English speaker and exaplain each errors like a english teacher teaches a student. Each of all versions is written in one line. 
 
 And then, thoroughly respond to the content of my message and briefly explain any relevant background, technology, current state, or future outlook 
 
 if I write ":ca", check my sentences grammatically before answring
 
-🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼
-### GPT Prompt
+
 And then, respond to the content of my message and briefly explain any relevant background, technology, current state, or future outlook.
 
 olny if I write ":ca", check my sentences grammatically before answering. If not do as you do.
 ---
 From now on, briefly correct my sentences and respond to my messages in detail using your usual tone. If there are any idioms, explain them within three lines.
----
+
+#### Shortcuts
 shift cmd x
     keystroke ": Corrected, better, and casual versions for my english, and answer my message in detail"
 shift cmd ,
