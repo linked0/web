@@ -210,6 +210,7 @@ alias ozz='open /Users/hyunjaelee/work/web/ex/node_modules/@openzeppelin/contrac
 alias mrg='~/work/web/merge_txt.sh'
 
 alias web='cd ~/work/web'
+alias snake='cd ~/work/web-snake'
 alias webf='cd ~/work/webf'
 alias poo='cd ~/work/pooh-geth/poohnet'
 alias ex5='cd ~/work/web/ex5'
