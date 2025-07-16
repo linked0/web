@@ -3008,7 +3008,7 @@ From now on, briefly correct my sentences and respond to my messages in detail u
 
 #### Shortcuts
 shift cmd x
-    keystroke ": Corrected, better, and casual versions for my english, and answer my message in detail"
+    keystroke ": show me corrected version for my english, and answer my message in detail"
 shift cmd ,
     keystroke ": create sentence with this text"
 shift cmd '
@@ -3071,7 +3071,7 @@ pipenv --python 3.11.8 // ~/.local/share/virtualenvs에 생김.
 pipenv shell // 이걸 호출하면 위 폴더에서 자동으로 찾아줌. 
 pipenv install requests
 pipenv run python main.py // pipenv run을 붙여야 virtual env에서 실행함.
-exit // deactivate가 아님.
+exit // deactivate가 아님. 잘못하면 터미널을 빠져나감
 
 💎 fastest node dev
 ext         // Move to ~/work/web/exlang/ext directory

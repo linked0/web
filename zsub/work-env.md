@@ -221,6 +221,56 @@ psql postgres <== 접속해볼 수 있음.
 - Open Settings as JSON 📄: Type "files.exclude"
 - Modify the files.exclude Setting 
 
+### Automator action script
+#### How
+- Automator
+  - "ActionScript 실행"
+  - Add script and save
+- Keyboard shortcut
+  - Settings -> 키보드 -> 키보드 단축키 -> 서비스 -> 일반
+
+#### gpt 1
+shift cmd x
+```
+tell application "System Events"
+    keystroke ": show me corrected version for my english, and answer my message in detail"
+	key code 36 -- Presses "Enter" (Return key)
+end tell
+```
+
+#### gpt 2
+shift cmd ,
+```
+tell application "System Events"
+    keystroke ": create sentence with this text"
+	key code 36 -- Presses "Enter" (Return key)
+end tell
+```
+#### gpt 3
+shift cmd '
+```
+tell application "System Events"
+    keystroke ": translate into korean and explain in english"
+	key code 36 -- Presses "Enter" (Return key)
+end tell
+```
+#### gpt 4
+shift cmd \
+```
+tell application "System Events"
+    keystroke ": summarize this in brief"
+	key code 36 -- Presses "Enter" (Return key)
+end tell
+```
+#### gpt 5
+shift cmd p
+```
+tell application "System Events"
+    keystroke ": translate into english and answer in english"
+	key code 36 -- Presses "Enter" (Return key)
+end tell
+```
+
 ### hardhat & foundry
 #### hardhat 
 - npm install --global yarn 
