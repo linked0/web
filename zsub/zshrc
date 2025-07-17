@@ -106,6 +106,9 @@ ch() {
 chc() {
   cat $1 | ch $2
 }
+chd() { # chatgpt with details
+  chatgpt $@
+}
 chm() {
   ch "$(cat ~/work/web/m2.txt)"
 }
