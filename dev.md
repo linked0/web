@@ -3050,10 +3050,9 @@ import {Test, console} from "forge-std/src/Test.sol";
 console.log(string.concat("fee: ", vm.toString(fee)));
 console.log("USDC:", address(USDC));
 ```
-💎 Run hardhat node (🔥yarn hardhat node 해야 hardhat.config.ts를 읽어들임)
+💎 Run hardhat node (🔥hardhat.config.ts를 읽어들임, 31337)
 ```
-nvm use 20
-NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8545
+nvm use 20 && NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8545
 ```
 
 brew install codex --> codex login --> codex
@@ -3078,6 +3077,9 @@ ext         // Move to ~/work/web/exlang/ext directory
 nvm use 20
 yarn
 npx ts-node ex.ts
+
+💎 Basic project
+web, webf, web-snake, web-jules
 
 🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌🔴👍🪣 0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
 🏀[dev]([https://bit.ly/3MVG5AN), 🎾[dev txt](https://bit.ly/3MT0VRb)
