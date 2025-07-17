@@ -2947,7 +2947,7 @@ mvim --remote-tab-silent search.go  // 같은 윈도우에서 열기
 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴
 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴
 
-⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️⚽️
+🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾🎾
 ### gpt chatgpt
 List the models
 ```
@@ -3019,7 +3019,7 @@ shift cmd p
     keystroke ": translate into english and answer in english"
 
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
-### New & Latest
+### Latest I
 💎 Calling balanceOf 
 ```
 cast call 0x3a7655D710E1ee579275e5F4fa2E4c2D4580BbE1 \
@@ -3050,6 +3050,9 @@ import {Test, console} from "forge-std/src/Test.sol";
 console.log(string.concat("fee: ", vm.toString(fee)));
 console.log("USDC:", address(USDC));
 ```
+
+🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
+### Latest II
 💎 Run hardhat node (🔥hardhat.config.ts를 읽어들임, 31337)
 ```
 nvm use 20 && NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8545
@@ -3077,6 +3080,15 @@ ext         // Move to ~/work/web/exlang/ext directory
 nvm use 20
 yarn
 npx ts-node ex.ts
+
+💎 cdk
+- npm install -g aws-cdk
+- 이것의 장점은 코드상에서 바로 deploy할 수 있다는 것이다.
+- cdk deploy
+- New repository secret in github -> settings -> Secrets and variables
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+- After deploying, CloudFormation -> 스택 -> 출력 -> Url 확인
 
 💎 Basic project
 web, webf, web-snake, web-jules
