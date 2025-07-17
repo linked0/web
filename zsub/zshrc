@@ -101,19 +101,10 @@ adf() {
   echo "echo \"alias $1='code $2'\" >> ~/.zshrc"
 }
 ch() {
-  chatgpt $@ ": answer very briefly"
-}
-chc() {
-  cat $1 | ch $2
+  chatgpt "$@" ": answer very briefly"
 }
 chd() { # chatgpt with details
-  chatgpt $@
-}
-chm() {
-  ch "$(cat ~/work/web/m2.txt)"
-}
-chcm() {
-  cat $@ | ch "$(cat ~/work/web/m2.txt)"
+  chatgpt `$@`
 }
 cmm() {
   if [ -z "$1" ]; then
