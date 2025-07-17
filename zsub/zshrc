@@ -97,6 +97,12 @@ pc() {
   fi
 }
 
+cce() {
+  echo "echo \"alias $1='code $2'\" >> ~/.zshrc"
+}
+ccd() {
+  echo "echo \"alias $1='$2'\" >> ~/.zshrc"
+}
 ch() {
   chatgpt "$@" ": answer very briefly"
 }
