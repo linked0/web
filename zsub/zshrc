@@ -97,9 +97,6 @@ pc() {
   fi
 }
 
-adf() {
-  echo "echo \"alias $1='code $2'\" >> ~/.zshrc"
-}
 ch() {
   chatgpt "$@" ": answer very briefly"
 }
@@ -116,7 +113,7 @@ cmm() {
 py() {
   if [ -z "$1" ]; then
     echo "No argument"
-    echo "Usage: py 123/34"
+    echo "Usage: py '123/34'"
     return
   fi
    python -c "print($1)"
@@ -124,7 +121,7 @@ py() {
 py2() {
   if [ -z "$1" ]; then
     echo "No argument"
-    echo "Usage: py2 \"a=2;b=2;print(a+b);\""
+    echo "Usage: py2 'a=2;b=2;print(a+b);'"
     return
   fi
    python -c "$1"
