@@ -104,7 +104,7 @@ ch() {
   chatgpt "$@" ": answer very briefly"
 }
 chd() { # chatgpt with details
-  chatgpt `$@`
+  chatgpt "$@"
 }
 cmm() {
   if [ -z "$1" ]; then
