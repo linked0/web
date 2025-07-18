@@ -228,6 +228,9 @@ psql postgres <== 접속해볼 수 있음.
   - Add script and save
 - Keyboard shortcut
   - Settings -> 키보드 -> 키보드 단축키 -> 서비스 -> 일반
+- 보안 세팅
+  - Settings -> 개인정보 보호 및 보안 -> 손쉬운 사용
+    - automator, safari에 대해서 허용
 
 #### gpt 1
 shift cmd x
