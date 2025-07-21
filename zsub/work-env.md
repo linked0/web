@@ -25,9 +25,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
   - system setting에서 입력소스 단축키에 right command 입력하면 F19 입력됨.
   - 그리고, CapsLock으로 한영전환하는 것은 제거하기
 
-### Warp/GitKraken
+### Warp/GitKraken/Slack
 https://www.gitkraken.com/
 https://www.warp.dev/
+[Slack on AppStore](https://apps.apple.com/us/app/slack-for-desktop/id803453959?mt=12&ls=1)
 
 ### awscli 설치 및 aws configure
 [aws cli](https://awscli.amazonaws.com/AWSCLIV2.pkg)

@@ -132,6 +132,9 @@ py2() {
   fi
    python -c "$1"
 }
+nvmu() {
+  nvm use 20.19.0
+}
 zipit() {
   if [ -z "$1" ]; then
     echo "No argument"
