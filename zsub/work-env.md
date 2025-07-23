@@ -25,6 +25,48 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
   - system setting에서 입력소스 단축키에 right command 입력하면 F19 입력됨.
   - 그리고, CapsLock으로 한영전환하는 것은 제거하기
 
+### gpt shortcut
+- gpt1: shift cmd x
+```
+tell application "System Events"
+  keystroke ": show me corrected version for my english, and answer my message in detail"
+	key code 36 -- Presses "Enter" (Return key)
+end tell
+```
+- gpt2: shift cmd ,
+```
+tell application "System Events"
+  keystroke ": create sentence with this text"
+	key code 36 -- Presses "Enter" (Return key)
+end tell
+
+```
+- gpt3: shift cmd '
+```
+tell application "System Events"
+  keystroke ": translate into korean and explain in english"
+	key code 36 -- Presses "Enter" (Return key)
+end tell
+	
+```
+- gpt4: shift cmd \
+```
+tell application "System Events"
+  keystroke ": summarize this in brief"
+	key code 36 -- Presses "Enter" (Return key)
+end tell
+
+```
+- gpt5: shift cmd p
+```
+tell application "System Events"
+  keystroke ": translate into english and answer in english"
+	key code 36 -- Presses "Enter" (Return key)
+end tell
+```
+
+- Settings -> 개인정보 보호 및 보안 -> 손쉬운 사용에서 허용으로 바꿔야 해당앱에서 단축키 사용가능
+
 ### Warp/GitKraken/Slack
 https://www.gitkraken.com/
 https://www.warp.dev/
@@ -115,18 +157,6 @@ Set a model
 ```
 chatgpt --set-model o1-mini
 ```
-
-### gpt shortcut
-- shift cmd x
-  - keystroke ": show corrected, better, and casual versions for my english, and answer my message in detail"
-- shift cmd ,
-  - keystroke ": create sentence with this text"
-- shift cmd '
-  - keystroke ": translate into korean and explain in english"
-- shift cmd \
-  - keystroke ": summarize this in brief"
-- shift cmd p
-  - keystroke ": translate into english and answer in english"
 
 ### npm yarn docker install
 ```
