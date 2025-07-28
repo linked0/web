@@ -14,11 +14,9 @@ brew install --cask iterm2 | brew install zsh | brew install karabiner-elements
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-### karanbiner/iterm2/git 및 기타 파일
+### karanbiner/git 및 기타 파일
 - [karabiner](./karabiner.json)
 - iterm2 - Preferences - Profiles - Silence bell
-  - Settings - Profiles - Default - Colors - Color Preset: Tango Light
-    - Minimum Contract: 33
 - [.gitconfig](./gitconfig) 내용은 .gitconfig에 복사 & `git init`
 - iCloud/pooh 폴더 복사해 놓기.
 - brew install gh
@@ -103,6 +101,22 @@ Command + Shift + .
 use nvm 20
 npm install -g @google/gemini-cli
 gemini
+
+### claude
+https://claude.ai/download
+npm install -g @anthropic-ai/claude-code
+claude
+
+Quick start:
+- Press Cmd+Esc to launch Claude Code
+- View and apply file diffs directly in your editor
+- Use Cmd+Option+K to insert @File references
+
+### codex cli
+brew install codex
+codex login
+codex
+/model
 
 ### chatgpt-cli
 ```
