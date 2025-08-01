@@ -8,7 +8,7 @@ set -e
 
 # --- Configuration ---
 DIR_NAME="$(basename "$(pwd)")"
-MERGED_FILENAME="mergedTextFiles-${DIR_NAME}.txt"
+MERGED_FILENAME="merged-${DIR_NAME}.txt"
 TEMP_SUBDIR="temp"
 EXCLUDE_DIRS=(node_modules artifacts cache typechain-types .git .github)
 # Default common text extensions
