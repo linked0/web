@@ -3092,7 +3092,7 @@ npx ts-node ex.ts
 - After deploying, CloudFormation -> 스택 -> 출력 -> Url 확인
 
 💎 Basic project
-web, webf, web-snake, web-jules
+web, webf, web-snake, web-jules, web-mouse(AI)
 
 🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌🔴👍🪣 0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
 🏀[dev]([https://bit.ly/3MVG5AN), 🎾[dev txt](https://bit.ly/3MT0VRb)
