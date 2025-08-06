@@ -135,11 +135,11 @@ py2() {
 nvmu() {
   nvm use 20.19.0
 }
-zipit() {
-  if [ -z "$1" ]; then
+zipt() {
+  if [ -z "$2" ]; then
     echo "No argument"
-    echo "Usage: zipit 123"
-    echo "Usage: zipit ."
+    echo "Usage: zipt 123 \"Commont\""
+    echo "Usage: zipt .  \"Commont\""
     return
   fi
   # Create temp folder if it doesn't exist
@@ -153,7 +153,7 @@ zipit() {
   fi
 
   timestamp=$(date +%Y%m%d%H%M%S)
-  filename="${base}_${timestamp}.zip"
+  filename="${base}_${timestamp}_$2.zip"
 
   if [ "$1" = "." ]; then
     # When zipping the current directory, file paths don't have a parent folder
@@ -255,6 +255,5 @@ alias ecstop2="aws ec2 stop-instances --instance-ids i-0dae133af2b0dd1f5"
 alias ecst2="aws ec2 describe-instances --instance-ids i-0dae133af2b0dd1f5 --query 'Reservations[*].Instances[*].State.Name' --output text"
 
 export PATH="$PATH:$HOME/.local/bin"
-
 
 eval "$(rbenv init -)"
