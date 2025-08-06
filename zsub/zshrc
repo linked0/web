@@ -205,10 +205,6 @@ alias caee='cat ~/work/web/.env'
 alias cpmm='mkdir -p ~/work/web/zsub/zzmemo; cp ~/work/web/memo.txt ~/work/web/zsub/zzmemo/memo.txt.bak.$(date +%y%m%d%H%M%S)'
 alias lmm='ls -al ~/work/web/zsub/zzmemo'
 
-alias occ='open https://colab.research.google.com/drive/1QD7vqBdoZvOd-2tBAYIMOSQoZF6-L-BX#scrollTo=f3NGQk2BhcOu'
-alias ozz='open /Users/hyunjaelee/work/web/ex/node_modules/@openzeppelin/contracts'
-alias mrg='~/work/web/merge_txt.sh'
-
 alias web='cd ~/work/web'
 alias snake='cd ~/work/web-snake'
 alias webf='cd ~/work/webf'
@@ -253,6 +249,11 @@ alias ecst="aws ec2 describe-instances --instance-ids i-02c89e86234e05850 --quer
 alias ecstart2="aws ec2 start-instances --instance-ids i-0dae133af2b0dd1f5"
 alias ecstop2="aws ec2 stop-instances --instance-ids i-0dae133af2b0dd1f5"
 alias ecst2="aws ec2 describe-instances --instance-ids i-0dae133af2b0dd1f5 --query 'Reservations[*].Instances[*].State.Name' --output text"
+
+alias occ='open https://colab.research.google.com/drive/1QD7vqBdoZvOd-2tBAYIMOSQoZF6-L-BX#scrollTo=f3NGQk2BhcOu'
+alias ozz='open /Users/hyunjaelee/work/web/ex/node_modules/@openzeppelin/contracts'
+alias mrg='~/work/web/merge_txt.sh'
+alias codexf='codex --full-auto'
 
 export PATH="$PATH:$HOME/.local/bin"
 
