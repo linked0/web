@@ -99,10 +99,15 @@ finder 열고 다음 실행하면 숨김 파일 보임
 Command + Shift + .
 ```
 
-### google gemini
+### gemini & codex
 use nvm 20
 npm install -g @google/gemini-cli
 gemini
+
+.zshrc 세팅
+- OPENAI_API_KEY
+- GEMINI_API_KEY
+
 
 ### chatgpt-cli
 ```
