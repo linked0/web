@@ -254,6 +254,7 @@ alias occ='open https://colab.research.google.com/drive/1QD7vqBdoZvOd-2tBAYIMOSQ
 alias ozz='open /Users/hyunjaelee/work/web/ex/node_modules/@openzeppelin/contracts'
 alias mrg='~/work/web/merge_txt.sh'
 alias codexf='codex --full-auto'
+alias codex5='codex --model gpt-5 --full-auto'
 
 export PATH="$PATH:$HOME/.local/bin"
 
