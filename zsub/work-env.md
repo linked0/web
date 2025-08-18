@@ -26,6 +26,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
   - karabinder에서 add rule, right command를 F19로 세팅
   - system setting에서 입력소스 단축키에 right command 입력하면 F19 입력됨.
   - 그리고, CapsLock으로 한영전환하는 것은 제거하기
+- 키크론 스크린샷 키 비활성화
+  - Under "System Settings" --> "Keyboard" --> "Keyboard Shortcuts" --> "Screenshots" --> "Cmd Shift 4", disable
 
 ### gpt shortcut
 - gpt1: shift cmd x
