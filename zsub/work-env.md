@@ -102,7 +102,7 @@ Command + Shift + .
 ```
 
 ### gemini & codex
-use nvm 20
+nvm use 20
 npm install -g @google/gemini-cli
 gemini
 
