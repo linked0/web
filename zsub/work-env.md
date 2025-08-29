@@ -37,30 +37,31 @@ tell application "System Events"
 	key code 36 -- Presses "Enter" (Return key)
 end tell
 ```
+
 - gpt2: shift cmd ,
 ```
 tell application "System Events"
   keystroke ": create sentence with this text"
 	key code 36 -- Presses "Enter" (Return key)
 end tell
-
 ```
+
 - gpt3: shift cmd '
 ```
 tell application "System Events"
   keystroke ": translate into korean and explain in english"
 	key code 36 -- Presses "Enter" (Return key)
 end tell
-	
 ```
+
 - gpt4: shift cmd \
 ```
 tell application "System Events"
   keystroke ": summarize this in brief"
 	key code 36 -- Presses "Enter" (Return key)
 end tell
-
 ```
+
 - gpt5: shift cmd p
 ```
 tell application "System Events"
