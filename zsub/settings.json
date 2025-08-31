@@ -1,0 +1,42 @@
+{
+  "theme": "GitHub",
+  "selectedAuthType": "oauth-personal",
+  "mcpServers": {
+    "firecrawl-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "firecrawl-mcp"
+      ],
+      "env": {
+        "FIRECRAWL_API_KEY": "xxx"
+      }
+    },
+    "context7": {
+      "httpUrl": "https://mcp.context7.com/mcp"
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    },
+    "polymarket-mcp": {
+        "command": "uv",
+        "args": [
+        "--directory",
+        "/Users/jay/work/web/exlang/exp/polymarket-mcp",
+        "run",
+        "src/polymarket_mcp/server.py"
+        ],
+        "env": {
+            "KEY": "xxx",
+            "FUNDER": "xxx"
+        }
+    }
+  }
+}
