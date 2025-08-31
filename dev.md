@@ -4,7 +4,7 @@
 - [Coding Style](./doc/ProjectStyle.md)
 - [dev.md]([bit.ly/3MVG5AN), [dev.md text](bit.ly/3MT0VRb)
 - [Miki](https://bit.ly/421Gf1x), [Miki-Sum](https://bit.ly/4iWn0fY)
-- [작업 환경 세팅](./zsub/work-env.md) <= ctrl click
+- [작업 환경 세팅](./zsub/work-env.md)
 - [Poohnet & Betelgeuse](#poohnet)
 - [Code](#-code) - [Projects](#-projects)
 - [Error](./zsub/error.md) - [Trend](#-trend)
@@ -3051,8 +3051,17 @@ console.log(string.concat("fee: ", vm.toString(fee)));
 console.log("USDC:", address(USDC));
 ```
 
-🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
+🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌🔴👍🪣 0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
 ### Latest II
+💎 cdk
+- npm install -g aws-cdk
+- 이것의 장점은 코드상에서 바로 deploy할 수 있다는 것이다.
+- cdk deploy
+- New repository secret in github -> settings -> Secrets and variables
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+- After deploying, CloudFormation -> 스택 -> 출력 -> Url 확인
+
 💎 Run hardhat node (🔥hardhat.config.ts를 읽어들임, 31337)
 ```
 nvm use 20 && NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8545
@@ -3070,7 +3079,7 @@ git clone <repository_url> <new_folder_name> // 특정 폴더에 클론하기
 
 💎 fastest python dev
 brew install pipenv
-pipenv --python 3.11.8 // ~/.local/share/virtualenvs에 생김.
+pipenv --python 3.11.8 // 새로운 폴더 만들어서 해야함 & ~/.local/share/virtualenvs에 생김.
 pipenv shell // 이걸 호출하면 위 폴더에서 자동으로 찾아줌. 
 pipenv install requests
 pipenv run python main.py // pipenv run을 붙여야 virtual env에서 실행함.
@@ -3082,18 +3091,10 @@ nvm use 20
 yarn
 npx ts-node ex.ts
 
-💎 cdk
-- npm install -g aws-cdk
-- 이것의 장점은 코드상에서 바로 deploy할 수 있다는 것이다.
-- cdk deploy
-- New repository secret in github -> settings -> Secrets and variables
-  - AWS_ACCESS_KEY_ID
-  - AWS_SECRET_ACCESS_KEY
-- After deploying, CloudFormation -> 스택 -> 출력 -> Url 확인
-
 💎 Basic project
 web, webf, web-snake, web-jules, web-mouse(AI)
 
-🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌🔴👍🪣 0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
+
 🏀[dev]([https://bit.ly/3MVG5AN), 🎾[dev txt](https://bit.ly/3MT0VRb)
 ⚽️[Miki](https://bit.ly/421Gf1x), 🏈[Miki-Sum](https://bit.ly/4iWn0fY)
+🏓[Work Env](./zsub/work-env.md)

@@ -111,6 +111,7 @@ gemini
 - OPENAI_API_KEY
 - GEMINI_API_KEY
 
+[gemini settings.json](./settings.json)
 
 ### chatgpt-cli
 ```
@@ -241,6 +242,9 @@ psql postgres <== 접속해볼 수 있음.
 - terminal buffer 늘리기
   - cmd + shift + p => scrollback
   - 1000을 100000으로 늘려줌
+- shortcut 수정
+  - Toogle Panel Visibility: cmd ctrl j
+  - Toggle Terminal : cmd j
 
 ### How to Show the .git Folder in VS Code
 - Open VS Code Settings: Press (Cmd + ,) to open the Settings UI.
@@ -329,6 +333,7 @@ hidutil property --set '{"CapsLockDelayOverride":10}'
 ```
 /broadcast/*
 ```
+- m.txt를 한번 띄우고, 다음에 cmd space로 찾기 쉽게 만들기.
 
 😈 Calendar 추가(Dev Team)
 😈 스타일가이드: https://github.com/bpfkorea/agora/blob/v0.x.x/doc/Style.md, 상세한 설명 필요
