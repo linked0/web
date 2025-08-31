@@ -3067,9 +3067,6 @@ console.log("USDC:", address(USDC));
 nvm use 20 && NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8545
 ```
 
-brew install codex --> codex login --> codex
-npm install -g @google/gemini-cli --> gemini
-
 💎 git
 gh auth login // code는 command 로그에 나타남.
 gh repo list linked0 --limit 1000 | sort 
