@@ -135,11 +135,11 @@ py2() {
 nvmu() {
   nvm use 20.19.0
 }
-zipt() {
+zit() {
   if [ -z "$2" ]; then
     echo "No argument"
-    echo "Usage: zipt 123 \"Commont\""
-    echo "Usage: zipt .  \"Commont\""
+    echo "Usage: zit 123 \"Commont\""
+    echo "Usage: zit .  \"Commont\""
     return
   fi
   # Create temp folder if it doesn't exist
