@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Script to recursively find files with given extensions (or all common text files with 'all'),
-# merge them into a single file named "mergedTextFiles-<folder>.txt", and move it to a temp location,
+# merge them into a single file named "mergedTextFiles-<folder>.txt", and move it to a destination,
 # while excluding specified directories (default + any “!folder” args).
 
 set -e
@@ -21,10 +21,22 @@ DEFAULT_TEXT_EXTENSIONS=(
 
 # --- Helpers ---
 usage() {
-  echo "Usage examples:"
-  echo "  $0 txt md            # Merge only .txt and .md files"
-  echo "  $0 all               # Merge all default text types"
-  echo "  $0 all !vendor       # Merge all default text types, excluding 'vendor'"
+  echo "Usage: $0 [options] [extensions... | all] [!exclusions...]"
+  echo
+  echo "Arguments:"
+  echo "  extensions      List of file extensions to merge (e.g., txt md sh)."
+  echo "  all             A special keyword to include all common text file extensions."
+  echo "  !exclusions     Directories to exclude, prefixed with '!' (e.g., !vendor !logs)."
+  echo
+  echo "Options:"
+  echo "  -d, --dest <dir>  Specify the destination directory for the merged file."
+  echo "                    (Default: ~/${TEMP_SUBDIR}/)"
+  echo "  -h, --help        Show this help message."
+  echo
+  echo "Examples:"
+  echo "  $0 txt md                     # Merge .txt and .md files into ~/${TEMP_SUBDIR}/"
+  echo "  $0 all !vendor                # Merge all default types into ~/${TEMP_SUBDIR}/, excluding 'vendor'"
+  echo "  $0 sol -d ./output            # Merge .sol files into the ./output/ directory"
   exit 1
 }
 
@@ -34,15 +46,39 @@ fi
 
 # --- Parse Arguments ---
 USER_EXTENSIONS=()
-for arg in "$@"; do
-  if [[ "$arg" == !* ]]; then
-    excl="${arg#!}"
-    [[ -n "$excl" ]] && EXCLUDE_DIRS+=("$excl")
-  else
-    ext="${arg#.}"
-    [[ -n "$ext" ]] && USER_EXTENSIONS+=("$ext")
-  fi
+DESTINATION_DIR=""
+
+while [[ $# -gt 0 ]]; do
+  arg="$1"
+  case "$arg" in
+    -d|--dest)
+      DESTINATION_DIR="$2"
+      if [[ -z "$DESTINATION_DIR" ]] || [[ "$DESTINATION_DIR" == !* ]] && [[ ! "$DESTINATION_DIR" =~ ^[a-zA-Z0-9] ]]; then
+        echo "[ERROR] A valid destination directory must be specified after the '$1' option."
+        usage
+      fi
+      shift # past argument
+      shift # past value
+      ;;
+    !*)
+      excl="${arg#!}"
+      [[ -n "$excl" ]] && EXCLUDE_DIRS+=("$excl")
+      shift # past argument
+      ;;
+    *)
+      ext="${arg#.}"
+      [[ -n "$ext" ]] && USER_EXTENSIONS+=("$ext")
+      shift # past argument
+      ;;
+  esac
 done
+
+
+if [[ ${#USER_EXTENSIONS[@]} -eq 0 ]]; then
+  echo "[ERROR] No file extensions specified."
+  usage
+fi
+
 
 if [[ "${USER_EXTENSIONS[0]}" == "all" ]]; then
     echo "[INFO] Mode: Merging all common text files."
@@ -55,27 +91,34 @@ fi
 echo "[INFO] Including extensions: ${EXTENSIONS[*]}"
 echo "[INFO] Excluding dirs:      ${EXCLUDE_DIRS[*]}"
 
-# Build prune expression
+# Build prune expression for find command
 PRUNE_EXPR=()
 for d in "${EXCLUDE_DIRS[@]}"; do
   PRUNE_EXPR+=( -type d -name "$d" -prune -o )
 done
 
 # Prepare output paths
-LOCAL_OUTPUT_PATH="$(pwd)/${MERGED_FILENAME}"
-HOME_TEMP_DIR="${HOME}/${TEMP_SUBDIR}"
-TEMP_OUTPUT_PATH="${HOME_TEMP_DIR}/${MERGED_FILENAME}"
+if [[ -z "$DESTINATION_DIR" ]]; then
+  FINAL_DEST_DIR="${HOME}/${TEMP_SUBDIR}"
+  echo "[INFO] No destination specified, using default: ${FINAL_DEST_DIR}"
+else
+  FINAL_DEST_DIR="${DESTINATION_DIR}"
+  echo "[INFO] Using specified destination: ${FINAL_DEST_DIR}"
+fi
 
-echo "[INFO] Ensuring temp dir: ${HOME_TEMP_DIR}"
-mkdir -p "${HOME_TEMP_DIR}"
+LOCAL_OUTPUT_PATH="$(pwd)/${MERGED_FILENAME}"
+FINAL_OUTPUT_PATH="${FINAL_DEST_DIR}/${MERGED_FILENAME}"
+
+echo "[INFO] Ensuring destination dir exists: ${FINAL_DEST_DIR}"
+mkdir -p "${FINAL_DEST_DIR}"
 rm -f "${LOCAL_OUTPUT_PATH}"
-echo "[INFO] Cleared old output if present"
+echo "[INFO] Cleared old local output if present"
 
 # Find and Merge
 echo "[INFO] Searching in $(pwd) and merging into ${MERGED_FILENAME}..."
 cnt=0
 
-# Build name-test expression
+# Build name-test expression for find command
 NAME_EXPR=( -type f \( )
 for i in "${!EXTENSIONS[@]}"; do
   NAME_EXPR+=( -iname "*.${EXTENSIONS[i]}" )
@@ -99,7 +142,7 @@ fi
 
 echo "[INFO] Merged ${cnt} files → ${LOCAL_OUTPUT_PATH}"
 
-echo "[INFO] Moving merged file to ${TEMP_OUTPUT_PATH}"
-mv "${LOCAL_OUTPUT_PATH}" "${TEMP_OUTPUT_PATH}"
+echo "[INFO] Moving merged file to ${FINAL_OUTPUT_PATH}"
+mv "${LOCAL_OUTPUT_PATH}" "${FINAL_OUTPUT_PATH}"
 
 echo "[INFO] Done."
