@@ -102,6 +102,12 @@ finder 열고 다음 실행하면 숨김 파일 보임
 Command + Shift + .
 ```
 
+### node version
+이걸 해야 매번 nvm use 20을 안해도 됨
+```
+export PATH="/path/to/node-v20.19.0/bin:$PATH"
+```
+
 ### gemini & codex
 use nvm 20
 npm install -g @google/gemini-cli
