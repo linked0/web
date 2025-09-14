@@ -116,6 +116,9 @@ cmm() {
   fi
   code ~/work/web/zsub/zzmemo/$1
 }
+gem() {
+  gemini -p "$@"
+}
 py() {
   if [ -z "$1" ]; then
     echo "No argument"

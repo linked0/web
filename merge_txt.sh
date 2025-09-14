@@ -7,7 +7,7 @@
 set -e
 
 # --- Configuration ---
-DIR_NAME="$(basename "$(pwd)")"
+DIR_NAME="$(basename $(pwd))"
 MERGED_FILENAME="merged-${DIR_NAME}.txt"
 TEMP_SUBDIR="temp"
 EXCLUDE_DIRS=(node_modules artifacts cache typechain-types .git .github)
@@ -96,6 +96,7 @@ PRUNE_EXPR=()
 for d in "${EXCLUDE_DIRS[@]}"; do
   PRUNE_EXPR+=( -type d -name "$d" -prune -o )
 done
+NAME_EXPR+=( \) )
 
 # Prepare output paths
 if [[ -z "$DESTINATION_DIR" ]]; then
@@ -127,12 +128,15 @@ done
 NAME_EXPR+=( \) )
 
 while IFS= read -r file; do
-  [[ -z "$file" ]] && continue
-  echo -e "\n// ── ${file} ──────────────────────────────────────────────" \
-    >> "${LOCAL_OUTPUT_PATH}"
-  cat "${file}" >> "${LOCAL_OUTPUT_PATH}"
+  skip=false
+  for excl in "${EXCLUDE_DIRS[@]}"; do
+    [[ "$file" == ./$excl/* || "$file" == ./$excl ]] && skip=true && break
+  done
+  $skip && continue
+  echo -e "\n// ── ${file} ──────────────────────────────────────────────" >> "${LOCAL_OUTPUT_PATH}"
+  cat "$file" >> "${LOCAL_OUTPUT_PATH}"
   cnt=$((cnt+1))
-done < <(find . "${PRUNE_EXPR[@]}" "${NAME_EXPR[@]}" -print | sort)
+done < <(find . -type f "${NAME_EXPR[@]}" -print | sort)
 
 if [[ "$cnt" -eq 0 ]]; then
   echo "[WARN] No matching files found to merge."
