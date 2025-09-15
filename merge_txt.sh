@@ -10,7 +10,7 @@ set -e
 DIR_NAME="$(basename $(pwd))"
 MERGED_FILENAME="merged-${DIR_NAME}.txt"
 TEMP_SUBDIR="temp"
-EXCLUDE_DIRS=(node_modules artifacts cache typechain-types .git .github)
+EXCLUDE_DIRS=(node_modules artifacts/@openzeppelin artifacts/hardhat cache typechain-types/@openzeppelin typechain-types/factories  .git .github)
 # Default common text extensions
 DEFAULT_TEXT_EXTENSIONS=(
   sh py rb js ts c h cpp cs go swift kt java scala groovy phar php
