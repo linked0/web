@@ -49,9 +49,9 @@ describe("Random Keys", () => {
 
   beforeEach(async () => {
     execAccount = await ethers.deployContract("ExecAccount");
-    execAccount.waitForDeployment();
+    await execAccount.waitForDeployment();
     operator = await ethers.deployContract("Operator");
-    operator.waitForDeployment();
+    await operator.waitForDeployment();
     [deployer] = await ethers.getSigners();
   });
 
@@ -59,7 +59,9 @@ describe("Random Keys", () => {
     const wanted = 10;
     for (let i = 0; i < wanted; i++) {
       const wallet = ethers.Wallet.createRandom();
-      console.log(wallet.privateKey, wallet.address); // This is your private key
+      console.log(`Private Key: ${wallet.privateKey}`);
+      console.log(`Address:     ${wallet.address}`);
+      console.log('-----------------------------------');
     }
   });
 });

@@ -119,7 +119,7 @@ cmm() {
 gem() {
   gemini -p "$@"
 }
-py() {
+pyt() {
   if [ -z "$1" ]; then
     echo "No argument"
     echo "Usage: py '123/34'"
@@ -127,7 +127,7 @@ py() {
   fi
    python -c "print($1)"
 }
-py2() {
+pyt2() {
   if [ -z "$1" ]; then
     echo "No argument"
     echo "Usage: py2 'a=2;b=2;print(a+b);'"

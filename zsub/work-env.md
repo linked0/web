@@ -110,7 +110,7 @@ export PATH="/path/to/node-v20.19.0/bin:$PATH"
 
 ### gemini & codex
 use nvm 20
-npm install -g @google/gemini-cli
+brew install gemini
 gemini
 
 .zshrc 세팅
