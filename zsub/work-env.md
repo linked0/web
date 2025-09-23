@@ -32,21 +32,14 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ### gpt shortcut
 
 #### 설정 방법
-1. Create the Quick Action in Automator:
-- Open Automator (found in Applications/Utilities).
-- Choose File > New or press Command-N.
-- Select Quick Action as the document type and click Choose.
-- Configure the workflow as needed. For example, you can add a "Run AppleScript" action to execute a custom script.
-- Save the Quick Action by choosing File > Save and giving it a descriptive name.
-
-3. Assign a Keyboard Shortcut:
-- Open System Settings (or System Preferences on older macOS versions).
-- Click on Keyboard in the sidebar.
-- Click on Keyboard Shortcuts (or Shortcuts on older macOS versions).
-- Select Services from the left-hand pane.
-- Locate your newly created Quick Action in the list (it will appear under the name you saved it as).
-- Click on the "Add Shortcut" button or double-click the "none" text next to your Quick Action.
-- Press your desired keyboard shortcut combination. Ensure it does not conflict with existing system or application shortcuts.
+- Automator
+  - "ActionScript 실행"
+  - Add script and save
+- Keyboard shortcut
+  - Settings -> 키보드 -> 키보드 단축키 -> 서비스 -> 일반
+- 보안 세팅
+  - Settings -> 개인정보 보호 및 보안 -> 손쉬운 사용
+    - automator, safari에 대해서 허용
 
 #### Apple Scripts
 - gpt1: shift cmd x
@@ -194,7 +187,6 @@ https://www.docker.com/products/docker-desktop/ 도커 Desktop (linked0/**)
 ### rust/postgresql install
 > pip3 install git+https://github.com/elyase/ethers-py --break-system-packages
 
-
 > curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 export PATH="$HOME/.cargo/bin:$PATH"
 cargo install sqlx-cli
@@ -275,59 +267,6 @@ psql postgres <== 접속해볼 수 있음.
 - Open VS Code Settings: Press (Cmd + ,) to open the Settings UI.
 - Open Settings as JSON 📄: Type "files.exclude"
 - Modify the files.exclude Setting 
-
-### Automator action script
-#### How
-- Automator
-  - "ActionScript 실행"
-  - Add script and save
-- Keyboard shortcut
-  - Settings -> 키보드 -> 키보드 단축키 -> 서비스 -> 일반
-- 보안 세팅
-  - Settings -> 개인정보 보호 및 보안 -> 손쉬운 사용
-    - automator, safari에 대해서 허용
-
-#### gpt 1
-shift cmd x
-```
-tell application "System Events"
-    keystroke ": show me corrected version for my english, and answer my message in detail"
-	key code 36 -- Presses "Enter" (Return key)
-end tell
-```
-
-#### gpt 2
-shift cmd ,
-```
-tell application "System Events"
-    keystroke ": create sentence with this text"
-	key code 36 -- Presses "Enter" (Return key)
-end tell
-```
-#### gpt 3
-shift cmd '
-```
-tell application "System Events"
-    keystroke ": translate into korean and explain in english"
-	key code 36 -- Presses "Enter" (Return key)
-end tell
-```
-#### gpt 4
-shift cmd \
-```
-tell application "System Events"
-    keystroke ": summarize this in brief"
-	key code 36 -- Presses "Enter" (Return key)
-end tell
-```
-#### gpt 5
-shift cmd p
-```
-tell application "System Events"
-    keystroke ": translate into english and answer in english"
-	key code 36 -- Presses "Enter" (Return key)
-end tell
-```
 
 ### hardhat & foundry
 #### hardhat 
