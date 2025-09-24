@@ -121,9 +121,11 @@ export PATH="/path/to/node-v20.19.0/bin:$PATH"
 ```
 
 ### gemini & codex
-use nvm 20
+```
+nvm use 20
 brew install gemini
 gemini
+```
 
 .zshrc 세팅
 - OPENAI_API_KEY
