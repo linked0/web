@@ -123,7 +123,7 @@ export PATH="/path/to/node-v20.19.0/bin:$PATH"
 ### gemini & codex
 ```
 nvm use 20
-brew install gemini
+brew install gemini-cli
 gemini
 ```
 
