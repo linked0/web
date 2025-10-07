@@ -3143,9 +3143,9 @@ testp2:; forge test -vvvv --match-contract TokenReceiverPluginTest
 ```
 
 🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼
-### Old or Not Frequently used
-
-#### Shortcuts
+🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼
+### OLD
+💎 Automator
 shift cmd x
     keystroke ": show me corrected version for my english, and answer my message in detail"
 shift cmd ,
@@ -3157,7 +3157,6 @@ shift cmd \
 shift cmd p
     keystroke ": translate into english and answer in english"
 
-### Latest
 💎 cdk
 - npm install -g aws-cdk
 - 이것의 장점은 코드상에서 바로 deploy할 수 있다는 것이다.
@@ -3167,9 +3166,7 @@ shift cmd p
   - AWS_SECRET_ACCESS_KEY
 - After deploying, CloudFormation -> 스택 -> 출력 -> Url 확인
 
-🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌🔴👍🪣 0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
 
-### Latest I
 💎 Calling balanceOf 
 ```
 cast call 0x3a7655D710E1ee579275e5F4fa2E4c2D4580BbE1 \
@@ -3201,7 +3198,17 @@ console.log(string.concat("fee: ", vm.toString(fee)));
 console.log("USDC:", address(USDC));
 ```
 
+💎 fastest python dev
+brew install pipenv
+pipenv --python 3.11.8 // 새로운 폴더 만들어서 해야함 & ~/.local/share/virtualenvs에 생김.
+pipenv shell // 이걸 호출하면 위 폴더에서 자동으로 찾아줌. 
+pipenv install requests
+pipenv run python main.py // pipenv run을 붙여야 virtual env에서 실행함.
+exit // deactivate가 아님. 잘못하면 터미널을 빠져나감
+
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
+🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
+### NEW
 
 💎 Run hardhat node (🔥hardhat.config.ts를 읽어들임, 31337)
 ```
@@ -3212,6 +3219,8 @@ nvm use 20 && NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 
 ```
 npx v0-mcp-server // v0
 ```
+- Create a Next.js middleware that checks for a valid JWT in cookies and redirects unauthenticated users to `/login`. use context7
+
 💎 git
 gh auth login // code는 command 로그에 나타남.
 gh repo list linked0 --limit 1000 | sort 
@@ -3219,15 +3228,9 @@ git submodule update --init // 처음에 submodule 파일 가져오기
 git submodule update --remote // submodule을 최신 커밋으로 업데이트, commit 해야함.
 git clone <repository_url> <new_folder_name> // 특정 폴더에 클론하기 
 
-💎 fastest python dev
-brew install pipenv
-pipenv --python 3.11.8 // 새로운 폴더 만들어서 해야함 & ~/.local/share/virtualenvs에 생김.
-pipenv shell // 이걸 호출하면 위 폴더에서 자동으로 찾아줌. 
-pipenv install requests
-pipenv run python main.py // pipenv run을 붙여야 virtual env에서 실행함.
-exit // deactivate가 아님. 잘못하면 터미널을 빠져나감
-
-💎 langchain ai
+💎 langchain ai 
+// 아무 폴더에서나 아래 실행 가능
+uv add jupyterlab
 uv run jupyter lab
 
 💎 fastest node dev
@@ -3239,7 +3242,9 @@ npx ts-node ex.ts
 💎 command
 grep -RIn --include="*.{js,ts,jsx,tsx}" "TEXT" 
 
-
+🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌
+🔴👍🪣 0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
 🏀[dev]([https://bit.ly/3MVG5AN), 🎾[dev txt](https://bit.ly/3MT0VRb)
 ⚽️[Miki](https://bit.ly/421Gf1x), 🏈[Miki-Sum](https://bit.ly/4iWn0fY)
 🏓[Work Env](./zsub/work-env.md)
+

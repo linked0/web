@@ -1,23 +1,37 @@
-# 3. Import everything with the updated paths
-from langchain.prompts import PromptTemplate
-from langchain_openai import ChatOpenAI # <-- Updated import
-from langchain.chains import LLMChain
-
-# 4. Your code can now run as expected
-summary_template = """
-given the {information} about a person I want you to create:
-1. A short summary
-2. two interesting facts about them
-"""
-
 from langchain.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 
-prompt = PromptTemplate.from_template("""given the {information} about a person create:
-1) A short summary
-2) Two interesting facts""")
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+def main():
+    summary_template = """
+    Given the information {information} about a person, please provide:
+    1. A short summary.
+    2. Two interesting facts about them.
+    """
 
-chain = prompt | llm
-result = chain.invoke({"information": "Lee Jae Myung"})
-print(result.content)
+    summary_prompt_template = PromptTemplate(
+        input_variables=["information"],
+        template=summary_template
+    )
+
+    # Choose model: GPT or Gemma
+    use_openai = False  # toggle this as needed
+
+    if use_openai:
+        llm = ChatOpenAI(temperature=0, model="gpt-5")
+    else:
+        llm = ChatOllama(temperature=0, model="gemma3:270m")
+
+    chain = summary_prompt_template | llm
+
+    information = "Lee Jae-Myung"
+    response = chain.invoke({"information": information})
+
+    print(response.content)
+
+if __name__ == "__main__":
+    main()
+
+
+
+
