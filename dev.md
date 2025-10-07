@@ -3227,6 +3227,9 @@ pipenv install requests
 pipenv run python main.py // pipenv run을 붙여야 virtual env에서 실행함.
 exit // deactivate가 아님. 잘못하면 터미널을 빠져나감
 
+💎 langchain ai
+uv run jupyter lab
+
 💎 fastest node dev
 ext         // Move to ~/work/web/exlang/ext directory
 nvm use 20
