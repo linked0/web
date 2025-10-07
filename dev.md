@@ -3143,22 +3143,7 @@ testp2:; forge test -vvvv --match-contract TokenReceiverPluginTest
 ```
 
 🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼
-### GPT Prompt
-From now on, show me correct version of my input in english before answering me
-
-#### Check Eng.
-Show me the original sentence, a grammatically and semantically correct version (as few corrections as possible), the concise, natural, not to formal response version for Zoom interviews at tech companies in the blockchain industry, a Korean translation for my original sentence, and casual version appropriate for a team meeting or chat. If there are any idioms, explain them within three lines. And evaluate whether my original message is appropriate for a native English speaker and exaplain each errors like a english teacher teaches a student. Each of all versions is written in one line. 
-
-And then, thoroughly respond to the content of my message and briefly explain any relevant background, technology, current state, or future outlook 
-
-if I write ":ca", check my sentences grammatically before answring
-
-
-And then, respond to the content of my message and briefly explain any relevant background, technology, current state, or future outlook.
-
-olny if I write ":ca", check my sentences grammatically before answering. If not do as you do.
----
-From now on, briefly correct my sentences and respond to my messages in detail using your usual tone. If there are any idioms, explain them within three lines.
+### Old or Not Frequently used
 
 #### Shortcuts
 shift cmd x
@@ -3172,7 +3157,18 @@ shift cmd \
 shift cmd p
     keystroke ": translate into english and answer in english"
 
-🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
+### Latest
+💎 cdk
+- npm install -g aws-cdk
+- 이것의 장점은 코드상에서 바로 deploy할 수 있다는 것이다.
+- cdk deploy
+- New repository secret in github -> settings -> Secrets and variables
+  - AWS_ACCESS_KEY_ID
+  - AWS_SECRET_ACCESS_KEY
+- After deploying, CloudFormation -> 스택 -> 출력 -> Url 확인
+
+🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌🔴👍🪣 0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
+
 ### Latest I
 💎 Calling balanceOf 
 ```
@@ -3205,16 +3201,7 @@ console.log(string.concat("fee: ", vm.toString(fee)));
 console.log("USDC:", address(USDC));
 ```
 
-🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌🔴👍🪣 0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
-### Latest II
-💎 cdk
-- npm install -g aws-cdk
-- 이것의 장점은 코드상에서 바로 deploy할 수 있다는 것이다.
-- cdk deploy
-- New repository secret in github -> settings -> Secrets and variables
-  - AWS_ACCESS_KEY_ID
-  - AWS_SECRET_ACCESS_KEY
-- After deploying, CloudFormation -> 스택 -> 출력 -> Url 확인
+🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
 
 💎 Run hardhat node (🔥hardhat.config.ts를 읽어들임, 31337)
 ```
@@ -3246,8 +3233,8 @@ nvm use 20
 yarn
 npx ts-node ex.ts
 
-💎 Basic project
-web, webf, web-snake, web-jules, web-mouse(AI)
+💎 command
+grep -RIn --include="*.{js,ts,jsx,tsx}" "TEXT" 
 
 
 🏀[dev]([https://bit.ly/3MVG5AN), 🎾[dev txt](https://bit.ly/3MT0VRb)

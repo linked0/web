@@ -33,3 +33,6 @@ exr/target/
 
 # etc
 mergedTextFiles.txt
+
+# coding agent
+.claude

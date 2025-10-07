@@ -1,4 +1,4 @@
-# webai
+# exa
 
 A web AI project for experimentation and development using Jupyter notebooks and Python.
 
@@ -32,15 +32,15 @@ uv run jupyter lab
 ```
 
 ### Project Structure
-```
-webai/
+```uv run jupyter lab
+exa/
 ├── notebooks/           # All Jupyter notebooks go here
 │   ├── experiment_01.ipynb
 │   ├── experiment_02.ipynb
 │   ├── experiment_03.ipynb
 │   └── ai_experiment.ipynb
 ├── ai/                  # AI module
-├── start_jupyter.py     # Convenient Jupyter starter script
+├── start_jupyter.py     # Convenient Jupyter starter **script**
 ├── jupyter_lab_config.py # Jupyter configuration
 └── pyproject.toml       # Project dependencies
 ```
