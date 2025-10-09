@@ -15,7 +15,7 @@ def main():
     )
 
     # Choose model: GPT or Gemma
-    use_openai = False  # toggle this as needed
+    use_openai = True  # toggle this as needed
 
     if use_openai:
         llm = ChatOpenAI(temperature=0, model="gpt-5")
