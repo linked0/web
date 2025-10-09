@@ -1,6 +1,7 @@
 from langchain.prompts import PromptTemplate
-from langchain_openai import ChatOpenAI
 from langchain_ollama import ChatOllama
+from langchain_openai import ChatOpenAI
+
 
 def main():
     summary_template = """
