@@ -3144,7 +3144,7 @@ testp2:; forge test -vvvv --match-contract TokenReceiverPluginTest
 
 🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼
 🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼🌼
-### OLD
+### Toolkit
 💎 Automator
 shift cmd x
     keystroke ": show me corrected version for my english, and answer my message in detail"
@@ -3208,7 +3208,7 @@ exit // deactivate가 아님. 잘못하면 터미널을 빠져나감
 
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
-### NEW
+### Toolkit New
 
 💎 Run hardhat node (🔥hardhat.config.ts를 읽어들임, 31337)
 ```
@@ -3241,6 +3241,19 @@ npx ts-node ex.ts
 
 💎 command
 grep -RIn --include="*.{js,ts,jsx,tsx}" "TEXT" 
+
+💎 aimond token deployment
+yarn deploy:all:bsc
+yarn set:global-start-time:bsc
+yarn set-owner:bsc
+yarn fund:all:bsc
+yarn transfer:safe:bsc
+yarn info:all:bsc
+
+💎 aimond token toolkit setup
+yarn db:setup     // backend
+yarn start        // backend
+yarn start:debug  // frontend
 
 🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌
 🔴👍🪣 0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
