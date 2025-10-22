@@ -3209,51 +3209,46 @@ exit // deactivate가 아님. 잘못하면 터미널을 빠져나감
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
 ### Toolkit New
-
-💎 Run hardhat node (🔥hardhat.config.ts를 읽어들임, 31337)
+#### 💎 Run hardhat node (🔥hardhat.config.ts를 읽어들임, 31337)
 ```
-nvm use 20 && NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8545
+nvm use 20 && NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8545 
 ```
-
-💎 MCP
+#### 💎 MCP
 ```
 npx v0-mcp-server // v0
 ```
-- Create a Next.js middleware that checks for a valid JWT in cookies and redirects unauthenticated users to `/login`. use context7
-
-💎 git
+Create a Next.js middleware that checks for a valid JWT in cookies and redirects unauthenticated users to `/login`. use context7
+#### 💎 git
 gh auth login // code는 command 로그에 나타남.
 gh repo list linked0 --limit 1000 | sort 
 git submodule update --init // 처음에 submodule 파일 가져오기
 git submodule update --remote // submodule을 최신 커밋으로 업데이트, commit 해야함.
 git clone <repository_url> <new_folder_name> // 특정 폴더에 클론하기 
-
-💎 langchain ai 
+#### 💎 langchain ai 
 // 아무 폴더에서나 아래 실행 가능
 uv add jupyterlab
 uv run jupyter lab
-
-💎 fastest node dev
+#### 💎 fastest node dev
 ext         // Move to ~/work/web/exlang/ext directory
 nvm use 20
 yarn
 npx ts-node ex.ts
-
-💎 command
-grep -RIn --include="*.{js,ts,jsx,tsx}" "TEXT" 
-
-💎 aimond token deployment
+#### 💎 command
+brew install ripgrep
+rg -n "Order Validation" -g "*.{js,ts,jsx,tsx}"
+#### 💎 aimond token deployment
 yarn deploy:all:bsc
 yarn set:global-start-time:bsc
 yarn set-owner:bsc
 yarn fund:all:bsc
 yarn transfer:safe:bsc
 yarn info:all:bsc
-
-💎 aimond token toolkit setup
+#### 💎 aimond token toolkit setup
 yarn db:setup     // backend
 yarn start        // backend
 yarn start:debug  // frontend
+#### 💎 etc 
+pushd, popd
 
 🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌
 🔴👍🪣 0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
