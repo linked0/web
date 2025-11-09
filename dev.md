@@ -3247,9 +3247,15 @@ yarn info:all:bsc
 yarn db:setup     // backend
 yarn start        // backend
 yarn start:debug  // frontend
+#### 💎 how init nostra
+- yarn db:reset-all (mvp, supreme court)
+- yarn mint-usdc
+- yarn provision:all
 #### 💎 etc 
 pushd .
 popd
+lsof -nP -iTCP:4000 -sTCP:LISTEN
+pgrep -fl my-process
 
 🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌
 🔴👍🪣 0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️

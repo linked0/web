@@ -106,7 +106,7 @@ class DevMdServer {
           },
         },
         {
-          name: "search_docs",
+          name: "dddsearch",
           description:
             "Search across all development documentation (dev.md and zsub folder) for specific keywords or topics",
           inputSchema: {
@@ -282,7 +282,7 @@ class DevMdServer {
               args.query as string,
               (args.context_lines as number) || 3
             );
-          case "search_docs":
+          case "dddsearch":
             return await this.searchDocs(
               args.query as string,
               (args.context_lines as number) || 3
