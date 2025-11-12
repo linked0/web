@@ -3247,7 +3247,7 @@ yarn info:all:bsc
 yarn db:setup     // backend
 yarn start        // backend
 yarn start:debug  // frontend
-#### 💎 init nostra
+#### 💎 init **nostra**
 yarn deploy:bsc-testnet // in contracts
 yarn transfer:trader // in contracts
 yarn build && yalc push // in pkg
@@ -3255,6 +3255,7 @@ yarn list:addresses // in pkg
 yarn check-sdk // in api
 yarn db:reset-all // mvp, supreme court
 yarn provision:all // in api
+yarn show:mvp
 #### 💎 etc 
 pushd .
 popd
