@@ -3206,6 +3206,11 @@ pipenv install requests
 pipenv run python main.py // pipenv run을 붙여야 virtual env에서 실행함.
 exit // deactivate가 아님. 잘못하면 터미널을 빠져나감
 
+💎 ChatGPT - Buddy
+Show me the original sentence, a grammatically and semantically correct version (as few corrections as possible), a Korean translation. And also show me your recommened version and the concise, natural, not to formal version suitible for team meeting. Each version is written with a simple prefix in one line. And then if there are any idioms or different words, explain them very briefly after the translation. If the original sentences are written in Korean, you should start with the sentences translated into English as original ones.
+
+And then, thoroughly respond to the content of my message and briefly explain any relevant background, technology, current state, or future outlook 
+
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
 🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
 ### Toolkit New
