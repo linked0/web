@@ -3253,9 +3253,11 @@ yarn transfer:trader // in contracts
 yarn build && yalc push // in pkg
 yarn list:addresses // in pkg
 yarn check-sdk // in api
-yarn db:reset-all // mvp, supreme court
-yarn provision:all // in api
-yarn show:mvp
+yarn db:reset-all
+yarn provision:all
+yarn bot:dry-run // 이건 필요할 때 실행하면 됨
+yarn show:world-cup // or show:mvp
+
 #### 💎 etc 
 pushd .
 popd
