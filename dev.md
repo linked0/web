@@ -3261,7 +3261,8 @@ yarn transfer:trader // in contracts
 yarn build && yalc push // in pkg
 yarn list:addresses // in pkg
 yarn check-sdk // in api
-yarn fresh-start // db:reset-all & provision:all
+yarn fresh-start // db:reset-all & provision:all & rebalance
+yarn rebalance
 yarn bot:dry-run // 이건 필요할 때 실행하면 됨
 yarn show:world-cup // or show:mvp
 
