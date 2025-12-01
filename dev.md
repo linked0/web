@@ -3233,6 +3233,7 @@ git submodule update --remote // submodule을 최신 커밋으로 업데이트, 
 git clone <repository_url> <new_folder_name> // 특정 폴더에 클론하기 
 #### 💎 langchain ai 
 // 아무 폴더에서나 아래 명령어를 차례로 실행 
+brew install uv
 uv init
 uv add jupyterlab
 uv run jupyter lab
