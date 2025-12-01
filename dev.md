@@ -3257,16 +3257,19 @@ yarn db:setup     // backend
 yarn start        // backend
 yarn start:debug  // frontend
 #### 💎 init **nostra**
+yarn build // in contracts
 yarn deploy:bsc-testnet // in contracts
 yarn transfer:trader // in contracts
-yarn build && yalc push // in pkg
-yarn list:addresses // in pkg
+npm install -g yalc // in sdk
+yarn build && yalc push // in sdk
+yarn list:addresses // in sdk
+yalc add @nostra-dev // in api
 yarn check-sdk // in api
 yarn fresh-start // db:reset-all & provision:all & rebalance
 yarn rebalance
 yarn bot:dry-run // 이건 필요할 때 실행하면 됨
 yarn show:world-cup // or show:mvp
-
+yalc add @nostra-dev/sdk // in web
 #### 💎 etc 
 pushd .
 popd
