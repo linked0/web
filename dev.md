@@ -3259,7 +3259,7 @@ yarn start:debug  // frontend
 #### 💎 init **nostra**
 yarn build // in contracts
 yarn deploy:bsc-testnet // in contracts
-yarn transfer:trader // in contracts
+yarn transfer:trader // in contracts, don't need in web UI test
 npm install -g yalc // in sdk
 yarn build && yalc push // in sdk
 yarn list:addresses // in sdk
