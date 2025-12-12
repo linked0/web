@@ -3274,6 +3274,8 @@ pushd .
 popd
 lsof -nP -iTCP:4000 -sTCP:LISTEN
 pgrep -fl my-process
+git push origin main:gh-pages
+
 
 🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌
 🔴👍🪣 0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
