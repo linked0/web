@@ -3273,6 +3273,7 @@ yarn show:world-cup // or show:mvp
 pushd .
 popd
 lsof -nP -iTCP:4000 -sTCP:LISTEN
+pkill -f "http.server 51225"
 pgrep -fl my-process
 git push origin main:gh-pages
 
