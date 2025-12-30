@@ -3275,6 +3275,7 @@ popd
 lsof -nP -iTCP:4000 -sTCP:LISTEN
 pkill -f "http.server 51225"
 pgrep -fl my-process
+ps aux | grep <process_name>
 git push origin main:gh-pages
 
 
