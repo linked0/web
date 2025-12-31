@@ -3263,6 +3263,8 @@ yarn deploy:bsc-testnet // in contracts
 npm install -g yalc // in sdk
 yarn build // in sdk for publishing package
 yarn list:addresses // in sdk
+npm login // in sdk
+npm publish  --access public // in sdk
 yalc push // in sdk just for yalc
 yalc add @nostra-dev/sdk // in api and web
 yarn check-sdk // in api and web 
