@@ -3260,10 +3260,10 @@ git show --name-only HEAD // 현재 커밋의 파일 목록 확인
 #### 💎 init **nostra**
 yarn compile // in contracts
 yarn deploy:bsc-testnet // in contracts
-yarn transfer:trader // in contracts, don't need in web UI test
 npm install -g yalc // in sdk
-yarn build && yalc push // in sdk
+yarn build // in sdk for publishing package
 yarn list:addresses // in sdk
+yalc push // in sdk just for yalc
 yalc add @nostra-dev/sdk // in api and web
 yarn check-sdk // in api and web 
 yarn fresh-start // db:reset-all & provision:all & rebalance
