@@ -3257,6 +3257,8 @@ git submodule update --init // 처음에 submodule 파일 가져오기
 git submodule update --remote // submodule을 최신 커밋으로 업데이트, commit 해야함.
 git clone <repository_url> <new_folder_name> // 특정 폴더에 클론하기 
 git show --name-only HEAD // 현재 커밋의 파일 목록 확인
+git show HEAD // 현재 커밋의 변경사항 확인
+git log -1 // 마지막 커밋 메시지 확인 
 #### 💎 init **nostra**
 yarn compile // in contracts
 yarn deploy:bsc-testnet // in contracts
