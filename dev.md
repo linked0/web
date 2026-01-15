@@ -3240,10 +3240,6 @@ nvm use 20
 yarn
 npx ts-node ex.ts
 
-#### 💎 command
-brew install ripgrep
-rg -n "Order Validation" -g "*.{js,ts,jsx,tsx}"
-
 #### 💎 aimond token deployment
 yarn deploy:all:bsc
 yarn set:global-start-time:bsc
@@ -3283,7 +3279,7 @@ yarn rebalance
 yarn bot:dry-run // 이건 필요할 때 실행하면 됨
 yarn show:world-cup // or show:mvp
 
-#### 💎 etc 
+#### 💎 command
 pushd .
 popd
 lsof -nP -iTCP:4000 -sTCP:LISTEN
@@ -3291,7 +3287,7 @@ pkill -f "http.server 51225"
 pgrep -fl my-process
 ps aux | grep <process_name>
 git push origin main:gh-pages
-
+grep -rn --include={"*.sh","*.txt"} "DIR_NAME" . // include 중간에 스페이스 넣으면 안됨
 
 🎂🌼🏓🦋⚾️🏐⚽️🏀🏈🪀🎾🐳🍀🌸🏆😈🐹🦁🔹🔸💎♦️💥🔥🐶🦄🚘🎱※반짝🌟🙌
 🔴👍🪣 0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟🅰️🅱️❌⛔▶️
