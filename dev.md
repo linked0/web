@@ -3220,25 +3220,30 @@ if I write ":ca", check my sentences for grammar unconditionally before answring
 ```
 nvm use 20 && NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8545 
 ```
+
 #### 💎 MCP
 ```
 npx v0-mcp-server // v0
 ```
 Create a Next.js middleware that checks for a valid JWT in cookies and redirects unauthenticated users to `/login`. use context7
+
 #### 💎 langchain ai 
 // 아무 폴더에서나 아래 명령어를 차례로 실행 
 brew install uv
 uv init
 uv add jupyterlab
 uv run jupyter lab
+
 #### 💎 fastest node dev
 ext         // Move to ~/work/web/exlang/ext directory
 nvm use 20
 yarn
 npx ts-node ex.ts
+
 #### 💎 command
 brew install ripgrep
 rg -n "Order Validation" -g "*.{js,ts,jsx,tsx}"
+
 #### 💎 aimond token deployment
 yarn deploy:all:bsc
 yarn set:global-start-time:bsc
@@ -3246,10 +3251,12 @@ yarn set-owner:bsc
 yarn fund:all:bsc
 yarn transfer:safe:bsc
 yarn info:all:bsc
+
 #### 💎 aimond token toolkit setup
 yarn db:setup     // backend
 yarn start        // backend
 yarn start:debug  // frontend
+
 #### 💎 git
 gh auth login // code는 command 로그에 나타남.
 gh repo list linked0 --limit 1000 | sort 
@@ -3258,6 +3265,8 @@ git submodule update --remote // submodule을 최신 커밋으로 업데이트, 
 git clone <repository_url> <new_folder_name> // 특정 폴더에 클론하기 
 git show --name-only HEAD // 현재 커밋의 파일 목록 확인
 git show --stat HEAD // 마지막 커밋 메시지 확인 
+git reset --hard Abdulkarim4u/feature/added-charts
+
 #### 💎 init **nostra**
 yarn compile // in contracts
 yarn deploy:bsc-testnet // in contracts
@@ -3273,6 +3282,7 @@ yarn fresh-start // db:reset-all & provision:all & rebalance
 yarn rebalance
 yarn bot:dry-run // 이건 필요할 때 실행하면 됨
 yarn show:world-cup // or show:mvp
+
 #### 💎 etc 
 pushd .
 popd
