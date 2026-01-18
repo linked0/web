@@ -3262,6 +3262,7 @@ git clone <repository_url> <new_folder_name> // 특정 폴더에 클론하기
 git show --name-only HEAD // 현재 커밋의 파일 목록 확인
 git show --stat HEAD // 마지막 커밋 메시지 확인 
 git reset --hard Abdulkarim4u/feature/added-charts
+echo "docs/task/task.local.md" >> .git/info/exclude // git의 트래킹에서 빠짐. 리파지토리에서의 상대경로.
 
 #### 💎 init **nostra**
 yarn compile // in contracts
