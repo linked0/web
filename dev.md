@@ -3264,7 +3264,7 @@ git show --stat HEAD // 마지막 커밋 메시지 확인
 git reset --hard Abdulkarim4u/feature/added-charts
 echo "docs/task/task.local.md" >> .git/info/exclude // git의 트래킹에서 빠짐. 리파지토리에서의 상대경로.
 git commit --no-verify --no-edit // git cherry-pick시에 husky 에러 날때 건너띄기 위해 사용
-git reset --hard origin/quick-fix-cloud // git fetch 후 강제로 로컬을 remote와 동일하게 맞추기
+git reset --hard origin/quick-fix-cloud // git fetch --all 후 강제로 로컬을 remote와 동일하게 맞추기
 
 #### 💎 init **nostra**
 yarn compile // in contracts
