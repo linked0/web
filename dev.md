@@ -3221,11 +3221,16 @@ if I write ":ca", check my sentences for grammar unconditionally before answring
 nvm use 20 && NODE_OPTIONS="--max-old-space-size=8192" yarn hardhat node --port 8545 
 ```
 
-#### 💎 MCP
-```
-npx v0-mcp-server // v0
-```
-Create a Next.js middleware that checks for a valid JWT in cookies and redirects unauthenticated users to `/login`. use context7
+#### 💎 Init Environment
+##### Install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+##### Restart your terminal, then install Node (npm comes with it)
+nvm install --lts
+
+##### Verify
+- node --version
+- npm --version
 
 #### 💎 langchain ai 
 // 아무 폴더에서나 아래 명령어를 차례로 실행 
