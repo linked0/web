@@ -2,7 +2,7 @@
 🌼🏓🦋⚾️🥎🏐⚽️🏀🏈🪀🎾🐳🍀🌼🌸🏆🍜😈🐹🦁🌟🔹♦️⚡️💥🌈🔥⚾️🐶🦄☕️🚘🎱🌟🔴
 - [README](./README.md)
 - [Coding Style](./doc/ProjectStyle.md)
-- [dev.md]([bit.ly/3MVG5AN), [dev.md text](bit.ly/3MT0VRb)
+- [dev.md, 3MVG5AN]([bit.ly/3MVG5AN), [dev.md text, 3MT0VRb](bit.ly/3MT0VRb)
 - [Miki](https://bit.ly/421Gf1x), [Miki-Sum](https://bit.ly/4iWn0fY)
 - [작업 환경 세팅](./zsub/work-env.md)
 - [Poohnet & Betelgeuse](#poohnet)
