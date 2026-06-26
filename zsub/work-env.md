@@ -9,7 +9,7 @@ iCloud/pooh/ssh.tar
 ### Homebrew, OhMyZsh 설치
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
- brew install zsh 
+brew install zsh 
 brew install curl
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
