@@ -6,6 +6,20 @@
 ### .ssh 복사
 iCloud/pooh/ssh.tar
 
+### Homebrew, OhMyZsh 설치
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+ brew install zsh 
+brew install curl
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+### 커맨드창에서 code 명령어 설정
+Open the Visual Studio Code application normally on your Mac.
+Press Cmd + Shift + P to open the Command Palette.
+Type shell command into the search box.
+Click on Shell Command: Install 'code' command in PATH.
+Enter your Mac administrator password if prompted to confirm the installation.
+Restart your Terminal app completely for the changes to take effect. [1, 2, 3, 4]
+
 #### xcode command/brew/zsh/iterm2/karabiner install
 ```
 xcode-select —-install
